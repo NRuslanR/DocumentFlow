@@ -1,0 +1,1 @@
+AppIcon RCDATA "C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DocumentFlowSystemProject\app_icon.ico"

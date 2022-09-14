@@ -1,0 +1,1127 @@
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Accounting\AccountingServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Accounting\Docs\BasedOnDocumentViewingDocumentChargeSheetViewingAccountingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Accounting\Docs\Based-On DB\BasedOnDatabaseDocumentViewingAccountingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Accounting\Docs\Based-On DB\BasedOnDatabaseIncomingDocumentViewingAccountingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Accounting\Docs\Interfaces\DocumentChargeSheetViewingAccountingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Accounting\Docs\Interfaces\DocumentViewingAccountingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Common\BusinessProcessService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\DocumentBusinessProcessServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\DocumentOperationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\EmployeeDocumentOperationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Access\StandardEmployeeDocumentKindAccessRightsAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Access\Interfaces\EmployeeDocumentKindAccessRightsAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Charge Sheets\StandardDocumentChargeSheetControlAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Charge Sheets\Interfaces\DocumentChargeSheetControlAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Operations\StandardRespondingDocumentCreatingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Operations\Interfaces\RespondingDocumentCreatingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Storage\StandardDocumentStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Storage\StandardOutcomingDocumentStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Storage\StandardRelatedDocumentStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Storage\Interfaces\DocumentStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Storage\Interfaces\DocumentStorageServiceCommandsAndRespones.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Storage\Interfaces\RelatedDocumentStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Tests\DocumentStorageServiceTestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingControlAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingRejectingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentSigningAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentSigningMarkingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentSigningRejectingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentSigningToPerformingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardSendingDocumentToApprovingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardSendingDocumentToPerformingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\StandardSendingDocumentToSigningService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingControlAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingRejectingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentSigningAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentSigningMarkingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentSigningRejectingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentSigningToPerformingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\SendingDocumentToApprovingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\SendingDocumentToPerformingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\SendingDocumentToSigningService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\DocumentKinds.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Charge Sheets\Dtos\DocumentChargeSheetsChangesInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Charge Sheets\Dtos\Mappers\DocumentAcquaitanceSheetInfoDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Charge Sheets\Dtos\Mappers\DocumentChargeSheetInfoDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Charge Sheets\Dtos\Mappers\DocumentChargeSheetInfoDTODomainMapperRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Charge Sheets\Dtos\Mappers\DocumentChargeSheetsInfoDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Charge Sheets\Dtos\Mappers\DocumentPerformingSheetInfoDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\DocumentKindDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\DocumentKindWorkCycleInfoDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\GlobalDocumentKindDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\NativeDocumentKindDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\Mappers\DocumentKindsMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\Resolvers\DocumentKindIdResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\Resolvers\DocumentKindResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\Resolvers\NumericDocumentKindIdResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document Kinds\Resolvers\NumericDocumentKindResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\AbstractDocumentSetHolderDecorator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\ApproveableDocumentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\DepartmentDocumentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\DocumentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\EmployeeDocumentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\IncomingDocumentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\InternalDocumentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\OutcomingDocumentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\AbstractDocumentSetHolderFactoryDecorator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\ApproveableDocumentSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\DepartmentDocumentSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\DocumentSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\EmployeeDocumentSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\IncomingDocumentSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\InternalDocumentSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Document List\Factories\OutcomingDocumentSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\ChangedDocumentInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\DocumentApprovingCycleDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\DocumentChargeSheetsInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\DocumentCreatingDefaultInfoDataSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\DocumentCreatingDefaultInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\DocumentFullInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\DocumentResponsibleInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\DocumentUsageEmployeeAccessRightsInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\EmployeeDocumentKindAccessRightsInfoDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\IncomingDocumentFullInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\NewDocumentInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentApprovingsInfoDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentChargeInfoDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentChargesInfoDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentFullInfoDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentObjectsDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentResponsibleInfoDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\DocumentUsageEmployeeAccessRightsInfoDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\IncomingDocumentDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\IncomingDocumentFullInfoDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\Registries\DocumentChargeInfoDTODomainMapperRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\Registries\DocumentObjectsDTODomainMapperRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Dtos\Mappers\Registries\DTODomainMapperRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Personnel Orders\Document Kinds\PersonnelOrderSubKindSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Personnel Orders\Document List\PersonnelOrderSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Personnel Orders\Document List\Factories\PersonnelOrderSetHolderFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Personnel Orders\Dtos\ChangedPersonnelOrderDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Personnel Orders\Dtos\PersonnelOrderFullInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Personnel Orders\Dtos\Mappers\PersonnelOrderDTODomainMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Reporting\Dtos\DocumentApprovingListDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Reporting\Dtos\DocumentApprovingSheetDataDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Reporting\Dtos\NotPerformedDocumentsReportData.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Reporting\Dtos\NotPerformedIncomingDocumentsReportData.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Documents\Reporting\Dtos\Mappers\DocumentApprovingSheetDataDtoMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\DepartmentInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\DepartmentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\DocumentFlowEmployeeInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\EmployeeChargePerformingUnitDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\EmployeeInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\EmployeeSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\EmployeeStaffDto.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Employees\Dtos\Mappers\DocumentFlowEmployeeInfoDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Registries\DTODomainMapperRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Services\AbstractApplicationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Services\ApplicationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Services\ApplicationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Common\Services\_ApplicationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\ApplicationConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\ApplicationRepositoryRegistryConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\ConfigurationData.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\DocumentBusinessProcessServiceRegistryConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\DomainConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\DTODomainMappersRegistriesConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\ExternalServiceRegistryConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\PresentationServiceRegistryConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Configuration\SystemServiceRegistryConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\ExternalServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\AbstractDocumentChargeSheetNotifyingMessageBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\StandardDocumentChargeSheetCasesNotifier.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\Interfaces\DocumentChargeSheetCasesNotifier.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\Interfaces\DocumentChargeSheetNotifyingMessageBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\Policies\AllEmployeesDocumentNotificationPolicy.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\Policies\ForeignEmployeesDocumentNotificationPolicy.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\Policies\NoneEmployeeDocumentNotificationPolicy.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Common\Policies\Interfaces\EmployeeDocumentNotificationPolicy.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Email\EmailDocumentChargeSheetNotifyingMessageBuilder1.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Messaging\Documents\Email\EmailDocumentChargeSheetNotifyingMessageBuilder2.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Plant\BasedOnDBPlantStructureAccessService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Plant\BasedOnZeosVclPlantItemService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Plant\PlantItemService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Plant\PlantStructureAccessService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\SD\BasedOnDatabaseSDItemsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\SD\SDItem.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\SD\SDItemsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Storage\DocumentFileServiceClientUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\External\Storage\Interfaces\IDocumentFileServiceClientUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\ManagementServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\Employees\StandardEmployeeDepartmentManagementService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\Employees\Interfaces\EmployeeDepartmentManagementService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\User Profiles\Based-On DB\BasedOnDatabaseUserNotificationProfileService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\User Profiles\Based-On DB\Tests\TestBasedOnDatabaseUserNotificationProfileService_Zeos.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\User Profiles\Dtos\UserNotificationProfile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\User Profiles\Dtos\UserNotificationProfileGroup.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\User Profiles\Interfaces\UserNotificationProfileAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\User Profiles\Interfaces\UserNotificationProfileService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Management\User Profiles\Standard\StandardUserNotificationProfileAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\PresentationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\BasedOnDatabaseDocumentInfoPartlyReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\BasedOnDatabaseDocumentInfoReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\BasedOnDatabaseIncomingDocumentInfoPartlyReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\BasedOnDatabaseIncomingDocumentInfoReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\DataSets\DocumentFilesInfoHolderBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\DataSets\DocumentInfoHolderBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\DataSets\DocumentPerformingInfoHolderBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\DataSets\DocumentRelationsInfoHolderBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\DataSets\FullDocumentApprovingsInfoHolderBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\DataSets\IncomingDocumentInfoHolderBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\DocumentFilesInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\DocumentInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\DocumentPerformingInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\DocumentRelationsInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\FullDocumentApprovingsInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\IncomingDocumentInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresDocumentFilesInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresDocumentInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresDocumentPerformingInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresDocumentRelationsInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresFullDocumentApprovingsInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresIncomingDocumentInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\DocumentApprovingsInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\DocumentChargeSheetsInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\DocumentChargesInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\DocumentFilesInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\DocumentFullInfoDataSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\DocumentInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\DocumentRelationsInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\IncomingDocumentFullInfoDataSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Dtos\IncomingDocumentInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentApprovingCycleResultsInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentApprovingsInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentChargeSheetsInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentChargesInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentFilesInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentFullInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\DocumentRelationsInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\IncomingDocumentDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\IncomingDocumentFullInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Postgres\PostgresDocumentFullInfoFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Based-On DB\Postgres\PostgresIncomingDocumentFullInfoFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\Doc Full Info\Interfaces\DocumentInfoReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\On-Creating Default Doc Info\Based-On DB\BasedOnDatabaseDocumentCreatingDefaultInfoReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\On-Creating Default Doc Info\Based-On DB\Postgres\PostgresDocumentCreatingDefaultInfoFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Cards\On-Creating Default Doc Info\Interfaces\DocumentCreatingDefaultInfoReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\PersonnelOrderPresentationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\BasedOnDatabasePersonnelOrderInfoReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Builders\DataSets\PersonnelOrderInfoHolderBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresPersonnelOrderInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Dtos\PersonnelOrderFullInfoDataSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Dtos\PersonnelOrderInfoHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Mappers\PersonnelOrderDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Mappers\PersonnelOrderFullInfoDTOFromDataSetMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Postgres\PostgresPersonnelOrderFullInfoFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\Cards\On-Creating Default Doc Info\BasedOnDatabasePersonnelOrderCreatingDefaultInfoReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\AbstractPersonnelOrderEmployeeSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\AbstractPersonnelOrderSubKindEmployeeSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\Interfaces\PersonnelOrderApproverSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\Interfaces\PersonnelOrderEmployeeSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\Interfaces\PersonnelOrderSignerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\Interfaces\PersonnelOrderSubKindEmployeeSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\Standard\StandardPersonnelOrderApproverSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Actors\Standard\StandardPersonnelOrderSignerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Kinds\Based-On DB\BasedOnDBPersonnelOrderSubKindSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document Kinds\Interfaces\PersonnelOrderSubKindSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document List\Based-On DB\BasedOnDatabaseDepartmentPersonnelOrderSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document List\Based-On DB\BasedOnDatabaseEmployeePersonnelOrderSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document List\Based-On DB\Postgres\PostgresDepartmentPersonnelOrderSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Personnel Orders\References\Document List\Based-On DB\Postgres\PostgresEmployeePersonnelOrderSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\AbstractDocumentEmployeeSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Interfaces\DocumentApproverSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Interfaces\DocumentChargePerformerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Interfaces\DocumentResponsibleSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Interfaces\DocumentSignerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardDocumentApproverSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardDocumentChargePerformerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardDocumentResponsibleSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardDocumentSignerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardIncomingDocumentChargePerformerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardIncomingInternalDocumentChargePerformerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardInternalDocumentChargePerformerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardInternalDocumentResponsibleSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Actors\Standard\StandardInternalDocumentSignerSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\StandardDocumentKindSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\StandardDocumentKindWorkCycleInfoAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\StandardGlobalDocumentKindsReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\Based-On DB\BasedOnDatabaseNativeDocumentKindsReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\Based-On DB\Schemas\DocumentKindDbSchema.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\Interfaces\DocumentKindWorkCycleInfoAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\Interfaces\GlobalDocumentKindsReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document Kinds\Interfaces\NativeDocumentKindsReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseAbstractDepartmentDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseAbstractDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseAbstractEmployeeDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseDepartmentApproveableDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseDepartmentIncomingDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseDepartmentOutcomingDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseEmployeeApproveableDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseEmployeeIncomingDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseEmployeeInternalDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseEmployeeOutcomingDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Interfaces\DepartmentDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\References\Document List\Interfaces\EmployeeDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresServiceNoteSubstitutedInfoQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Postgres\PostgresIncomingServiceNoteFullInfoFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresDepartmentApproveableServiceNoteSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresDepartmentIncomingServiceNoteSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresDepartmentOutcomingServiceNoteSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresEmployeeApproveableServiceNoteSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresEmployeeIncomingServiceNoteSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresEmployeeInternalServiceNoteSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresEmployeeOutcomingServiceNoteSetFetchingQueryBuilder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Docs\Tests\DocumentInfoReadServiceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Based-On DB\BasedOnDatabaseDepartmentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Based-On DB\BasedOnDatabaseEmployeeSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Based-On DB\BasedOnDatabaseEmployeeSetReadServiceTestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Based-On DB\Common\DepartmentDbSchema.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Based-On DB\Common\EmployeeDbSchema.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Based-On DB\Common\EmployeeWorkGroupAssociationDbSchema.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Based-On DB\Common\RoleDbSchema.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Interfaces\DepartmentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Employees\References\Interfaces\EmployeeSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Program Changes Notification\Based-On DB\BasedOnZeosPostgresProgramChangesNotificationControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Presentation\Program Changes Notification\Interfaces\ProgramChangesNotificationControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\ReportingServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Based-On DB\BasedOnDBNotPerformedDocumentsReportDataService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Based-On DB\BasedOnDBNotPerformedIncomingDocumentsReportDataService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Based-On DB\Postgres\BasedOnPostgresNotPerformedIncomingServiceNotesReportDataService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Interfaces\DocumentApprovingListCreatingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Interfaces\DocumentApprovingSheetDataCreatingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Interfaces\NotPerformedDocumentsReportDataService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Standard\StandardDocumentApprovingListCreatingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Standard\StandardDocumentApprovingSheetDataCreatingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Reporting\Docs\Standard\StandardIncomingDocumentApprovingListCreatingAppService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Service Registries\ApplicationServiceRegistries.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\StatisticsServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Charges\Interfaces\EmployeeDocumentChargesWorkStatistics.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Charges\Interfaces\EmployeeDocumentChargesWorkStatisticsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Charges\Zeos-Based\EmployeeDocumentChargesWorkStatisticsZeosService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Charges\Zeos-Based\Postgres\EmployeeDocumentChargesWorkStatisticsPostgresService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Charges\Zeos-Based\Postgres\EmployeeIncomingServiceNoteChargesWorkStatisticsPostgresService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Charges\Zeos-Based\Postgres\EmployeeOutcomingServiceNoteChargesWorkStatisticsPostgresService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Interfaces\EmployeeDocumentWorkStatistics.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Interfaces\EmployeeDocumentWorkStatisticsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Zeos-Based\AbstractEmployeeDocumentWorkStatisticsZeosService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Statistics\Docs\Zeos-Based\Postgres\EmployeeDocumentWorkStatisticsPostgresService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\SystemServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\StandardDocumentFlowAdministrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\DepartmentsAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\DocumentFlowAdminPrivileges.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\DocumentFlowAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\DocumentNumeratorsAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\DocumentsAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\EmployeesAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\EmployeesReplacementsAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\EmployeeStaffsAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\EmployeesWorkGroupsAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\PersonnelOrderControlGroupsAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\PersonnelOrderEmployeesAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\PersonnelOrderKindApproversAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\PersonnelOrderSignersAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\SynchronizationDataAdminPrivilegeServices.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\AbstractDocumentFlowAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosDepartmentsAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosDocumentNumeratorsAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosEmployeesAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosEmployeesReplacementsAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosEmployeeStaffsAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosEmployeesWorkGroupsAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosPersonnelOrderControlGroupsAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosPersonnelOrderEmployeesAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosPersonnelOrderKindApproversAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosPersonnelOrderSignersAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Based-On VclZeos\BasedOnVclZeosSynchronizationDataAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Interfaces\DocumentFlowAdminPrivilegeServicesFactories.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Interfaces\DocumentFlowAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Standard\StandardDocumentFlowAdminPrivilegeServicesFactories.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\DTOs\Factories\Standard\StandardDocumentsAdminPrivilegeServicesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Interfaces\DocumentFlowAdministrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosDepartmentsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosDocumentNumeratorsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosEmployeesAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosEmployeesReplacementsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosEmployeeStaffsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosEmployeesWorkGroupsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosPersonnelOrderControlGroupsControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosPersonnelOrderEmployeesControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosPersonnelOrderKindApproversControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosPersonnelOrderSignersControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\BasedOnVclZeosSynchronizationDataControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\unDM.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\UnDocAdminLib.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\UnDocAdminMain.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\UnDocAdminPage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\addict\UnDocNumerators.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\addict\UnKadrGroup.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\addict\UnKadrTypeApprovers.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\addict\UnPodrPeopleRoles.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\addict\UnPodrTree.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\addict\UnSinchroPersonData.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\addict\UnWorkGroups.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\edit\UnAddDocNumerator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\edit\UnAddPers.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\edit\UnAddPodr.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\edit\UnAddReplacements.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\edit\UnDlg.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\edit\UnEditPodrStruct.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\edit\UnEditWorkGroup.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\list\UnKadrEditPersonList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\list\UnKadrSignersList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\list\UnReplacements.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\list\UnStructAccessList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\spr\UnGroupTempl.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\External Implementations\Based-On VclZeos\Core\spr\UnSprTempl.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\DepartmentsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\DocumentNumeratorsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\EmployeesAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\EmployeesReplacementsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\EmployeeStaffsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\EmployeesWorkGroupsAdminReferenceControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\PersonnelOrderControlGroupsControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\PersonnelOrderEmployeesControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\PersonnelOrderKindApproversControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\PersonnelOrderSignersControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Privilege Services\Interfaces\SynchronizationDataControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\References\Documents\List\StandardAdminDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\References\Documents\List\Interfaces\AdminDocumentSetReadService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Storage\Documents\StandardAdminDocumentStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Administration\Storage\Documents\Interfaces\AdminDocumentStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Authorization\AbstractDocumentFlowAuthorizationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Authorization\Based-On Databases\BasedOnDatabaseDocumentFlowAuthorizationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Authorization\Based-On Databases\Based-On Zeos\BasedOnZeosDocumentFlowAuthorizationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\System\Authorization\Interfaces\DocumentFlowAuthorizationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Working Employee\DBWorkingEmployeeUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Working Employee\IWorkingEmployeeUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Working Employee\WorkingEmployeeUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Application\Working Employee\ZeosPostgresWorkingEmployeeUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\DomainRegistries.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\TestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\DocumentsDomainRegistries.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\AbstractDocumentDecorator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\AdministrativeDocument.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\Document.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentAcquaitance.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentAcquaitanceSheet.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentApprovingCycle.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentApprovingCycleResult.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentApprovingList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentApprovings.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentApprovingSheetData.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentChargeKind.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentCharges.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentChargeSheet.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentFileUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentKind.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentKindReference.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentPerforming.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentPerformingSheet.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentRelationsUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentSignings.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\DocumentWorkCycle.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\IncomingDocument.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\IncomingInternalDocument.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\InternalDocument.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\Interfaces\DocumentChargeInterface.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\Interfaces\IDocumentChargeSheetUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Entities\Interfaces\IDocumentUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\DocumentRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Access\DocumentAccessRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Access\Editing\StandardEmployeeDocumentEditingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Access\Removing\StandardDocumentRemovingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Access\Removing\Interfaces\DocumentRemovingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Access\Viewing\StandardEmployeeDocumentViewingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\DocumentApprovingRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\StandardApprovingDocumentSendingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\StandardDocumentApproverListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\StandardDocumentApprovingPassingMarkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\StandardDocumentApprovingPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\StandardDocumentApprovingRejectingPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\Interfaces\DocumentApproverListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\Interfaces\DocumentApprovingPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Approving\Interfaces\DocumentApprovingRejectingPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\DocumentChargeSheetRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\DocumentChargeSheetWorkingRules.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetWorkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Changing\DocumentChargeSheetChangingEnsurer.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Changing\StandardDocumentChargeSheetChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Changing\Interfaces\DocumentChargeSheetChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Interfaces\DocumentChargeSheetWorkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Performing\DocumentChargeSheetPerformingEnsurer.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Performing\StandardDocumentChargeSheetOverlappedPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Performing\StandardDocumentChargeSheetPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Performing\Interfaces\DocumentChargeSheetOverlappedPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Performing\Interfaces\DocumentChargeSheetPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Removing\StandardDocumentChargeSheetRemovingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Removing\Interfaces\DocumentChargeSheetRemovingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Viewing\StandardDocumentChargeSheetViewingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charge Sheets\Viewing\Interfaces\DocumentChargeSheetViewingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charges\DocumentChargeRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charges\DocumentChargeWorkingRules.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charges\StandardDocumentChargeChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charges\StandardDocumentChargeListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charges\StandardInternalDocumentChargeListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charges\Interfaces\DocumentChargeChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Charges\Interfaces\DocumentChargeListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Common\EmployeeDocumentWorkingRules.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Common\StandardEmployeeDocumentWorkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Common\Interfaces\EmployeeDocumentWorkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Drafting\DocumentDraftingRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Drafting\StandardAsSelfRegisteredDocumentMarkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Drafting\StandardDocumentDraftingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Drafting\StandardInternalDocumentDraftingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Drafting\Interfaces\DocumentDraftingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Performing\DocumentPerformingRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Performing\StandardDocumentPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Performing\StandardPerformingDocumentSendingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Performing\Interfaces\DocumentPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\AbstractDocumentSigningMarkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\DocumentSigningRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\StandardDocumentSignerListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\StandardDocumentSigningMarkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\StandardEmployeeDocumentSigningPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\StandardEmployeeDocumentSigningRejectingPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\StandardInternalDocumentSignerListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\StandardSigningDocumentSendingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\Interfaces\DocumentSignerListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\Interfaces\DocumentSigningMarkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\Interfaces\DocumentSigningPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Rules\Signing\Interfaces\DocumentSigningRejectingPerformingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\DocumentServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Access Rights\DocumentAccessRightsServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Access Rights\StandardDocumentUsageEmployeeAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Access Rights\StandardEmployeeDocumentKindAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Access Rights\StandardIncomingDocumentUsageEmployeeAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Access Rights\Interfaces\DocumentUsageEmployeeAccessRightsInfo.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Access Rights\Interfaces\DocumentUsageEmployeeAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Access Rights\Interfaces\EmployeeDocumentKindAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Accounting\StandardDocumentAccountingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Accounting\StandardDocumentIssuingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Accounting\Interfaces\DocumentAccountingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Accounting\Interfaces\DocumentIssuingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\DocumentApprovingServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\StandardDocumentApprovingListCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\StandardDocumentApprovingProcessControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\StandardDocumentApprovingSheetDataCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Approving Collectors\StandardDocumentApprovingsCollector.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Approving Collectors\Interfaces\DocumentApprovingsCollector.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Approvings Pickers\AbstractDocumentApprovingsPicker.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Approvings Pickers\ToDocumentApprovingSheetApprovingsPicker.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingCycleResultFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingListCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingProcessControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingSheetDataCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingsPicker.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\DocumentChargeSheetControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\DocumentChargeSheetsServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\StandardDocumentChargeSheetControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\StandardDocumentPerformingSheetControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Access Rights\DocumentChargeSheetAccessRights.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Access Rights\DocumentChargeSheetAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Access Rights\StandardDocumentChargeSheetAccessRightsService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Creating\DocumentChargeSheetCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Creating\StandardDocumentChargeSheetCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Creating\StandardDocumentPerformingSheetCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\DocumentChargeSheetControlPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\DocumentChargeSheetOrdinaryPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\DocumentChargeSheetOverlappingPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\DocumentChargeSheetPerformingResult.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\DocumentChargeSheetPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\StandardDocumentChargeSheetControlPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\StandardDocumentChargeSheetOrdinaryPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Performing\StandardDocumentChargeSheetOverlappingPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Removing\DocumentChargeSheetRemovingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Removing\StandardDocumentChargeSheetRemovingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Search\AbstractDocumentChargeSheetFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charge Sheets\Search\DocumentChargeSheetFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charges\AbstractDocumentChargeKindsControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charges\DocumentChargeServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charges\StandardDocumentChargeCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charges\Interfaces\DocumentChargeCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Charges\Interfaces\DocumentChargeKindsControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Formalization\DocumentFormalizationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Formalization\StandardDocumentFullNameCompilationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Formalization\Interfaces\DocumentFullNameCompilationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Formalization\Interfaces\DocumentResponsibleFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Numerators\AbstractDocumentNumeratorRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Numerators\DocumentNumerationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Numerators\StandardDocumentNumerator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Numerators\Interfaces\DocumentNumerator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Numerators\Interfaces\DocumentNumeratorRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Operations\DocumentOperationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Operations\StandardDocumentCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Operations\StandardRespondingDocumentCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Operations\Interfaces\DocumentCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Operations\Interfaces\RespondingDocumentCreatingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\DocumentPerformingServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\StandardCreatingNecessaryDataForCrossDepartmentDocumentPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\StandardCreatingNecessaryDataForDocumentPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\StandardDocumentPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\StandardSendingCrossDepartmentDocumentToPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\StandardSendingDocumentToPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\Interfaces\CreatingNecessaryDataForCrossDepartmentDocumentPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\Interfaces\CreatingNecessaryDataForDocumentPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\Interfaces\DocumentPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Performing\Interfaces\SendingDocumentToPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\References\DocumentKindReferenceServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\References\Interfaces\DocumentKindWorkCycleInfoService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\References\Standard\StandardDocumentKindReferenceFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\References\Standard\StandardDocumentKindWorkCycleInfoService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Registration\AbstractDocumentRegistrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Registration\DocumentRegistrationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Registration\StandardIncomingDocumentRegistrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Registration\StandardInDepartmentDocumentRegistrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Registration\StandardInDepartmentIncomingDocumentRegistrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Registration\StandardInDepartmentIncomingInternalDocumentRegistrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Registration\Interfaces\DocumentRegistrationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Relations\DocumentRelationsFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Relations\DocumentRelationsServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\AbstractDocumentFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\AbstractDocumentKindFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\DocumentSearchServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\StandardFormalDocumentSignerFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\Interfaces\DocumentFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\Interfaces\DocumentKindFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\Interfaces\DocumentWorkCycleFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Search\Interfaces\FormalDocumentSignerFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Signing\DocumentSigningServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Signing\StandardDocumentSigningService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Signing\StandardDocumentSigningToPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Signing\Interfaces\DocumentSigningService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Signing\Interfaces\DocumentSigningToPerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\AbstractDocumentApprovingCycleResultDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\AbstractDocumentChargeSheetDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\AbstractDocumentDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\AbstractIncomingDocumentDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\DocumentStorageServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\StandardDocumentFileStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\DocumentApprovingCycleResultDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\DocumentChargeSheetDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\DocumentDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\DocumentFileMetadataDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\DocumentFileStorageService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\DocumentRelationDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\DocumentResponsibleDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Storage\Interfaces\IncomingDocumentDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Services\Stubs\InMemoryDocumentChargeSheetFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Common\Supporting Objects\DocumentKindWorkCycleInfo.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\PersonnelOrderDomainRegistries.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderApproverList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderControlGroup.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderCreatingAccessEmployeeList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderEmployeeGroup.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderEmployeeList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderSignerList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderSubKind.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderSubKindEmployeeGroup.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Entities\PersonnelOrderSubKindEmployeeList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Rules\Access\PersonnelOrderEditingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Rules\Access\PersonnelOrderViewingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Rules\Signing\PersonnelOrderSignerListChangingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Rules\Signing\PersonnelOrderSigningMarkingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Rules\Signing\PersonnelOrderSigningRejectingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\PersonnelOrderServiceRegistries.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Access\StandardPersonnelOrderCreatingAccessService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Access\Interfaces\PersonnelOrderCreatingAccessService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Access\Registries\PersonnelOrderAccessServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Control\StandardPersonnelOrderControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Control\Interfaces\PersonnelOrderControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Control\Registries\PersonnelOrderControlServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderApproverListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderControlGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderCreatingAccessEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderEmployeeGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderSignerListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderSingleEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderSubKindEmployeeGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\AbstractPersonnelOrderSubKindEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderApproverListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderControlGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderCreatingAccessEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderEmployeeGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderSignerListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderSingleEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderSubKindEmployeeGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderSubKindEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Personnel Orders\Services\Search\Registries\PersonnelOrderSearchServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Service Notes\Entities\IncomingInternalServiceNote.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Service Notes\Entities\IncomingServiceNote.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Service Notes\Entities\InternalServiceNote.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Documents\Service Notes\Entities\ServiceNote.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\EmployeesDomainRegistries.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Entities\DepartmentUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Entities\Employee.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Entities\EmployeeChargePerformingUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Entities\EmployeeStaff.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Entities\EmployeesWorkGroup.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Entities\RoleUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Rules\EmployeeRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Rules\Relationships\EmployeeChargeIssuingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Rules\Relationships\EmployeeRelationshipRuleRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Rules\Relationships\StandardEmployeeChargeIssuingRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Rules\Relationships\Interfaces\EmployeesRelationshipsRule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\EmployeeServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\EmployeeDistributionServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\StandardDepartmentEmployeeDistributionService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\StandardEmployeeDistributionService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\StandardEmployeesWorkGroupService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\StandardWorkGroupEmployeeDistributionService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\Interfaces\DepartmentEmployeeDistributionService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\Interfaces\EmployeeDistributionService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\Interfaces\EmployeesWorkGroupService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Distribution\Interfaces\WorkGroupEmployeeDistributionService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Performing\EmployeePerformingServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Performing\StandardEmployeeChargePerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Performing\Interfaces\EmployeeChargePerformingService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Search\EmployeeSearchServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Search\Interfaces\DepartmentFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Search\Interfaces\EmployeeFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Search\Interfaces\EmployeesWorkGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Subordination\EmployeeSubordinationServiceRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Subordination\StandardEmployeeSubordinationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Services\Subordination\Interfaces\EmployeeSubordinationService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\EmployeeSpecificationRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\EmployeeDistributionSpecificationRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\EmployeesWorkGroupMembershipSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\StandardDepartmentEmployeeDistributionSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\StandardEmployeesWorkGroupMembershipSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\StandardWorkspaceEmployeeDistributionSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\Interfaces\DepartmentEmployeeDistributionSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\Interfaces\EmployeesWorkGroupMembershipSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Distribution\Interfaces\WorkspaceEmployeeDistributionSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\AbstractEmployeeIsSameAsOrReplacingForOthersSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\EmployeeSubordinationSpecificationRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\StandardAreEmployeesSecretariesOfSameLeaderSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\StandardAreEmployeesSubLeadersOfSameLeaderSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\StandardEmployeeIsLeaderForOtherSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrDeputyOfEmployeesSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrDeputySpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrReplacingSignerForOthersSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSecretaryForAnyOfEmployeesSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\Interfaces\AreEmployeesSecretariesOfSameLeaderSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\Interfaces\AreEmployeesSubLeadersOfSameLeaderSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\Interfaces\EmployeeIsLeaderForOtherSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\Interfaces\EmployeeIsSameAsOrDeputySpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\Interfaces\EmployeeIsSameAsOrReplacingForOthersSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Specifications\Subordination\Interfaces\EmployeeIsSecretaryForAnyOfEmployeesSpecification.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Employees\Tests\EmployeeTestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Domain\Tests\Documents\CommonDocumentTestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\RefactorRepositoriesTestForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\RepTestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Approving\BasedOnRepositoryApprovingCycleResultFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Approving\BasedOnRepositoryDocumentApprovingFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Charge Sheets\BasedOnRepositoryDocumentChargeSheetDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Charge Sheets\BasedOnRepositoryDocumentChargeSheetFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Charges\BasedOnRepositoryDocumentChargeKindsControlService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Formalization\BasedOnRepositoryDocumentResponsibleFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Numerators\BasedOnDatabaseDocumentNumeratorRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Numerators\BasedOnPostgresDocumentNumeratorRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Numerators\ZeosPostgresDocumentNumeratorRegistryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderApproverListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderControlGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderCreatingAccessEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderEmployeeGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderSignerListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderSingleEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderSubKindEmployeeGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Personnel Orders\Search\BasedOnRepositoryPersonnelOrderSubKindEmployeeListFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Relations\BasedOnRepositoryDocumentRelationsFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Search\BasedOnRepositoryDocumentFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Search\BasedOnRepositoryDocumentWorkCycleFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Storage\BasedOnRepositoryDocumentApprovingCycleResultDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Storage\BasedOnRepositoryDocumentDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Storage\BasedOnRepositoryDocumentFileMetadataDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Storage\BasedOnRepositoryDocumentKindFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Storage\BasedOnRepositoryDocumentRelationDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Storage\BasedOnRepositoryDocumentResponsibleDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Documents\Storage\BasedOnRepositoryIncomingDocumentDirectory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Employees\References\BasedOnRepositoryDepartmentFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Employees\References\BasedOnRepositoryEmployeeFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Domain\Services\Employees\References\BasedOnRepositoryEmployeesWorkGroupFinder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Queries\Documents\Postgres\SelectDocumentRecordsViewQueries.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Queries\Employees\Postgres\EmployeePostgresRepositoryQueryTextsUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Queries\Employees\Postgres\EmployeeReplacementQueryTexts.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Queries\Employees\Postgres\EmployeesViewQueryTextsUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentApprovingCycleResultRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentApprovingRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentChargeKindRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentChargeSheetRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentFilesRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentKindRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentRelationsRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentWorkCycleRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\DocumentWorkCycleStagesRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\IDocumentResponsibleRepositoryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Interfaces\IncomingDocumentRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Resolvers\DocumentTypeIdentityResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\BaseDocumentPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentApprovingCycleResultPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentApprovingPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentChargeKindPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentChargePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentChargeSheetPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentFilesPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentKindPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentRelationsPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentResponsiblePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentSigningPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentWorkCycleStagesPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\HistoricalDocumentApprovingPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\IncomingDocumentPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\SQL\Postgres\InternalDocumentPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Common\Standard\StandardDocumentWorkCycleRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Factories\AbstractDocumentRepositoriesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Factories\AbstractDocumentRepositoriesFactoryRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Factories\PostgresDocumentRepositoriesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Factories\PostgresDocumentRepositoriesFactoryRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Factories\PostgresPersonnelOrderRepositoriesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Factories\Interfaces\DocumentRepositoriesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Factories\Interfaces\PersonnelOrderRepositoriesFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderEmployeeGroupEmployeeAssociationRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderEmployeeGroupRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderEmployeeGroupSubKindAssociationRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderEmployeeListRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderSignerListRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderSingleEmployeeListRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderSubKindEmployeeGroupRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderSubKindEmployeeListRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderEmployeeGroupEmployeeAssociationPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderEmployeeGroupPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderEmployeeGroupSubKindAssociationPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderEmployeeListPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderSignerListPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderSingleEmployeeListPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderSubKindEmployeeGroupPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderSubKindEmployeeListPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\Interfaces\IncomingServiceNoteRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\Interfaces\ServiceNoteRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\HistoricalServiceNoteApprovingPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\IncomingInternalServiceNotePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\IncomingServiceNotePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\InternalServiceNoteChargeSheetPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\InternalServiceNotePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteApprovingCycleResultPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteApprovingPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteChargePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteChargeSheetPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteFilesPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNotePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteRelationsPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteSigningPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\Interfaces\DepartmentRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\Interfaces\EmployeesWorkGroupRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\Interfaces\IEmployeeRepositoryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\Interfaces\IRoleRepositoryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\SQL\Postgres\DepartmentPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\SQL\Postgres\EmployeePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\SQL\Postgres\EmployeeReplacementPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\SQL\Postgres\EmployeesWorkGroupPostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Employees\SQL\Postgres\RolePostgresRepository.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\DocumentRepositoryRegistryInitializer.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\PersonnelOrderRepositoryRegistryInitializer.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\RepositoryList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\RepositoryRegistryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\StandardDocumentRepositoryRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\StandardPersonnelOrderRepositoryRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\Interfaces\DocumentRepositoryRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\Interfaces\IRepositoryRegistryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Repositories\Registries\Interfaces\PersonnelOrderRepositoryRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Common\TableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentApprovingResultsTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentApprovingsTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentChargeKindTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentChargeSheetTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentChargeTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentFilesTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentNumeratorTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentRelationsTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentSigningTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentsViewDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentTypesTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\DocumentTypeStageTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\IncomingDocumentTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Common\LookedDocumentsTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Factories\DocumentTableDefsFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Factories\DocumentTableDefsFactoryRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Factories\PersonnelOrderTableDefsFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Factories\ServiceNoteTableDefsFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrderEmployeeGroupEmployeeAssociationTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrderEmployeeGroupSubKindAssociationTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrderEmployeeGroupTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrderEmployeeListTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrderSignerListTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrdersTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrderSubKindEmployeeListTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrderSubKindTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Personnel Orders\PersonnelOrdersViewDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\IncomingServiceNoteTable.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\LookedServiceNotesPostgresTable.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteApprovingsTable.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteChargeSheetTable.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteDBTableUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteFilesDBTableUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteLinksDBTableUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteReceiversDBTable.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteSigningTable.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Documents\Service Notes\ServiceNoteTable.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\DepartmentTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\EmployeeContactInfoTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\EmployeeReplacementTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\EmployeeRoleAssocTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\EmployeeTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\EmployeeViewDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\EmployeeWorkGroupAssocTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\EmployeeWorkGroupTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Persistance\Schema\Employees\Common\RoleTableDef.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\DocumentInfoDTO.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\DocumentRecordsTableFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\TestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Unit1.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Controllers\Controller.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Controllers\DocumentKindsPanelController.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Controllers\DocumentTypesPanelController.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Controllers\EmployeeDocumentsReferenceFormController.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Controllers\SystemAdministrationController.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\OperationalDocumentKindInfo.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\UIDocumentKinds.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\Mappers\StandardUIDocumentKindMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\Mappers\Interfaces\UIDocumentKindMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\Resolvers\StandardUIDocumentKindResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\Resolvers\StandardUINativeDocumentKindResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\Resolvers\Interfaces\UIDocumentKindResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Document Kinds\Resolvers\Interfaces\UINativeDocumentKindResolver.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\DTO-Mappers\Documents\Charge Sheets\Common\DocumentChargeSheetsChangesInfoDTOMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\DTO-Mappers\Documents\Charge Sheets\Common\DocumentChargeSheetsChangesInfoDTOMapperFactories.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\DTO-Mappers\Documents\Charge Sheets\Common\DocumentChargeSheetsChangesInfoDTOMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Exception Handling\ExceptionHandling.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Field-Targeted\DocumentFlowSystemInputMemoFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Frames\unDocumentFlowCardInformationFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Frames\unDocumentFlowInformationFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Frames\unDocumentKindsFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Frames\unScrollableFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Frames\UserInterfaceSwitch.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Primary Screens\unApplicationMainForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Primary Screens\unApplicationMainFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\References\DocumentFlowBaseReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Styles\CommonControlStyles.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Common\Styles\StandardDocumentFlowStyle.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\DocumentCardFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\unDocumentCardFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\Factories\DocumentCardFrameFactories.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\Factories\DocumentCardFrameFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\Factories\IncomingDocumentCardFrameFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\View Models\DocumentCardFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\View Models\EmployeeDocumentCardFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Cards\Common\View Models\IncomingDocumentCardFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\CreateableDocumentMainInformationFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentApproversInfoFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentApprovingsFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentFilesFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentFilesViewFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentFlowPDFViewFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentMainInformationFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentOperationToolBarFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\DocumentRelationsFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\ExtendedDocumentMainInformationFrameUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\unDocumentCardInformationFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\unDocumentChargesFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\unDocumentChargeSheetsFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\unNotDocumentApprovingReasonInputForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentApprovingCycleViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentApprovingsFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentApprovingViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentChargesFormViewModelUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentFileInfoList.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentFilesFormViewModelUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentFilesViewFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentMainInformationFormViewModelUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentRelationsFormViewModelUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentResponsibleViewModelUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\DocumentSignerViewModelUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Frames\View Models\IncomingDocumentMainInformationFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Cards\unPersonnelOrderCardFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Cards\Factories\PersonnelOrderCardFrameFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Cards\View Models\PersonnelOrderCardFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Cards\View Models\Mappers\PersonnelOrderCardFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Cards\View Models\Mappers\PersonnelOrderCardFormViewModelMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Frames\unPersonnelOrderApprovingsFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Frames\unPersonnelOrderMainInformationFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Frames\View Models\PersonnelOrderMainInformationFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\Frames\View Models\Mappers\PersonnelOrderMainInformationFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\References\unPersonnelOrderSubKindsReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\References\Document List\unPersonnelOrdersReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\References\Document List\Processors\PersonnelOrdersReferenceFormProcessor.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\References\Document List\View Models\PersonnelOrderRecordViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Personnel Orders\References\View Models\PersonnelOrderSubKindViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\DocumentFlowWorkingFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\DocumentSelectionFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\unDocumentCardListFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\unDocumentFlowWorkingFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\unDocumentKindsFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\unSelectionDocumentCardListFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\unSelectionDocumentsForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\unSelectionDocumentsWorkingFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\View Models\DocumentKindSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Primary Screens\View Models\DocumentKindsFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\DocumentApproversReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\DocumentApprovingCyclesReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\DocumentChargePerformersReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\DocumentFilesReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\DocumentRelationsReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\DocumentResponsiblesReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\DocumentSignersReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\unDocumentChargeSheetPerformersReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\BaseApproveableDocumentsReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\BaseDocumentsReferenceFilterFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\BaseDocumentsReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\BaseIncomingDocumentsReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\BaseOutcomingDocumentsReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Column Cell Comparators\ColumnCellComparator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Column Cell Comparators\DefaultColumnCellComparator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Column Cell Comparators\DocumentNumberColumnCellComparator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Employee\EmployeeIncomingDocumentsReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Employee\EmployeeInternalDocumentsReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Employee\unEmployeeApproveableDocumentsReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Employee\unEmployeeOutcomingDocumentsReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Employee\View Models\EmployeeDocumentRecordViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Factories\DocumentsReferenceFormFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Interfaces\DocumentsReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Presenters\StandardDocumentsReferenceFormPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Presenters\Interfaces\DocumentsReferenceFormPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\ApproveableDocumentsReferenceFormProcessor.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\DepartmentDocumentsReferenceFormProcessor.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\DocumentsReferenceFormProcessor.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\DocumentsReferenceFormProcessorDecorator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\EmployeeDocumentsReferenceFormProcessor.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\IncomingDocumentsReferenceFormProcessor.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\OutcomingDocumentsReferenceFormProcessor.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\Factories\DepartmentDocumentsReferenceFormProcessorFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\Factories\DocumentsReferenceFormProcessorFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\Processors\Factories\EmployeeDocumentsReferenceFormProcessorFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\ApproveableDocumentRecordViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\DocumentRecordViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\DocumentRecordViewModelDecorator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\DocumentsReferenceViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\DocumentTableViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\IncomingDocumentRecordViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\OutcomingDocumentRecordViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\Document List\View Models\Factories\DocumentsReferenceViewModelFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\View Models\DocumentApprovingCycleSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\View Models\DocumentChargeSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\View Models\DocumentFileSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\View Models\DocumentRelationSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\View Models\Factories\DocumentDataSetHolderFactories.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\References\Common\View Models\Factories\DocumentDataSetHoldersFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Reporting\NotPerformedDocumentsReportShowCustomizeFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Reporting\View Models\DepartmentViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Service Notes\References\Document List\unApproveableServiceNotesReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Service Notes\References\Document List\unIncomingServiceNotesReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Service Notes\References\Document List\unOutcomingServiceNotesReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Service Notes\References\Document List\Column Cell Comparators\ServiceNoteNumberColumnCellComparator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Settings\DocumentRecordsPanelSettingsFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Styles\DocumentKindWorkCycleColors.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Styles\DocumentWorkCycleStageColorRegistryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Documents\Styles\DocumentWorkCycleStageInfoReferenceUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\Cards\Management\EmployeeCardFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\References\EmployeesReferenceFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\References\unSelectionDepartmentsReferenceForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\References\View Models\DepartmentRecordViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\References\View Models\SelectionDepartmentSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\References\View Models\SelectionDepartmentsReferenceFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\Settings\Notifications\unUserNotificationsSettingsForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\Settings\Notifications\unUserNotificationsSettingsFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\Settings\Notifications\Factories\UserNotificationsSettingsFrameFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\Settings\Notifications\Factories\ZeosPostgresUserNotificationsSettingsFrameFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\Settings\Notifications\View Models\UserNotificationsSettingsFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\Employees\Settings\Notifications\View Models\UserNotificationsSettingsFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\System Administration\Primary Screens\unAdminDocumentCardListFrame.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\System Administration\Primary Screens\unDocumentFlowAdministrationForm.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\System Administration\Primary Screens\View Models\DocumentFlowAdministrationFormViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\System Administration\Primary Screens\View Models\DocumentFlowAdminPrivilegeSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Forms\System Administration\Primary Screens\View Models\DocumentFlowAdminPrivilegeViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\ApplicationLauncher.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Configuration\UIApplicationConfigurator.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Configuration\unApplicationDataModule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Services\Interfaces\ApplicationSettingsResetService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Services\Standard\AppDataLocalSettingsResetService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Services\Standard\StandardApplicationSettingsResetService.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\ApplicationPropertiesStorageRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Common\ApplicationMainFramePropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Common\ApplicationMainFramePropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Forms\DocumentRecordsPanelSettingsFormPropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Forms\DocumentRecordsPanelSettingsFormPropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\DocumentChargesFramePropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\DocumentChargesFramePropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\StandardDocumentFlowInformationFramePropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\Cards\DocumentCardFramePropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\Cards\DocumentCardFramePropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\Interfaces\DocumentFlowInformationFramePropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\Primary\Document Card List\DocumentCardListFramePropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\Primary\Document Card List\DocumentCardListFramePropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\Primary\Document Kinds\DocumentKindsFramePropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\Frames\Primary\Document Kinds\DocumentKindsFramePropertiesStorage.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\References\DocumentsReferenceFilterFormStatePropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Launching\Settings\Storing\Documents\References\DocumentsReferenceFormPropertiesIniFile.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\FastReport\DocumentApprovingSheetFastReportPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\FastReport\Data Modules\unFastReportApprovingSheetDataModule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\Interfaces\DocumentApprovingSheetPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\View Models\DocumentApprovingSheetApprovingSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\View Models\DocumentApprovingSheetViewModel.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\View Models\Mappers\DocumentApprovingSheetViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\View Models\Mappers\Factories\DocumentApprovingSheetViewModelMapperFactories.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Approving Sheets\View Models\Mappers\Factories\DocumentApprovingSheetViewModelMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Not Performed Documents\FastReport\NotPerformedDocumentsReportFastReportPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Not Performed Documents\FastReport\NotPerformedIncomingDocumentsReportFastReportPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Not Performed Documents\FastReport\Data Modules\frxNotPerformedDocumentsReportObjectsUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Not Performed Documents\Interfaces\NotPerformedDocumentsReportPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Print Forms\FastReport\ServiceNotePrintFormFastReportPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Print Forms\FastReport\Data Modules\frxDocumentPrintFormReportsModule.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Print Forms\Interfaces\DocumentPrintFormPresenter.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Print Forms\View Models\DocumentApprovingListRecordSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Print Forms\View Models\DocumentApprovingListSetHolder.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Registries\DocumentReportPresenterRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Registries\IDocumentReportPresenterRegistryUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Reporting\Presenters\Registries\StandardDocumentReportPresenterRegistry.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\Tests\DocumentApprovingsTestFormUnit.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentApprovingListSetHolderMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentApprovingsFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentCardFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentCardFormViewModelMapperFactories.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentCardFormViewModelMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentChargesFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentFilesFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentFilesViewFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentMainInformationFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentRelationsFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentResponsibleViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\DocumentSignerViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\EmployeeDocumentCardFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\EmployeeDocumentCardFormViewModelMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\IncomingDocumentCardFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\IncomingDocumentCardFormViewModelMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Common\IncomingDocumentMainInformationFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Service Notes\IncomingServiceNoteCardFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Service Notes\IncomingServiceNoteCardFormViewModelMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Service Notes\IncomingServiceNoteMainInformationFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Service Notes\OutcomingServiceNoteCardFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Service Notes\OutcomingServiceNoteCardFormViewModelMapperFactory.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\Cards\Service Notes\OutcomingServiceNoteMainInformationFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Documents\References\Document Kinds\DocumentKindsFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\Employees\SelectionDepartmentsReferenceFormViewModelMapper.pas
+C:\Users\59968\Documents\Borland Studio Projects\Document Flow System\Presentation\ViewModel Mappers\System Administration\Primary Screens\DocumentFlowAdminFormViewModelMapper.pas

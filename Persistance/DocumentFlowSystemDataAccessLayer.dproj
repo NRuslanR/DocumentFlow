@@ -1,0 +1,244 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{11593427-6E2F-4871-A7F2-BA8945456B08}</ProjectGuid>
+			<MainSource>DocumentFlowSystemDataAccessLayer.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DependencyCheckOutputName>DocumentFlowSystemDataAccessLayer.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_UnitSearchPath>C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Domain;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Domain\Documents;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Common;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria;D:\Common Delphi Libs\u_59968 Delphi Modules\Reflection;D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous;D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_K>false</DCC_K>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="DocumentFlowSystemDataAccessLayer.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="..\Domain\DepartmentUnit.pas"/>
+			<DCCReference Include="..\Domain\EmployeeUnit.pas"/>
+			<DCCReference Include="..\Domain\RoleUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\DocumentUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\DocumentWorkCycleUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\IncommingServiceNoteUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\OutcommingServiceNoteUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\PerformableDocumentUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\ServiceNoteUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\ClonableUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\CopyableUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\EquatableUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\IGetSelfUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectBaseUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectListUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectValueUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectBaseUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectValueUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractDBRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractZeosDBRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DBTableMappingUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DomainObjectFromDataSetLoaderUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TableColumnMappingsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TableMappingUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\RepositoryCriteriaListUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\UnaryDBRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\UnaryRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\UnaryZeosDBRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\UnitingRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\AbstractContainsRepositoryCriterionOperationUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\AbstractDBRepositoryCriteriaUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\AbstractNegativeRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\AbstractRepositoryCriteriaUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\ArithmeticRepositoryCriterionOperationsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\BinaryDBRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\BinaryRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\BoolLogicalNegativeDBRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\BoolLogicalNegativeRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\BoolLogicalRepositoryCriterionBindingsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\ConstDBRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\ConstRepositoryCriterionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\ContainsDBRepositoryCriterionOperationUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria\ContainsRepositoryCriterionOperationUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Variant List\VariantListUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\DocRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\DepartmentRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\RoleRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\EmployeeRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\RepositoryRegistryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IDepartmentRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IRoleRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IEmployeeRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IOutcommingServiceNoteRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IIncommingServiceNoteRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\OutcommingServiceNoteRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\IncommingServiceNoteRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxZeosFunctions\AuxZeosFunctions.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IRepositoryRegistryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\RolePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\DepartmentPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\EmployeePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\RoleDBTableUnit.pas"/>
+			<DCCReference Include="RepTestFormUnit.pas">
+				<Form>Form7</Form>
+			</DCCReference>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\EmployeeDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts\EmployeePostgresRepositoryQueryTextsUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\AbstractZeosPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\OutcommingServiceNotePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\IncommingServiceNotePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\DocumentPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\PerformableDocumentPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\DocumentReceiversPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\DocumentReceiversDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\DocumentDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\DocumentTypeStageDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\EmployeeRoleDBAssocTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts\DocumentReceiversRepositoryQueryTexts.pas"/>
+			<DCCReference Include="Repositories\Postgres\DocumentPerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\ServiceNotePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\ServiceNoteDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\OutcommingServiceNoteSignerPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\ServiceNotePerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\ServiceNoteReceiversDBTable.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxDebugFunctions\AuxDebugFunctionsUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\DocumentTypesDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\OutcommingServiceNotePerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\IncommingServiceNotePerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\DocumentFilesPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\DocumentFilesDBTableUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DBTableColumnMappingsUnit.pas"/>
+			<DCCReference Include="Repositories\DocumentFilesRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IDocumentFilesRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\ServiceNoteFilesPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\ServiceNoteFilesDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IServiceNoteFilesRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\ServiceNoteFilesRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\DocumentRelationsPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IDocumentRelationsRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\DocumentRelationsRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\ServiceNoteLinksDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\DocumentLinksDBTableUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts\View\EmployeesViewQueryTextsUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\View\EmployeeViewMetadataUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\View\DocumentFilesDBViewUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts\View\DocumentReceiversViewQueryTextsUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts\View\ServiceNoteReceiversViewQueryTexts.pas"/>
+			<DCCReference Include="Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts\View\SelectDocumentRecordsViewQueries.pas"/>
+			<DCCReference Include="Number Generators\INumberGeneratorUnit.pas"/>
+			<DCCReference Include="Number Generators\SequenceNumberGeneratorUnit.pas"/>
+			<DCCReference Include="Number Generators\DBSequenceNumberGeneratorUnit.pas"/>
+			<DCCReference Include="Number Generators\ZeosPostgresSequenceNumberGeneratorUnit.pas"/>
+			<DCCReference Include="Document Numerators\DocumentNumeratorUnit.pas"/>
+			<DCCReference Include="Document Numerators\DocumentNumeratorRegistryUnit.pas"/>
+			<DCCReference Include="Document Numerators\ZeosPostgresDocumentNumeratorRegistryUnit.pas"/>
+			<DCCReference Include="Document Numerators\IDocumentNumeratorUnit.pas"/>
+			<DCCReference Include="Document Numerators\IDocumentNumeratorRegistryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxCollectionFunctions\AuxCollectionFunctionsUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IDocumentRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IPerformableDocumentRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\DatabaseTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\ISessionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\PostgresTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\ZeosPostgresTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Exceptions\NotImplementedExceptionUnit.pas"/>
+			<DCCReference Include="Repositories\Interfaces\IDocumentResponsibleRepositoryUnit.pas"/>
+			<DCCReference Include="Repositories\Postgres\DocumentResponsibleZeosPostgresRepositoryUnit.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">DocumentFlowSystemDataAccessLayer.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1049</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibADODataDrivers100.bpl">EhLib 6.2 DataDrivers for ADO</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibBDEDataDrivers100.bpl">EhLib 6.2 DataDrivers for BDE</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibDBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for DBX</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibIBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for IBX</Excluded_Packages>
+						<Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsTee10.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsIBX10.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

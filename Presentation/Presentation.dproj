@@ -1,0 +1,831 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{0241C682-10CD-44B0-95FA-DA2D2275C5F9}</ProjectGuid>
+			<MainSource>Presentation.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DependencyCheckOutputName>%exe_output_dir%\Presentation.exe</DCC_DependencyCheckOutputName>
+			<DCC_UnitSearchPath>C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DocumentFlowSystemProject\Presentation\Forms\Documents\Frames\View Models;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Define>madExcept;$(DCC_Define)</DCC_Define>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_ExeOutput>$(exe_output_dir)</DCC_ExeOutput>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_K>false</DCC_K>
+			<DCC_F>false</DCC_F>
+			<DCC_S>false</DCC_S>
+			<DCC_N>true</DCC_N>
+			<DCC_WriteableConstants>true</DCC_WriteableConstants>
+			<DCC_UsePackage>vclx;vcl;rtl;dbrtl;vcldb;adortl;dbxcds;dbexpress;vclib;ibxpress;vclactnband;xmlrtl;inet;IntrawebDB_80_100;Intraweb_80_100;vclie;inetdbbde;inetdbxpress;IndyCore;IndySystem;dclOfficeXP;VclSmp;soaprtl;dsnap;IndyProtocols;bdertl;vcldbx;tdbf_d2006d;tdbf_d2006r;tb2k_d10;dxGDIPlusD10;dxCoreD10;cxLibraryD10;cxEditorsD10;dxThemeD10;cxDataD10;cxExtEditorsD10;dxmdsD10;dxBarD10;dxBarDBNavD10;dxBarExtDBItemsD10;dxBarExtItemsD10;dxRibbonD10;cxBarEditItemD10;dxdbtrD10;dxtrmdD10;dxDockingD10;dxFlowChartD10;cxPageControlD10;dxLayoutControlD10;dxComnD10;dxMasterViewD10;dxNavBarD10;dxorgcD10;dxdborD10;cxGridD10;cxPivotGridD10;cxPivotGridChartD10;cxPivotGridOLAPD10;cxTreeListD10;cxTreeListdxBarPopupMenuD10;cxSchedulerD10;cxSchedulerGridD10;dxsbD10;dcldxSkinsCoreD10;dxSkinsCoreD10;dxSkinscxPCPainterD10;dxSkinscxScheduler3PainterD10;dxSkinsdxDLPainterD10;dxSkinsdxBarPainterD10;dxSkinsdxNavBar2PainterD10;dxSpellCheckerD10;cxSpreadSheetD10;cxVerticalGridD10;ZComponent;ZParseSql;ZCore;ZDbc;ZPlain;ValidateEditsPackage;IntervalEditPackage;SMExportD2006;ValidateCheckListBoxPackage;PNG_D9</DCC_UsePackage>
+			<DCC_E>false</DCC_E>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Presentation.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxWindowsFunctions\AuxWindowsFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\VariantTypeUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\DBDataTableFormUnit.pas">
+				<Form>DBDataTableForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\TableViewFilterFormUnit.pas">
+				<Form>TableViewFilterForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxSystemFunctions\AuxSystemFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxZeosFunctions\AuxZeosFunctions.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxCollectionFunctions\AuxCollectionFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Stacked Control\StackedControlUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxDebugFunctions\AuxDebugFunctionsUnit.pas"/>
+			<DCCReference Include="Data Interfaces\ApplicationDataModuleUnit.pas">
+				<Form>ApplicationDataModule</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Colored Page Control\ColoredPageControlUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentZeosViewDataSetsDataModuleUnit.pas">
+				<Form>DocumentZeosViewDataSetsDataModule</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Data Interfaces\IDocumentViewDataSetRegistryUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentViewDataSetsUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentViewDataSetsRegistryUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentZeosViewDataSetsDataModuleUnit.pas">
+				<Form>DocumentComponentZeosViewDataSetsDataModule</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Data Interfaces\DocumentKindResolverUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentIdResolverUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\DelphLib\LoginFrm.pas">
+				<Form>LoginForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractDBRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractZeosDBRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DBTableColumnMappingsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DBTableMappingUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DomainObjectFromDataSetLoaderUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TableColumnMappingsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TableMappingUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TestZeosDBRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\DatabaseTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\ISessionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\PostgresTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\ZeosPostgresTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Exceptions\NotImplementedExceptionUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentViewDataSetRegistryUnit.pas"/>
+			<DCCReference Include="Data Interfaces\IDocumentComponentViewDataSetsRegistryUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentZeosViewDataSetsRegistryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxDataSetFunctions\AuxDataSetFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\User Input Forms\InputMemoFormUnit.pas">
+				<Form>InputMemoForm</Form>
+			</DCCReference>
+			<DCCReference Include="Data Interfaces\DocumentFilesViewDataSetInfoHolderUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentRelationsViewDataSetInfoHolderUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentReceiversViewDataSetInfoHolderUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\AbstractEmailMessagingServiceUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentZeosViewDataSetRegistryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertiesStorageRegistryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertiesStorageUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IPropertiesStorageUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\PropertiesIniFileUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages\DBDataTableFilterFormStatePropertiesIniFile.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages\DBDataTableFilterFormStatePropertiesStorage.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\ObjectPropertiesStorageRegistry.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages\DBDataTableFormPropertiesStorage.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages\DBDataTableFormPropertiesIniFile.pas"/>
+			<DCCReference Include="Controllers\Controller.pas"/>
+			<DCCReference Include="Controllers\DocumentTypesPanelController.pas"/>
+			<DCCReference Include="Controllers\EmployeeDocumentsReferenceFormController.pas"/>
+			<DCCReference Include="Controllers\SystemAdministrationController.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentApprovingsFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentCardFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentCardFormViewModelMapperFactories.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentCardFormViewModelMapperFactory.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentChargesFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentFilesFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentFilesViewFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentMainInformationFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentRelationsFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentResponsibleViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\DocumentSignerViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\IncomingDocumentCardFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\IncomingDocumentCardFormViewModelMapperFactory.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Common\IncomingDocumentMainInformationFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Service Notes\IncomingServiceNoteCardFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Service Notes\IncomingServiceNoteCardFormViewModelMapperFactory.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Service Notes\IncomingServiceNoteMainInformationFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Service Notes\OutcomingServiceNoteCardFormViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Service Notes\OutcomingServiceNoteCardFormViewModelMapperFactory.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\Cards\Service Notes\OutcomingServiceNoteMainInformationFormViewModelMapper.pas"/>
+			<DCCReference Include="Forms\Common\Frames\ScrollableFrameUnit.pas">
+				<Form>ScrollableFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Common\References\DocumentFlowBaseReferenceFormUnit.pas">
+				<Form>DocumentFlowBaseReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\View Models\IncomingDocumentMainInformationFormViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentApprovingsFormViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentApprovingViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentFileInfoList.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentFilesFormViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentFilesPageViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentFilesViewFormViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentMainInformationFormViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentReceiversFormViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentReceiversPageViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentRelationsFormViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentRelationsPageViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentResponsibleViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentSignerViewModelUnit.pas"/>
+			<DCCReference Include="..\..\PDF Viewing Module\FoxitPDFDocumentProcessorUnit.pas"/>
+			<DCCReference Include="..\..\PDF Viewing Module\IPDFDocumentProcessorUnit.pas"/>
+			<DCCReference Include="..\..\PDF Viewing Module\PDFDocumentExceptionsUnit.pas"/>
+			<DCCReference Include="..\..\PDF Viewing Module\PDFDocumentRenderingThreadUnit.pas"/>
+			<DCCReference Include="..\..\PDF Viewing Module\PDFViewFormUnit.pas">
+				<Form>PDFViewForm</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\PDF Viewing Module\PDFViewingModuleInterface.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\SignedDocumentMainInformationFrameUnit.pas">
+				<Form>SignedDocumentMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\CreateableDocumentMainInformationFrameUnit.pas">
+				<Form>CreatableDocumentMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentApproversInfoFormUnit.pas">
+				<Form>DocumentApproversInfoForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentApprovingsFrameUnit.pas">
+				<Form>DocumentApprovingsFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentFilesFrameUnit.pas">
+				<Form>DocumentFilesFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentFilesViewFormUnit.pas">
+				<Form>DocumentFilesViewForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentFlowPDFViewFormUnit.pas">
+				<Form>DocumentFlowPDFViewForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentInformationFrameUnit.pas">
+				<Form>DocumentInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentMainInformationFrameUnit.pas">
+				<Form>DocumentMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentChargesFrameUnit.pas">
+				<Form>DocumentChargesFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\DocumentRelationsFrameUnit.pas">
+				<Form>DocumentRelationsFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\ExtendedDocumentMainInformationFrameUnit.pas">
+				<Form>ExtendedDocumentMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\IncommingDocumentMainInformationFrameUnit.pas">
+				<Form>IncommingDocumentMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\IncomingDocumentChargesFrameUnit.pas">
+				<Form>IncomingDocumentChargesFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Frames\OutcomingDocumentChargesFrameUnit.pas">
+				<Form>OutcomingDocumentChargesFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\BoxLayoutManager.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\ColumnarCellAlignedLayoutManager.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\ControlLayoutItem.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\HorizontalBoxLayoutManager.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\LayoutItem.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\LayoutManager.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\TestLayoutManagersForm.pas">
+				<Form>Form9</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Layout Managers\VerticalBoxLayoutManager.pas"/>
+			<DCCReference Include="Forms\Documents\Cards\Common\View Models\DocumentCardViewModelUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Cards\Common\View Models\IncomingDocumentCardFormViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\Cards\Common\Factories\DocumentCardFrameFactories.pas"/>
+			<DCCReference Include="Forms\Documents\Cards\Common\Factories\DocumentCardFrameFactory.pas"/>
+			<DCCReference Include="Forms\Documents\Cards\Common\Factories\IncomingDocumentCardFrameFactory.pas"/>
+			<DCCReference Include="Forms\Documents\Cards\Common\DocumentCardFormUnit.pas">
+				<Form>DocumentCardForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Cards\Common\DocumentCardFrameUnit.pas">
+				<Form>DocumentCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Cards\Common\PerformableDocumentCardFrameUnit.pas">
+				<Form>PerformableDocumentCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\BaseEmployeeDocumentsReferenceFilterFormUnit.pas">
+				<Form>BaseEmployeeDocumentsReferenceFilterForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\BaseEmployeeDocumentsReferenceFormUnit.pas">
+				<Form>BaseEmployeeDocumentsReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\DocumentApprovingCyclesReferenceFormUnit.pas">
+				<Form>DocumentApprovingCyclesReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\DocumentFilesReferenceFormUnit.pas">
+				<Form>DocumentFilesReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\DocumentRelationsReferenceFormUnit.pas">
+				<Form>DocumentRelationsReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\Factories\EmployeeDocumentsReferenceFormFactoryUnit.pas"/>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\EmployeeDocumentsReferenceFormUnit.pas">
+				<Form>EmployeeDocumentsReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\EmployeeIncomingDocumentsReferenceFormUnit.pas">
+				<Form>EmployeeIncomingDocumentsReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\EmployeeDocumentsForApprovingReferenceFormUnit.pas">
+				<Form>EmployeeDocumentsForApprovingReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\View Models\DocumentRecordViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\View Models\EmployeeDocumentsReferenceViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\View Models\EmployeeDocumentTableViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\View Models\IncomingDocumentRecordViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\Column Cell Comparators\ColumnCellComparator.pas"/>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\Column Cell Comparators\DefaultColumnCellComparator.pas"/>
+			<DCCReference Include="Forms\Documents\References\Common\Employee\Column Cell Comparators\DocumentNumberColumnCellComparator.pas"/>
+			<DCCReference Include="Forms\Documents\References\Service Notes\Employee\View Models\EmployeeServiceNotesReferenceViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\References\Service Notes\Employee\View Models\EmployeeServiceNoteTableViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\References\Service Notes\Employee\Column Cell Comparators\ServiceNoteNumberColumnCellComparator.pas"/>
+			<DCCReference Include="Forms\Documents\Primary Screens\DocumentFlowWorkingFormUnit.pas">
+				<Form>DocumentFlowWorkingForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Primary Screens\DocumentSelectionFormUnit.pas">
+				<Form>DocumentSelectionForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Employees\References\EmployeesReferenceFormUnit.pas">
+				<Form>EmployeesReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\DocumentResponsiblesReferenceFormUnit.pas">
+				<Form>DocumentResponsiblesReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\DocumentSignersReferenceFormUnit.pas">
+				<Form>DocumentSignersReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\DocumentApproversReferenceFormUnit.pas">
+				<Form>DocumentApproversReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\DocumentChargePerformersReferenceFormUnit.pas">
+				<Form>DocumentChargePerformersReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\System Administration\Forms\SystemAdministrationFormUnit.pas">
+				<Form>SystemAdministrationForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\System Administration\Forms\View Models\SystemAdministrationFormViewModel.pas"/>
+			<DCCReference Include="Forms\System Administration\Forms\View Models\SystemAdministrationSectionContentFormViewModel.pas"/>
+			<DCCReference Include="Forms\System Administration\Forms\View Models\SystemAdministrationSectionViewModel.pas"/>
+			<DCCReference Include="Forms\Common\Field-Targeted\DocumentFlowSystemInputMemoFormUnit.pas">
+				<Form>DocumentFlowSystemInputMemoForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Common\Styles\CommonControlStyles.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\MinMaxFormUnit.pas">
+				<Form>MinMaxForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\DialogFormUnit.pas">
+				<Form>DialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Employees\Cards\Management\EmployeeCardFormUnit.pas">
+				<Form>EmployeeCardForm</Form>
+			</DCCReference>
+			<DCCReference Include="DTO-Mappers\Documents\Charge Sheets\Common\DocumentChargeSheetsChangesInfoDTOMapper.pas"/>
+			<DCCReference Include="DTO-Mappers\Documents\Charge Sheets\Common\DocumentChargeSheetsChangesInfoDTOMapperFactories.pas"/>
+			<DCCReference Include="DTO-Mappers\Documents\Charge Sheets\Common\DocumentChargeSheetsChangesInfoDTOMapperFactory.pas"/>
+			<DCCReference Include="DataSet Holders\Documents\Common\DocumentApprovingCyclesDataSetHolder.pas"/>
+			<DCCReference Include="DataSet Holders\Documents\Factories\AbstractDocumentDataSetHoldersFactory.pas"/>
+			<DCCReference Include="DataSet Holders\Documents\Factories\DevExpressDocumentDataSetHoldersFactory.pas"/>
+			<DCCReference Include="DataSet Holders\Documents\Factories\EhLibDocumentDataSetHoldersFactory.pas"/>
+			<DCCReference Include="DataSet Holders\Documents\Factories\ZeosDocumentDataSetHoldersFactory.pas"/>
+			<DCCReference Include="DataSet Holders\References\Common\EmployeeDocumentsForApprovingReferenceDataSetHolder.pas"/>
+			<DCCReference Include="DataSet Holders\References\Common\EmployeeDocumentsReferenceDataSetHolder.pas"/>
+			<DCCReference Include="DataSet Holders\References\Common\EmployeesReferenceDataSetHolder.pas"/>
+			<DCCReference Include="DataSet Holders\References\Factories\ReferenceDataSetHolderFactory.pas"/>
+			<DCCReference Include="DataSet Holders\References\Factories\ZeosReferenceDataSetHolderFactory.pas"/>
+			<DCCReference Include="DataSet Holders\System Administration\Common\SystemAdministrationSectionSetHolder.pas"/>
+			<DCCReference Include="Document Kinds\UIDocumentKinds.pas"/>
+			<DCCReference Include="Document Kinds\Mappers\DocumentKindMapper.pas"/>
+			<DCCReference Include="Document Kinds\Resolvers\Interfaces\UIDocumentKindResolver.pas"/>
+			<DCCReference Include="Document Kinds\Resolvers\NumericUIDocumentKindResolver.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\References\Common\DocumentRecordViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\References\Common\IncomingDocumentRecordViewModelMapper.pas"/>
+			<DCCReference Include="ViewModel Mappers\Documents\References\Common\Factories\DocumentRecordViewModelMapperFactory.pas"/>
+			<DCCReference Include="Exception Handling\ExceptionHandling.pas"/>
+			<DCCReference Include="Reporting\Presenters\Registries\DocumentReportPresenterRegistry.pas"/>
+			<DCCReference Include="Reporting\Presenters\Registries\IDocumentReportPresenterRegistryUnit.pas"/>
+			<DCCReference Include="Reporting\Presenters\Registries\StandardDocumentReportPresenterRegistry.pas"/>
+			<DCCReference Include="Reporting\Presenters\Print Forms\DocumentPrintFormPresenter.pas"/>
+			<DCCReference Include="Reporting\Presenters\Print Forms\ServiceNotePrintFormFastReportPresenter.pas"/>
+			<DCCReference Include="Reporting\Presenters\Print Forms\Data Modules\Fast Report\frxDocumentPrintFormReportsModule.pas">
+				<Form>frxDocumentPrintFormReports</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Reporting\Presenters\Not Performed Documents\NotPerformedDocumentsReportFastReportPresenter.pas"/>
+			<DCCReference Include="Reporting\Presenters\Not Performed Documents\NotPerformedDocumentsReportPresenter.pas"/>
+			<DCCReference Include="Reporting\Presenters\Not Performed Documents\Data Modules\Fast Report\frxNotPerformedDocumentsReportObjectsUnit.pas">
+				<Form>frxNotPerformedDocumentsReportObjects</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Reporting\NotPerformedDocumentsReportShowCustomizeFormUnit.pas">
+				<Form>NotPerformedDocumentsReportShowCustomizeForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Reporting\View Models\DepartmentViewModel.pas"/>
+			<DCCReference Include="Forms\Documents\Styles\DocumentWorkCycleStageColorRegistryUnit.pas"/>
+			<DCCReference Include="Forms\Documents\Styles\DocumentWorkCycleStageInfoReferenceUnit.pas"/>
+			<DCCReference Include="Forms\Common\Primary Screens\ApplicationMainFormUnit.pas">
+				<Form>ApplicationMainForm</Form>
+			</DCCReference>
+			<DCCReference Include="Launching\Configuration\UIApplicationConfigurator.pas"/>
+			<DCCReference Include="Launching\ApplicationLauncher.pas"/>
+			<DCCReference Include="..\Application\Accounting\Docs\Interfaces\DocumentViewingAccountingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Charge Sheets\Interfaces\DocumentChargeSheetControlAppService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Storage\Interfaces\DocumentStorageService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingControlAppService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingPerformingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingRejectingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentApprovingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentPerformingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentSigningRejectingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\DocumentSigningService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\SendingDocumentToApprovingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\SendingDocumentToSigningService.pas"/>
+			<DCCReference Include="..\Application\Configuration\ApplicationConfigurator.pas"/>
+			<DCCReference Include="..\Application\Configuration\ConfigurationData.pas"/>
+			<DCCReference Include="..\Application\External\Storage\Interfaces\IDocumentFileServiceClientUnit.pas"/>
+			<DCCReference Include="..\Application\Management\Employees\Interfaces\EmployeeDepartmentManagementService.pas"/>
+			<DCCReference Include="..\Application\Reporting\Docs\Interfaces\NotPerformedDocumentsReportDataService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Interfaces\EmployeeDocumentWorkStatistics.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Interfaces\EmployeeDocumentWorkStatisticsService.pas"/>
+			<DCCReference Include="..\Application\Accounting\AccountingServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\DocumentBusinessProcessServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\External\ExternalServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\Management\ManagementServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\Presentation\PresentationServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\Reporting\ReportingServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\Statistics\StatisticsServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\Common\DocumentKinds.pas"/>
+			<DCCReference Include="..\Application\Common\ApplicationService.pas"/>
+			<DCCReference Include="..\Application\Service Registries\ApplicationServiceRegistries.pas"/>
+			<DCCReference Include="..\Application\Common\ApplicationServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\Interfaces\SendingDocumentToPerformingService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\Interfaces\IDocumentUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\Document.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentApprovingCycle.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentApprovingCycleResult.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentApprovings.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentCharges.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentChargeSheet.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentFileUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentRelationsUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentSignings.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\DocumentWorkCycle.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\IncomingDocument.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Entities\Interfaces\IDocumentChargeSheetUnit.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\DTOs\DocumentChargeSheetsChangesInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\DTOs\DocumentUsageEmployeeAccessRightsInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\DTOs\NewDocumentInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\DTOs\ChangedDocumentInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\DTOs\DocumentApprovingCycleDTO.pas"/>
+			<DCCReference Include="..\Application\Common\DTOs\DepartmentInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Common\DTOs\DocumentChargeSheetsInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Common\DTOs\DocumentFlowEmployeeInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Common\DTOs\DocumentFullInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Common\DTOs\DocumentResponsibleInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Common\DTOs\EmployeeInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Common\DTOs\IncomingDocumentFullInfoDTO.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Common\BusinessProcessService.pas"/>
+			<DCCReference Include="..\Application\Common\AbstractApplicationService.pas"/>
+			<DCCReference Include="..\Application\Reporting\Docs\Common\NotPerformedDocumentsReportData.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\DTOs\DocumentCreatingDefaultInfoDTO.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\Interfaces\DocumentChargeSheetCasesNotifier.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\Interfaces\DocumentChargeSheetNotifyingMessageBuilder.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Exception Classes And Functions\AuxiliaryFunctionsForExceptionHandlingUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Exception Classes And Functions\ExceptionWithInnerExceptionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DeletableOnCloseFormUnit.pas">
+				<Form>DeletableOnCloseForm</Form>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Settings\DocumentRecordsPanelSettingsFormUnit.pas">
+				<Form>DocumentRecordsPanelSettingsForm</Form>
+			</DCCReference>
+			<DCCReference Include="..\Persistance\Repositories\Registries\RepositoryRegistryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Registries\Interfaces\IRepositoryRegistryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Domain\Services\Documents\Approving\BasedOnRepositoryApprovingCycleResultFinder.pas"/>
+			<DCCReference Include="..\Persistance\Domain\Services\Documents\Charge Sheets\BasedOnRepositoryDocumentChargeSheetFinder.pas"/>
+			<DCCReference Include="..\Persistance\Domain\Services\Documents\Formalization\BasedOnRepositoryDocumentResponsibleFinder.pas"/>
+			<DCCReference Include="..\Persistance\Domain\Services\Documents\Numerators\ZeosPostgresDocumentNumeratorRegistryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Domain\Services\Employees\References\BasedOnRepositoryDepartmentFinder.pas"/>
+			<DCCReference Include="..\Persistance\Domain\Services\Employees\References\BasedOnRepositoryEmployeeFinder.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\Interfaces\DocumentApprovingCycleResultRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\Interfaces\DocumentChargeSheetRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\Interfaces\DocumentFilesRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\Interfaces\DocumentRelationsRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\Interfaces\DocumentRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\Interfaces\IDocumentResponsibleRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\Interfaces\IncomingDocumentRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentApprovingCycleResultZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentApprovingZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentChargePostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentChargeSheetZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentFilesPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentRelationsPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentResponsibleZeosPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentSigningPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\DocumentZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\HistoricalDocumentApprovingZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\IncomingDocumentZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentApprovingResultsTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentApprovingsTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentChargeSheetStageTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentChargeSheetTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentChargeTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentFilesDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentFilesDBViewUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentLinksDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentReceiversDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentSigningTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentTypesDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentTypeStageDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\DocumentTypeStageTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Schema\IncomingDocumentTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Queries\DocumentReceiversRepositoryQueryTexts.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Queries\DocumentReceiversViewQueryTextsUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Queries\SelectDocumentRecordsViewQueries.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Adapters\DocumentApprovingCycleResultZeosPostgresRepositoryAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Adapters\DocumentChargeSheetZeosPostgresRepositoryAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Adapters\DocumentFilesRepositoryZeosPostgresAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Adapters\DocumentRelationsRepositoryZeosPostgresAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Adapters\DocumentZeosPostgresRepositoryAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Common\SQL\Postgres\Adapters\IncomingDocumentZeosPostgresRepositoryAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\Interfaces\IncomingServiceNoteRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\Interfaces\ServiceNoteRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\HistoricalServiceNoteApprovingZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\IncomingServiceNoteZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteApprovingCycleResultZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteApprovingZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteChargePostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteChargeSheetPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteFilesZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteRelationsZeosPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\ServiceNoteSigningPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\IncomingServiceNoteTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteApprovingsTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteChargeSheetTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteFilesDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteLinksDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteReceiversDBTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteSigningTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Schema\ServiceNoteTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Documents\Service Notes\SQL\Postgres\Queries\ServiceNoteReceiversViewQueryTexts.pas"/>
+			<DCCReference Include="..\Domain\Documents\Service Notes\Entities\IncomingServiceNote.pas"/>
+			<DCCReference Include="..\Domain\Documents\Service Notes\Entities\ServiceNote.pas"/>
+			<DCCReference Include="..\Domain\Documents\Service Notes\Entities\ServiceNoteChargeSheet.pas"/>
+			<DCCReference Include="..\Domain\Documents\Service Notes\Entities\ServiceNoteWorkCycle.pas"/>
+			<DCCReference Include="..\Domain\Employees\Entities\DepartmentUnit.pas"/>
+			<DCCReference Include="..\Domain\Employees\Entities\Employee.pas"/>
+			<DCCReference Include="..\Domain\Employees\Entities\RoleUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\Interfaces\DepartmentRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\Interfaces\IEmployeeRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\Interfaces\IRoleRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\DepartmentPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\EmployeePostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\EmployeeReplacementPostgresRepository.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\RolePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Schema\EmployeeContactInfoDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Schema\EmployeeDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Schema\EmployeeReplacementTable.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Schema\EmployeeRoleDBAssocTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Schema\EmployeeViewMetadataUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Schema\RoleDBTableUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Queries\EmployeePostgresRepositoryQueryTextsUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Queries\EmployeeReplacementQueryTexts.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Queries\EmployeesViewQueryTextsUnit.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Adapters\DepartmentRepositoryZeosPostgresAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Adapters\EmployeeRepositoryZeosPostgresAdapter.pas"/>
+			<DCCReference Include="..\Persistance\Repositories\Employees\SQL\Postgres\Adapters\RoleRepositoryZeosPostgresAdapter.pas"/>
+			<DCCReference Include="..\Domain\Employees\Services\References\Interfaces\DepartmentFinder.pas"/>
+			<DCCReference Include="..\Domain\Employees\Services\References\Interfaces\EmployeeFinder.pas"/>
+			<DCCReference Include="..\Domain\Employees\Services\References\Interfaces\EmployeeReferenceService.pas"/>
+			<DCCReference Include="..\Domain\Employees\Services\References\StandardEmployeeReferenceService.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\AbstractEmployeeIsSameAsOrReplacingForOthersSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\StandardAreEmployeesSecretariesOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\StandardAreEmployeesSubLeadersOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrDeputyOfEmployeesSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrDeputySpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrReplacingSignerForOthersSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\StandardEmployeeIsSecretaryForAnyOfEmployeesSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\Interfaces\AreEmployeesSecretariesOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\Interfaces\AreEmployeesSubLeadersOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\Interfaces\EmployeeIsSameAsOrDeputySpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\Interfaces\EmployeeIsSameAsOrReplacingForOthersSpecification.pas"/>
+			<DCCReference Include="..\Domain\Employees\Specifications\Subordination\Interfaces\EmployeeIsSecretaryForAnyOfEmployeesSpecification.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Access Rights\Interfaces\DocumentUsageEmployeeAccessRightsService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Access Rights\StandardDocumentUsageEmployeeAccessRightsService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Access Rights\StandardIncomingDocumentUsageEmployeeAccessRightsService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Approving\StandardDocumentApprovingProcessControlService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingCycleResultFinder.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Approving\Interfaces\DocumentApprovingProcessControlService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Charge Sheets\Interfaces\DocumentChargeSheetControlService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Charge Sheets\Interfaces\DocumentChargeSheetFinder.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Charge Sheets\Interfaces\DocumentChargeSheetOverlappingPerformingService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Charge Sheets\AbstractDocumentChargeSheetFinder.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Charge Sheets\StandardDocumentChargeSheetControlService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Charge Sheets\StandardDocumentChargeSheetFinder.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Charge Sheets\StandardDocumentChargeSheetOverlappingPerformingService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Formalization\StandardDocumentFullNameCompilationService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Formalization\Interfaces\DocumentFullNameCompilationService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Formalization\Interfaces\DocumentResponsibleFinder.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Numerators\AbstractDocumentNumeratorRegistry.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Numerators\StandardDocumentNumerator.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Numerators\Interfaces\DocumentNumerator.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Numerators\Interfaces\DocumentNumeratorRegistry.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Performing\StandardCreatingNecessaryDataForDocumentPerformingService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Performing\Interfaces\CreatingNecessaryDataForDocumentPerformingService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Registration\StandardDocumentRegistrationService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Registration\StandardIncomingDocumentRegistrationService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Services\Registration\Interfaces\DocumentRegistrationService.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\StandardApprovingDocumentSendingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\StandardDocumentApproverListChangingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\StandardDocumentApprovingPassingMarkingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\StandardDocumentApprovingPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\StandardDocumentApprovingRejectingPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\Interfaces\DocumentApproverListChangingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\Interfaces\DocumentApprovingPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Approving\Interfaces\DocumentApprovingRejectingPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\Interfaces\DocumentChargeSheetOverlappedPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\Interfaces\EmployeeDocumentChargeSheetWorkingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\Interfaces\EmployeeDocumentChargeSheetWorkingRuleRegistry.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\EmployeeDocumentChargeSheetWorkingRules.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetChangingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetOverlappedPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetViewingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\StandardEmployeeDocumentChargeSheetWorkingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charge Sheets\StandardEmployeeDocumentChargeSheetWorkingRuleRegistry.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charges\StandardDocumentChargeListChangingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charges\StandardDocumentChargePerformedMarkingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charges\Interfaces\DocumentChargeListChangingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Charges\Interfaces\DocumentChargePerformedMarkingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Common\EmployeeDocumentWorkingRules.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Common\StandardEmployeeDocumentWorkingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Common\StandardEmployeeDocumentWorkingRuleRegistry.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Common\Interfaces\EmployeeDocumentWorkingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Common\Interfaces\EmployeeDocumentWorkingRuleRegistry.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Editing\StandardEmployeeDocumentEditingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Performing\StandardPerformingDocumentSendingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Signing\StandardDocumentSignerListChangingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Signing\StandardEmployeeDocumentSigningPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Signing\StandardEmployeeDocumentSigningRejectingPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Signing\StandardSigningDocumentSendingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Signing\Interfaces\DocumentSignerListChangingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Signing\Interfaces\DocumentSigningPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Signing\Interfaces\DocumentSigningRejectingPerformingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Viewing\StandardEmployeeDocumentViewingRule.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Sequence Generators\Interfaces\INumberGeneratorUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Sequence Generators\SequenceNumberGeneratorUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Sequence Generators\Database\DBSequenceNumberGeneratorUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Sequence Generators\Database\Postgres\ZeosPostgresSequenceNumberGeneratorUnit.pas"/>
+			<DCCReference Include="..\Application\Accounting\Docs\Zeos-Based\ZeosDocumentViewingAccountingService.pas"/>
+			<DCCReference Include="..\Application\Accounting\Docs\Zeos-Based\Postgres\ZeosPostgresDocumentViewingAccountingService.pas"/>
+			<DCCReference Include="..\Application\Accounting\Docs\Zeos-Based\Postgres\ZeosPostgresIncomingDocumentViewingAccountingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Charge Sheets\StandardDocumentChargeSheetControlAppService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Storage\AbstractDocumentStorageService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Storage\AbstractIncomingDocumentStorageService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Storage\AbstractOutcomingDocumentStorageService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingControlAppService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingPerformingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingRejectingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentApprovingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentPerformingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentSigningRejectingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardDocumentSigningService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardSendingDocumentToApprovingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardSendingDocumentToPerformingService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Work Cycle\StandardSendingDocumentToSigningService.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\AbstractDocumentChargeSheetNotifyingMessageBuilder.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\StandardDocumentChargeSheetCasesNotifier.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\Policies\AllEmployeesDocumentNotificationPolicy.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\Policies\ForeignEmployeesDocumentNotificationPolicy.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\Policies\NoneEmployeeDocumentNotificationPolicy.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Email\EmailDocumentChargeSheetNotifyingMessageBuilder1.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Email\EmailDocumentChargeSheetNotifyingMessageBuilder2.pas"/>
+			<DCCReference Include="..\Application\External\Storage\DocumentFileServiceClientUnit.pas"/>
+			<DCCReference Include="..\Application\Management\Employees\StandardEmployeeDepartmentManagementService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\DataSet-Based\BasedOnDataSetDocumentCreatingDefaultInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\DataSet-Based\BasedOnDataSetDocumentInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\DataSet-Based\Zeos-Based\ZeosDocumentCreatingDefaultInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\DataSet-Based\Zeos-Based\ZeosDocumentInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\DataSet-Based\Zeos-Based\Postgres\ZeosPostgresDocumentInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\DataSet-Based\Zeos-Based\Postgres\ZeosPostgresIncomingDocumentInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Reporting\Docs\Zeos-Based\NotPerformedDocumentsReportDataZeosService.pas"/>
+			<DCCReference Include="..\Application\Reporting\Docs\Zeos-Based\Postgres\NotPerformedDocumentsReportDataZeosPostgresService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Zeos-Based\AbstractEmployeeDocumentWorkStatisticsZeosService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Zeos-Based\Postgres\EmployeeDocumentWorkStatisticsPostgresService.pas"/>
+			<DCCReference Include="..\Application\Working Employee\DBWorkingEmployeeUnit.pas"/>
+			<DCCReference Include="..\Application\Working Employee\IWorkingEmployeeUnit.pas"/>
+			<DCCReference Include="..\Application\Working Employee\WorkingEmployeeUnit.pas"/>
+			<DCCReference Include="..\Application\Working Employee\ZeosPostgresWorkingEmployeeUnit.pas"/>
+			<DCCReference Include="..\Application\Common\Resolvers\Document Kinds\DocumentKindIdResolver.pas"/>
+			<DCCReference Include="..\Application\Common\Resolvers\Document Kinds\NumericDocumentKindIdResolver.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxZeosFunctions\AuxAsyncZeosFunctions.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Service Notes\Storage\IncomingServiceNoteStorageService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Service Notes\Storage\ServiceNoteStorageService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Service Notes\Mappers\ServiceNoteDomainObjectsFromDTOMapper.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\DocumentOperationService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\EmployeeDocumentOperationService.pas"/>
+			<DCCReference Include="..\Application\Business Processes\Docs\Common\Mappers\DocumentDomainObjectsFromDTOMapper.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\Interfaces\DocumentCreatingDefaultInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\Interfaces\DocumentInfoReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\Mappers\DocumentCreatingDefaultInfoDataSetHolder.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\Mappers\DocumentFullInfoDataSetHolder.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\Mappers\DocumentFullInfoDTOFromDataSetMapper.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\Mappers\IncomingDocumentFullInfoDataSetHolder.pas"/>
+			<DCCReference Include="..\Application\Presentation\Docs\Mappers\IncomingDocumentFullInfoDTOFromDataSetMapper.pas"/>
+			<DCCReference Include="..\..\File Storage Service Project\IFileStorageServiceClientUnit.pas"/>
+			<DCCReference Include="..\..\File Storage Service Project\LocalNetworkFileStorageServiceClientUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\MessagingServiceUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Database\AbstractDatabaseMessagingService.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Database\PostgresDatabaseMessagingService.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Query Executors\Interfaces\QueryDataReader.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Query Executors\Interfaces\QueryExecutor.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Query Executors\DataSet-Based Executors\DataSetQueryDataReader.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Query Executors\DataSet-Based Executors\Zeos-Based\ZQueryExecutor.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Common\Interfaces\MessageSpecChars.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Common\MessagingServiceCommonObjects.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Common\StandardMessageSpecChars.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\EmailMessageSpecChars.pas"/>
+			<DCCReference Include="Data Interfaces\Cloners\DataSetCloner.pas"/>
+			<DCCReference Include="Data Interfaces\Cloners\ZeosDataSetCloner.pas"/>
+			<DCCReference Include="Data Interfaces\Cloners\ZQueryCloner.pas"/>
+			<DCCReference Include="Data Interfaces\Cloners\ZReadOnlyQueryCloner.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\References\Service Notes\IncommingServiceNoteReceiversReferenceFilterFormStatePropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\References\Service Notes\IncommingServiceNoteReceiversReferenceFormPropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\References\Service Notes\MainEmployeeIncommingServiceNotesReferenceFilterFormStatePropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\References\Service Notes\MainEmployeeIncommingServiceNotesReferenceFormPropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\References\MainEmployeeDocumentsReferenceFilterFormStatePropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\References\MainEmployeeDocumentsReferenceFormPropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\Settings\DocumentRecordsPanelSettingsFormPropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\Settings\DocumentRecordsPanelSettingsFormPropertiesStorage.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\Frames\DocumentInformationFramePropertiesStorage.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\Frames\DocumentChargesFramePropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\Frames\DocumentChargesFramePropertiesStorage.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\Frames\Cards\DocumentCardFramePropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Documents\Frames\Cards\DocumentCardFramePropertiesStorage.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Common\ApplicationMainFormPropertiesIniFile.pas"/>
+			<DCCReference Include="Launching\Properties Storing\Common\ApplicationMainFormPropertiesStorage.pas"/>
+			<DCCReference Include="Launching\Properties Storing\ApplicationPropertiesStorageRegistry.pas"/>
+			<DCCReference Include="..\Application\External\Messaging\Documents\Common\Policies\Interfaces\EmployeeDocumentNotificationPolicy.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\DocumentOperationToolBarFrameUnit.pas">
+				<Form>DocumentOperationToolBarFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Cards\Common\ApproveableDocumentCardFrameUnit.pas">
+				<Form>ApproveableDocumentCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\Cards\Common\SignableDocumentCardFrameUnit.pas">
+				<Form>SignableDocumentCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Forms\Documents\References\Common\IncomingDocumentChargePerformersReferenceFormUnit.pas">
+				<Form>IncomingDocumentChargePerformersReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Drafting\Interfaces\DocumentDraftingRule.pas"/>
+			<DCCReference Include="..\Domain\Documents\Common\Rules\Drafting\StandardDocumentDraftingRule.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DataSet Holders\AbstractDataSetHolder.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Query Executors\AbstractQueryExecutor.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Query Executors\AbstractQueryDataReader.pas"/>
+			<DCCReference Include="..\Application\Presentation\Employees\References\Interfaces\EmployeeSetReadService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Employees\References\Common\DataSet Holders\EmployeeSetHolder.pas"/>
+			<DCCReference Include="..\Application\Presentation\Employees\References\Based-On DB\Common\DepartmentDbSchema.pas"/>
+			<DCCReference Include="..\Application\Presentation\Employees\References\Based-On DB\Common\EmployeeDbSchema.pas"/>
+			<DCCReference Include="..\Application\Presentation\Employees\References\Based-On DB\BasedOnDatabaseEmployeeSetReadService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Charges\Interfaces\EmployeeDocumentChargesWorkStatistics.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Charges\Interfaces\EmployeeDocumentChargesWorkStatisticsService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Charges\Zeos-Based\EmployeeDocumentChargesWorkStatisticsZeosService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Charges\Zeos-Based\Postgres\EmployeeDocumentChargesWorkStatisticsPostgresService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Charges\Zeos-Based\Postgres\EmployeeIncomingServiceNoteChargesWorkStatisticsPostgresService.pas"/>
+			<DCCReference Include="..\Application\Statistics\Docs\Charges\Zeos-Based\Postgres\EmployeeOutcomingServiceNoteChargesWorkStatisticsPostgresService.pas"/>
+			<DCCReference Include="Forms\System Administration\Forms\References\Employees\EmployeesAdminReferenceFormUnit.pas">
+				<Form>EmployeesAdminReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="..\Application\System\Authorization\Interfaces\SystemAuthorizationService.pas"/>
+			<DCCReference Include="..\Application\System\Authorization\Based-On Databases\BasedOnDatabaseSystemAuthorizationService.pas"/>
+			<DCCReference Include="..\Application\System\Authorization\Based-On Databases\Based-On Zeos\BasedOnZeosSystemAuthorizationService.pas"/>
+			<DCCReference Include="..\Application\System\SystemServiceRegistry.pas"/>
+			<DCCReference Include="..\Application\System\Administration\DTOs\SystemAdminPrivilegeManageableObjects.pas"/>
+			<DCCReference Include="..\Application\System\Administration\DTOs\SystemAdminPrivileges.pas"/>
+			<DCCReference Include="..\Application\System\Administration\Interfaces\SystemAdministrationService.pas"/>
+			<DCCReference Include="..\Application\System\Administration\Standard\StandardSystemAdministrationService.pas"/>
+			<DCCReference Include="..\Application\Presentation\Employees\References\Based-On DB\Common\RoleDbSchema.pas"/>
+			<DCCReference Include="Forms\Documents\Frames\View Models\DocumentApprovingCycleViewModel.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\AnchorableDockFormUnit.pas">
+				<Form>AnchorableDockForm</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Presentation.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1049</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsTee10.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsIBX10.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

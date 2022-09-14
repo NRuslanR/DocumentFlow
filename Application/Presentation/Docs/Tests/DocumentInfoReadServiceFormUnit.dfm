@@ -1,0 +1,36 @@
+object DocumentInfoReadServiceTestForm: TDocumentInfoReadServiceTestForm
+  Left = 0
+  Top = 0
+  Caption = 'DocumentInfoReadServiceTestForm'
+  ClientHeight = 729
+  ClientWidth = 700
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Button1: TButton
+    Left = 8
+    Top = 16
+    Width = 75
+    Height = 25
+    Caption = 'Run test'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object ZConnection1: TZConnection
+    Protocol = 'postgresql-8'
+    HostName = 'srv-pg2'
+    Port = 5432
+    Database = 'ump_nightly'
+    User = 'u_59968'
+    Password = '123456'
+    Left = 8
+    Top = 56
+  end
+end

@@ -1,0 +1,1 @@
+for /d /r %%i in (*__history*) do rmdir /s /q "%%i"

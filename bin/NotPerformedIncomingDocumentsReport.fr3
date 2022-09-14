@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inherited ParentReport="NotPerformedDocumentsReport.fr3" PreviewOptions.AllowEdit="False" ReportOptions.LastChange="44169,4101222685" PropData="044C656674024803546F70021008446174617365747301010C4900000020446174615365743D224E6F74506572666F726D6564446F63756D656E74735265706F7274446174615365742220446174615365744E616D653D2266727844424461746173657431220000095661726961626C657301010C0F000000204E616D653D2220506572696F642200010C13000000204E616D653D22506572696F6453746172742200010C11000000204E616D653D22506572696F64456E642200010C13000000204E616D653D22204465706172746D656E742200010C20000000204E616D653D225265706F72744372656174696F6E4465706172746D656E742200010C22000000204E616D653D22204E6F74506572666F726D6564446F63756D656E74436F756E742200010C21000000204E616D653D224E6F74506572666F726D6564446F63756D656E74436F756E74220000055374796C650100">
+  <inherited Name="Data"/>
+  <inherited Name="Page1" PaperSize="9">
+    <inherited Name="ReportTitle1">
+      <inherited Name="SysMemo1"/>
+      <inherited Name="SysMemo2"/>
+    </inherited>
+    <inherited Name="Header1">
+      <inherited Name="Memo6"/>
+      <inherited Name="Memo7"/>
+      <inherited Name="Memo8" Width="279,68522"/>
+      <inherited Name="Memo14" Left="438,42548" Width="120,94496"/>
+      <inherited Name="Memo17" Left="710,55164" Width="336,37817"/>
+      <TfrxMemoView Name="Memo2" Left="559,37044" Top="0" Width="68,03154" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="Вх. номер"/>
+      <TfrxMemoView Name="Memo3" Left="627,40198" Top="0" Width="83,14966" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="Дата вх."/>
+    </inherited>
+    <inherited Name="MasterData1">
+      <inherited Name="NumberMemo"/>
+      <inherited Name="CreationDateMemo"/>
+      <inherited Name="NameMemo" Width="279,68522"/>
+      <inherited Name="LeaderNameMemo" Left="438,42548" Width="120,94496"/>
+      <inherited Name="PerformerNamesMemo" Left="710,55164" Width="336,37817"/>
+      <TfrxMemoView Name="IncomingNumberMemo" Left="559,37044" Top="0" Width="68,03154" Height="22,67718" ShowHint="False" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxDBDataSet1.&#34;leader_short_name&#34;]"/>
+      <TfrxMemoView Name="ReceiptDateMemo" Left="627,40198" Top="0" Width="83,14966" Height="22,67718" ShowHint="False" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxDBDataSet1.&#34;leader_short_name&#34;]"/>
+    </inherited>
+    <inherited Name="PageHeader1">
+      <inherited Name="Memo1"/>
+      <inherited Name="Memo5"/>
+    </inherited>
+    <inherited Name="PageFooter1">
+      <inherited Name="SysMemo3"/>
+    </inherited>
+    <inherited Name="ReportSummary1">
+      <inherited Name="Memo9"/>
+    </inherited>
+  </inherited>
+</inherited>

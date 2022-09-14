@@ -1,0 +1,61 @@
+program DocumentFlowSystemDomainLayer;
+
+uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
+  Forms,
+  TestFormUnit in 'TestFormUnit.pas' {Form6},
+  DomainObjectBaseUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectBaseUnit.pas',
+  DomainObjectListUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectListUnit.pas',
+  DomainObjectUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectUnit.pas',
+  DomainObjectValueUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectValueUnit.pas',
+  IDomainObjectBaseUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectBaseUnit.pas',
+  IDomainObjectUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectUnit.pas',
+  IDomainObjectValueUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectValueUnit.pas',
+  ClonableUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\ClonableUnit.pas',
+  CopyableUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\CopyableUnit.pas',
+  EquatableUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\EquatableUnit.pas',
+  IGetSelfUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\IGetSelfUnit.pas',
+  VariantListUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Variant List\VariantListUnit.pas',
+  RoleUnit in 'RoleUnit.pas',
+  DepartmentUnit in 'DepartmentUnit.pas',
+  DateTimeRange in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Common\Date and Time\DateTimeRange.pas',
+  TimeFrame in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Common\Date and Time\TimeFrame.pas',
+  IDomainRuleUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainRuleUnit.pas',
+  AuxCollectionFunctionsUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\AuxCollectionFunctions\AuxCollectionFunctionsUnit.pas',
+  INumberGeneratorUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Sequence Generators\Interfaces\INumberGeneratorUnit.pas',
+  StandardEmployeeIsSameAsOrDeputySpecification in 'Specifications\StandardEmployeeIsSameAsOrDeputySpecification.pas',
+  Employee in 'Refactor\Employee.pas',
+  IDocumentRegistrationServiceUnit in 'Services\Interfaces\IDocumentRegistrationServiceUnit.pas',
+  EmployeeIsSameAsOrDeputySpecification in 'Specifications\Interfaces\EmployeeIsSameAsOrDeputySpecification.pas',
+  StandardEmployeeDocumentSignerListChangingRule in 'Rules\StandardEmployeeDocumentSignerListChangingRule.pas',
+  DocumentWorkCycleUnit in 'Documents\DocumentWorkCycleUnit.pas',
+  EmployeeDocumentWorkingRule in 'Rules\Interfaces\EmployeeDocumentWorkingRule.pas',
+  StandardEmployeeDocumentWorkingRule in 'Rules\StandardEmployeeDocumentWorkingRule.pas',
+  Document in 'Refactor\Document\Document.pas',
+  DocumentCharges in 'Refactor\Document\DocumentCharges.pas',
+  DocumentSignings in 'Refactor\Document\DocumentSignings.pas',
+  StandardEmployeeDocumentChargeListChangingRule in 'Rules\StandardEmployeeDocumentChargeListChangingRule.pas',
+  StandardEmployeeDocumentSigningPerformingRule in 'Rules\StandardEmployeeDocumentSigningPerformingRule.pas',
+  StandardEmployeeDocumentChargePerformingRule in 'Rules\StandardEmployeeDocumentChargePerformingRule.pas',
+  DocumentFullNameCompilationService in 'Services\Interfaces\DocumentFullNameCompilationService.pas',
+  StandardDocumentFullNameCompilationService in 'Services\StandardDocumentFullNameCompilationService.pas',
+  EmployeeDocumentWorkingRules in 'Rules\EmployeeDocumentWorkingRules.pas',
+  StandardEmployeeDocumentEditingRule in 'Rules\StandardEmployeeDocumentEditingRule.pas',
+  DocumentMark in 'Refactor\Document\Interfaces\DocumentMark.pas',
+  StandardEmployeeDocumentSigningRejectingPerformingRule in 'Rules\StandardEmployeeDocumentSigningRejectingPerformingRule.pas',
+  DocumentCorrectlyWrittenForSigningSpecification in 'Specifications\Interfaces\DocumentCorrectlyWrittenForSigningSpecification.pas',
+  StandardDocumentCorrectlyWrittenForSigningSpecification in 'Specifications\StandardDocumentCorrectlyWrittenForSigningSpecification.pas',
+  EmployeeIsSameAsOrDeputyOfEmployeesSpecification in 'Specifications\Interfaces\EmployeeIsSameAsOrDeputyOfEmployeesSpecification.pas',
+  StandardEmployeeIsSameAsOrDeputyOfEmployeesSpecification in 'Specifications\StandardEmployeeIsSameAsOrDeputyOfEmployeesSpecification.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm6, Form6);
+  Application.Run;
+end.

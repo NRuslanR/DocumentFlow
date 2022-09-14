@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="4.8.27" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.AllowEdit="False" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="�� ���������" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43612,6019392014" ReportOptions.Description.Text="" ReportOptions.LastChange="44169,4080671296" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C656674024803546F70021008446174617365747301010C4900000020446174615365743D224E6F74506572666F726D6564446F63756D656E74735265706F7274446174615365742220446174615365744E616D653D2266727844424461746173657431220000095661726961626C657301010C0F000000204E616D653D2220506572696F642200010C13000000204E616D653D22506572696F6453746172742200010C11000000204E616D653D22506572696F64456E642200010C13000000204E616D653D22204465706172746D656E742200010C20000000204E616D653D225265706F72744372656174696F6E4465706172746D656E742200010C22000000204E616D653D22204E6F74506572666F726D6564446F63756D656E74436F756E742200010C21000000204E616D653D224E6F74506572666F726D6564446F63756D656E74436F756E74220000055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" Orientation="poLandscape" PaperWidth="297" PaperHeight="210" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="18,89765" Left="0" Top="18,89765" Width="1046,92981">
+      <TfrxSysMemoView Name="SysMemo1" ShiftMode="smWhenOverlapped" Left="0" Top="0" Width="113,3859" Height="18,89765" ShowHint="False" Text="[DATE]"/>
+      <TfrxSysMemoView Name="SysMemo2" ShiftMode="smWhenOverlapped" Left="75,5906" Top="0" Width="113,3859" Height="18,89765" ShowHint="False" Text="[TIME]"/>
+    </TfrxReportTitle>
+    <TfrxHeader Name="Header1" Height="22,67718" Left="0" Top="143,62214" Width="1046,92981" ReprintOnNewPage="True">
+      <TfrxMemoView Name="Memo6" Left="0" Top="0" Width="86,92919" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="№"/>
+      <TfrxMemoView Name="Memo7" Left="86,92919" Top="0" Width="71,81107" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="Дата док."/>
+      <TfrxMemoView Name="Memo8" Left="158,74026" Top="0" Width="309,92146" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="Наименование"/>
+      <TfrxMemoView Name="Memo14" Left="468,66172" Top="0" Width="147,40167" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="Руководитель"/>
+      <TfrxMemoView Name="Memo17" Left="616,06339" Top="0" Width="430,86642" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="Получатели"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData1" Height="22,67718" Left="0" Top="188,9765" Width="1046,92981" ColumnWidth="0" ColumnGap="0" DataSet="NotPerformedDocumentsReportDataSet" DataSetName="frxDBDataset1" RowCount="0" Stretched="True">
+      <TfrxMemoView Name="NumberMemo" Left="0" Top="0" Width="86,92919" Height="22,67718" ShowHint="False" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxDBDataset1.&#34;outcomming_number&#34;]"/>
+      <TfrxMemoView Name="CreationDateMemo" Left="86,92919" Top="0" Width="71,81107" Height="22,67718" ShowHint="False" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxDBDataset1.&#34;creation_date&#34;]"/>
+      <TfrxMemoView Name="NameMemo" Left="158,74026" Top="0" Width="309,92146" Height="22,67718" ShowHint="False" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxDBDataSet1.&#34;name&#34;]"/>
+      <TfrxMemoView Name="LeaderNameMemo" Left="468,66172" Top="0" Width="147,40167" Height="22,67718" ShowHint="False" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxDBDataSet1.&#34;leader_short_name&#34;]"/>
+      <TfrxMemoView Name="PerformerNamesMemo" Left="616,06339" Top="0" Width="430,86642" Height="22,67718" ShowHint="False" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxDBDataSet1.&#34;performer_short_names&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageHeader Name="PageHeader1" Height="22,67718" Left="0" Top="60,47248" Width="1046,92981">
+      <TfrxMemoView Name="Memo1" Left="0" Top="0" Width="1046,92981" Height="22,67718" ShowHint="False" Text="Не выполненные документы за период с [PeriodStart] по [PeriodEnd] г."/>
+      <TfrxMemoView Name="Memo5" Left="453,5436" Top="0" Width="600,94527" Height="22,67718" ShowHint="False" Text="[ReportCreationDepartment]"/>
+    </TfrxPageHeader>
+    <TfrxPageFooter Name="PageFooter1" Height="22,67718" Left="0" Top="336,37817" Width="1046,92981">
+      <TfrxSysMemoView Name="SysMemo3" Left="0" Top="3,77953000000002" Width="1046,92981" Height="18,89765" ShowHint="False" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="[PAGE#]"/>
+    </TfrxPageFooter>
+    <TfrxReportSummary Name="ReportSummary1" Height="41,57483" Left="0" Top="272,12616" Width="1046,92981">
+      <TfrxMemoView Name="Memo9" Left="0" Top="18,89765" Width="1046,92981" Height="22,67718" ShowHint="False" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="Общее кол-во не выполненных документов: [NotPerformedDocumentCount]"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+</TfrxReport>

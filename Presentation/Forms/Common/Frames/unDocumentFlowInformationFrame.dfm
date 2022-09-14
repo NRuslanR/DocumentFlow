@@ -1,0 +1,2 @@
+inherited DocumentFlowInformationFrame: TDocumentFlowInformationFrame
+end

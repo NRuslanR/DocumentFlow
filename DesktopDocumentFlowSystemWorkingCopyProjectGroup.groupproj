@@ -1,0 +1,72 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{2111D00F-AFE1-4014-80C2-25EECDD1EB1D}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Domain\Domain.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Persistance\Persistance.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Application\Application.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Presentation\Presentation.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="Domain">
+			<MSBuild Projects="Domain\Domain.dproj"/>
+		</Target>
+		<Target Name="Domain:Clean">
+			<MSBuild Targets="Clean" Projects="Domain\Domain.dproj"/>
+		</Target>
+		<Target Name="Domain:Make">
+			<MSBuild Targets="Make" Projects="Domain\Domain.dproj"/>
+		</Target>
+		<Target Name="Persistance">
+			<MSBuild Projects="Persistance\Persistance.dproj"/>
+		</Target>
+		<Target Name="Persistance:Clean">
+			<MSBuild Targets="Clean" Projects="Persistance\Persistance.dproj"/>
+		</Target>
+		<Target Name="Persistance:Make">
+			<MSBuild Targets="Make" Projects="Persistance\Persistance.dproj"/>
+		</Target>
+		<Target Name="Application">
+			<MSBuild Projects="Application\Application.dproj"/>
+		</Target>
+		<Target Name="Application:Clean">
+			<MSBuild Targets="Clean" Projects="Application\Application.dproj"/>
+		</Target>
+		<Target Name="Application:Make">
+			<MSBuild Targets="Make" Projects="Application\Application.dproj"/>
+		</Target>
+		<Target Name="Presentation">
+			<MSBuild Projects="Presentation\Presentation.dproj"/>
+		</Target>
+		<Target Name="Presentation:Clean">
+			<MSBuild Targets="Clean" Projects="Presentation\Presentation.dproj"/>
+		</Target>
+		<Target Name="Presentation:Make">
+			<MSBuild Targets="Make" Projects="Presentation\Presentation.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="Domain;Persistance;Application;Presentation"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="Domain:Clean;Persistance:Clean;Application:Clean;Presentation:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="Domain:Make;Persistance:Make;Application:Make;Presentation:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Delphi.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{11593427-6E2F-4871-A7F2-BA8945456B08}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Delphi.Personality>
+		<Source>
+			<Source Name="MainSource">Persistance.dpr</Source>
+		</Source>
+		<FileVersion>
+			<FileVersion Name="Version">7.0</FileVersion>
+		</FileVersion>
+		<Compiler>
+			<Compiler Name="A">8</Compiler>
+			<Compiler Name="B">0</Compiler>
+			<Compiler Name="C">1</Compiler>
+			<Compiler Name="D">1</Compiler>
+			<Compiler Name="E">0</Compiler>
+			<Compiler Name="F">0</Compiler>
+			<Compiler Name="G">1</Compiler>
+			<Compiler Name="H">1</Compiler>
+			<Compiler Name="I">1</Compiler>
+			<Compiler Name="J">0</Compiler>
+			<Compiler Name="K">0</Compiler>
+			<Compiler Name="L">1</Compiler>
+			<Compiler Name="M">0</Compiler>
+			<Compiler Name="N">1</Compiler>
+			<Compiler Name="O">1</Compiler>
+			<Compiler Name="P">1</Compiler>
+			<Compiler Name="Q">0</Compiler>
+			<Compiler Name="R">0</Compiler>
+			<Compiler Name="S">0</Compiler>
+			<Compiler Name="T">0</Compiler>
+			<Compiler Name="U">0</Compiler>
+			<Compiler Name="V">1</Compiler>
+			<Compiler Name="W">0</Compiler>
+			<Compiler Name="X">1</Compiler>
+			<Compiler Name="Y">1</Compiler>
+			<Compiler Name="Z">1</Compiler>
+			<Compiler Name="ShowHints">True</Compiler>
+			<Compiler Name="ShowWarnings">True</Compiler>
+			<Compiler Name="UnitAliases">WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;</Compiler>
+			<Compiler Name="NamespacePrefix"></Compiler>
+			<Compiler Name="GenerateDocumentation">False</Compiler>
+			<Compiler Name="DefaultNamespace"></Compiler>
+			<Compiler Name="SymbolDeprecated">True</Compiler>
+			<Compiler Name="SymbolLibrary">True</Compiler>
+			<Compiler Name="SymbolPlatform">True</Compiler>
+			<Compiler Name="SymbolExperimental">True</Compiler>
+			<Compiler Name="UnitLibrary">True</Compiler>
+			<Compiler Name="UnitPlatform">True</Compiler>
+			<Compiler Name="UnitDeprecated">True</Compiler>
+			<Compiler Name="UnitExperimental">True</Compiler>
+			<Compiler Name="HResultCompat">True</Compiler>
+			<Compiler Name="HidingMember">True</Compiler>
+			<Compiler Name="HiddenVirtual">True</Compiler>
+			<Compiler Name="Garbage">True</Compiler>
+			<Compiler Name="BoundsError">True</Compiler>
+			<Compiler Name="ZeroNilCompat">True</Compiler>
+			<Compiler Name="StringConstTruncated">True</Compiler>
+			<Compiler Name="ForLoopVarVarPar">True</Compiler>
+			<Compiler Name="TypedConstVarPar">True</Compiler>
+			<Compiler Name="AsgToTypedConst">True</Compiler>
+			<Compiler Name="CaseLabelRange">True</Compiler>
+			<Compiler Name="ForVariable">True</Compiler>
+			<Compiler Name="ConstructingAbstract">True</Compiler>
+			<Compiler Name="ComparisonFalse">True</Compiler>
+			<Compiler Name="ComparisonTrue">True</Compiler>
+			<Compiler Name="ComparingSignedUnsigned">True</Compiler>
+			<Compiler Name="CombiningSignedUnsigned">True</Compiler>
+			<Compiler Name="UnsupportedConstruct">True</Compiler>
+			<Compiler Name="FileOpen">True</Compiler>
+			<Compiler Name="FileOpenUnitSrc">True</Compiler>
+			<Compiler Name="BadGlobalSymbol">True</Compiler>
+			<Compiler Name="DuplicateConstructorDestructor">True</Compiler>
+			<Compiler Name="InvalidDirective">True</Compiler>
+			<Compiler Name="PackageNoLink">True</Compiler>
+			<Compiler Name="PackageThreadVar">True</Compiler>
+			<Compiler Name="ImplicitImport">True</Compiler>
+			<Compiler Name="HPPEMITIgnored">True</Compiler>
+			<Compiler Name="NoRetVal">True</Compiler>
+			<Compiler Name="UseBeforeDef">True</Compiler>
+			<Compiler Name="ForLoopVarUndef">True</Compiler>
+			<Compiler Name="UnitNameMismatch">True</Compiler>
+			<Compiler Name="NoCFGFileFound">True</Compiler>
+			<Compiler Name="ImplicitVariants">True</Compiler>
+			<Compiler Name="UnicodeToLocale">True</Compiler>
+			<Compiler Name="LocaleToUnicode">True</Compiler>
+			<Compiler Name="ImagebaseMultiple">True</Compiler>
+			<Compiler Name="SuspiciousTypecast">True</Compiler>
+			<Compiler Name="PrivatePropAccessor">True</Compiler>
+			<Compiler Name="UnsafeType">False</Compiler>
+			<Compiler Name="UnsafeCode">False</Compiler>
+			<Compiler Name="UnsafeCast">False</Compiler>
+			<Compiler Name="OptionTruncated">True</Compiler>
+			<Compiler Name="WideCharReduced">True</Compiler>
+			<Compiler Name="DuplicatesIgnored">True</Compiler>
+			<Compiler Name="UnitInitSeq">True</Compiler>
+			<Compiler Name="LocalPInvoke">True</Compiler>
+			<Compiler Name="MessageDirective">True</Compiler>
+			<Compiler Name="CodePage"></Compiler>
+		</Compiler>
+		<Linker>
+			<Linker Name="MapFile">3</Linker>
+			<Linker Name="OutputObjs">0</Linker>
+			<Linker Name="GenerateHpps">False</Linker>
+			<Linker Name="ConsoleApp">1</Linker>
+			<Linker Name="DebugInfo">False</Linker>
+			<Linker Name="RemoteSymbols">False</Linker>
+			<Linker Name="GenerateDRC">False</Linker>
+			<Linker Name="MinStackSize">16384</Linker>
+			<Linker Name="MaxStackSize">1048576</Linker>
+			<Linker Name="ImageBase">4194304</Linker>
+			<Linker Name="ExeDescription"></Linker>
+		</Linker>
+		<Directories>
+			<Directories Name="OutputDir"></Directories>
+			<Directories Name="UnitOutputDir"></Directories>
+			<Directories Name="PackageDLLOutputDir"></Directories>
+			<Directories Name="PackageDCPOutputDir"></Directories>
+			<Directories Name="SearchPath">..\Domain;..\Domain\Documents;..\Domain\Documents\Common;..\Domain\Documents\Common\Entities;..\Domain\Documents\Common\Entities\Interfaces;..\Domain\Documents\Common\Entities\__history;..\Domain\Documents\Common\Rules;..\Domain\Documents\Common\Rules\Access;..\Domain\Documents\Common\Rules\Access\Editing;..\Domain\Documents\Common\Rules\Access\Removing;..\Domain\Documents\Common\Rules\Access\Removing\Interfaces;..\Domain\Documents\Common\Rules\Access\Viewing;..\Domain\Documents\Common\Rules\Access\__history;..\Domain\Documents\Common\Rules\Approving;..\Domain\Documents\Common\Rules\Approving\Interfaces;..\Domain\Documents\Common\Rules\Approving\__history;..\Domain\Documents\Common\Rules\Charge Sheets;..\Domain\Documents\Common\Rules\Charge Sheets\Interfaces;..\Domain\Documents\Common\Rules\Charge Sheets\__history;..\Domain\Documents\Common\Rules\Charges;..\Domain\Documents\Common\Rules\Charges\Interfaces;..\Domain\Documents\Common\Rules\Charges\__history;..\Domain\Documents\Common\Rules\Common;..\Domain\Documents\Common\Rules\Common\Interfaces;..\Domain\Documents\Common\Rules\Common\Interfaces\__history;..\Domain\Documents\Common\Rules\Common\__history;..\Domain\Documents\Common\Rules\Drafting;..\Domain\Documents\Common\Rules\Drafting\Interfaces;..\Domain\Documents\Common\Rules\Drafting\__history;..\Domain\Documents\Common\Rules\Performing;..\Domain\Documents\Common\Rules\Performing\__history;..\Domain\Documents\Common\Rules\Removing;..\Domain\Documents\Common\Rules\Signing;..\Domain\Documents\Common\Rules\Signing\Interfaces;..\Domain\Documents\Common\Rules\Signing\__history;..\Domain\Documents\Common\Rules\__history;..\Domain\Documents\Common\Services;..\Domain\Documents\Common\Services\Access Rights;..\Domain\Documents\Common\Services\Access Rights\Interfaces;..\Domain\Documents\Common\Services\Access Rights\__history;..\Domain\Documents\Common\Services\Approving;..\Domain\Documents\Common\Services\Approving\Interfaces;..\Domain\Documents\Common\Services\Approving\__history;..\Domain\Documents\Common\Services\Charge Sheets;..\Domain\Documents\Common\Services\Charge Sheets\Interfaces;..\Domain\Documents\Common\Services\Charge Sheets\__history;..\Domain\Documents\Common\Services\Formalization;..\Domain\Documents\Common\Services\Formalization\Interfaces;..\Domain\Documents\Common\Services\Formalization\__history;..\Domain\Documents\Common\Services\Numerators;..\Domain\Documents\Common\Services\Numerators\Interfaces;..\Domain\Documents\Common\Services\Numerators\Interfaces\__history;..\Domain\Documents\Common\Services\Numerators\__history;..\Domain\Documents\Common\Services\Performing;..\Domain\Documents\Common\Services\Performing\Interfaces;..\Domain\Documents\Common\Services\Performing\Interfaces\__history;..\Domain\Documents\Common\Services\Performing\__history;..\Domain\Documents\Common\Services\References;..\Domain\Documents\Common\Services\References\Interfaces;..\Domain\Documents\Common\Services\References\Standard;..\Domain\Documents\Common\Services\References\__history;..\Domain\Documents\Common\Services\Registration;..\Domain\Documents\Common\Services\Registration\Interfaces;..\Domain\Documents\Common\Services\Registration\Interfaces\__history;..\Domain\Documents\Common\Services\Registration\__history;..\Domain\Documents\Common\Services\Relations;..\Domain\Documents\Common\Services\Relations\__history;..\Domain\Documents\Common\Services\Stubs;..\Domain\Documents\Common\Services\__history;..\Domain\Documents\Common\Supporting Objects;..\Domain\Documents\Service Notes;..\Domain\Documents\Service Notes\Entities;..\Domain\Documents\Service Notes\Entities\__history;..\Domain\Documents\__history;..\Domain\Employees;..\Domain\Employees\Entities;..\Domain\Employees\Entities\__history;..\Domain\Employees\Rules;..\Domain\Employees\Rules\Relationships;..\Domain\Employees\Rules\Relationships\Interfaces;..\Domain\Employees\Rules\Relationships\__history;..\Domain\Employees\Rules\__history;..\Domain\Employees\Services;..\Domain\Employees\Services\Distribution;..\Domain\Employees\Services\Distribution\Interfaces;..\Domain\Employees\Services\Distribution\__history;..\Domain\Employees\Services\Performing;..\Domain\Employees\Services\Performing\Interfaces;..\Domain\Employees\Services\Performing\__history;..\Domain\Employees\Services\Search;..\Domain\Employees\Services\Search\Interfaces;..\Domain\Employees\Services\Search\__history;..\Domain\Employees\Services\Subordination;..\Domain\Employees\Services\Subordination\Interfaces;..\Domain\Employees\Services\Subordination\__history;..\Domain\Employees\Services\__history;..\Domain\Employees\Specifications;..\Domain\Employees\Specifications\Distribution;..\Domain\Employees\Specifications\Distribution\Interfaces;..\Domain\Employees\Specifications\Distribution\__history;..\Domain\Employees\Specifications\Subordination;..\Domain\Employees\Specifications\Subordination\Interfaces;..\Domain\Employees\Specifications\Subordination\__history;..\Domain\Employees\Specifications\__history;..\Domain\Employees\Tests;..\Domain\Employees\Tests\__history;..\Domain\Employees\__history;..\Domain\ModelSupport_Domain;..\Domain\ModelSupport_Domain\Domain;..\Domain\ModelSupport_Domain\EmployeeDistributionServiceRegistry;..\Domain\ModelSupport_Domain\EmployeeDistributionSpecificationRegistry;..\Domain\ModelSupport_Domain\EmployeePerformingServiceRegistry;..\Domain\ModelSupport_Domain\EmployeeRelationshipRuleRegistry;..\Domain\ModelSupport_Domain\EmployeeRuleRegistry;..\Domain\ModelSupport_Domain\EmployeeSearchServiceRegistry;..\Domain\ModelSupport_Domain\EmployeeServiceRegistry;..\Domain\ModelSupport_Domain\EmployeeSubordinationServiceRegistry;..\Domain\Tests;..\Domain\Tests\Documents;..\Domain\__history;..\Domain\Обоснования некоторые решений;..\Domain\Documents\Common\Services\Search\Interfaces;..\Domain\Documents\Common\Services\Accounting;..\Domain\Documents\Common\Services\Accounting\Interfaces;..\Domain\Documents\Common\Services\Storage;..\Domain\Documents\Common\Services\Storage\Interfaces;..\Domain\Documents\Common\Services\Search;..\Domain\Documents\Common\Services\Operations;..\Domain\Documents\Common\Services\Operations\Interfaces;..\Domain\Documents\Common\Services\Signing;..\Domain\Documents\Common\Services\Signing\Interfaces;..\Domain\Documents\Personnel Orders\Entities;..\Domain\Documents\Personnel Orders\Rules\Signing;..\Domain\Documents\Personnel Orders\Services\Access;..\Domain\Documents\Personnel Orders\Services\Access\Interfaces;..\Domain\Documents\Personnel Orders\Services\Access\Registries;..\Domain\Documents\Personnel Orders\Services\Control;..\Domain\Documents\Personnel Orders\Services\Control\Interfaces;..\Domain\Documents\Personnel Orders;..\Domain\Documents\Common\Services\Approving\Approvings Pickers;..\Domain\Documents\Common\Services\Approving\Approving Collectors;..\Domain\Documents\Common\Services\Approving\Approving Collectors\Interfaces;..\Domain\Documents\Personnel Orders\Services\Control\Registries;..\Domain\Documents\Personnel Orders\Services\Search;..\Domain\Documents\Personnel Orders\Services\Search\Interfaces;..\Domain\Documents\Personnel Orders\Services\Search\Registries;..\Domain\Documents\Personnel Orders\Services;..\Domain\Documents\Personnel Orders\Rules\Access;..\Domain\Documents\Common\Rules\Performing\Interfaces;..\Domain\Documents\Common\Services\Charges\Interfaces;..\Domain\Documents\Common\Services\Charges;..\Domain\Documents\Common\Rules\Charge Sheets\Changing;..\Domain\Documents\Common\Rules\Charge Sheets\Changing\Interfaces;..\Domain\Documents\Common\Rules\Charge Sheets\Performing;..\Domain\Documents\Common\Rules\Charge Sheets\Performing\Interfaces;..\Domain\Documents\Common\Rules\Charge Sheets\Removing;..\Domain\Documents\Common\Rules\Charge Sheets\Removing\Interfaces;..\Domain\Documents\Common\Rules\Charge Sheets\Viewing;..\Domain\Documents\Common\Rules\Charge Sheets\Viewing\Interfaces;..\Domain\Documents\Common\Services\Charge Sheets\Performing;..\Domain\Documents\Common\Services\Charge Sheets\Search;..\Domain\Documents\Common\Services\Charge Sheets\Removing;..\Domain\Documents\Common\Services\Charge Sheets\Creating;..\Domain\Documents\Common\Services\Charge Sheets\Access Rights;..\Domain\Documents\Common\Specifications;..\Domain\Documents\Common\Specifications\Charges;..\Domain\Documents\Common\Specifications\Charges\Interfaces;..\Domain\Documents\Common\Specifications\Signing;..\Domain\Documents\Common\Specifications\Signing\Interfaces;..\Domain\Documents\Common\Specifications\Performing;..\Domain\Documents\Common\Specifications\Performing\Interfaces;..\Domain\Documents\Common\Services\Performing\Events;..\Domain\Documents\Personnel Orders\Specifications</Directories>
+			<Directories Name="Packages"></Directories>
+			<Directories Name="Conditionals"></Directories>
+			<Directories Name="DebugSourceDirs"></Directories>
+			<Directories Name="UsePackages">False</Directories>
+		</Directories>
+		<Parameters>
+			<Parameters Name="RunParams"></Parameters>
+			<Parameters Name="HostApplication"></Parameters>
+			<Parameters Name="Launcher"></Parameters>
+			<Parameters Name="UseLauncher">False</Parameters>
+			<Parameters Name="DebugCWD"></Parameters>
+			<Parameters Name="Debug Symbols Search Path"></Parameters>
+			<Parameters Name="LoadAllSymbols">True</Parameters>
+			<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+		</Parameters>
+		<Language>
+			<Language Name="ActiveLang"></Language>
+			<Language Name="ProjectLang">$00000000</Language>
+			<Language Name="RootDir"></Language>
+		</Language>
+		<VersionInfo>
+			<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+			<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+			<VersionInfo Name="MajorVer">1</VersionInfo>
+			<VersionInfo Name="MinorVer">0</VersionInfo>
+			<VersionInfo Name="Release">0</VersionInfo>
+			<VersionInfo Name="Build">0</VersionInfo>
+			<VersionInfo Name="Debug">False</VersionInfo>
+			<VersionInfo Name="PreRelease">False</VersionInfo>
+			<VersionInfo Name="Special">False</VersionInfo>
+			<VersionInfo Name="Private">False</VersionInfo>
+			<VersionInfo Name="DLL">False</VersionInfo>
+			<VersionInfo Name="Locale">1049</VersionInfo>
+			<VersionInfo Name="CodePage">1251</VersionInfo>
+		</VersionInfo>
+		<VersionInfoKeys>
+			<VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+			<VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+			<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+			<VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+			<VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+			<VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+			<VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+			<VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+			<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+			<VersionInfoKeys Name="Comments"></VersionInfoKeys>
+		</VersionInfoKeys>  <Excluded_Packages>
+      <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibADODataDrivers100.bpl">EhLib 6.2 DataDrivers for ADO</Excluded_Packages>
+      <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibBDEDataDrivers100.bpl">EhLib 6.2 DataDrivers for BDE</Excluded_Packages>
+      <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibDBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for DBX</Excluded_Packages>
+      <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibIBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for IBX</Excluded_Packages>
+      <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
+      <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsTee10.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
+      <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsIBX10.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
+    </Excluded_Packages>
+  </Delphi.Personality>
+</BorlandProject>

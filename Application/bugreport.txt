@@ -1,0 +1,1551 @@
+date/time          : 2019-10-24, 15:29:17, 31ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 2 hours 42 minutes
+program up time    : 1 minute 51 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 527/2047 MB (free/total)
+free disk space    : (C:) 787,19 MB
+display mode       : 1280x1024, 32 bit
+process id         : $15e0
+allocated memory   : 20,81 MB
+largest free block : 811,85 MB
+executable         : DocumentFlowSystemApplicationServiceLayer.exe
+exec. date/time    : 2019-10-24 15:27
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $5db87792, $2ce07f21, $f8e5d51f
+exception number   : 2
+exception class    : EAccessViolation
+exception message  : Access violation at address 004378B2 in module 'DocumentFlowSystemApplicationServiceLayer.exe'. Read of address 00000000.
+
+thread $cc8 (TSQLCommandThread):
+004378b2 +1e DocumentFlowSystemApplicationServiceLayer.exe madExcept                         FreeProps
+0045ffe9 +e9 DocumentFlowSystemApplicationServiceLayer.exe madExcept                         TIMEException.Destroy
+00404374 +08 DocumentFlowSystemApplicationServiceLayer.exe System                      85 +0 TObject.Free
+00470008 +08 DocumentFlowSystemApplicationServiceLayer.exe SysUtils                          FreeAndNil
+005d4378 +30 DocumentFlowSystemApplicationServiceLayer.exe DataSetOperationThreadUnit 139 +7 TDataSetOperationThread.Execute
+00405300 +28 DocumentFlowSystemApplicationServiceLayer.exe System                      85 +0 ThreadWrapper
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept                         CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept                         ThreadExceptFrame
+>> created by main thread ($72c) at:
+005d413e +16 DocumentFlowSystemApplicationServiceLayer.exe CancellationThreadUnit      41 +2 TCancellationThread.Create
+
+main thread ($72c):
+7e369416 +00a USER32.dll                                                                                     WaitMessage
+004db469 +12d DocumentFlowSystemApplicationServiceLayer.exe Forms                                            TApplication.Idle
+004da92f +017 DocumentFlowSystemApplicationServiceLayer.exe Forms                                            TApplication.HandleMessage
+004dab42 +096 DocumentFlowSystemApplicationServiceLayer.exe Forms                                            TApplication.Run
+007e109f +03b DocumentFlowSystemApplicationServiceLayer.exe DocumentFlowSystemApplicationServiceLayer 409 +3 initialization
+
+thread $1678:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $15ec:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $1220:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $d28:
+7c90df58 +0a ntdll.dll     NtWaitForSingleObject
+7c8025d5 +85 kernel32.dll  WaitForSingleObjectEx
+7c80253d +0d kernel32.dll  WaitForSingleObject
+
+thread $14b4:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $d3c:
+7c90df48 +0a ntdll.dll                                               NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll                                            WaitForMultipleObjectsEx
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($72c) at:
+77de8c8c +00 ADVAPI32.dll
+
+thread $13e4: <priority:15>
+7c90df48 +0a ntdll.dll                                               NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll                                            WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll                                            WaitForMultipleObjects
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($72c) at:
+72ce328c +00 wdmaud.drv
+
+thread $1288: <priority:2>
+7e377766 +3b USER32.dll                                              GetMessageA
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+7c914a9e +43 ntdll.dll                                               bsearch
+>> created by main thread ($72c) at:
+76b25e9f +00 winmm.dll
+
+thread $1530: <priority:1>
+7c90da48 +0a ntdll.dll                                               NtRemoveIoCompletion
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($72c) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 DocumentFlowSystemApplicationServiceLayer.exe                 C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application Service Layer
+011e0000 PluginAPI.dll                                                 C:\Program Files\searchinformagent\sifiltersvc1
+01210000 SIHLib32.dll                                                  C:\Program Files\searchinformagent\sifiltersvc1
+01250000 devin_p32.dll                                                 C:\Program Files\searchinformagent\sifiltersvc1
+01420000 twain_32.dll                                  1.6.0.3         C:\WINDOWS\system32
+018a0000 WiaHs32.dll                                   2.0.0.0         C:\Program Files\searchinformagent\sifiltersvc1
+01b90000 hdesvc_p32.dll                                                C:\Program Files\searchinformagent\sifiltersvc1
+01d10000 prtf_p32.dll                                                  C:\Program Files\searchinformagent\sifiltersvc1
+03720000 libeay32.dll                                  0.9.8.1         C:\WINDOWS\system32
+03830000 ssleay32.dll                                  0.9.8.1         C:\WINDOWS\system32
+03cc0000 libintl-2.dll                                                 C:\WINDOWS\system32
+03cd0000 libiconv-2.dll                                                C:\WINDOWS\system32
+03db0000 krb5_32.dll                                   1.3.5.0         C:\WINDOWS\system32
+10000000 SIPH.dll                                                      C:\Program Files\searchinformagent\sifiltersvc1
+16080000 mdnsNSP.dll                                   1.0.3.1         C:\Program Files\Bonjour
+1c000000 comerr32.dll                                  1.3.5.0         C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                                   5.2.6002.22791  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                                   6.0.2900.5512   C:\WINDOWS\system32
+61880000 oleacc.dll                                    7.0.2600.6153   C:\WINDOWS\system32
+63100000 libpq.dll                                     8.2.4.7110      C:\WINDOWS\system32
+68000000 rsaenh.dll                                    5.1.2600.5507   C:\WINDOWS\system32
+698b0000 hnetcfg.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71a30000 mswsock.dll                                   5.1.2600.5625   C:\WINDOWS\System32
+71a70000 wshtcpip.dll                                  5.1.2600.5512   C:\WINDOWS\System32
+71a80000 WS2HELP.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71a90000 WS2_32.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+71ab0000 wsock32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+72cd0000 msacm32.drv                                   5.1.2600.0      C:\WINDOWS\system32
+72ce0000 wdmaud.drv                                    5.1.2600.5512   C:\WINDOWS\system32
+72fc0000 WINSPOOL.DRV                                  5.1.2600.5512   C:\WINDOWS\system32
+73aa0000 MSVCRT20.dll                                  2.12.0.0        C:\WINDOWS\system32
+746e0000 MSCTF.dll                                     5.1.2600.5512   C:\WINDOWS\system32
+76350000 msimg32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+76380000 comdlg32.dll                                  6.0.2900.5512   C:\WINDOWS\system32
+76760000 SHFOLDER.DLL                                  6.0.2900.5512   C:\WINDOWS\system32
+76b20000 winmm.dll                                     5.1.2600.6160   C:\WINDOWS\system32
+76be0000 PSAPI.DLL                                     5.1.2600.5512   C:\WINDOWS\system32
+76c20000 WINTRUST.dll                                  5.131.2600.6285 C:\WINDOWS\system32
+76c80000 IMAGEHLP.dll                                  5.1.2600.6198   C:\WINDOWS\system32
+76d50000 iphlpapi.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+76f10000 DNSAPI.dll                                    5.1.2600.6089   C:\WINDOWS\system32
+76f50000 WLDAP32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+77110000 oleaut32.dll                                  5.1.2600.6341   C:\WINDOWS\system32
+773c0000 comctl32.dll                                  6.0.2900.6028   C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                                     5.1.2600.6168   C:\WINDOWS\system32
+77680000 NTMARTA.DLL                                   5.1.2600.5512   C:\WINDOWS\system32
+77910000 SETUPAPI.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+77a70000 CRYPT32.dll                                   5.131.2600.6369 C:\WINDOWS\system32
+77b10000 MSASN1.dll                                    5.1.2600.5875   C:\WINDOWS\system32
+77bc0000 midimap.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77bd0000 MSACM32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77bf0000 version.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77c00000 msvcrt.dll                                    7.0.2600.5512   C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                                  5.1.2600.6382   C:\WINDOWS\system32
+77e70000 RPCRT4.dll                                    5.1.2600.6022   C:\WINDOWS\system32
+77f10000 GDI32.dll                                     5.1.2600.5698   C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                                   6.0.2900.5912   C:\WINDOWS\system32
+77fe0000 Secur32.dll                                   5.1.2600.5834   C:\WINDOWS\system32
+7c800000 kernel32.dll                                  5.1.2600.6293   C:\WINDOWS\system32
+7c900000 ntdll.dll                                     5.1.2600.6055   C:\WINDOWS\system32
+7c9c0000 shell32.dll                                   6.0.2900.6242   C:\WINDOWS\system32
+7e360000 USER32.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+
+processes:
+0000 Idle                                          0    0
+0004 System                                        0    0    normal
+0568 smss.exe                                      0    0    normal C:\WINDOWS\system32
+05c8 csrss.exe                                     0    0
+05e0 winlogon.exe                                  43   12   high   C:\WINDOWS\system32
+060c services.exe                                  4    0    normal C:\WINDOWS\system32
+0618 lsass.exe                                     4    0    normal C:\WINDOWS\system32
+06dc svchost.exe                                   4    0    normal C:\WINDOWS\system32
+0734 svchost.exe                                   0    0
+0454 svchost.exe                                   4    4    normal C:\WINDOWS\System32
+05f4 svchost.exe                                   0    0
+0784 svchost.exe                                   0    0
+00c4 spoolsv.exe                                   4    0    normal C:\WINDOWS\system32
+0290 avpsus.exe                                    4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+0414 BSQLServer.exe                                6    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+0430 mDNSResponder.exe                             4    0    normal C:\Program Files\Bonjour
+02b4 DataSnapDemoService.exe                       25   15   normal C:\Documents and Settings\59968\Мои документы\RAD Studio\Projects\DataSnapDemoProject
+04a0 hasplms.exe                                   4    0    normal C:\WINDOWS\system32
+0474 jqs.exe                                       4    0    idle   C:\Program Files\Java\jre7\bin
+04f0 klnagent.exe                                  4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+0518 MDM.EXE                                       8    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+03a4 sqlservr.exe                                  4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+05c4 nvsvc32.exe                                   8    1    normal C:\WINDOWS\system32
+0648 pg_ctl.exe                                    0    0
+037c pg_ctl.exe                                    0    0
+03f8 postgres.exe                                  0    0
+0524 postgres.exe                                  0    0
+07a4 sqlbrowser.exe                                0    0
+080c sqlwriter.exe                                 4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+0880 avp.exe                                       7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+0f24 postgres.exe                                  0    0
+0590 postgres.exe                                  0    0
+0a88 postgres.exe                                  0    0
+0a90 postgres.exe                                  0    0
+0a94 postgres.exe                                  0    0
+0a9c postgres.exe                                  0    0
+0aa4 postgres.exe                                  0    0
+0abc postgres.exe                                  0    0
+0ac4 postgres.exe                                  0    0
+0acc postgres.exe                                  0    0
+0ad4 postgres.exe                                  0    0
+0ae0 postgres.exe                                  0    0
+0b80 wmiapsrv.exe                                  4    0    normal C:\WINDOWS\system32\wbem
+0870 Explorer.EXE                                  662  381  normal C:\WINDOWS
+1794 TSVNCache.exe                                 8    1    normal C:\Program Files\TortoiseSVN\bin
+1050 RTHDCPL.EXE                                   761  157  normal C:\WINDOWS
+15d8 RUNDLL32.EXE                                  18   5    normal C:\WINDOWS\system32
+03a8 2GISTrayNotifier.exe                          20   9    normal C:\Program Files\2gis\3.0
+0cec avp.exe                                       21   14   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+1154 Greenshot.exe                                 33   20   normal C:\Program Files\Greenshot
+10e0 jusched.exe                                   10   1    normal C:\Program Files\Common Files\Java\Java Update
+175c ctfmon.exe                                    27   9    normal C:\WINDOWS\system32
+14d0 miranda32.exe                                 1197 474  normal D:\Program Files\MirandaCorporate
+0368 GoldenDict.exe                                72   27   normal C:\Program Files\GoldenDict
+0248 msmsgs.exe                                    11   10   normal C:\Program Files\Messenger
+14fc ScreenTranslator.exe                          15   16   normal C:\Program Files\Screen Translator
+15b4 pgadmin3.exe                                  1900 545  normal C:\Program Files\pgAdmin III\1.22
+0354 bds.exe                                       3263 1144 normal C:\Program Files\Borland\BDS\4.0\Bin
+12ec vapm.exe                                      4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+0574 unsecapp.exe                                  0    0
+1720 svchost.exe                                   4    0    normal C:\WINDOWS\system32
+15e0 DocumentFlowSystemApplicationServiceLayer.exe 153  78   normal C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application Service Layer
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 00000000
+ebx = 00000000
+ecx = 7c911429
+edx = 7c97e140
+esi = 01e8d604
+edi = 00000000
+eip = 004378b2
+esp = 0427feb8
+ebp = 00000006
+
+stack dump:
+0427feb8  e8 fe 27 04 ff ff ff ff - d0 d5 e8 01 01 d5 e8 01  ..'.............
+0427fec8  ee ff 45 00 00 ff 27 04 - c0 4b 40 00 e8 fe 27 04  ..E...'..K@...'.
+0427fed8  20 c5 ea 01 d0 df de 01 - 00 00 00 00 00 00 00 00   ...............
+0427fee8  28 ff 27 04 77 43 40 00 - 0d 00 47 00 7d 43 5d 00  (.'.wC@...G.}C].
+0427fef8  48 43 5d 00 55 21 46 00 - 0c ff 27 04 90 49 40 00  HC].U!F...'..I@.
+0427ff08  28 ff 27 04 30 ff 27 04 - be 21 46 00 28 ff 27 04  (.'.0.'..!F.(.'.
+0427ff18  ff ff ff ff 20 c5 ea 01 - 78 ff 27 04 d0 df de 01  .... ...x.'.....
+0427ff28  58 ff 27 04 57 90 48 00 - 3c ff 27 04 61 90 48 00  X.'.W.H.<.'.a.H.
+0427ff38  58 ff 27 04 60 ff 27 04 - b7 90 48 00 58 ff 27 04  X.'.`.'...H.X.'.
+0427ff48  ff ff ff ff 20 c5 ea 01 - 78 ff 27 04 d0 df de 01  .... ...x.'.....
+0427ff58  6c ff 27 04 02 53 40 00 - 8c ff 27 04 48 4e 40 00  l.'..S@...'.HN@.
+0427ff68  6c ff 27 04 7c ff 27 04 - 37 20 46 00 20 c5 ea 01  l.'.|.'.7 F. ...
+0427ff78  d8 52 40 00 b4 ff 27 04 - a4 20 46 00 d8 52 40 00  .R@...'.. F..R@.
+0427ff88  20 c5 ea 01 98 ff 27 04 - b1 20 46 00 b4 ff 27 04   .....'.. F...'.
+0427ff98  dc ff 27 04 15 21 46 00 - b4 ff 27 04 ff ff ff ff  ..'..!F...'.....
+0427ffa8  84 f0 12 00 c0 f4 ea 01 - b0 ff 27 04 ec ff 27 04  ..........'...'.
+0427ffb8  29 b7 80 7c c0 f4 ea 01 - ff ff ff ff 84 f0 12 00  )..|............
+0427ffc8  c0 f4 ea 01 00 f0 fa 7f - 00 86 97 8a c0 ff 27 04  ..............'.
+0427ffd8  c0 81 fd 85 ff ff ff ff - 90 9a 83 7c 30 b7 80 7c  ...........|0..|
+0427ffe8  00 00 00 00 00 00 00 00 - 00 00 00 00 68 20 46 00  ............h F.
+
+disassembling:
+0040436c    public System.TObject.Free:      ; function entry point
+0040436c 85   test    eax, eax
+0040436e      jz      loc_404377
+00404370      mov     dl, 1
+00404372      mov     ecx, [eax]
+00404374    > call    dword ptr [ecx-4]
+00404377      ret
+
+date/time          : 2019-10-24, 15:41:21, 176ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 2 hours 54 minutes
+program up time    : 46 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 643/2047 MB (free/total)
+free disk space    : (C:) 680,95 MB
+display mode       : 1280x1024, 32 bit
+process id         : $cb8
+allocated memory   : 20,02 MB
+largest free block : 811,85 MB
+executable         : DocumentFlowSystemApplicationServiceLayer.exe
+exec. date/time    : 2019-10-24 15:40
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $f3eee6d6, $e7e36509, $bf0f1ddf
+exception number   : 1
+exception class    : EInvalidPointer
+exception message  : Invalid pointer operation.
+
+main thread ($1280):
+00404331 +011 DocumentFlowSystemApplicationServiceLayer.exe System                                     85  +0 TObject.FreeInstance
+00461e11 +019 DocumentFlowSystemApplicationServiceLayer.exe madExcept                                         InterceptClassDestroy
+00404365 +009 DocumentFlowSystemApplicationServiceLayer.exe System                                     85  +0 TObject.Destroy
+00404374 +008 DocumentFlowSystemApplicationServiceLayer.exe System                                     85  +0 TObject.Free
+00470008 +008 DocumentFlowSystemApplicationServiceLayer.exe SysUtils                                          FreeAndNil
+007d81de +00e DocumentFlowSystemApplicationServiceLayer.exe ZQueryExecutor                            458  +2 TAsyncModificationQueryEventHandlersData.Destroy
+00404374 +008 DocumentFlowSystemApplicationServiceLayer.exe System                                     85  +0 TObject.Free
+00470008 +008 DocumentFlowSystemApplicationServiceLayer.exe SysUtils                                          FreeAndNil
+007d8071 +075 DocumentFlowSystemApplicationServiceLayer.exe ZQueryExecutor                            371 +22 TZQueryExecutor.OnDataModificationSuccessEventHandler
+005d4622 +016 DocumentFlowSystemApplicationServiceLayer.exe DataSetOperationThreadUnit                226  +3 TDataSetOperationThread.RaiseOnDataOperationSuccessEvent
+00488f45 +0fd DocumentFlowSystemApplicationServiceLayer.exe Classes                                           CheckSynchronize
+004da1be +6b2 DocumentFlowSystemApplicationServiceLayer.exe Forms                                             TApplication.WndProc
+0048a760 +014 DocumentFlowSystemApplicationServiceLayer.exe Classes                                           StdWndProc
+7e3696c2 +00a USER32.dll                                                                                      DispatchMessageA
+004da8e8 +0fc DocumentFlowSystemApplicationServiceLayer.exe Forms                                             TApplication.ProcessMessage
+004da922 +00a DocumentFlowSystemApplicationServiceLayer.exe Forms                                             TApplication.HandleMessage
+004dab42 +096 DocumentFlowSystemApplicationServiceLayer.exe Forms                                             TApplication.Run
+007e109f +03b DocumentFlowSystemApplicationServiceLayer.exe DocumentFlowSystemApplicationServiceLayer 409  +3 initialization
+
+thread $17e8:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $dc4:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $2fc:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $1618:
+7c90df58 +0a ntdll.dll     NtWaitForSingleObject
+7c8025d5 +85 kernel32.dll  WaitForSingleObjectEx
+7c80253d +0d kernel32.dll  WaitForSingleObject
+
+thread $1640:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $270:
+7c90df48 +0a ntdll.dll                                               NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll                                            WaitForMultipleObjectsEx
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($1280) at:
+77de8c8c +00 ADVAPI32.dll
+
+thread $1264: <priority:15>
+7c90df48 +0a ntdll.dll                                               NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll                                            WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll                                            WaitForMultipleObjects
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($1280) at:
+72ce328c +00 wdmaud.drv
+
+thread $1498: <priority:2>
+7e377766 +3b USER32.dll                                              GetMessageA
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+7c914a9e +43 ntdll.dll                                               bsearch
+>> created by main thread ($1280) at:
+76b25e9f +00 winmm.dll
+
+thread $15d0: <priority:1>
+7c90da48 +0a ntdll.dll                                               NtRemoveIoCompletion
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($1280) at:
+71a3d926 +00 mswsock.dll
+
+thread $b30 (TSQLCommandThread):
+7c90df58 +00a ntdll.dll                                                                        NtWaitForSingleObject
+7c8025d5 +085 kernel32.dll                                                                     WaitForSingleObjectEx
+7c80253d +00d kernel32.dll                                                                     WaitForSingleObject
+004894a7 +113 DocumentFlowSystemApplicationServiceLayer.exe Classes                            TThread.Synchronize
+0048954e +01e DocumentFlowSystemApplicationServiceLayer.exe Classes                            TThread.Synchronize
+005d4519 +095 DocumentFlowSystemApplicationServiceLayer.exe DataSetOperationThreadUnit 181 +26 TDataSetOperationThread.InternalExecute
+005d434f +007 DocumentFlowSystemApplicationServiceLayer.exe DataSetOperationThreadUnit 134  +2 TDataSetOperationThread.Execute
+00462153 +02b DocumentFlowSystemApplicationServiceLayer.exe madExcept                          HookedTThreadExecute
+00489054 +034 DocumentFlowSystemApplicationServiceLayer.exe Classes                            ThreadProc
+00405300 +028 DocumentFlowSystemApplicationServiceLayer.exe System                      85  +0 ThreadWrapper
+00462035 +00d DocumentFlowSystemApplicationServiceLayer.exe madExcept                          CallThreadProcSafe
+0046209f +037 DocumentFlowSystemApplicationServiceLayer.exe madExcept                          ThreadExceptFrame
+>> created by main thread ($1280) at:
+005d413e +016 DocumentFlowSystemApplicationServiceLayer.exe CancellationThreadUnit      41  +2 TCancellationThread.Create
+
+modules:
+00400000 DocumentFlowSystemApplicationServiceLayer.exe                 C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application Service Layer
+011e0000 PluginAPI.dll                                                 C:\Program Files\searchinformagent\sifiltersvc1
+01210000 SIHLib32.dll                                                  C:\Program Files\searchinformagent\sifiltersvc1
+01250000 devin_p32.dll                                                 C:\Program Files\searchinformagent\sifiltersvc1
+01420000 twain_32.dll                                  1.6.0.3         C:\WINDOWS\system32
+018a0000 WiaHs32.dll                                   2.0.0.0         C:\Program Files\searchinformagent\sifiltersvc1
+01b90000 hdesvc_p32.dll                                                C:\Program Files\searchinformagent\sifiltersvc1
+01d10000 prtf_p32.dll                                                  C:\Program Files\searchinformagent\sifiltersvc1
+03720000 libeay32.dll                                  0.9.8.1         C:\WINDOWS\system32
+03830000 ssleay32.dll                                  0.9.8.1         C:\WINDOWS\system32
+03cc0000 libintl-2.dll                                                 C:\WINDOWS\system32
+03cd0000 libiconv-2.dll                                                C:\WINDOWS\system32
+03db0000 krb5_32.dll                                   1.3.5.0         C:\WINDOWS\system32
+10000000 SIPH.dll                                                      C:\Program Files\searchinformagent\sifiltersvc1
+16080000 mdnsNSP.dll                                   1.0.3.1         C:\Program Files\Bonjour
+1c000000 comerr32.dll                                  1.3.5.0         C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                                   5.2.6002.22791  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                                   6.0.2900.5512   C:\WINDOWS\system32
+61880000 oleacc.dll                                    7.0.2600.6153   C:\WINDOWS\system32
+63100000 libpq.dll                                     8.2.4.7110      C:\WINDOWS\system32
+68000000 rsaenh.dll                                    5.1.2600.5507   C:\WINDOWS\system32
+698b0000 hnetcfg.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71a30000 mswsock.dll                                   5.1.2600.5625   C:\WINDOWS\System32
+71a70000 wshtcpip.dll                                  5.1.2600.5512   C:\WINDOWS\System32
+71a80000 WS2HELP.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71a90000 WS2_32.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+71ab0000 wsock32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+72cd0000 msacm32.drv                                   5.1.2600.0      C:\WINDOWS\system32
+72ce0000 wdmaud.drv                                    5.1.2600.5512   C:\WINDOWS\system32
+72fc0000 WINSPOOL.DRV                                  5.1.2600.5512   C:\WINDOWS\system32
+73aa0000 MSVCRT20.dll                                  2.12.0.0        C:\WINDOWS\system32
+746e0000 MSCTF.dll                                     5.1.2600.5512   C:\WINDOWS\system32
+76350000 msimg32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+76380000 comdlg32.dll                                  6.0.2900.5512   C:\WINDOWS\system32
+76760000 SHFOLDER.DLL                                  6.0.2900.5512   C:\WINDOWS\system32
+76b20000 winmm.dll                                     5.1.2600.6160   C:\WINDOWS\system32
+76be0000 PSAPI.DLL                                     5.1.2600.5512   C:\WINDOWS\system32
+76c20000 WINTRUST.dll                                  5.131.2600.6285 C:\WINDOWS\system32
+76c80000 IMAGEHLP.dll                                  5.1.2600.6198   C:\WINDOWS\system32
+76d50000 iphlpapi.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+76f10000 DNSAPI.dll                                    5.1.2600.6089   C:\WINDOWS\system32
+76f50000 WLDAP32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+77110000 oleaut32.dll                                  5.1.2600.6341   C:\WINDOWS\system32
+773c0000 comctl32.dll                                  6.0.2900.6028   C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                                     5.1.2600.6168   C:\WINDOWS\system32
+77680000 NTMARTA.DLL                                   5.1.2600.5512   C:\WINDOWS\system32
+77910000 SETUPAPI.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+77a70000 CRYPT32.dll                                   5.131.2600.6369 C:\WINDOWS\system32
+77b10000 MSASN1.dll                                    5.1.2600.5875   C:\WINDOWS\system32
+77bc0000 midimap.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77bd0000 MSACM32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77bf0000 version.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77c00000 msvcrt.dll                                    7.0.2600.5512   C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                                  5.1.2600.6382   C:\WINDOWS\system32
+77e70000 RPCRT4.dll                                    5.1.2600.6022   C:\WINDOWS\system32
+77f10000 GDI32.dll                                     5.1.2600.5698   C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                                   6.0.2900.5912   C:\WINDOWS\system32
+77fe0000 Secur32.dll                                   5.1.2600.5834   C:\WINDOWS\system32
+7c800000 kernel32.dll                                  5.1.2600.6293   C:\WINDOWS\system32
+7c900000 ntdll.dll                                     5.1.2600.6055   C:\WINDOWS\system32
+7c9c0000 shell32.dll                                   6.0.2900.6242   C:\WINDOWS\system32
+7e360000 USER32.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+
+processes:
+0000 Idle                                          0    0
+0004 System                                        0    0    normal
+0568 smss.exe                                      0    0    normal C:\WINDOWS\system32
+05c8 csrss.exe                                     0    0
+05e0 winlogon.exe                                  43   12   high   C:\WINDOWS\system32
+060c services.exe                                  4    0    normal C:\WINDOWS\system32
+0618 lsass.exe                                     4    0    normal C:\WINDOWS\system32
+06dc svchost.exe                                   4    0    normal C:\WINDOWS\system32
+0734 svchost.exe                                   0    0
+0454 svchost.exe                                   4    4    normal C:\WINDOWS\System32
+05f4 svchost.exe                                   0    0
+0784 svchost.exe                                   0    0
+00c4 spoolsv.exe                                   4    0    normal C:\WINDOWS\system32
+0290 avpsus.exe                                    4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+0414 BSQLServer.exe                                6    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+0430 mDNSResponder.exe                             4    0    normal C:\Program Files\Bonjour
+02b4 DataSnapDemoService.exe                       25   15   normal C:\Documents and Settings\59968\Мои документы\RAD Studio\Projects\DataSnapDemoProject
+04a0 hasplms.exe                                   4    0    normal C:\WINDOWS\system32
+0474 jqs.exe                                       4    0    idle   C:\Program Files\Java\jre7\bin
+04f0 klnagent.exe                                  4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+0518 MDM.EXE                                       8    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+03a4 sqlservr.exe                                  4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+05c4 nvsvc32.exe                                   8    1    normal C:\WINDOWS\system32
+0648 pg_ctl.exe                                    0    0
+037c pg_ctl.exe                                    0    0
+03f8 postgres.exe                                  0    0
+0524 postgres.exe                                  0    0
+07a4 sqlbrowser.exe                                0    0
+080c sqlwriter.exe                                 4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+0880 avp.exe                                       7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+0f24 postgres.exe                                  0    0
+0590 postgres.exe                                  0    0
+0a88 postgres.exe                                  0    0
+0a90 postgres.exe                                  0    0
+0a94 postgres.exe                                  0    0
+0a9c postgres.exe                                  0    0
+0aa4 postgres.exe                                  0    0
+0abc postgres.exe                                  0    0
+0ac4 postgres.exe                                  0    0
+0acc postgres.exe                                  0    0
+0ad4 postgres.exe                                  0    0
+0ae0 postgres.exe                                  0    0
+0b80 wmiapsrv.exe                                  4    0    normal C:\WINDOWS\system32\wbem
+0870 Explorer.EXE                                  679  385  normal C:\WINDOWS
+1794 TSVNCache.exe                                 8    1    normal C:\Program Files\TortoiseSVN\bin
+1050 RTHDCPL.EXE                                   761  157  normal C:\WINDOWS
+15d8 RUNDLL32.EXE                                  18   5    normal C:\WINDOWS\system32
+03a8 2GISTrayNotifier.exe                          20   9    normal C:\Program Files\2gis\3.0
+0cec avp.exe                                       21   14   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+1154 Greenshot.exe                                 33   20   normal C:\Program Files\Greenshot
+10e0 jusched.exe                                   10   1    normal C:\Program Files\Common Files\Java\Java Update
+175c ctfmon.exe                                    27   9    normal C:\WINDOWS\system32
+14d0 miranda32.exe                                 1197 474  normal D:\Program Files\MirandaCorporate
+0368 GoldenDict.exe                                72   27   normal C:\Program Files\GoldenDict
+0248 msmsgs.exe                                    11   10   normal C:\Program Files\Messenger
+14fc ScreenTranslator.exe                          15   16   normal C:\Program Files\Screen Translator
+15b4 pgadmin3.exe                                  1900 545  normal C:\Program Files\pgAdmin III\1.22
+12ec vapm.exe                                      4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+0574 unsecapp.exe                                  0    0
+1720 svchost.exe                                   4    0    normal C:\WINDOWS\system32
+0b94 bds.exe                                       3243 1098 normal C:\Program Files\Borland\BDS\4.0\Bin
+0cb8 DocumentFlowSystemApplicationServiceLayer.exe 148  78   normal C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application Service Layer
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 01edc338
+ebx = 00404331
+ecx = 01edbab0
+edx = 00404331
+esi = 00404331
+edi = 0012fe9c
+eip = 00404331
+esp = 0012fd08
+ebp = 0012fd90
+
+stack dump:
+0012fd08  31 43 40 00 de fa ed 0e - 01 00 00 00 07 00 00 00  1C@.............
+0012fd18  1c fd 12 00 31 43 40 00 - 38 c3 ed 01 31 43 40 00  ....1C@.8...1C@.
+0012fd28  31 43 40 00 9c fe 12 00 - 90 fd 12 00 38 fd 12 00  1C@.........8...
+0012fd38  02 00 00 00 54 30 40 00 - 10 bb ed 01 b0 ba ed 01  ....T0@.........
+0012fd48  31 43 40 00 b0 ba ed 01 - 14 1e 46 00 01 bb ed 01  1C@.......F.....
+0012fd58  6a 43 40 00 77 43 40 00 - 0d 00 47 00 e3 81 7d 00  jC@.wC@...G...}.
+0012fd68  10 bb ed 01 00 53 df 01 - 77 43 40 00 0d 00 47 00  .....S..wC@...G.
+0012fd78  76 80 7d 00 7e 80 7d 00 - e2 0f 28 03 00 53 df 01  v.}.~.}...(..S..
+0012fd88  00 00 00 00 00 00 00 00 - f4 fd 12 00 25 46 5d 00  ............%F].
+0012fd98  10 bb ed 01 20 53 df 01 - 48 8f 48 00 b0 fd 12 00  .... S..H.H.....
+0012fda8  90 49 40 00 f4 fd 12 00 - bc fd 12 00 91 8f 48 00  .I@...........H.
+0012fdb8  f4 fd 12 00 c8 fd 12 00 - ee 8f 48 00 f4 fd 12 00  ..........H.....
+0012fdc8  fc fd 12 00 0d 90 48 00 - f4 fd 12 00 9c fe 12 00  ......H.........
+0012fdd8  e2 0f 28 03 00 00 00 00 - 00 00 00 00 01 00 00 00  ..(.............
+0012fde8  c8 c9 16 04 a4 fe 27 04 - e2 0f 28 01 1c fe 12 00  ......'...(.....
+0012fdf8  c3 a1 4d 00 b8 fe 12 00 - d6 a1 4d 00 1c fe 12 00  ..M.......M.....
+0012fe08  9c fe 12 00 e2 0f 28 03 - 00 00 00 00 24 fe 12 00  ......(.....$...
+0012fe18  70 b4 e9 01 34 fe 12 00 - 62 a7 48 00 00 00 00 00  p...4...b.H.....
+0012fe28  00 00 00 00 00 00 00 00 - 00 00 00 00 60 fe 12 00  ............`...
+0012fe38  34 87 36 7e ce 06 04 00 - 00 00 00 00 00 00 00 00  4.6~............
+
+disassembling:
+[...]
+00404321      mov     ebx, eax
+00404323      mov     eax, ebx
+00404325      call    +$a6 ($4043d0)         ; System.TObject.CleanupInstance
+0040432a      mov     eax, ebx
+0040432c      call    -$141d ($402f14)       ; System.@FreeMem
+00404331    > pop     ebx
+00404332      ret
+
+date/time          : 2019-10-24, 15:43:42, 756ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 2 hours 57 minutes
+program up time    : 33 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 587/2047 MB (free/total)
+free disk space    : (C:) 664,07 MB
+display mode       : 1280x1024, 32 bit
+process id         : $ed0
+allocated memory   : 20,56 MB
+largest free block : 811,85 MB
+executable         : DocumentFlowSystemApplicationServiceLayer.exe
+exec. date/time    : 2019-10-24 15:43
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $f3eee6d6, $3ccac127, $60928595
+count              : 2
+exception number   : 2
+exception class    : EInvalidPointer
+exception message  : Invalid pointer operation.
+
+thread $1468 (TSQLCommandThread):
+00404331 +11 DocumentFlowSystemApplicationServiceLayer.exe System                      85 +0 TObject.FreeInstance
+00461e11 +19 DocumentFlowSystemApplicationServiceLayer.exe madExcept                         InterceptClassDestroy
+005bc041 +1d DocumentFlowSystemApplicationServiceLayer.exe ZAbstractDataset           220 +2 TZAbstractDataset.Destroy
+00404374 +08 DocumentFlowSystemApplicationServiceLayer.exe System                      85 +0 TObject.Free
+00470008 +08 DocumentFlowSystemApplicationServiceLayer.exe SysUtils                          FreeAndNil
+005d4378 +30 DocumentFlowSystemApplicationServiceLayer.exe DataSetOperationThreadUnit 139 +7 TDataSetOperationThread.Execute
+00462153 +2b DocumentFlowSystemApplicationServiceLayer.exe madExcept                         HookedTThreadExecute
+00489054 +34 DocumentFlowSystemApplicationServiceLayer.exe Classes                           ThreadProc
+00405300 +28 DocumentFlowSystemApplicationServiceLayer.exe System                      85 +0 ThreadWrapper
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept                         CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept                         ThreadExceptFrame
+>> created by main thread ($370) at:
+005d413e +16 DocumentFlowSystemApplicationServiceLayer.exe CancellationThreadUnit      41 +2 TCancellationThread.Create
+
+main thread ($370):
+7e369416 +00a USER32.dll                                                                                     WaitMessage
+004db469 +12d DocumentFlowSystemApplicationServiceLayer.exe Forms                                            TApplication.Idle
+004da92f +017 DocumentFlowSystemApplicationServiceLayer.exe Forms                                            TApplication.HandleMessage
+004dab42 +096 DocumentFlowSystemApplicationServiceLayer.exe Forms                                            TApplication.Run
+007e109f +03b DocumentFlowSystemApplicationServiceLayer.exe DocumentFlowSystemApplicationServiceLayer 409 +3 initialization
+
+thread $180:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $100:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $1258:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $16c4:
+7c90df58 +0a ntdll.dll     NtWaitForSingleObject
+7c8025d5 +85 kernel32.dll  WaitForSingleObjectEx
+7c80253d +0d kernel32.dll  WaitForSingleObject
+
+thread $1694:
+7c90df48 +0a ntdll.dll     NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll  WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll  WaitForMultipleObjects
+
+thread $15ec:
+7c90df48 +0a ntdll.dll                                               NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll                                            WaitForMultipleObjectsEx
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($370) at:
+77de8c8c +00 ADVAPI32.dll
+
+thread $177c: <priority:15>
+7c90df48 +0a ntdll.dll                                               NtWaitForMultipleObjects
+7c80958a +00 kernel32.dll                                            WaitForMultipleObjectsEx
+7c80a110 +13 kernel32.dll                                            WaitForMultipleObjects
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($370) at:
+72ce328c +00 wdmaud.drv
+
+thread $16cc: <priority:2>
+7e377766 +3b USER32.dll                                              GetMessageA
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+7c914a9e +43 ntdll.dll                                               bsearch
+>> created by main thread ($370) at:
+76b25e9f +00 winmm.dll
+
+thread $46c: <priority:1>
+7c90da48 +0a ntdll.dll                                               NtRemoveIoCompletion
+00462035 +0d DocumentFlowSystemApplicationServiceLayer.exe madExcept CallThreadProcSafe
+0046209f +37 DocumentFlowSystemApplicationServiceLayer.exe madExcept ThreadExceptFrame
+>> created by main thread ($370) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 DocumentFlowSystemApplicationServiceLayer.exe                 C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application Service Layer
+011e0000 PluginAPI.dll                                                 C:\Program Files\searchinformagent\sifiltersvc1
+01210000 SIHLib32.dll                                                  C:\Program Files\searchinformagent\sifiltersvc1
+01250000 devin_p32.dll                                                 C:\Program Files\searchinformagent\sifiltersvc1
+01420000 twain_32.dll                                  1.6.0.3         C:\WINDOWS\system32
+018a0000 WiaHs32.dll                                   2.0.0.0         C:\Program Files\searchinformagent\sifiltersvc1
+01b90000 hdesvc_p32.dll                                                C:\Program Files\searchinformagent\sifiltersvc1
+01d10000 prtf_p32.dll                                                  C:\Program Files\searchinformagent\sifiltersvc1
+03720000 libeay32.dll                                  0.9.8.1         C:\WINDOWS\system32
+03830000 ssleay32.dll                                  0.9.8.1         C:\WINDOWS\system32
+03cc0000 libintl-2.dll                                                 C:\WINDOWS\system32
+03cd0000 libiconv-2.dll                                                C:\WINDOWS\system32
+03db0000 krb5_32.dll                                   1.3.5.0         C:\WINDOWS\system32
+10000000 SIPH.dll                                                      C:\Program Files\searchinformagent\sifiltersvc1
+16080000 mdnsNSP.dll                                   1.0.3.1         C:\Program Files\Bonjour
+1c000000 comerr32.dll                                  1.3.5.0         C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                                   5.2.6002.22791  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                                   6.0.2900.5512   C:\WINDOWS\system32
+61880000 oleacc.dll                                    7.0.2600.6153   C:\WINDOWS\system32
+63100000 libpq.dll                                     8.2.4.7110      C:\WINDOWS\system32
+68000000 rsaenh.dll                                    5.1.2600.5507   C:\WINDOWS\system32
+698b0000 hnetcfg.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71a30000 mswsock.dll                                   5.1.2600.5625   C:\WINDOWS\System32
+71a70000 wshtcpip.dll                                  5.1.2600.5512   C:\WINDOWS\System32
+71a80000 WS2HELP.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71a90000 WS2_32.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+71ab0000 wsock32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+72cd0000 msacm32.drv                                   5.1.2600.0      C:\WINDOWS\system32
+72ce0000 wdmaud.drv                                    5.1.2600.5512   C:\WINDOWS\system32
+72fc0000 WINSPOOL.DRV                                  5.1.2600.5512   C:\WINDOWS\system32
+73aa0000 MSVCRT20.dll                                  2.12.0.0        C:\WINDOWS\system32
+746e0000 MSCTF.dll                                     5.1.2600.5512   C:\WINDOWS\system32
+76350000 msimg32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+76380000 comdlg32.dll                                  6.0.2900.5512   C:\WINDOWS\system32
+76760000 SHFOLDER.DLL                                  6.0.2900.5512   C:\WINDOWS\system32
+76b20000 winmm.dll                                     5.1.2600.6160   C:\WINDOWS\system32
+76be0000 PSAPI.DLL                                     5.1.2600.5512   C:\WINDOWS\system32
+76c20000 WINTRUST.dll                                  5.131.2600.6285 C:\WINDOWS\system32
+76c80000 IMAGEHLP.dll                                  5.1.2600.6198   C:\WINDOWS\system32
+76d50000 iphlpapi.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+76f10000 DNSAPI.dll                                    5.1.2600.6089   C:\WINDOWS\system32
+76f50000 WLDAP32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+77110000 oleaut32.dll                                  5.1.2600.6341   C:\WINDOWS\system32
+773c0000 comctl32.dll                                  6.0.2900.6028   C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                                     5.1.2600.6168   C:\WINDOWS\system32
+77680000 NTMARTA.DLL                                   5.1.2600.5512   C:\WINDOWS\system32
+77910000 SETUPAPI.dll                                  5.1.2600.5512   C:\WINDOWS\system32
+77a70000 CRYPT32.dll                                   5.131.2600.6369 C:\WINDOWS\system32
+77b10000 MSASN1.dll                                    5.1.2600.5875   C:\WINDOWS\system32
+77bc0000 midimap.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77bd0000 MSACM32.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77bf0000 version.dll                                   5.1.2600.5512   C:\WINDOWS\system32
+77c00000 msvcrt.dll                                    7.0.2600.5512   C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                                  5.1.2600.6382   C:\WINDOWS\system32
+77e70000 RPCRT4.dll                                    5.1.2600.6022   C:\WINDOWS\system32
+77f10000 GDI32.dll                                     5.1.2600.5698   C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                                   6.0.2900.5912   C:\WINDOWS\system32
+77fe0000 Secur32.dll                                   5.1.2600.5834   C:\WINDOWS\system32
+7c800000 kernel32.dll                                  5.1.2600.6293   C:\WINDOWS\system32
+7c900000 ntdll.dll                                     5.1.2600.6055   C:\WINDOWS\system32
+7c9c0000 shell32.dll                                   6.0.2900.6242   C:\WINDOWS\system32
+7e360000 USER32.dll                                    5.1.2600.5512   C:\WINDOWS\system32
+
+processes:
+0000 Idle                                          0    0
+0004 System                                        0    0    normal
+0568 smss.exe                                      0    0    normal C:\WINDOWS\system32
+05c8 csrss.exe                                     0    0
+05e0 winlogon.exe                                  43   12   high   C:\WINDOWS\system32
+060c services.exe                                  4    0    normal C:\WINDOWS\system32
+0618 lsass.exe                                     4    0    normal C:\WINDOWS\system32
+06dc svchost.exe                                   4    0    normal C:\WINDOWS\system32
+0734 svchost.exe                                   0    0
+0454 svchost.exe                                   4    4    normal C:\WINDOWS\System32
+05f4 svchost.exe                                   0    0
+0784 svchost.exe                                   0    0
+00c4 spoolsv.exe                                   4    0    normal C:\WINDOWS\system32
+0290 avpsus.exe                                    4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+0414 BSQLServer.exe                                6    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+0430 mDNSResponder.exe                             4    0    normal C:\Program Files\Bonjour
+02b4 DataSnapDemoService.exe                       25   15   normal C:\Documents and Settings\59968\Мои документы\RAD Studio\Projects\DataSnapDemoProject
+04a0 hasplms.exe                                   4    0    normal C:\WINDOWS\system32
+0474 jqs.exe                                       4    0    idle   C:\Program Files\Java\jre7\bin
+04f0 klnagent.exe                                  4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+0518 MDM.EXE                                       8    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+03a4 sqlservr.exe                                  4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+05c4 nvsvc32.exe                                   8    1    normal C:\WINDOWS\system32
+0648 pg_ctl.exe                                    0    0
+037c pg_ctl.exe                                    0    0
+03f8 postgres.exe                                  0    0
+0524 postgres.exe                                  0    0
+07a4 sqlbrowser.exe                                0    0
+080c sqlwriter.exe                                 4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+0880 avp.exe                                       7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+0f24 postgres.exe                                  0    0
+0590 postgres.exe                                  0    0
+0a88 postgres.exe                                  0    0
+0a90 postgres.exe                                  0    0
+0a94 postgres.exe                                  0    0
+0a9c postgres.exe                                  0    0
+0aa4 postgres.exe                                  0    0
+0abc postgres.exe                                  0    0
+0ac4 postgres.exe                                  0    0
+0acc postgres.exe                                  0    0
+0ad4 postgres.exe                                  0    0
+0ae0 postgres.exe                                  0    0
+0b80 wmiapsrv.exe                                  4    0    normal C:\WINDOWS\system32\wbem
+0870 Explorer.EXE                                  717  396  normal C:\WINDOWS
+1794 TSVNCache.exe                                 8    1    normal C:\Program Files\TortoiseSVN\bin
+1050 RTHDCPL.EXE                                   761  157  normal C:\WINDOWS
+15d8 RUNDLL32.EXE                                  18   5    normal C:\WINDOWS\system32
+03a8 2GISTrayNotifier.exe                          20   9    normal C:\Program Files\2gis\3.0
+0cec avp.exe                                       21   14   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+1154 Greenshot.exe                                 33   20   normal C:\Program Files\Greenshot
+10e0 jusched.exe                                   10   1    normal C:\Program Files\Common Files\Java\Java Update
+175c ctfmon.exe                                    27   9    normal C:\WINDOWS\system32
+14d0 miranda32.exe                                 1197 474  normal D:\Program Files\MirandaCorporate
+0368 GoldenDict.exe                                72   27   normal C:\Program Files\GoldenDict
+0248 msmsgs.exe                                    11   10   normal C:\Program Files\Messenger
+14fc ScreenTranslator.exe                          15   16   normal C:\Program Files\Screen Translator
+15b4 pgadmin3.exe                                  1900 545  normal C:\Program Files\pgAdmin III\1.22
+12ec vapm.exe                                      4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+0574 unsecapp.exe                                  0    0
+1720 svchost.exe                                   4    0    normal C:\WINDOWS\system32
+0b94 bds.exe                                       3247 1109 normal C:\Program Files\Borland\BDS\4.0\Bin
+15b0 wmiprvse.exe                                  0    0
+0ed0 DocumentFlowSystemApplicationServiceLayer.exe 157  79   normal C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application Service Layer
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 01edc308
+ebx = 00404331
+ecx = 01e8d5d0
+edx = 00404331
+esi = 00404331
+edi = ffffffff
+eip = 00404331
+esp = 0427fe90
+ebp = 0427ff28
+
+stack dump:
+0427fe90  31 43 40 00 de fa ed 0e - 01 00 00 00 07 00 00 00  1C@.............
+0427fea0  a4 fe 27 04 31 43 40 00 - 08 c3 ed 01 31 43 40 00  ..'.1C@.....1C@.
+0427feb0  31 43 40 00 ff ff ff ff - 28 ff 27 04 c0 fe 27 04  1C@.....(.'...'.
+0427fec0  02 00 00 00 54 30 40 00 - d0 d5 e8 01 d0 d5 e8 01  ....T0@.........
+0427fed0  31 43 40 00 d0 d5 e8 01 - 14 1e 46 00 01 d5 e8 01  1C@.......F.....
+0427fee0  46 c0 5b 00 b0 d5 ea 01 - d0 df de 01 77 43 40 00  F.[.........wC@.
+0427fef0  0d 00 47 00 7d 43 5d 00 - 48 43 5d 00 55 21 46 00  ..G.}C].HC].U!F.
+0427ff00  0c ff 27 04 90 49 40 00 - 28 ff 27 04 30 ff 27 04  ..'..I@.(.'.0.'.
+0427ff10  be 21 46 00 28 ff 27 04 - ff ff ff ff b0 d5 ea 01  .!F.(.'.........
+0427ff20  78 ff 27 04 d0 df de 01 - 58 ff 27 04 57 90 48 00  x.'.....X.'.W.H.
+0427ff30  3c ff 27 04 61 90 48 00 - 58 ff 27 04 60 ff 27 04  <.'.a.H.X.'.`.'.
+0427ff40  b7 90 48 00 58 ff 27 04 - ff ff ff ff b0 d5 ea 01  ..H.X.'.........
+0427ff50  78 ff 27 04 d0 df de 01 - 6c ff 27 04 02 53 40 00  x.'.....l.'..S@.
+0427ff60  8c ff 27 04 48 4e 40 00 - 6c ff 27 04 7c ff 27 04  ..'.HN@.l.'.|.'.
+0427ff70  37 20 46 00 b0 d5 ea 01 - d8 52 40 00 b4 ff 27 04  7 F......R@...'.
+0427ff80  a4 20 46 00 d8 52 40 00 - b0 d5 ea 01 98 ff 27 04  . F..R@.......'.
+0427ff90  b1 20 46 00 b4 ff 27 04 - dc ff 27 04 15 21 46 00  . F...'...'..!F.
+0427ffa0  b4 ff 27 04 ff ff ff ff - 3f 0c 97 7c 30 f5 ea 01  ..'.....?..|0...
+0427ffb0  b0 ff 27 04 ec ff 27 04 - 29 b7 80 7c 30 f5 ea 01  ..'...'.)..|0...
+0427ffc0  ff ff ff ff 3f 0c 97 7c - 30 f5 ea 01 00 f0 fa 7f  ....?..|0.......
+
+disassembling:
+[...]
+00404321      mov     ebx, eax
+00404323      mov     eax, ebx
+00404325      call    +$a6 ($4043d0)         ; System.TObject.CleanupInstance
+0040432a      mov     eax, ebx
+0040432c      call    -$141d ($402f14)       ; System.@FreeMem
+00404331    > pop     ebx
+00404332      ret
+
+date/time          : 2019-12-02, 11:26:46, 646ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 4 hours
+program up time    : 23 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 998/2047 MB (free/total)
+free disk space    : (C:) 721,43 MB
+display mode       : 1280x1024, 32 bit
+process id         : $d4c
+allocated memory   : 13,60 MB
+largest free block : 1010,35 MB
+executable         : Application.exe
+exec. date/time    : 2019-12-02 11:26
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $f583b78c, $daa49641, $daa49641
+exception number   : 1
+exception class    : EDatabaseError
+exception message  : Cannot perform this operation on a closed dataset.
+
+main thread ($b04):
+004d59dc +090 Application.exe DB                                                        DatabaseError
+004e17ca +03e Application.exe DB                                                        TDataSet.CheckActive
+00590887 +007 Application.exe ZAbstractRODataset                                1723 +1 TZAbstractRODataset.GetRecordCount
+005a03ad +005 Application.exe AbstractDataSetHolder                              470 +0 TAbstractDataSetHolder.RecordCount
+005a1095 +041 Application.exe BasedOnDatabaseEmployeeSetReadServiceTestFormUnit  103 +7 TBasedOnDatabaseEmployeeSetReadServiceTestForm.RunEmployeeSetReadServiceTest
+005a0dfc +000 Application.exe BasedOnDatabaseEmployeeSetReadServiceTestFormUnit   47 +0 TBasedOnDatabaseEmployeeSetReadServiceTestForm.Button1Click
+004a9130 +064 Application.exe Controls                                                  TControl.Click
+0049657a +01e Application.exe StdCtrls                                                  TButton.Click
+00496678 +00c Application.exe StdCtrls                                                  TButton.CNCommand
+004a8c2b +2bb Application.exe Controls                                                  TControl.WndProc
+004ac971 +499 Application.exe Controls                                                  TWinControl.WndProc
+00496424 +06c Application.exe StdCtrls                                                  TButtonControl.WndProc
+004a88b8 +024 Application.exe Controls                                                  TControl.Perform
+004acaa7 +023 Application.exe Controls                                                  DoControlMsg
+004ad21b +00b Application.exe Controls                                                  TWinControl.WMCommand
+004bf3b4 +02c Application.exe Forms                                                     TCustomForm.WMCommand
+004a8c2b +2bb Application.exe Controls                                                  TControl.WndProc
+004ac971 +499 Application.exe Controls                                                  TWinControl.WndProc
+004bc889 +4c1 Application.exe Forms                                                     TCustomForm.WndProc
+004ac0fc +02c Application.exe Controls                                                  TWinControl.MainWndProc
+00487a0c +014 Application.exe Classes                                                   StdWndProc
+7e3792de +044 USER32.dll                                                                SendMessageW
+7e37a993 +016 USER32.dll                                                                CallWindowProcA
+004aca53 +0d7 Application.exe Controls                                                  TWinControl.DefaultHandler
+004a9550 +010 Application.exe Controls                                                  TControl.WMLButtonUp
+004a8c2b +2bb Application.exe Controls                                                  TControl.WndProc
+004ac971 +499 Application.exe Controls                                                  TWinControl.WndProc
+00496424 +06c Application.exe StdCtrls                                                  TButtonControl.WndProc
+004ac0fc +02c Application.exe Controls                                                  TWinControl.MainWndProc
+00487a0c +014 Application.exe Classes                                                   StdWndProc
+7e3696c2 +00a USER32.dll                                                                DispatchMessageA
+004c3ec8 +0fc Application.exe Forms                                                     TApplication.ProcessMessage
+004c3f02 +00a Application.exe Forms                                                     TApplication.HandleMessage
+004c4122 +096 Application.exe Forms                                                     TApplication.Run
+005a71bf +03b Application.exe Application                                        421 +3 initialization
+
+thread $b80: <priority:1>
+7c90da48 +0a ntdll.dll                 NtRemoveIoCompletion
+0046183d +0d Application.exe madExcept CallThreadProcSafe
+004618a7 +37 Application.exe madExcept ThreadExceptFrame
+>> created by main thread ($b04) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 Application.exe                C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application
+02030000 ssleay32.dll    0.9.8.1        C:\WINDOWS\system32
+022b0000 libintl-2.dll                  C:\WINDOWS\system32
+022c0000 libiconv-2.dll                 C:\WINDOWS\system32
+023a0000 krb5_32.dll     1.3.5.0        C:\WINDOWS\system32
+10000000 libeay32.dll    0.9.8.1        C:\WINDOWS\system32
+16080000 mdnsNSP.dll     1.0.3.1        C:\Program Files\Bonjour
+1c000000 comerr32.dll    1.3.5.0        C:\WINDOWS\system32
+5b260000 uxtheme.dll     6.0.2900.5512  C:\WINDOWS\system32
+5d5b0000 comctl32.dll    5.82.2900.6028 C:\WINDOWS\system32
+63100000 libpq.dll       8.2.4.7110     C:\WINDOWS\system32
+68000000 rsaenh.dll      5.1.2600.5507  C:\WINDOWS\system32
+698b0000 hnetcfg.dll     5.1.2600.5512  C:\WINDOWS\system32
+71a30000 mswsock.dll     5.1.2600.5625  C:\WINDOWS\System32
+71a70000 wshtcpip.dll    5.1.2600.5512  C:\WINDOWS\System32
+71a80000 WS2HELP.dll     5.1.2600.5512  C:\WINDOWS\system32
+71a90000 WS2_32.dll      5.1.2600.5512  C:\WINDOWS\system32
+71ab0000 wsock32.dll     5.1.2600.5512  C:\WINDOWS\system32
+71bd0000 SAMLIB.dll      5.1.2600.5512  C:\WINDOWS\system32
+746e0000 MSCTF.dll       5.1.2600.5512  C:\WINDOWS\system32
+76380000 comdlg32.dll    6.0.2900.5512  C:\WINDOWS\system32
+76760000 SHFOLDER.DLL    6.0.2900.5512  C:\WINDOWS\system32
+76d50000 iphlpapi.dll    5.1.2600.5512  C:\WINDOWS\system32
+76f10000 DNSAPI.dll      5.1.2600.6089  C:\WINDOWS\system32
+76f50000 WLDAP32.dll     5.1.2600.5512  C:\WINDOWS\system32
+76fb0000 rasadhlp.dll    5.1.2600.5512  C:\WINDOWS\system32
+77110000 oleaut32.dll    5.1.2600.6341  C:\WINDOWS\system32
+773c0000 comctl32.dll    6.0.2900.6028  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll       5.1.2600.6168  C:\WINDOWS\system32
+77680000 NTMARTA.DLL     5.1.2600.5512  C:\WINDOWS\system32
+77910000 SETUPAPI.dll    5.1.2600.5512  C:\WINDOWS\system32
+77bf0000 version.dll     5.1.2600.5512  C:\WINDOWS\system32
+77c00000 msvcrt.dll      7.0.2600.5512  C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll    5.1.2600.6382  C:\WINDOWS\system32
+77e70000 RPCRT4.dll      5.1.2600.6022  C:\WINDOWS\system32
+77f10000 GDI32.dll       5.1.2600.5698  C:\WINDOWS\system32
+77f60000 SHLWAPI.dll     6.0.2900.5912  C:\WINDOWS\system32
+77fe0000 Secur32.dll     5.1.2600.5834  C:\WINDOWS\system32
+7c800000 kernel32.dll    5.1.2600.6293  C:\WINDOWS\system32
+7c900000 ntdll.dll       5.1.2600.6055  C:\WINDOWS\system32
+7c9c0000 shell32.dll     6.0.2900.6242  C:\WINDOWS\system32
+7e360000 USER32.dll      5.1.2600.5512  C:\WINDOWS\system32
+
+processes:
+000 Idle                 0    0
+004 System               0    0    normal
+560 smss.exe             0    0    normal C:\WINDOWS\system32
+5c0 csrss.exe            0    0
+5d8 winlogon.exe         41   12   high   C:\WINDOWS\system32
+604 services.exe         4    0    normal C:\WINDOWS\system32
+610 lsass.exe            4    0    normal C:\WINDOWS\system32
+6d8 svchost.exe          4    0    normal C:\WINDOWS\system32
+72c svchost.exe          0    0
+444 svchost.exe          4    4    normal C:\WINDOWS\System32
+568 svchost.exe          0    0
+774 svchost.exe          0    0
+0d4 spoolsv.exe          4    0    normal C:\WINDOWS\system32
+26c avpsus.exe           4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+2c8 BSQLServer.exe       4    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+704 mDNSResponder.exe    4    0    normal C:\Program Files\Bonjour
+4b4 Explorer.EXE         1025 714  normal C:\WINDOWS
+10c TSVNCache.exe        8    1    normal C:\Program Files\TortoiseSVN\bin
+188 RTHDCPL.EXE          759  157  normal C:\WINDOWS
+238 RUNDLL32.EXE         16   5    normal C:\WINDOWS\system32
+240 2GISTrayNotifier.exe 18   9    normal C:\Program Files\2gis\3.0
+248 avp.exe              21   10   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+258 Greenshot.exe        31   20   normal C:\Program Files\Greenshot
+260 jusched.exe          8    1    normal C:\Program Files\Common Files\Java\Java Update
+288 ctfmon.exe           25   9    normal C:\WINDOWS\system32
+294 miranda32.exe        1173 419  normal D:\Program Files\MirandaCorporate
+2d8 GoldenDict.exe       76   30   normal C:\Program Files\GoldenDict
+358 msmsgs.exe           9    10   normal C:\Program Files\Messenger
+3d0 ScreenTranslator.exe 13   16   normal C:\Program Files\Screen Translator
+6e0 hasplms.exe          4    0    normal C:\WINDOWS\system32
+1ac pgadmin3.exe         1278 339  normal C:\Program Files\pgAdmin III\1.22
+2ac jqs.exe              4    0    idle   C:\Program Files\Java\jre7\bin
+2c0 klnagent.exe         4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+470 MDM.EXE              4    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+e98 sqlservr.exe         4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+ed8 nvsvc32.exe          8    1    normal C:\WINDOWS\system32
+390 pg_ctl.exe           0    0
+5a8 pg_ctl.exe           0    0
+584 postgres.exe         0    0
+948 sqlbrowser.exe       0    0
+950 sqlwriter.exe        4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+9ac svchost.exe          4    0    normal C:\WINDOWS\system32
+9d4 postgres.exe         0    0
+9fc avp.exe              7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+ec4 postgres.exe         0    0
+ac4 postgres.exe         0    0
+acc postgres.exe         0    0
+ad8 postgres.exe         0    0
+ae0 postgres.exe         0    0
+ae8 postgres.exe         0    0
+e78 postgres.exe         0    0
+81c postgres.exe         0    0
+824 postgres.exe         0    0
+da0 postgres.exe         0    0
+ed4 postgres.exe         0    0
+844 postgres.exe         0    0
+dc4 wmiapsrv.exe         4    0    normal C:\WINDOWS\system32\wbem
+f4c vapm.exe             4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+d5c unsecapp.exe         0    0
+3ec taskmgr.exe          103  117  high   C:\WINDOWS\system32
+f78 bds.exe              3264 1086 normal C:\Program Files\Borland\BDS\4.0\Bin
+d4c Application.exe      69   39   normal C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\DDFS Working Copy\Application
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 00be4500
+ebx = 00bd5dc0
+ecx = 00be4500
+edx = 004d59e1
+esi = 001652c4
+edi = 0012f758
+eip = 004d59e1
+esp = 0012f4f0
+ebp = 0012f550
+
+stack dump:
+0012f4f0  e1 59 4d 00 de fa ed 0e - 01 00 00 00 07 00 00 00  .YM.............
+0012f500  04 f5 12 00 e1 59 4d 00 - 00 45 be 00 c0 5d bd 00  .....YM..E...]..
+0012f510  c4 52 16 00 58 f7 12 00 - 50 f5 12 00 20 f5 12 00  .R..X...P... ...
+0012f520  58 f5 12 00 fc 4a 40 00 - 50 f5 12 00 5c 65 49 00  X....J@.P...\eI.
+0012f530  c0 5d bd 00 00 00 00 00 - 58 f7 12 00 a4 f5 12 00  .]......X.......
+0012f540  58 07 5a 00 70 f5 12 00 - 00 00 00 00 00 00 00 00  X.Z.p...........
+0012f550  70 f5 12 00 cf 17 4e 00 - 84 f5 12 00 fc 4a 40 00  p.....N......J@.
+0012f560  70 f5 12 00 c0 5d bd 00 - 00 00 00 00 00 00 00 00  p....]..........
+0012f570  b4 f5 12 00 8d 08 59 00 - d0 ae c3 00 b3 03 5a 00  ......Y.......Z.
+0012f580  98 10 5a 00 30 f9 12 00 - fc 4a 40 00 b4 f5 12 00  ..Z.0....J@.....
+0012f590  50 5b bd 00 00 00 00 00 - 00 00 00 00 00 00 00 00  P[..............
+0012f5a0  00 00 00 00 00 00 00 00 - 00 00 00 00 4b 05 00 00  ............K...
+0012f5b0  00 00 00 00 fc f6 12 00 - 01 0e 5a 00 36 91 4a 00  ..........Z.6.J.
+0012f5c0  50 5b bd 00 7f 65 49 00 - 58 f7 12 00 7d 66 49 00  P[...eI.X...}fI.
+0012f5d0  50 5b bd 00 2e 8c 4a 00 - 58 f7 12 00 60 f9 12 00  P[....J.X...`...
+0012f5e0  50 5b bd 00 dc f6 12 00 - 0d 53 37 7e 05 5a f1 77  P[.......S7~.Z.w
+0012f5f0  ce 4a 01 6e e0 7a 86 00 - ce 4a 01 6e ba 84 36 7e  .J.n.z...J.n..6~
+0012f600  00 00 00 00 01 00 00 00 - d2 05 05 00 00 00 00 00  ................
+0012f610  20 00 00 00 20 f6 12 00 - d8 99 37 7e 0a 80 00 00   ... .....7~....
+0012f620  ac f6 12 00 a2 5b 37 7e - 0a 80 00 00 d2 05 05 00  .....[7~........
+
+disassembling:
+00590880      public ZAbstractRODataset.TZAbstractRODataset.GetRecordCount:  ; function entry point
+00590880 1722   push    ebx
+00590881        mov     ebx, eax
+00590883 1723   mov     eax, ebx
+00590885        mov     edx, [eax]
+00590887      > call    dword ptr [edx+$a4]
+0059088d 1724   cmp     byte ptr [ebx+$88], 0
+00590894        jnz     loc_5908a3
+00590896 1725   mov     edx, [ebx+$1ac]
+0059089c        mov     eax, ebx
+0059089e        call    -$2023 ($58e880)       ; ZAbstractRODataset.TZAbstractRODataset.FetchRows
+[...]
+

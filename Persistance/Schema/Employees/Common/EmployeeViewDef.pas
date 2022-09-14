@@ -1,0 +1,23 @@
+unit EmployeeViewDef;
+
+interface
+
+const
+
+  EMPLOYEE_VIEW_TABLE_NAME = 'doc.v_working_employees';
+
+  EMPLOYEE_VIEW_TABLE_ID_FIELD = 'id';
+  EMPLOYEE_VIEW_TABLE_PERSONNEL_NUMBER_FIELD = 'personnel_number';
+  EMPLOYEE_VIEW_TABLE_NAME_FIELD = 'name';
+  EMPLOYEE_VIEW_TABLE_SURNAME_FIELD = 'surname';
+  EMPLOYEE_VIEW_TABLE_TELEPHONE_NUMBER_FIELD = 'telephone_number';
+  EMPLOYEE_VIEW_TABLE_PATRONYMIC_FIELD = 'patronymic';
+  EMPLOYEE_VIEW_TABLE_SPECIALITY_FIELD = 'speciality';
+  EMPLOYEE_VIEW_TABLE_DEPARTMENT_ID_FIELD = 'department_id';
+  EMPLOYEE_VIEW_TABLE_DEPARTMENT_CODE_FIELD = 'department_code';
+  EMPLOYEE_VIEW_TABLE_DEPARTMENT_SHORT_NAME_FIELD = 'department_short_name';
+  EMPLOYEE_VIEW_TABLE_DEPARTMENT_FULL_NAME_FIELD = 'department_full_name';
+  
+implementation
+
+end.

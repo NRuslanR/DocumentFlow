@@ -1,0 +1,84 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{8874BB97-116B-4CA4-BBC6-FD4F65F69472}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Presentation Layer\DocumentFlowSystemPresentationLayer.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\ValidateEditsPackage.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Colored Page Control\ColoredPageControlPackage.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Domain\DocumentFlowSystemDomainLayer.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Data Access Layer\DocumentFlowSystemDataAccessLayer.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="DocumentFlowSystemPresentationLayer">
+			<MSBuild Projects="Presentation Layer\DocumentFlowSystemPresentationLayer.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemPresentationLayer:Clean">
+			<MSBuild Targets="Clean" Projects="Presentation Layer\DocumentFlowSystemPresentationLayer.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemPresentationLayer:Make">
+			<MSBuild Targets="Make" Projects="Presentation Layer\DocumentFlowSystemPresentationLayer.dproj"/>
+		</Target>
+		<Target Name="ValidateEditsPackage">
+			<MSBuild Projects="D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\ValidateEditsPackage.dproj"/>
+		</Target>
+		<Target Name="ValidateEditsPackage:Clean">
+			<MSBuild Targets="Clean" Projects="D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\ValidateEditsPackage.dproj"/>
+		</Target>
+		<Target Name="ValidateEditsPackage:Make">
+			<MSBuild Targets="Make" Projects="D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\ValidateEditsPackage.dproj"/>
+		</Target>
+		<Target Name="ColoredPageControlPackage">
+			<MSBuild Projects="D:\Common Delphi Libs\u_59968 Delphi Modules\Colored Page Control\ColoredPageControlPackage.dproj"/>
+		</Target>
+		<Target Name="ColoredPageControlPackage:Clean">
+			<MSBuild Targets="Clean" Projects="D:\Common Delphi Libs\u_59968 Delphi Modules\Colored Page Control\ColoredPageControlPackage.dproj"/>
+		</Target>
+		<Target Name="ColoredPageControlPackage:Make">
+			<MSBuild Targets="Make" Projects="D:\Common Delphi Libs\u_59968 Delphi Modules\Colored Page Control\ColoredPageControlPackage.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemDomainLayer">
+			<MSBuild Projects="Domain\DocumentFlowSystemDomainLayer.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemDomainLayer:Clean">
+			<MSBuild Targets="Clean" Projects="Domain\DocumentFlowSystemDomainLayer.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemDomainLayer:Make">
+			<MSBuild Targets="Make" Projects="Domain\DocumentFlowSystemDomainLayer.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemDataAccessLayer">
+			<MSBuild Projects="Data Access Layer\DocumentFlowSystemDataAccessLayer.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemDataAccessLayer:Clean">
+			<MSBuild Targets="Clean" Projects="Data Access Layer\DocumentFlowSystemDataAccessLayer.dproj"/>
+		</Target>
+		<Target Name="DocumentFlowSystemDataAccessLayer:Make">
+			<MSBuild Targets="Make" Projects="Data Access Layer\DocumentFlowSystemDataAccessLayer.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="DocumentFlowSystemPresentationLayer;ValidateEditsPackage;ColoredPageControlPackage;DocumentFlowSystemDomainLayer;DocumentFlowSystemDataAccessLayer"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="DocumentFlowSystemPresentationLayer:Clean;ValidateEditsPackage:Clean;ColoredPageControlPackage:Clean;DocumentFlowSystemDomainLayer:Clean;DocumentFlowSystemDataAccessLayer:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="DocumentFlowSystemPresentationLayer:Make;ValidateEditsPackage:Make;ColoredPageControlPackage:Make;DocumentFlowSystemDomainLayer:Make;DocumentFlowSystemDataAccessLayer:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

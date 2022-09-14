@@ -1,0 +1,2 @@
+inherited DocumentKindsFrame: TDocumentKindsFrame
+end

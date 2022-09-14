@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{2F0028B4-ECC5-45D7-B294-253CADC0D3FB}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="Domain.exe">Domain\Domain.bdsproj</Projects>
+      <Projects Name="Application.exe">Application\Application.bdsproj</Projects>
+      <Projects Name="Persistance.exe">Persistance\Persistance.bdsproj</Projects>
+      <Projects Name="DocumentFlow.exe">Presentation\DocumentFlow.bdsproj</Projects>
+      <Projects Name="Targets">Domain.exe Application.exe Persistance.exe DocumentFlow.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

@@ -1,0 +1,404 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{0241C682-10CD-44B0-95FA-DA2D2275C5F9}</ProjectGuid>
+			<MainSource>DocumentFlowSystemPresentationLayer.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories\Interfaces;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories\Postgres;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories\Postgres\Schema Objects Metadata And Query Texts;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories\Postgres\Schema Objects Metadata And Query Texts\Query Texts\View;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Repositories\Postgres\Schema Objects Metadata And Query Texts\Schema Objects Metadata\View;D:\Common Delphi Libs\u_59968 Delphi Modules\Variant List;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Domain;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Domain\Documents;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Common;D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Document Numerators;C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\Data Access Layer\Number Generators;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repository Criteria;D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session;D:\Common Delphi Libs\u_59968 Delphi Modules\Reflection;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_DependencyCheckOutputName>..\..\Desktop Document Flow System Project\bin\DocumentFlowSystemPresentationLayer.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_ExeOutput>C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Desktop Document Flow System Project\bin</DCC_ExeOutput>
+			<DCC_UsePackage>vclx;vcl;rtl;dbrtl;vcldb;adortl;dbxcds;dbexpress;vclib;ibxpress;vclactnband;xmlrtl;inet;IntrawebDB_80_100;Intraweb_80_100;vclie;inetdbbde;inetdbxpress;IndyCore;IndySystem;dclOfficeXP;VclSmp;soaprtl;dsnap;IndyProtocols;bdertl;vcldbx;tdbf_d2006d;tdbf_d2006r;tb2k_d10;dxGDIPlusD10;dxCoreD10;cxLibraryD10;cxEditorsD10;dxThemeD10;cxDataD10;cxExtEditorsD10;dxmdsD10;dxBarD10;dxBarDBNavD10;dxBarExtDBItemsD10;dxBarExtItemsD10;dxRibbonD10;cxBarEditItemD10;dxdbtrD10;dxtrmdD10;dxDockingD10;dxFlowChartD10;cxPageControlD10;dxLayoutControlD10;dxComnD10;dxMasterViewD10;dxNavBarD10;dxorgcD10;dxdborD10;cxGridD10;cxPivotGridD10;cxPivotGridChartD10;cxPivotGridOLAPD10;cxTreeListD10;cxTreeListdxBarPopupMenuD10;cxSchedulerD10;cxSchedulerGridD10;dxsbD10;dcldxSkinsCoreD10;dxSkinsCoreD10;dxSkinscxPCPainterD10;dxSkinscxScheduler3PainterD10;dxSkinsdxDLPainterD10;dxSkinsdxBarPainterD10;dxSkinsdxNavBar2PainterD10;dxSpellCheckerD10;cxSpreadSheetD10;cxVerticalGridD10;ZComponent;ZParseSql;ZCore;ZDbc;ZPlain;ValidateEditsPackage;IntervalEditPackage;SMExportD2006;ValidateCheckListBoxPackage;PNG_D9</DCC_UsePackage>
+			<DCC_K>false</DCC_K>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="DocumentFlowSystemPresentationLayer.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="TestFormUnit.pas">
+				<Form>Form5</Form>
+			</DCCReference>
+			<DCCReference Include="ApplicationMainFormUnit.pas">
+				<Form>ApplicationMainForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxWindowsFunctions\AuxWindowsFunctionsUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\DocumentMainInformationFrameUnit.pas">
+				<Form>DocumentMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\DocumentInformationFrameUnit.pas">
+				<Form>DocumentInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\ScrollableFrameUnit.pas">
+				<Form>ScrollableFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Service Notes\ServiceNoteMainInformationUnit.pas">
+				<Form>ServiceNoteMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\DocumentReceiversFrameUnit.pas">
+				<Form>DocumentReceiversFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\DocumentRelationsFrameUnit.pas">
+				<Form>DocumentRelationsFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\DocumentFilesFrameUnit.pas">
+				<Form>DocumentFilesFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\VariantTypeUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\DBDataTableFormUnit.pas">
+				<Form>DBDataTableForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\TableViewFilterFormUnit.pas">
+				<Form>TableViewFilterForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxSystemFunctions\AuxSystemFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxZeosFunctions\AuxZeosFunctions.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxCollectionFunctions\AuxCollectionFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Stacked Control\StackedControlUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\Table Forms\DocumentRelationsDBTableFormUnit.pas">
+				<Form>DocumentRelationsDBTableForm</Form>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\Table Forms\DocumentFilesDBTableFormUnit.pas">
+				<Form>DocumentFilesDBTableForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxDebugFunctions\AuxDebugFunctionsUnit.pas"/>
+			<DCCReference Include="Data Interfaces\ApplicationDataModuleUnit.pas">
+				<Form>ApplicationDataModule</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\ServiceNoteCardFrameFactoryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Common\DocumentCardFrameFactoryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Common\DocumentCardFrameUnit.pas">
+				<Form>DocumentCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Common\DocumentCardFormUnit.pas">
+				<Form>DocumentCardForm</Form>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Colored Page Control\ColoredPageControlUnit.pas"/>
+			<DCCReference Include="Unit1.pas">
+				<Form>Form1</Form>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\Table Forms\DocumentFlowSystemBaseTableFormUnit.pas">
+				<Form>DocumentFlowSystemBaseTableForm</Form>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Service Notes\CreatableServiceNoteMainInformationFrameUnit.pas">
+				<Form>CreatableServiceNoteMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\CreatableServiceNoteCardFrameUnit.pas">
+				<Form>CreatableServiceNoteCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\SignableServiceNoteForLeaderCardFrameUnit.pas">
+				<Form>SignableServiceNoteForLeaderCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\SignableServiceNoteForCreatorCardFrameUnit.pas">
+				<Form>SignableServiceNoteForCreatorCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Service Notes\SignedServiceNoteMainInformationFrameUnit.pas">
+				<Form>SignedServiceNoteMainInformationFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\SignedServiceNoteForCreatorCardFrameUnit.pas">
+				<Form>SignedServiceNoteForCreatorCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\SignedServiceNoteForLeaderCardFrameUnit.pas">
+				<Form>SignedServiceNoteForLeaderCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\PerformableServiceNoteCardFrameUnit.pas">
+				<Form>PerformableServiceNoteCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\PerformedServiceNoteCardFrameUnit.pas">
+				<Form>PerformedServiceNoteCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Common\DocumentCardViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\View Models\DocumentFilesPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\View Models\DocumentMainInformationPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\View Models\DocumentReceiversPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\View Models\DocumentRelationsPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\SignedServiceNoteMainInformationPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\CreatableServiceNoteMainInformationPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\ServiceNoteMainInformationPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\View Models\DocumentResponsibleViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\View Models\DocumentSignerViewModelUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\View Models\ServiceNoteCardViewModelUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\View Models\SignedServiceNoteCardViewModelUnit.pas"/>
+			<DCCReference Include="Other Forms\EmployeesReferenceFormUnit.pas">
+				<Form>EmployeesReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\Table Forms\DocumentSignersReferenceFormUnit.pas">
+				<Form>DocumentSignersReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\Table Forms\DocumentResponsiblesReferenceFormUnit.pas">
+				<Form>DocumentResponsiblesReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Common\TestDocumentReceiversFormUnit.pas">
+				<Form>TestDocumentReceiversForm</Form>
+			</DCCReference>
+			<DCCReference Include="Data Interfaces\DocumentDBViewDataSetsDataModuleUnit.pas">
+				<Form>DocumentDBViewDataSetsDataModule</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Data Interfaces\IDocumentViewDataSetRegistryUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentDBViewDataSetRegistryUnit.pas"/>
+			<DCCReference Include="EmployeeDocumentsReferenceFormUnit.pas">
+				<Form>EmployeeDocumentsReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Working Employee\IWorkingEmployeeUnit.pas"/>
+			<DCCReference Include="Working Employee\WorkingEmployeeUnit.pas"/>
+			<DCCReference Include="Working Employee\DBWorkingEmployeeUnit.pas"/>
+			<DCCReference Include="Working Employee\ZeosPostgresWorkingEmployeeUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\DocumentFileUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\DocumentRelationsUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\DocumentUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\DocumentWorkCycleUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\IncommingServiceNoteUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\OutcommingServiceNoteUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\PerformableDocumentUnit.pas"/>
+			<DCCReference Include="..\Domain\Documents\ServiceNoteUnit.pas"/>
+			<DCCReference Include="..\Domain\RoleUnit.pas"/>
+			<DCCReference Include="..\Domain\EmployeeUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\OutcommingServiceNoteCardFrameFactoryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\IncommingServiceNoteCardFrameFactoryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Common\DocumentCardViewModelFactoryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\ServiceNoteCardViewModelFactoryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\OutcommingServiceNoteCardViewModelFactoryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\IncommingServiceNoteCardViewModelFactoryUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\ServiceNoteFilesPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\ServiceNoteReceiversPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\ServiceNoteRelationsPageViewModelUnit.pas"/>
+			<DCCReference Include="Document Card Form\Common\DocumentCardFrameFactoryRegistryUnit.pas"/>
+			<DCCReference Include="Document Card Form\Common\DocumentCardViewModelFactoryRegistryUnit.pas"/>
+			<DCCReference Include="ServiceDocumentKindsUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentViewDataSetsUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentViewDataSetsRegistryUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentViewDataSetsDataModuleUnit.pas">
+				<Form>DocumentComponentViewDataSetsDataModule</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Service Notes\IncommingServiceNoteReceiversAndPerformersFrameUnit.pas">
+				<Form>IncommingServiceNoteReceiversAndPerformersFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Data Interfaces\DocumentKindResolverUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentIdResolverUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Interfaces\ISendingToPerformingDocumentServiceUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Document Numerators\IDocumentNumeratorRegistryUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Common\View Models\DocumentReceiversPageViewModelFactoryUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\DocumentSigningServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\DocumentCardFrameServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\DocumentPerformingsChangesSavingServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\DocumentPerformingServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\DocumentRejectingServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\SendingToSigningDocumentServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\SendingToSigningServiceNoteServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\SendingToPerformingServiceNoteServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\ServiceNoteSigningServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\ServiceNoteCardFrameServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\ServiceNoteRejectingServiceUnit.pas"/>
+			<DCCReference Include="..\Common\EditDocumentPerformingsInfoUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\DocumentApplicationServiceRegistryUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\Incommings\IncommingServiceNotePerformingsChangesSavingServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\Incommings\IncommingServiceNoteCardFrameServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\Incommings\IncommingServiceNotePerformingServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\Outcommings\OutcommingServiceNoteCardFrameServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\Outcommings\OutcommingServiceNotePerformingsChangesSavingServiceUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Service Notes\Outcommings\OutcommingServiceNotePerformingServiceUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\IncommingServiceNoteReceiversPageViewModelFactoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Document Numerators\DocumentNumeratorRegistryUnit.pas"/>
+			<DCCReference Include="..\Composition Root\ApplicationStarterUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\DelphLib\LoginFrm.pas">
+				<Form>LoginForm</Form>
+			</DCCReference>
+			<DCCReference Include="..\Data Access Layer\Repositories\DepartmentRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\DocumentFilesRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\DocumentRelationsRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\EmployeeRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\IncommingServiceNoteRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\OutcommingServiceNoteRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\RepositoryRegistryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\ServiceNoteFilesRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\RoleRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\ServiceNotePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\AbstractZeosPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\DepartmentPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\DocumentFilesPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\DocumentPerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\DocumentPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\DocumentReceiversPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\DocumentRelationsPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\EmployeePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\IncommingServiceNotePerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\IncommingServiceNotePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\OutcommingServiceNoteSignerPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\OutcommingServiceNotePerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\OutcommingServiceNotePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\PerformableDocumentPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\RolePostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\ServiceNoteFilesPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\ServiceNotePerformingPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractDBRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\AbstractZeosDBRepositoryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DBTableColumnMappingsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DBTableMappingUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\DomainObjectFromDataSetLoaderUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TableColumnMappingsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TableMappingUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\TestZeosDBRepositoryUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\DocumentServiceUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\DatabaseTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\ISessionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\PostgresTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Session\ZeosPostgresTransactionUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Exceptions\NotImplementedExceptionUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentViewDataSetRegistryUnit.pas"/>
+			<DCCReference Include="..\Application Service Layer\Common\ModifiedDocumentInfoUnit.pas"/>
+			<DCCReference Include="..\Data Access Layer\Repositories\Postgres\DocumentResponsibleZeosPostgresRepositoryUnit.pas"/>
+			<DCCReference Include="Central Employee Document References\CentralEmployeeDocumentsReferenceFormUnit.pas">
+				<Form>CentralEmployeeDocumentsReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Central Employee Document References\CentralEmployeeIncommingServiceNotesReferenceFormUnit.pas">
+				<Form>CentralEmployeeIncommingServiceNotesReferenceForm</Form>
+			</DCCReference>
+			<DCCReference Include="Document Info Forms\Service Notes\OutcommingServiceNoteReceiversAndPerformersFrameUnit.pas">
+				<Form>OutcommingServiceNoteReceiversAndPerformersFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Data Interfaces\IDocumentComponentViewDataSetsRegistryUnit.pas"/>
+			<DCCReference Include="Data Interfaces\DocumentComponentViewDataSetsZeosPostgresRegistryUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxDataSetFunctions\AuxDataSetFunctionsUnit.pas"/>
+			<DCCReference Include="Central Employee Document References\CentralEmployeeDocumentsReferenceFormFactoryUnit.pas"/>
+			<DCCReference Include="Document Info Forms\Service Notes\View Models\IncommingServiceNoteMainInformationPageViewModelUnit.pas"/>
+			<DCCReference Include="Employee Document View DataSet Editors\EmployeeDocumentViewDataSetEditorUnit.pas"/>
+			<DCCReference Include="Employee Document View DataSet Editors\EmployeeIncommingServiceNoteViewDataSetEditorUnit.pas"/>
+			<DCCReference Include="Employee Document View DataSet Editors\EmployeeDocumentViewDataSetEditorFactoryUnit.pas"/>
+			<DCCReference Include="Document Work Cycle Stages Colors\DocumentWorkCycleStageColorRegistryUnit.pas"/>
+			<DCCReference Include="..\Common\DocumentWorkCycleStageNumberReferenceUnit.pas"/>
+			<DCCReference Include="Document Card Form\Service Notes\SignableServiceNoteForCreatorLeaderCardFrameUnit.pas">
+				<Form>SignableServiceNoteForCreatorLeaderCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Document Card Form\Service Notes\SignedServiceNoteForCreatorLeaderCardFrameUnit.pas">
+				<Form>SignedServiceNoteForCreatorLeaderCardFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\User Input Forms\InputMemoFormUnit.pas">
+				<Form>InputMemoForm</Form>
+			</DCCReference>
+			<DCCReference Include="Common User Input Forms\DocumentInfoInputMemoFormUnit.pas">
+				<Form>DocumentInfoInputMemoForm</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">DocumentFlowSystemPresentationLayer.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="RunParams">--host srv-pg2 --port 5432 --database ump_nightly --user doc_performer1 --password 123456</Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1049</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibADODataDrivers100.bpl">EhLib 6.2 DataDrivers for ADO</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibBDEDataDrivers100.bpl">EhLib 6.2 DataDrivers for BDE</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibDBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for DBX</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibIBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for IBX</Excluded_Packages>
+						<Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsTee10.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsIBX10.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

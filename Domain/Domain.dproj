@@ -1,0 +1,237 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{851D3CB6-9646-455B-B3FD-286F9B6A881C}</ProjectGuid>
+			<MainSource>Domain.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain;D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_DependencyCheckOutputName>Domain.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Define>madExcept;$(DCC_Define)</DCC_Define>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_K>false</DCC_K>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Domain.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectBaseUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectListUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectValueUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectBaseUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectValueUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\ClonableUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\CopyableUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\EquatableUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\IGetSelfUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Variant List\VariantListUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Common\Date and Time\DateTimeRange.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Common\Date and Time\TimeFrame.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Sequence Generators\Interfaces\INumberGeneratorUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxCollectionFunctions\AuxCollectionFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxDebugFunctions\AuxDebugFunctionsUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectListUnit.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainException.pas"/>
+			<DCCReference Include="Employees\Entities\DepartmentUnit.pas"/>
+			<DCCReference Include="Employees\Entities\Employee.pas"/>
+			<DCCReference Include="Employees\Entities\RoleUnit.pas"/>
+			<DCCReference Include="Employees\Services\References\Interfaces\DepartmentFinder.pas"/>
+			<DCCReference Include="Employees\Services\References\Interfaces\EmployeeFinder.pas"/>
+			<DCCReference Include="Employees\Services\References\Interfaces\EmployeeReferenceService.pas"/>
+			<DCCReference Include="Employees\Services\References\StandardEmployeeReferenceService.pas"/>
+			<DCCReference Include="Documents\Common\Entities\Interfaces\IDocumentChargeSheetUnit.pas"/>
+			<DCCReference Include="Documents\Common\Entities\Interfaces\IDocumentUnit.pas"/>
+			<DCCReference Include="Documents\Common\Entities\Document.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentApprovingCycle.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentApprovingCycleResult.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentApprovings.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentCharges.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentChargeSheet.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentFileUnit.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentRelationsUnit.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentSignings.pas"/>
+			<DCCReference Include="Documents\Common\Entities\DocumentWorkCycle.pas"/>
+			<DCCReference Include="Documents\Common\Entities\IncomingDocument.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\StandardApprovingDocumentSendingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\StandardDocumentApproverListChangingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\StandardDocumentApprovingPassingMarkingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\StandardDocumentApprovingPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\StandardDocumentApprovingRejectingPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\Interfaces\DocumentApproverListChangingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\Interfaces\DocumentApprovingPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Approving\Interfaces\DocumentApprovingRejectingPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\Interfaces\DocumentChargeSheetOverlappedPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\Interfaces\EmployeeDocumentChargeSheetWorkingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\Interfaces\EmployeeDocumentChargeSheetWorkingRuleRegistry.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\EmployeeDocumentChargeSheetWorkingRules.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetChangingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetOverlappedPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\StandardDocumentChargeSheetViewingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\StandardEmployeeDocumentChargeSheetWorkingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charge Sheets\StandardEmployeeDocumentChargeSheetWorkingRuleRegistry.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charges\Interfaces\DocumentChargeListChangingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charges\Interfaces\DocumentChargePerformedMarkingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charges\StandardDocumentChargeListChangingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Charges\StandardDocumentChargePerformedMarkingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Common\Interfaces\EmployeeDocumentWorkingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Common\Interfaces\EmployeeDocumentWorkingRuleRegistry.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Common\EmployeeDocumentWorkingRules.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Common\StandardEmployeeDocumentWorkingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Common\StandardEmployeeDocumentWorkingRuleRegistry.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Editing\StandardEmployeeDocumentEditingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Performing\StandardPerformingDocumentSendingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Signing\Interfaces\DocumentSignerListChangingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Signing\Interfaces\DocumentSigningPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Signing\Interfaces\DocumentSigningRejectingPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Signing\StandardDocumentSignerListChangingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Signing\StandardEmployeeDocumentSigningPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Signing\StandardEmployeeDocumentSigningRejectingPerformingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Signing\StandardSigningDocumentSendingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Viewing\StandardEmployeeDocumentViewingRule.pas"/>
+			<DCCReference Include="Documents\Common\Services\Access Rights\Interfaces\DocumentUsageEmployeeAccessRightsService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Access Rights\StandardDocumentUsageEmployeeAccessRightsService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Access Rights\StandardIncomingDocumentUsageEmployeeAccessRightsService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Approving\Interfaces\DocumentApprovingCycleResultFinder.pas"/>
+			<DCCReference Include="Documents\Common\Services\Approving\Interfaces\DocumentApprovingProcessControlService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Approving\StandardDocumentApprovingProcessControlService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Charge Sheets\Interfaces\DocumentChargeSheetControlService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Charge Sheets\Interfaces\DocumentChargeSheetFinder.pas"/>
+			<DCCReference Include="Documents\Common\Services\Charge Sheets\Interfaces\DocumentChargeSheetOverlappingPerformingService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Formalization\Interfaces\DocumentFullNameCompilationService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Formalization\Interfaces\DocumentResponsibleFinder.pas"/>
+			<DCCReference Include="Documents\Common\Services\Formalization\StandardDocumentFullNameCompilationService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Charge Sheets\AbstractDocumentChargeSheetFinder.pas"/>
+			<DCCReference Include="Documents\Common\Services\Charge Sheets\StandardDocumentChargeSheetControlService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Charge Sheets\StandardDocumentChargeSheetFinder.pas"/>
+			<DCCReference Include="Documents\Common\Services\Charge Sheets\StandardDocumentChargeSheetOverlappingPerformingService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Numerators\Interfaces\DocumentNumerator.pas"/>
+			<DCCReference Include="Documents\Common\Services\Numerators\Interfaces\DocumentNumeratorRegistry.pas"/>
+			<DCCReference Include="Documents\Common\Services\Numerators\AbstractDocumentNumeratorRegistry.pas"/>
+			<DCCReference Include="Documents\Common\Services\Numerators\StandardDocumentNumerator.pas"/>
+			<DCCReference Include="Documents\Common\Services\Performing\Interfaces\CreatingNecessaryDataForDocumentPerformingService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Performing\StandardCreatingNecessaryDataForDocumentPerformingService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Registration\Interfaces\DocumentRegistrationService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Registration\StandardDocumentRegistrationService.pas"/>
+			<DCCReference Include="Documents\Common\Services\Registration\StandardIncomingDocumentRegistrationService.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\Interfaces\AreEmployeesSecretariesOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\Interfaces\AreEmployeesSubLeadersOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\Interfaces\EmployeeIsSameAsOrDeputySpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\Interfaces\EmployeeIsSameAsOrReplacingForOthersSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\Interfaces\EmployeeIsSecretaryForAnyOfEmployeesSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\AbstractEmployeeIsSameAsOrReplacingForOthersSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\StandardAreEmployeesSecretariesOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\StandardAreEmployeesSubLeadersOfSameLeaderSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrDeputyOfEmployeesSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrDeputySpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\StandardEmployeeIsSameAsOrReplacingSignerForOthersSpecification.pas"/>
+			<DCCReference Include="Employees\Specifications\Subordination\StandardEmployeeIsSecretaryForAnyOfEmployeesSpecification.pas"/>
+			<DCCReference Include="Documents\Service Notes\Entities\IncomingServiceNote.pas"/>
+			<DCCReference Include="Documents\Service Notes\Entities\ServiceNote.pas"/>
+			<DCCReference Include="Documents\Service Notes\Entities\ServiceNoteChargeSheet.pas"/>
+			<DCCReference Include="Documents\Service Notes\Entities\ServiceNoteWorkCycle.pas"/>
+			<DCCReference Include="D:\Common Delphi Libs\u_59968 Delphi Modules\AuxSystemFunctions\AuxSystemFunctionsUnit.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Drafting\StandardDocumentDraftingRule.pas"/>
+			<DCCReference Include="Documents\Common\Rules\Drafting\Interfaces\DocumentDraftingRule.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Domain.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="RunParams">--host srv-pg2 --port 5432 --database ump_nightly --user u_59968 --password 123456</Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1049</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibADODataDrivers100.bpl">EhLib 6.2 DataDrivers for ADO</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibBDEDataDrivers100.bpl">EhLib 6.2 DataDrivers for BDE</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibDBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for DBX</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibIBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for IBX</Excluded_Packages>
+						<Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsTee10.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsIBX10.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

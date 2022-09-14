@@ -1,0 +1,2 @@
+inherited DocumentCardInformationFrame: TDocumentCardInformationFrame
+end
