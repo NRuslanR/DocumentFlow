@@ -959,7 +959,6 @@ begin
 
   inherited;
 
-  ReturnIdOfDomainObjectAfterAdding := True;
   ReturnIdOfDomainObjectAfterUpdate := True;
 
 end;

@@ -76,10 +76,6 @@ type
 
         function LoadApproverFrom(DataReader: IDataReader): TEmployee;
 
-      protected
-
-        procedure Initialize; override;
-
       public
 
         constructor Create(
@@ -428,15 +424,6 @@ begin
 
   Result := Self;
   
-end;
-
-procedure TDocumentApprovingPostgresRepository.Initialize;
-begin
-
-  inherited;
-
-  ReturnIdOfDomainObjectAfterAdding := True;
-
 end;
 
 function TDocumentApprovingPostgresRepository.LoadApproverFrom(

@@ -60,8 +60,6 @@ type
       FDocumentWorkCycleMappings: TDBTableMapping;
 
     protected
-    
-      procedure Initialize; override;
 
       procedure GetDocumentTableNameMapping(
         var TableName: string;
@@ -718,15 +716,6 @@ begin
       );
 
   end;
-
-end;
-
-procedure TDocumentPostgresRepository.Initialize;
-begin
-
-  inherited Initialize;
-
-  ReturnIdOfDomainObjectAfterAdding := True;
 
 end;
 

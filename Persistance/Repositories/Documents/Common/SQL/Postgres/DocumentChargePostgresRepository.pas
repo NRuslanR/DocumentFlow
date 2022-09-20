@@ -55,10 +55,6 @@ type
 
       protected
 
-        procedure Initialize; override;
-
-      protected
-
         function CreateDomainObject(DataReader: IDataReader): TDomainObject; override;
       
         procedure FillDomainObjectFromDataReader(
@@ -420,15 +416,6 @@ begin
 
   Result := inherited GetTableNameFromTableMappingForSelect;
 
-end;
-
-procedure TDocumentChargePostgresRepository.Initialize;
-begin
-
-  inherited;
-
-  ReturnIdOfDomainObjectAfterAdding := True;
-  
 end;
 
 function TDocumentChargePostgresRepository.LoadActuallyPerformedEmployee(

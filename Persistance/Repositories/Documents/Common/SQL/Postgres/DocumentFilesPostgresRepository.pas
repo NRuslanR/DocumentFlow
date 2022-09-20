@@ -379,8 +379,6 @@ begin
 
   FCurrentSpecificDocumentFileOperation := None;
 
-  ReturnIdOfDomainObjectAfterAdding := True;
-  
 end;
 
 procedure TDocumentFilesPostgresRepository.PrepareRemoveDomainObjectQuery(

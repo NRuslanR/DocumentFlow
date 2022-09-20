@@ -19,6 +19,7 @@ uses
   IEmployeeRepositoryUnit,
   ArrayTypes,
   QueryExecutor,
+  TableDef,
   DataReader,
   VariantListUnit,
   Classes,
@@ -131,6 +132,7 @@ type
       protected
 
         procedure Initialize; override;
+        procedure InitializeTableMappings(TableDef: TTableDef); override;
       
         procedure CustomizeTableMapping(
           TableMapping: TDBTableMapping
@@ -1184,11 +1186,16 @@ begin
 
   inherited;
 
-  MarkAllModificationOperationsAsTransactional;
-  ReturnIdOfDomainObjectAfterAdding := True;
-
   FEmployeeReplacementPostgresRepository :=
     TEmployeeReplacementPostgresRepository.Create;
+    
+end;
+
+procedure TEmployeePostgresRepository.InitializeTableMappings(
+  TableDef: TTableDef);
+begin
+
+  inherited InitializeTableMappings(TableDef);
 
   FRoleCompiler :=
     TDomainObjectCompiler.Create(

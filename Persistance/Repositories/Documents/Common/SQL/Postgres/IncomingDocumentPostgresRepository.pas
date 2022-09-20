@@ -702,9 +702,7 @@ begin
   inherited;
 
   FCurrentSpecialOperation := NonSpecialOperation;
-  
-  ReturnIdOfDomainObjectAfterAdding := True;
-  
+
 end;
 
 function TIncomingDocumentPostgresRepository.

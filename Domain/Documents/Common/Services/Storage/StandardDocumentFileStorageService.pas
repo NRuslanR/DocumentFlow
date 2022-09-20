@@ -11,6 +11,7 @@ uses
   DomainException,
   DocumentFileMetadataDirectory,
   IFileStorageServiceClientUnit,
+  FileStorageServiceErrors,
   StrUtils,
   DateUtils,
   Variants,
@@ -240,9 +241,29 @@ begin
 
   try
 
-    Result :=
-      FFileStorageServiceClient.GetFile(DocumentFile.FilePath, DocumentFile.FileName);
+    try
 
+      Result :=
+        FFileStorageServiceClient.GetFile(
+          DocumentFile.FilePath, DocumentFile.FileName
+        );
+
+    except
+
+      on E: TFileSharingViolationException do begin
+
+        Raise TDocumentFileStorageServiceException.CreateFmt(
+          'Файл с именем "%s" уже открыт. ' +
+          'Для повторного запроса файла необходимо ' +
+          'его закрыть',
+          [
+            DocumentFile.FileName
+          ]
+        );
+
+      end; 
+
+    end;
   finally
 
     FFileStorageServiceClient.Disconnect;

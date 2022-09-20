@@ -1,998 +1,467 @@
-date/time          : 2022-09-12, 08:40:39, 519ms
+date/time          : 2022-09-20, 14:35:58, 96ms
 computer name      : 06-409-5
 user name          : 59968
 registered owner   : user
 operating system   : Windows 10 x64 build 18363
 system language    : Russian
-system up time     : 6 days
-program up time    : 5 seconds
+system up time     : 1 day 6 hours
+program up time    : 3 minutes 52 seconds
 processors         : 4x Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz
-physical memory    : 1075/3947 MB (free/total)
-free disk space    : (C:) 50,52 GB
+physical memory    : 767/3947 MB (free/total)
+free disk space    : (C:) 50,46 GB
 display mode       : 1920x1080, 32 bit
-process id         : $37f8
-allocated memory   : 77,31 MB
+process id         : $a78
+allocated memory   : 97,21 MB
 largest free block : 986,62 MB
 executable         : DocumentFlow.exe
-exec. date/time    : 2022-09-08 14:09
+exec. date/time    : 2022-09-20 14:31
 compiled with      : Delphi 2006/07
 madExcept version  : 5.0.0
-callstack crc      : $3aa911da, $6e76167e, $81ae9c51
-exception number   : 1
-exception class    : EAccessViolation
-exception message  : Access violation at address 00F2DBA4 in module 'DocumentFlow.exe'. Read of address 0000004C.
-
-Main ($3b18):
-00f2dba4 +07c DocumentFlow.exe SDRequestsDataTableFormPropertiesIniFileUnit  103  +6 TSDRequestsDataTableFormPropertiesIniFile.SaveDBDataGridProperties
-00f2d2bc +058 DocumentFlow.exe DBDataTableFormPropertiesStorage              230  +8 TDBDataTableFormPropertiesStorage.SaveDBDataTableFormProperties
-00f2d0ae +03e DocumentFlow.exe DBDataTableFormPropertiesStorage              155  +2 TDBDataTableFormPropertiesStorage.InternalSaveObjectProperties
-00f28857 +01b DocumentFlow.exe StandardObjectPropertiesStorage                80  +2 TStandardObjectPropertiesStorage.SaveObjectProperties
-00b413e2 +062 DocumentFlow.exe SDBaseTableFormUnit                           566 +13 TSDBaseTableForm.SaveCurrentUISettings
-00b40ed8 +014 DocumentFlow.exe SDBaseTableFormUnit                           257  +2 TSDBaseTableForm.Destroy
-00f14d64 +068 DocumentFlow.exe ServiceDeskRequestsTableFormUnit              532  +7 TServiceDeskRequestsTableForm.Destroy
-00404bd5 +041 DocumentFlow.exe System                                         25  +0 @ClassCreate
-77034211 +021 ntdll.dll                                                              KiUserExceptionDispatcher
-75b6e8ac +03c oleaut32.dll                                                           SysFreeString
-77034211 +021 ntdll.dll                                                              KiUserExceptionDispatcher
-004d284b +2bb DocumentFlow.exe Controls                                              TControl.WndProc
-74b13560 +050 KERNELBASE.dll                                                         RaiseException
-00489827 +11f DocumentFlow.exe Classes                                               TReader.ReadComponent
-00489a41 +089 DocumentFlow.exe Classes                                               TReader.ReadDataInner
-004899af +067 DocumentFlow.exe Classes                                               TReader.ReadData
-0048e8a5 +001 DocumentFlow.exe Classes                                               TComponent.ReadState
-004d03e9 +02d DocumentFlow.exe Controls                                              TControl.ReadState
-004d4359 +025 DocumentFlow.exe Controls                                              TWinControl.ReadState
-00489827 +11f DocumentFlow.exe Classes                                               TReader.ReadComponent
-00489a41 +089 DocumentFlow.exe Classes                                               TReader.ReadDataInner
-00489980 +038 DocumentFlow.exe Classes                                               TReader.ReadData
-0048e8a5 +001 DocumentFlow.exe Classes                                               TComponent.ReadState
-004d03e9 +02d DocumentFlow.exe Controls                                              TControl.ReadState
-004d4359 +025 DocumentFlow.exe Controls                                              TWinControl.ReadState
-004e88fd +06d DocumentFlow.exe Forms                                                 TCustomForm.ReadState
-0048a7ec +1d8 DocumentFlow.exe Classes                                               TReader.ReadRootComponent
-004879fa +032 DocumentFlow.exe Classes                                               TStream.ReadComponent
-004835e7 +057 DocumentFlow.exe Classes                                               InternalReadComponentRes
-00483771 +079 DocumentFlow.exe Classes                                               InitComponent
-00483802 +062 DocumentFlow.exe Classes                                               InitInheritedComponent
-004e821d +0a1 DocumentFlow.exe Forms                                                 TCustomForm.Create
-00927464 +024 DocumentFlow.exe DBDataTableFormUnit                          1709  +2 TDBDataTableForm.Create
-00b40c7f +023 DocumentFlow.exe SDBaseTableFormUnit                           195  +2 TSDBaseTableForm.Create
-00f147ab +02b DocumentFlow.exe ServiceDeskRequestsTableFormUnit              395  +1 TServiceDeskRequestsTableForm.Create
-00f2f491 +265 DocumentFlow.exe BasedOnZeosPostgresSDItemsService             494 +90 TBasedOnZeosPostgresSDItemsService.GetSDItemControl
-010d3f19 +045 DocumentFlow.exe StandardDocumentsReferenceFormPresenter       171 +10 TStandardDocumentsReferenceFormPresenter.ShowSDItemControl
-010d3df0 +0a4 DocumentFlow.exe StandardDocumentsReferenceFormPresenter       114 +19 TStandardDocumentsReferenceFormPresenter.ShowDocumentsReferenceForm
-01147a66 +056 DocumentFlow.exe unDocumentCardListFrame                      3508  +7 TDocumentCardListFrame.SetCurrentDocumentKindInfo
-00d3a25b +093 DocumentFlow.exe unDocumentFlowWorkingFrame                    372  +6 TDocumentFlowWorkingFrame.UpdateUIForDocumentKind
-00d3a299 +015 DocumentFlow.exe unDocumentFlowWorkingFrame                    392  +2 TDocumentFlowWorkingFrame.OnDocumentKindSelectedEventHandler
-00c4ae01 +029 DocumentFlow.exe unDocumentKindsFrame                          760  +4 TDocumentKindsFrame.RaiseOnDocumentKindSelectedEventHandler
-00c4ac6f +01b DocumentFlow.exe unDocumentKindsFrame                          650  +4 TDocumentKindsFrame.HandleDocumentKindSelectedMessage
-004d284b +2bb DocumentFlow.exe Controls                                              TControl.WndProc
-004d66f5 +499 DocumentFlow.exe Controls                                              TWinControl.WndProc
-004d5e80 +02c DocumentFlow.exe Controls                                              TWinControl.MainWndProc
-0048fb14 +014 DocumentFlow.exe Classes                                               StdWndProc
-76e2ec5b +00b user32.dll                                                             DispatchMessageA
-004f11d0 +0fc DocumentFlow.exe Forms                                                 TApplication.ProcessMessage
-004f120a +00a DocumentFlow.exe Forms                                                 TApplication.HandleMessage
-004f142a +096 DocumentFlow.exe Forms                                                 TApplication.Run
-01155b8e +00e DocumentFlow.exe ApplicationLauncher                           128  +2 TApplicationLauncher.PassControlToApplicationModule
-01155bd5 +02d DocumentFlow.exe ApplicationLauncher                           141  +6 TApplicationLauncher.Launch
-01185196 +042 DocumentFlow.exe DocumentFlow                                  260 +11 initialization
-76d26357 +017 KERNEL32.DLL                                                           BaseThreadInitThunk
-
-Main ($3b18), inner exception level 1:
->> EReadError, Error reading ResponcibleLaboratoryEdit.DynProps: Property DynProps does not exist
-00489eae +0d6 DocumentFlow.exe Classes                                          HandleException
-0048a085 +191 DocumentFlow.exe Classes                                          TReader.ReadProperty
-004899cd +015 DocumentFlow.exe Classes                                          TReader.ReadDataInner
-00489980 +038 DocumentFlow.exe Classes                                          TReader.ReadData
-0048e8a5 +001 DocumentFlow.exe Classes                                          TComponent.ReadState
-004d03e9 +02d DocumentFlow.exe Controls                                         TControl.ReadState
-004d4359 +025 DocumentFlow.exe Controls                                         TWinControl.ReadState
-004e88fd +06d DocumentFlow.exe Forms                                            TCustomForm.ReadState
-0048a7ec +1d8 DocumentFlow.exe Classes                                          TReader.ReadRootComponent
-004879fa +032 DocumentFlow.exe Classes                                          TStream.ReadComponent
-004835e7 +057 DocumentFlow.exe Classes                                          InternalReadComponentRes
-00483771 +079 DocumentFlow.exe Classes                                          InitComponent
-00483802 +062 DocumentFlow.exe Classes                                          InitInheritedComponent
-004e821d +0a1 DocumentFlow.exe Forms                                            TCustomForm.Create
-00927464 +024 DocumentFlow.exe DBDataTableFormUnit                     1709  +2 TDBDataTableForm.Create
-00b40c7f +023 DocumentFlow.exe SDBaseTableFormUnit                      195  +2 TSDBaseTableForm.Create
-00f147ab +02b DocumentFlow.exe ServiceDeskRequestsTableFormUnit         395  +1 TServiceDeskRequestsTableForm.Create
-00f2f491 +265 DocumentFlow.exe BasedOnZeosPostgresSDItemsService        494 +90 TBasedOnZeosPostgresSDItemsService.GetSDItemControl
-010d3f19 +045 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  171 +10 TStandardDocumentsReferenceFormPresenter.ShowSDItemControl
-010d3df0 +0a4 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  114 +19 TStandardDocumentsReferenceFormPresenter.ShowDocumentsReferenceForm
-01147a66 +056 DocumentFlow.exe unDocumentCardListFrame                 3508  +7 TDocumentCardListFrame.SetCurrentDocumentKindInfo
-00d3a25b +093 DocumentFlow.exe unDocumentFlowWorkingFrame               372  +6 TDocumentFlowWorkingFrame.UpdateUIForDocumentKind
-00d3a299 +015 DocumentFlow.exe unDocumentFlowWorkingFrame               392  +2 TDocumentFlowWorkingFrame.OnDocumentKindSelectedEventHandler
-00c4ae01 +029 DocumentFlow.exe unDocumentKindsFrame                     760  +4 TDocumentKindsFrame.RaiseOnDocumentKindSelectedEventHandler
-00c4ac6f +01b DocumentFlow.exe unDocumentKindsFrame                     650  +4 TDocumentKindsFrame.HandleDocumentKindSelectedMessage
-004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
-004d66f5 +499 DocumentFlow.exe Controls                                         TWinControl.WndProc
-004d5e80 +02c DocumentFlow.exe Controls                                         TWinControl.MainWndProc
-0048fb14 +014 DocumentFlow.exe Classes                                          StdWndProc
-76e2ec5b +00b user32.dll                                                        DispatchMessageA
-004f11d0 +0fc DocumentFlow.exe Forms                                            TApplication.ProcessMessage
-004f120a +00a DocumentFlow.exe Forms                                            TApplication.HandleMessage
-004f142a +096 DocumentFlow.exe Forms                                            TApplication.Run
-01155b8e +00e DocumentFlow.exe ApplicationLauncher                      128  +2 TApplicationLauncher.PassControlToApplicationModule
-01155bd5 +02d DocumentFlow.exe ApplicationLauncher                      141  +6 TApplicationLauncher.Launch
-01185196 +042 DocumentFlow.exe DocumentFlow                             260 +11 initialization
-76d26357 +017 KERNEL32.DLL                                                      BaseThreadInitThunk
-
-Main ($3b18), inner exception level 2:
->> EReadError, Property DynProps does not exist
-00488a73 +023 DocumentFlow.exe Classes                                          PropertyNotFound
-004890e6 +00a DocumentFlow.exe Classes                                          TReader.PropertyError
-0048a064 +170 DocumentFlow.exe Classes                                          TReader.ReadProperty
-004899cd +015 DocumentFlow.exe Classes                                          TReader.ReadDataInner
-00489980 +038 DocumentFlow.exe Classes                                          TReader.ReadData
-0048e8a5 +001 DocumentFlow.exe Classes                                          TComponent.ReadState
-004d03e9 +02d DocumentFlow.exe Controls                                         TControl.ReadState
-004d4359 +025 DocumentFlow.exe Controls                                         TWinControl.ReadState
-004e88fd +06d DocumentFlow.exe Forms                                            TCustomForm.ReadState
-0048a7ec +1d8 DocumentFlow.exe Classes                                          TReader.ReadRootComponent
-004879fa +032 DocumentFlow.exe Classes                                          TStream.ReadComponent
-004835e7 +057 DocumentFlow.exe Classes                                          InternalReadComponentRes
-00483771 +079 DocumentFlow.exe Classes                                          InitComponent
-00483802 +062 DocumentFlow.exe Classes                                          InitInheritedComponent
-004e821d +0a1 DocumentFlow.exe Forms                                            TCustomForm.Create
-00927464 +024 DocumentFlow.exe DBDataTableFormUnit                     1709  +2 TDBDataTableForm.Create
-00b40c7f +023 DocumentFlow.exe SDBaseTableFormUnit                      195  +2 TSDBaseTableForm.Create
-00f147ab +02b DocumentFlow.exe ServiceDeskRequestsTableFormUnit         395  +1 TServiceDeskRequestsTableForm.Create
-00f2f491 +265 DocumentFlow.exe BasedOnZeosPostgresSDItemsService        494 +90 TBasedOnZeosPostgresSDItemsService.GetSDItemControl
-010d3f19 +045 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  171 +10 TStandardDocumentsReferenceFormPresenter.ShowSDItemControl
-010d3df0 +0a4 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  114 +19 TStandardDocumentsReferenceFormPresenter.ShowDocumentsReferenceForm
-01147a66 +056 DocumentFlow.exe unDocumentCardListFrame                 3508  +7 TDocumentCardListFrame.SetCurrentDocumentKindInfo
-00d3a25b +093 DocumentFlow.exe unDocumentFlowWorkingFrame               372  +6 TDocumentFlowWorkingFrame.UpdateUIForDocumentKind
-00d3a299 +015 DocumentFlow.exe unDocumentFlowWorkingFrame               392  +2 TDocumentFlowWorkingFrame.OnDocumentKindSelectedEventHandler
-00c4ae01 +029 DocumentFlow.exe unDocumentKindsFrame                     760  +4 TDocumentKindsFrame.RaiseOnDocumentKindSelectedEventHandler
-00c4ac6f +01b DocumentFlow.exe unDocumentKindsFrame                     650  +4 TDocumentKindsFrame.HandleDocumentKindSelectedMessage
-004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
-004d66f5 +499 DocumentFlow.exe Controls                                         TWinControl.WndProc
-004d5e80 +02c DocumentFlow.exe Controls                                         TWinControl.MainWndProc
-0048fb14 +014 DocumentFlow.exe Classes                                          StdWndProc
-76e2ec5b +00b user32.dll                                                        DispatchMessageA
-004f11d0 +0fc DocumentFlow.exe Forms                                            TApplication.ProcessMessage
-004f120a +00a DocumentFlow.exe Forms                                            TApplication.HandleMessage
-004f142a +096 DocumentFlow.exe Forms                                            TApplication.Run
-01155b8e +00e DocumentFlow.exe ApplicationLauncher                      128  +2 TApplicationLauncher.PassControlToApplicationModule
-01155bd5 +02d DocumentFlow.exe ApplicationLauncher                      141  +6 TApplicationLauncher.Launch
-01185196 +042 DocumentFlow.exe DocumentFlow                             260 +11 initialization
-76d26357 +017 KERNEL32.DLL                                                      BaseThreadInitThunk
-
-thread $1738:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $778:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $31a4:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $2d60:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $26cc:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $2a90:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $1b5c: <priority:2>
-76e2b19f +4f user32.dll                 GetMessageA
-004632c1 +0d DocumentFlow.exe madExcept CallThreadProcSafe
-0046332b +37 DocumentFlow.exe madExcept ThreadExceptFrame
-76d26357 +17 KERNEL32.DLL               BaseThreadInitThunk
->> created by Main ($3b18) at:
-745c2dd5 +00 winmm.dll
-
-thread $838: <priority:1>
-004632c1 +0d DocumentFlow.exe madExcept CallThreadProcSafe
-0046332b +37 DocumentFlow.exe madExcept ThreadExceptFrame
-76d26357 +17 KERNEL32.DLL               BaseThreadInitThunk
->> created by Main ($3b18) at:
-73d01e14 +00 mswsock.dll
-
-modules:
-00400000 DocumentFlow.exe                           C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-03dc0000 Padeg.dll              3.3.0.27            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-07990000 oleacc.dll             4.2.5406.0          C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-10000000 libpq.dll              11.0.2.19105        C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-4dae0000 midas.dll              10.0.2151.25345     C:\Windows\System32
-5df40000 LIBEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-5e080000 SSLEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-5e0d0000 Msftedit.DLL           6.2.18362.329       C:\Windows\SYSTEM32
-5e380000 HHCtrl.OCX             6.2.18362.1         C:\Windows\SYSTEM32
-5e420000 FontSub.dll            6.2.18362.356       C:\Windows\SYSTEM32
-66e50000 CoreUIComponents.dll   6.2.18362.207       C:\Windows\System32
-67370000 CoreMessaging.dll      6.2.18362.1         C:\Windows\System32
-67ca0000 TextInputFramework.dll 6.2.18362.207       C:\Windows\System32
-681f0000 rasadhlp.dll           6.2.18362.1         C:\Windows\System32
-683b0000 MSVCP60.dll            7.0.18362.1         C:\Windows\SYSTEM32
-68600000 fwpuclnt.dll           6.2.18362.113       C:\Windows\System32
-687a0000 sxs.dll                6.2.18362.1         C:\Windows\SYSTEM32
-68920000 wintypes.dll           6.2.18362.267       C:\Windows\SYSTEM32
-69180000 winspool.drv           6.2.18362.267       C:\Windows\SYSTEM32
-6a1b0000 usp10.dll              6.2.18362.1         C:\Windows\SYSTEM32
-6aa80000 VCRUNTIME140.dll       14.24.28127.4       C:\Windows\SYSTEM32
-6aab0000 olepro32.dll           6.2.18362.113       C:\Windows\SYSTEM32
-6abb0000 FaultRep.dll           6.2.18362.418       C:\Windows\SYSTEM32
-6ac90000 dwmapi.dll             6.2.18362.267       C:\Windows\SYSTEM32
-6bec0000 WindowsCodecs.dll      6.2.18362.1         C:\Windows\SYSTEM32
-6cb20000 iertutil.dll           11.0.18362.387      C:\Windows\System32
-6d760000 msimg32.dll            6.2.18362.175       C:\Windows\SYSTEM32
-6d770000 comctl32.dll           6.10.18362.418      C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.418_none_2e73e95e27897f63
-6dbd0000 SHFolder.dll           6.2.18362.1         C:\Windows\SYSTEM32
-6dbe0000 uxtheme.dll            6.2.18362.387       C:\Windows\system32
-6dd60000 gdiplus.dll            6.2.18362.418       C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.18362.418_none_5f5edc43821bf931
-6ef30000 PROPSYS.dll            7.0.18362.267       C:\Windows\SYSTEM32
-719f0000 Secur32.dll            6.2.18362.1         C:\Windows\SYSTEM32
-739d0000 ntmarta.dll            6.2.18362.1         C:\Windows\SYSTEM32
-73c30000 DNSAPI.dll             6.2.18362.267       C:\Windows\SYSTEM32
-73cf0000 mswsock.dll            6.2.18362.1         C:\Windows\system32
-73d80000 IPHLPAPI.DLL           6.2.18362.1         C:\Windows\SYSTEM32
-74220000 dbgcore.DLL            6.2.18362.1         C:\Windows\SYSTEM32
-74250000 dbghelp.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74540000 wsock32.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74590000 winmmbase.dll          6.2.18362.1         C:\Windows\SYSTEM32
-745c0000 winmm.dll              6.2.18362.1         C:\Windows\SYSTEM32
-74610000 version.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74780000 CRYPTBASE.dll          6.2.18362.1         C:\Windows\System32
-74790000 SspiCli.dll            6.2.18362.1         C:\Windows\System32
-747b0000 GDI32.dll              6.2.18362.1         C:\Windows\System32
-747e0000 clbcatq.dll            2001.12.10941.16384 C:\Windows\System32
-74860000 IMM32.DLL              6.2.18362.387       C:\Windows\System32
-74890000 powrprof.dll           6.2.18362.1         C:\Windows\System32
-748e0000 ucrtbase.dll           6.2.18362.387       C:\Windows\System32
-74a00000 KERNELBASE.dll         6.2.18362.418       C:\Windows\System32
-74c00000 comdlg32.dll           6.2.18362.418       C:\Windows\System32
-74cc0000 kernel.appcore.dll     6.2.18362.1         C:\Windows\System32
-74cd0000 cryptsp.dll            6.2.18362.1         C:\Windows\System32
-74cf0000 shell32.dll            6.2.18362.387       C:\Windows\System32
-75270000 combase.dll            6.2.18362.356       C:\Windows\System32
-754f0000 bcrypt.dll             6.2.18362.267       C:\Windows\System32
-75510000 windows.storage.dll    6.2.18362.387       C:\Windows\System32
-75af0000 WS2_32.dll             6.2.18362.387       C:\Windows\System32
-75b50000 oleaut32.dll           6.2.18362.329       C:\Windows\System32
-75c10000 WLDAP32.dll            6.2.18362.1         C:\Windows\System32
-75c70000 gdi32full.dll          6.2.18362.356       C:\Windows\System32
-76280000 RPCRT4.dll             6.2.18362.1         C:\Windows\System32
-76340000 ole32.dll              6.2.18362.113       C:\Windows\System32
-76440000 UMPDC.dll                                  C:\Windows\System32
-76450000 bcryptPrimitives.dll   6.2.18362.295       C:\Windows\System32
-764b0000 advapi32.dll           6.2.18362.329       C:\Windows\System32
-76530000 shcore.dll             6.2.18362.1         C:\Windows\System32
-766a0000 win32u.dll             6.2.18362.387       C:\Windows\System32
-766c0000 msvcp_win.dll          6.2.18362.387       C:\Windows\System32
-76740000 NSI.dll                6.2.18362.1         C:\Windows\System32
-76750000 shlwapi.dll            6.2.18362.1         C:\Windows\System32
-767a0000 msvcrt.dll             7.0.18362.1         C:\Windows\System32
-768c0000 sechost.dll            6.2.18362.267       C:\Windows\System32
-76a50000 cfgmgr32.dll           6.2.18362.387       C:\Windows\System32
-76a90000 MSCTF.dll              6.2.18362.387       C:\Windows\System32
-76d10000 KERNEL32.DLL           6.2.18362.329       C:\Windows\System32
-76df0000 user32.dll             6.2.18362.418       C:\Windows\System32
-76f90000 profapi.dll            6.2.18362.1         C:\Windows\System32
-76fc0000 ntdll.dll              6.2.18362.387       C:\Windows\SYSTEM32
-
-processes:
-0000 Idle                        0 0    0
-0004 System                      0 0    0
-0068 Registry                    0 0    0
-01c0 smss.exe                    0 0    0
-0280 csrss.exe                   0 0    0
-02dc wininit.exe                 0 0    0
-0368 services.exe                0 0    0
-0374 lsass.exe                   0 0    0
-03f8 svchost.exe                 0 0    0
-0044 svchost.exe                 0 0    0
-0234 fontdrvhost.exe             0 0    0
-0278 WUDFHost.exe                0 0    0
-0404 svchost.exe                 0 0    0
-043c svchost.exe                 0 0    0
-04a4 svchost.exe                 0 0    0
-04ac svchost.exe                 0 0    0
-04e8 svchost.exe                 0 0    0
-0508 svchost.exe                 0 0    0
-05a0 svchost.exe                 0 0    0
-05ac svchost.exe                 0 0    0
-05e8 svchost.exe                 0 0    0
-0600 svchost.exe                 0 0    0
-0620 svchost.exe                 0 0    0
-0680 svchost.exe                 0 0    0
-06e0 svchost.exe                 0 0    0
-0708 svchost.exe                 0 0    0
-072c svchost.exe                 0 0    0
-07d0 svchost.exe                 0 0    0
-0598 svchost.exe                 0 0    0
-047c svchost.exe                 0 0    0
-0814 NVDisplay.Container.exe     0 0    0
-0848 svchost.exe                 0 0    0
-08a4 svchost.exe                 0 0    0
-08b8 svchost.exe                 0 0    0
-08c0 svchost.exe                 0 0    0
-08c8 svchost.exe                 0 0    0
-0920 Memory Compression          0 0    0
-0970 svchost.exe                 0 0    0
-09a4 svchost.exe                 0 0    0
-0a10 svchost.exe                 0 0    0
-0a5c svchost.exe                 0 0    0
-0a64 svchost.exe                 0 0    0
-0a6c svchost.exe                 0 0    0
-0a78 svchost.exe                 0 0    0
-0aec svchost.exe                 0 0    0
-0b20 svchost.exe                 0 0    0
-0b34 svchost.exe                 0 0    0
-0bfc svchost.exe                 0 0    0
-0868 spoolsv.exe                 0 0    0
-0c0c svchost.exe                 0 0    0
-0c14 svchost.exe                 0 0    0
-0c74 svchost.exe                 0 0    0
-0e0c svchost.exe                 0 0    0
-0e14 svchost.exe                 0 0    0
-0e1c svchost.exe                 0 0    0
-0e74 svchost.exe                 0 0    0
-0ebc armsvc.exe                  0 0    0
-0ed0 atkexComSvc.exe             0 0    0
-0edc AsSysCtrlService.exe        0 0    0
-0ef0 svchost.exe                 0 0    0
-0ef8 svchost.exe                 0 0    0
-0f08 svchost.exe                 0 0    0
-0f34 hasplms.exe                 0 0    0
-0f8c mdm.exe                     0 0    0
-0fcc NvTelemetryContainer.exe    0 0    0
-0fec svchost.exe                 0 0    0
-0ff8 sqlwriter.exe               0 0    0
-0c48 avp.exe                     0 0    0
-0cd4 svchost.exe                 0 0    0
-0cd8 svchost.exe                 0 0    0
-0ce4 svchost.exe                 0 0    0
-0dc8 svchost.exe                 0 0    0
-0de4 svchost.exe                 0 0    0
-10d8 svchost.exe                 0 0    0
-1100 svchost.exe                 0 0    0
-11d4 svchost.exe                 0 0    0
-11f0 svchost.exe                 0 0    0
-1308 Ascon.CSC.AgentService.exe  0 0    0
-139c hasplmv.exe                 0 0    0
-1a54 svchost.exe                 0 0    0
-1b2c svchost.exe                 0 0    0
-1bf0 svchost.exe                 0 0    0
-1fb8 svchost.exe                 0 0    0
-0ddc SecurityHealthService.exe   0 0    0
-1064 SearchIndexer.exe           0 0    0
-1c10 svchost.exe                 0 0    0
-07cc svchost.exe                 0 0    0
-0f3c svchost.exe                 0 0    0
-21d4 svchost.exe                 0 0    0
-2258 svchost.exe                 0 0    0
-22d4 Ascon.CSC.AgentUpdater.exe  0 0    0
-2228 svchost.exe                 0 0    0
-1b48 avpsus.exe                  0 0    0
-1e94 jhi_service.exe             0 0    0
-2134 klnagent.exe                0 0    0
-21b0 LMS.exe                     0 0    0
-0504 PolynomApiService.exe       0 0    0
-0864 SgrmBroker.exe              0 0    0
-1b64 svchost.exe                 0 0    0
-1860 svchost.exe                 0 0    0
-1e90 vapm.exe                    0 0    0
-1270 unsecapp.exe                0 0    0
-0a3c svchost.exe                 0 0    0
-082c svchost.exe                 0 0    0
-272c svchost.exe                 0 0    0
-2788 svchost.exe                 0 0    0
-2bcc OSPPSVC.EXE                 0 0    0
-1fc4 GoogleUpdate.exe            0 0    0
-1594 csrss.exe                   5 0    0
-0410 winlogon.exe                5 0    0
-0e30 dwm.exe                     5 0    0
-3520 fontdrvhost.exe             5 0    0
-0644 NVDisplay.Container.exe     5 0    0
-2da4 svchost.exe                 0 0    0
-02e8 WmiPrvSE.exe                0 0    0
-32a8 svchost.exe                 0 0    0
-3248 svchost.exe                 0 0    0
-17b0 WmiPrvSE.exe                0 0    0
-0e58 svchost.exe                 0 0    0
-2fe4 svchost.exe                 0 0    0
-0350 WmiPrvSE.exe                0 0    0
-1f54 svchost.exe                 0 0    0
-007c avpui.exe                   5 25   14   normal C:\Program Files (x86)\Kaspersky Lab\Kaspersky Endpoint Security for Windows
-3424 sihost.exe                  5 0    17   normal C:\Windows\System32
-3c1c svchost.exe                 5 0    1    normal C:\Windows\System32
-07f0 svchost.exe                 5 0    5    normal C:\Windows\System32
-2924 ctfmon.exe                  5 0    0
-1cd8 svchost.exe                 0 0    0
-2114 taskhostw.exe               5 8    6    normal C:\Windows\System32
-2f48 explorer.exe                5 434  410  normal C:\Windows
-3f2c svchost.exe                 0 0    0
-1d5c svchost.exe                 5 0    7    normal C:\Windows\System32
-1874 TSVNCache.exe               5 0    4    normal C:\Program Files\TortoiseSVN\bin
-30f0 dllhost.exe                 5 0    5    normal C:\Windows\System32
-0860 StartMenuExperienceHost.exe 5 0    14   normal C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
-3970 svchost.exe                 0 0    0
-1c38 svchost.exe                 0 0    0
-1640 RuntimeBroker.exe           5 8    2    normal C:\Windows\System32
-3d04 SearchUI.exe                5 12   48   normal C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy
-3da0 RuntimeBroker.exe           5 36   2    normal C:\Windows\System32
-1b58 SkypeBackgroundHost.exe     5 0    1    normal C:\Program Files\WindowsApps\Microsoft.SkypeApp_14.35.152.0_x64__kzf8qxf38zg5c
-32bc RuntimeBroker.exe           5 0    1    normal C:\Windows\System32
-1b0c GameBar.exe                 5 0    14   normal C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_2.26.14003.0_x64__8wekyb3d8bbwe
-0f94 svchost.exe                 0 0    0
-3bc8 smartscreen.exe             5 0    4    normal C:\Windows\System32
-3938 SecurityHealthSystray.exe   5 7    5    normal C:\Windows\System32
-31f0 RtkNGUI64.exe               5 17   26   normal C:\Program Files\Realtek\Audio\HDA
-0d88 OneDrive.exe                5 56   35   normal C:\Users\59968\AppData\Local\Microsoft\OneDrive
-3bf0 BCClipboard.exe             5 38   23   normal C:\Program Files\Beyond Compare 4
-08e4 jusched.exe                 5 0    2    normal C:\Program Files (x86)\Common Files\Java\Java Update
-33f4 LoodsmanAgent.exe           5 140  60   normal C:\Program Files (x86)\ASCON\Loodsman\Agent
-0cec AdobeARM.exe                5 0    3    normal C:\Program Files (x86)\Common Files\Adobe\ARM\1.0
-2f84 miranda32.exe               5 1221 449  normal C:\Program Files (x86)\MirandaCorporate\MirandaCorporate
-332c backgroundTaskHost.exe      5 0    4    normal C:\Windows\System32
-3694 Video.UI.exe                5 0    9    normal C:\Program Files\WindowsApps\Microsoft.ZuneVideo_10.18111.17311.0_x64__8wekyb3d8bbwe
-3e84 RuntimeBroker.exe           5 0    1    normal C:\Windows\System32
-1e58 svchost.exe                 5 0    1    normal C:\Windows\System32
-2544 RuntimeBroker.exe           5 36   10   normal C:\Windows\System32
-2994 pgadmin3.exe                5 1010 261  normal C:\Program Files (x86)\pgAdmin III\1.22
-3a48 bds.exe                     5 3297 1057 normal C:\Program Files (x86)\Borland\BDS\4.0\Bin
-1238 svchost.exe                 0 0    0
-1b08 SecurityHealthHost.exe      5 0    1    normal C:\Windows\System32
-3198 SearchProtocolHost.exe      0 0    0
-3548 ShellExperienceHost.exe     5 0    26   normal C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy
-36a8 audiodg.exe                 0 0    0
-22d8 RuntimeBroker.exe           5 0    5    normal C:\Windows\System32
-3b84 SearchFilterHost.exe        0 0    0
-2458 SearchProtocolHost.exe      5 0    1    idle   C:\Windows\System32
-37f8 DocumentFlow.exe            5 458  177  normal C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-
-hardware:
-+ {1ed2bbf9-11f0-4084-b21f-ad83a8e6dcdc}
-  - Fax
-  - Kyocera FS-6970DN KX
-  - Microsoft Print to PDF
-  - Microsoft XPS Document Writer
-  - Корневая очередь печати
-  - Отправить в OneNote 2010
-+ {36fc9e60-c465-11cf-8056-444553540000}
-  - HUAWEI Mobile Connect - Bus Enumerate Device (driver 2.6.2.3155)
-  - Корневой USB-концентратор (USB 3.0)
-  - Расширяемый хост-контроллер Intel(R) USB 3.1 — 1.10 (Майкрософт)
-  - Составное USB устройство
-+ {4d36e966-e325-11ce-bfc1-08002be10318}
-  - Компьютер с ACPI на базе x64
-+ {4d36e967-e325-11ce-bfc1-08002be10318}
-  - TOSHIBA HDWD110
-+ {4d36e968-e325-11ce-bfc1-08002be10318}
-  - NVIDIA GeForce GT 710 (driver 26.21.14.3086)
-  - Базовый видеоадаптер (Майкрософт)
-+ {4d36e96a-e325-11ce-bfc1-08002be10318}
-  - Стандартный контроллер SATA AHCI
-+ {4d36e96b-e325-11ce-bfc1-08002be10318}
-  - Клавиатура HID
-+ {4d36e96c-e325-11ce-bfc1-08002be10318}
-  - NVIDIA High Definition Audio (driver 1.3.38.16)
-  - NVIDIA Virtual Audio Device (Wave Extensible) (WDM) (driver 4.13.0.0)
-  - Realtek High Definition Audio (driver 6.0.1.8339)
-  - Устройство с поддержкой High Definition Audio
-+ {4d36e96e-e325-11ce-bfc1-08002be10318}
-  - Универсальный монитор PnP
-+ {4d36e96f-e325-11ce-bfc1-08002be10318}
-  - HID-совместимая мышь
-+ {4d36e972-e325-11ce-bfc1-08002be10318}
-  - Microsoft Kernel Debug Network Adapter
-  - Realtek PCIe GBE Family Controller (driver 10.23.1003.2017)
-  - VirtualBox Host-Only Ethernet Adapter (driver 6.1.30.48432)
-  - WAN Miniport (IKEv2)
-  - WAN Miniport (IP)
-  - WAN Miniport (IPv6)
-  - WAN Miniport (L2TP)
-  - WAN Miniport (Network Monitor)
-  - WAN Miniport (PPPOE)
-  - WAN Miniport (PPTP)
-  - WAN Miniport (SSTP)
-+ {4d36e978-e325-11ce-bfc1-08002be10318}
-  - Последовательный порт (COM1)
-+ {4d36e97b-e325-11ce-bfc1-08002be10318}
-  - Контроллер дискового пространства (Майкрософт)
-+ {4d36e97d-e325-11ce-bfc1-08002be10318}
-  - ACPI Wake Alarm
-  - Intel(R) 300 Series Chipset Family LPC Controller (B360) - A308 (driver 10.1.16.3)
-  - Intel(R) Host Bridge/DRAM Registers - 3E1F (driver 10.1.14.3)
-  - Intel(R) Management Engine Interface  (driver 1803.12.0.1093)
-  - Intel(R) PCI Express Root Port #11 - A332 (driver 10.1.16.3)
-  - Intel(R) PCI Express Root Port #12 - A333 (driver 10.1.16.3)
-  - Intel(R) PCI Express Root Port #21 - A32C (driver 10.1.16.3)
-  - Intel(R) PCI Express Root Port #5 - A33C (driver 10.1.16.3)
-  - Intel(R) PCI Express Root Port #9 - A330 (driver 10.1.16.3)
-  - Intel(R) PCIe Controller (x16) - 1901 (driver 10.1.7.2)
-  - Intel(R) SMBus - A323 (driver 10.1.16.3)
-  - Intel(R) SPI (flash) Controller - A324 (driver 10.1.16.3)
-  - Microsoft ACPI-совместимая система
-  - Microsoft UEFI-совместимая система
-  - NVVHCI Enumerator (driver 3.3.2475.1519)
-  - PCI Express Root Complex
-  - Remote Desktop USB Hub
-  - UMBus перечислитель
-  - UMBus перечислитель
-  - UMBus перечислитель
-  - UMBus перечислитель корневой шины
-  - Агрегатор процессора ACPI
-  - Арифметический сопроцессор
-  - Базовый видеодрайвер (Майкрософт)
-  - Базовый драйвер отрисовки (Майкрософт)
-  - Вентилятор ACPI
-  - Вентилятор ACPI
-  - Вентилятор ACPI
-  - Вентилятор ACPI
-  - Вентилятор ACPI
-  - Высокоточный таймер событий
-  - Диспетчер томов
-  - Драйвер Microsoft System Management BIOS
-  - Драйвер инфраструктуры виртуализации Microsoft Hyper-V
-  - Интерфейс управления для ACPI Microsoft Windows
-  - Интерфейс управления для ACPI Microsoft Windows
-  - Интерфейс управления для ACPI Microsoft Windows
-  - Кнопка питания ACPI
-  - Кнопка спящего режима ACPI
-  - Контроллер High Definition Audio (Microsoft)
-  - Контроллер High Definition Audio (Microsoft)
-  - Мост PCI–PCI
-  - Перечислитель виртуальных дисков (Майкрософт)
-  - Перечислитель виртуальных сетевых адаптеров NDIS
-  - Перечислитель композитной шины
-  - Перечислитель программных устройств Plug and Play
-  - Подключаемый модуль управления питанием Intel(R)
-  - Программируемый контроллер прерываний
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Ресурсы системной платы
-  - Системный таймер
-  - Стандартный контроллер PCI — ОЗУ
-  - Термальная зона ACPI
-  - Фиксированная функциональная кнопка ACPI
-  - Шина камеры удаленного рабочего стола
-  - Шина перенаправителя устройств удаленных рабочих столов
-+ {50127dc3-0f36-415e-a6cc-4cb3be910b65}
-  - Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz
-  - Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz
-  - Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz
-  - Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz
-+ {5175d334-c371-4806-b3ba-71fd53c9258d}
-  - Microsoft Visual Studio Location Simulator Sensor (driver 11.0.0.0)
-+ {62f9c741-b25a-46ce-b54c-9bccce08b6f2}
-  - Microsoft Device Association Root Enumerator
-  - Microsoft Radio Device Enumeration Bus
-  - Microsoft RRAS Root Enumerator
-  - Программный синтезатор звуковой таблицы Microsoft
-+ {745a17a0-74d3-11d0-b6fe-00a0c90f57da}
-  - HID-совместимое устройство управления
-  - HID-совместимый системный контроллер
-  - USB-устройство ввода
-  - USB-устройство ввода
-  - USB-устройство ввода
-+ {c166523c-fe0c-4a94-a586-f1a80cfbbf3e}
-  - Realtek Digital Output (Realtek High Definition Audio)
-+ {f2e7dd72-6468-4e36-b6f1-6488f42c1b52}
-  - Встроенное ПО системы
-
-cpu registers:
-eax = 0841d240
-ebx = 0b019f88
-ecx = 00000000
-edx = 00488a78
-esi = 00000008
-edi = 00000000
-eip = 00488a78
-esp = 0019f348
-ebp = 0019f3d8
-
-stack dump:
-0019f348  78 8a 48 00 de fa ed 0e - 01 00 00 00 07 00 00 00  x.H.............
-0019f358  5c f3 19 00 78 8a 48 00 - 40 d2 41 08 88 9f 01 0b  \...x.H.@.A.....
-0019f368  08 00 00 00 00 00 00 00 - d8 f3 19 00 78 f3 19 00  ............x...
-0019f378  88 9f 01 0b 0b c5 91 07 - 88 9f 01 0b eb 90 48 00  ..............H.
-0019f388  09 00 00 00 69 a0 48 00 - 9c f3 19 00 dc 50 40 00  ....i.H......P@.
-0019f398  d8 f3 19 00 a8 f3 19 00 - 1b 52 40 00 d8 f3 19 00  .........R@.....
-0019f3a8  24 f4 19 00 84 50 40 00 - d8 f3 19 00 20 2c 36 08  $....P@..... ,6.
-0019f3b8  a0 c5 91 07 b0 e1 93 07 - a0 c5 91 07 b0 e1 93 07  ................
-0019f3c8  01 00 00 00 a0 c5 91 07 - 00 00 00 00 b0 e1 93 07  ................
-0019f3d8  f8 f3 19 00 d2 99 48 00 - 20 2c 36 08 a0 c5 91 07  ......H. ,6.....
-0019f3e8  b0 e1 93 07 20 2c 36 08 - f6 a5 4d 00 a0 c5 91 07  .... ,6...M.....
-0019f3f8  08 f4 19 00 b4 99 48 00 - b0 e1 93 07 a0 c5 91 07  ......H.........
-0019f408  38 f4 19 00 aa e8 48 00 - ee 03 4d 00 00 00 00 00  8.....H...M.....
-0019f418  50 e8 48 00 a0 c5 91 07 - 5e 43 4d 00 40 f4 19 00  P.H.....^CM.@...
-0019f428  84 50 40 00 38 f4 19 00 - e4 1c 48 00 b0 e1 93 07  .P@.8.....H.....
-0019f438  98 f4 19 00 2a 98 48 00 - 4c f4 19 00 1b 52 40 00  ....*.H.L....R@.
-0019f448  98 f4 19 00 58 f4 19 00 - 84 50 40 00 98 f4 19 00  ....X....P@.....
-0019f458  a0 f4 19 00 84 50 40 00 - 98 f4 19 00 00 00 00 00  .....P@.........
-0019f468  50 e8 48 00 20 2c 36 08 - 90 fc 9e 0a 20 2c 36 08  P.H. ,6..... ,6.
-0019f478  e7 a0 48 00 00 00 00 00 - 00 00 00 00 b0 e1 93 07  ..H.............
-
-disassembling:
-[...]
-00927456        mov     [ebp-5], dl
-00927459        mov     [ebp-4], eax
-0092745c 1709   mov     ecx, [ebp-$c]
-0092745f        xor     edx, edx
-00927461        mov     eax, [ebp-4]
-00927464      > call    -$43f2ed ($4e817c)     ; Forms.TCustomForm.Create
-00927469 1710   xor     ecx, ecx
-0092746b        xor     edx, edx
-0092746d        mov     eax, [ebp-4]
-00927470        mov     ebx, [eax]
-00927472        call    dword ptr [ebx+$104]
-[...]
-
-date/time          : 2022-09-12, 08:40:43, 870ms
-computer name      : 06-409-5
-user name          : 59968
-registered owner   : user
-operating system   : Windows 10 x64 build 18363
-system language    : Russian
-system up time     : 6 days
-program up time    : 9 seconds
-processors         : 4x Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz
-physical memory    : 1068/3947 MB (free/total)
-free disk space    : (C:) 50,52 GB
-display mode       : 1920x1080, 32 bit
-process id         : $37f8
-allocated memory   : 84,16 MB
-largest free block : 986,62 MB
-executable         : DocumentFlow.exe
-exec. date/time    : 2022-09-08 14:09
-compiled with      : Delphi 2006/07
-madExcept version  : 5.0.0
-callstack crc      : $791c1b7d, $1a535dbe, $bba5ace8
-count              : 2
+callstack crc      : $94a1dd65, $a0671185, $aa255715
 exception number   : 2
-exception class    : EAccessViolation
-exception message  : Access violation at address 004058CC in module 'DocumentFlow.exe'. Write of address 00000078.
+exception class    : TDocumentFileStorageServiceException
+exception message  : Файл с именем "Files encrypting.pdf" уже открыт. Для повторного запроса файла необходимо его закрыть.
 
-Main ($3b18):
-004058cc +028 DocumentFlow.exe System                           25  +0 @LStrAsg
-00d01921 +051 DocumentFlow.exe DocumentCardFrameFactory       1125 +11 TDocumentCardFrameFactory.CreateDocumentMainInformationFrame
-00d0130b +077 DocumentFlow.exe DocumentCardFrameFactory        760 +24 TDocumentCardFrameFactory.CreateSheetsAndInflateToDocumentCardFrame
-00d00b0b +03b DocumentFlow.exe DocumentCardFrameFactory        284  +9 TDocumentCardFrameFactory.CreateDocumentCardFrameFrom
-00d0123c +03c DocumentFlow.exe DocumentCardFrameFactory        695 +10 TDocumentCardFrameFactory.CreateDocumentCardFrameForView
-00d0127c +010 DocumentFlow.exe DocumentCardFrameFactory        711  +2 TDocumentCardFrameFactory.CreateEmptyNoActivedDocumentCardFrame
-01145880 +040 DocumentFlow.exe unDocumentCardListFrame        1940 +11 TDocumentCardListFrame.ShowEmptyNoActivedDocumentCardForCurrentSelectedDocumentKindSection
-0114939b +00f DocumentFlow.exe unDocumentCardListFrame        4631  +2 TDocumentCardListFrame.OnDocumentRecordsLoadingCanceledEventHandler
-00cf7659 +03d DocumentFlow.exe BaseDocumentsReferenceFormUnit 1433  +7 TBaseDocumentsReferenceForm.OnDataLoadingCancelledHandle
-0092b6ca +01e DocumentFlow.exe DBDataTableFormUnit            4503  +2 TDBDataTableForm.OnDataLoadingCancelledHandle
-00648d4b +01b DocumentFlow.exe CancellationThreadUnit           58  +3 TCancellationThread.RaiseOnCancellationEventHandler
-0048dcbd +0fd DocumentFlow.exe Classes                                 CheckSynchronize
-004f0aa6 +6b2 DocumentFlow.exe Forms                                   TApplication.WndProc
-0048fb14 +014 DocumentFlow.exe Classes                                 StdWndProc
-76e2ec5b +00b user32.dll                                               DispatchMessageA
-004f11d0 +0fc DocumentFlow.exe Forms                                   TApplication.ProcessMessage
-004f120a +00a DocumentFlow.exe Forms                                   TApplication.HandleMessage
-004f142a +096 DocumentFlow.exe Forms                                   TApplication.Run
-01155b8e +00e DocumentFlow.exe ApplicationLauncher             128  +2 TApplicationLauncher.PassControlToApplicationModule
-01155bd5 +02d DocumentFlow.exe ApplicationLauncher             141  +6 TApplicationLauncher.Launch
-01185196 +042 DocumentFlow.exe DocumentFlow                    260 +11 initialization
-76d26357 +017 KERNEL32.DLL                                             BaseThreadInitThunk
+Main ($2b24):
+00b75384 +0f8 DocumentFlow.exe StandardDocumentFileStorageService       255 +28 TStandardDocumentFileStorageService.GetFile
+771d4211 +021 ntdll.dll                                                         KiUserExceptionDispatcher
+010532c0 +078 DocumentFlow.exe AbstractFileStorageServiceClient         125  +7 TAbstractFileStorageServiceClient.InternalChangeLocalFileName
+010531ee +0ae DocumentFlow.exe AbstractFileStorageServiceClient         110 +11 TAbstractFileStorageServiceClient.ChangeLocalFileName
+0105310e +042 DocumentFlow.exe AbstractFileStorageServiceClient          90  +4 TAbstractFileStorageServiceClient.GetFile
+00b75337 +0ab DocumentFlow.exe StandardDocumentFileStorageService       246 +19 TStandardDocumentFileStorageService.GetFile
+01053896 +01e DocumentFlow.exe DocumentFileServiceClientUnit             71  +2 TDocumentFileServiceClient.GetFile
+0114c645 +069 DocumentFlow.exe unDocumentCardListFrame                 3770 +11 TDocumentCardListFrame.OnDocumentFileOpeningRequestedEventHandler
+01155331 +041 DocumentFlow.exe unDocumentCardFrame                     3397  +6 TDocumentCardFrame.OnDocumentFileShowingEventHandler
+00b885c4 +030 DocumentFlow.exe DocumentFilesViewFrameUnit               435  +5 TDocumentFilesViewFrame.RaiseOnDocumentFileShowingEventHandler
+00b88493 +02b DocumentFlow.exe DocumentFilesViewFrameUnit               391  +2 TDocumentFilesViewFrame.OnDocumentFileInfoSelectionChanged
+00b88579 +09d DocumentFlow.exe DocumentFilesViewFrameUnit               416 +14 TDocumentFilesViewFrame.RaiseOnDocumentFileInfoItemSelectionChangedIfNecessary
+00b886ff +043 DocumentFlow.exe DocumentFilesViewFrameUnit               499  +7 TDocumentFilesViewFrame.SetCurrentDocumentFileName
+011545eb +063 DocumentFlow.exe unDocumentCardFrame                     2773 +39 TDocumentCardFrame.UpdateDocumentFilesViewFrameIfNecessary
+0115578c +064 DocumentFlow.exe unDocumentCardFrame                     3618 +15 TDocumentCardFrame.OnShow
+011496aa +0d6 DocumentFlow.exe unDocumentCardListFrame                 1499 +39 TDocumentCardListFrame.AssignDocumentCardFrame
+0114a25d +035 DocumentFlow.exe unDocumentCardListFrame                 2099  +5 TDocumentCardListFrame.CustomizeAndAssignDocumentCardFrame
+0114ade2 +026 DocumentFlow.exe unDocumentCardListFrame                 2681  +8 TDocumentCardListFrame.ShowCardForDocument
+01148e2f +0a3 DocumentFlow.exe unDocumentCardListFrame                 1177 +12 TDocumentCardListFrame.HandleDocumentCardShowMessage
+004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
+004d66f5 +499 DocumentFlow.exe Controls                                         TWinControl.WndProc
+004d5e80 +02c DocumentFlow.exe Controls                                         TWinControl.MainWndProc
+0048fb14 +014 DocumentFlow.exe Classes                                          StdWndProc
+7659ec5b +00b user32.dll                                                        DispatchMessageA
+0045a396 +33a DocumentFlow.exe madExcept                                        HandleException
+00462506 +03a DocumentFlow.exe madExcept                                        InterceptAHandleExcept
+004d5ebb +067 DocumentFlow.exe Controls                                         TWinControl.MainWndProc
+771d4211 +021 ntdll.dll                                                         KiUserExceptionDispatcher
+00f2fdc4 +058 DocumentFlow.exe DBDataTableFormPropertiesStorage         230  +8 TDBDataTableFormPropertiesStorage.SaveDBDataTableFormProperties
+00f2fbb6 +03e DocumentFlow.exe DBDataTableFormPropertiesStorage         155  +2 TDBDataTableFormPropertiesStorage.InternalSaveObjectProperties
+00f2b35f +01b DocumentFlow.exe StandardObjectPropertiesStorage           80  +2 TStandardObjectPropertiesStorage.SaveObjectProperties
+00b427aa +062 DocumentFlow.exe SDBaseTableFormUnit                      566 +13 TSDBaseTableForm.SaveCurrentUISettings
+00b422a0 +014 DocumentFlow.exe SDBaseTableFormUnit                      257  +2 TSDBaseTableForm.Destroy
+00f1785c +068 DocumentFlow.exe ServiceDeskRequestsTableFormUnit         532  +7 TServiceDeskRequestsTableForm.Destroy
+771d4211 +021 ntdll.dll                                                         KiUserExceptionDispatcher
+004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
+00489827 +11f DocumentFlow.exe Classes                                          TReader.ReadComponent
+00489a41 +089 DocumentFlow.exe Classes                                          TReader.ReadDataInner
+004899af +067 DocumentFlow.exe Classes                                          TReader.ReadData
+0048e8a5 +001 DocumentFlow.exe Classes                                          TComponent.ReadState
+004d03e9 +02d DocumentFlow.exe Controls                                         TControl.ReadState
+004d4359 +025 DocumentFlow.exe Controls                                         TWinControl.ReadState
+00489827 +11f DocumentFlow.exe Classes                                          TReader.ReadComponent
+00489a41 +089 DocumentFlow.exe Classes                                          TReader.ReadDataInner
+00489980 +038 DocumentFlow.exe Classes                                          TReader.ReadData
+0048e8a5 +001 DocumentFlow.exe Classes                                          TComponent.ReadState
+004d03e9 +02d DocumentFlow.exe Controls                                         TControl.ReadState
+004d4359 +025 DocumentFlow.exe Controls                                         TWinControl.ReadState
+004e88fd +06d DocumentFlow.exe Forms                                            TCustomForm.ReadState
+0048a7ec +1d8 DocumentFlow.exe Classes                                          TReader.ReadRootComponent
+004879fa +032 DocumentFlow.exe Classes                                          TStream.ReadComponent
+004835e7 +057 DocumentFlow.exe Classes                                          InternalReadComponentRes
+00483771 +079 DocumentFlow.exe Classes                                          InitComponent
+00483802 +062 DocumentFlow.exe Classes                                          InitInheritedComponent
+004e821d +0a1 DocumentFlow.exe Forms                                            TCustomForm.Create
+009282e0 +024 DocumentFlow.exe DBDataTableFormUnit                     1709  +2 TDBDataTableForm.Create
+00b42047 +023 DocumentFlow.exe SDBaseTableFormUnit                      195  +2 TSDBaseTableForm.Create
+00f172a3 +02b DocumentFlow.exe ServiceDeskRequestsTableFormUnit         395  +1 TServiceDeskRequestsTableForm.Create
+00f31f99 +265 DocumentFlow.exe BasedOnZeosPostgresSDItemsService        494 +90 TBasedOnZeosPostgresSDItemsService.GetSDItemControl
+010d84d5 +045 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  171 +10 TStandardDocumentsReferenceFormPresenter.ShowSDItemControl
+010d83ac +0a4 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  114 +19 TStandardDocumentsReferenceFormPresenter.ShowDocumentsReferenceForm
+0114c022 +056 DocumentFlow.exe unDocumentCardListFrame                 3508  +7 TDocumentCardListFrame.SetCurrentDocumentKindInfo
+00d3cd47 +093 DocumentFlow.exe unDocumentFlowWorkingFrame               372  +6 TDocumentFlowWorkingFrame.UpdateUIForDocumentKind
+00d3cd85 +015 DocumentFlow.exe unDocumentFlowWorkingFrame               392  +2 TDocumentFlowWorkingFrame.OnDocumentKindSelectedEventHandler
+00c4d751 +029 DocumentFlow.exe unDocumentKindsFrame                     760  +4 TDocumentKindsFrame.RaiseOnDocumentKindSelectedEventHandler
+00c4d5bf +01b DocumentFlow.exe unDocumentKindsFrame                     650  +4 TDocumentKindsFrame.HandleDocumentKindSelectedMessage
+004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
+004d66f5 +499 DocumentFlow.exe Controls                                         TWinControl.WndProc
+004d5e80 +02c DocumentFlow.exe Controls                                         TWinControl.MainWndProc
+0048fb14 +014 DocumentFlow.exe Classes                                          StdWndProc
+7659ec5b +00b user32.dll                                                        DispatchMessageA
+004f11d0 +0fc DocumentFlow.exe Forms                                            TApplication.ProcessMessage
+004f120a +00a DocumentFlow.exe Forms                                            TApplication.HandleMessage
+004f142a +096 DocumentFlow.exe Forms                                            TApplication.Run
+0115a14a +00e DocumentFlow.exe ApplicationLauncher                      128  +2 TApplicationLauncher.PassControlToApplicationModule
+0115a191 +02d DocumentFlow.exe ApplicationLauncher                      141  +6 TApplicationLauncher.Launch
+01189196 +042 DocumentFlow.exe DocumentFlow                             260 +11 initialization
+74dd6357 +017 KERNEL32.DLL                                                      BaseThreadInitThunk
 
-thread $1738:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
+Main ($2b24), inner exception level 1:
+>> TFileSharingViolationException, Попытка одновременного доступа к файлу "Files encrypting.pdf" по пути "C:\Users\59968\AppData\Local\Temp\UMP_FWL\Files encrypting.pdf"
+01052dd4 +084 DocumentFlow.exe WindowsFileStorageServiceErrorProcessor   53 +20 TWindowsFileStorageServiceErrorProcessor.RaiseExceptionByErrorData
+010532c0 +078 DocumentFlow.exe AbstractFileStorageServiceClient         125  +7 TAbstractFileStorageServiceClient.InternalChangeLocalFileName
+010531ee +0ae DocumentFlow.exe AbstractFileStorageServiceClient         110 +11 TAbstractFileStorageServiceClient.ChangeLocalFileName
+0105310e +042 DocumentFlow.exe AbstractFileStorageServiceClient          90  +4 TAbstractFileStorageServiceClient.GetFile
+00b75337 +0ab DocumentFlow.exe StandardDocumentFileStorageService       246 +19 TStandardDocumentFileStorageService.GetFile
+01053896 +01e DocumentFlow.exe DocumentFileServiceClientUnit             71  +2 TDocumentFileServiceClient.GetFile
+0114c645 +069 DocumentFlow.exe unDocumentCardListFrame                 3770 +11 TDocumentCardListFrame.OnDocumentFileOpeningRequestedEventHandler
+01155331 +041 DocumentFlow.exe unDocumentCardFrame                     3397  +6 TDocumentCardFrame.OnDocumentFileShowingEventHandler
+00b885c4 +030 DocumentFlow.exe DocumentFilesViewFrameUnit               435  +5 TDocumentFilesViewFrame.RaiseOnDocumentFileShowingEventHandler
+00b88493 +02b DocumentFlow.exe DocumentFilesViewFrameUnit               391  +2 TDocumentFilesViewFrame.OnDocumentFileInfoSelectionChanged
+00b88579 +09d DocumentFlow.exe DocumentFilesViewFrameUnit               416 +14 TDocumentFilesViewFrame.RaiseOnDocumentFileInfoItemSelectionChangedIfNecessary
+00b886ff +043 DocumentFlow.exe DocumentFilesViewFrameUnit               499  +7 TDocumentFilesViewFrame.SetCurrentDocumentFileName
+011545eb +063 DocumentFlow.exe unDocumentCardFrame                     2773 +39 TDocumentCardFrame.UpdateDocumentFilesViewFrameIfNecessary
+0115578c +064 DocumentFlow.exe unDocumentCardFrame                     3618 +15 TDocumentCardFrame.OnShow
+011496aa +0d6 DocumentFlow.exe unDocumentCardListFrame                 1499 +39 TDocumentCardListFrame.AssignDocumentCardFrame
+0114a25d +035 DocumentFlow.exe unDocumentCardListFrame                 2099  +5 TDocumentCardListFrame.CustomizeAndAssignDocumentCardFrame
+0114ade2 +026 DocumentFlow.exe unDocumentCardListFrame                 2681  +8 TDocumentCardListFrame.ShowCardForDocument
+01148e2f +0a3 DocumentFlow.exe unDocumentCardListFrame                 1177 +12 TDocumentCardListFrame.HandleDocumentCardShowMessage
+004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
+004d66f5 +499 DocumentFlow.exe Controls                                         TWinControl.WndProc
+004d5e80 +02c DocumentFlow.exe Controls                                         TWinControl.MainWndProc
+0048fb14 +014 DocumentFlow.exe Classes                                          StdWndProc
+7659ec5b +00b user32.dll                                                        DispatchMessageA
+0045a396 +33a DocumentFlow.exe madExcept                                        HandleException
+00462506 +03a DocumentFlow.exe madExcept                                        InterceptAHandleExcept
+004d5ebb +067 DocumentFlow.exe Controls                                         TWinControl.MainWndProc
+771d4211 +021 ntdll.dll                                                         KiUserExceptionDispatcher
+00f2fdc4 +058 DocumentFlow.exe DBDataTableFormPropertiesStorage         230  +8 TDBDataTableFormPropertiesStorage.SaveDBDataTableFormProperties
+00f2fbb6 +03e DocumentFlow.exe DBDataTableFormPropertiesStorage         155  +2 TDBDataTableFormPropertiesStorage.InternalSaveObjectProperties
+00f2b35f +01b DocumentFlow.exe StandardObjectPropertiesStorage           80  +2 TStandardObjectPropertiesStorage.SaveObjectProperties
+00b427aa +062 DocumentFlow.exe SDBaseTableFormUnit                      566 +13 TSDBaseTableForm.SaveCurrentUISettings
+00b422a0 +014 DocumentFlow.exe SDBaseTableFormUnit                      257  +2 TSDBaseTableForm.Destroy
+00f1785c +068 DocumentFlow.exe ServiceDeskRequestsTableFormUnit         532  +7 TServiceDeskRequestsTableForm.Destroy
+771d4211 +021 ntdll.dll                                                         KiUserExceptionDispatcher
+004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
+00489827 +11f DocumentFlow.exe Classes                                          TReader.ReadComponent
+00489a41 +089 DocumentFlow.exe Classes                                          TReader.ReadDataInner
+004899af +067 DocumentFlow.exe Classes                                          TReader.ReadData
+0048e8a5 +001 DocumentFlow.exe Classes                                          TComponent.ReadState
+004d03e9 +02d DocumentFlow.exe Controls                                         TControl.ReadState
+004d4359 +025 DocumentFlow.exe Controls                                         TWinControl.ReadState
+00489827 +11f DocumentFlow.exe Classes                                          TReader.ReadComponent
+00489a41 +089 DocumentFlow.exe Classes                                          TReader.ReadDataInner
+00489980 +038 DocumentFlow.exe Classes                                          TReader.ReadData
+0048e8a5 +001 DocumentFlow.exe Classes                                          TComponent.ReadState
+004d03e9 +02d DocumentFlow.exe Controls                                         TControl.ReadState
+004d4359 +025 DocumentFlow.exe Controls                                         TWinControl.ReadState
+004e88fd +06d DocumentFlow.exe Forms                                            TCustomForm.ReadState
+0048a7ec +1d8 DocumentFlow.exe Classes                                          TReader.ReadRootComponent
+004879fa +032 DocumentFlow.exe Classes                                          TStream.ReadComponent
+004835e7 +057 DocumentFlow.exe Classes                                          InternalReadComponentRes
+00483771 +079 DocumentFlow.exe Classes                                          InitComponent
+00483802 +062 DocumentFlow.exe Classes                                          InitInheritedComponent
+004e821d +0a1 DocumentFlow.exe Forms                                            TCustomForm.Create
+009282e0 +024 DocumentFlow.exe DBDataTableFormUnit                     1709  +2 TDBDataTableForm.Create
+00b42047 +023 DocumentFlow.exe SDBaseTableFormUnit                      195  +2 TSDBaseTableForm.Create
+00f172a3 +02b DocumentFlow.exe ServiceDeskRequestsTableFormUnit         395  +1 TServiceDeskRequestsTableForm.Create
+00f31f99 +265 DocumentFlow.exe BasedOnZeosPostgresSDItemsService        494 +90 TBasedOnZeosPostgresSDItemsService.GetSDItemControl
+010d84d5 +045 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  171 +10 TStandardDocumentsReferenceFormPresenter.ShowSDItemControl
+010d83ac +0a4 DocumentFlow.exe StandardDocumentsReferenceFormPresenter  114 +19 TStandardDocumentsReferenceFormPresenter.ShowDocumentsReferenceForm
+0114c022 +056 DocumentFlow.exe unDocumentCardListFrame                 3508  +7 TDocumentCardListFrame.SetCurrentDocumentKindInfo
+00d3cd47 +093 DocumentFlow.exe unDocumentFlowWorkingFrame               372  +6 TDocumentFlowWorkingFrame.UpdateUIForDocumentKind
+00d3cd85 +015 DocumentFlow.exe unDocumentFlowWorkingFrame               392  +2 TDocumentFlowWorkingFrame.OnDocumentKindSelectedEventHandler
+00c4d751 +029 DocumentFlow.exe unDocumentKindsFrame                     760  +4 TDocumentKindsFrame.RaiseOnDocumentKindSelectedEventHandler
+00c4d5bf +01b DocumentFlow.exe unDocumentKindsFrame                     650  +4 TDocumentKindsFrame.HandleDocumentKindSelectedMessage
+004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
+004d66f5 +499 DocumentFlow.exe Controls                                         TWinControl.WndProc
+004d5e80 +02c DocumentFlow.exe Controls                                         TWinControl.MainWndProc
+0048fb14 +014 DocumentFlow.exe Classes                                          StdWndProc
+7659ec5b +00b user32.dll                                                        DispatchMessageA
+004f11d0 +0fc DocumentFlow.exe Forms                                            TApplication.ProcessMessage
+004f120a +00a DocumentFlow.exe Forms                                            TApplication.HandleMessage
+004f142a +096 DocumentFlow.exe Forms                                            TApplication.Run
+0115a14a +00e DocumentFlow.exe ApplicationLauncher                      128  +2 TApplicationLauncher.PassControlToApplicationModule
+0115a191 +02d DocumentFlow.exe ApplicationLauncher                      141  +6 TApplicationLauncher.Launch
+01189196 +042 DocumentFlow.exe DocumentFlow                             260 +11 initialization
+74dd6357 +017 KERNEL32.DLL                                                      BaseThreadInitThunk
 
-thread $778:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $31a4:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $2d60:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $26cc:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $2a90:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $1b5c: <priority:2>
-76e2b19f +4f user32.dll                 GetMessageA
+thread $2fcc: <priority:2>
+7659b19f +4f user32.dll                 GetMessageA
 004632c1 +0d DocumentFlow.exe madExcept CallThreadProcSafe
 0046332b +37 DocumentFlow.exe madExcept ThreadExceptFrame
-76d26357 +17 KERNEL32.DLL               BaseThreadInitThunk
->> created by Main ($3b18) at:
-745c2dd5 +00 winmm.dll
+74dd6357 +17 KERNEL32.DLL               BaseThreadInitThunk
+>> created by Main ($2b24) at:
+74762dd5 +00 winmm.dll
 
-thread $838: <priority:1>
+thread $2890: <priority:1>
 004632c1 +0d DocumentFlow.exe madExcept CallThreadProcSafe
 0046332b +37 DocumentFlow.exe madExcept ThreadExceptFrame
-76d26357 +17 KERNEL32.DLL               BaseThreadInitThunk
->> created by Main ($3b18) at:
-73d01e14 +00 mswsock.dll
+74dd6357 +17 KERNEL32.DLL               BaseThreadInitThunk
+>> created by Main ($2b24) at:
+73f71e14 +00 mswsock.dll
 
-thread $3108 (TDataSetOperationThread):
-74afe273 +093 KERNELBASE.dll                                       WaitForSingleObjectEx
-74afe1cd +00d KERNELBASE.dll                                       WaitForSingleObject
-0048e21f +113 DocumentFlow.exe Classes                             TThread.Synchronize
-0048e2c6 +01e DocumentFlow.exe Classes                             TThread.Synchronize
-00648d84 +030 DocumentFlow.exe CancellationThreadUnit       68  +5 TCancellationThread.RaiseOnCancellationEventHandlerIf
-00912420 +104 DocumentFlow.exe DataSetOperationThreadUnit  213 +40 TDataSetOperationThread.InternalExecute
-77034211 +021 ntdll.dll                                            KiUserExceptionDispatcher
-74b13560 +050 KERNELBASE.dll                                       RaiseException
-0085ce7d +039 DocumentFlow.exe ZDbcStatement              1984  +1 TZEmulatedPreparedStatement.ExecuteQuery
-0085cfa1 +039 DocumentFlow.exe ZDbcStatement              2025  +1 TZEmulatedPreparedStatement.ExecuteQueryPrepared
-008f7b6a +1ae DocumentFlow.exe ZAbstractRODataset         1591 +25 TZAbstractRODataset.CreateResultSet
-008f0274 +030 DocumentFlow.exe ZAbstractDataset            328  +1 TZAbstractDataset.CreateResultSet
-008f7c6a +0a2 DocumentFlow.exe ZAbstractRODataset         1615 +12 TZAbstractRODataset.InternalOpen
-005128e1 +019 DocumentFlow.exe DB                                  TDataSet.DoInternalOpen
-0051299a +01e DocumentFlow.exe DB                                  TDataSet.OpenCursor
-00512855 +055 DocumentFlow.exe DB                                  TDataSet.SetActive
-0051264d +009 DocumentFlow.exe DB                                  TDataSet.Open
-00912376 +05a DocumentFlow.exe DataSetOperationThreadUnit  187 +14 TDataSetOperationThread.InternalExecute
-0091219e +00e DocumentFlow.exe DataSetOperationThreadUnit  137  +2 TDataSetOperationThread.Execute
-004633df +02b DocumentFlow.exe madExcept                           HookedTThreadExecute
-0048ddcc +034 DocumentFlow.exe Classes                             ThreadProc
-004057c4 +028 DocumentFlow.exe System                       25  +0 ThreadWrapper
-004632c1 +00d DocumentFlow.exe madExcept                           CallThreadProcSafe
-0046332b +037 DocumentFlow.exe madExcept                           ThreadExceptFrame
-76d26357 +017 KERNEL32.DLL                                         BaseThreadInitThunk
->> created by Main ($3b18) at:
-00648cef +023 DocumentFlow.exe CancellationThreadUnit       43  +2 TCancellationThread.Create
+thread $3680:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $3a00:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
 
 modules:
 00400000 DocumentFlow.exe                           C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-03dc0000 Padeg.dll              3.3.0.27            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-07990000 oleacc.dll             4.2.5406.0          C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+04100000 Padeg.dll              3.3.0.27            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
 10000000 libpq.dll              11.0.2.19105        C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
 4dae0000 midas.dll              10.0.2151.25345     C:\Windows\System32
-5df40000 LIBEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-5e080000 SSLEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-5e0d0000 Msftedit.DLL           6.2.18362.329       C:\Windows\SYSTEM32
-5e380000 HHCtrl.OCX             6.2.18362.1         C:\Windows\SYSTEM32
-5e420000 FontSub.dll            6.2.18362.356       C:\Windows\SYSTEM32
-66e50000 CoreUIComponents.dll   6.2.18362.207       C:\Windows\System32
-67370000 CoreMessaging.dll      6.2.18362.1         C:\Windows\System32
-67ca0000 TextInputFramework.dll 6.2.18362.207       C:\Windows\System32
-681f0000 rasadhlp.dll           6.2.18362.1         C:\Windows\System32
-683b0000 MSVCP60.dll            7.0.18362.1         C:\Windows\SYSTEM32
-68600000 fwpuclnt.dll           6.2.18362.113       C:\Windows\System32
-687a0000 sxs.dll                6.2.18362.1         C:\Windows\SYSTEM32
-68920000 wintypes.dll           6.2.18362.267       C:\Windows\SYSTEM32
-69180000 winspool.drv           6.2.18362.267       C:\Windows\SYSTEM32
-6a1b0000 usp10.dll              6.2.18362.1         C:\Windows\SYSTEM32
-6aa80000 VCRUNTIME140.dll       14.24.28127.4       C:\Windows\SYSTEM32
-6aab0000 olepro32.dll           6.2.18362.113       C:\Windows\SYSTEM32
-6abb0000 FaultRep.dll           6.2.18362.418       C:\Windows\SYSTEM32
-6ac90000 dwmapi.dll             6.2.18362.267       C:\Windows\SYSTEM32
-6bec0000 WindowsCodecs.dll      6.2.18362.1         C:\Windows\SYSTEM32
-6cb20000 iertutil.dll           11.0.18362.387      C:\Windows\System32
-6d760000 msimg32.dll            6.2.18362.175       C:\Windows\SYSTEM32
-6d770000 comctl32.dll           6.10.18362.418      C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.418_none_2e73e95e27897f63
-6dbd0000 SHFolder.dll           6.2.18362.1         C:\Windows\SYSTEM32
-6dbe0000 uxtheme.dll            6.2.18362.387       C:\Windows\system32
-6dd60000 gdiplus.dll            6.2.18362.418       C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.18362.418_none_5f5edc43821bf931
-6ef30000 PROPSYS.dll            7.0.18362.267       C:\Windows\SYSTEM32
-719f0000 Secur32.dll            6.2.18362.1         C:\Windows\SYSTEM32
-739d0000 ntmarta.dll            6.2.18362.1         C:\Windows\SYSTEM32
-73c30000 DNSAPI.dll             6.2.18362.267       C:\Windows\SYSTEM32
-73cf0000 mswsock.dll            6.2.18362.1         C:\Windows\system32
-73d80000 IPHLPAPI.DLL           6.2.18362.1         C:\Windows\SYSTEM32
-74220000 dbgcore.DLL            6.2.18362.1         C:\Windows\SYSTEM32
-74250000 dbghelp.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74540000 wsock32.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74590000 winmmbase.dll          6.2.18362.1         C:\Windows\SYSTEM32
-745c0000 winmm.dll              6.2.18362.1         C:\Windows\SYSTEM32
-74610000 version.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74780000 CRYPTBASE.dll          6.2.18362.1         C:\Windows\System32
-74790000 SspiCli.dll            6.2.18362.1         C:\Windows\System32
-747b0000 GDI32.dll              6.2.18362.1         C:\Windows\System32
-747e0000 clbcatq.dll            2001.12.10941.16384 C:\Windows\System32
-74860000 IMM32.DLL              6.2.18362.387       C:\Windows\System32
-74890000 powrprof.dll           6.2.18362.1         C:\Windows\System32
-748e0000 ucrtbase.dll           6.2.18362.387       C:\Windows\System32
-74a00000 KERNELBASE.dll         6.2.18362.418       C:\Windows\System32
-74c00000 comdlg32.dll           6.2.18362.418       C:\Windows\System32
-74cb0000 psapi.dll              6.2.18362.1         C:\Windows\System32
-74cc0000 kernel.appcore.dll     6.2.18362.1         C:\Windows\System32
-74cd0000 cryptsp.dll            6.2.18362.1         C:\Windows\System32
-74cf0000 shell32.dll            6.2.18362.387       C:\Windows\System32
-75270000 combase.dll            6.2.18362.356       C:\Windows\System32
-754f0000 bcrypt.dll             6.2.18362.267       C:\Windows\System32
-75510000 windows.storage.dll    6.2.18362.387       C:\Windows\System32
-75af0000 WS2_32.dll             6.2.18362.387       C:\Windows\System32
-75b50000 oleaut32.dll           6.2.18362.329       C:\Windows\System32
-75c10000 WLDAP32.dll            6.2.18362.1         C:\Windows\System32
-75c70000 gdi32full.dll          6.2.18362.356       C:\Windows\System32
-76280000 RPCRT4.dll             6.2.18362.1         C:\Windows\System32
-76340000 ole32.dll              6.2.18362.113       C:\Windows\System32
-76440000 UMPDC.dll                                  C:\Windows\System32
-76450000 bcryptPrimitives.dll   6.2.18362.295       C:\Windows\System32
-764b0000 advapi32.dll           6.2.18362.329       C:\Windows\System32
-76530000 shcore.dll             6.2.18362.1         C:\Windows\System32
-766a0000 win32u.dll             6.2.18362.387       C:\Windows\System32
-766c0000 msvcp_win.dll          6.2.18362.387       C:\Windows\System32
-76740000 NSI.dll                6.2.18362.1         C:\Windows\System32
-76750000 shlwapi.dll            6.2.18362.1         C:\Windows\System32
-767a0000 msvcrt.dll             7.0.18362.1         C:\Windows\System32
-768c0000 sechost.dll            6.2.18362.267       C:\Windows\System32
-76a50000 cfgmgr32.dll           6.2.18362.387       C:\Windows\System32
-76a90000 MSCTF.dll              6.2.18362.387       C:\Windows\System32
-76d10000 KERNEL32.DLL           6.2.18362.329       C:\Windows\System32
-76df0000 user32.dll             6.2.18362.418       C:\Windows\System32
-76f90000 profapi.dll            6.2.18362.1         C:\Windows\System32
-76fc0000 ntdll.dll              6.2.18362.387       C:\Windows\SYSTEM32
+59b90000 Msftedit.DLL           6.2.18362.329       C:\Windows\SYSTEM32
+5a580000 LIBEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+5a6c0000 SSLEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+5a710000 HHCtrl.OCX             6.2.18362.1         C:\Windows\SYSTEM32
+5b0a0000 FontSub.dll            6.2.18362.356       C:\Windows\SYSTEM32
+63c60000 CoreMessaging.dll      6.2.18362.1         C:\Windows\System32
+63cf0000 CoreUIComponents.dll   6.2.18362.207       C:\Windows\System32
+63f50000 TextInputFramework.dll 6.2.18362.207       C:\Windows\System32
+65110000 MSVCP60.dll            7.0.18362.1         C:\Windows\SYSTEM32
+65360000 wintypes.dll           6.2.18362.267       C:\Windows\SYSTEM32
+65b40000 sxs.dll                6.2.18362.1         C:\Windows\SYSTEM32
+67cd0000 usp10.dll              6.2.18362.1         C:\Windows\SYSTEM32
+67cf0000 olepro32.dll           6.2.18362.113       C:\Windows\SYSTEM32
+68030000 FaultRep.dll           6.2.18362.418       C:\Windows\SYSTEM32
+680a0000 winspool.drv           6.2.18362.267       C:\Windows\SYSTEM32
+68350000 WindowsCodecs.dll      6.2.18362.1         C:\Windows\SYSTEM32
+68840000 gdiplus.dll            6.2.18362.418       C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.18362.418_none_5f5edc43821bf931
+69460000 dwmapi.dll             6.2.18362.267       C:\Windows\SYSTEM32
+695b0000 SHFolder.dll           6.2.18362.1         C:\Windows\SYSTEM32
+6b110000 wshbth.dll             6.2.18362.1         C:\Windows\system32
+6b290000 NLAapi.dll             6.2.18362.1         C:\Windows\system32
+6b2b0000 winrnr.dll             6.2.18362.1         C:\Windows\System32
+6b320000 pnrpnsp.dll            6.2.18362.1         C:\Windows\system32
+6b3a0000 napinsp.dll            6.2.18362.1         C:\Windows\system32
+6c430000 fwpuclnt.dll           6.2.18362.113       C:\Windows\System32
+6c5a0000 VCRUNTIME140.dll       14.24.28127.4       C:\Windows\SYSTEM32
+6c5c0000 rasadhlp.dll           6.2.18362.1         C:\Windows\System32
+6c740000 uxtheme.dll            6.2.18362.387       C:\Windows\system32
+6cc20000 msimg32.dll            6.2.18362.175       C:\Windows\SYSTEM32
+6cc30000 comctl32.dll           6.10.18362.418      C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.418_none_2e73e95e27897f63
+6d240000 iertutil.dll           11.0.18362.387      C:\Windows\System32
+6f0d0000 PROPSYS.dll            7.0.18362.267       C:\Windows\SYSTEM32
+71b90000 Secur32.dll            6.2.18362.1         C:\Windows\SYSTEM32
+73b70000 ntmarta.dll            6.2.18362.1         C:\Windows\SYSTEM32
+73ea0000 DNSAPI.dll             6.2.18362.267       C:\Windows\SYSTEM32
+73f60000 mswsock.dll            6.2.18362.1         C:\Windows\system32
+73ff0000 IPHLPAPI.DLL           6.2.18362.1         C:\Windows\SYSTEM32
+74400000 rsaenh.dll             6.2.18362.1         C:\Windows\system32
+74430000 dbgcore.DLL            6.2.18362.1         C:\Windows\SYSTEM32
+74460000 dbghelp.dll            6.2.18362.1         C:\Windows\SYSTEM32
+746b0000 wsock32.dll            6.2.18362.1         C:\Windows\SYSTEM32
+74730000 winmmbase.dll          6.2.18362.1         C:\Windows\SYSTEM32
+74760000 winmm.dll              6.2.18362.1         C:\Windows\SYSTEM32
+747b0000 version.dll            6.2.18362.1         C:\Windows\SYSTEM32
+74920000 CRYPTBASE.dll          6.2.18362.1         C:\Windows\System32
+74930000 SspiCli.dll            6.2.18362.1         C:\Windows\System32
+74bc0000 shlwapi.dll            6.2.18362.1         C:\Windows\System32
+74c10000 kernel.appcore.dll     6.2.18362.1         C:\Windows\System32
+74c40000 oleacc.dll             4.2.5406.0          C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+74d00000 msvcrt.dll             7.0.18362.1         C:\Windows\System32
+74dc0000 KERNEL32.DLL           6.2.18362.329       C:\Windows\System32
+74ea0000 ole32.dll              6.2.18362.113       C:\Windows\System32
+74fa0000 comdlg32.dll           6.2.18362.418       C:\Windows\System32
+75050000 windows.storage.dll    6.2.18362.387       C:\Windows\System32
+75620000 advapi32.dll           6.2.18362.329       C:\Windows\System32
+756a0000 cryptsp.dll            6.2.18362.1         C:\Windows\System32
+756c0000 powrprof.dll           6.2.18362.1         C:\Windows\System32
+75710000 gdi32full.dll          6.2.18362.356       C:\Windows\System32
+75870000 UMPDC.dll                                  C:\Windows\System32
+75880000 bcryptPrimitives.dll   6.2.18362.295       C:\Windows\System32
+758e0000 KERNELBASE.dll         6.2.18362.418       C:\Windows\System32
+75b00000 NSI.dll                6.2.18362.1         C:\Windows\System32
+75f60000 shell32.dll            6.2.18362.387       C:\Windows\System32
+764e0000 bcrypt.dll             6.2.18362.267       C:\Windows\System32
+76520000 psapi.dll              6.2.18362.1         C:\Windows\System32
+76530000 GDI32.dll              6.2.18362.1         C:\Windows\System32
+76560000 user32.dll             6.2.18362.418       C:\Windows\System32
+76700000 WS2_32.dll             6.2.18362.387       C:\Windows\System32
+767c0000 msvcp_win.dll          6.2.18362.387       C:\Windows\System32
+76840000 shcore.dll             6.2.18362.1         C:\Windows\System32
+768d0000 oleaut32.dll           6.2.18362.329       C:\Windows\System32
+76970000 IMM32.DLL              6.2.18362.387       C:\Windows\System32
+769a0000 cfgmgr32.dll           6.2.18362.387       C:\Windows\System32
+76a40000 ucrtbase.dll           6.2.18362.387       C:\Windows\System32
+76b60000 MSCTF.dll              6.2.18362.387       C:\Windows\System32
+76c70000 sechost.dll            6.2.18362.267       C:\Windows\System32
+76cf0000 win32u.dll             6.2.18362.387       C:\Windows\System32
+76d10000 clbcatq.dll            2001.12.10941.16384 C:\Windows\System32
+76d90000 profapi.dll            6.2.18362.1         C:\Windows\System32
+76db0000 combase.dll            6.2.18362.356       C:\Windows\System32
+77030000 WLDAP32.dll            6.2.18362.1         C:\Windows\System32
+77090000 RPCRT4.dll             6.2.18362.1         C:\Windows\System32
+77160000 ntdll.dll              6.2.18362.387       C:\Windows\SYSTEM32
 
 processes:
-0000 Idle                        0 0    0
-0004 System                      0 0    0
-0068 Registry                    0 0    0
-01c0 smss.exe                    0 0    0
-0280 csrss.exe                   0 0    0
-02dc wininit.exe                 0 0    0
-0368 services.exe                0 0    0
-0374 lsass.exe                   0 0    0
-03f8 svchost.exe                 0 0    0
-0044 svchost.exe                 0 0    0
-0234 fontdrvhost.exe             0 0    0
-0278 WUDFHost.exe                0 0    0
-0404 svchost.exe                 0 0    0
-043c svchost.exe                 0 0    0
-04a4 svchost.exe                 0 0    0
-04ac svchost.exe                 0 0    0
-04e8 svchost.exe                 0 0    0
-0508 svchost.exe                 0 0    0
-05a0 svchost.exe                 0 0    0
-05ac svchost.exe                 0 0    0
-05e8 svchost.exe                 0 0    0
-0600 svchost.exe                 0 0    0
-0620 svchost.exe                 0 0    0
-0680 svchost.exe                 0 0    0
-06e0 svchost.exe                 0 0    0
-0708 svchost.exe                 0 0    0
-072c svchost.exe                 0 0    0
-07d0 svchost.exe                 0 0    0
-0598 svchost.exe                 0 0    0
-047c svchost.exe                 0 0    0
-0814 NVDisplay.Container.exe     0 0    0
-0848 svchost.exe                 0 0    0
-08a4 svchost.exe                 0 0    0
-08b8 svchost.exe                 0 0    0
-08c0 svchost.exe                 0 0    0
-08c8 svchost.exe                 0 0    0
-0920 Memory Compression          0 0    0
-0970 svchost.exe                 0 0    0
-09a4 svchost.exe                 0 0    0
-0a10 svchost.exe                 0 0    0
-0a5c svchost.exe                 0 0    0
-0a64 svchost.exe                 0 0    0
-0a6c svchost.exe                 0 0    0
-0a78 svchost.exe                 0 0    0
-0aec svchost.exe                 0 0    0
-0b20 svchost.exe                 0 0    0
-0b34 svchost.exe                 0 0    0
-0bfc svchost.exe                 0 0    0
-0868 spoolsv.exe                 0 0    0
-0c0c svchost.exe                 0 0    0
-0c14 svchost.exe                 0 0    0
-0c74 svchost.exe                 0 0    0
-0e0c svchost.exe                 0 0    0
-0e14 svchost.exe                 0 0    0
-0e1c svchost.exe                 0 0    0
-0e74 svchost.exe                 0 0    0
-0ebc armsvc.exe                  0 0    0
-0ed0 atkexComSvc.exe             0 0    0
-0edc AsSysCtrlService.exe        0 0    0
-0ef0 svchost.exe                 0 0    0
-0ef8 svchost.exe                 0 0    0
-0f08 svchost.exe                 0 0    0
-0f34 hasplms.exe                 0 0    0
-0f8c mdm.exe                     0 0    0
-0fcc NvTelemetryContainer.exe    0 0    0
-0fec svchost.exe                 0 0    0
-0ff8 sqlwriter.exe               0 0    0
-0c48 avp.exe                     0 0    0
-0cd4 svchost.exe                 0 0    0
-0cd8 svchost.exe                 0 0    0
-0ce4 svchost.exe                 0 0    0
-0dc8 svchost.exe                 0 0    0
-0de4 svchost.exe                 0 0    0
-10d8 svchost.exe                 0 0    0
-1100 svchost.exe                 0 0    0
-11d4 svchost.exe                 0 0    0
-11f0 svchost.exe                 0 0    0
-1308 Ascon.CSC.AgentService.exe  0 0    0
-139c hasplmv.exe                 0 0    0
-1a54 svchost.exe                 0 0    0
-1b2c svchost.exe                 0 0    0
-1bf0 svchost.exe                 0 0    0
-1fb8 svchost.exe                 0 0    0
-0ddc SecurityHealthService.exe   0 0    0
-1064 SearchIndexer.exe           0 0    0
-1c10 svchost.exe                 0 0    0
-07cc svchost.exe                 0 0    0
-0f3c svchost.exe                 0 0    0
-21d4 svchost.exe                 0 0    0
-2258 svchost.exe                 0 0    0
-22d4 Ascon.CSC.AgentUpdater.exe  0 0    0
-2228 svchost.exe                 0 0    0
-1b48 avpsus.exe                  0 0    0
-1e94 jhi_service.exe             0 0    0
-2134 klnagent.exe                0 0    0
-21b0 LMS.exe                     0 0    0
-0504 PolynomApiService.exe       0 0    0
-0864 SgrmBroker.exe              0 0    0
-1b64 svchost.exe                 0 0    0
-1860 svchost.exe                 0 0    0
-1e90 vapm.exe                    0 0    0
-1270 unsecapp.exe                0 0    0
-0a3c svchost.exe                 0 0    0
-082c svchost.exe                 0 0    0
-272c svchost.exe                 0 0    0
-2788 svchost.exe                 0 0    0
-2bcc OSPPSVC.EXE                 0 0    0
-1fc4 GoogleUpdate.exe            0 0    0
-1594 csrss.exe                   5 0    0
-0410 winlogon.exe                5 0    0
-0e30 dwm.exe                     5 0    0
-3520 fontdrvhost.exe             5 0    0
-0644 NVDisplay.Container.exe     5 0    0
-2da4 svchost.exe                 0 0    0
-02e8 WmiPrvSE.exe                0 0    0
-32a8 svchost.exe                 0 0    0
-3248 svchost.exe                 0 0    0
-17b0 WmiPrvSE.exe                0 0    0
-0e58 svchost.exe                 0 0    0
-2fe4 svchost.exe                 0 0    0
-0350 WmiPrvSE.exe                0 0    0
-1f54 svchost.exe                 0 0    0
-007c avpui.exe                   5 25   14   normal C:\Program Files (x86)\Kaspersky Lab\Kaspersky Endpoint Security for Windows
-3424 sihost.exe                  5 0    17   normal C:\Windows\System32
-3c1c svchost.exe                 5 0    1    normal C:\Windows\System32
-07f0 svchost.exe                 5 0    5    normal C:\Windows\System32
-2924 ctfmon.exe                  5 0    0
-1cd8 svchost.exe                 0 0    0
-2114 taskhostw.exe               5 8    6    normal C:\Windows\System32
-2f48 explorer.exe                5 429  411  normal C:\Windows
-3f2c svchost.exe                 0 0    0
-1d5c svchost.exe                 5 0    7    normal C:\Windows\System32
-1874 TSVNCache.exe               5 0    5    normal C:\Program Files\TortoiseSVN\bin
-30f0 dllhost.exe                 5 0    5    normal C:\Windows\System32
-0860 StartMenuExperienceHost.exe 5 0    14   normal C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
-1c38 svchost.exe                 0 0    0
-1640 RuntimeBroker.exe           5 8    2    normal C:\Windows\System32
-3d04 SearchUI.exe                5 12   48   normal C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy
-3da0 RuntimeBroker.exe           5 36   2    normal C:\Windows\System32
-1b58 SkypeBackgroundHost.exe     5 0    1    normal C:\Program Files\WindowsApps\Microsoft.SkypeApp_14.35.152.0_x64__kzf8qxf38zg5c
-32bc RuntimeBroker.exe           5 0    1    normal C:\Windows\System32
-1b0c GameBar.exe                 5 0    14   normal C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_2.26.14003.0_x64__8wekyb3d8bbwe
-0f94 svchost.exe                 0 0    0
-3bc8 smartscreen.exe             5 0    4    normal C:\Windows\System32
-3938 SecurityHealthSystray.exe   5 7    5    normal C:\Windows\System32
-31f0 RtkNGUI64.exe               5 17   26   normal C:\Program Files\Realtek\Audio\HDA
-0d88 OneDrive.exe                5 56   35   normal C:\Users\59968\AppData\Local\Microsoft\OneDrive
-3bf0 BCClipboard.exe             5 38   23   normal C:\Program Files\Beyond Compare 4
-08e4 jusched.exe                 5 0    2    normal C:\Program Files (x86)\Common Files\Java\Java Update
-33f4 LoodsmanAgent.exe           5 140  60   normal C:\Program Files (x86)\ASCON\Loodsman\Agent
-0cec AdobeARM.exe                5 0    3    normal C:\Program Files (x86)\Common Files\Adobe\ARM\1.0
-2f84 miranda32.exe               5 1223 450  normal C:\Program Files (x86)\MirandaCorporate\MirandaCorporate
-332c backgroundTaskHost.exe      5 0    4    normal C:\Windows\System32
-3694 Video.UI.exe                5 0    9    normal C:\Program Files\WindowsApps\Microsoft.ZuneVideo_10.18111.17311.0_x64__8wekyb3d8bbwe
-3e84 RuntimeBroker.exe           5 0    1    normal C:\Windows\System32
-1e58 svchost.exe                 5 0    1    normal C:\Windows\System32
-2544 RuntimeBroker.exe           5 36   10   normal C:\Windows\System32
-2994 pgadmin3.exe                5 1010 260  normal C:\Program Files (x86)\pgAdmin III\1.22
-3a48 bds.exe                     5 3297 1057 normal C:\Program Files (x86)\Borland\BDS\4.0\Bin
-1238 svchost.exe                 0 0    0
-1b08 SecurityHealthHost.exe      5 0    1    normal C:\Windows\System32
-3198 SearchProtocolHost.exe      0 0    0
-3548 ShellExperienceHost.exe     5 0    25   normal C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy
-36a8 audiodg.exe                 0 0    0
-22d8 RuntimeBroker.exe           5 0    5    normal C:\Windows\System32
-3b84 SearchFilterHost.exe        0 0    0
-2458 SearchProtocolHost.exe      5 0    1    idle   C:\Windows\System32
-37f8 DocumentFlow.exe            5 471  191  normal C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+0000 Idle                                                               0 0    0
+0004 System                                                             0 0    0
+0068 Registry                                                           0 0    0
+01c0 smss.exe                                                           0 0    0
+027c csrss.exe                                                          0 0    0
+02d8 wininit.exe                                                        0 0    0
+0368 services.exe                                                       0 0    0
+0370 lsass.exe                                                          0 0    0
+03f8 svchost.exe                                                        0 0    0
+0044 svchost.exe                                                        0 0    0
+022c fontdrvhost.exe                                                    0 0    0
+0398 svchost.exe                                                        0 0    0
+0410 svchost.exe                                                        0 0    0
+046c WUDFHost.exe                                                       0 0    0
+04a0 svchost.exe                                                        0 0    0
+04d0 svchost.exe                                                        0 0    0
+0500 svchost.exe                                                        0 0    0
+0518 svchost.exe                                                        0 0    0
+05a4 svchost.exe                                                        0 0    0
+05b4 svchost.exe                                                        0 0    0
+05c4 svchost.exe                                                        0 0    0
+0600 svchost.exe                                                        0 0    0
+061c svchost.exe                                                        0 0    0
+06a0 svchost.exe                                                        0 0    0
+06d0 svchost.exe                                                        0 0    0
+0750 svchost.exe                                                        0 0    0
+0774 svchost.exe                                                        0 0    0
+07d4 svchost.exe                                                        0 0    0
+0634 NVDisplay.Container.exe                                            0 0    0
+0810 svchost.exe                                                        0 0    0
+0878 svchost.exe                                                        0 0    0
+0880 svchost.exe                                                        0 0    0
+088c svchost.exe                                                        0 0    0
+08a4 svchost.exe                                                        0 0    0
+08b8 svchost.exe                                                        0 0    0
+093c Memory Compression                                                 0 0    0
+0958 svchost.exe                                                        0 0    0
+0964 svchost.exe                                                        0 0    0
+09c0 svchost.exe                                                        0 0    0
+0a34 svchost.exe                                                        0 0    0
+0a9c svchost.exe                                                        0 0    0
+0aac svchost.exe                                                        0 0    0
+0ae4 svchost.exe                                                        0 0    0
+0b24 svchost.exe                                                        0 0    0
+0bd0 svchost.exe                                                        0 0    0
+0a0c svchost.exe                                                        0 0    0
+0a30 svchost.exe                                                        0 0    0
+0a74 svchost.exe                                                        0 0    0
+0af8 svchost.exe                                                        0 0    0
+0b94 svchost.exe                                                        0 0    0
+0bec svchost.exe                                                        0 0    0
+0c9c spoolsv.exe                                                        0 0    0
+0dcc svchost.exe                                                        0 0    0
+0df8 svchost.exe                                                        0 0    0
+0e08 svchost.exe                                                        0 0    0
+0e18 svchost.exe                                                        0 0    0
+0e28 armsvc.exe                                                         0 0    0
+0e50 atkexComSvc.exe                                                    0 0    0
+0e68 AsSysCtrlService.exe                                               0 0    0
+0e70 svchost.exe                                                        0 0    0
+0e84 svchost.exe                                                        0 0    0
+0e8c svchost.exe                                                        0 0    0
+0ed0 hasplms.exe                                                        0 0    0
+0efc mdm.exe                                                            0 0    0
+0f3c svchost.exe                                                        0 0    0
+0f48 NvTelemetryContainer.exe                                           0 0    0
+0f64 svchost.exe                                                        0 0    0
+0f6c avp.exe                                                            0 0    0
+0f8c sqlwriter.exe                                                      0 0    0
+0fe8 svchost.exe                                                        0 0    0
+0ffc svchost.exe                                                        0 0    0
+0d94 svchost.exe                                                        0 0    0
+0d9c svchost.exe                                                        0 0    0
+105c svchost.exe                                                        0 0    0
+1064 svchost.exe                                                        0 0    0
+1184 svchost.exe                                                        0 0    0
+11d8 svchost.exe                                                        0 0    0
+133c Ascon.CSC.AgentService.exe                                         0 0    0
+13ac hasplmv.exe                                                        0 0    0
+1abc svchost.exe                                                        0 0    0
+1b10 svchost.exe                                                        0 0    0
+06dc Ascon.CSC.AgentUpdater.exe                                         0 0    0
+0ac0 svchost.exe                                                        0 0    0
+05ec avpsus.exe                                                         0 0    0
+0af4 svchost.exe                                                        0 0    0
+0ff0 GoogleUpdate.exe                                                   0 0    0
+13c4 jhi_service.exe                                                    0 0    0
+1504 klnagent.exe                                                       0 0    0
+1608 LMS.exe                                                            0 0    0
+0944 PolynomApiService.exe                                              0 0    0
+0b14 SgrmBroker.exe                                                     0 0    0
+1b94 svchost.exe                                                        0 0    0
+0760 svchost.exe                                                        0 0    0
+125c SearchIndexer.exe                                                  0 0    0
+1450 svchost.exe                                                        0 0    0
+0ca4 svchost.exe                                                        0 0    0
+063c vapm.exe                                                           0 0    0
+151c unsecapp.exe                                                       0 0    0
+1ae4 svchost.exe                                                        0 0    0
+06ec WmiPrvSE.exe                                                       0 0    0
+2260 svchost.exe                                                        0 0    0
+228c svchost.exe                                                        0 0    0
+24d0 svchost.exe                                                        0 0    0
+06e8 svchost.exe                                                        0 0    0
+1330 svchost.exe                                                        0 0    0
+1e70 SecurityHealthService.exe                                          0 0    0
+274c svchost.exe                                                        0 0    0
+1338 svchost.exe                                                        0 0    0
+2180 svchost.exe                                                        0 0    0
+23fc csrss.exe                                                          2 0    0
+0fd8 winlogon.exe                                                       2 0    0
+265c dwm.exe                                                            2 0    0
+27ac fontdrvhost.exe                                                    2 0    0
+24bc NVDisplay.Container.exe                                            2 0    0
+2528 svchost.exe                                                        0 0    0
+0990 ctfmon.exe                                                         2 0    0
+2164 avpui.exe                                                          2 25   14   normal C:\Program Files (x86)\Kaspersky Lab\Kaspersky Endpoint Security for Windows
+2774 sihost.exe                                                         2 0    11   normal C:\Windows\System32
+0360 svchost.exe                                                        2 0    1    normal C:\Windows\System32
+2140 svchost.exe                                                        2 0    4    normal C:\Windows\System32
+21a0 taskhostw.exe                                                      2 8    6    normal C:\Windows\System32
+2328 explorer.exe                                                       2 453  448  normal C:\Windows
+0f74 svchost.exe                                                        2 0    8    normal C:\Windows\System32
+2630 TSVNCache.exe                                                      2 0    5    normal C:\Program Files\TortoiseSVN\bin
+1d04 StartMenuExperienceHost.exe                                        2 0    13   normal C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
+03b8 dllhost.exe                                                        2 0    3    normal C:\Windows\System32
+0e20 RuntimeBroker.exe                                                  2 8    1    normal C:\Windows\System32
+184c RuntimeBroker.exe                                                  2 36   1    normal C:\Windows\System32
+0450 SkypeBackgroundHost.exe                                            2 0    1    normal C:\Program Files\WindowsApps\Microsoft.SkypeApp_14.35.152.0_x64__kzf8qxf38zg5c
+253c RuntimeBroker.exe                                                  2 0    1    normal C:\Windows\System32
+25f8 SecurityHealthSystray.exe                                          2 7    5    normal C:\Windows\System32
+0440 RtkNGUI64.exe                                                      2 17   26   normal C:\Program Files\Realtek\Audio\HDA
+0a5c OneDrive.exe                                                       2 56   34   normal C:\Users\59968\AppData\Local\Microsoft\OneDrive
+1008 BCClipboard.exe                                                    2 38   27   normal C:\Program Files\Beyond Compare 4
+1f74 LoodsmanAgent.exe                                                  2 140  60   normal C:\Program Files (x86)\ASCON\Loodsman\Agent
+2274 miranda32.exe                                                      2 1153 415  normal C:\Program Files (x86)\MirandaCorporate\MirandaCorporate
+0d34 SearchUI.exe                                                       2 12   50   normal C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy
+0a2c jusched.exe                                                        2 0    2    normal C:\Program Files (x86)\Common Files\Java\Java Update
+00b4 GameBar.exe                                                        2 0    13   normal C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_2.26.14003.0_x64__8wekyb3d8bbwe
+0780 svchost.exe                                                        2 0    1    normal C:\Windows\System32
+13a8 SecurityHealthHost.exe                                             2 0    1    normal C:\Windows\System32
+1988 ShellExperienceHost.exe                                            2 13   49   normal C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy
+0aa8 RuntimeBroker.exe                                                  2 0    3    normal C:\Windows\System32
+1790 firefox.exe                                                        2 27   61   normal C:\Program Files\Mozilla Firefox
+0250 firefox.exe                                                        2 2    17   normal C:\Program Files\Mozilla Firefox
+0550 firefox.exe                                                        2 0    2    normal C:\Program Files\Mozilla Firefox
+0b98 firefox.exe                                                        2 0    2    normal C:\Program Files\Mozilla Firefox
+0888 firefox.exe                                                        2 0    2    normal C:\Program Files\Mozilla Firefox
+068c SearchProtocolHost.exe                                             0 0    0
+1ee0 ApplicationFrameHost.exe                                           2 46   33   normal C:\Windows\System32
+0230 bds.exe                                                            2 3644 1145 normal C:\Program Files (x86)\Borland\BDS\4.0\Bin
+1db0 Microsoft.Photos.exe                                               2 0    17   normal C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2019.18114.19418.0_x64__8wekyb3d8bbwe
+19b8 RuntimeBroker.exe                                                  2 0    11   normal C:\Windows\System32
+1e8c Video.UI.exe                                                       2 0    11   normal C:\Program Files\WindowsApps\Microsoft.ZuneVideo_10.18111.17311.0_x64__8wekyb3d8bbwe
+1eec AcroRd32.exe                                                       2 0    9    normal C:\Program Files (x86)\Adobe\Reader 11.0\Reader
+1d24 AcroRd32.exe                                                       2 122  209  normal C:\Program Files (x86)\Adobe\Reader 11.0\Reader
+09fc WindowsInternal.ComposableShell.Experiences.TextInput.InputApp.exe 2 0    25   normal C:\Windows\SystemApps\InputApp_cw5n1h2txyewy
+0534 RuntimeBroker.exe                                                  2 0    1    normal C:\Windows\System32
+2564 pgadmin3.exe                                                       2 1009 247  normal C:\Program Files (x86)\pgAdmin III\1.22
+1d5c explorer.exe                                                       2 256  156  normal C:\Windows
+20b8 notepad.exe                                                        2 22   27   normal C:\Windows\System32
+3770 LockApp.exe                                                        2 6    20   normal C:\Windows\SystemApps\Microsoft.LockApp_cw5n1h2txyewy
+194c RuntimeBroker.exe                                                  2 10   10   normal C:\Windows\System32
+11fc explorer.exe                                                       2 254  143  normal C:\Windows
+26fc svchost.exe                                                        0 0    0
+2830 audiodg.exe                                                        0 0    0
+1614 svchost.exe                                                        0 0    0
+0a78 DocumentFlow.exe                                                   2 812  282  normal C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+2c70 SearchFilterHost.exe                                               0 0    0
 
 hardware:
 + {1ed2bbf9-11f0-4084-b21f-ad83a8e6dcdc}
@@ -1131,437 +600,472 @@ hardware:
   - Встроенное ПО системы
 
 cpu registers:
-eax = 00000078
-ebx = 00d01b68
-ecx = 0839e4d0
-edx = 00000000
-esi = 00000000
-edi = 00000000
-eip = 004058cc
-esp = 0019fb4c
-ebp = 0019fb60
+eax = 0cdd4838
+ebx = 0109f0b4
+ecx = 0cdd4838
+edx = 01052dd9
+esi = 0019d5a4
+edi = 0019d564
+eip = 01052dd9
+esp = 0019d4fc
+ebp = 0019d568
 
 stack dump:
-0019fb4c  26 19 d0 00 d0 e4 39 08 - 38 8d ff 0a 00 00 00 00  &.....9.8.......
-0019fb5c  40 c1 41 08 a8 fb 19 00 - 0e 13 d0 00 68 1b d0 00  @.A.........h...
-0019fb6c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
-0019fb7c  00 00 00 00 00 00 00 00 - c0 e7 03 0b a4 fb 19 00  ................
-0019fb8c  36 10 d0 00 00 00 00 00 - 00 00 00 00 38 8d ff 0a  6...........8...
-0019fb9c  00 00 00 00 c0 e7 03 0b - 40 c1 41 08 e0 fb 19 00  ........@.A.....
-0019fbac  10 0b d0 00 38 8d ff 0a - e8 fb 19 00 1b 52 40 00  ....8........R@.
-0019fbbc  e0 fb 19 00 00 00 00 00 - 00 00 00 00 68 1b d0 00  ............h...
-0019fbcc  f0 c7 f4 0a 00 00 00 00 - 38 8d ff 0a 00 00 00 00  ........8.......
-0019fbdc  40 c1 41 08 08 fc 19 00 - 42 12 d0 00 20 fc 19 00  @.A.....B... ...
-0019fbec  84 50 40 00 08 fc 19 00 - e0 a3 97 07 00 00 00 00  .P@.............
-0019fbfc  e0 a3 97 07 00 00 00 00 - 40 c1 41 08 18 fc 19 00  ........@.A.....
-0019fc0c  82 12 d0 00 00 00 00 00 - 40 c1 41 08 38 fc 19 00  ........@.A.8...
-0019fc1c  86 58 14 01 8c fc 19 00 - 84 50 40 00 38 fc 19 00  .X.......P@.8...
-0019fc2c  00 00 00 00 00 00 00 00 - 00 53 39 08 48 fc 19 00  .........S9.H...
-0019fc3c  a0 93 14 01 e0 a3 97 07 - 00 53 39 08 60 fc 19 00  .........S9.`...
-0019fc4c  5f 76 cf 00 58 e1 cf 00 - 00 00 00 00 58 89 ff 05  _v..X.......X...
-0019fc5c  e0 a3 97 07 74 fc 19 00 - d0 b6 92 00 58 89 ff 05  ....t.......X...
-0019fc6c  58 89 ff 05 e0 a3 97 07 - 84 fc 19 00 4e 8d 64 00  X...........N.d.
-0019fc7c  78 89 ff 05 58 89 ff 05 - dc fc 19 00 c0 dc 48 00  x...X.........H.
+0019d4fc  d9 2d 05 01 de fa ed 0e - 01 00 00 00 07 00 00 00  .-..............
+0019d50c  10 d5 19 00 d9 2d 05 01 - 38 48 dd 0c b4 f0 09 01  .....-..8H......
+0019d51c  a4 d5 19 00 64 d5 19 00 - 68 d5 19 00 2c d5 19 00  ....d...h...,...
+0019d52c  70 d5 19 00 84 50 40 00 - 68 d5 19 00 04 04 00 00  p....P@.h.......
+0019d53c  00 00 fe 07 00 00 00 00 - 04 04 00 00 00 00 fe 07  ................
+0019d54c  00 00 00 00 00 00 00 00 - 20 00 00 00 00 00 00 00  ........ .......
+0019d55c  00 00 00 00 00 00 00 00 - b0 ce 00 08 b4 d5 19 00  ................
+0019d56c  c3 32 05 01 c4 d5 19 00 - 84 50 40 00 b4 d5 19 00  .2.......P@.....
+0019d57c  b4 f0 09 01 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0019d58c  00 00 00 00 00 00 00 00 - 20 00 00 00 00 00 00 00  ........ .......
+0019d59c  00 00 00 00 00 00 00 00 - 00 00 00 00 f8 52 00 0d  .............R..
+0019d5ac  b8 75 5a 0a 10 67 fc 07 - fc d5 19 00 f1 31 05 01  .uZ..g.......1..
+0019d5bc  d4 d5 19 00 00 82 fe 0c - 08 d6 19 00 84 50 40 00  .............P@.
+0019d5cc  fc d5 19 00 b4 f0 09 01 - 00 00 00 00 00 00 00 00  ................
+0019d5dc  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0019d5ec  00 00 00 00 00 82 fe 0c - b8 75 5a 0a 10 67 fc 07  .........uZ..g..
+0019d5fc  28 d6 19 00 11 31 05 01 - 18 d6 19 00 34 d6 19 00  (....1......4...
+0019d60c  84 50 40 00 28 d6 19 00 - 60 2f 05 01 00 00 00 00  .P@.(...`/......
+0019d61c  00 82 fe 0c c8 da fd 0c - 10 67 fc 07 8c d6 19 00  .........g......
+0019d62c  3a 53 b7 00 bc d6 19 00 - 40 d6 19 00 dc 50 40 00  :S......@....P@.
 
 disassembling:
 [...]
-004058bf      call    -$2690 ($403234)       ; System.Move
-004058c4      pop     edx
-004058c5      pop     eax
-004058c6      jmp     loc_4058cc
-004058c8      lock inc dword ptr [edx-8]
-004058cc    > xchg    edx, [eax]
-004058ce      test    edx, edx
-004058d0      jz      loc_4058e6
-004058d2      mov     ecx, [edx-8]
-004058d5      dec     ecx
-004058d6      jl      loc_4058e6
+01052dc4      push    eax
+01052dc5      mov     ecx, [ebp-$14]
+01052dc8      mov     dl, 1
+01052dca      mov     eax, [$b7442c]
+01052dcf      call    -$4de810 ($b745c4)     ; FileStorageServiceErrors.TFileSharingViolationException.Create
+01052dd4    > call    -$c4dc31 ($4051a8)     ; System.@RaiseExcept
+01052dd9      jmp     loc_1052e33
+01052ddb 63   lea     eax, [ebp-$18]
+01052dde      push    eax
+01052ddf      lea     eax, [ebp-$1c]
+01052de2      push    eax
 [...]
 
-date/time          : 2022-09-12, 08:40:48, 663ms
+date/time          : 2022-09-20, 14:36:17, 973ms
 computer name      : 06-409-5
 user name          : 59968
 registered owner   : user
 operating system   : Windows 10 x64 build 18363
 system language    : Russian
-system up time     : 6 days
-program up time    : 14 seconds
+system up time     : 1 day 6 hours
+program up time    : 4 minutes 12 seconds
 processors         : 4x Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz
-physical memory    : 1061/3947 MB (free/total)
-free disk space    : (C:) 50,52 GB
+physical memory    : 736/3947 MB (free/total)
+free disk space    : (C:) 50,46 GB
 display mode       : 1920x1080, 32 bit
-process id         : $37f8
-allocated memory   : 91,89 MB
+process id         : $a78
+allocated memory   : 106,67 MB
 largest free block : 986,62 MB
 executable         : DocumentFlow.exe
-exec. date/time    : 2022-09-08 14:09
+exec. date/time    : 2022-09-20 14:31
 compiled with      : Delphi 2006/07
 madExcept version  : 5.0.0
-callstack crc      : $791c1b7d, $2a56af82, $b7a634ad
+callstack crc      : $94a1dd65, $d4212385, $001c0317
 exception number   : 3
-exception class    : EAccessViolation
-exception message  : Access violation at address 004058CC in module 'DocumentFlow.exe'. Write of address 00000078.
+exception class    : TDocumentFileStorageServiceException
+exception message  : Файл с именем "Files encrypting.pdf" уже открыт. Для повторного запроса файла необходимо его закрыть.
 
-Main ($3b18):
-004058cc +028 DocumentFlow.exe System                           25  +0 @LStrAsg
-00d01921 +051 DocumentFlow.exe DocumentCardFrameFactory       1125 +11 TDocumentCardFrameFactory.CreateDocumentMainInformationFrame
-00d0130b +077 DocumentFlow.exe DocumentCardFrameFactory        760 +24 TDocumentCardFrameFactory.CreateSheetsAndInflateToDocumentCardFrame
-00d00b0b +03b DocumentFlow.exe DocumentCardFrameFactory        284  +9 TDocumentCardFrameFactory.CreateDocumentCardFrameFrom
-00d0123c +03c DocumentFlow.exe DocumentCardFrameFactory        695 +10 TDocumentCardFrameFactory.CreateDocumentCardFrameForView
-00d0127c +010 DocumentFlow.exe DocumentCardFrameFactory        711  +2 TDocumentCardFrameFactory.CreateEmptyNoActivedDocumentCardFrame
-01145880 +040 DocumentFlow.exe unDocumentCardListFrame        1940 +11 TDocumentCardListFrame.ShowEmptyNoActivedDocumentCardForCurrentSelectedDocumentKindSection
-01145838 +01c DocumentFlow.exe unDocumentCardListFrame        1919  +3 TDocumentCardListFrame.ShowEmptyNoActivedDocumentCardForCurrentDocumentKindIfDocumentsAreAbsent
-011493f7 +00f DocumentFlow.exe unDocumentCardListFrame        4651  +2 TDocumentCardListFrame.OnDocumentRecordsLoadingSuccessEventHandler
-00cf773a +07a DocumentFlow.exe BaseDocumentsReferenceFormUnit 1477 +16 TBaseDocumentsReferenceForm.OnDataLoadingSuccessHandle
-0092b73d +029 DocumentFlow.exe DBDataTableFormUnit            4528  +2 TDBDataTableForm.OnDataLoadingSuccessHandle
-009124ff +02b DocumentFlow.exe DataSetOperationThreadUnit      246  +3 TDataSetOperationThread.RaiseOnDataOperationSuccessEvent
-0048dcbd +0fd DocumentFlow.exe Classes                                 CheckSynchronize
-004f0aa6 +6b2 DocumentFlow.exe Forms                                   TApplication.WndProc
-0048fb14 +014 DocumentFlow.exe Classes                                 StdWndProc
-76e2ec5b +00b user32.dll                                               DispatchMessageA
-004f11d0 +0fc DocumentFlow.exe Forms                                   TApplication.ProcessMessage
-004f120a +00a DocumentFlow.exe Forms                                   TApplication.HandleMessage
-004ed67f +187 DocumentFlow.exe Forms                                   TCustomForm.ShowModal
-01142d1a +0ae DocumentFlow.exe unApplicationMainForm           785 +27 TApplicationMainForm.ShowDocumentFlowAdministrationForm
-01142113 +00f DocumentFlow.exe unApplicationMainForm           198  +2 TApplicationMainForm.actAdministrationExecute
-0048ee53 +00f DocumentFlow.exe Classes                                 TBasicAction.Execute
-004e1f41 +031 DocumentFlow.exe ActnList                                TContainedAction.Execute
-004e2c08 +050 DocumentFlow.exe ActnList                                TCustomAction.Execute
-0048ed1f +013 DocumentFlow.exe Classes                                 TBasicActionLink.Execute
-004c7ca0 +090 DocumentFlow.exe Menus                                   TMenuItem.Click
-004c8ebb +013 DocumentFlow.exe Menus                                   TMenu.DispatchCommand
-004ec2ab +01f DocumentFlow.exe Forms                                   TCustomForm.WMCommand
-004d284b +2bb DocumentFlow.exe Controls                                TControl.WndProc
-004d66f5 +499 DocumentFlow.exe Controls                                TWinControl.WndProc
-004e9721 +4c1 DocumentFlow.exe Forms                                   TCustomForm.WndProc
-004d5e80 +02c DocumentFlow.exe Controls                                TWinControl.MainWndProc
-0048fb14 +014 DocumentFlow.exe Classes                                 StdWndProc
-76e2ec5b +00b user32.dll                                               DispatchMessageA
-004f11d0 +0fc DocumentFlow.exe Forms                                   TApplication.ProcessMessage
-004f120a +00a DocumentFlow.exe Forms                                   TApplication.HandleMessage
-004f142a +096 DocumentFlow.exe Forms                                   TApplication.Run
-01155b8e +00e DocumentFlow.exe ApplicationLauncher             128  +2 TApplicationLauncher.PassControlToApplicationModule
-01155bd5 +02d DocumentFlow.exe ApplicationLauncher             141  +6 TApplicationLauncher.Launch
-01185196 +042 DocumentFlow.exe DocumentFlow                    260 +11 initialization
-76d26357 +017 KERNEL32.DLL                                             BaseThreadInitThunk
+Main ($2b24):
+00b75384 +0f8 DocumentFlow.exe StandardDocumentFileStorageService  255 +28 TStandardDocumentFileStorageService.GetFile
+771d4211 +021 ntdll.dll                                                    KiUserExceptionDispatcher
+010532c0 +078 DocumentFlow.exe AbstractFileStorageServiceClient    125  +7 TAbstractFileStorageServiceClient.InternalChangeLocalFileName
+010531ee +0ae DocumentFlow.exe AbstractFileStorageServiceClient    110 +11 TAbstractFileStorageServiceClient.ChangeLocalFileName
+0105310e +042 DocumentFlow.exe AbstractFileStorageServiceClient     90  +4 TAbstractFileStorageServiceClient.GetFile
+00b75337 +0ab DocumentFlow.exe StandardDocumentFileStorageService  246 +19 TStandardDocumentFileStorageService.GetFile
+01053896 +01e DocumentFlow.exe DocumentFileServiceClientUnit        71  +2 TDocumentFileServiceClient.GetFile
+0114c645 +069 DocumentFlow.exe unDocumentCardListFrame            3770 +11 TDocumentCardListFrame.OnDocumentFileOpeningRequestedEventHandler
+011554b4 +030 DocumentFlow.exe unDocumentCardFrame                3483  +3 TDocumentCardFrame.OnExistingDocumentFileOpeningRequestedEventHandler
+00c424d8 +0a0 DocumentFlow.exe DocumentFilesReferenceFormUnit      497 +17 TDocumentFilesReferenceForm.ShowCurrentDocumentFile
+00c41d3f +00f DocumentFlow.exe DocumentFilesReferenceFormUnit      213  +2 TDocumentFilesReferenceForm.actOpenDocumentFileExecute
+0048ee53 +00f DocumentFlow.exe Classes                                     TBasicAction.Execute
+004e1f41 +031 DocumentFlow.exe ActnList                                    TContainedAction.Execute
+004e2c08 +050 DocumentFlow.exe ActnList                                    TCustomAction.Execute
+00c41d8e +01a DocumentFlow.exe DocumentFilesReferenceFormUnit      231  +2 TDocumentFilesReferenceForm.DataRecordGridTableViewDblClick
+004d2d6d +015 DocumentFlow.exe Controls                                    TControl.DblClick
+004d2ed0 +034 DocumentFlow.exe Controls                                    TControl.WMLButtonDblClk
+004d284b +2bb DocumentFlow.exe Controls                                    TControl.WndProc
+004d66f5 +499 DocumentFlow.exe Controls                                    TWinControl.WndProc
+0058c1fc +114 DocumentFlow.exe cxControls                         3302 +17 TcxControl.WndProc
+00742c8d +025 DocumentFlow.exe cxGridCustomView                   4731  +4 TcxGridSite.WndProc
+004d5e80 +02c DocumentFlow.exe Controls                                    TWinControl.MainWndProc
+0048fb14 +014 DocumentFlow.exe Classes                                     StdWndProc
+7659ec5b +00b user32.dll                                                   DispatchMessageA
+004f11d0 +0fc DocumentFlow.exe Forms                                       TApplication.ProcessMessage
+004f120a +00a DocumentFlow.exe Forms                                       TApplication.HandleMessage
+004f142a +096 DocumentFlow.exe Forms                                       TApplication.Run
+0115a14a +00e DocumentFlow.exe ApplicationLauncher                 128  +2 TApplicationLauncher.PassControlToApplicationModule
+0115a191 +02d DocumentFlow.exe ApplicationLauncher                 141  +6 TApplicationLauncher.Launch
+01189196 +042 DocumentFlow.exe DocumentFlow                        260 +11 initialization
+74dd6357 +017 KERNEL32.DLL                                                 BaseThreadInitThunk
 
-thread $1738:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
+Main ($2b24), inner exception level 1:
+>> TFileSharingViolationException, Попытка одновременного доступа к файлу "Files encrypting.pdf" по пути "C:\Users\59968\AppData\Local\Temp\UMP_FWL\Files encrypting.pdf"
+01052dd4 +084 DocumentFlow.exe WindowsFileStorageServiceErrorProcessor   53 +20 TWindowsFileStorageServiceErrorProcessor.RaiseExceptionByErrorData
+010532c0 +078 DocumentFlow.exe AbstractFileStorageServiceClient         125  +7 TAbstractFileStorageServiceClient.InternalChangeLocalFileName
+010531ee +0ae DocumentFlow.exe AbstractFileStorageServiceClient         110 +11 TAbstractFileStorageServiceClient.ChangeLocalFileName
+0105310e +042 DocumentFlow.exe AbstractFileStorageServiceClient          90  +4 TAbstractFileStorageServiceClient.GetFile
+00b75337 +0ab DocumentFlow.exe StandardDocumentFileStorageService       246 +19 TStandardDocumentFileStorageService.GetFile
+01053896 +01e DocumentFlow.exe DocumentFileServiceClientUnit             71  +2 TDocumentFileServiceClient.GetFile
+0114c645 +069 DocumentFlow.exe unDocumentCardListFrame                 3770 +11 TDocumentCardListFrame.OnDocumentFileOpeningRequestedEventHandler
+011554b4 +030 DocumentFlow.exe unDocumentCardFrame                     3483  +3 TDocumentCardFrame.OnExistingDocumentFileOpeningRequestedEventHandler
+00c424d8 +0a0 DocumentFlow.exe DocumentFilesReferenceFormUnit           497 +17 TDocumentFilesReferenceForm.ShowCurrentDocumentFile
+00c41d3f +00f DocumentFlow.exe DocumentFilesReferenceFormUnit           213  +2 TDocumentFilesReferenceForm.actOpenDocumentFileExecute
+0048ee53 +00f DocumentFlow.exe Classes                                          TBasicAction.Execute
+004e1f41 +031 DocumentFlow.exe ActnList                                         TContainedAction.Execute
+004e2c08 +050 DocumentFlow.exe ActnList                                         TCustomAction.Execute
+00c41d8e +01a DocumentFlow.exe DocumentFilesReferenceFormUnit           231  +2 TDocumentFilesReferenceForm.DataRecordGridTableViewDblClick
+004d2d6d +015 DocumentFlow.exe Controls                                         TControl.DblClick
+004d2ed0 +034 DocumentFlow.exe Controls                                         TControl.WMLButtonDblClk
+004d284b +2bb DocumentFlow.exe Controls                                         TControl.WndProc
+004d66f5 +499 DocumentFlow.exe Controls                                         TWinControl.WndProc
+0058c1fc +114 DocumentFlow.exe cxControls                              3302 +17 TcxControl.WndProc
+00742c8d +025 DocumentFlow.exe cxGridCustomView                        4731  +4 TcxGridSite.WndProc
+004d5e80 +02c DocumentFlow.exe Controls                                         TWinControl.MainWndProc
+0048fb14 +014 DocumentFlow.exe Classes                                          StdWndProc
+7659ec5b +00b user32.dll                                                        DispatchMessageA
+004f11d0 +0fc DocumentFlow.exe Forms                                            TApplication.ProcessMessage
+004f120a +00a DocumentFlow.exe Forms                                            TApplication.HandleMessage
+004f142a +096 DocumentFlow.exe Forms                                            TApplication.Run
+0115a14a +00e DocumentFlow.exe ApplicationLauncher                      128  +2 TApplicationLauncher.PassControlToApplicationModule
+0115a191 +02d DocumentFlow.exe ApplicationLauncher                      141  +6 TApplicationLauncher.Launch
+01189196 +042 DocumentFlow.exe DocumentFlow                             260 +11 initialization
+74dd6357 +017 KERNEL32.DLL                                                      BaseThreadInitThunk
 
-thread $778:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $31a4:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $2d60:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $26cc:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $2a90:
-76d26357 +17 KERNEL32.DLL  BaseThreadInitThunk
-
-thread $1b5c: <priority:2>
-76e2b19f +4f user32.dll                 GetMessageA
+thread $2fcc: <priority:2>
+7659b19f +4f user32.dll                 GetMessageA
 004632c1 +0d DocumentFlow.exe madExcept CallThreadProcSafe
 0046332b +37 DocumentFlow.exe madExcept ThreadExceptFrame
-76d26357 +17 KERNEL32.DLL               BaseThreadInitThunk
->> created by Main ($3b18) at:
-745c2dd5 +00 winmm.dll
+74dd6357 +17 KERNEL32.DLL               BaseThreadInitThunk
+>> created by Main ($2b24) at:
+74762dd5 +00 winmm.dll
 
-thread $838: <priority:1>
+thread $2890: <priority:1>
 004632c1 +0d DocumentFlow.exe madExcept CallThreadProcSafe
 0046332b +37 DocumentFlow.exe madExcept ThreadExceptFrame
-76d26357 +17 KERNEL32.DLL               BaseThreadInitThunk
->> created by Main ($3b18) at:
-73d01e14 +00 mswsock.dll
+74dd6357 +17 KERNEL32.DLL               BaseThreadInitThunk
+>> created by Main ($2b24) at:
+73f71e14 +00 mswsock.dll
 
-thread $2970 (TDataSetOperationThread):
-74afe273 +093 KERNELBASE.dll                                      WaitForSingleObjectEx
-74afe1cd +00d KERNELBASE.dll                                      WaitForSingleObject
-0048e21f +113 DocumentFlow.exe Classes                            TThread.Synchronize
-0048e2c6 +01e DocumentFlow.exe Classes                            TThread.Synchronize
-009123ba +09e DocumentFlow.exe DataSetOperationThreadUnit 201 +28 TDataSetOperationThread.InternalExecute
-0091219e +00e DocumentFlow.exe DataSetOperationThreadUnit 137  +2 TDataSetOperationThread.Execute
-004633df +02b DocumentFlow.exe madExcept                          HookedTThreadExecute
-0048ddcc +034 DocumentFlow.exe Classes                            ThreadProc
-004057c4 +028 DocumentFlow.exe System                      25  +0 ThreadWrapper
-004632c1 +00d DocumentFlow.exe madExcept                          CallThreadProcSafe
-0046332b +037 DocumentFlow.exe madExcept                          ThreadExceptFrame
-76d26357 +017 KERNEL32.DLL                                        BaseThreadInitThunk
->> created by Main ($3b18) at:
-00648cef +023 DocumentFlow.exe CancellationThreadUnit      43  +2 TCancellationThread.Create
+thread $3680:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
 
-thread $6b4 (TDataSetOperationThread):
-74afe273 +093 KERNELBASE.dll                                      WaitForSingleObjectEx
-74afe1cd +00d KERNELBASE.dll                                      WaitForSingleObject
-0048e21f +113 DocumentFlow.exe Classes                            TThread.Synchronize
-0048e2c6 +01e DocumentFlow.exe Classes                            TThread.Synchronize
-009123ba +09e DocumentFlow.exe DataSetOperationThreadUnit 201 +28 TDataSetOperationThread.InternalExecute
-0091219e +00e DocumentFlow.exe DataSetOperationThreadUnit 137  +2 TDataSetOperationThread.Execute
-004633df +02b DocumentFlow.exe madExcept                          HookedTThreadExecute
-0048ddcc +034 DocumentFlow.exe Classes                            ThreadProc
-004057c4 +028 DocumentFlow.exe System                      25  +0 ThreadWrapper
-004632c1 +00d DocumentFlow.exe madExcept                          CallThreadProcSafe
-0046332b +037 DocumentFlow.exe madExcept                          ThreadExceptFrame
-76d26357 +017 KERNEL32.DLL                                        BaseThreadInitThunk
->> created by Main ($3b18) at:
-00648cef +023 DocumentFlow.exe CancellationThreadUnit      43  +2 TCancellationThread.Create
+thread $3a00:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $2dfc:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $1948:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $3188:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $325c:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
+
+thread $da0:
+759eba6d +12d KERNELBASE.dll             WaitForMultipleObjectsEx
+004632c1 +00d DocumentFlow.exe madExcept CallThreadProcSafe
+0046332b +037 DocumentFlow.exe madExcept ThreadExceptFrame
+74dd6357 +017 KERNEL32.DLL               BaseThreadInitThunk
+>> created by thread $310c at:
+76e37b18 +000 combase.dll
+
+thread $3594:
+7658df08 +48 user32.dll                 MsgWaitForMultipleObjectsEx
+004632c1 +0d DocumentFlow.exe madExcept CallThreadProcSafe
+0046332b +37 DocumentFlow.exe madExcept ThreadExceptFrame
+74dd6357 +17 KERNEL32.DLL               BaseThreadInitThunk
+>> created by thread $310c at:
+7686196d +00 shcore.dll
+
+thread $21bc:
+74dd6357 +17 KERNEL32.DLL  BaseThreadInitThunk
 
 modules:
-00400000 DocumentFlow.exe                           C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-03dc0000 Padeg.dll              3.3.0.27            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-07990000 oleacc.dll             4.2.5406.0          C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-10000000 libpq.dll              11.0.2.19105        C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-4dae0000 midas.dll              10.0.2151.25345     C:\Windows\System32
-5df40000 LIBEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-5e080000 SSLEAY32.dll           1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
-5e0d0000 Msftedit.DLL           6.2.18362.329       C:\Windows\SYSTEM32
-5e380000 HHCtrl.OCX             6.2.18362.1         C:\Windows\SYSTEM32
-5e420000 FontSub.dll            6.2.18362.356       C:\Windows\SYSTEM32
-66e50000 CoreUIComponents.dll   6.2.18362.207       C:\Windows\System32
-67370000 CoreMessaging.dll      6.2.18362.1         C:\Windows\System32
-67ca0000 TextInputFramework.dll 6.2.18362.207       C:\Windows\System32
-681f0000 rasadhlp.dll           6.2.18362.1         C:\Windows\System32
-683b0000 MSVCP60.dll            7.0.18362.1         C:\Windows\SYSTEM32
-68600000 fwpuclnt.dll           6.2.18362.113       C:\Windows\System32
-687a0000 sxs.dll                6.2.18362.1         C:\Windows\SYSTEM32
-68920000 wintypes.dll           6.2.18362.267       C:\Windows\SYSTEM32
-69180000 winspool.drv           6.2.18362.267       C:\Windows\SYSTEM32
-6a1b0000 usp10.dll              6.2.18362.1         C:\Windows\SYSTEM32
-6aa80000 VCRUNTIME140.dll       14.24.28127.4       C:\Windows\SYSTEM32
-6aab0000 olepro32.dll           6.2.18362.113       C:\Windows\SYSTEM32
-6abb0000 FaultRep.dll           6.2.18362.418       C:\Windows\SYSTEM32
-6ac90000 dwmapi.dll             6.2.18362.267       C:\Windows\SYSTEM32
-6bec0000 WindowsCodecs.dll      6.2.18362.1         C:\Windows\SYSTEM32
-6cb20000 iertutil.dll           11.0.18362.387      C:\Windows\System32
-6d760000 msimg32.dll            6.2.18362.175       C:\Windows\SYSTEM32
-6d770000 comctl32.dll           6.10.18362.418      C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.418_none_2e73e95e27897f63
-6dbd0000 SHFolder.dll           6.2.18362.1         C:\Windows\SYSTEM32
-6dbe0000 uxtheme.dll            6.2.18362.387       C:\Windows\system32
-6dd60000 gdiplus.dll            6.2.18362.418       C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.18362.418_none_5f5edc43821bf931
-6ef30000 PROPSYS.dll            7.0.18362.267       C:\Windows\SYSTEM32
-719f0000 Secur32.dll            6.2.18362.1         C:\Windows\SYSTEM32
-739d0000 ntmarta.dll            6.2.18362.1         C:\Windows\SYSTEM32
-73c30000 DNSAPI.dll             6.2.18362.267       C:\Windows\SYSTEM32
-73cf0000 mswsock.dll            6.2.18362.1         C:\Windows\system32
-73d80000 IPHLPAPI.DLL           6.2.18362.1         C:\Windows\SYSTEM32
-74220000 dbgcore.DLL            6.2.18362.1         C:\Windows\SYSTEM32
-74250000 dbghelp.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74540000 wsock32.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74590000 winmmbase.dll          6.2.18362.1         C:\Windows\SYSTEM32
-745c0000 winmm.dll              6.2.18362.1         C:\Windows\SYSTEM32
-74610000 version.dll            6.2.18362.1         C:\Windows\SYSTEM32
-74780000 CRYPTBASE.dll          6.2.18362.1         C:\Windows\System32
-74790000 SspiCli.dll            6.2.18362.1         C:\Windows\System32
-747b0000 GDI32.dll              6.2.18362.1         C:\Windows\System32
-747e0000 clbcatq.dll            2001.12.10941.16384 C:\Windows\System32
-74860000 IMM32.DLL              6.2.18362.387       C:\Windows\System32
-74890000 powrprof.dll           6.2.18362.1         C:\Windows\System32
-748e0000 ucrtbase.dll           6.2.18362.387       C:\Windows\System32
-74a00000 KERNELBASE.dll         6.2.18362.418       C:\Windows\System32
-74c00000 comdlg32.dll           6.2.18362.418       C:\Windows\System32
-74cb0000 psapi.dll              6.2.18362.1         C:\Windows\System32
-74cc0000 kernel.appcore.dll     6.2.18362.1         C:\Windows\System32
-74cd0000 cryptsp.dll            6.2.18362.1         C:\Windows\System32
-74cf0000 shell32.dll            6.2.18362.387       C:\Windows\System32
-75270000 combase.dll            6.2.18362.356       C:\Windows\System32
-754f0000 bcrypt.dll             6.2.18362.267       C:\Windows\System32
-75510000 windows.storage.dll    6.2.18362.387       C:\Windows\System32
-75af0000 WS2_32.dll             6.2.18362.387       C:\Windows\System32
-75b50000 oleaut32.dll           6.2.18362.329       C:\Windows\System32
-75c10000 WLDAP32.dll            6.2.18362.1         C:\Windows\System32
-75c70000 gdi32full.dll          6.2.18362.356       C:\Windows\System32
-76280000 RPCRT4.dll             6.2.18362.1         C:\Windows\System32
-76340000 ole32.dll              6.2.18362.113       C:\Windows\System32
-76440000 UMPDC.dll                                  C:\Windows\System32
-76450000 bcryptPrimitives.dll   6.2.18362.295       C:\Windows\System32
-764b0000 advapi32.dll           6.2.18362.329       C:\Windows\System32
-76530000 shcore.dll             6.2.18362.1         C:\Windows\System32
-766a0000 win32u.dll             6.2.18362.387       C:\Windows\System32
-766c0000 msvcp_win.dll          6.2.18362.387       C:\Windows\System32
-76740000 NSI.dll                6.2.18362.1         C:\Windows\System32
-76750000 shlwapi.dll            6.2.18362.1         C:\Windows\System32
-767a0000 msvcrt.dll             7.0.18362.1         C:\Windows\System32
-768c0000 sechost.dll            6.2.18362.267       C:\Windows\System32
-76a50000 cfgmgr32.dll           6.2.18362.387       C:\Windows\System32
-76a90000 MSCTF.dll              6.2.18362.387       C:\Windows\System32
-76d10000 KERNEL32.DLL           6.2.18362.329       C:\Windows\System32
-76df0000 user32.dll             6.2.18362.418       C:\Windows\System32
-76f90000 profapi.dll            6.2.18362.1         C:\Windows\System32
-76fc0000 ntdll.dll              6.2.18362.387       C:\Windows\SYSTEM32
+00400000 DocumentFlow.exe                                  C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+04100000 Padeg.dll                     3.3.0.27            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+10000000 libpq.dll                     11.0.2.19105        C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+4dae0000 midas.dll                     10.0.2151.25345     C:\Windows\System32
+59b90000 Msftedit.DLL                  6.2.18362.329       C:\Windows\SYSTEM32
+5a580000 LIBEAY32.dll                  1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+5a6c0000 SSLEAY32.dll                  1.0.2.18            C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+5a710000 HHCtrl.OCX                    6.2.18362.1         C:\Windows\SYSTEM32
+5b0a0000 FontSub.dll                   6.2.18362.356       C:\Windows\SYSTEM32
+5b5a0000 msvcp110_win.dll              6.2.18362.1         C:\Windows\SYSTEM32
+5b610000 policymanager.dll             6.2.18362.387       C:\Windows\SYSTEM32
+5c380000 OneCoreCommonProxyStub.dll    6.2.18362.1         C:\Windows\System32
+5c3c0000 Windows.StateRepositoryPS.dll 6.2.18362.1         C:\Windows\System32
+5c450000 edputil.dll                   6.2.18362.1         C:\Windows\SYSTEM32
+63c60000 CoreMessaging.dll             6.2.18362.1         C:\Windows\System32
+63cf0000 CoreUIComponents.dll          6.2.18362.207       C:\Windows\System32
+63f50000 TextInputFramework.dll        6.2.18362.207       C:\Windows\System32
+64b10000 OneCoreUAPCommonProxyStub.dll 6.2.18362.387       C:\Windows\System32
+65110000 MSVCP60.dll                   7.0.18362.1         C:\Windows\SYSTEM32
+65360000 wintypes.dll                  6.2.18362.267       C:\Windows\SYSTEM32
+65b40000 sxs.dll                       6.2.18362.1         C:\Windows\SYSTEM32
+67980000 msxml6.dll                    6.30.18362.418      C:\Windows\System32
+67cd0000 usp10.dll                     6.2.18362.1         C:\Windows\SYSTEM32
+67cf0000 olepro32.dll                  6.2.18362.113       C:\Windows\SYSTEM32
+68030000 FaultRep.dll                  6.2.18362.418       C:\Windows\SYSTEM32
+680a0000 winspool.drv                  6.2.18362.267       C:\Windows\SYSTEM32
+68350000 WindowsCodecs.dll             6.2.18362.1         C:\Windows\SYSTEM32
+68840000 gdiplus.dll                   6.2.18362.418       C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.18362.418_none_5f5edc43821bf931
+69460000 dwmapi.dll                    6.2.18362.267       C:\Windows\SYSTEM32
+695b0000 SHFolder.dll                  6.2.18362.1         C:\Windows\SYSTEM32
+69fa0000 sppc.dll                      6.2.18362.1         C:\Windows\System32
+69fc0000 Bcp47Langs.dll                6.2.18362.1         C:\Windows\System32
+6a010000 appresolver.dll               6.2.18362.356       C:\Windows\System32
+6b110000 wshbth.dll                    6.2.18362.1         C:\Windows\system32
+6b290000 NLAapi.dll                    6.2.18362.1         C:\Windows\system32
+6b2b0000 winrnr.dll                    6.2.18362.1         C:\Windows\System32
+6b320000 pnrpnsp.dll                   6.2.18362.1         C:\Windows\system32
+6b3a0000 napinsp.dll                   6.2.18362.1         C:\Windows\system32
+6c430000 fwpuclnt.dll                  6.2.18362.113       C:\Windows\System32
+6c5a0000 VCRUNTIME140.dll              14.24.28127.4       C:\Windows\SYSTEM32
+6c5c0000 rasadhlp.dll                  6.2.18362.1         C:\Windows\System32
+6c740000 uxtheme.dll                   6.2.18362.387       C:\Windows\system32
+6cc20000 msimg32.dll                   6.2.18362.175       C:\Windows\SYSTEM32
+6cc30000 comctl32.dll                  6.10.18362.418      C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.418_none_2e73e95e27897f63
+6d240000 iertutil.dll                  11.0.18362.387      C:\Windows\System32
+6d470000 urlmon.dll                    11.0.18362.387      C:\Windows\SYSTEM32
+6d7d0000 CLDAPI.dll                    6.2.18362.1         C:\Windows\SYSTEM32
+6e3b0000 SLC.dll                       6.2.18362.1         C:\Windows\System32
+6f0d0000 PROPSYS.dll                   7.0.18362.267       C:\Windows\SYSTEM32
+71b90000 Secur32.dll                   6.2.18362.1         C:\Windows\SYSTEM32
+73b70000 ntmarta.dll                   6.2.18362.1         C:\Windows\SYSTEM32
+73dd0000 FLTLIB.DLL                    6.2.18362.1         C:\Windows\SYSTEM32
+73ea0000 DNSAPI.dll                    6.2.18362.267       C:\Windows\SYSTEM32
+73f60000 mswsock.dll                   6.2.18362.1         C:\Windows\system32
+73ff0000 IPHLPAPI.DLL                  6.2.18362.1         C:\Windows\SYSTEM32
+74400000 rsaenh.dll                    6.2.18362.1         C:\Windows\system32
+74430000 dbgcore.DLL                   6.2.18362.1         C:\Windows\SYSTEM32
+74460000 dbghelp.dll                   6.2.18362.1         C:\Windows\SYSTEM32
+746b0000 wsock32.dll                   6.2.18362.1         C:\Windows\SYSTEM32
+746c0000 USERENV.dll                   6.2.18362.387       C:\Windows\System32
+74730000 winmmbase.dll                 6.2.18362.1         C:\Windows\SYSTEM32
+74760000 winmm.dll                     6.2.18362.1         C:\Windows\SYSTEM32
+747b0000 version.dll                   6.2.18362.1         C:\Windows\SYSTEM32
+74880000 apphelp.dll                   6.2.18362.1         C:\Windows\system32
+74920000 CRYPTBASE.dll                 6.2.18362.1         C:\Windows\System32
+74930000 SspiCli.dll                   6.2.18362.1         C:\Windows\System32
+74bc0000 shlwapi.dll                   6.2.18362.1         C:\Windows\System32
+74c10000 kernel.appcore.dll            6.2.18362.1         C:\Windows\System32
+74c40000 oleacc.dll                    4.2.5406.0          C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+74d00000 msvcrt.dll                    7.0.18362.1         C:\Windows\System32
+74dc0000 KERNEL32.DLL                  6.2.18362.329       C:\Windows\System32
+74ea0000 ole32.dll                     6.2.18362.113       C:\Windows\System32
+74fa0000 comdlg32.dll                  6.2.18362.418       C:\Windows\System32
+75050000 windows.storage.dll           6.2.18362.387       C:\Windows\System32
+75620000 advapi32.dll                  6.2.18362.329       C:\Windows\System32
+756a0000 cryptsp.dll                   6.2.18362.1         C:\Windows\System32
+756c0000 powrprof.dll                  6.2.18362.1         C:\Windows\System32
+75710000 gdi32full.dll                 6.2.18362.356       C:\Windows\System32
+75870000 UMPDC.dll                                         C:\Windows\System32
+75880000 bcryptPrimitives.dll          6.2.18362.295       C:\Windows\System32
+758e0000 KERNELBASE.dll                6.2.18362.418       C:\Windows\System32
+75b00000 NSI.dll                       6.2.18362.1         C:\Windows\System32
+75f60000 shell32.dll                   6.2.18362.387       C:\Windows\System32
+764e0000 bcrypt.dll                    6.2.18362.267       C:\Windows\System32
+76520000 psapi.dll                     6.2.18362.1         C:\Windows\System32
+76530000 GDI32.dll                     6.2.18362.1         C:\Windows\System32
+76560000 user32.dll                    6.2.18362.418       C:\Windows\System32
+76700000 WS2_32.dll                    6.2.18362.387       C:\Windows\System32
+767c0000 msvcp_win.dll                 6.2.18362.387       C:\Windows\System32
+76840000 shcore.dll                    6.2.18362.1         C:\Windows\System32
+768d0000 oleaut32.dll                  6.2.18362.329       C:\Windows\System32
+76970000 IMM32.DLL                     6.2.18362.387       C:\Windows\System32
+769a0000 cfgmgr32.dll                  6.2.18362.387       C:\Windows\System32
+76a40000 ucrtbase.dll                  6.2.18362.387       C:\Windows\System32
+76b60000 MSCTF.dll                     6.2.18362.387       C:\Windows\System32
+76c70000 sechost.dll                   6.2.18362.267       C:\Windows\System32
+76cf0000 win32u.dll                    6.2.18362.387       C:\Windows\System32
+76d10000 clbcatq.dll                   2001.12.10941.16384 C:\Windows\System32
+76d90000 profapi.dll                   6.2.18362.1         C:\Windows\System32
+76db0000 combase.dll                   6.2.18362.356       C:\Windows\System32
+77030000 WLDAP32.dll                   6.2.18362.1         C:\Windows\System32
+77090000 RPCRT4.dll                    6.2.18362.1         C:\Windows\System32
+77160000 ntdll.dll                     6.2.18362.387       C:\Windows\SYSTEM32
 
 processes:
-0000 Idle                        0 0    0
-0004 System                      0 0    0
-0068 Registry                    0 0    0
-01c0 smss.exe                    0 0    0
-0280 csrss.exe                   0 0    0
-02dc wininit.exe                 0 0    0
-0368 services.exe                0 0    0
-0374 lsass.exe                   0 0    0
-03f8 svchost.exe                 0 0    0
-0044 svchost.exe                 0 0    0
-0234 fontdrvhost.exe             0 0    0
-0278 WUDFHost.exe                0 0    0
-0404 svchost.exe                 0 0    0
-043c svchost.exe                 0 0    0
-04a4 svchost.exe                 0 0    0
-04ac svchost.exe                 0 0    0
-04e8 svchost.exe                 0 0    0
-0508 svchost.exe                 0 0    0
-05a0 svchost.exe                 0 0    0
-05ac svchost.exe                 0 0    0
-05e8 svchost.exe                 0 0    0
-0600 svchost.exe                 0 0    0
-0620 svchost.exe                 0 0    0
-0680 svchost.exe                 0 0    0
-06e0 svchost.exe                 0 0    0
-0708 svchost.exe                 0 0    0
-072c svchost.exe                 0 0    0
-07d0 svchost.exe                 0 0    0
-0598 svchost.exe                 0 0    0
-047c svchost.exe                 0 0    0
-0814 NVDisplay.Container.exe     0 0    0
-0848 svchost.exe                 0 0    0
-08a4 svchost.exe                 0 0    0
-08b8 svchost.exe                 0 0    0
-08c0 svchost.exe                 0 0    0
-08c8 svchost.exe                 0 0    0
-0920 Memory Compression          0 0    0
-0970 svchost.exe                 0 0    0
-09a4 svchost.exe                 0 0    0
-0a10 svchost.exe                 0 0    0
-0a5c svchost.exe                 0 0    0
-0a64 svchost.exe                 0 0    0
-0a6c svchost.exe                 0 0    0
-0a78 svchost.exe                 0 0    0
-0aec svchost.exe                 0 0    0
-0b20 svchost.exe                 0 0    0
-0b34 svchost.exe                 0 0    0
-0bfc svchost.exe                 0 0    0
-0868 spoolsv.exe                 0 0    0
-0c0c svchost.exe                 0 0    0
-0c14 svchost.exe                 0 0    0
-0c74 svchost.exe                 0 0    0
-0e0c svchost.exe                 0 0    0
-0e14 svchost.exe                 0 0    0
-0e1c svchost.exe                 0 0    0
-0e74 svchost.exe                 0 0    0
-0ebc armsvc.exe                  0 0    0
-0ed0 atkexComSvc.exe             0 0    0
-0edc AsSysCtrlService.exe        0 0    0
-0ef0 svchost.exe                 0 0    0
-0ef8 svchost.exe                 0 0    0
-0f08 svchost.exe                 0 0    0
-0f34 hasplms.exe                 0 0    0
-0f8c mdm.exe                     0 0    0
-0fcc NvTelemetryContainer.exe    0 0    0
-0fec svchost.exe                 0 0    0
-0ff8 sqlwriter.exe               0 0    0
-0c48 avp.exe                     0 0    0
-0cd4 svchost.exe                 0 0    0
-0cd8 svchost.exe                 0 0    0
-0ce4 svchost.exe                 0 0    0
-0dc8 svchost.exe                 0 0    0
-0de4 svchost.exe                 0 0    0
-10d8 svchost.exe                 0 0    0
-1100 svchost.exe                 0 0    0
-11d4 svchost.exe                 0 0    0
-11f0 svchost.exe                 0 0    0
-1308 Ascon.CSC.AgentService.exe  0 0    0
-139c hasplmv.exe                 0 0    0
-1a54 svchost.exe                 0 0    0
-1b2c svchost.exe                 0 0    0
-1bf0 svchost.exe                 0 0    0
-1fb8 svchost.exe                 0 0    0
-0ddc SecurityHealthService.exe   0 0    0
-1064 SearchIndexer.exe           0 0    0
-1c10 svchost.exe                 0 0    0
-07cc svchost.exe                 0 0    0
-0f3c svchost.exe                 0 0    0
-21d4 svchost.exe                 0 0    0
-2258 svchost.exe                 0 0    0
-22d4 Ascon.CSC.AgentUpdater.exe  0 0    0
-2228 svchost.exe                 0 0    0
-1b48 avpsus.exe                  0 0    0
-1e94 jhi_service.exe             0 0    0
-2134 klnagent.exe                0 0    0
-21b0 LMS.exe                     0 0    0
-0504 PolynomApiService.exe       0 0    0
-0864 SgrmBroker.exe              0 0    0
-1b64 svchost.exe                 0 0    0
-1860 svchost.exe                 0 0    0
-1e90 vapm.exe                    0 0    0
-1270 unsecapp.exe                0 0    0
-0a3c svchost.exe                 0 0    0
-082c svchost.exe                 0 0    0
-272c svchost.exe                 0 0    0
-2788 svchost.exe                 0 0    0
-2bcc OSPPSVC.EXE                 0 0    0
-1fc4 GoogleUpdate.exe            0 0    0
-1594 csrss.exe                   5 0    0
-0410 winlogon.exe                5 0    0
-0e30 dwm.exe                     5 0    0
-3520 fontdrvhost.exe             5 0    0
-0644 NVDisplay.Container.exe     5 0    0
-2da4 svchost.exe                 0 0    0
-02e8 WmiPrvSE.exe                0 0    0
-32a8 svchost.exe                 0 0    0
-3248 svchost.exe                 0 0    0
-17b0 WmiPrvSE.exe                0 0    0
-0e58 svchost.exe                 0 0    0
-2fe4 svchost.exe                 0 0    0
-0350 WmiPrvSE.exe                0 0    0
-1f54 svchost.exe                 0 0    0
-007c avpui.exe                   5 25   14   normal C:\Program Files (x86)\Kaspersky Lab\Kaspersky Endpoint Security for Windows
-3424 sihost.exe                  5 0    14   normal C:\Windows\System32
-3c1c svchost.exe                 5 0    1    normal C:\Windows\System32
-07f0 svchost.exe                 5 0    5    normal C:\Windows\System32
-2924 ctfmon.exe                  5 0    0
-1cd8 svchost.exe                 0 0    0
-2114 taskhostw.exe               5 8    6    normal C:\Windows\System32
-2f48 explorer.exe                5 427  409  normal C:\Windows
-3f2c svchost.exe                 0 0    0
-1d5c svchost.exe                 5 0    7    normal C:\Windows\System32
-1874 TSVNCache.exe               5 0    5    normal C:\Program Files\TortoiseSVN\bin
-30f0 dllhost.exe                 5 0    5    normal C:\Windows\System32
-0860 StartMenuExperienceHost.exe 5 0    14   normal C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
-1c38 svchost.exe                 0 0    0
-1640 RuntimeBroker.exe           5 8    2    normal C:\Windows\System32
-3d04 SearchUI.exe                5 12   48   normal C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy
-3da0 RuntimeBroker.exe           5 36   2    normal C:\Windows\System32
-1b58 SkypeBackgroundHost.exe     5 0    1    normal C:\Program Files\WindowsApps\Microsoft.SkypeApp_14.35.152.0_x64__kzf8qxf38zg5c
-32bc RuntimeBroker.exe           5 0    1    normal C:\Windows\System32
-1b0c GameBar.exe                 5 0    14   normal C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_2.26.14003.0_x64__8wekyb3d8bbwe
-0f94 svchost.exe                 0 0    0
-3bc8 smartscreen.exe             5 0    4    normal C:\Windows\System32
-3938 SecurityHealthSystray.exe   5 7    5    normal C:\Windows\System32
-31f0 RtkNGUI64.exe               5 17   26   normal C:\Program Files\Realtek\Audio\HDA
-0d88 OneDrive.exe                5 56   35   normal C:\Users\59968\AppData\Local\Microsoft\OneDrive
-3bf0 BCClipboard.exe             5 38   23   normal C:\Program Files\Beyond Compare 4
-08e4 jusched.exe                 5 0    2    normal C:\Program Files (x86)\Common Files\Java\Java Update
-33f4 LoodsmanAgent.exe           5 140  60   normal C:\Program Files (x86)\ASCON\Loodsman\Agent
-0cec AdobeARM.exe                5 0    3    normal C:\Program Files (x86)\Common Files\Adobe\ARM\1.0
-2f84 miranda32.exe               5 1227 452  normal C:\Program Files (x86)\MirandaCorporate\MirandaCorporate
-332c backgroundTaskHost.exe      5 0    4    normal C:\Windows\System32
-3694 Video.UI.exe                5 0    9    normal C:\Program Files\WindowsApps\Microsoft.ZuneVideo_10.18111.17311.0_x64__8wekyb3d8bbwe
-3e84 RuntimeBroker.exe           5 0    1    normal C:\Windows\System32
-1e58 svchost.exe                 5 0    1    normal C:\Windows\System32
-2544 RuntimeBroker.exe           5 36   10   normal C:\Windows\System32
-2994 pgadmin3.exe                5 1010 254  normal C:\Program Files (x86)\pgAdmin III\1.22
-3a48 bds.exe                     5 3297 1057 normal C:\Program Files (x86)\Borland\BDS\4.0\Bin
-1238 svchost.exe                 0 0    0
-1b08 SecurityHealthHost.exe      5 0    1    normal C:\Windows\System32
-3198 SearchProtocolHost.exe      0 0    0
-3548 ShellExperienceHost.exe     5 0    25   normal C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy
-36a8 audiodg.exe                 0 0    0
-22d8 RuntimeBroker.exe           5 0    5    normal C:\Windows\System32
-3b84 SearchFilterHost.exe        0 0    0
-2458 SearchProtocolHost.exe      5 0    1    idle   C:\Windows\System32
-37f8 DocumentFlow.exe            5 680  247  normal C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+0000 Idle                                                               0 0    0
+0004 System                                                             0 0    0
+0068 Registry                                                           0 0    0
+01c0 smss.exe                                                           0 0    0
+027c csrss.exe                                                          0 0    0
+02d8 wininit.exe                                                        0 0    0
+0368 services.exe                                                       0 0    0
+0370 lsass.exe                                                          0 0    0
+03f8 svchost.exe                                                        0 0    0
+0044 svchost.exe                                                        0 0    0
+022c fontdrvhost.exe                                                    0 0    0
+0398 svchost.exe                                                        0 0    0
+0410 svchost.exe                                                        0 0    0
+046c WUDFHost.exe                                                       0 0    0
+04a0 svchost.exe                                                        0 0    0
+04d0 svchost.exe                                                        0 0    0
+0500 svchost.exe                                                        0 0    0
+0518 svchost.exe                                                        0 0    0
+05a4 svchost.exe                                                        0 0    0
+05b4 svchost.exe                                                        0 0    0
+05c4 svchost.exe                                                        0 0    0
+0600 svchost.exe                                                        0 0    0
+061c svchost.exe                                                        0 0    0
+06a0 svchost.exe                                                        0 0    0
+06d0 svchost.exe                                                        0 0    0
+0750 svchost.exe                                                        0 0    0
+0774 svchost.exe                                                        0 0    0
+07d4 svchost.exe                                                        0 0    0
+0634 NVDisplay.Container.exe                                            0 0    0
+0810 svchost.exe                                                        0 0    0
+0878 svchost.exe                                                        0 0    0
+0880 svchost.exe                                                        0 0    0
+088c svchost.exe                                                        0 0    0
+08a4 svchost.exe                                                        0 0    0
+08b8 svchost.exe                                                        0 0    0
+093c Memory Compression                                                 0 0    0
+0958 svchost.exe                                                        0 0    0
+0964 svchost.exe                                                        0 0    0
+09c0 svchost.exe                                                        0 0    0
+0a34 svchost.exe                                                        0 0    0
+0a9c svchost.exe                                                        0 0    0
+0aac svchost.exe                                                        0 0    0
+0ae4 svchost.exe                                                        0 0    0
+0b24 svchost.exe                                                        0 0    0
+0bd0 svchost.exe                                                        0 0    0
+0a0c svchost.exe                                                        0 0    0
+0a30 svchost.exe                                                        0 0    0
+0a74 svchost.exe                                                        0 0    0
+0af8 svchost.exe                                                        0 0    0
+0b94 svchost.exe                                                        0 0    0
+0bec svchost.exe                                                        0 0    0
+0c9c spoolsv.exe                                                        0 0    0
+0dcc svchost.exe                                                        0 0    0
+0df8 svchost.exe                                                        0 0    0
+0e08 svchost.exe                                                        0 0    0
+0e18 svchost.exe                                                        0 0    0
+0e28 armsvc.exe                                                         0 0    0
+0e50 atkexComSvc.exe                                                    0 0    0
+0e68 AsSysCtrlService.exe                                               0 0    0
+0e70 svchost.exe                                                        0 0    0
+0e84 svchost.exe                                                        0 0    0
+0e8c svchost.exe                                                        0 0    0
+0ed0 hasplms.exe                                                        0 0    0
+0efc mdm.exe                                                            0 0    0
+0f3c svchost.exe                                                        0 0    0
+0f48 NvTelemetryContainer.exe                                           0 0    0
+0f64 svchost.exe                                                        0 0    0
+0f6c avp.exe                                                            0 0    0
+0f8c sqlwriter.exe                                                      0 0    0
+0fe8 svchost.exe                                                        0 0    0
+0ffc svchost.exe                                                        0 0    0
+0d94 svchost.exe                                                        0 0    0
+0d9c svchost.exe                                                        0 0    0
+105c svchost.exe                                                        0 0    0
+1064 svchost.exe                                                        0 0    0
+1184 svchost.exe                                                        0 0    0
+11d8 svchost.exe                                                        0 0    0
+133c Ascon.CSC.AgentService.exe                                         0 0    0
+13ac hasplmv.exe                                                        0 0    0
+1abc svchost.exe                                                        0 0    0
+1b10 svchost.exe                                                        0 0    0
+06dc Ascon.CSC.AgentUpdater.exe                                         0 0    0
+0ac0 svchost.exe                                                        0 0    0
+05ec avpsus.exe                                                         0 0    0
+0af4 svchost.exe                                                        0 0    0
+0ff0 GoogleUpdate.exe                                                   0 0    0
+13c4 jhi_service.exe                                                    0 0    0
+1504 klnagent.exe                                                       0 0    0
+1608 LMS.exe                                                            0 0    0
+0944 PolynomApiService.exe                                              0 0    0
+0b14 SgrmBroker.exe                                                     0 0    0
+1b94 svchost.exe                                                        0 0    0
+0760 svchost.exe                                                        0 0    0
+125c SearchIndexer.exe                                                  0 0    0
+1450 svchost.exe                                                        0 0    0
+0ca4 svchost.exe                                                        0 0    0
+063c vapm.exe                                                           0 0    0
+151c unsecapp.exe                                                       0 0    0
+1ae4 svchost.exe                                                        0 0    0
+06ec WmiPrvSE.exe                                                       0 0    0
+2260 svchost.exe                                                        0 0    0
+228c svchost.exe                                                        0 0    0
+24d0 svchost.exe                                                        0 0    0
+06e8 svchost.exe                                                        0 0    0
+1330 svchost.exe                                                        0 0    0
+1e70 SecurityHealthService.exe                                          0 0    0
+274c svchost.exe                                                        0 0    0
+1338 svchost.exe                                                        0 0    0
+2180 svchost.exe                                                        0 0    0
+23fc csrss.exe                                                          2 0    0
+0fd8 winlogon.exe                                                       2 0    0
+265c dwm.exe                                                            2 0    0
+27ac fontdrvhost.exe                                                    2 0    0
+24bc NVDisplay.Container.exe                                            2 0    0
+2528 svchost.exe                                                        0 0    0
+0990 ctfmon.exe                                                         2 0    0
+2164 avpui.exe                                                          2 25   14   normal C:\Program Files (x86)\Kaspersky Lab\Kaspersky Endpoint Security for Windows
+2774 sihost.exe                                                         2 0    11   normal C:\Windows\System32
+0360 svchost.exe                                                        2 0    1    normal C:\Windows\System32
+2140 svchost.exe                                                        2 0    4    normal C:\Windows\System32
+21a0 taskhostw.exe                                                      2 8    6    normal C:\Windows\System32
+2328 explorer.exe                                                       2 453  453  normal C:\Windows
+0f74 svchost.exe                                                        2 0    8    normal C:\Windows\System32
+2630 TSVNCache.exe                                                      2 0    5    normal C:\Program Files\TortoiseSVN\bin
+1d04 StartMenuExperienceHost.exe                                        2 0    13   normal C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
+03b8 dllhost.exe                                                        2 0    3    normal C:\Windows\System32
+0e20 RuntimeBroker.exe                                                  2 8    1    normal C:\Windows\System32
+184c RuntimeBroker.exe                                                  2 36   1    normal C:\Windows\System32
+0450 SkypeBackgroundHost.exe                                            2 0    1    normal C:\Program Files\WindowsApps\Microsoft.SkypeApp_14.35.152.0_x64__kzf8qxf38zg5c
+253c RuntimeBroker.exe                                                  2 0    1    normal C:\Windows\System32
+25f8 SecurityHealthSystray.exe                                          2 7    5    normal C:\Windows\System32
+0440 RtkNGUI64.exe                                                      2 17   26   normal C:\Program Files\Realtek\Audio\HDA
+0a5c OneDrive.exe                                                       2 56   34   normal C:\Users\59968\AppData\Local\Microsoft\OneDrive
+1008 BCClipboard.exe                                                    2 38   27   normal C:\Program Files\Beyond Compare 4
+1f74 LoodsmanAgent.exe                                                  2 140  60   normal C:\Program Files (x86)\ASCON\Loodsman\Agent
+2274 miranda32.exe                                                      2 1153 415  normal C:\Program Files (x86)\MirandaCorporate\MirandaCorporate
+0d34 SearchUI.exe                                                       2 12   50   normal C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy
+0a2c jusched.exe                                                        2 0    2    normal C:\Program Files (x86)\Common Files\Java\Java Update
+00b4 GameBar.exe                                                        2 0    13   normal C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_2.26.14003.0_x64__8wekyb3d8bbwe
+0780 svchost.exe                                                        2 0    1    normal C:\Windows\System32
+13a8 SecurityHealthHost.exe                                             2 0    1    normal C:\Windows\System32
+1988 ShellExperienceHost.exe                                            2 13   49   normal C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy
+0aa8 RuntimeBroker.exe                                                  2 0    3    normal C:\Windows\System32
+1790 firefox.exe                                                        2 27   61   normal C:\Program Files\Mozilla Firefox
+0250 firefox.exe                                                        2 2    17   normal C:\Program Files\Mozilla Firefox
+0550 firefox.exe                                                        2 0    2    normal C:\Program Files\Mozilla Firefox
+0b98 firefox.exe                                                        2 0    2    normal C:\Program Files\Mozilla Firefox
+0888 firefox.exe                                                        2 0    2    normal C:\Program Files\Mozilla Firefox
+068c SearchProtocolHost.exe                                             0 0    0
+1ee0 ApplicationFrameHost.exe                                           2 46   33   normal C:\Windows\System32
+0230 bds.exe                                                            2 3644 1146 normal C:\Program Files (x86)\Borland\BDS\4.0\Bin
+1db0 Microsoft.Photos.exe                                               2 0    17   normal C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2019.18114.19418.0_x64__8wekyb3d8bbwe
+19b8 RuntimeBroker.exe                                                  2 0    11   normal C:\Windows\System32
+1e8c Video.UI.exe                                                       2 0    11   normal C:\Program Files\WindowsApps\Microsoft.ZuneVideo_10.18111.17311.0_x64__8wekyb3d8bbwe
+1eec AcroRd32.exe                                                       2 0    9    normal C:\Program Files (x86)\Adobe\Reader 11.0\Reader
+1d24 AcroRd32.exe                                                       2 123  209  normal C:\Program Files (x86)\Adobe\Reader 11.0\Reader
+09fc WindowsInternal.ComposableShell.Experiences.TextInput.InputApp.exe 2 0    25   normal C:\Windows\SystemApps\InputApp_cw5n1h2txyewy
+0534 RuntimeBroker.exe                                                  2 0    1    normal C:\Windows\System32
+2564 pgadmin3.exe                                                       2 1009 247  normal C:\Program Files (x86)\pgAdmin III\1.22
+1d5c explorer.exe                                                       2 256  156  normal C:\Windows
+20b8 notepad.exe                                                        2 22   27   normal C:\Windows\System32
+3770 LockApp.exe                                                        2 6    20   normal C:\Windows\SystemApps\Microsoft.LockApp_cw5n1h2txyewy
+194c RuntimeBroker.exe                                                  2 10   10   normal C:\Windows\System32
+11fc explorer.exe                                                       2 254  142  normal C:\Windows
+26fc svchost.exe                                                        0 0    0
+2830 audiodg.exe                                                        0 0    0
+1614 svchost.exe                                                        0 0    0
+0a78 DocumentFlow.exe                                                   2 834  287  normal C:\Users\59968\Documents\Borland Studio Projects\Document Flow Learning\bin
+2ea4 SearchFilterHost.exe                                               0 0    0
+38b0 WmiPrvSE.exe                                                       0 0    0
+0818 SearchProtocolHost.exe                                             2 0    1    idle   C:\Windows\System32
 
 hardware:
 + {1ed2bbf9-11f0-4084-b21f-ad83a8e6dcdc}
@@ -1700,50 +1204,50 @@ hardware:
   - Встроенное ПО системы
 
 cpu registers:
-eax = 00000078
-ebx = 00d00a08
-ecx = 0839f010
-edx = 00000000
-esi = 00000000
-edi = 00000000
-eip = 004058cc
-esp = 0019f68c
-ebp = 0019f6a0
+eax = 0d03f868
+ebx = 0109f0b4
+ecx = 0d03f868
+edx = 01052dd9
+esi = 0019f92c
+edi = 0019f8ec
+eip = 01052dd9
+esp = 0019f884
+ebp = 0019f8f0
 
 stack dump:
-0019f68c  26 19 d0 00 10 f0 39 08 - b0 a1 4d 0c 00 00 00 00  &.....9...M.....
-0019f69c  c0 91 41 08 e8 f6 19 00 - 0e 13 d0 00 08 0a d0 00  ..A.............
-0019f6ac  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
-0019f6bc  00 00 00 00 00 00 00 00 - 30 38 52 0c e4 f6 19 00  ........08R.....
-0019f6cc  36 10 d0 00 00 00 00 00 - 00 00 00 00 b0 a1 4d 0c  6.............M.
-0019f6dc  00 00 00 00 30 38 52 0c - c0 91 41 08 20 f7 19 00  ....08R...A. ...
-0019f6ec  10 0b d0 00 b0 a1 4d 0c - 28 f7 19 00 1b 52 40 00  ......M.(....R@.
-0019f6fc  20 f7 19 00 00 00 00 00 - 00 00 00 00 08 0a d0 00   ...............
-0019f70c  80 16 46 0c 00 00 00 00 - b0 a1 4d 0c 00 00 00 00  ..F.......M.....
-0019f71c  c0 91 41 08 48 f7 19 00 - 42 12 d0 00 60 f7 19 00  ..A.H...B...`...
-0019f72c  84 50 40 00 48 f7 19 00 - 80 5b 98 07 00 00 00 00  .P@.H....[......
-0019f73c  80 5b 98 07 00 00 00 00 - c0 91 41 08 58 f7 19 00  .[........A.X...
-0019f74c  82 12 d0 00 00 00 00 00 - c0 91 41 08 78 f7 19 00  ..........A.x...
-0019f75c  86 58 14 01 e8 f7 19 00 - 84 50 40 00 78 f7 19 00  .X.......P@.x...
-0019f76c  00 00 00 00 00 00 00 00 - b0 1b f1 0a 84 f7 19 00  ................
-0019f77c  3d 58 14 01 b0 1b f1 0a - 94 f7 19 00 fc 93 14 01  =X..............
-0019f78c  80 5b 98 07 b0 1b f1 0a - ac f7 19 00 40 77 cf 00  .[..........@w..
-0019f79c  88 de cf 00 80 3f 4a 0c - 08 95 ff 05 80 5b 98 07  .....?J......[..
-0019f7ac  cc f7 19 00 43 b7 92 00 - 00 5b 98 07 00 00 00 00  ....C....[......
-0019f7bc  08 95 ff 05 80 3f 4a 0c - 08 95 ff 05 80 5b 98 07  .....?J......[..
+0019f884  d9 2d 05 01 de fa ed 0e - 01 00 00 00 07 00 00 00  .-..............
+0019f894  98 f8 19 00 d9 2d 05 01 - 68 f8 03 0d b4 f0 09 01  .....-..h.......
+0019f8a4  2c f9 19 00 ec f8 19 00 - f0 f8 19 00 b4 f8 19 00  ,...............
+0019f8b4  f8 f8 19 00 84 50 40 00 - f0 f8 19 00 c0 db c4 08  .....P@.........
+0019f8c4  e0 22 4e 00 00 00 00 00 - c0 db c4 08 e0 22 4e 00  ."N.........."N.
+0019f8d4  00 00 00 00 00 00 00 00 - 20 00 00 00 00 00 00 00  ........ .......
+0019f8e4  00 00 00 00 00 00 00 00 - b0 ce 00 08 3c f9 19 00  ............<...
+0019f8f4  c3 32 05 01 4c f9 19 00 - 84 50 40 00 3c f9 19 00  .2..L....P@.<...
+0019f904  b4 f0 09 01 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0019f914  00 00 00 00 00 00 00 00 - 20 00 00 00 00 00 00 00  ........ .......
+0019f924  00 00 00 00 00 00 00 00 - 00 00 00 00 b8 d6 07 0d  ................
+0019f934  b8 75 5a 0a 10 67 fc 07 - 84 f9 19 00 f1 31 05 01  .uZ..g.......1..
+0019f944  5c f9 19 00 58 ba f8 0c - 90 f9 19 00 84 50 40 00  \...X........P@.
+0019f954  84 f9 19 00 b4 f0 09 01 - 00 00 00 00 00 00 00 00  ................
+0019f964  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0019f974  00 00 00 00 58 ba f8 0c - b8 75 5a 0a 10 67 fc 07  ....X....uZ..g..
+0019f984  b0 f9 19 00 11 31 05 01 - a0 f9 19 00 bc f9 19 00  .....1..........
+0019f994  84 50 40 00 b0 f9 19 00 - 60 2f 05 01 00 00 00 00  .P@.....`/......
+0019f9a4  58 ba f8 0c 58 52 b9 0c - 10 67 fc 07 14 fa 19 00  X...XR...g......
+0019f9b4  3a 53 b7 00 44 fa 19 00 - c8 f9 19 00 dc 50 40 00  :S..D........P@.
 
 disassembling:
 [...]
-004058bf      call    -$2690 ($403234)       ; System.Move
-004058c4      pop     edx
-004058c5      pop     eax
-004058c6      jmp     loc_4058cc
-004058c8      lock inc dword ptr [edx-8]
-004058cc    > xchg    edx, [eax]
-004058ce      test    edx, edx
-004058d0      jz      loc_4058e6
-004058d2      mov     ecx, [edx-8]
-004058d5      dec     ecx
-004058d6      jl      loc_4058e6
+01052dc4      push    eax
+01052dc5      mov     ecx, [ebp-$14]
+01052dc8      mov     dl, 1
+01052dca      mov     eax, [$b7442c]
+01052dcf      call    -$4de810 ($b745c4)     ; FileStorageServiceErrors.TFileSharingViolationException.Create
+01052dd4    > call    -$c4dc31 ($4051a8)     ; System.@RaiseExcept
+01052dd9      jmp     loc_1052e33
+01052ddb 63   lea     eax, [ebp-$18]
+01052dde      push    eax
+01052ddf      lea     eax, [ebp-$1c]
+01052de2      push    eax
 [...]
 

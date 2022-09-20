@@ -67,10 +67,6 @@ type
       function LoadSigner(DataReader: IDataReader): TEmployee;
       function LoadActuallySignedEmployee(DataReader: IDataReader): TEmployee;
 
-    protected
-
-      procedure Initialize; override;
-      
     public
 
       constructor Create(
@@ -300,15 +296,6 @@ begin
                           DomainObject,
                           DomainObjectPropertyName
                         );
-
-end;
-
-procedure TDocumentSigningPostgresRepository.Initialize;
-begin
-
-  inherited;
-
-  ReturnIdOfDomainObjectAfterAdding := True;
 
 end;
 
