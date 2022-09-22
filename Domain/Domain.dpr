@@ -1,5 +1,7 @@
 program Domain;
 
+{%TogetherDiagram 'ModelSupport_Domain\default.txaPackage'}
+
 uses
   Forms,
   IDocumentChargeSheetUnit in 'Documents\Common\Entities\Interfaces\IDocumentChargeSheetUnit.pas',

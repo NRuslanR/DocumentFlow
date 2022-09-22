@@ -32,3 +32,4 @@ __recovery
 modules/
 .svn/
 Integration/
+*/ModelSupport_*

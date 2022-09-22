@@ -352,7 +352,7 @@ begin
   DocumentNumberPrefixEdit.Text := FViewModel.NumberPrefix;
   DocumentNumberPrefixEdit.RegularExpression := FViewModel.NumberPrefixPattern;
   DocumentNumberPrefixEdit.InvalidHint := 'Префикс номера документа ' +
-    'должен состоять из цифр';
+    'должен состоять из цифр. Разрешены символы - и / для разделения частей префикса';
     
   DocumentNumberMainValueEdit.Text := FViewModel.NumberMainValue;
 

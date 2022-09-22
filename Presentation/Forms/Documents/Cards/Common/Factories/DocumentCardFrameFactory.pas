@@ -1122,9 +1122,13 @@ begin
 
     else Result.ViewOnly := True;
 
-    DocumentMainInformationFormViewModel.NumberPrefixPattern :=
-      DocumentUsageEmployeeAccessRightsInfoDTO.NumberPrefixPattern;
-      
+    if Assigned(DocumentMainInformationFormViewModel) then begin
+
+      DocumentMainInformationFormViewModel.NumberPrefixPattern :=
+        DocumentUsageEmployeeAccessRightsInfoDTO.NumberPrefixPattern;
+
+    end;
+
     Result.DocumentNumberReadOnly :=
       not DocumentUsageEmployeeAccessRightsInfoDTO.NumberCanBeChanged;
       

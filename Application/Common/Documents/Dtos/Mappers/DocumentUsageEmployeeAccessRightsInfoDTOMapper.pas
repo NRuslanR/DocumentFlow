@@ -181,7 +181,7 @@ begin
   case DocumentUsageEmployeeAccessRightsInfo.NumberPrefixPatternType of
 
     ppNone: Result.NumberPrefixPattern := '.*';
-    ppDigits: Result.NumberPrefixPattern := '^\d+$';
+    ppDigits: Result.NumberPrefixPattern := '(^\d+([\/-]?\d+)+$)';
     ppAnyChars: Result.NumberPrefixPattern := '.+';
     
   end;
