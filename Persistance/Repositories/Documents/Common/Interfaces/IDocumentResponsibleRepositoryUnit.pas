@@ -8,7 +8,7 @@ uses
   Classes,
   DomainObjectUnit,
   Employee,
-  DepartmentUnit;
+  Department;
 
 type
 

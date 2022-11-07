@@ -19,7 +19,7 @@ uses
   FormalDocumentSignerFinder,
   IDocumentUnit,
   DocumentCharges,
-  DepartmentUnit,
+  Department,
   Employee,
   SysUtils,
   Classes;

@@ -66,7 +66,7 @@ implementation
 
 uses
 
-  DepartmentUnit,
+  Department,
   ServiceNote,
   IDomainObjectBaseUnit,
   IncomingServiceNote;

@@ -11,7 +11,7 @@ uses
   DomainObjectUnit,
   AbstractRepositoryCriteriaUnit,
   DomainObjectListUnit,
-  RoleUnit,
+  Role,
   Employee,
   VariantListUnit,
   UnaryRepositoryCriterionUnit,

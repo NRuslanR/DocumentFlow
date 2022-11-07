@@ -138,7 +138,6 @@ uses
   LookedServiceNotesPostgresTable,
   DepartmentSetReadService,
   DocumentCreatingDefaultInfoReadService,
-  EmployeeDocumentKindAccessRightsService,
   StandardEmployeeDocumentKindAccessRightsService,
   DocumentKindWorkCycleInfoAppService,
   DocumentKindsMapper,
@@ -197,6 +196,9 @@ uses
   IncomingDocumentInfoHolderBuilder,
   FullDocumentApprovingsInfoQueryBuilder,
   IncomingDocumentDTOFromDataSetMapper,
+  EmployeeDocumentKindAccessRightsAppService,
+  DTODomainMapperRegistry,
+  ApplicationServiceRegistries,
   Document,
   Employee;
 
@@ -207,12 +209,8 @@ procedure TPresentationServiceRegistryConfigurator.ConfigurePresentationServiceR
   ConfigurationData: TPresentationServiceRegistryConfigurationData
 );
 var
-    EmployeeDbSchema: TEmployeeDbSchema;
-    DepartmentDbSchema: TDepartmentDbSchema;
-    RoleDbSchema: TRoleDbSchema;
-    EmployeeWorkGroupAssociationDbSchema: TEmployeeWorkGroupAssociationDbSchema;
-
     EmployeeSetReadService: IEmployeeSetReadService;
+
     EmployeeSubordinationService: IEmployeeSubordinationService;
     EmployeeChargePerformingService: IEmployeeChargePerformingService;
 
@@ -231,67 +229,28 @@ var
     OutcomingDocumentKindWorkCycleInfoAppService: IDocumentKindWorkCycleInfoAppService;
 
     BaseServiceDocumentKind: TNativeDocumentKindClass;
+
+    DocumentKindsMapper: IDocumentKindsMapper;
 begin
+
+  DoCommonPresentationServiceRegistryConfiguration(
+    PresentationServiceRegistry,
+    ConfigurationData
+  );
 
   if not FIsCommonConfigurationDone then
     DoCommonPresentationServiceRegistryConfiguration(PresentationServiceRegistry, ConfigurationData);
+
+  EmployeeSetReadService := PresentationServiceRegistry.GetEmployeeSetReadService;
+
+  DocumentKindsMapper := TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper;
   
-  EmployeeDbSchema := TEmployeeDbSchema.Create;
-
-  EmployeeDbSchema.TableName := EMPLOYEE_TABLE_NAME;
-  EmployeeDbSchema.IdColumnName := EMPLOYEE_TABLE_ID_FIELD;
-  EmployeeDbSchema.PersonnelNumberColumnName := EMPLOYEE_TABLE_PERSONNEL_NUMBER_FIELD;
-  EmployeeDbSchema.NameColumnName := EMPLOYEE_TABLE_NAME_FIELD;
-  EmployeeDbSchema.SurnameColumnName := EMPLOYEE_TABLE_SURNAME_FIELD;
-  EmployeeDbSchema.PatronymicColumnName := EMPLOYEE_TABLE_PATRONYMIC_FIELD;
-  EmployeeDbSchema.SpecialityColumnName := EMPLOYEE_TABLE_SPECIALITY_FIELD;
-  EmployeeDbSchema.DepartmentIdColumnName := EMPLOYEE_TABLE_DEPARTMENT_ID_FIELD;
-  EmployeeDbSchema.HeadKindredDepartmentIdColumnName := EMPLOYEE_TABLE_HEAD_KINDRED_DEPARTMENT_ID_FIELD;
-  EmployeeDbSchema.TelephoneNumberColumnName := EMPLOYEE_TABLE_TELEPHONE_NUMBER_FIELD;
-  EmployeeDbSchema.IsForeignColumnName := EMPLOYEE_TABLE_IS_FOREIGN_FIELD;
-  EmployeeDbSchema.WasDismissedColumnName := EMPLOYEE_TABLE_IS_DISMISSED_FIELD;
-  EmployeeDbSchema.IsSDUserColumnName := EMPLOYEE_TABLE_IS_SD_USER_FIELD;
-  EmployeeDbSchema.TopLevelEmployeeIdColumnName := EMPLOYEE_TABLE_LEADER_ID_FIELD;
-  
-  DepartmentDbSchema := TDepartmentDbSchema.Create;
-
-  DepartmentDbSchema.TableName := DEPARTMENT_TABLE_NAME;
-  DepartmentDbSchema.IdColumnName := DEPARTMENT_TABLE_ID_FIELD;
-  DepartmentDbSchema.CodeColumnName := DEPARTMENT_TABLE_CODE_FIELD;
-  DepartmentDbSchema.ShortNameColumnName := DEPARTMENT_TABLE_SHORT_NAME_FIELD;
-  DepartmentDbSchema.FullNameColumnName := DEPARTMENT_TABLE_FULL_NAME_FIELD;
-
-  RoleDbSchema := TRoleDbSchema.Create;
-
-  RoleDbSchema.TableName := ROLE_TABLE_NAME;
-  RoleDbSchema.IdColumnName := ROLE_TABLE_ID_FIELD;
-  RoleDbSchema.RoleNameColumnName := ROLE_TABLE_DESCRIPTION_FIELD;
-
-  EmployeeWorkGroupAssociationDbSchema := TEmployeeWorkGroupAssociationDbSchema.Create;
-
-  EmployeeWorkGroupAssociationDbSchema.TableName := EMPLOYEE_WORK_GROUPS_ASSOCIATION_TABLE_NAME;
-  EmployeeWorkGroupAssociationDbSchema.EmployeeIdColumnName := EMPLOYEE_WORK_GROUPS_ASSOCIATION_TABLE_EMPLOYEE_ID_FIELD;
-  EmployeeWorkGroupAssociationDbSchema.WorkGroupIdColumnName := EMPLOYEE_WORK_GROUPS_ASSOCIATION_TABLE_WORK_GROUP_ID_FIELD;
-
   QueryExecutor :=
     TZQueryExecutor.Create(
       TZConnection(ConfigurationData.DatabaseConnection)
     );
 
   FreeQueryExecutor := QueryExecutor;
-    
-  EmployeeSetReadService :=
-    TBasedOnDatabaseEmployeeSetReadService.Create(
-      EmployeeDbSchema,
-      DepartmentDbSchema,
-      RoleDbSchema,
-      EmployeeWorkGroupAssociationDbSchema,
-      QueryExecutor
-    );
-
-  PresentationServiceRegistry.RegisterEmployeeSetReadService(
-    EmployeeSetReadService
-  );
 
   EmployeeSubordinationService :=
     TDomainRegistries
@@ -387,7 +346,7 @@ begin
               .ServiceRegistry
                 .DocumentSearchServiceRegistry
                   .GetDocumentWorkCycleFinder(
-                    TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+                    TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
                       BaseServiceDocumentKind
                     )
                   )
@@ -479,7 +438,7 @@ begin
               .ServiceRegistry
                 .DocumentSearchServiceRegistry
                   .GetDocumentWorkCycleFinder(
-                    TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+                    TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
                       ConfigurationData.OutcomingInternalDocumentKind
                     )
                   )
@@ -516,7 +475,7 @@ begin
               .ServiceRegistry
                 .DocumentSearchServiceRegistry
                   .GetDocumentWorkCycleFinder(
-                    TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+                    TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
                       ConfigurationData.IncomingDocumentKind
                     )
                   )
@@ -553,7 +512,7 @@ begin
               .ServiceRegistry
                 .DocumentSearchServiceRegistry
                   .GetDocumentWorkCycleFinder(
-                    TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+                    TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
                       ConfigurationData.IncomingInternalDocumentKind
                     )
                   )
@@ -562,24 +521,7 @@ begin
     );
 
   end;
-
   //----------------------------------------------------------------------------
-  DepartmentDbSchema := TDepartmentDbSchema.Create;
-
-  DepartmentDbSchema.TableName := DEPARTMENT_TABLE_NAME;
-  DepartmentDbSchema.IdColumnName := DEPARTMENT_TABLE_ID_FIELD;
-  DepartmentDbSchema.CodeColumnName := DEPARTMENT_TABLE_CODE_FIELD;
-  DepartmentDbSchema.ShortNameColumnName := DEPARTMENT_TABLE_SHORT_NAME_FIELD;
-  DepartmentDbSchema.FullNameColumnName := DEPARTMENT_TABLE_FULL_NAME_FIELD;
-  DepartmentDbSchema.InActiveStatusColumnName := DEPARTMENT_TABLE_INACTIVE_STATUS_FIELD;
-    
-  PresentationServiceRegistry.RegisterDepartmentSetReadService(
-    TBasedOnDatabaseDepartmentSetReadService.Create(
-      QueryExecutor,
-      DepartmentDbSchema
-    )
-  );
-
   PresentationServiceRegistry.RegisterDocumentApproverSetReadService(
     BaseServiceDocumentKind,
     TStandardDocumentApproverSetReadService.Create(EmployeeSetReadService)
@@ -597,7 +539,7 @@ var
     DocumentDbSchemaData: TDocumentDbSchemaData;
     FreeDocumentDbSchemaData: IDisposable;
     IncomingServiceNoteInfoReadService: IDocumentInfoReadService;
-    EmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
+    EmployeeDocumentKindAccessRightsAppService: IEmployeeDocumentKindAccessRightsAppService;
     BaseServiceDocumentKind: TDocumentKindClass;
     BaseDomainDocumentKind: TDocumentClass;
 
@@ -605,7 +547,8 @@ var
     DocumentInfoHolderBuilders: TDocumentInfoHolderBuilders;
 begin
 
-  { refactor: получать объекты схем из соответствующей фабрики
+  {
+    refactor: получать объекты схем из соответствующей фабрики
     persistence-слоя
   }
   DocumentDbSchemaData :=
@@ -621,11 +564,11 @@ begin
 
   FreeDocumentDbSchemaData := DocumentDbSchemaData;
 
-  EmployeeDocumentKindAccessRightsService :=
-    TDocumentsDomainRegistries
-      .ServiceRegistry
-        .AccessRightsServiceRegistry
-          .GetEmployeeDocumentKindAccessRightsService;
+  EmployeeDocumentKindAccessRightsAppService :=
+    TApplicationServiceRegistries
+      .Current
+        .GetDocumentBusinessProcessServiceRegistry
+          .GetEmployeeDocumentKindAccessRightsAppService;
 
   if Assigned(ConfigurationData.DocumentKind) then
     BaseServiceDocumentKind := ConfigurationData.DocumentKind
@@ -633,7 +576,10 @@ begin
   else BaseServiceDocumentKind := ConfigurationData.OutcomingDocumentKind;
 
   BaseDomainDocumentKind :=
-    TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(BaseServiceDocumentKind);
+    TDTODomainMapperRegistry
+      .Instance
+        .GetDocumentKindsMapper
+          .MapDocumentKindToDomainDocumentKind(BaseServiceDocumentKind);
 
   if Assigned(BaseServiceDocumentKind) then begin
 
@@ -730,24 +676,6 @@ begin
           DocumentInfoDTOFromDataSetMappers,
           DocumentInfoHolderBuilders
         )
-                                               {
-        TBasedOnDatabaseDocumentInfoReadService.Create(
-          QueryExecutor,
-          TPostgresDocumentInfoFetchingQueryBuilder.Create(
-            TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-              BaseDomainDocumentKind
-            )
-          ),
-          TDocumentFullInfoDTOFromDataSetMapper.Create(
-            DocumentDTOFromDataSetMapper,
-            DocumentApprovingsInfoDTOFromDataSetMapper,
-            DocumentApprovingCycleResultsInfoDTOFromDataSetMapper,
-            DocumentChargesInfoDTOFromDataSetMapper,
-            DocumentChargeSheetsInfoDTOFromDataSetMapper,
-            DocumentRelationsInfoDTOFromDataSetMapper,
-            DocumentFilesInfoDTOFromDataSetMapper
-          )
-        )                                       }
       );
 
     end;
@@ -757,7 +685,7 @@ begin
       TBasedOnDatabaseEmployeeOutcomingDocumentSetReadService.Create(
         BaseServiceDocumentKind,
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
-        EmployeeDocumentKindAccessRightsService,
+        EmployeeDocumentKindAccessRightsAppService,
         TDataSetQueryExecutor(QueryExecutor),
         TPostgresEmployeeOutcomingServiceNoteSetFetchingQueryBuilder.Create
       )
@@ -780,7 +708,7 @@ begin
       TBasedOnDatabaseEmployeeInternalDocumentSetReadService.Create(
         ConfigurationData.OutcomingInternalDocumentKind,
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
-        EmployeeDocumentKindAccessRightsService,
+        EmployeeDocumentKindAccessRightsAppService,
         TDataSetQueryExecutor(QueryExecutor),
         TPostgresEmployeeInternalServiceNoteSetFetchingQueryBuilder.Create
       )
@@ -827,38 +755,6 @@ begin
         DocumentInfoDTOFromDataSetMappers,
         DocumentInfoHolderBuilders
       );
-                                                      {
-    TBasedOnDatabaseIncomingDocumentInfoReadService.Create(
-      QueryExecutor,
-      TPostgresIncomingServiceNoteFullInfoFetchingQueryBuilder.Create(
-        TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-          TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
-            BaseServiceDocumentKind
-          )
-        )
-      ),
-      TIncomingDocumentFullInfoDTOFromDataSetMapper.Create(
-
-        TIncomingDocumentDTOFromDataSetMapper(DocumentDTOFromDataSetMapper),
-        DocumentApprovingsInfoDTOFromDataSetMapper,
-        DocumentApprovingCycleResultsInfoDTOFromDataSetMapper,
-        DocumentChargesInfoDTOFromDataSetMapper,
-        DocumentChargeSheetsInfoDTOFromDataSetMapper,
-        DocumentRelationsInfoDTOFromDataSetMapper,
-        DocumentFilesInfoDTOFromDataSetMapper,
-
-        TDocumentFullInfoDTOFromDataSetMapper.Create(
-          DocumentDTOFromDataSetMapper,
-          DocumentApprovingsInfoDTOFromDataSetMapper,
-          DocumentApprovingCycleResultsInfoDTOFromDataSetMapper,
-          DocumentChargesInfoDTOFromDataSetMapper,
-          DocumentChargeSheetsInfoDTOFromDataSetMapper,
-          DocumentRelationsInfoDTOFromDataSetMapper,
-          DocumentFilesInfoDTOFromDataSetMapper
-        )
-        
-      )
-    );      }
 
   end;
 
@@ -874,7 +770,7 @@ begin
       TBasedOnDatabaseEmployeeIncomingDocumentSetReadService.Create(
         ConfigurationData.IncomingDocumentKind,
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
-        EmployeeDocumentKindAccessRightsService,
+        EmployeeDocumentKindAccessRightsAppService,
         TDataSetQueryExecutor(QueryExecutor),
         TPostgresEmployeeIncomingServiceNoteSetFetchingQueryBuilder.Create
       )
@@ -906,7 +802,7 @@ begin
       TBasedOnDatabaseEmployeeApproveableDocumentSetReadService.Create(
         ConfigurationData.ApproveableDocumentKind,
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
-        EmployeeDocumentKindAccessRightsService,
+        EmployeeDocumentKindAccessRightsAppService,
         TDataSetQueryExecutor(QueryExecutor),
         TPostgresEmployeeApproveableServiceNoteSetFetchingQueryBuilder.Create
       )
@@ -924,18 +820,28 @@ begin
 
 end;
 
-procedure TPresentationServiceRegistryConfigurator.DoCommonPresentationServiceRegistryConfiguration(
-  PresentationServiceRegistry: TPresentationServiceRegistry;
-  ConfigurationData: TPresentationServiceRegistryConfigurationData
-);
+procedure TPresentationServiceRegistryConfigurator
+  .DoCommonPresentationServiceRegistryConfiguration(
+    PresentationServiceRegistry: TPresentationServiceRegistry;
+    ConfigurationData: TPresentationServiceRegistryConfigurationData
+  );
 var
     DocumentKindDbSchema: TDocumentKindDbSchema;
 
     NativeDocumentKindsReadService: INativeDocumentKindsReadService;
     SDItemsService: ISDItemsService;
     QueryExecutor: IQueryExecutor;
+
+    EmployeeDbSchema: TEmployeeDbSchema;
+    DepartmentDbSchema: TDepartmentDbSchema;
+    RoleDbSchema: TRoleDbSchema;
+    EmployeeWorkGroupAssociationDbSchema: TEmployeeWorkGroupAssociationDbSchema;
+
+    EmployeeSetReadService: IEmployeeSetReadService;
 begin
 
+  if FIsCommonConfigurationDone then Exit;
+  
   DocumentKindDbSchema := TDocumentKindDbSchema.Create;
 
   DocumentKindDbSchema.TableName := DOCUMENT_TYPES_TABLE_NAME;
@@ -991,9 +897,66 @@ begin
   PresentationServiceRegistry.RegisterNativeDocumentKindsReadService(
     NativeDocumentKindsReadService
   );
+  //----------------------------------------------------------------------------
+  EmployeeDbSchema := TEmployeeDbSchema.Create;
+
+  EmployeeDbSchema.TableName := EMPLOYEE_TABLE_NAME;
+  EmployeeDbSchema.IdColumnName := EMPLOYEE_TABLE_ID_FIELD;
+  EmployeeDbSchema.PersonnelNumberColumnName := EMPLOYEE_TABLE_PERSONNEL_NUMBER_FIELD;
+  EmployeeDbSchema.NameColumnName := EMPLOYEE_TABLE_NAME_FIELD;
+  EmployeeDbSchema.SurnameColumnName := EMPLOYEE_TABLE_SURNAME_FIELD;
+  EmployeeDbSchema.PatronymicColumnName := EMPLOYEE_TABLE_PATRONYMIC_FIELD;
+  EmployeeDbSchema.SpecialityColumnName := EMPLOYEE_TABLE_SPECIALITY_FIELD;
+  EmployeeDbSchema.DepartmentIdColumnName := EMPLOYEE_TABLE_DEPARTMENT_ID_FIELD;
+  EmployeeDbSchema.HeadKindredDepartmentIdColumnName := EMPLOYEE_TABLE_HEAD_KINDRED_DEPARTMENT_ID_FIELD;
+  EmployeeDbSchema.TelephoneNumberColumnName := EMPLOYEE_TABLE_TELEPHONE_NUMBER_FIELD;
+  EmployeeDbSchema.IsForeignColumnName := EMPLOYEE_TABLE_IS_FOREIGN_FIELD;
+  EmployeeDbSchema.WasDismissedColumnName := EMPLOYEE_TABLE_IS_DISMISSED_FIELD;
+  EmployeeDbSchema.IsSDUserColumnName := EMPLOYEE_TABLE_IS_SD_USER_FIELD;
+  EmployeeDbSchema.TopLevelEmployeeIdColumnName := EMPLOYEE_TABLE_LEADER_ID_FIELD;
+  
+  DepartmentDbSchema := TDepartmentDbSchema.Create;
+
+  DepartmentDbSchema.TableName := DEPARTMENT_TABLE_NAME;
+  DepartmentDbSchema.IdColumnName := DEPARTMENT_TABLE_ID_FIELD;
+  DepartmentDbSchema.CodeColumnName := DEPARTMENT_TABLE_CODE_FIELD;
+  DepartmentDbSchema.ShortNameColumnName := DEPARTMENT_TABLE_SHORT_NAME_FIELD;
+  DepartmentDbSchema.FullNameColumnName := DEPARTMENT_TABLE_FULL_NAME_FIELD;
+
+  RoleDbSchema := TRoleDbSchema.Create;
+
+  RoleDbSchema.TableName := ROLE_TABLE_NAME;
+  RoleDbSchema.IdColumnName := ROLE_TABLE_ID_FIELD;
+  RoleDbSchema.RoleNameColumnName := ROLE_TABLE_DESCRIPTION_FIELD;
+
+  EmployeeWorkGroupAssociationDbSchema := TEmployeeWorkGroupAssociationDbSchema.Create;
+
+  EmployeeWorkGroupAssociationDbSchema.TableName := EMPLOYEE_WORK_GROUPS_ASSOCIATION_TABLE_NAME;
+  EmployeeWorkGroupAssociationDbSchema.EmployeeIdColumnName := EMPLOYEE_WORK_GROUPS_ASSOCIATION_TABLE_EMPLOYEE_ID_FIELD;
+  EmployeeWorkGroupAssociationDbSchema.WorkGroupIdColumnName := EMPLOYEE_WORK_GROUPS_ASSOCIATION_TABLE_WORK_GROUP_ID_FIELD;
+
+  PresentationServiceRegistry
+    .RegisterEmployeeSetReadService(
+      TBasedOnDatabaseEmployeeSetReadService.Create(
+        EmployeeDbSchema,
+        DepartmentDbSchema,
+        RoleDbSchema,
+        EmployeeWorkGroupAssociationDbSchema,
+        TDataSetQueryExecutor(QueryExecutor.Self)
+      )
+    );
+
+  DepartmentDbSchema.InActiveStatusColumnName := DEPARTMENT_TABLE_INACTIVE_STATUS_FIELD;
+
+  PresentationServiceRegistry.RegisterDepartmentSetReadService(
+    TBasedOnDatabaseDepartmentSetReadService.Create(
+      TDataSetQueryExecutor(QueryExecutor.Self),
+      DepartmentDbSchema
+    )
+  );
 
   FIsCommonConfigurationDone := True;
-  
+
 end;
 
 procedure TPresentationServiceRegistryConfigurator.RegisterPersonnelOrderPresentationServices(
@@ -1001,8 +964,12 @@ procedure TPresentationServiceRegistryConfigurator.RegisterPersonnelOrderPresent
   ConfigurationData: TPresentationServiceRegistryConfigurationData;
   QueryExecutor: IQueryExecutor
 );
+var
+    DocumentKindsMapper: IDocumentKindsMapper;
 begin
 
+  DocumentKindsMapper := TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper;
+  
   with
       PresentationServiceRegistry,
       PresentationServiceRegistry.GetPersonnelOrderPresentationServiceRegistry
@@ -1026,7 +993,7 @@ begin
         TPostgresPersonnelOrderFullInfoFetchingQueryBuilder.Create(
           TPersonnelOrderTableDefsFactory(
             TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-              TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+              DocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
                 TPersonnelOrderKind
               )
             )
@@ -1051,15 +1018,8 @@ begin
       TBasedOnDatabaseEmployeePersonnelOrderSetReadService.Create(
         TPersonnelOrderKind,
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
-
-        TDomainRegistries
-          .DocumentsDomainRegistries
-            .ServiceRegistry
-              .AccessRightsServiceRegistry
-                .GetEmployeeDocumentKindAccessRightsService,
-
+        TApplicationServiceRegistries.Current.GetDocumentBusinessProcessServiceRegistry.GetEmployeeDocumentKindAccessRightsAppService,
         TDataSetQueryExecutor(QueryExecutor.Self),
-
         TPostgresEmployeePersonnelOrderSetFetchingQueryBuilder.Create
       )
     );
@@ -1091,7 +1051,7 @@ begin
 
         TPersonnelOrderTableDefsFactory(
           TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-            TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+            DocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
               TPersonnelOrderKind
             )
           )

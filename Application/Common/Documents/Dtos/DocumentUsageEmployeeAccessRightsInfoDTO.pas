@@ -4,19 +4,38 @@ interface
 
 uses
 
-  Disposable,
+  DocumentChargeKindDto,
   SysUtils,
   Classes;
 
 type
 
+  TDocumentChargeSheetIssuingAccessRightsInfoDTO = class
+    AllAccessRightsAbsent: Boolean;
+    AnyHeadChargeSheetsCanBeIssued: Boolean;
+    AnySubordinateChargeSheetsCanBeIssued: Boolean;
+    AnyChargeSheetsCanBeIssued: Boolean;
+    IssuingAlloweableHeadChargeSheetKindDtos: TDocumentChargeKindDtos;
+    IssuingAlloweableSubordinateChargeSheetKindDtos: TDocumentChargeKindDtos;
+    MainChargeSheetKindDto: TDocumentChargeKindDto;
+    destructor Destroy; override;
+  end;
   TDocumentChargeSheetsAccessRightsInfoDTO = class
 
     AnyChargeSheetsCanBeViewed: Boolean;
-    AnyChargeSheetsCanBeIssued: Boolean;
+    AnyChargeSheetsCanBeViewedAsIssuer: Boolean;
+    AnyChargeSheetsCanBeViewedAsPerformer: Boolean;
+    AnyChargeSheetsCanBeViewedAsAuthorized: Boolean;
     AnyChargeSheetsCanBeChanged: Boolean;
     AnyChargeSheetsCanBeRemoved: Boolean;
     AnyChargeSheetsCanBePerformed: Boolean;
+    AnyHeadChargeSheetsCanBeIssued: Boolean;
+    AnySubordinateChargeSheetsCanBeIssued: Boolean;
+    AnyChargeSheetsCanBeIssued: Boolean;
+    AllChargeSheetsAccessRightsAbsent: Boolean;
+    AllChargeSheetsAccessRightsAllowed: Boolean;
+    IssuingAccessRightsInfoDTO: TDocumentChargeSheetIssuingAccessRightsInfoDTO;
+    destructor Destroy; override;
 
   end;
 
@@ -36,8 +55,12 @@ type
 
   end;
 
+  TDocumentUsageEmployeeAccessRightsInfoDTO = class;
+  IDocumentUsageEmployeeAccessRightsInfoDTO = interface
+    function AsSelf: TDocumentUsageEmployeeAccessRightsInfoDTO;
+  end;
   TDocumentUsageEmployeeAccessRightsInfoDTO =
-    class (TInterfacedObject, IDisposable)
+    class (TInterfacedObject, IDocumentUsageEmployeeAccessRightsInfoDTO)
 
       public
 
@@ -110,6 +133,7 @@ type
 
         constructor Create;
 
+        function AsSelf: TDocumentUsageEmployeeAccessRightsInfoDTO;
         property EmployeeHasRightsForSigning: Boolean
         read GetEmployeeHasRightsForSigning write SetEmployeeHasRightsForSigning;
 
@@ -317,6 +341,10 @@ begin
 
 end;
 
+function TDocumentUsageEmployeeAccessRightsInfoDTO.AsSelf: TDocumentUsageEmployeeAccessRightsInfoDTO;
+begin
+  Result := Self;
+end;
 procedure TDocumentUsageEmployeeAccessRightsInfoDTO.SetEmployeeHasRightsForApproving(
   const Value: Boolean);
 begin
@@ -389,4 +417,16 @@ begin
 
 end;
 
+destructor TDocumentChargeSheetsAccessRightsInfoDTO.Destroy;
+begin
+  FreeAndNil(IssuingAccessRightsInfoDTO);
+  inherited;
+end;
+destructor TDocumentChargeSheetIssuingAccessRightsInfoDTO.Destroy;
+begin
+  FreeAndNil(IssuingAlloweableHeadChargeSheetKindDtos);
+  FreeAndNil(IssuingAlloweableSubordinateChargeSheetKindDtos);
+  FreeAndNil(MainChargeSheetKindDto);
+  inherited;
+end;
 end.

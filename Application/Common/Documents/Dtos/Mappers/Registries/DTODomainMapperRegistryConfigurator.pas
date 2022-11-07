@@ -191,6 +191,7 @@ begin
       TDocumentPerformingSheetInfoDTODomainMapper.Create(
         RepositoryRegistry.GetEmployeeRepository,
         ConfigurationData.ApplicationServices.GetAccountingServiceRegistry.GetDocumentChargeSheetViewingAccountingService,
+        //TDocumentChargeInfoDTODomainMapper(ChargeInfoDTODomainMapper.Self),
         Registry.GetDocumentFlowEmployeeInfoDTOMapper
       );
 
@@ -209,6 +210,7 @@ begin
       TDocumentAcquaitanceSheetInfoDTODomainMapper.Create(
         RepositoryRegistry.GetEmployeeRepository,
         ConfigurationData.ApplicationServices.GetAccountingServiceRegistry.GetDocumentChargeSheetViewingAccountingService,
+        //TDocumentChargeInfoDTODomainMapper(ChargeInfoDTODomainMapper.Self),
         Registry.GetDocumentFlowEmployeeInfoDTOMapper
       );
 
@@ -372,7 +374,7 @@ begin
         EmployeeDTOMapper
       )
     );
-  
+                                          
   end;
 
   if DocumentKind.InheritsFrom(TPersonnelOrderKind) then begin
@@ -382,13 +384,13 @@ begin
       TPersonnelOrderDTODomainMapper.Create(
         RepositoryRegistry.GetEmployeeRepository,
         TDocumentsDomainRegistries.ServiceRegistry.OperationServiceRegistry.GetDocumentCreatingService(
-          TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(DocumentKind)
+          Registry.GetDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(DocumentKind)
         ),
         TDocumentChargesInfoDTODomainMapper.Create(
           RepositoryRegistry.GetEmployeeRepository,
           Registry.ChargeInfoDTODomainMapperRegistry
         ),
-        TDocumentResponsibleInfoDTOMapper.Create
+        Registry.GetDocumentResponsibleInfoDTOMapper
       )
     );
 
@@ -401,13 +403,13 @@ begin
       TDocumentObjectsDTODomainMapper.Create(
         RepositoryRegistry.GetEmployeeRepository,
         TDocumentsDomainRegistries.ServiceRegistry.OperationServiceRegistry.GetDocumentCreatingService(
-          TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(DocumentKind)
+          Registry.GetDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(DocumentKind)
         ),
         TDocumentChargesInfoDTODomainMapper.Create(
           RepositoryRegistry.GetEmployeeRepository,
           Registry.ChargeInfoDTODomainMapperRegistry
         ),
-        TDocumentResponsibleInfoDTOMapper.Create
+        Registry.GetDocumentResponsibleInfoDTOMapper
       )
     );
     
@@ -456,6 +458,10 @@ begin
     TDocumentFlowEmployeeInfoDTOMapper.Create(
       RepositoryRegistry.GetDepartmentRepository
     )
+  );
+
+  Registry.RegisterDocumentResponsibleInfoDTOMapper(
+    TDocumentResponsibleInfoDTOMapper.Create
   );
 
 end;

@@ -861,12 +861,12 @@ begin
         CreateDocumentCardFormViewModelFor(
           FUINativeDocumentKindResolver.ResolveUIDocumentKindFromId(DocumentKindId),
           GettingDocumentFullInfoCommandResult.DocumentFullInfoDTO,
-          GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO
+          GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO.AsSelf
         );
 
       AvailableActionList :=
         GettingDocumentFullInfoCommandResult.
-          DocumentUsageEmployeeAccessRightsInfoDTO.Clone;
+          DocumentUsageEmployeeAccessRightsInfoDTO.AsSelf.Clone;
 
     except
 
@@ -977,7 +977,7 @@ begin
         CreateDocumentCardFormViewModelFor(
           FUINativeDocumentKindResolver.ResolveUIDocumentKindFromId(DocumentKindId),
           GettingDocumentFullInfoCommandResult.DocumentFullInfoDTO,
-          GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO
+          GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO.AsSelf
         );
 
     except
@@ -1468,11 +1468,11 @@ begin
 
   end;
 
-  FSelectedDocumentCardFrame := DocumentCardFrame;
+  //FSelectedDocumentCardFrame := DocumentCardFrame;
   
   DocumentCardFrame.Parent := DocumentCardFormPanel;
   DocumentCardFrame.Align := alClient;
-
+                                                                                    
   AssignEventHandlersToDocumentCardFrame(DocumentCardFrame);
 
   DocumentCardFrame.RaisePendingEvents;
@@ -1487,6 +1487,8 @@ begin
 
   DocumentCardFrame.RestoreWithNestedFramesUIProperties;
 
+  FSelectedDocumentCardFrame := DocumentCardFrame;
+  
   if Assigned(FDetachableDocumentCardForm) then begin
 
     FDetachableDocumentCardForm.InternalControl :=
@@ -1676,7 +1678,8 @@ function TDocumentCardListFrame.CreateDocumentCardFormViewModelFor(
   DocumentFullInfoDTO: TDocumentFullInfoDTO;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
 ): TDocumentCardFormViewModel;
-var DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
+var
+    DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
     DocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory;
 begin
 
@@ -2043,8 +2046,7 @@ begin
 
     DocumentCardViewModel.DocumentRemoveToolEnabled :=
       AddNewDocumentFullInfoCommandResult
-        .NewDocumentUsageEmployeeAccessRightsInfoDTO
-          .DocumentCanBeRemoved;
+        .NewDocumentUsageEmployeeAccessRightsInfoDTO.AsSelf.DocumentCanBeRemoved;
           
   finally
 
@@ -2396,7 +2398,7 @@ begin
           RelatedDocumentKindId
         ),
         GettingDocumentFullInfoCommandResult.DocumentFullInfoDTO,
-        GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO
+        GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO.AsSelf
       );
 
     CustomizeDocumentCardFrame(DocumentCardFrame);

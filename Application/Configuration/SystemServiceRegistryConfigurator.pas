@@ -186,8 +186,11 @@ procedure TSystemServiceRegistryConfigurator.RegisterAdminDocumentStorageService
 );
 var
     DocumentKind: TDocumentKindClass;
+    DocumentKindsMapper: IDocumentKindsMapper;
 begin
 
+  DocumentKindsMapper := TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper;
+  
   for DocumentKind in DocumentKinds do begin
   
     SystemServiceRegistry.RegisterAdminDocumentStorageService(
@@ -203,14 +206,14 @@ begin
             .ServiceRegistry
               .StorageServiceRegistry
                 .GetDocumentDirectory(
-                  TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+                  DocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
                     DocumentKind
                   )
                 ),
 
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
         TDomainRegistries.DocumentsDomainRegistries.ServiceRegistry.OperationServiceRegistry.GetDocumentCreatingService(
-          TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(DocumentKind)
+          DocumentKindsMapper.MapDocumentKindToDomainDocumentKind(DocumentKind)
         ),
         ConfigurationData.PresentationServiceRegistry.GetDocumentInfoReadService(DocumentKind),
         
@@ -219,12 +222,14 @@ begin
             .ServiceRegistry
               .AccessRightsServiceRegistry
                 .GetDocumentUsageEmployeeAccessRightsService(
-                  TDocumentKindsMapper
+                  DocumentKindsMapper
                     .MapDocumentKindToDomainDocumentKind(DocumentKind)
                 ),
 
         TDTODomainMapperRegistry.Instance.GetDocumentObjectsDTODomainMapper(DocumentKind),
-        TDTODomainMapperRegistry.Instance.GetDocumentFullInfoDTOMapper(DocumentKind)
+        TDTODomainMapperRegistry.Instance.GetDocumentFullInfoDTOMapper(DocumentKind),
+        TDTODomainMapperRegistry.Instance.GetDocumentUsageEmployeeAccessRightsInfoDTOMapper,
+        TDTODomainMapperRegistry.Instance.GetDocumentResponsibleInfoDTOMapper.AsSelf
       )
     );
     

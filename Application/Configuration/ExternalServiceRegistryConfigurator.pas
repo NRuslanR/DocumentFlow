@@ -29,14 +29,7 @@ type
 
   TExternalServiceRegistryConfigurator = class
 
-    private
-
-      FDocumentKindsMapper: TDocumentKindsMapper;
-
     public
-
-      destructor Destroy; override;
-      constructor Create;
 
       procedure ConfigureExternalServiceRegistry(
         ExternalServiceRegistry: TExternalServiceRegistry;
@@ -66,7 +59,8 @@ uses
   StandardDocumentFullNameCompilationService,
   PostgresDatabaseMessagingService,
   DocumentsDomainRegistries,
-  RoleUnit,
+  DTODomainMapperRegistry,
+  Role,
   IDocumentFileServiceClientUnit;
 
 { TExternalServiceRegistryConfigurator }
@@ -76,6 +70,8 @@ procedure TExternalServiceRegistryConfigurator.ConfigureExternalServiceRegistry(
   ConfigurationData: TExternalServiceRegistryConfigurationData
 );
 var
+    DocumentKindsMapper: IDocumentKindsMapper;
+
     DocumentChargeSheetCasesNotifier: IDocumentChargeSheetCasesNotifier;
     DatabaseMessagingServiceSchemaData: TDatabaseMessagingServiceSchemaData;
     DocumentFileServiceClient: IDocumentFileServiceClient;
@@ -89,8 +85,10 @@ var
     DocumentClass: TDocumentClass;
 begin
 
+  DocumentKindsMapper := TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper;
+  
   DocumentClass :=
-    FDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+    DocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
       ConfigurationData.DocumentKind
     );
     
@@ -103,7 +101,7 @@ begin
         .ServiceRegistry
           .StorageServiceRegistry
             .GetDocumentFileStorageService(
-              TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
+              DocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
                 ConfigurationData.DocumentKind
               )
             )
@@ -190,24 +188,6 @@ begin
 
   end;
   
-end;
-
-constructor TExternalServiceRegistryConfigurator.Create;
-begin
-
-  inherited;
-
-  FDocumentKindsMapper := TDocumentKindsMapper.Create;
-
-end;
-
-destructor TExternalServiceRegistryConfigurator.Destroy;
-begin
-
-  FreeAndNil(FDocumentKindsMapper);
-  
-  inherited;
-
 end;
 
 end.

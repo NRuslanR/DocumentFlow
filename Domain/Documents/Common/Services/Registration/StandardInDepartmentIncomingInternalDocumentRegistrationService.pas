@@ -6,7 +6,7 @@ uses
 
   StandardInDepartmentIncomingDocumentRegistrationService,
   Document,
-  DepartmentUnit,
+  Department,
   DocumentRegistrationService,
   SysUtils,
   Classes;

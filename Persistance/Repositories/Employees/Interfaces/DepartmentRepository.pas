@@ -4,7 +4,7 @@ interface
 
 uses
 
-  DepartmentUnit;
+  Department;
 
 type
 

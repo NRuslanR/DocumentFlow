@@ -10,7 +10,7 @@ uses
   DocumentNumeratorRegistry,
   SysUtils,
   Document,
-  DepartmentUnit,
+  Department,
   Classes;
 
 type

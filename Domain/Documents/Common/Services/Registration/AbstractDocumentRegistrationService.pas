@@ -9,7 +9,7 @@ uses
   IDocumentUnit,
   Document,
   StandardDocumentNumerator,
-  DepartmentUnit,
+  Department,
   SysUtils,
   Classes;
 

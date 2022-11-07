@@ -10,7 +10,11 @@ uses
 
 type
 
+  TDocumentResponsibleInfoDTOMapper = class;
+
   IDocumentResponsibleInfoDTOMapper = interface
+
+    function AsSelf: TDocumentResponsibleInfoDTOMapper;
 
     function MapDocumentResponsibleInfoDTO(
       DocumentResponsibleInfoDTO: TDocumentResponsibleInfoDTO
@@ -23,6 +27,8 @@ type
 
       public
 
+        function AsSelf: TDocumentResponsibleInfoDTOMapper;
+        
         function MapDocumentResponsibleInfoDTO(
           DocumentResponsibleInfoDTO: TDocumentResponsibleInfoDTO
         ): TEmployee;
@@ -32,6 +38,13 @@ type
 implementation
 
 { TDocumentResponsibleInfoDTOMapper }
+
+function TDocumentResponsibleInfoDTOMapper.AsSelf: TDocumentResponsibleInfoDTOMapper;
+begin
+
+  Result := Self;
+  
+end;
 
 function TDocumentResponsibleInfoDTOMapper.MapDocumentResponsibleInfoDTO(
   DocumentResponsibleInfoDTO: TDocumentResponsibleInfoDTO

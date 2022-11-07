@@ -48,7 +48,7 @@ uses
   Employee,
   Classes,
   IDomainObjectBaseUnit,
-  RoleUnit;
+  Role;
   
 { TInMemoryDocumentChargeSheetFinder }
 

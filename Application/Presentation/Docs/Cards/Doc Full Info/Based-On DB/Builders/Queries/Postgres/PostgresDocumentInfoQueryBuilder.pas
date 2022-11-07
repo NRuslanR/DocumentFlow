@@ -120,18 +120,18 @@ function TPostgresDocumentInfoQueryBuilder.GetRestDocumentTableJoinExpression: S
 begin
 
   Result :=
-      ' join doc.document_types dt on dt.id = doc.type_id' + #13#10 +
-      ' join doc.document_type_work_cycle_stages dtwcs on dtwcs.id = doc.current_work_cycle_stage_id' + #13#10 +
-      ' join doc.employees e on e.id = doc.author_id' + #13#10 +
-      ' join doc.departments d on d.id = e.department_id' + #13#10 +
-      ' join exchange.spr_person sp on sp.id = doc.performer_id' + #13#10 +
-      ' join nsi.spr_podr spr_podr on spr_podr.id = sp.podr_id' + #13#10 +
-      ' left join exchange.spr_person_telephone_numbers sptn on sptn.person_id = sp.id' + #13#10 +
-      ' left join doc.service_note_signings doc_signings on doc_signings.document_id = doc.id' + #13#10 +
-      ' left join doc.employees signer on signer.id = doc_signings.signer_id' + #13#10 +
-      ' left join doc.departments signer_dep on signer_dep.id = signer.department_id' + #13#10 +
-      ' left join doc.employees fact_signer on fact_signer.id = doc_signings.actual_signed_id' + #13#10 +
-      ' left join doc.departments fact_signer_dep on fact_signer_dep.id = fact_signer.department_id';
+      'join doc.document_types dt on dt.id = doc.type_id' + #13#10 +
+      'join doc.document_type_work_cycle_stages dtwcs on dtwcs.id = doc.current_work_cycle_stage_id' + #13#10 +
+      'left join doc.employees e on e.id = doc.author_id' + #13#10 +
+      'left join doc.departments d on d.id = e.department_id' + #13#10 +
+      'left join exchange.spr_person sp on sp.id = doc.performer_id' + #13#10 +
+      'left join nsi.spr_podr spr_podr on spr_podr.id = sp.podr_id' + #13#10 +
+      'left join exchange.spr_person_telephone_numbers sptn on sptn.person_id = sp.id' + #13#10 +
+      'left join doc.service_note_signings doc_signings on doc_signings.document_id = doc.id' + #13#10 +
+      'left join doc.employees signer on signer.id = doc_signings.signer_id' + #13#10 +
+      'left join doc.departments signer_dep on signer_dep.id = signer.department_id' + #13#10 +
+      'left join doc.employees fact_signer on fact_signer.id = doc_signings.actual_signed_id' + #13#10 +
+      'left join doc.departments fact_signer_dep on fact_signer_dep.id = fact_signer.department_id';
 
 end;
 

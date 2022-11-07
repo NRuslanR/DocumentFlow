@@ -406,8 +406,6 @@ begin
           
       end;
 
-
-
       PropertiesStorage.WriteValueForProperty(
         NEW_UI_RELATED_DOCUMENTS_AND_FILES_FORM_SIZE_RATIO,
         RelatedDocumentsAndFilesFormSizeRatio

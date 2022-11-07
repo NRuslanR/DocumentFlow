@@ -1,1 +1,0 @@
-kindidentity для входящего

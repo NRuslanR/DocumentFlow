@@ -79,7 +79,7 @@ type
         FFreeDocumentFullInfoDTO: IDisposable;
 
         FDocumentAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
-        FFreeDocumentAccessRightsInfoDTO: IDisposable;
+        FFreeDocumentAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO;
 
       public
 
@@ -126,12 +126,12 @@ type
   IGettingDocumentFullInfoCommandResult = interface
 
     function GetDocumentFullInfoDTO: TDocumentFullInfoDTO;
-    function GetDocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+    function GetDocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO;
   
     property DocumentFullInfoDTO: TDocumentFullInfoDTO
     read GetDocumentFullInfoDTO;
 
-    property DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
+    property DocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO
     read GetDocumentUsageEmployeeAccessRightsInfoDTO;
 
   end;
@@ -142,17 +142,17 @@ type
       private
 
         FDocumentFullInfoDTO: TDocumentFullInfoDTO;
-        FDocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+        FDocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO;
 
         function GetDocumentFullInfoDTO: TDocumentFullInfoDTO;
-        function GetDocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+        function GetDocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO;
 
       public
 
         destructor Destroy; override;
         constructor Create(
           DocumentFullInfoDTO: TDocumentFullInfoDTO;
-          DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
+          DocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO
         );
 
       published
@@ -160,7 +160,7 @@ type
         property DocumentFullInfoDTO: TDocumentFullInfoDTO
         read GetDocumentFullInfoDTO;
 
-        property DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
+        property DocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO
         read GetDocumentUsageEmployeeAccessRightsInfoDTO;
 
     end;
@@ -199,7 +199,7 @@ type
     function GetAssignedNewDocumentNumber: String;
 
     function GetNewDocumentUsageEmployeeAccessRightsInfoDTO:
-      TDocumentUsageEmployeeAccessRightsInfoDTO;
+      IDocumentUsageEmployeeAccessRightsInfoDTO;
 
     function GetDocumentAuthorDto: TDocumentFlowEmployeeInfoDTO;
 
@@ -218,7 +218,7 @@ type
     read GetDocumentAuthorDto;
 
     property NewDocumentUsageEmployeeAccessRightsInfoDTO:
-      TDocumentUsageEmployeeAccessRightsInfoDTO
+      IDocumentUsageEmployeeAccessRightsInfoDTO
     read GetNewDocumentUsageEmployeeAccessRightsInfoDTO;
 
   end;
@@ -236,7 +236,7 @@ type
         FDocumentAuthorDto: TDocumentFlowEmployeeInfoDTO;
         
         FNewDocumentUsageEmployeeAccessRightsInfoDTO:
-          TDocumentUsageEmployeeAccessRightsInfoDTO;
+          IDocumentUsageEmployeeAccessRightsInfoDTO;
 
       public
 
@@ -250,7 +250,7 @@ type
         function GetDocumentAuthorDto: TDocumentFlowEmployeeInfoDTO;
 
         function GetNewDocumentUsageEmployeeAccessRightsInfoDTO:
-          TDocumentUsageEmployeeAccessRightsInfoDTO;
+          IDocumentUsageEmployeeAccessRightsInfoDTO;
 
 
         procedure SetNewDocumentId(Value: Variant);
@@ -260,7 +260,7 @@ type
         procedure SetDocumentAuthorDto(Value: TDocumentFlowEmployeeInfoDTO);
 
         procedure SetNewDocumentUsageEmployeeAccessRightsInfoDTO(
-          const Value: TDocumentUsageEmployeeAccessRightsInfoDTO
+          const Value: IDocumentUsageEmployeeAccessRightsInfoDTO
         );
 
         property NewDocumentId: Variant
@@ -282,7 +282,7 @@ type
         read GetDocumentAuthorDto write SetDocumentAuthorDto;
 
         property NewDocumentUsageEmployeeAccessRightsInfoDTO:
-          TDocumentUsageEmployeeAccessRightsInfoDTO
+          IDocumentUsageEmployeeAccessRightsInfoDTO
         read GetNewDocumentUsageEmployeeAccessRightsInfoDTO
         write SetNewDocumentUsageEmployeeAccessRightsInfoDTO;
 
@@ -465,7 +465,7 @@ end;
 
 constructor TGettingDocumentFullInfoCommandResult.Create(
   DocumentFullInfoDTO: TDocumentFullInfoDTO;
-  DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
+  DocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
 
   inherited Create;
@@ -479,8 +479,7 @@ destructor TGettingDocumentFullInfoCommandResult.Destroy;
 begin
 
   FreeAndNil(FDocumentFullInfoDTO);
-  FreeAndNil(FDocumentUsageEmployeeAccessRightsInfoDTO);
-
+  
   inherited;
 
 end;
@@ -492,7 +491,7 @@ begin
   
 end;
 
-function TGettingDocumentFullInfoCommandResult.GetDocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+function TGettingDocumentFullInfoCommandResult.GetDocumentUsageEmployeeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   Result := FDocumentUsageEmployeeAccessRightsInfoDTO;
@@ -505,8 +504,7 @@ destructor TAddNewDocumentFullInfoCommandResult.Destroy;
 begin
 
   FreeAndNil(FDocumentAuthorDto);
-  FreeAndNil(FNewDocumentUsageEmployeeAccessRightsInfoDTO);
-  
+
   inherited;
 
 end;
@@ -548,7 +546,7 @@ end;
 
 function TAddNewDocumentFullInfoCommandResult.
   GetNewDocumentUsageEmployeeAccessRightsInfoDTO:
-    TDocumentUsageEmployeeAccessRightsInfoDTO;
+    IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   Result := FNewDocumentUsageEmployeeAccessRightsInfoDTO;
@@ -598,11 +596,9 @@ end;
 
 procedure TAddNewDocumentFullInfoCommandResult.
   SetNewDocumentUsageEmployeeAccessRightsInfoDTO(
-    const Value: TDocumentUsageEmployeeAccessRightsInfoDTO
+    const Value: IDocumentUsageEmployeeAccessRightsInfoDTO
   );
 begin
-
-  FreeAndNil(FNewDocumentUsageEmployeeAccessRightsInfoDTO);
 
   FNewDocumentUsageEmployeeAccessRightsInfoDTO := Value;
   

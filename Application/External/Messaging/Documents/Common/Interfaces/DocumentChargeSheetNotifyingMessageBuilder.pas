@@ -9,7 +9,7 @@ uses
   Document,
   DocumentFileUnit,
   MessagingServiceUnit,
-  DepartmentUnit,
+  Department,
   Employee;
 
 type

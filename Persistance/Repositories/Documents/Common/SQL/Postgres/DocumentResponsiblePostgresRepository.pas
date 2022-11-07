@@ -6,7 +6,7 @@ uses
 
   IDocumentResponsibleRepositoryUnit,
   Employee,
-  DepartmentUnit,
+  Department,
   SysUtils,
   Classes,
   QueryExecutor,

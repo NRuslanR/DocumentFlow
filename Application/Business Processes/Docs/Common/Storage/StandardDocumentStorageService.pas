@@ -11,7 +11,7 @@ uses
   IDocumentUnit,
   Document,
   Employee,
-  DepartmentUnit,
+  Department,
   DocumentFileUnit,
   DocumentRelationsUnit,
   Session,
@@ -92,12 +92,12 @@ type
         function EnsureThatEmployeeHasDocumentUsageAccessRights(
           Document: IDocument;
           RequestingEmployee: TEmployee
-        ): TDocumentUsageEmployeeAccessRightsInfoDTO; virtual;
+        ): IDocumentUsageEmployeeAccessRightsInfoDTO; virtual;
 
         function MapDocumentUsageEmployeeAccessRightsInfoDTOFrom(
           DocumentUsageEmployeeAccessRightsInfo:
             TDocumentUsageEmployeeAccessRightsInfo
-        ): TDocumentUsageEmployeeAccessRightsInfoDTO;
+        ): IDocumentUsageEmployeeAccessRightsInfoDTO;
 
       protected
 
@@ -126,8 +126,6 @@ type
 
       public
 
-        destructor Destroy; override;
-
         constructor Create(
 
           Session: ISession;
@@ -137,7 +135,9 @@ type
           DocumentInfoReadService: IDocumentInfoReadService;
           DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
           DocumentObjectsDTODomainMapper: TDocumentObjectsDTODomainMapper;
-          DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
+          DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper;
+          DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper;
+          DocumentResponsibleInfoDTOMapper: TDocumentResponsibleInfoDTOMapper
 
         ); virtual;
 
@@ -193,7 +193,9 @@ constructor TStandardDocumentStorageService.Create(
   DocumentInfoReadService: IDocumentInfoReadService;
   DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
   DocumentObjectsDTODomainMapper: TDocumentObjectsDTODomainMapper;
-  DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
+  DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper;
+  DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper;
+  DocumentResponsibleInfoDTOMapper: TDocumentResponsibleInfoDTOMapper
 
 );
 begin
@@ -214,10 +216,8 @@ begin
   FDocumentFullInfoDTOMapper := DocumentFullInfoDTOMapper;
   
   FDocumentUsageEmployeeAccessRightsInfoDTOMapper :=
-    TDocumentUsageEmployeeAccessRightsInfoDTOMapper.Create;
-
-  FDocumentResponsibleInfoDTOMapper := TDocumentResponsibleInfoDTOMapper.Create;
-    
+    DocumentUsageEmployeeAccessRightsInfoDTOMapper;
+  FDocumentResponsibleInfoDTOMapper := DocumentResponsibleInfoDTOMapper;
 end;
 
 function TStandardDocumentStorageService.
@@ -279,7 +279,7 @@ var
     FreeDocumentFullInfoDTO: IDisposable;
 
     AccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
-    FreeAccessRightsInfoDTO: IDisposable;
+    FreeAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   Employee :=
@@ -320,15 +320,6 @@ begin
 
 end;
 
-destructor TStandardDocumentStorageService.Destroy;
-begin
-
-  FreeAndNil(FDocumentResponsibleInfoDTOMapper);
-
-  inherited;
-
-end;
-
 procedure TStandardDocumentStorageService.EnsureEmployeeMayRemoveDocument(
   RemovingEmployee: TEmployee;
   RemovableDocument: TDocument
@@ -348,7 +339,7 @@ function TStandardDocumentStorageService.
   EnsureThatEmployeeHasDocumentUsageAccessRights(
     Document: IDocument;
     RequestingEmployee: TEmployee
-  ): TDocumentUsageEmployeeAccessRightsInfoDTO;
+  ): IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   Result :=
@@ -377,7 +368,7 @@ var
     
     DocumentFullInfoDTO: TDocumentFullInfoDTO;
     DocumentUsageEmployeeAccessRightsInfoDTO:
-      TDocumentUsageEmployeeAccessRightsInfoDTO;
+      IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   FreeCommand := GettingDocumentFullInfoCommand;
@@ -436,8 +427,7 @@ begin
     on e: Exception do begin
 
       FreeAndNil(DocumentFullInfoDTO);
-      FreeAndNil(DocumentUsageEmployeeAccessRightsInfoDTO);
-
+      FreeAndNil(DocumentUsageEmployeeAccessRightsInfoDTO)
       FSession.Rollback;
       
       RaiseFailedBusinessProcessServiceException(e.Message);
@@ -452,7 +442,7 @@ function TStandardDocumentStorageService.
   MapDocumentUsageEmployeeAccessRightsInfoDTOFrom(
     DocumentUsageEmployeeAccessRightsInfo:
       TDocumentUsageEmployeeAccessRightsInfo
-    ): TDocumentUsageEmployeeAccessRightsInfoDTO;
+    ): IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   Result :=

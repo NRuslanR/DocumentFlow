@@ -5,7 +5,7 @@ interface
 uses
 
   Employee,
-  DepartmentUnit;
+  Department;
   
 type
 

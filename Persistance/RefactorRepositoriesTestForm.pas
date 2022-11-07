@@ -5,9 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ZConnection, DocumentZeosPostgresRepository,
-  IncomingDocumentZeosPostgresRepository, RoleUnit,
+  IncomingDocumentZeosPostgresRepository, Role,
   ServiceNoteZeosPostgresRepository, IncomingServiceNoteZeosPostgresRepository,
-  Employee, DepartmentUnit, IDocumentUnit, IDomainObjectBaseUnit, Document,
+  Employee, Department, IDocumentUnit, IDomainObjectBaseUnit, Document,
   DocumentSignings, DocumentCharges, IncomingDocument,
   DocumentChargeSheetZeosPostgresRepository, DocumentChargeSheet,
   ServiceNoteChargeSheetPostgresRepository,

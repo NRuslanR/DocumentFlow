@@ -8,6 +8,7 @@ uses
   EmployeeDocumentKindAccessRightsInfoDto,
   EmployeeDocumentKindAccessRightsService,
   EmployeeDocumentKindAccessRightsAppService,
+  NativeDocumentKindsReadService,
   DocumentKinds,
   DocumentKindsMapper,
   BusinessProcessService,
@@ -26,7 +27,9 @@ type
 
         FEmployeeRepository: IEmployeeRepository;
         FEmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
-        FDocumentKindsMapper: TDocumentKindsMapper;
+
+        FNativeDocumentKindsReadService: INativeDocumentKindsReadService;
+        FDocumentKindsMapper: IDocumentKindsMapper;
 
         function MapEmployeeDocumentKindAccessRightsInfoDtoFrom(
           EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo
@@ -35,13 +38,13 @@ type
         function GetEmployeeFromRepository(const EmployeeId: Variant): TEmployee;
     
       public
-
-        destructor Destroy; override;
         
         constructor Create(
           Session: ISession;
           EmployeeRepository: IEmployeeRepository;
-          EmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService
+          EmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
+          NativeDocumentKindsReadService: INativeDocumentKindsReadService;
+          DocumentKindsMapper: IDocumentKindsMapper
         );
         
         function GetDocumentKindAccessRightsInfoForEmployee(
@@ -52,16 +55,30 @@ type
         function EnsureThatEmployeeCanCreateDocumentsAndGetAllAccessRightsInfo(
           DocumentKind: TClass;
           const EmployeeId: Variant
-        ): TEmployeeDocumentKindAccessRightsInfoDto; virtual;
+        ): TEmployeeDocumentKindAccessRightsInfoDto; overload; virtual;
 
+        function EnsureThatEmployeeCanCreateDocumentsAndGetAllAccessRightsInfo(
+          const DocumentKindId: Variant;
+          const EmployeeId: Variant
+        ): TEmployeeDocumentKindAccessRightsInfoDto; overload;
+
+        function EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+          const DocumentKindClass: TDocumentKindClass;
+          const EmployeeId: Variant
+        ): TEmployeeDocumentKindAccessRightsInfoDto; overload;
+
+        function EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+          const DocumentKindId: Variant;
+          const EmployeeId: Variant
+        ): TEmployeeDocumentKindAccessRightsInfoDto; overload;
         
     end;
-
 
 implementation
 
 uses
 
+  DocumentKindDto,
   IDomainObjectBaseUnit;
   
 { TStandardEmployeeDocumentKindAccessRightsAppService }
@@ -69,7 +86,9 @@ uses
 constructor TStandardEmployeeDocumentKindAccessRightsAppService.Create(
   Session: ISession;
   EmployeeRepository: IEmployeeRepository;
-  EmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService
+  EmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
+  NativeDocumentKindsReadService: INativeDocumentKindsReadService;
+  DocumentKindsMapper: IDocumentKindsMapper
 );
 begin
 
@@ -78,16 +97,84 @@ begin
   FEmployeeRepository := EmployeeRepository;
   FEmployeeDocumentKindAccessRightsService := EmployeeDocumentKindAccessRightsService;
 
-  FDocumentKindsMapper := TDocumentKindsMapper.Create;
+  FNativeDocumentKindsReadService := NativeDocumentKindsReadService;
+  FDocumentKindsMapper := DocumentKindsMapper;
   
 end;
 
-destructor TStandardEmployeeDocumentKindAccessRightsAppService.Destroy;
+function TStandardEmployeeDocumentKindAccessRightsAppService
+    .EnsureThatEmployeeCanCreateDocumentsAndGetAllAccessRightsInfo(
+      const DocumentKindId,
+      EmployeeId: Variant
+    ): TEmployeeDocumentKindAccessRightsInfoDto;
+var
+    DocumentKindDto: TDocumentKindDto;
 begin
 
-  FreeAndNil(FDocumentKindsMapper);
-  
-  inherited;
+  DocumentKindDto :=
+    FNativeDocumentKindsReadService
+      .GetNativeDocumentKindDtos
+        .FindByIdOrRaise(DocumentKindId);
+
+  Result :=
+    EnsureThatEmployeeCanCreateDocumentsAndGetAllAccessRightsInfo(
+      DocumentKindDto.ServiceType,
+      EmployeeId
+    );
+
+end;
+
+function TStandardEmployeeDocumentKindAccessRightsAppService
+  .EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+    const DocumentKindId: Variant;
+    const EmployeeId: Variant
+  ): TEmployeeDocumentKindAccessRightsInfoDto;
+var
+    DocumentKindDto: TDocumentKindDto;
+begin
+
+  DocumentKindDto :=
+    FNativeDocumentKindsReadService
+      .GetNativeDocumentKindDtos
+        .FindByIdOrRaise(DocumentKindId);
+
+  Result :=
+    EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+      DocumentKindDto.ServiceType, EmployeeId
+    );
+    
+end;
+
+function TStandardEmployeeDocumentKindAccessRightsAppService
+  .EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+    const DocumentKindClass: TDocumentKindClass;
+    const EmployeeId: Variant
+  ): TEmployeeDocumentKindAccessRightsInfoDto;
+var
+    DocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo;
+    FreeDocumentKindAccessRightsInfo: IDomainObjectBase;
+
+    Employee: TEmployee;
+    FreeEmployee: IDomainObjectBase;
+begin
+
+  Employee := GetEmployeeFromRepository(EmployeeId);
+
+  FreeEmployee := Employee;
+
+  DocumentKindAccessRightsInfo :=
+    FEmployeeDocumentKindAccessRightsService
+      .EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+        FDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(DocumentKindClass),
+        Employee
+      );
+
+  FreeDocumentKindAccessRightsInfo := DocumentKindAccessRightsInfo;
+
+  Result :=
+    MapEmployeeDocumentKindAccessRightsInfoDtoFrom(
+      DocumentKindAccessRightsInfo
+    );
 
 end;
 
@@ -96,7 +183,8 @@ function TStandardEmployeeDocumentKindAccessRightsAppService.
     DocumentKind: TClass;
     const EmployeeId: Variant
   ): TEmployeeDocumentKindAccessRightsInfoDto;
-var Employee: TEmployee;
+var
+    Employee: TEmployee;
     FreeEmployee: IDomainObjectBase;
 
     EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo;
@@ -189,11 +277,20 @@ begin
 
   Result := TEmployeeDocumentKindAccessRightsInfoDto.Create;
 
-  Result.EmployeeCanCreateDocuments :=
-    EmployeeDocumentKindAccessRightsInfo.CanCreateDocuments;
+  with EmployeeDocumentKindAccessRightsInfo do begin
 
-  Result.EmployeeCanMarkDocumentsAsSelfRegistered :=
-    EmployeeDocumentKindAccessRightsInfo.CanMarkDocumentsAsSelfRegistered;
+    Result.CanViewDocuments := CanViewDocuments;
+    Result.CanCreateDocuments := CanCreateDocuments;
+    Result.CanCreateRespondingDocuments := CanCreateRespondingDocuments;
+    Result.CanEditDocuments := CanEditDocuments;
+    Result.CanRemoveDocuments := CanRemoveDocuments;
+    Result.CanMarkDocumentsAsSelfRegistered := CanMarkDocumentsAsSelfRegistered;
+    Result.DocumentNumberPrefixPatternType :=
+      TDocumentNumberPrefixPatternTypeDto(
+        DocumentNumberPrefixPatternType
+      );
+
+  end;
 
 end;
 

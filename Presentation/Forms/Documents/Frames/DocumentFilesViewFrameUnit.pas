@@ -35,6 +35,8 @@ type
     FCurrentDocumentFileInfo: TDocumentFileInfo;
     FDocumentFileInfoList: TDocumentFileInfoList;
 
+    FErrorFileList: TStrings;
+    
     procedure Initialize; overload; override;
 
     procedure Initialize(
@@ -288,8 +290,10 @@ end;
 destructor TDocumentFilesViewFrame.Destroy;
 begin
 
-  FreeAndNil(FDocumentFileInfoList); 
+  FreeAndNil(FDocumentFileInfoList);
   FreeAndNil(FPDFViewForm);
+  FreeAndNil(FErrorFileList);
+  
   inherited;
 
 end;
@@ -315,7 +319,12 @@ end;
 function TDocumentFilesViewFrame.GetCurrentDocumentFileName: String;
 begin
 
-  Result := FCurrentDocumentFileInfo.FileName;
+  Result :=
+    IfThen(
+      Assigned(FCurrentDocumentFileInfo),
+      FCurrentDocumentFileInfo.FileName,
+      ''
+    );
 
 end;
 
@@ -364,6 +373,8 @@ begin
 
   FCurrentDocumentFileInfo := nil;
 
+  FErrorFileList := TStringList.Create;
+
   FEnableUIAndDocumentFileInfoSynchronization :=
     EnableUIAndDocumentFileInfoSynchronization;
     
@@ -385,7 +396,8 @@ end;
 procedure TDocumentFilesViewFrame.OnDocumentFileInfoSelectionChanged(
   SelectedDocumentFileInfo: TDocumentFileInfo
 );
-var TargetDocumentFilePath: String;
+var
+    TargetDocumentFilePath: String;
 begin
 
   RaiseOnDocumentFileShowingEventHandler(
@@ -409,13 +421,18 @@ begin
        GetDocumentFileInfoByItemIndex(DocumentFilesListBox.ItemIndex)) and
        FPDFViewForm.IsDocumentLoaded
     then Exit;
-    
+
     FCurrentDocumentFileInfo :=
       GetDocumentFileInfoByItemIndex(DocumentFilesListBox.ItemIndex);
+
+    if FErrorFileList.IndexOf(FCurrentDocumentFileInfo.FilePath) = -1
+    then begin
     
-    OnDocumentFileInfoSelectionChanged(
-      FCurrentDocumentFileInfo
-    );
+      OnDocumentFileInfoSelectionChanged(
+        FCurrentDocumentFileInfo
+      );
+
+    end;
 
   end
 
@@ -429,19 +446,35 @@ procedure TDocumentFilesViewFrame.RaiseOnDocumentFileShowingEventHandler(
 );
 begin
 
-  { refactor: use ComponentCreators as component creator registry }
+  if not Assigned(FOnDocumentFileShowingEventHandler) then Exit;
 
-  if Assigned(FOnDocumentFileShowingEventHandler) then
+  try
+
+    TargetDocumentFilePath := ShowableDocumentFileInfo.FilePath;
+
     FOnDocumentFileShowingEventHandler(
       Self,
       ShowableDocumentFileInfo,
       TargetDocumentFilePath
     );
-  
+
+    if TargetDocumentFilePath = '' then
+      FErrorFileList.Add(ShowableDocumentFileInfo.FilePath);
+
+  except
+
+    FErrorFileList.Add(ShowableDocumentFileInfo.FilePath);
+
+    Raise;
+
+  end;
+
 end;
 
 procedure TDocumentFilesViewFrame.RemoveDocumentFileInfo(const FileName: String);
-var DocumentFileInfoIndex: Integer;
+var
+    DocumentFileInfoIndex: Integer;
+    ErrorFileIndex: Integer;
 begin
 
   DocumentFileInfoIndex := FDocumentFileInfoList.IndexOf(FileName);
@@ -450,6 +483,11 @@ begin
 
   FDocumentFileInfoList.Delete(DocumentFileInfoIndex);
 
+  ErrorFileIndex := FErrorFileList.IndexOf(FileName);
+
+  if ErrorFileIndex <> -1 then
+    FErrorFileList.Delete(ErrorFileIndex);
+    
   RemoveDocumentFileInfoItemFromListBox(DocumentFileInfoIndex);
 
   if EnableUIAndDocumentFileInfoSynchronization then
@@ -508,10 +546,12 @@ begin
     Exit;
 
   FreeAndNil(FDocumentFileInfoList);
-  
+
   FDocumentFileInfoList := DocumentFileInfoList;
 
   FillDocumentFileInfoListBox;
+
+  FErrorFileList.Clear;
 
   DocumentFilesListBox.ItemIndex := 0;
 

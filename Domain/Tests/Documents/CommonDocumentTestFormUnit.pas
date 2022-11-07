@@ -44,7 +44,7 @@ uses
   StandardDocumentChargeSheetControlService,
   EmployeeIsSameAsOrReplacingForOthersSpecification,
   InMemoryDocumentChargeSheetFinder,
-  RoleUnit,
+  Role,
   IncomingDocument;
 
 type

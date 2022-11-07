@@ -1289,7 +1289,7 @@ end;
 destructor TDocumentCardFrame.Destroy;
 begin
 
-  inherited;
+  inherited Destroy;
 
   FreeAndNil(FViewModel);
 
@@ -1546,6 +1546,8 @@ end;
 function TDocumentCardFrame.GetActiveDocumentInfoPageNumber: Integer;
 begin
 
+  DebugOutput(DocumentCardPageControl.ActivePage.Caption);
+  
   Result := DocumentCardPageControl.ActivePageIndex;
   
 end;
@@ -2735,31 +2737,14 @@ begin
 
   if not Assigned(FDocumentFilesViewFrame) then Exit;
   
-{  if
-     (
-      (UserInterfaceKind = uiOld)
-      and
-      (DocumentCardPageControl.ActivePage = DocumentPreviewPage)
-     )
-  then begin
+  if
+    ((UserInterfaceKind = uiOld)
+    and
+    (DocumentCardPageControl.ActivePage = DocumentPreviewPage))
 
-    FDocumentFilesViewFrame.
-      SynchronizeUIWithCurrentDocumentFileInfoIfNecessary;
-
-  end
-
-  else if
-    (
+    or(
       (UserInterfaceKind = uiNew)
       and
-      (DocumentCardPageControl.ActivePage = DocumentRelationsAndFilesPage)
-    )
-  then begin    }
-
-  if
-    (
-//      (UserInterfaceKind = uiNew)
-//      and
       (DocumentCardPageControl.ActivePage = DocumentRelationsAndFilesPage)
     )
   then begin
@@ -3345,6 +3330,8 @@ begin
 
   FDocumentFilesViewFrame.AddDocumentFileInfo(AddedDocumentFileInfo);
 
+  FDocumentFilesViewFrame.SynchronizeUIWithCurrentDocumentFileInfoIfNecessary;
+
 end;
 
 procedure TDocumentCardFrame.
@@ -3359,6 +3346,8 @@ begin
 
   FDocumentFilesViewFrame.RemoveDocumentFileInfo(FileName);
 
+  FDocumentFilesViewFrame.SynchronizeUIWithCurrentDocumentFileInfoIfNecessary;
+  
 end;
 
 procedure TDocumentCardFrame.OnDocumentFilesChangedEventHandler(

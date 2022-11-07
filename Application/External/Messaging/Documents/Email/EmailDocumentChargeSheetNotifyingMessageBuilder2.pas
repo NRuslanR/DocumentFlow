@@ -9,7 +9,7 @@ uses
   DocumentFileUnit,
   IDocumentChargeSheetUnit,
   Employee,
-  DepartmentUnit,
+  Department,
   DocumentChargeSheet,
   MessagingServiceUnit,
   SysUtils,

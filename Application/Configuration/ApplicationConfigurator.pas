@@ -181,7 +181,7 @@ uses
   DocumentApprovingsInfoDTOMapper,
   DocumentNumerationServiceRegistry,
   DocumentsDomainRegistries,
-  RoleUnit,
+  Role,
   UserNotificationProfileService,
   BasedOnDatabaseUserNotificationProfileService,
   StandardUserNotificationProfileAccessRightsService,
@@ -196,6 +196,7 @@ uses
 procedure TApplicationConfigurator.Configure(ConfigurationData: TConfigurationData);
 var
     PresentationServiceRegistryConfigData: TPresentationServiceRegistryConfigurationData;
+    BusinessProcessServiceRegistryConfigData: TDocumentBusinessProcessServiceRegistryConfigurationData;
 begin
 
   PresentationServiceRegistryConfigData.DatabaseConnection :=
@@ -209,8 +210,22 @@ begin
     TApplicationServiceRegistries.Current.GetPresentationServiceRegistry,
     PresentationServiceRegistryConfigData
   );
-  
+
   ConfigureDtoMapperRegistry(ConfigurationData);
+
+  with BusinessProcessServiceRegistryConfigData do begin
+
+    RepositoryRegistry := TRepositoryRegistry.Current;
+    PresentationServiceRegistry := TApplicationServiceRegistries.Current.GetPresentationServiceRegistry;
+    
+  end;
+
+  FDocumentBusinessProcessServiceRegistryConfigurator
+    .DoCommonBusinessProcessServiceRegistryConfiguration(
+      TApplicationServiceRegistries.Current.GetDocumentBusinessProcessServiceRegistry,
+      BusinessProcessServiceRegistryConfigData
+    );
+
   ConfigurePresentationServiceRegistry(ConfigurationData);
   ConfigureManagementServiceRegistry(ConfigurationData);
   ConfigureExternalServiceRegistry(ConfigurationData);

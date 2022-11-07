@@ -16,7 +16,7 @@ uses
   EmployeeStaffDto,
   EmployeeChargePerformingUnit,
   EmployeeChargePerformingUnitDto,
-  RoleUnit,
+  Role,
   SysUtils,
   Classes;
 

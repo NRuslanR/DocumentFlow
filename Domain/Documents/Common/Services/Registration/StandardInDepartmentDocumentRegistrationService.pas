@@ -12,7 +12,7 @@ uses
   DocumentRegistrationService,
   StandardDocumentNumerator,
   DepartmentFinder,
-  DepartmentUnit;
+  Department;
 
 type
 

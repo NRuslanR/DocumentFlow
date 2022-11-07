@@ -4,7 +4,7 @@ interface
 
 uses
 
-  RoleUnit,
+  Role,
   VariantListUnit,
   Employee;
 

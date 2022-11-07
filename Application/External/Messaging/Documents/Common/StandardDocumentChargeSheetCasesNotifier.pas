@@ -16,7 +16,7 @@ uses
   Document,
   MessagingServiceUnit,
   Employee,
-  DepartmentUnit,
+  Department,
   IEmployeeRepositoryUnit,
   UserNotificationProfileService,
   SysUtils,

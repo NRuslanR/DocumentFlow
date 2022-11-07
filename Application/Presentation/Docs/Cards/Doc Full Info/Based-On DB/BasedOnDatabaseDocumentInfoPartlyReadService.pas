@@ -303,6 +303,15 @@ begin
 
   try
 
+    if DocumentInfoHolder.IsEmpty then begin
+
+      Raise TDocumentInfoReadServiceException.Create(
+        'Документ не найден'
+      );
+
+    end;
+
+
     Result := FDocumentDTOFromDataSetMapper.MapDocumentDTOFrom(DocumentInfoHolder);
 
   finally

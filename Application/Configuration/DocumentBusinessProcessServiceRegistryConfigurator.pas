@@ -39,7 +39,14 @@ type
 
     private
 
+      FIsCommonConfigurationDone: Boolean;
+      
     public
+
+      procedure DoCommonBusinessProcessServiceRegistryConfiguration(
+        DocumentBusinessProcessServiceRegistry: TDocumentBusinessProcessServiceRegistry;
+        ConfigurationData: TDocumentBusinessProcessServiceRegistryConfigurationData
+      );
 
       procedure ConfigureDocumentBusinessProcessServiceRegistry(
         DocumentBusinessProcessServiceRegistry: TDocumentBusinessProcessServiceRegistry;
@@ -110,6 +117,8 @@ procedure TDocumentBusinessProcessServiceRegistryConfigurator.ConfigureDocumentB
   ConfigurationData: TDocumentBusinessProcessServiceRegistryConfigurationData
 );
 var
+    DocumentKindsMapper: IDocumentKindsMapper;
+    
     ServiceDocumentKind: TDocumentKindClass;
     ServiceIncomingDocumentKind: TIncomingDocumentKindClass;
 
@@ -121,8 +130,18 @@ var
     DocumentStorageServiceClass: TStandardDocumentStorageServiceClass;
 begin
 
+  if not FIsCommonConfigurationDone then begin
+
+    DoCommonBusinessProcessServiceRegistryConfiguration(
+      DocumentBusinessProcessServiceRegistry, ConfigurationData
+    );
+
+  end;
+  
+  DocumentKindsMapper := TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper;
+
   ServiceDocumentKind :=
-    TDocumentKindsMapper.MapDomainDocumentKindToDocumentKind(
+    DocumentKindsMapper.MapDomainDocumentKindToDocumentKind(
       ConfigurationData.DocumentClass
     );
 
@@ -257,7 +276,9 @@ begin
       ConfigurationData.PresentationServiceRegistry.GetDocumentInfoReadService(ServiceDocumentKind),
       TDocumentsDomainRegistries.ServiceRegistry.AccessRightsServiceRegistry.GetDocumentUsageEmployeeAccessRightsService(ConfigurationData.DocumentClass),
       TDTODomainMapperRegistry.Instance.GetDocumentObjectsDTODomainMapper(ServiceDocumentKind),
-      TDTODomainMapperRegistry.Instance.GetDocumentFullInfoDTOMapper(ServiceDocumentKind)
+      TDTODomainMapperRegistry.Instance.GetDocumentFullInfoDTOMapper(ServiceDocumentKind),
+      TDTODomainMapperRegistry.Instance.GetDocumentUsageEmployeeAccessRightsInfoDTOMapper,
+      TDTODomainMapperRegistry.Instance.GetDocumentResponsibleInfoDTOMapper.AsSelf
     )
   );
 
@@ -269,33 +290,17 @@ begin
         TDocumentsDomainRegistries.ServiceRegistry.StorageServiceRegistry.GetDocumentDirectory(ConfigurationData.DocumentClass),
         RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentKindRepository,
         TDocumentsDomainRegistries.ServiceRegistry.AccessRightsServiceRegistry.GetDocumentUsageEmployeeAccessRightsService(ConfigurationData.DocumentClass),
-        RepositoryRegistry.GetEmployeeRepository
+        RepositoryRegistry.GetEmployeeRepository,
+        TDocumentKindsMapper(TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper.Self),
+        TDTODomainMapperRegistry.Instance.GetDocumentUsageEmployeeAccessRightsInfoDTOMapper
       )
     );
-
-  EmployeeDocumentKindAccessRightsAppService :=
-    DocumentBusinessProcessServiceRegistry
-      .GetEmployeeDocumentKindAccessRightsAppService;
-
-  if
-    not Assigned(EmployeeDocumentKindAccessRightsAppService)
-  then begin
-
-    DocumentBusinessProcessServiceRegistry.
-      RegisterEmployeeDocumentKindAccessRightsAppService(
-        TStandardEmployeeDocumentKindAccessRightsAppService.Create(
-          RepositoryRegistry.GetSessionManager,
-          RepositoryRegistry.GetEmployeeRepository,
-          TDocumentsDomainRegistries.ServiceRegistry.AccessRightsServiceRegistry.GetEmployeeDocumentKindAccessRightsService)
-      );
-
-  end;
 
   if Assigned(ConfigurationData.IncomingDocumentClass) then begin
 
     ServiceIncomingDocumentKind :=
       TIncomingDocumentKindClass(
-        TDocumentKindsMapper.MapDomainDocumentKindToDocumentKind(
+        DocumentKindsMapper.MapDomainDocumentKindToDocumentKind(
           ConfigurationData.IncomingDocumentClass
         )
       );
@@ -322,7 +327,9 @@ begin
         ConfigurationData.PresentationServiceRegistry.GetDocumentInfoReadService(ServiceIncomingDocumentKind),
         TDocumentsDomainRegistries.ServiceRegistry.AccessRightsServiceRegistry.GetDocumentUsageEmployeeAccessRightsService(ConfigurationData.IncomingDocumentClass),
         TDTODomainMapperRegistry.Instance.GetDocumentObjectsDTODomainMapper(ServiceDocumentKind),
-        TDTODomainMapperRegistry.Instance.GetDocumentFullInfoDTOMapper(ServiceIncomingDocumentKind)
+        TDTODomainMapperRegistry.Instance.GetDocumentFullInfoDTOMapper(ServiceIncomingDocumentKind),
+        TDTODomainMapperRegistry.Instance.GetDocumentUsageEmployeeAccessRightsInfoDTOMapper,
+        TDTODomainMapperRegistry.Instance.GetDocumentResponsibleInfoDTOMapper.AsSelf
       )
     );
 
@@ -333,7 +340,9 @@ begin
         TDocumentsDomainRegistries.ServiceRegistry.StorageServiceRegistry.GetDocumentDirectory(ConfigurationData.IncomingDocumentClass),
         RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentKindRepository,
         TDocumentsDomainRegistries.ServiceRegistry.AccessRightsServiceRegistry.GetDocumentUsageEmployeeAccessRightsService(ConfigurationData.IncomingDocumentClass),
-        RepositoryRegistry.GetEmployeeRepository
+        RepositoryRegistry.GetEmployeeRepository,
+        TDocumentKindsMapper(TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper.Self),
+        TDTODomainMapperRegistry.Instance.GetDocumentUsageEmployeeAccessRightsInfoDTOMapper
       )
     );
 
@@ -351,6 +360,45 @@ begin
     );
 
   end;
+
+end;
+
+procedure TDocumentBusinessProcessServiceRegistryConfigurator
+  .DoCommonBusinessProcessServiceRegistryConfiguration(
+    DocumentBusinessProcessServiceRegistry: TDocumentBusinessProcessServiceRegistry;
+    ConfigurationData: TDocumentBusinessProcessServiceRegistryConfigurationData
+  );
+var
+    EmployeeDocumentKindAccessRightsAppService: IEmployeeDocumentKindAccessRightsAppService;
+begin
+
+  if FIsCommonConfigurationDone then Exit;
+  
+  EmployeeDocumentKindAccessRightsAppService :=
+    DocumentBusinessProcessServiceRegistry
+      .GetEmployeeDocumentKindAccessRightsAppService;
+      
+  with ConfigurationData do begin
+
+    if not Assigned(EmployeeDocumentKindAccessRightsAppService)
+    then begin
+
+      DocumentBusinessProcessServiceRegistry.
+        RegisterEmployeeDocumentKindAccessRightsAppService(
+          TStandardEmployeeDocumentKindAccessRightsAppService.Create(
+            RepositoryRegistry.GetSessionManager,
+            RepositoryRegistry.GetEmployeeRepository,
+            TDocumentsDomainRegistries.ServiceRegistry.AccessRightsServiceRegistry.GetEmployeeDocumentKindAccessRightsService,
+            ConfigurationData.PresentationServiceRegistry.GetNativeDocumentKindsReadService,
+            TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper
+          )
+        );
+
+    end;
+
+  end;
+
+  FIsCommonConfigurationDone := True;
 
 end;
 

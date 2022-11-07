@@ -6,7 +6,7 @@ uses
 
   StandardDocumentNumerator,
   DomainException,
-  DepartmentUnit,
+  Department,
   Document;
 
 type

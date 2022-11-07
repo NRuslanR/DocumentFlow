@@ -8,7 +8,7 @@ uses
   DepartmentRepository,
   SysUtils,
   Classes,
-  DepartmentUnit;
+  Department;
 
 type
 

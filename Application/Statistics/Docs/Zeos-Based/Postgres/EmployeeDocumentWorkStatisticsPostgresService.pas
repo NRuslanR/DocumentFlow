@@ -11,7 +11,7 @@ uses
   IEmployeeRepositoryUnit,
   DocumentKinds,
   Employee,
-  RoleUnit,
+  Role,
   ZDataset,
   ZConnection,
   VariantListUnit,

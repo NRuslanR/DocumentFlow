@@ -26,7 +26,22 @@ type
     function EnsureThatEmployeeCanCreateDocumentsAndGetAllAccessRightsInfo(
       DocumentKind: TClass;
       const EmployeeId: Variant
-    ): TEmployeeDocumentKindAccessRightsInfoDto; 
+    ): TEmployeeDocumentKindAccessRightsInfoDto; overload;
+
+    function EnsureThatEmployeeCanCreateDocumentsAndGetAllAccessRightsInfo(
+      const DocumentKindId: Variant;
+      const EmployeeId: Variant
+    ): TEmployeeDocumentKindAccessRightsInfoDto; overload;
+
+    function EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+      const DocumentKindClass: TDocumentKindClass;
+      const EmployeeId: Variant
+    ): TEmployeeDocumentKindAccessRightsInfoDto; overload;
+    
+    function EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
+      const DocumentKindId: Variant;
+      const EmployeeId: Variant
+    ): TEmployeeDocumentKindAccessRightsInfoDto; overload;
     
   end;
 

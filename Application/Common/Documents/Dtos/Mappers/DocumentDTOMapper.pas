@@ -101,7 +101,7 @@ implementation
 
 uses
 
-  DepartmentUnit,
+  Department,
   StandardDocumentNumerator,
   DocumentNumerator,
   IDomainObjectBaseUnit,

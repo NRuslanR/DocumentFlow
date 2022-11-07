@@ -8,8 +8,8 @@ uses
   DocumentSetHolder,
   DocumentSetHolderFactory,
   ApproveableDocumentSetHolderFactory,
-  EmployeeDocumentKindAccessRightsService,
-  EmployeeDocumentKindAccessRightsInfo,
+  EmployeeDocumentKindAccessRightsAppService,
+  EmployeeDocumentKindAccessRightsInfoDto,
   EmployeeDocumentSetHolderFactory,
   ApproveableDocumentSetHolder,
   SysUtils;
@@ -25,7 +25,7 @@ type
 
         procedure SetDocumentSetOperationAccessRights(
           DocumentSetHolder: TDocumentSetHolder;
-          EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo
+          EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto
         ); override;
       
     end;
@@ -51,12 +51,12 @@ end;
 procedure TBasedOnDatabaseEmployeeApproveableDocumentSetReadService.
   SetDocumentSetOperationAccessRights(
     DocumentSetHolder: TDocumentSetHolder;
-    EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo
+    EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto
   );
 begin
 
   inherited SetDocumentSetOperationAccessRights(
-    DocumentSetHolder, EmployeeDocumentKindAccessRightsInfo
+    DocumentSetHolder, EmployeeDocumentKindAccessRightsInfoDto
   );
 
   DocumentSetHolder.AddingAllowed := False;

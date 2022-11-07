@@ -11,7 +11,8 @@ uses
   DataSetDataReader,
   IGetSelfUnit,
   DB,
-  SysUtils;
+  SysUtils,
+  Classes;
 
 type
 

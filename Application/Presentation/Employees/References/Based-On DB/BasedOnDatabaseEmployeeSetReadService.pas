@@ -313,7 +313,7 @@ implementation
 uses
 
   Variants,
-  RoleUnit,
+  Role,
   AuxiliaryStringFunctions,
   StrUtils,
   EmployeeViewDef;

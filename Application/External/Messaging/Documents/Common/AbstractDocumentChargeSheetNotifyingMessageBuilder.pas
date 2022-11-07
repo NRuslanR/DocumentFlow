@@ -14,7 +14,7 @@ uses
   MessageSpecChars,
   DocumentFullNameCompilationService,
   DocumentChargeSheetNotifyingMessageBuilder,
-  DepartmentUnit,
+  Department,
   SysUtils,
   Classes;
 

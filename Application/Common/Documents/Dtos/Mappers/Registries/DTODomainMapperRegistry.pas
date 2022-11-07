@@ -15,6 +15,7 @@ uses
   DocumentFlowEmployeeInfoDTOMapper,
   DocumentChargeKindsControlService,
   DocumentKindsMapper,
+  DocumentResponsibleInfoDTOMapper,
   DocumentCharges,
   DocumentChargeSheet,
   TypeObjectRegistry,
@@ -26,6 +27,12 @@ type
 
   IDTODomainMapperRegistry = interface
 
+    procedure RegisterDocumentResponsibleInfoDTOMapper(
+      DocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper
+    );
+
+    function GetDocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
+    
     procedure RegisterDocumentFullInfoDTOMapper(
       DocumentKind: TDocumentKindClass;
       DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
@@ -58,10 +65,10 @@ type
     ): IDocumentChargeInfoDTODomainMapper; overload;
 
     procedure RegisterDocumentKindsMapper(
-      DocumentKindsMapper: TDocumentKindsMapper
+      DocumentKindsMapper: IDocumentKindsMapper
     );
 
-    function GetDocumentKindsMapper: TDocumentKindsMapper;
+    function GetDocumentKindsMapper: IDocumentKindsMapper;
 
     procedure RegisterDocumentObjectsDTODomainMapper(
       DocumentKind: TDocumentKindClass;
@@ -127,6 +134,12 @@ type
           DocumentChargeKindsControlService: IDocumentChargeKindsControlService
         );
 
+        procedure RegisterDocumentResponsibleInfoDTOMapper(
+          DocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper
+        );
+
+        function GetDocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
+
         procedure RegisterDocumentFullInfoDTOMapper(
           DocumentKind: TDocumentKindClass;
           DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
@@ -159,10 +172,10 @@ type
         ): IDocumentChargeInfoDTODomainMapper; overload;
 
         procedure RegisterDocumentKindsMapper(
-          DocumentKindsMapper: TDocumentKindsMapper
+          DocumentKindsMapper: IDocumentKindsMapper
         );
 
-        function GetDocumentKindsMapper: TDocumentKindsMapper;
+        function GetDocumentKindsMapper: IDocumentKindsMapper;
 
         procedure RegisterDocumentObjectsDTODomainMapper(
           DocumentKind: TDocumentKindClass;
@@ -366,12 +379,12 @@ begin
 
 end;
 
-function TDTODomainMapperRegistry.GetDocumentKindsMapper: TDocumentKindsMapper;
+function TDTODomainMapperRegistry.GetDocumentKindsMapper: IDocumentKindsMapper;
 begin
 
   Result :=
-    TDocumentKindsMapper(
-      FDocumentKindsMapperRegistry.GetObject(TDocumentKindsMapper)
+    IDocumentKindsMapper(
+      FDocumentKindsMapperRegistry.GetInterface(TDocumentKindsMapper)
     );
     
 end;
@@ -385,6 +398,17 @@ begin
       FDocumentObjectsDTODomainMapperRegistry.GetObject(DocumentKind)
     );
     
+end;
+
+function TDTODomainMapperRegistry
+  .GetDocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
+begin
+
+  Result :=
+    IDocumentResponsibleInfoDTOMapper(
+      FEmployeeInfoDTOMapperRegistry.GetInterface(TDocumentResponsibleInfoDTOMapper)
+    );
+
 end;
 
 function TDTODomainMapperRegistry
@@ -462,10 +486,10 @@ begin
 end;
 
 procedure TDTODomainMapperRegistry.RegisterDocumentKindsMapper(
-  DocumentKindsMapper: TDocumentKindsMapper);
+  DocumentKindsMapper: IDocumentKindsMapper);
 begin
 
-  FDocumentKindsMapperRegistry.RegisterObject(
+  FDocumentKindsMapperRegistry.RegisterInterface(
     TDocumentKindsMapper,
     DocumentKindsMapper
   );
@@ -480,6 +504,16 @@ begin
   FDocumentObjectsDTODomainMapperRegistry.RegisterObject(
     DocumentKind,
     DocumentObjectsDTODomainMapper
+  );
+
+end;
+
+procedure TDTODomainMapperRegistry.RegisterDocumentResponsibleInfoDTOMapper(
+  DocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper);
+begin
+
+  FEmployeeInfoDTOMapperRegistry.RegisterInterface(
+    TDocumentResponsibleInfoDTOMapper, DocumentResponsibleInfoDTOMapper
   );
   
 end;

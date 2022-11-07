@@ -14,7 +14,7 @@ uses
   DepartmentRepository,
   QueryExecutor,
   DataReader,
-  DepartmentUnit,
+  Department,
   Classes,
   SysUtils;
 

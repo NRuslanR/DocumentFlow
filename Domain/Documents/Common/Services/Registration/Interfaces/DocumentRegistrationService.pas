@@ -6,7 +6,7 @@ uses
 
   DomainException,
   Document,
-  DepartmentUnit,
+  Department,
   SysUtils;
 
 type

@@ -10,6 +10,7 @@ uses
   DepartmentInfoDTO,
   VariantListUnit,
   DocumentInfoHolder,
+  DocumentFlowEmployeeInfoDTOMapper,
   Disposable,
   SysUtils;
 
@@ -128,25 +129,33 @@ begin
     with DocumentInfoHolder do begin
 
       Result.Id := AuthorIdFieldValue;
-      Result.LeaderId := AuthorLeaderIdFieldValue;
-      Result.FullName := AuthorNameFieldValue;
-      Result.Speciality := AuthorSpecialityFieldValue;
+
+      if not VarIsNull(Result.Id) then begin
+
+        Result.LeaderId := AuthorLeaderIdFieldValue;
+        Result.FullName := AuthorNameFieldValue;
+        Result.Speciality := AuthorSpecialityFieldValue;
+
+      end;
 
       Result.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
+
       Result.DepartmentInfoDTO.Id := AuthorDepartmentIdFieldValue;
-      Result.DepartmentInfoDTO.Code := AuthorDepartmentCodeFieldValue;
-      Result.DepartmentInfoDTO.Name := AuthorDepartmentNameFieldValue;
+
+      if not VarIsNull(Result.DepartmentInfoDTO.Id) then begin
+
+        Result.DepartmentInfoDTO.Code := AuthorDepartmentCodeFieldValue;
+        Result.DepartmentInfoDTO.Name := AuthorDepartmentNameFieldValue;
+
+      end;
 
     end;
 
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-      
-    end;
+    Raise;
 
   end;
 
@@ -163,14 +172,24 @@ begin
     with DocumentInfoHolder do begin
 
       Result.Id := ResponsibleIdFieldValue;
-      Result.Name := ResponsibleNameFieldValue;
-      Result.TelephoneNumber := ResponsibleTelephoneNumberFieldValue;
+
+      if not VarIsNull(Result.Id) then begin
+
+        Result.Name := ResponsibleNameFieldValue;
+        Result.TelephoneNumber := ResponsibleTelephoneNumberFieldValue;
+
+      end;
 
       Result.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
 
       Result.DepartmentInfoDTO.Id := ResponsibleDepartmentIdFieldValue;
-      Result.DepartmentInfoDTO.Code := ResponsibleDepartmentCodeFieldValue;
-      Result.DepartmentInfoDTO.Name := ResponsibleDepartmentNameFieldValue;
+
+      if not VarIsNull(Result.DepartmentInfoDTO.Id) then begin
+
+        Result.DepartmentInfoDTO.Code := ResponsibleDepartmentCodeFieldValue;
+        Result.DepartmentInfoDTO.Name := ResponsibleDepartmentNameFieldValue;
+
+      end;
 
     end;
 
@@ -235,7 +254,7 @@ begin
 
         FreeAndNil(Result);
         raise;
-        
+
       end;
 
     end;
@@ -289,15 +308,25 @@ begin
     with DocumentInfoHolder do begin
 
       Result.Id := SignerIdFieldValue;
-      Result.LeaderId := SignerLeaderIdFieldValue;
-      Result.FullName := SignerNameFieldValue;
-      Result.Speciality := SignerSpecialityFieldValue;
+
+      if not VarIsNull(Result.Id) then begin
+
+        Result.LeaderId := SignerLeaderIdFieldValue;
+        Result.FullName := SignerNameFieldValue;
+        Result.Speciality := SignerSpecialityFieldValue;
+
+      end;
 
       Result.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
 
       Result.DepartmentInfoDTO.Id := SignerDepartmentIdFieldValue;
-      Result.DepartmentInfoDTO.Code := SignerDepartmentCodeFieldValue;
-      Result.DepartmentInfoDTO.Name := SignerDepartmentNameFieldValue;
+
+      if not VarIsNull(Result.DepartmentInfoDTO.Id) then begin
+
+        Result.DepartmentInfoDTO.Code := SignerDepartmentCodeFieldValue;
+        Result.DepartmentInfoDTO.Name := SignerDepartmentNameFieldValue;
+
+      end;
 
     end;
 
@@ -325,16 +354,26 @@ begin
     with DocumentInfoHolder do begin
 
       Result.Id := ActualSignerIdFieldValue;
-      Result.LeaderId := ActualSignerLeaderIdFieldValue;
-      Result.FullName := ActualSignerNameFieldValue;
-      Result.Speciality := ActualSignerSpecialityFieldValue;
+
+      if not VarIsNull(Result.Id) then begin
+
+        Result.LeaderId := ActualSignerLeaderIdFieldValue;
+        Result.FullName := ActualSignerNameFieldValue;
+        Result.Speciality := ActualSignerSpecialityFieldValue;
+
+      end;
 
       Result.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
 
       Result.DepartmentInfoDTO.Id := ActualSignerDepartmentIdFieldValue;
-      Result.DepartmentInfoDTO.Code := ActualSignerDepartmentCodeFieldValue;
-      Result.DepartmentInfoDTO.Name := ActualSignerDepartmentNameFieldValue;
-      
+
+      if not VarIsNull(Result.DepartmentInfoDTO.Id) then begin
+
+        Result.DepartmentInfoDTO.Code := ActualSignerDepartmentCodeFieldValue;
+        Result.DepartmentInfoDTO.Name := ActualSignerDepartmentNameFieldValue;
+
+      end;
+
     end;
 
   except

@@ -4,12 +4,20 @@ interface
 
 type
 
+  
+  TDocumentNumberPrefixPatternTypeDto = (ppNone, ppDigits, ppAnyChars);
+  
   TEmployeeDocumentKindAccessRightsInfoDto = class
 
     public
     
-      EmployeeCanCreateDocuments: Boolean;
-      EmployeeCanMarkDocumentsAsSelfRegistered: Boolean;
+      CanViewDocuments: Boolean;
+      CanCreateDocuments: Boolean;
+      CanCreateRespondingDocuments: Boolean;
+      CanEditDocuments: Boolean;
+      CanRemoveDocuments: Boolean;
+      CanMarkDocumentsAsSelfRegistered: Boolean;
+      DocumentNumberPrefixPatternType: TDocumentNumberPrefixPatternTypeDto;
 
   end;
 

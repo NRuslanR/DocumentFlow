@@ -19,6 +19,8 @@ uses
   DocumentObjectsDTODomainMapper,
   AdminDocumentStorageService,
   DocumentFullInfoDTOMapper,
+  DocumentUsageEmployeeAccessRightsInfoDTOMapper,
+  DocumentResponsibleInfoDTOMapper,
   IDocumentUnit,
   SysUtils,
   Classes;
@@ -37,7 +39,7 @@ type
         function EnsureThatEmployeeHasDocumentUsageAccessRights(
           Document: IDocument;
           RequestingEmployee: TEmployee
-        ): TDocumentUsageEmployeeAccessRightsInfoDTO; override;
+        ): IDocumentUsageEmployeeAccessRightsInfoDTO; override;
 
         procedure EnsureEmployeeMayRemoveDocuments(
           RemovingEmployee: TEmployee;
@@ -56,7 +58,9 @@ type
           DocumentInfoReadService: IDocumentInfoReadService;
           DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
           DocumentObjectsDTODomainMapper: TDocumentObjectsDTODomainMapper;
-          DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
+          DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper;
+          DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper;
+          DocumentResponsibleInfoDTOMapper: TDocumentResponsibleInfoDTOMapper
 
         );
 
@@ -75,7 +79,9 @@ constructor TStandardAdminDocumentStorageService.Create(
   DocumentInfoReadService: IDocumentInfoReadService;
   DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
   DocumentObjectsDTODomainMapper: TDocumentObjectsDTODomainMapper;
-  DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
+  DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper;
+  DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper;
+  DocumentResponsibleInfoDTOMapper: TDocumentResponsibleInfoDTOMapper
 );
 begin
 
@@ -87,7 +93,9 @@ begin
     DocumentInfoReadService,
     DocumentUsageEmployeeAccessRightsService,
     DocumentObjectsDTODomainMapper,
-    DocumentFullInfoDTOMapper
+    DocumentFullInfoDTOMapper,
+    DocumentUsageEmployeeAccessRightsInfoDTOMapper,
+    DocumentResponsibleInfoDTOMapper
   );
 
   FSystemAuthorizationService := SystemAuthorizationService;
@@ -107,7 +115,7 @@ end;
 function TStandardAdminDocumentStorageService.EnsureThatEmployeeHasDocumentUsageAccessRights(
   Document: IDocument;
   RequestingEmployee: TEmployee
-): TDocumentUsageEmployeeAccessRightsInfoDTO;
+): IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   FSystemAuthorizationService.EnsureEmployeeIsAdminView(RequestingEmployee.Identity);
@@ -116,9 +124,13 @@ begin
 
   try
 
-    Result.DocumentCanBeViewed := True;
-    Result.DocumentCanBeRemoved := True;
-    
+    with Result.AsSelf do begin
+
+      DocumentCanBeViewed := True;
+      DocumentCanBeRemoved := True;
+
+    end;
+
   except
 
     on E: Exception do begin

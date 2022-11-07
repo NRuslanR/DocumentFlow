@@ -8,7 +8,7 @@ uses
   DepartmentRepository,
   IEmployeeRepositoryUnit,
   DepartmentInfoDTO,
-  DepartmentUnit,
+  Department,
   Session,
   SysUtils,
   Classes;

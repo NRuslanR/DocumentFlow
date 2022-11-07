@@ -97,9 +97,9 @@ implementation
 
 uses
 
-  DepartmentUnit,
+  Department,
   Employee,
-  RoleUnit,
+  Role,
   DocumentFileUnit,
   IncomingServiceNote,
   ServiceNote,

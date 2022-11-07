@@ -4,6 +4,7 @@ interface
 
 uses
 
+  IGetSelfUnit,
   DocumentKinds,
   Document,
   SysUtils,
@@ -14,16 +15,32 @@ type
   TDocumentKindsMapperException = class (Exception)
 
   end;
+
+  IDocumentKindsMapper = interface (IGetSelf)
+    ['{A4CFA6FE-D701-4C30-A824-509439B88DC8}']
+
+    function MapDocumentKindToDomainDocumentKind(
+      const DocumentKind: TDocumentKindClass
+    ): TDocumentClass;
+
+    function MapDomainDocumentKindToDocumentKind(
+      const DocumentClass: TDocumentClass
+    ): TDocumentKindClass;
+
+  end;
+
   
-  TDocumentKindsMapper = class
+  TDocumentKindsMapper = class (TInterfacedObject, IDocumentKindsMapper)
 
     public
 
-      class function MapDocumentKindToDomainDocumentKind(
+      function GetSelf: TObject;
+
+      function MapDocumentKindToDomainDocumentKind(
         const DocumentKind: TDocumentKindClass
       ): TDocumentClass;
 
-      class function MapDomainDocumentKindToDocumentKind(
+      function MapDomainDocumentKindToDocumentKind(
         const DocumentClass: TDocumentClass
       ): TDocumentKindClass;
 
@@ -41,7 +58,14 @@ uses
   
 { TDocumentKindsMapper }
 
-class function TDocumentKindsMapper.
+function TDocumentKindsMapper.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
+function TDocumentKindsMapper.
   MapDocumentKindToDomainDocumentKind(
     const DocumentKind: TDocumentKindClass
   ): TDocumentClass;
@@ -78,7 +102,7 @@ begin
 
 end;
 
-class function TDocumentKindsMapper.MapDomainDocumentKindToDocumentKind(
+function TDocumentKindsMapper.MapDomainDocumentKindToDocumentKind(
   const DocumentClass: TDocumentClass): TDocumentKindClass;
 begin
 

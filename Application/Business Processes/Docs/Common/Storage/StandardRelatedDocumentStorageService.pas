@@ -48,7 +48,7 @@ type
 
         function MapRelatedDocumentUsageEmployeeAccessRightsInfoDTOFrom(
           DocumentUsageEmployeeAccessRightsInfo: TDocumentUsageEmployeeAccessRightsInfo
-        ): TDocumentUsageEmployeeAccessRightsInfoDTO;
+        ): IDocumentUsageEmployeeAccessRightsInfoDTO;
 
       protected
 
@@ -58,14 +58,14 @@ type
         
       public
 
-        destructor Destroy; override;
-        
         constructor Create(
           Session: ISession;
           SourceDocumentDirectory: IDocumentDirectory;
           DocumentKindRepository: IDocumentKindRepository;
           DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
-          EmployeeRepository: IEmployeeRepository
+          EmployeeRepository: IEmployeeRepository;
+          DocumentKindsMapper: TDocumentKindsMapper;
+          DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper
         );
 
         function GetRelatedDocumentFullInfo(
@@ -79,6 +79,7 @@ implementation
 uses
 
   IDomainObjectBaseUnit,
+  DocumentChargeKindDtoDomainMapper,
   DocumentRuleRegistry,
   DocumentStorageServiceRegistry,
   ApplicationServiceRegistries;
@@ -90,7 +91,9 @@ constructor TStandardRelatedDocumentStorageService.Create(
   SourceDocumentDirectory: IDocumentDirectory;
   DocumentKindRepository: IDocumentKindRepository;
   DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
-  EmployeeRepository: IEmployeeRepository
+  EmployeeRepository: IEmployeeRepository;
+  DocumentKindsMapper: TDocumentKindsMapper;
+  DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper
 );
 begin
 
@@ -101,18 +104,8 @@ begin
   FDocumentUsageEmployeeAccessRightsService := DocumentUsageEmployeeAccessRightsService;
   FEmployeeRepository := EmployeeRepository;
 
-  FDocumentKindsMapper := TDocumentKindsMapper.Create;
-  FDocumentUsageEmployeeAccessRightsInfoDTOMapper := TDocumentUsageEmployeeAccessRightsInfoDTOMapper.Create;
-
-end;
-
-destructor TStandardRelatedDocumentStorageService.Destroy;
-begin
-
-  FreeAndNil(FDocumentKindsMapper);
-  FreeAndNil(FDocumentUsageEmployeeAccessRightsInfoDTOMapper);
-  
-  inherited;
+  FDocumentKindsMapper := DocumentKindsMapper;
+  FDocumentUsageEmployeeAccessRightsInfoDTOMapper := DocumentUsageEmployeeAccessRightsInfoDTOMapper;
 
 end;
 
@@ -136,7 +129,7 @@ var FreeCommand: IGettingRelatedDocumentFullInfoCommand;
     Employee: TEmployee;
     FreeEmployee: IDomainObjectBase;
 
-    RelatedDocumentUsageAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+    RelatedDocumentUsageAccessRightsInfoDTO: IDocumentUsageEmployeeAccessRightsInfoDTO;
     RelatedDocumentFullInfoDTO: TDocumentFullInfoDTO;
 begin
 
@@ -289,7 +282,7 @@ end;
 function TStandardRelatedDocumentStorageService.
   MapRelatedDocumentUsageEmployeeAccessRightsInfoDTOFrom(
     DocumentUsageEmployeeAccessRightsInfo: TDocumentUsageEmployeeAccessRightsInfo
-  ): TDocumentUsageEmployeeAccessRightsInfoDTO;
+  ): IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   Result :=

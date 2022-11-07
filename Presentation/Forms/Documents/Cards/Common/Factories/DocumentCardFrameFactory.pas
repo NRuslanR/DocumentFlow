@@ -517,7 +517,7 @@ begin
         AsSelfRegisteredDocumentMarkingToolEnabled :=
 
           EmployeeDocumentKindAccessRightsInfoDto.
-            EmployeeCanMarkDocumentsAsSelfRegistered;
+            CanMarkDocumentsAsSelfRegistered;
 
     Result.DocumentOperationToolBarFrame :=
       CreateAndCustomizeDocumentOperationToolBarFrameForNewDocumentCreating;

@@ -7,7 +7,7 @@ uses
   Employee,
   DomainObjectListUnit,
   DomainObjectUnit,
-  RoleUnit,
+  Role,
   AbstractDBRepository,
   AbstractPostgresRepository,
   DBTableMapping,

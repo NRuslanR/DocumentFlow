@@ -14,6 +14,7 @@ inherited DocumentFilesReferenceForm: TDocumentFilesReferenceForm
     end
     inherited SelectFilteredRecordsSeparator: TToolButton
       Visible = False
+      ExplicitHeight = 36
     end
     inherited ExportDataToolButton: TToolButton
       ExplicitWidth = 83

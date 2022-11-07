@@ -12,7 +12,7 @@ uses
   StandardDocumentNumerator,
   DocumentKindRepository,
   DepartmentRepository,
-  DepartmentUnit,
+  Department,
   DocumentKind,
   QueryExecutor,
   DataReader;

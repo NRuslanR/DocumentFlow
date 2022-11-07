@@ -17,6 +17,8 @@ uses
   DocumentObjectsDTODomainMapper,
   DocumentCreatingService,
   DocumentFullInfoDTOMapper,
+  DocumentUsageEmployeeAccessRightsInfoDTOMapper,
+  DocumentResponsibleInfoDTOMapper,
   SysUtils,
   Classes;
 
@@ -30,7 +32,7 @@ type
         function EnsureThatEmployeeHasDocumentUsageAccessRights(
           Document: IDocument;
           RequestingEmployee: TEmployee
-        ): TDocumentUsageEmployeeAccessRightsInfoDTO; override;
+        ): IDocumentUsageEmployeeAccessRightsInfoDTO; override;
 
       public
 
@@ -43,10 +45,12 @@ type
           DocumentInfoReadService: IDocumentInfoReadService;
           DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
           DocumentObjectsDTODomainMapper: TDocumentObjectsDTODomainMapper;
-          DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
+          DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper;
+          DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper;
+          DocumentResponsibleInfoDTOMapper: TDocumentResponsibleInfoDTOMapper
 
         ); override;
-        
+
     end;
 
 implementation
@@ -61,7 +65,9 @@ constructor TStandardOutcomingDocumentStorageService.Create(
   DocumentInfoReadService: IDocumentInfoReadService;
   DocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
   DocumentObjectsDTODomainMapper: TDocumentObjectsDTODomainMapper;
-  DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper
+  DocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper;
+  DocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper;
+  DocumentResponsibleInfoDTOMapper: TDocumentResponsibleInfoDTOMapper
 );
 begin
 
@@ -73,7 +79,9 @@ begin
     DocumentInfoReadService,
     DocumentUsageEmployeeAccessRightsService,
     DocumentObjectsDTODomainMapper,
-    DocumentFullInfoDTOMapper
+    DocumentFullInfoDTOMapper,
+    DocumentUsageEmployeeAccessRightsInfoDTOMapper,
+    DocumentResponsibleInfoDTOMapper
   );
 
 end;
@@ -81,7 +89,7 @@ end;
 function TStandardOutcomingDocumentStorageService.EnsureThatEmployeeHasDocumentUsageAccessRights(
   Document: IDocument;
   RequestingEmployee: TEmployee
-): TDocumentUsageEmployeeAccessRightsInfoDTO;
+): IDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
   Result :=
@@ -89,16 +97,15 @@ begin
       Document, RequestingEmployee
     );
 
-  if Result.AnyChargeSheetsCanBeViewed then begin
+  with Result.AsSelf.DocumentChargeSheetsAccessRightsInfoDTO do begin
 
-    with Result.DocumentChargeSheetsAccessRightsInfoDTO do begin
+    if not AnyChargeSheetsCanBeViewed then Exit;
 
       AnyChargeSheetsCanBeIssued := False;
       AnyChargeSheetsCanBeChanged := False;
       AnyChargeSheetsCanBeRemoved := False;
       AnyChargeSheetsCanBePerformed := False;
 
-    end;
 
   end;
   

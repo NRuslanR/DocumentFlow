@@ -49,7 +49,7 @@ uses
   EmployeeDbSchema,
   EmployeeTableDef,
   DepartmentTableDef,
-  RoleUnit,
+  Role,
   RoleTableDef,
   EmployeeWorkGroupTableDef,
   EmployeeWorkGroupAssocTableDef,

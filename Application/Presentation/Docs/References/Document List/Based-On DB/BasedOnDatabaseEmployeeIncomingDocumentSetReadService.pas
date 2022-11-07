@@ -9,8 +9,8 @@ uses
   IncomingDocumentSetHolderFactory,
   DocumentSetHolderFactory,
   EmployeeDocumentSetHolderFactory,
-  EmployeeDocumentKindAccessRightsService,
-  EmployeeDocumentKindAccessRightsInfo,
+  EmployeeDocumentKindAccessRightsAppService,
+  EmployeeDocumentKindAccessRightsInfoDto,
   AbstractDocumentSetHolderDecorator,
   DocumentSetHolder,
   SysUtils;
@@ -28,7 +28,7 @@ type
 
         procedure SetDocumentSetOperationAccessRights(
           DocumentSetHolder: TDocumentSetHolder;
-          EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo
+          EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto
         ); override;
 
     end;
@@ -52,12 +52,12 @@ end;
 
 procedure TBasedOnDatabaseEmployeeIncomingDocumentSetReadService.SetDocumentSetOperationAccessRights(
   DocumentSetHolder: TDocumentSetHolder;
-  EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo
+  EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto
 );
 begin
 
   inherited SetDocumentSetOperationAccessRights(
-    DocumentSetHolder, EmployeeDocumentKindAccessRightsInfo
+    DocumentSetHolder, EmployeeDocumentKindAccessRightsInfoDto
   );
 
   with
@@ -66,7 +66,7 @@ begin
         DocumentSetHolder
       ).GetNestedDocumentSetHolderByType(TIncomingDocumentSetHolder)
     ),
-    EmployeeDocumentKindAccessRightsInfo
+    EmployeeDocumentKindAccessRightsInfoDto
   do begin
 
     RespondingDocumentCreatingAllowed := CanCreateRespondingDocuments;

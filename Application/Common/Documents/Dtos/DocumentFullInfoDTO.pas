@@ -345,10 +345,29 @@ type
     
   end;
 
-  { refactor: embed to ChargeSheetInfoDTO }
-  
+  TDocumentChargeAccessRightsDTO = class
+
+    public
+
+      ChargeSectionAccessible: Variant;
+      RemovingAllowed: Variant;
+
+      constructor Create;
+      
+  end;
+
   TDocumentChargeInfoDTO = class
 
+    private
+
+      FAccessRights: TDocumentChargeAccessRightsDTO;
+      
+      procedure SetAccessRights(const Value: TDocumentChargeAccessRightsDTO);
+
+    protected
+
+      function CreateAccessRightsDTOInstance: TDocumentChargeAccessRightsDTO; virtual;
+      
     public
 
       Id: Variant;
@@ -371,6 +390,9 @@ type
       constructor Create;
       destructor Destroy; override;
 
+      property AccessRights: TDocumentChargeAccessRightsDTO
+      read FAccessRights write SetAccessRights;
+      
       class function ChargeSheetInfoDTOClass: TClass; virtual;
 
   end;
@@ -1283,6 +1305,15 @@ begin
   TimeFrameDeadline := Null;
   PerformingDateTime := Null;
 
+  FAccessRights := CreateAccessRightsDTOInstance;
+
+end;
+
+function TDocumentChargeInfoDTO.CreateAccessRightsDTOInstance: TDocumentChargeAccessRightsDTO;
+begin
+
+  Result := TDocumentChargeAccessRightsDTO.Create;
+  
 end;
 
 destructor TDocumentChargeInfoDTO.Destroy;
@@ -1292,6 +1323,18 @@ begin
   FreeAndNil(ActuallyPerformedEmployeeInfoDTO);
   
   inherited;
+
+end;
+
+procedure TDocumentChargeInfoDTO.SetAccessRights(
+  const Value: TDocumentChargeAccessRightsDTO);
+begin
+
+  if FAccessRights = Value then Exit;
+
+  FreeAndNil(FAccessRights);
+  
+  FAccessRights := Value;
 
 end;
 
@@ -1542,4 +1585,13 @@ begin
   
 end;
 
+constructor TDocumentChargeAccessRightsDTO.Create;
+begin
+
+  inherited;
+
+  ChargeSectionAccessible := Null;
+  RemovingAllowed := Null;
+
+end;
 end.

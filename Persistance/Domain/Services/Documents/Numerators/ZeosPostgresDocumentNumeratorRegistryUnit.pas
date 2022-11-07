@@ -8,7 +8,7 @@ uses
   INumberGeneratorUnit,
   Document,
   StandardDocumentNumerator,
-  DepartmentUnit,
+  Department,
   ZConnection;
 
 type

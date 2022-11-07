@@ -52,13 +52,13 @@ implementation
 
 uses
 
-  RoleUnit,
+  Role,
   IRoleRepositoryUnit,
   {EmployeeUnit,}
   RepositoryRegistryUnit,
   RoleRepositoryUnit,
   RolePostgresRepositoryUnit,
-  DepartmentUnit,
+  Department,
   IDepartmentRepositoryUnit,
   EmployeeRepositoryUnit,
   IEmployeeRepositoryUnit,

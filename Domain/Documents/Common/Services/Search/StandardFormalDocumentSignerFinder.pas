@@ -6,7 +6,7 @@ uses
 
   Document,
   Employee,
-  DepartmentUnit,
+  Department,
   FormalDocumentSignerFinder,
   DepartmentFinder,
   EmployeeFinder,

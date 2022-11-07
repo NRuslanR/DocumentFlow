@@ -8,7 +8,7 @@ uses
   UserNotificationProfileAccessRightsService,
   UserNotificationProfile,
   IDomainObjectBaseListUnit,
-  RoleUnit,
+  Role,
   Employee,
   SysUtils;
 

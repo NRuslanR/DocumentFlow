@@ -12,8 +12,8 @@ uses
   DataSetQueryExecutor,
   AbstractDataReader,
   BasedOnDatabaseAbstractDocumentSetReadService,
-  EmployeeDocumentKindAccessRightsService,
-  EmployeeDocumentKindAccessRightsInfo,
+  EmployeeDocumentKindAccessRightsAppService,
+  EmployeeDocumentKindAccessRightsInfoDto,
   DocumentKinds,
   DocumentKindsMapper,
   IEmployeeRepositoryUnit,
@@ -88,7 +88,7 @@ type
         FQueryBuilder: IEmployeeDocumentSetFetchingQueryBuilder;
         
         FEmployeeRepository: IEmployeeRepository;
-        FEmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
+        FEmployeeDocumentKindAccessRightsAppService: IEmployeeDocumentKindAccessRightsAppService;
 
         function ExecuteFetchingEmployeeDocumentSetQuery(
           const EmployeeId: Variant;
@@ -107,7 +107,7 @@ type
 
         procedure SetDocumentSetOperationAccessRights(
           DocumentSetHolder: TDocumentSetHolder;
-          EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo
+          EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto
         ); virtual;
         
       public
@@ -115,7 +115,7 @@ type
         constructor Create(
           DocumentKindClass: TDocumentKindClass;
           EmployeeRepository: IEmployeeRepository;
-          EmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
+          EmployeeDocumentKindAccessRightsAppService: IEmployeeDocumentKindAccessRightsAppService;
           QueryExecutor: TDataSetQueryExecutor;
           QueryBuilder: IEmployeeDocumentSetFetchingQueryBuilder
         );
@@ -132,6 +132,7 @@ uses
 
   Employee,
   IDomainObjectBaseUnit,
+  NativeDocumentKindsReadService,
   SelectDocumentRecordsViewQueries,
   AuxDataSetFunctionsUnit,
   ZQueryExecutor,
@@ -147,7 +148,7 @@ uses
 constructor TBasedOnDatabaseAbstractEmployeeDocumentSetReadService.Create(
   DocumentKindClass: TDocumentKindClass;
   EmployeeRepository: IEmployeeRepository;
-  EmployeeDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
+  EmployeeDocumentKindAccessRightsAppService: IEmployeeDocumentKindAccessRightsAppService;
   QueryExecutor: TDataSetQueryExecutor;
   QueryBuilder: IEmployeeDocumentSetFetchingQueryBuilder
 );
@@ -160,7 +161,7 @@ begin
   FQueryBuilder := QueryBuilder;
   
   FEmployeeRepository := EmployeeRepository;
-  FEmployeeDocumentKindAccessRightsService := EmployeeDocumentKindAccessRightsService;
+  FEmployeeDocumentKindAccessRightsAppService := EmployeeDocumentKindAccessRightsAppService;
   
 end;
 
@@ -175,10 +176,7 @@ begin
   try
 
     Result.DataSet :=
-      ExecuteFetchingEmployeeDocumentSetQuery(
-        //FDocumentSetFetchingQueryPattern,
-        EmployeeId, Options
-      );
+      ExecuteFetchingEmployeeDocumentSetQuery(EmployeeId, Options);
 
     SetDocumentSetAccessRightsForEmployee(Result, EmployeeId);
 
@@ -274,45 +272,45 @@ begin
 
 end;
 
-procedure TBasedOnDatabaseAbstractEmployeeDocumentSetReadService.SetDocumentSetAccessRightsForEmployee(
-  DocumentSetHolder: TDocumentSetHolder;
-  const EmployeeId: Variant
-);
-
+procedure TBasedOnDatabaseAbstractEmployeeDocumentSetReadService
+  .SetDocumentSetAccessRightsForEmployee(
+    DocumentSetHolder: TDocumentSetHolder;
+    const EmployeeId: Variant
+  );
 var
-    Employee: TEmployee;
-    FreeEmployee: IDomainObjectBase;
-
-    EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo;
-    FreeEmployeeDocumentKindAccessRightsInfo: IDomainObjectBase;
+    EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto;
+    FreeEmployeeDocumentKindAccessRightsInfoDto: IDomainObjectBase;
 begin
 
-  Employee := FEmployeeRepository.FindEmployeeById(EmployeeId);
-
-  FreeEmployee := Employee;
-
-  EmployeeDocumentKindAccessRightsInfo :=
-    FEmployeeDocumentKindAccessRightsService
+  EmployeeDocumentKindAccessRightsInfoDto :=
+    FEmployeeDocumentKindAccessRightsAppService
       .EnsureThatEmployeeHasAnyDocumentKindAccessRightsAndGetAll(
-        TDocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
-          FDocumentKindClass
-        ),
-      Employee
+        FDocumentKindClass,
+        EmployeeId
     );
 
-  FreeEmployeeDocumentKindAccessRightsInfo := EmployeeDocumentKindAccessRightsInfo;
+  try
 
-  SetDocumentSetOperationAccessRights(DocumentSetHolder, EmployeeDocumentKindAccessRightsInfo);
+    SetDocumentSetOperationAccessRights(
+      DocumentSetHolder,
+      EmployeeDocumentKindAccessRightsInfoDto
+    );
+
+  finally
+
+    FreeAndNil(EmployeeDocumentKindAccessRightsInfoDto);
+    
+  end;
 
 end;
 
 procedure TBasedOnDatabaseAbstractEmployeeDocumentSetReadService.SetDocumentSetOperationAccessRights(
   DocumentSetHolder: TDocumentSetHolder;
-  EmployeeDocumentKindAccessRightsInfo: TEmployeeDocumentKindAccessRightsInfo
+  EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto
 );
 begin
 
-  with DocumentSetHolder, EmployeeDocumentKindAccessRightsInfo do begin
+  with DocumentSetHolder, EmployeeDocumentKindAccessRightsInfoDto do begin
 
     ViewAllowed := CanViewDocuments;
     AddingAllowed := CanCreateDocuments;

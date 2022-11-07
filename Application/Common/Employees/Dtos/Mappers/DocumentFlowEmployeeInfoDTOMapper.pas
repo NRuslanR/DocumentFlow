@@ -7,7 +7,7 @@ uses
   DocumentFlowEmployeeInfoDTO,
   DepartmentRepository,
   DepartmentInfoDTO,
-  DepartmentUnit,
+  Department,
   Employee,
   Disposable,
   IGetSelfUnit,

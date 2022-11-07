@@ -7,7 +7,7 @@ uses
   DocumentResponsibleDirectory,
   IDocumentResponsibleRepositoryUnit,
   Employee,
-  DepartmentUnit,
+  Department,
   SysUtils;
 
 type
