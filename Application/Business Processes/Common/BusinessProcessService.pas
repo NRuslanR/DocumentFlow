@@ -165,6 +165,8 @@ begin
 
   inherited Create(Msg);
 
+  FBusinessOperationSuccessed := BusinessOperationSuccessed;
+
 end;
 
 constructor TBusinessProcessServiceException.CreateFmt(

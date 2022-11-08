@@ -167,10 +167,10 @@ implementation
 
 uses
 
+  StrUtils,
   Variants;
 
 { TAbstractDocumentChargeSheetNotifyingMessageBuilder }
-
 
 function TAbstractDocumentChargeSheetNotifyingMessageBuilder.
   AnyOfReceiverEmployeeHasMessageAcceptingContactInfo(
@@ -554,7 +554,9 @@ procedure TAbstractDocumentChargeSheetNotifyingMessageBuilder.
     DocumentResponsibleDepartment: TDepartment;
     Message: IMessage
   );
-var DocumentResponsibleEmail: String;
+var
+    DocumentResponsibleDepartmentShortNamePart: String;
+    DocumentResponsibleEmail: String;
     DocumentResponsibleTelephoneNumber: String;
 begin
 
@@ -614,12 +616,21 @@ begin
     '<b>Информация об исполнителе:</b>' +
     FMessageSpecChars.NewLine
   );
-  
+
+  if not Assigned(DocumentResponsible) then Exit;
+
+  if Assigned(DocumentResponsibleDepartment) then begin
+
+    DocumentResponsibleDepartmentShortNamePart :=
+      ' (' + DocumentResponsibleDepartment.ShortName + ')';
+
+  end;
+
   Message.Content.Add(
     FMessageSpecChars.Tabulation +
     'Имя сотрудника: ' +
-    DocumentResponsible.FullName + ' (' +
-    DocumentResponsibleDepartment.ShortName + ')' +
+    DocumentResponsible.FullName +
+    DocumentResponsibleDepartmentShortNamePart +
     FMessageSpecChars.NewLine
   );
 

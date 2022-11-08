@@ -150,7 +150,7 @@ begin
           'from exchange.spr_person a ' +
           'left join exchange.spr_person_telephone_numbers b on a.%s = b.person_id ' +
           'left join exchange.person_email pe on pe.person_id = a.%s ' +
-          'join nsi.spr_podr c on c.id = a.%s ' +
+          'left join nsi.spr_podr c on c.id = a.%s ' +
           'where a.%s=:p%s',
           [
             FDocumentResponsibleFieldNames.IdFieldName,
@@ -180,7 +180,7 @@ begin
 
     if DataReader.RecordCount = 0 then begin
 
-      raise Exception.Create(
+      raise TDocumentResponsibleNotFoundException.Create(
               'Для документа не найдено ' +
               'ответственное лицо'
             );
@@ -240,7 +240,7 @@ begin
 
     if DataReader.RecordCount = 0 then begin
 
-      raise Exception.Create(
+      raise TDocumentResponsibleDepartmentNotFoundException.Create(
         'Для ответственного за документ лица ' +
         'не найдена информация о подразделении'
       );
@@ -341,7 +341,7 @@ begin
 
     if RowsAffected = 0 then begin
 
-      raise Exception.Create(
+      raise TDocumentResponsibleRepositoryException.Create(
         'Информация об ответственном за документ ' +
         'не была добавлена в базу данных по неизвестной ' +
         'причине'
@@ -382,7 +382,7 @@ begin
 
    if RowsAffected = 0 then begin
 
-    raise Exception.Create(
+    raise TDocumentResponsibleRepositoryException.Create(
       'Информация об ответственном за документ ' +
       'не была изменена по неизвестной причине'
     );

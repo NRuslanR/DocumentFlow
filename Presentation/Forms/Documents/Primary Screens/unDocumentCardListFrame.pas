@@ -3278,8 +3278,8 @@ begin
 
           ChangeDocumentsReferenceFormRecordBy({FSelectedDocumentCardFrame.ViewModel}
             FSelectedDocumentCardFrame.ViewModel.DocumentId,
-        FSelectedDocumentCardFrame.ViewModel.DocumentKindId
-        );
+            FSelectedDocumentCardFrame.ViewModel.DocumentKindId
+          );
 
           RaiseOnEmployeeDocumentChargeSheetSetChangedEventHandler;
           
@@ -3400,16 +3400,27 @@ begin
 
     except
 
-      on e: Exception do begin
+      on E: Exception do begin
 
-        FSelectedDocumentCardFrame.DocumentChargesFrame.OnChangesApplyingFailed;
-        
+        if
+          (E is TBusinessProcessServiceException)
+          and TBusinessProcessServiceException(E).BusinessOperationSuccessed
+        then begin
+
+          FSelectedDocumentCardFrame.DocumentChargesFrame.OnChangesApplied;
+
+          Result := True;
+          
+        end
+
+        else FSelectedDocumentCardFrame.DocumentChargesFrame.OnChangesApplyingFailed;
+
         Raise;
-        
+
       end;
 
     end;
-    
+
   finally
 
     Screen.Cursor := crDefault;

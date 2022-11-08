@@ -485,10 +485,28 @@ begin
 
       on E: Exception do begin
 
+        if E is TDocumentResponsibleDepartmentNotFoundException
+        then begin
+
+          RelatedDocumentResponsibleDepartment := nil;
+
+          Exit;
+
+        end;
+
         FreeAndNil(RelatedDocument);
         FreeAndNil(RelatedDocumentFiles);
         FreeAndNil(RelatedDocumentResponsible);
         FreeAndNil(RelatedDocumentResponsibleDepartment);
+
+        if E is TDocumentResponsibleNotFoundException then begin
+
+          Raise TDocumentChargeSheetCasesNotifierException.Create(
+            'Не найдена информация об исполнителе документа, ' +
+            'необходимая для отправки уведомлений об изменениях в поручениях'
+          );
+
+        end;
 
         Raise;
         
@@ -638,6 +656,5 @@ begin
     Free;
 
 end;
-
 
 end.

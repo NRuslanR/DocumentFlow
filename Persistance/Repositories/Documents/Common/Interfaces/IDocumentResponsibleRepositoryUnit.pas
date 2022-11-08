@@ -15,7 +15,20 @@ type
   TDocumentResponsible = class (TDomainObject)
 
   end;
-  
+
+  TDocumentResponsibleRepositoryException = class (Exception)
+
+  end;
+
+  TDocumentResponsibleNotFoundException = class (TDocumentResponsibleRepositoryException)
+
+  end;
+
+  TDocumentResponsibleDepartmentNotFoundException =
+    class (TDocumentResponsibleRepositoryException)
+
+    end;
+    
   IDocumentResponsibleRepository = interface
 
     function FindDocumentResponsibleById(
