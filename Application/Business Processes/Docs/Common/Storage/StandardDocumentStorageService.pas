@@ -427,7 +427,8 @@ begin
     on e: Exception do begin
 
       FreeAndNil(DocumentFullInfoDTO);
-      FreeAndNil(DocumentUsageEmployeeAccessRightsInfoDTO)
+      FreeAndNil(DocumentUsageEmployeeAccessRightsInfoDTO);
+      
       FSession.Rollback;
       
       RaiseFailedBusinessProcessServiceException(e.Message);
