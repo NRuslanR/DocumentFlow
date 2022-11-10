@@ -756,7 +756,7 @@ procedure TDocumentKindsFrame.RaiseOnDocumentKindSelectedEventHandler(
 begin
 
   if Assigned(FOnDocumentKindSelectedEventHandler) then begin
-             
+
     FOnDocumentKindSelectedEventHandler(
       Self,
       OperationalDocumentKindInfo

@@ -50,7 +50,7 @@ type
 implementation
 
 uses
-
+       
   Variants,
   Department,
   AuxDebugFunctionsUnit,
@@ -126,7 +126,7 @@ begin
     FreeEmployee := Employee;
 
     Result.Id := Employee.Identity;
-    Result.Name := Employee.Name;
+    Result.Name := Employee.FullName;
     Result.TelephoneNumber := Employee.TelephoneNumber;
 
     Department :=
