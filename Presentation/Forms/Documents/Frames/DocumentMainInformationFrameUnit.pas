@@ -100,9 +100,7 @@ type
     procedure OnFontChanged(var Message: TMessage); message CM_FONTCHANGED; 
 
     procedure SetNotAllowedForEditingControls(Controls:  TList); override;
-
-    procedure a(var t: TEventHandleMethod; s: TEventHandleMethod);
-
+    
   public
 
     destructor Destroy; override;
@@ -424,11 +422,6 @@ begin
   FViewModel.Note := DocumentNoteMemo.Text;
   FViewModel.IsSelfRegistered := DocumentIsSelfRegisteredCheckBox.Checked;
 
-end;
-
-procedure TDocumentMainInformationFrame.a(var t: TEventHandleMethod; s: TEventHandleMethod);
-begin
-    t := s;
 end;
 
 procedure TDocumentMainInformationFrame.Initialize;

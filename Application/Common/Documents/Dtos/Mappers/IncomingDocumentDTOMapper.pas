@@ -15,6 +15,7 @@ uses
   DocumentNumeratorRegistry,
   DocumentChargesInfoDTODomainMapper,
   DocumentApprovingsInfoDTOMapper,
+  DocumentResponsibleInfoDTOMapper,
   IEmployeeRepositoryUnit,
   DocumentFlowEmployeeInfoDTOMapper,
   Disposable,
@@ -47,7 +48,7 @@ type
       constructor Create(
         EmployeeRepository: IEmployeeRepository;
         DocumentKindRepository: IDocumentKindRepository;
-        DocumentResponsibleRepository: IDocumentResponsibleRepository;
+        DocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
         DocumentNumeratorRegistry: IDocumentNumeratorRegistry;
         DocumentChargesInfoDTODomainMapper: TDocumentChargesInfoDTODomainMapper;
         DocumentApprovingsInfoDTOMapper: TDocumentApprovingsInfoDTOMapper;
@@ -70,7 +71,7 @@ implementation
 constructor TIncomingDocumentDTOMapper.Create(
   EmployeeRepository: IEmployeeRepository;
   DocumentKindRepository: IDocumentKindRepository;
-  DocumentResponsibleRepository: IDocumentResponsibleRepository;
+  DocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
   DocumentNumeratorRegistry: IDocumentNumeratorRegistry;
   DocumentChargesInfoDTODomainMapper: TDocumentChargesInfoDTODomainMapper;
   DocumentApprovingsInfoDTOMapper: TDocumentApprovingsInfoDTOMapper;
@@ -82,7 +83,7 @@ begin
   inherited Create(
     EmployeeRepository,
     DocumentKindRepository,
-    DocumentResponsibleRepository,
+    DocumentResponsibleInfoDTOMapper,
     DocumentNumeratorRegistry,
     DocumentChargesInfoDTODomainMapper,
     DocumentApprovingsInfoDTOMapper,

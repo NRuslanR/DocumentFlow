@@ -201,7 +201,7 @@ inherited ExtendedDocumentMainInformationFrame: TExtendedDocumentMainInformation
         ReadOnly = True
         TabOrder = 8
         InvalidColor = 10520575
-        RegularExpression = '.+'
+        RegularExpression = '.*'
       end
       object PerformerDepartmentShortNameEdit: TRegExprValidateEdit
         Left = 193
@@ -211,7 +211,7 @@ inherited ExtendedDocumentMainInformationFrame: TExtendedDocumentMainInformation
         ReadOnly = True
         TabOrder = 9
         InvalidColor = 10520575
-        RegularExpression = '.+'
+        RegularExpression = '.*'
       end
       object PerformerFullNameEdit: TRegExprValidateEdit
         Left = 357

@@ -53,7 +53,6 @@ type
     
     procedure SignerChooseButtonClick(Sender: TObject);
     procedure ChooseDocumentPerformerButtonClick(Sender: TObject);
-    procedure FrameResize(Sender: TObject);
     procedure DocumentInfoPanelResize(Sender: TObject);
 
   protected
@@ -206,7 +205,9 @@ procedure TExtendedDocumentMainInformationFrame.UpdateActualSignerControlsVisibi
 begin
 
   SignedLabel.Visible :=
-    Assigned(ViewModel) and not VarIsNull(ViewModel.SigningDate) and not ChooseDocumentSigningDateEnabled;
+    Assigned(ViewModel)
+    and not VarIsNull(ViewModel.SigningDate)
+    and not ChooseDocumentSigningDateEnabled;
 
   ActualSignerNameLabel.Visible := SignedLabel.Visible;
   SignerNameAndSigningDateSeparator.Visible := SignedLabel.Visible;
@@ -498,12 +499,6 @@ begin
   SignerPersonnelNumberEdit.Text :=
     SelectedEmployeeRecord['personnel_number'];   }
 
-end;
-
-procedure TExtendedDocumentMainInformationFrame.FrameResize(Sender: TObject);
-begin
-  inherited;
-  //
 end;
 
 procedure TExtendedDocumentMainInformationFrame.FillDocumentResponsibleUIElementsFromSelectedEmployeeRecord(

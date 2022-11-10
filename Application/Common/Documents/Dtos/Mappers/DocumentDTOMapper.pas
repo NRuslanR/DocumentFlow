@@ -14,6 +14,7 @@ uses
   DocumentApprovingsInfoDTOMapper,
   DocumentChargesInfoDTODomainMapper,
   DocumentResponsibleInfoDTO,
+  DocumentResponsibleInfoDTOMapper,
   DepartmentInfoDTO,
   DocumentFlowEmployeeInfoDTOMapper,
   IDocumentResponsibleRepositoryUnit,
@@ -33,7 +34,7 @@ type
 
       FEmployeeRepository: IEmployeeRepository;
       FDocumentKindRepository: IDocumentKindRepository;
-      FDocumentResponsibleRepository: IDocumentResponsibleRepository;
+      FDocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
       FDocumentNumeratorRegistry: IDocumentNumeratorRegistry;
 
       FDocumentChargesInfoDTODomainMapper: IDocumentChargesInfoDTODomainMapper;
@@ -83,7 +84,7 @@ type
       constructor Create(
         EmployeeRepository: IEmployeeRepository;
         DocumentKindRepository: IDocumentKindRepository;
-        DocumentResponsibleRepository: IDocumentResponsibleRepository;
+        DocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
         DocumentNumeratorRegistry: IDocumentNumeratorRegistry;
         DocumentChargesInfoDTODomainMapper: IDocumentChargesInfoDTODomainMapper;
         DocumentApprovingsInfoDTOMapper: TDocumentApprovingsInfoDTOMapper;
@@ -112,7 +113,7 @@ uses
 constructor TDocumentDTOMapper.Create(
   EmployeeRepository: IEmployeeRepository;
   DocumentKindRepository: IDocumentKindRepository;
-  DocumentResponsibleRepository: IDocumentResponsibleRepository;
+  DocumentResponsibleInfoDTOMapper: IDocumentResponsibleInfoDTOMapper;
   DocumentNumeratorRegistry: IDocumentNumeratorRegistry;
   DocumentChargesInfoDTODomainMapper: IDocumentChargesInfoDTODomainMapper;
   DocumentApprovingsInfoDTOMapper: TDocumentApprovingsInfoDTOMapper;
@@ -124,7 +125,7 @@ begin
 
   FEmployeeRepository := EmployeeRepository;
   FDocumentKindRepository := DocumentKindRepository;
-  FDocumentResponsibleRepository := DocumentResponsibleRepository;
+  FDocumentResponsibleInfoDTOMapper := DocumentResponsibleInfoDTOMapper;
   FDocumentNumeratorRegistry := DocumentNumeratorRegistry;
 
   FDocumentChargesInfoDTODomainMapper := DocumentChargesInfoDTODomainMapper;
@@ -331,52 +332,11 @@ end;
 function TDocumentDTOMapper.GetDocumentResponsibleInfoDTOBy(
   const DocumentResponsibleId: Variant
 ): TDocumentResponsibleInfoDTO;
-var
-    DocumentResponsible: TEmployee;
-    FreeDocumentResponsible: IDomainObjectBase;
-
-    DocumentResponsibleDepartment: TDepartment;
-    FreeDocumentResponsibleDepartment: IDomainObjectBase;
 begin
 
-  DocumentResponsible :=
-    FDocumentResponsibleRepository.FindDocumentResponsibleById(DocumentResponsibleId);
-
-  FreeDocumentResponsible := DocumentResponsible;
-
-  DocumentResponsibleDepartment :=
-    FDocumentResponsibleRepository.FindDocumentResponsibleDepartmentById(
-      DocumentResponsible.DepartmentIdentity
-    );
-
-  FreeDocumentResponsibleDepartment := DocumentResponsibleDepartment;
-
-  Result := TDocumentResponsibleInfoDTO.Create;
-
-  try
-
-    Result.Id := DocumentResponsible.Identity;
-    Result.Name := DocumentResponsible.FullName;
-    Result.TelephoneNumber := DocumentResponsible.TelephoneNumber;
-
-    Result.DepartmentInfoDTO :=
-      TDepartmentInfoDTO.CreateFrom(
-        DocumentResponsibleDepartment.Identity,
-        DocumentResponsibleDepartment.Code,
-        DocumentResponsibleDepartment.ShortName
-      );
-      
-  except
-
-    on E: Exception do begin
-
-      FreeAndNil(Result);
-
-      Raise;
-      
-    end;
-
-  end;
+  Result :=
+    FDocumentResponsibleInfoDTOMapper
+      .MapDocumentResponsibleInfoDTOById(DocumentResponsibleId);
 
 end;
 

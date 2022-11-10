@@ -304,7 +304,6 @@ begin
 
 end;
 
-
 procedure TDocumentResponsiblePostgresRepository.UpdateDocumentResponsible(
   Responsible: TEmployee);
 begin

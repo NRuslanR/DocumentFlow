@@ -319,7 +319,7 @@ begin
     TDocumentDTOMapper.Create(
       RepositoryRegistry.GetEmployeeRepository,
       RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentKindRepository,
-      RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentResponsibleRepository,
+      Registry.GetDocumentResponsibleInfoDTOMapper,
       DocumentNumeratorRegistry,
       TDocumentChargesInfoDTODomainMapper.Create(
         RepositoryRegistry.GetEmployeeRepository,
@@ -356,7 +356,7 @@ begin
         TIncomingDocumentDTOMapper.Create(
           RepositoryRegistry.GetEmployeeRepository,
           RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentKindRepository,
-          RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentResponsibleRepository,
+          Registry.GetDocumentResponsibleInfoDTOMapper,
           TDocumentsDomainRegistries.ServiceRegistry.NumerationServiceRegistry.GetDocumentNumeratorRegistry,
           TDocumentChargesInfoDTODomainMapper.Create(
             RepositoryRegistry.GetEmployeeRepository,
@@ -461,7 +461,9 @@ begin
   );
 
   Registry.RegisterDocumentResponsibleInfoDTOMapper(
-    TDocumentResponsibleInfoDTOMapper.Create
+    TDocumentResponsibleInfoDTOMapper.Create(
+      ConfigurationData.RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentResponsibleRepository
+    )
   );
 
 end;

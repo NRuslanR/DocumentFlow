@@ -627,9 +627,9 @@ begin
 
       Result := True;
       Exit;
-      
+
     end;
-    
+
   end;
 
   Result := False;
