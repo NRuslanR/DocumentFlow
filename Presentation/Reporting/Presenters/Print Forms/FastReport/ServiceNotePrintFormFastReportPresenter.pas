@@ -90,6 +90,7 @@ uses
   AuxDebugFunctionsUnit,
   AuxiliaryStringFunctions,
   PadegImports,
+  StrUtils,
   dxmdaset;
 
 { TServiceNotePrintFormFastReportPresenter }
@@ -252,6 +253,8 @@ begin
       DocumentApprovingListSet.AppendRecord([TitleFieldValue]);
 
       ApprovingListRecordSetHolder.FilterByListTitleField(TitleFieldValue);
+
+      ApprovingListRecordSetHolder.First;
 
       while not ApprovingListRecordSetHolder.Eof do begin
 
