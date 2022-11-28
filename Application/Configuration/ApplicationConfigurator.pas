@@ -199,6 +199,8 @@ var
     BusinessProcessServiceRegistryConfigData: TDocumentBusinessProcessServiceRegistryConfigurationData;
 begin
 
+  LoadWorkingEmployeeData(ConfigurationData);
+  
   PresentationServiceRegistryConfigData.DatabaseConnection :=
     ConfigurationData.DatabaseConnection;
 
@@ -234,8 +236,6 @@ begin
   ConfigureSystemServiceRegistry(ConfigurationData);
   ConfigureReportingServiceRegistry(ConfigurationData);
   ConfigureNotificationRegistry(ConfigurationData);
-  
-  LoadWorkingEmployeeData(ConfigurationData);
 
 end;
 
