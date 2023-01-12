@@ -31,5 +31,4 @@ __recovery
 *.stat
 modules/
 .svn/
-Integration/
 */ModelSupport_*
