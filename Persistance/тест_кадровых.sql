@@ -11,7 +11,7 @@ begin
 	)
 	select array_agg(id) from insert_control_groups_data into cg_ids;
 	
-	insert into doc.personnel_order_control_groups__employees (control_group_id, employee_id) values (cg_ids[2], 1356), (cg_ids[1], 1355), (cg_ids[1]);
+	insert into doc.personnel_order_control_groups__employees (control_group_id, employee_id) values (cg_ids[2], 1356), (cg_ids[1], 1356), (cg_ids[1], 1355), (cg_ids[2], 1355);
 
 	insert into doc.personnel_order_control_groups__sub_kinds(control_group_id, personnel_order_sub_kind_id) values (cg_ids[1], 1), (cg_ids[1], 8), (cg_ids[2], 2), (cg_ids[2], 3);
 
@@ -36,6 +36,6 @@ alter function doc.set_personnel_orders_test_data() owner to sup;
 grant execute on function doc.set_personnel_orders_test_data() to developers;
 revoke all privileges on function doc.set_personnel_orders_test_data() from public;
 
-select doc.set_personnel_orders_test_data()
+select doc.set_personnel_orders_test_data();
 
 alter function doc.set_personnel_orders_test_data() owner to u_59968;

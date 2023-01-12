@@ -130,7 +130,7 @@
 			<Directories Name="UsePackages">False</Directories>
 		</Directories>
 		<Parameters>
-			<Parameters Name="RunParams">--host srv-pg2 --port 5432 --database ump_nightly --user doc_performer3 --password 123456</Parameters>
+			<Parameters Name="RunParams">--host srv-pg2 --port 5432 --database ump_nightly --user u_59968 --password 123456</Parameters>
 			<Parameters Name="HostApplication"></Parameters>
 			<Parameters Name="Launcher"></Parameters>
 			<Parameters Name="UseLauncher">False</Parameters>

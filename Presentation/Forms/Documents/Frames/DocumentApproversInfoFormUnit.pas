@@ -596,7 +596,8 @@ begin
   try
 
     DocumentApprovingSetHolder.ForEach(
-      CreateDocumentApprovingsViewModelFromAllRecordsTraverseHandler, Result
+      CreateDocumentApprovingsViewModelFromAllRecordsTraverseHandler,
+      Result
     );
 
     {

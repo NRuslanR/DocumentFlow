@@ -2910,10 +2910,10 @@ begin
 
   DocumentApprovingRejectingService.RejectApprovingDocument(
 
-    FSelectedDocumentCardFrame.
-    ViewModel.
-    DocumentMainInformationFormViewModel.
-    DocumentId,
+    FSelectedDocumentCardFrame
+      .ViewModel
+        .DocumentMainInformationFormViewModel
+          .DocumentId,
     
     WorkingEmployeeId
   );

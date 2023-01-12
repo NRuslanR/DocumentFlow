@@ -452,10 +452,13 @@ begin
   RaiseExceptionIfAlreadyPerformed;
 
   if (Trim(Reason) = '') and (Trim(FNote) = '') then
-    raise TDocumentApprovingException.Create(
-            'Неуказана причина ' +
-            'отклонения согласования'
-          );
+  begin
+
+    Raise TDocumentApprovingException.Create(
+      'Не указана причина ' +
+      'отклонения согласования'
+    );
+  end;
 
   MarkAsPerformedBy(
     ActuallyRejectedEmployee,

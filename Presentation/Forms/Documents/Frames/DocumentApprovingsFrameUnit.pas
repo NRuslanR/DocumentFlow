@@ -550,9 +550,9 @@ var PreviousSelectedApprovingCycleViewModel:
       TDocumentApprovingCycleViewModel;
  begin
 
-  if not Assigned(FDocumentApprovingCyclesReferenceForm) or
-     not Assigned(FDocumentApproversInfoForm)
-
+  if
+      not Assigned(FDocumentApprovingCyclesReferenceForm) or
+      not Assigned(FDocumentApproversInfoForm)
   then begin
 
     Result := nil;

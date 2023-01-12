@@ -3089,13 +3089,14 @@ begin
 
   AccessibleDocumentApprovings :=
     DocumentApprovingsFrame.GetAccessibleDocumentApprovingsOfNewCycle;
-    
+
   if
-  not Assigned(AccessibleDocumentApprovings)
-  or (AccessibleDocumentApprovings.Count = 0)
+    not Assigned(AccessibleDocumentApprovings)
+    or (AccessibleDocumentApprovings.Count = 0)
   then  begin
 
-    RaiseOnDocumentApprovingRejectingRequestedEventHandler;
+    ShowWarningMessage(Self.Handle, 'Не найдены доступные согласования', 'Сообщение');
+    
     Exit;
     
   end;

@@ -385,7 +385,10 @@ uses
   BasedOnDBApplicationVersionInfoService in 'Notifications\VersionInfo\BasedOnDBApplicationVersionInfoService.pas',
   VersionInfoDTOs in 'Notifications\VersionInfo\Dto\VersionInfoDTOs.pas',
   ApplicationVersionInfoService in 'Notifications\VersionInfo\Interfaces\ApplicationVersionInfoService.pas',
-  NotificationRegistry in 'Notifications\NotificationRegistry.pas';
+  NotificationRegistry in 'Notifications\NotificationRegistry.pas',
+  AbstractDocumentFlowItemStatistics in 'Statistics\Integration\Interfaces\AbstractDocumentFlowItemStatistics.pas',
+  AbstractDocumentFlowItemStatisticsService in 'Statistics\Integration\Interfaces\AbstractDocumentFlowItemStatisticsService.pas',
+  BasedOnDBDocumentFlowItemStatisticsService in 'Statistics\Integration\Based-On DB\BasedOnDBDocumentFlowItemStatisticsService.pas';
 
 {$R *.res}
 

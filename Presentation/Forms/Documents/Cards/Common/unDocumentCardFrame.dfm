@@ -122,6 +122,10 @@ inherited DocumentCardFrame: TDocumentCardFrame
           Caption = #1057#1074#1103#1079#1072#1085#1085#1099#1077' '#1076#1086#1082#1091#1084#1077#1085#1090#1099' '#1080' '#1092#1072#1081#1083#1099
           ImageIndex = 2
           OnShow = DocumentRelationsAndFilesPageShow
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object RelatedDocumentsAndFilesVerticalSplitter: TSplitter
             Left = 401
             Top = 0
@@ -145,7 +149,7 @@ inherited DocumentCardFrame: TDocumentCardFrame
             object DocumentPreviewLabel: TLabel
               Left = 0
               Top = 0
-              Width = 310
+              Width = 168
               Height = 13
               Align = alTop
               Alignment = taCenter
@@ -156,7 +160,6 @@ inherited DocumentCardFrame: TDocumentCardFrame
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
               ParentFont = False
-              ExplicitWidth = 168
             end
             object DocumentFilesViewFormPanel: TPanel
               Left = 0
@@ -204,7 +207,7 @@ inherited DocumentCardFrame: TDocumentCardFrame
               object DocumentRelationsLabel: TLabel
                 Left = 0
                 Top = 0
-                Width = 401
+                Width = 140
                 Height = 13
                 Align = alTop
                 Alignment = taCenter
@@ -215,7 +218,6 @@ inherited DocumentCardFrame: TDocumentCardFrame
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 140
               end
               object DocumentRelationsFormArea: TPanel
                 Left = 0
@@ -244,7 +246,7 @@ inherited DocumentCardFrame: TDocumentCardFrame
               object DocumentFilesLabel: TLabel
                 Left = 0
                 Top = 0
-                Width = 401
+                Width = 148
                 Height = 13
                 Align = alTop
                 Alignment = taCenter
@@ -255,7 +257,6 @@ inherited DocumentCardFrame: TDocumentCardFrame
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 148
               end
               object DocumentFilesFormArea: TPanel
                 Left = 0
