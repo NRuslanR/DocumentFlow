@@ -1,6 +1,11 @@
 program Persistance;
 
 uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   Forms,
   BasedOnRepositoryApprovingCycleResultFinder in 'Domain\Services\Documents\Approving\BasedOnRepositoryApprovingCycleResultFinder.pas',
   BasedOnRepositoryDocumentChargeSheetFinder in 'Domain\Services\Documents\Charge Sheets\BasedOnRepositoryDocumentChargeSheetFinder.pas',

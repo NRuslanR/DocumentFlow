@@ -1,0 +1,5 @@
+alter FUNCTION doc.is_employee_workspace_includes_other_employee(workspace_employee_id bigint, checkable_employee_id bigint) rename to 
+is_employee_workspace_includes_other_employee_old2;
+
+alter FUNCTION doc.is_employee_workspace_includes_other_employee_old(workspace_employee_id bigint, checkable_employee_id bigint) rename to 
+is_employee_workspace_includes_other_employee;
