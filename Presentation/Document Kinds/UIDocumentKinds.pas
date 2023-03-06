@@ -30,6 +30,10 @@ type
   
   end;
 
+  TUIResourceRequestsDocumentKind = class (TUIDocumentKind)
+  
+  end;
+
   TUINativeDocumentKind = class (TUIDocumentKind)
   
   end;

@@ -2070,6 +2070,8 @@ procedure TDocumentCardListFrame.CustomizeDocumentCardFrame(
 );
 begin
 
+  AssignEventHandlersToDocumentCardFrame(DocumentCardFrame);
+
   DocumentCardFrame.WorkingEmployeeId := WorkingEmployeeId;
   DocumentCardFrame.Font := Font;
   

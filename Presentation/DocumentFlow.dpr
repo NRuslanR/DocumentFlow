@@ -235,16 +235,8 @@ uses
   StandardApplicationSettingsResetService in 'Launching\Settings\Services\Standard\StandardApplicationSettingsResetService.pas',
   DocumentFlowBaseReferenceFormUnit in 'Forms\Common\References\DocumentFlowBaseReferenceFormUnit.pas' {DocumentFlowBaseReferenceForm},
   unVersionInfosForm in 'Forms\Common\Primary Screens\unVersionInfosForm.pas' {VersionInfosForm},
-  unApplicationDataModule in 'Launching\Configuration\unApplicationDataModule.pas' {DocumentFlowAppDataModule: TDataModule},
-  DBDataTableFormUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\DBDataTableFormUnit.pas' {DBDataTableForm},
-  RegExprValidateEditUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\RegExprValidateEditUnit.pas',
-  RegExprValidateMemoUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\RegExprValidateMemoUnit.pas',
-  RegExprValidateRichEdit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\RegExprValidateRichEdit.pas',
-  SourcedEventHandlers in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Event Handlers\SourcedEventHandlers.pas',
-  EventHandlerChains in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Event Handlers\EventHandlerChains.pas',
-  DomainObjectRepository in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\New\Interfaces\DomainObjectRepository.pas',
-  AbstractDBRepository in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Repositories\New\AbstractDBRepository.pas',
-  PropertiesIniFileUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\PropertiesIniFileUnit.pas';
+  unApplicationDataModule in 'Launching\Configuration\unApplicationDataModule.pas' {zc: TDataModule},
+  DBDataTableFormUnit in 'D:\Common Delphi Libs\u_59968 Delphi Modules\DBDataTableForm\DBDataTableFormUnit.pas' {DBDataTableForm};
 
 {$R *.res}
 

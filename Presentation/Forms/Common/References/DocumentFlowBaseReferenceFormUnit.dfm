@@ -175,4 +175,9 @@ inherited DocumentFlowBaseReferenceForm: TDocumentFlowBaseReferenceForm
       Visible = False
     end
   end
+  inherited Localizer: TcxLocalizer
+    Active = True
+    FileName = '\\server-file\Prog_UMZ\Delphi\OMO\DevExRus100Proc.ini'
+    Locale = 1049
+  end
 end

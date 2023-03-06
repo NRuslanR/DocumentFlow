@@ -103,6 +103,9 @@ begin
 
   else if DocumentKind = TPlantDocumentKind then
     Result := TUIPlantDocumentKind
+
+  else if DocumentKind = TResourceRequestsKind then
+    Result := TUIResourceRequestsDocumentKind
     
   else begin
 

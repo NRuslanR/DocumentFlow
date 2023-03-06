@@ -361,11 +361,9 @@ inherited BaseDocumentsReferenceForm: TBaseDocumentsReferenceForm
     end
   end
   inherited imgLstDisabled: TPngImageList
-    Left = 8
     Top = 352
   end
   inherited imgLstEnabled: TPngImageList
-    Left = 40
     Top = 352
   end
   inherited DataOperationActionList: TActionList

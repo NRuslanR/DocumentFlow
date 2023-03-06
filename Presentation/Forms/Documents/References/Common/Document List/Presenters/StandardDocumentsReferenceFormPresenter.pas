@@ -6,6 +6,7 @@ uses
 
   DocumentsReferenceFormPresenter,
   PlantItemService,
+  ResourceRequestsItemService,
   OperationalDocumentKindInfo,
   Controls,
   SysUtils;
@@ -30,6 +31,11 @@ type
         procedure SetDocumentPanelsVisible(
           DocumentFlowPrimaryScreen: TWinControl;
           const PanelsVisible: Boolean
+        );
+
+        procedure ShowResourceRequestsItemControl(
+          DocumentFlowPrimaryScreen: TWinControl;
+          const ResourceRequestsItemId: Variant
         );
 
       private
@@ -66,7 +72,8 @@ uses
   AuxWindowsFunctionsUnit,
   ApplicationServiceRegistries,
   unDocumentCardListFrame,
-  BaseDocumentsReferenceFormUnit, PresentationServiceRegistry;
+  BaseDocumentsReferenceFormUnit, PresentationServiceRegistry,
+  UnRequest_list;
 
 
 { TStandardDocumentsReferenceFormPresenter }
@@ -118,7 +125,13 @@ begin
     else if DocumentKindInfo.UIDocumentKind = TUIPlantDocumentKind then begin
 
       ShowPlantItemControl(DocumentFlowPrimaryScreen, DocumentKindInfo.WorkingDocumentKindId);
-      
+
+    end
+
+    else if DocumentKindInfo.UIDocumentKind = TUIResourceRequestsDocumentKind then begin
+
+      ShowResourceRequestsItemControl(DocumentFlowPrimaryScreen, DocumentKindInfo.WorkingDocumentKindId);
+
     end;
 
   end;
@@ -149,6 +162,32 @@ begin
   
   InflateControlToDocumentFlowPrimaryScreen(PlantItemControl, DocumentFlowPrimaryScreen);
   
+end;
+
+procedure TStandardDocumentsReferenceFormPresenter.ShowResourceRequestsItemControl(
+  DocumentFlowPrimaryScreen: TWinControl; const ResourceRequestsItemId: Variant);
+var
+    ResourceRequestsItemService: IResourceRequestsItemService;
+    ResourceRequestsItemControl: TControl;
+begin
+
+  TDocumentCardListFrame(DocumentFlowPrimaryScreen).RemoveDocumentAreas;
+
+  ResourceRequestsItemService :=
+    TApplicationServiceRegistries
+      .Current
+        .GetPresentationServiceRegistry
+          .GetResourceRequestsItemService;
+
+
+  ResourceRequestsItemControl :=
+    ResourceRequestsItemService.GetResourceRequestsItemControl(
+      TDocumentCardListFrame(DocumentFlowPrimaryScreen).WorkingEmployeeId,
+      ResourceRequestsItemId
+    );
+
+  InflateControlToDocumentFlowPrimaryScreen(ResourceRequestsItemControl, DocumentFlowPrimaryScreen);
+
 end;
 
 procedure TStandardDocumentsReferenceFormPresenter.ShowSDItemControl(
@@ -213,7 +252,7 @@ begin
 
   with TDocumentCardListFrame(DocumentFlowPrimaryScreen) do begin
 
-    ControlPointers := FindChildControlsByTypes(PanelForDocumentRecordsAndCard, [TSDBaseTableForm, TfrmPodrTree]);
+    ControlPointers := FindChildControlsByTypes(PanelForDocumentRecordsAndCard, [TSDBaseTableForm, TfrmPodrTree, TfrmPortalRequests]);
 
     if not Assigned(ControlPointers) then Exit;
     

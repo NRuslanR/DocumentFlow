@@ -17,17 +17,23 @@ type
   );
 
   TDocumentFlowAppDataModule = class(TDataModule)
-    DBConnection: TZConnection;
 
+    private
 
-  public
+      FDBConnection: TZConnection;
 
-    function EstablishConnectionWithDatabase(
-      var ConnectionResult: TDatabaseConnectionResult
-    ): TZConnection;
-    
-    property Connection: TZConnection
-    read DBConnection write DBConnection;
+      procedure SetDBConnection(const Value: TZConnection);
+
+    public
+
+      constructor Create(AOwner: TComponent); override;
+
+      function EstablishConnectionWithDatabase(
+        var ConnectionResult: TDatabaseConnectionResult
+      ): TZConnection;
+
+      property Connection: TZConnection
+      read FDBConnection write SetDBConnection;
     
   end;
 
@@ -46,6 +52,15 @@ uses
 
 { TApplicationDataModule }
 
+constructor TDocumentFlowAppDataModule.Create(AOwner: TComponent);
+begin
+
+  inherited;
+
+  FDBConnection := TZConnection.Create(Self);
+  
+end;
+
 function TDocumentFlowAppDataModule.EstablishConnectionWithDatabase(
   var ConnectionResult: TDatabaseConnectionResult
 ): TZConnection;
@@ -53,9 +68,9 @@ begin
 
   try
 
-    if GetConnected(DBConnection) then begin
+    if GetConnected(FDBConnection) then begin
 
-      Result := DBConnection;
+      Result := FDBConnection;
       ConnectionResult := SuccessConnection;
 
     end
@@ -77,6 +92,17 @@ begin
     end;
 
   end;
+
+end;
+
+procedure TDocumentFlowAppDataModule.SetDBConnection(const Value: TZConnection);
+begin
+
+  if FDBConnection = Value then Exit;
+  
+  FreeAndNil(FDBConnection);
+
+  FDBConnection := Value;
 
 end;
 

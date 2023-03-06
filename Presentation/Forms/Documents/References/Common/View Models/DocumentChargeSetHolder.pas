@@ -546,7 +546,7 @@ uses
 function TDocumentChargeSetHolder.AreChargeRecordChangesExisting: Boolean;
 begin
 
-  Result := AreRecordChangesExisting;
+  Result := AreChangedRecordsExists;
     
 end;
 
