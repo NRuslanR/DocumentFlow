@@ -25,7 +25,8 @@ uses
   PersonnelOrderPresentationServiceRegistry,
   SDItemsService,
   SysUtils,
-  Classes;
+  Classes,
+  ResourceRequestsItemService;
 
 type
 
@@ -208,6 +209,12 @@ type
 
     public
 
+      procedure RegisterResourceRequestsItemsService(ResourceRequestsItemService: IResourceRequestsItemService);
+
+      function GetResourceRequestsItemService: IResourceRequestsItemService;
+
+    public
+
       procedure RegisterDepartmentSetReadService(
         DepartmentSetReadService: IDepartmentSetReadService
       );
@@ -273,6 +280,10 @@ type
 
   TPlantItemServiceType = class
   
+  end;
+
+  TResourceRequestsItemServiceType = class
+
   end;
 
   TDepartmentSetReadServiceType = class
@@ -437,6 +448,14 @@ begin
     
 end;
 
+function TPresentationServiceRegistry.GetResourceRequestsItemService: IResourceRequestsItemService;
+begin
+  Result :=
+    IResourceRequestsItemService(
+      GetApplicationService(TResourceRequestsItemServiceType)
+    );
+end;
+
 function TPresentationServiceRegistry.GetSDItemsService: ISDItemsService;
 begin
 
@@ -594,6 +613,15 @@ begin
     PlantItemService
   );
   
+end;
+
+procedure TPresentationServiceRegistry.RegisterResourceRequestsItemsService(
+  ResourceRequestsItemService: IResourceRequestsItemService);
+begin
+  RegisterApplicationService(
+    TResourceRequestsItemServiceType,
+    ResourceRequestsItemService
+  );
 end;
 
 procedure TPresentationServiceRegistry.RegisterSDItemsService(

@@ -39,7 +39,7 @@ implementation
 uses
 
   ZDataset,
-  AuxZeosFunctions, ZAbstractRODataset;
+  AuxZeosFunctions, ZAbstractRODataset, WorkingEmployeeUnit;
   
 { TZeosPostgresWorkingEmployee }
 
@@ -52,7 +52,8 @@ begin
       'SELECT ' +
       'id as id,' +
       'name, surname, patronymic,' +
-      'personnel_number, leader_id ' +
+      'personnel_number, leader_id, ' +
+      'spr_person_id ' +
       'FROM doc.employees ' +
       'WHERE login=:plogin AND not was_dismissed and not is_foreign',
       ['plogin'],
@@ -86,6 +87,7 @@ begin
     FPatronymic := LoadedWorkingEmployeeDataSet.FieldByName('patronymic').AsString;
     FPersonnelNumber := LoadedWorkingEmployeeDataSet.FieldByName('personnel_number').AsString;
     FLeaderId := LoadedWorkingEmployeeDataSet.FieldByName('leader_id').AsVariant;
+    FGlobalUserId := LoadedWorkingEmployeeDataSet.FieldByName('spr_person_id').AsVariant
 
   finally
 

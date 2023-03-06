@@ -200,7 +200,9 @@ uses
   DTODomainMapperRegistry,
   ApplicationServiceRegistries,
   Document,
-  Employee;
+  Employee,
+  BasedOnZeosResourceRequestsAccessService,
+  BasedOnZeosVclResourceRequestsItemService;
 
 { TPresentationServiceRegistryConfigurator }
 
@@ -885,12 +887,25 @@ begin
       )
     )
   );
+
+  //----------------------------------------------------------------------------
+  PresentationServiceRegistry.RegisterResourceRequestsItemsService(
+    TBasedOnZeosVclResourceRequestItemService.Create(
+      TZConnection(ConfigurationData.DatabaseConnection),
+      TBasedOnZeosResourceRequestsAccessService.Create(
+        QueryExecutor
+      )
+    )
+  );
+
+
   //----------------------------------------------------------------------------
   PresentationServiceRegistry.RegisterGlobalDocumentKindsReadService(
     TStandardGlobalDocumentKindsReadService.Create(
       NativeDocumentKindsReadService,
       SDItemsService,
-      PresentationServiceRegistry.GetPlantItemService
+      PresentationServiceRegistry.GetPlantItemService,
+      PresentationServiceRegistry.GetResourceRequestsItemService
     )
   );
   //----------------------------------------------------------------------------

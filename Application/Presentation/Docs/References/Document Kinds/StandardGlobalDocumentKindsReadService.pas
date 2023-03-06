@@ -14,6 +14,7 @@ uses
   AbstractApplicationService,
   SDItemsService,
   PlantItemService,
+  ResourceRequestsItemService,
   Hashes,
   SDItem,
   Classes;
@@ -28,6 +29,7 @@ type
         FNativeDocumentKindsReadService: INativeDocumentKindsReadService;
         FSDItemsService: ISDItemsService;
         FPlantItemService: IPlantItemService;
+        FResourceRequestsItemService: IResourceRequestsItemService;
         
       private
 
@@ -57,6 +59,13 @@ type
           var CurrentGlobalId: Integer
 
         ): TGlobalDocumentKindDtos; overload;
+
+        function CreateGlobalDocumentKindDtosFrom(
+
+          ResourceRequestsItems: TResourceRequestsItems;
+          var CurrentGlobalId: Integer
+
+        ): TGlobalDocumentKindDtos; overload;
         
       public
 
@@ -64,7 +73,8 @@ type
           { refactor: inject global id generator }
           NativeDocumentKindsReadService: INativeDocumentKindsReadService;
           SDItemsService: ISDItemsService = nil;
-          PlantItemService: IPlantItemService = nil
+          PlantItemService: IPlantItemService = nil;
+          ResourceRequestsItemService: IResourceRequestsItemService = nil
         );
 
         function GetGlobalDocumentKindDtos(const ClientId: Variant): TGlobalDocumentKindDtos;
@@ -83,7 +93,8 @@ uses
 constructor TStandardGlobalDocumentKindsReadService.Create(
   NativeDocumentKindsReadService: INativeDocumentKindsReadService;
   SDItemsService: ISDItemsService;
-  PlantItemService: IPlantItemService
+  PlantItemService: IPlantItemService;
+  ResourceRequestsItemService: IResourceRequestsItemService
 );
 begin
 
@@ -92,6 +103,7 @@ begin
   FNativeDocumentKindsReadService := NativeDocumentKindsReadService;
   FSDItemsService := SDItemsService;
   FPlantItemService := PlantItemService;
+  FResourceRequestsItemService := ResourceRequestsItemService;
   
 end;
 
@@ -103,6 +115,7 @@ var
     NativeDocumentKindDtos: TNativeDocumentKindDtos;
     SDItems: TSDItems;
     PlantItems: TPlantItems;
+    ResourceRequestsItems: TResourceRequestsItems;
 
     CurrentGlobalId: Integer;
 
@@ -146,6 +159,12 @@ begin
       
     end;
 
+    if Assigned(FResourceRequestsItemService) then begin
+
+      ResourceRequestsItems := FResourceRequestsItemService.GetResourceRequestsItems(ClientId);
+
+    end;
+
 
     Result := TGlobalDocumentKindDtos.Create;
 
@@ -168,11 +187,14 @@ begin
           CreateGlobalDocumentKindDtosFrom(SDItems, CurrentGlobalId);
 
         Result.Add(GlobalDocumentKindDtosFromSDItems);
-        
+
       end;
 
       if Assigned(PlantItems) then
         Result.Add(CreateGlobalDocumentKindDtosFrom(PlantItems, CurrentGlobalId));
+
+      if Assigned(ResourceRequestsItems) then
+        Result.Add(CreateGlobalDocumentKindDtosFrom(ResourceRequestsItems, CurrentGlobalId));
 
     except
 
@@ -443,6 +465,46 @@ begin
 
   end;
 
+end;
+
+function TStandardGlobalDocumentKindsReadService.CreateGlobalDocumentKindDtosFrom(
+  ResourceRequestsItems: TResourceRequestsItems;
+  var CurrentGlobalId: Integer): TGlobalDocumentKindDtos;
+var
+    ResourceRequestsItem: TResourceRequestsItem;
+begin
+
+  Result := TGlobalDocumentKindDtos.Create;
+
+  try
+
+    for ResourceRequestsItem in ResourceRequestsItems do begin
+
+      Result.Add(TGlobalDocumentKindDto.Create);
+
+      with TGlobalDocumentKindDto(Result.Last) do begin
+
+        WorkingId := ResourceRequestsItem.Id;
+        TopLevelWorkingDocumentKindId := Null;
+        TopLevelDocumentKindId := Null;
+        Name := ResourceRequestsItem.Name;
+        ServiceType := TResourceRequestsKind;
+
+        Inc(CurrentGlobalId);
+        
+        Id := CurrentGlobalId;
+
+      end;
+
+    end;
+
+  except
+
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
 end;
 
 end.

@@ -253,39 +253,50 @@ begin
 end;
 
 function TEmployeeDocumentWorkStatisticsPostgresService.
-  CreateEmployeeApproveableServiceNotesInfoFetchingQuery(
+  CreateEmployeeOutcommingServiceNotesInfoFetchingQuery(
     const EmployeeId: Variant
   ): String;
 begin
 
-  { refactor: избавиться от 4 в выражении 4 as type_id }
-
   Result :=
     'select' + #13#10 +
-    '4 as type_id,' + #13#10 +
-    'c.stage_number ' + #13#10 +
-    'from doc.service_notes a' + #13#10 +
-    'join doc.document_types b on a.type_id = b.id' + #13#10 + 
-    'join doc.document_type_work_cycle_stages c on c.id = a.current_work_cycle_stage_id' + #13#10 +
-    'join doc.employees cur_user on cur_user.id = :employee_id' + #13#10 +
-    'join doc.employees_roles cur_user_role on cur_user_role.employee_id = :employee_id' + #13#10 + 
-    'where' + #13#10 + 
-    'exists (' + #13#10 +
-    'select 1' + #13#10 + 
-    'from doc.service_note_approvings d' + #13#10 +
-    'where' + #13#10 + 
-    'document_id = a.id' + #13#10 + 
-    'and' + #13#10 + 
-    '(approver_id = :employee_id' + #13#10 + 
-    'or' + #13#10 + 
-    'case' + #13#10 + 
-        'when cur_user_role.role_id in (2,3,4,6) and ' + #13#10 + 
-       '(select role_id from doc.employees_roles where employee_id = approver_id) in (2,3,4,6)' + #13#10 + 
-        'then doc.is_employee_workspace_includes_other_employee(:employee_id, approver_id)' + #13#10 +
-        'else doc.is_employee_acting_for_other_or_vice_versa(:employee_id, approver_id)' + #13#10 +
-    'end)' + #13#10 + 
-    'and' + #13#10 + 
-    '(c.stage_number = 2 and d.performing_result_id = 3))';
+      'a.id as id,' + #13#10 + 
+      'a.type_id,' + #13#10 + 
+      'c.service_stage_name,' + #13#10 +
+      'c.stage_number,' + #13#10 +
+      'employee_author.ok as is_employee_author,' + #13#10 + 
+      'employee_signer.ok as is_employee_signer' + #13#10 + 
+      '' + #13#10 + 
+      'from doc.service_notes a' + #13#10 + 
+      'join doc.employees e on e.id = a.author_id' + #13#10 + 
+      'join doc.document_types b on a.type_id = b.id' + #13#10 + 
+      'join doc.document_type_work_cycle_stages c on c.id = a.current_work_cycle_stage_id' + #13#10 + 
+      'join doc.employees_roles er on er.employee_id = :employee_id' + #13#10 + 
+      'join doc.employees e1 on e1.id = :employee_id' + #13#10 + 
+      'left join doc.service_note_signings s on s.document_id = a.id' + #13#10 + 
+      'left join doc.employees signer on signer.id = s.signer_id' + #13#10 + 
+      'join lateral (' + #13#10 + 
+        'select' + #13#10 + 
+          'a.author_id = :employee_id' + #13#10 + 
+          'or doc.is_employee_subleader_or_replacing_for_other(:employee_id, a.author_id)' + #13#10 + 
+      ') employee_author(ok) on true' + #13#10 + 
+      'join lateral (' + #13#10 + 
+        'select' + #13#10 + 
+          's.signer_id = :employee_id' + #13#10 + 
+          'or doc.is_employee_acting_for_other_or_vice_versa(:employee_id, s.signer_id)' + #13#10 + 
+      ') employee_signer(ok) on true' + #13#10 + 
+      'where' + #13#10 + 
+      '(a.author_id is not null) and' + #13#10 + 
+      '(' + #13#10 + 
+        '(e.head_kindred_department_id = e1.head_kindred_department_id and employee_author.ok)' + #13#10 + 
+        'or' + #13#10 + 
+        '(' + #13#10 + 
+        'a.is_sent_to_signing' + #13#10 + 
+        'and' + #13#10 + 
+        'e1.head_kindred_department_id = signer.head_kindred_department_id' + #13#10 + 
+        'and employee_signer.ok' + #13#10 + 
+        ')' + #13#10 + 
+      ')';
 
   Result := ReplaceStr(Result, ':employee_id', EmployeeId);
 
@@ -298,105 +309,110 @@ function TEmployeeDocumentWorkStatisticsPostgresService.
 begin
 
   Result :=
-    'with incoming_service_notes_charges as (' + #13#10 + 
-    'select' + #13#10 + 
-    '' + #13#10 +
-    'head_charge_sheet.id,' + #13#10 +
-    'b.document_id as document_id, ' +
-    'b.performing_date, ' +
-    'b.incoming_document_type_id as type_id,' + #13#10 +
-    'row_number() over (' + #13#10 +
-      'partition by head_charge_sheet.id  ' + #13#10 +
-      'order by dtwcs.stage_number,' + #13#10 + 
+    'with incoming_service_notes_charges as (' + #13#10 +
+      'select' + #13#10 + 
       '' + #13#10 + 
-      'case' + #13#10 + 
-          'when b.performer_id = :employee_id ' + #13#10 + 
-          'then 0' + #13#10 + 
-          'else 1' + #13#10 + 
-      'end  ' + #13#10 + 
-    ') as charge_number,' + #13#10 +
-    'dtwcs.stage_number,' + #13#10 +
-    'coalesce(subordinate_charge_count,0) as subordinate_charge_count' + #13#10 +
-    'from doc.service_note_receivers b ' + #13#10 +
-    'join doc.get_head_charge_sheet_for(b.id) as head_charge_sheet(id) on true ' +
-    'join doc.document_type_work_cycle_stages dtwcs on dtwcs.document_type_id = b.incoming_document_type_id and dtwcs.service_stage_name = case when b.performing_date is not null then ''Performed'' else ''IsPerforming'' end' + #13#10 +
-    'where b.issuer_id is not null ' + #13#10 + 
-    'and' + #13#10 + 
-    '(' + #13#10 + 
-    'b.performer_id = :employee_id ' +
-    'or doc.is_employee_acting_for_other_or_vice_versa(:employee_id , b.performer_id)' + #13#10 +
-    ')' + #13#10 +
-    ')  ' + #13#10 + 
-    'select' + #13#10 +
-    'isnc.id,' + #13#10 +
-    'isnc.type_id, ' +
-    '(isnc.subordinate_charge_count > 0 ) as subordinate_charges_exists, ' + #13#10 +
-    'isnc.stage_number ' +
-    'from incoming_service_notes_charges isnc' + #13#10 +
-    'join doc.service_note_receivers snr on snr.id=isnc.id' + #13#10 +
-    'where charge_number = 1 and snr.input_number is not null and snr.input_number_date is not null';
+      'b.head_charge_sheet_id as id,' + #13#10 + 
+      'b.incoming_document_type_id as type_id,' + #13#10 + 
+      '' + #13#10 + 
+      'row_number() over (' + #13#10 + 
+        'partition by b.head_charge_sheet_id' + #13#10 + 
+        '' + #13#10 + 
+        'order by dtwcs.stage_number,' + #13#10 + 
+        '' + #13#10 + 
+        'case' + #13#10 + 
+            'when b.performer_id = :employee_id' + #13#10 + 
+            'then 0' + #13#10 + 
+            'else' + #13#10 + 
+                'case' + #13#10 + 
+                    'when replacing.ok' + #13#10 + 
+                    'then 1' + #13#10 + 
+                    'else 2' + #13#10 + 
+                'end' + #13#10 + 
+        'end' + #13#10 + 
+      ') as charge_number,' + #13#10 + 
+      '' + #13#10 + 
+      'replacing.ok as is_performer_replacing_ok,' + #13#10 + 
+      '' + #13#10 + 
+      'total_charge_count,' + #13#10 + 
+      'performed_charge_count,' + #13#10 + 
+      'coalesce(subordinate_charge_count, 0) as subordinate_charge_count,' + #13#10 + 
+      'performing_date' + #13#10 + 
+      '' + #13#10 + 
+      'from doc.service_note_receivers b' + #13#10 + 
+      'join doc.document_types c on c.id = b.incoming_document_type_id' + #13#10 + 
+      'join doc.employees cur_emp on cur_emp.id = :employee_id' + #13#10 + 
+      'join doc.document_type_work_cycle_stages dtwcs on dtwcs.document_type_id = c.id and dtwcs.service_stage_name = case when b.performing_date is not null then ''Performed'' else ''IsPerforming'' end' + #13#10 +
+      'join doc.employees_roles cur_emp_role on cur_emp_role.employee_id = :employee_id' + #13#10 + 
+      'join lateral (select :employee_id = b.performer_id or doc.is_employee_acting_for_other_or_vice_versa(:employee_id, b.performer_id)) replacing(ok) on true' + #13#10 + 
+      'where b.issuer_id is not null' + #13#10 + 
+      'and replacing.ok' + #13#10 + 
+    ')' + #13#10 + 
+    'select' + #13#10 + 
+    '' + #13#10 + 
+      'isnc.id,' + #13#10 + 
+      'isnc.type_id,' + #13#10 +
+      'd.stage_number,' + #13#10 +
+      'd.service_stage_name,' + #13#10 + 
+      'is_performer_replacing_ok,' + #13#10 + 
+      'isnc.subordinate_charge_count > 0 as subordinate_charges_exists' + #13#10 + 
+      '' + #13#10 + 
+      'from incoming_service_notes_charges isnc' + #13#10 + 
+      'join doc.service_note_receivers in_doc on in_doc.id = isnc.id' + #13#10 + 
+      '' + #13#10 + 
+      'join doc.document_type_work_cycle_stages d on d.document_type_id = isnc.type_id' + #13#10 + 
+      'and' + #13#10 + 
+      'd.service_stage_name =' + #13#10 + 
+      'case when isnc.total_charge_count > 0' + #13#10 + 
+           'then' + #13#10 + 
+        'case when isnc.total_charge_count = isnc.performed_charge_count' + #13#10 + 
+        'then ''Performed'' else ''IsPerforming'' end' + #13#10 + 
+           'else' + #13#10 + 
+           'case' + #13#10 + 
+             'when isnc.performing_date is not null' + #13#10 + 
+             'then ''Performed'' else ''IsPerforming''' + #13#10 + 
+         'end' + #13#10 + 
+      'end' + #13#10 + 
+     '' + #13#10 + 
+      'where charge_number = 1 and in_doc.input_number_date is not null and in_doc.input_number is not null';
 
   Result := ReplaceStr(Result, ':employee_id', EmployeeId);
 
 end;
 
 function TEmployeeDocumentWorkStatisticsPostgresService.
-  CreateEmployeeOutcommingServiceNotesInfoFetchingQuery(
+  CreateEmployeeApproveableServiceNotesInfoFetchingQuery(
     const EmployeeId: Variant
   ): String;
 begin
 
   Result :=
-    'select' + #13#10 +
-    'a.id as id,' + #13#10 +
-    'a.type_id,' + #13#10 + 
-    'c.stage_number ' + #13#10 +
-    'from doc.service_notes a' + #13#10 +
-    'join doc.employees e on e.id = a.author_id join doc.document_types b on a.type_id = b.id' + #13#10 +
-    'join doc.document_type_work_cycle_stages c on c.id = a.current_work_cycle_stage_id' + #13#10 +
-    'join doc.employees_roles er on er.employee_id = :employee_id' + #13#10 +
-    'join doc.employees e1 on e1.id = :employee_id' + #13#10 +
-    'left join doc.service_note_signings s on s.document_id = a.id' + #13#10 +
-    'where' + #13#10 + 
-    '(a.author_id is not null' + #13#10 +
-    'and (c.stage_number not in (1) or not a.is_self_registered)' + #13#10 +
-    'and a.type_id = 2 ' + #13#10 +
-    'and ' +
-    'case when c.stage_number <> 5 then e.head_kindred_department_id <>' + #13#10 +
-    'any(' + #13#10 +
-      'select emp.head_kindred_department_id' + #13#10 +
-      'from doc.service_note_receivers snr' + #13#10 +
-      'join doc.employees emp on snr.performer_id = emp.id' + #13#10 +
-      'where document_id = a.id' + #13#10 +
-      'and snr.top_level_charge_sheet_id is null' + #13#10 +
-    ')' + #13#10 +
-    'else true end ' +
-    ') and ' +
-    '(e.head_kindred_department_id = e1.head_kindred_department_id) and' + #13#10 +
-    '(' + #13#10 + 
-    '(a.author_id = :employee_id)' + #13#10 +
-    'or' + #13#10 + 
-    '(' + #13#10 +
-    'case' + #13#10 + 
-        'when (select role_id from doc.employees_roles where employee_id = a.author_id) in (2,3,4,6)' + #13#10 + 
-       'and er.role_id in (2,3,4,6) and e.department_id = e1.department_id' + #13#10 + 
-        'then doc.is_employee_workspace_includes_other_employee(:employee_id, a.author_id)' + #13#10 +
-        'else false' + #13#10 +
-    'end' + #13#10 + 
-    ')' + #13#10 + 
-    'or' + #13#10 + 
-    '(' + #13#10 + 
-    '(s.signer_id = :employee_id or doc.is_employee_workspace_includes_other_employee(:employee_id, s.signer_id))' + #13#10 +
-    'and' + #13#10 + 
-    'a.is_sent_to_signing and' + #13#10 + 
-    'case' + #13#10 + 
-        'when er.role_id in (2,3)' + #13#10 + 
-        'then c.stage_number not in (1,6)' + #13#10 +
-        'else c.stage_number not in (1)' + #13#10 +
-    'end' + #13#10 + 
-    ')' + #13#10 + 
-    'or doc.is_employee_replacing_for_other(:employee_id, a.author_id)' + #13#10 +
-    ')';
+    'select ' + #13#10 +
+      'distinct' + #13#10 + 
+      'a.id as id,' + #13#10 + 
+      '(select id from doc.document_types where service_name = ''approveable_service_note'') as type_id,' + #13#10 + 
+      'c.service_stage_name,' + #13#10 +
+      'c.stage_number,' + #13#10 +
+      'employee_approver.ok as is_employee_approver' + #13#10 + 
+      '' + #13#10 + 
+      'from doc.service_notes a' + #13#10 + 
+      'join doc.employees e on e.id = a.author_id' + #13#10 + 
+      'left join doc.employees resp on resp.spr_person_id = a.performer_id' + #13#10 + 
+      'left join doc.departments author_head_dep on author_head_dep.id = resp.head_kindred_department_id' + #13#10 + 
+      'join doc.document_types b on a.type_id = b.id' + #13#10 + 
+      'join doc.document_type_work_cycle_stages c on c.id = a.current_work_cycle_stage_id' + #13#10 + 
+      'join doc.employees cur_user on cur_user.id = :employee_id' + #13#10 + 
+      'join doc.employees_roles cur_user_role on cur_user_role.employee_id = :employee_id' + #13#10 + 
+      'join doc.service_note_approvings sna on sna.document_id = a.id' + #13#10 + 
+      'join doc.document_approving_results dar on dar.id = sna.performing_result_id' + #13#10 + 
+      'join lateral (' + #13#10 + 
+        'select' + #13#10 + 
+          'sna.approver_id = :employee_id' + #13#10 + 
+          'or doc.is_employee_subleader_or_replacing_for_other(:employee_id , sna.approver_id)' + #13#10 + 
+      ') employee_approver(ok) on true' + #13#10 + 
+      'where' + #13#10 + 
+      'employee_approver.ok' + #13#10 + 
+      'and c.stage_number = 2 and dar.id = 3';
 
   Result := ReplaceStr(Result, ':employee_id', EmployeeId);
 
@@ -568,80 +584,104 @@ begin
 end;
 
 function TEmployeeDocumentWorkStatisticsPostgresService.
-  GetEmployeeApproveableDocumentKindsWorkStatisticsQueryParts(
-  
+  GetEmployeeOutcommingDocumentKindsWorkStatisticsQueryParts(
     Employee: TEmployee;
-    ApproveableDocumentKinds: array of TApproveableDocumentKindClass
-
+    OutcommingDocumentKinds: array of TOutcomingDocumentKindClass
   ): TEmployeeDocumentKindsWorkStatisticsQueryParts;
-
 var
-    ApproveableDocumentKind: TApproveableDocumentKindClass;
-    EmployeeApproveableDocumentsInfoFetchingQuery: String;
-    FetchingDocumentKindsInfoLocalViewDefs: String;
+    EmployeeDocumentKindWorkStatisticsFetching:
+      TEmployeeDocumentKindWorkStatisticsFetching;
+
+    EmployeeDocumentKindWorkStatisticsFetchingQueryData:
+      TEmployeeDocumentKindWorkStatisticsFetchingQueryData;
+
+    EmployeeDocumentInfoFetchingQuery: String;
+
+    FetchingDocumentKindInfoLocalViewDefs: String;
     FetchingDocumentKindInfoLocalViewName: String;
     FetchingDocumentKindStatisticsQueries: String;
+
+    OutcommingDocumentKind: TDocumentKindClass;
 begin
 
-  for ApproveableDocumentKind in ApproveableDocumentKinds do begin
+  for OutcommingDocumentKind in OutcommingDocumentKinds do begin
 
-    if ApproveableDocumentKind = TApproveableServiceNoteKind then begin
+      if OutcommingDocumentKind = TOutcomingServiceNoteKind then begin
 
-      EmployeeApproveableDocumentsInfoFetchingQuery :=
-        CreateEmployeeApproveableServiceNotesInfoFetchingQuery(
-          Employee.Identity
+        EmployeeDocumentInfoFetchingQuery :=
+          CreateEmployeeOutcommingServiceNotesInfoFetchingQuery(
+            Employee.Identity
+          );
+
+      end
+
+      else begin
+
+        EmployeeDocumentInfoFetchingQuery :=
+          CreeateEmployeeOutcommingDocumentInfoFetchingQuery(
+            Employee.Identity
+          );
+
+      end;
+      
+      EmployeeDocumentKindWorkStatisticsFetching :=
+
+        MapEmployeeDocumentKindWorkStatisticsFetchingFrom(
+          Employee.Role, OutcommingDocumentKind
         );
 
-    end
-
-    else begin
-
-      EmployeeApproveableDocumentsInfoFetchingQuery :=
-        CreateEmployeeApproveableDocumentsInfoFetchingQuery(
-          Employee.Identity
+      EmployeeDocumentKindWorkStatisticsFetchingQueryData :=
+        MapEmployeeDocumentKindWorkStatisticsFetchingToSQLStringList(
+          EmployeeDocumentKindWorkStatisticsFetching
         );
 
-    end;
+      if Result.FetchingDocumentKindsInfoLocalViewDefs <> '' then
+        Result.FetchingDocumentKindsInfoLocalViewDefs :=
+          Result.FetchingDocumentKindsInfoLocalViewDefs + ',';
 
-    FetchingDocumentKindInfoLocalViewName :=
-      'get_approveable_' +
-      IntToStr(Integer(ApproveableDocumentKind)) +
-      '_info';
+      FetchingDocumentKindInfoLocalViewName :=
+        'get_' + OutcommingDocumentKind.ClassName + '_info';
+        
+      Result.FetchingDocumentKindsInfoLocalViewDefs :=
+        Result.FetchingDocumentKindsInfoLocalViewDefs +
+        FetchingDocumentKindInfoLocalViewName + ' as '
+        + '(' + EmployeeDocumentInfoFetchingQuery + ')';
 
-    if FetchingDocumentKindsInfoLocalViewDefs <> '' then begin
-    
-      FetchingDocumentKindsInfoLocalViewDefs :=
-        FetchingDocumentKindsInfoLocalViewDefs + ','
+      if Result.FetchingDocumentKindUnionStatisticsQueries <> '' then
+        Result.FetchingDocumentKindUnionStatisticsQueries :=
+          Result.FetchingDocumentKindUnionStatisticsQueries + ' union ';
 
-    end;
+      Result.FetchingDocumentKindUnionStatisticsQueries :=
+        Result.FetchingDocumentKindUnionStatisticsQueries +
+        
+        'select distinct ' + #13#10 +
+        'type_id,' + #13#10 +
+        'count(case when stage_number in (' +
 
-    FetchingDocumentKindsInfoLocalViewDefs :=
-      FetchingDocumentKindsInfoLocalViewDefs +
-      FetchingDocumentKindInfoLocalViewName + ' as (' +
-      EmployeeApproveableDocumentsInfoFetchingQuery + ')';
+        EmployeeDocumentKindWorkStatisticsFetchingQueryData.
+          OwnActionDocumentStageNumbersStringList +
 
-    if FetchingDocumentKindStatisticsQueries <> '' then begin
+        ') and ((is_employee_signer and 5 in (' +
+        EmployeeDocumentKindWorkStatisticsFetchingQueryData.
+          OwnActionDocumentStageNumbersStringList
+        + ')) or (is_employee_author and array[6,1] <@ array[' +
+           EmployeeDocumentKindWorkStatisticsFetchingQueryData.
+          OwnActionDocumentStageNumbersStringList +
+        '])) then 1 else null end) over () as own_action_count,' + #13#10 +
+        'count(case when stage_number in (' +
 
-      FetchingDocumentKindStatisticsQueries :=
-        FetchingDocumentKindStatisticsQueries + ' union ';
+        EmployeeDocumentKindWorkStatisticsFetchingQueryData.
+          InWorkingDocumentStageNumbersStringList +
 
-    end;
+        ') and (is_employee_signer or is_employee_author) ' +
+        'then 1 else null end) over () as in_working_count' + #13#10 +
+        'from' + #13#10 +
+        FetchingDocumentKindInfoLocalViewName + #13#10;
 
-    FetchingDocumentKindStatisticsQueries :=
-      FetchingDocumentKindStatisticsQueries +
-      'select distinct' + #13#10 + 
-      'type_id,' + #13#10 + 
-      'count (*) over () own_action_count,' + #13#10 +
-      '0 as in_working_count' + #13#10 + 
-      'from ' + FetchingDocumentKindInfoLocalViewName;
+      FreeAndNil(EmployeeDocumentKindWorkStatisticsFetching);
+      FreeAndNil(EmployeeDocumentKindWorkStatisticsFetchingQueryData);
 
   end;
-
-  Result.FetchingDocumentKindsInfoLocalViewDefs :=
-    FetchingDocumentKindsInfoLocalViewDefs;
-
-  Result.FetchingDocumentKindUnionStatisticsQueries :=
-    FetchingDocumentKindStatisticsQueries;
 
 end;
 
@@ -709,7 +749,7 @@ begin
           Result.FetchingDocumentKindsInfoLocalViewDefs + ',';
 
       FetchingDocumentKindInfoLocalViewName :=
-        'get_' + IntToStr(Integer(IncommingDocumentKind)) + '_info';
+        'get_' + IncommingDocumentKind.ClassName + '_info';
         
       Result.FetchingDocumentKindsInfoLocalViewDefs :=
         Result.FetchingDocumentKindsInfoLocalViewDefs +
@@ -729,14 +769,15 @@ begin
         EmployeeDocumentKindWorkStatisticsFetchingQueryData.
           OwnActionDocumentStageNumbersStringList +
 
-        ') and not subordinate_charges_exists) then 1 else null end)' + #13#10 +
-          ' over () as own_action_count,' + #13#10 +
+        ') and not subordinate_charges_exists and is_performer_replacing_ok) ' +
+        'then 1 else null end)' + #13#10 +
+        'over () as own_action_count,' + #13#10 +
         'count(case when (stage_number in (' +
 
         EmployeeDocumentKindWorkStatisticsFetchingQueryData.
           InWorkingDocumentStageNumbersStringList +
 
-        ')) then 1 else null end) ' +
+        ') and is_performer_replacing_ok) then 1 else null end) ' +
         'over () as in_working_count' + #13#10 +
         'from' + #13#10 +
         FetchingDocumentKindInfoLocalViewName + ' a';
@@ -748,98 +789,81 @@ begin
 
 end;
 
+
 function TEmployeeDocumentWorkStatisticsPostgresService.
-  GetEmployeeOutcommingDocumentKindsWorkStatisticsQueryParts(
+  GetEmployeeApproveableDocumentKindsWorkStatisticsQueryParts(
+  
     Employee: TEmployee;
-    OutcommingDocumentKinds: array of TOutcomingDocumentKindClass
+    ApproveableDocumentKinds: array of TApproveableDocumentKindClass
+
   ): TEmployeeDocumentKindsWorkStatisticsQueryParts;
+
 var
-    EmployeeDocumentKindWorkStatisticsFetching:
-      TEmployeeDocumentKindWorkStatisticsFetching;
-
-    EmployeeDocumentKindWorkStatisticsFetchingQueryData:
-      TEmployeeDocumentKindWorkStatisticsFetchingQueryData;
-
-    EmployeeDocumentInfoFetchingQuery: String;
-
-    FetchingDocumentKindInfoLocalViewDefs: String;
+    ApproveableDocumentKind: TApproveableDocumentKindClass;
+    EmployeeApproveableDocumentsInfoFetchingQuery: String;
+    FetchingDocumentKindsInfoLocalViewDefs: String;
     FetchingDocumentKindInfoLocalViewName: String;
     FetchingDocumentKindStatisticsQueries: String;
-
-    OutcommingDocumentKind: TDocumentKindClass;
 begin
 
-  for OutcommingDocumentKind in OutcommingDocumentKinds do begin
+  for ApproveableDocumentKind in ApproveableDocumentKinds do begin
 
-      if OutcommingDocumentKind = TOutcomingServiceNoteKind then begin
+    if ApproveableDocumentKind = TApproveableServiceNoteKind then begin
 
-        EmployeeDocumentInfoFetchingQuery :=
-          CreateEmployeeOutcommingServiceNotesInfoFetchingQuery(
-            Employee.Identity
-          );
-
-      end
-
-      else begin
-
-        EmployeeDocumentInfoFetchingQuery :=
-          CreeateEmployeeOutcommingDocumentInfoFetchingQuery(
-            Employee.Identity
-          );
-
-      end;
-      
-      EmployeeDocumentKindWorkStatisticsFetching :=
-
-        MapEmployeeDocumentKindWorkStatisticsFetchingFrom(
-          Employee.Role, OutcommingDocumentKind
+      EmployeeApproveableDocumentsInfoFetchingQuery :=
+        CreateEmployeeApproveableServiceNotesInfoFetchingQuery(
+          Employee.Identity
         );
 
-      EmployeeDocumentKindWorkStatisticsFetchingQueryData :=
-        MapEmployeeDocumentKindWorkStatisticsFetchingToSQLStringList(
-          EmployeeDocumentKindWorkStatisticsFetching
+    end
+
+    else begin
+
+      EmployeeApproveableDocumentsInfoFetchingQuery :=
+        CreateEmployeeApproveableDocumentsInfoFetchingQuery(
+          Employee.Identity
         );
 
-      if Result.FetchingDocumentKindsInfoLocalViewDefs <> '' then
-        Result.FetchingDocumentKindsInfoLocalViewDefs :=
-          Result.FetchingDocumentKindsInfoLocalViewDefs + ',';
+    end;
 
-      FetchingDocumentKindInfoLocalViewName :=
-        'get_' + IntToStr(Integer(OutcommingDocumentKind)) + '_info';
-        
-      Result.FetchingDocumentKindsInfoLocalViewDefs :=
-        Result.FetchingDocumentKindsInfoLocalViewDefs +
-        FetchingDocumentKindInfoLocalViewName + ' as '
-        + '(' + EmployeeDocumentInfoFetchingQuery + ')';
+    FetchingDocumentKindInfoLocalViewName :=
+      'get_' + ApproveableDocumentKind.ClassName + '_info';
 
-      if Result.FetchingDocumentKindUnionStatisticsQueries <> '' then
-        Result.FetchingDocumentKindUnionStatisticsQueries :=
-          Result.FetchingDocumentKindUnionStatisticsQueries + ' union ';
+    if FetchingDocumentKindsInfoLocalViewDefs <> '' then begin
+    
+      FetchingDocumentKindsInfoLocalViewDefs :=
+        FetchingDocumentKindsInfoLocalViewDefs + ','
 
-      Result.FetchingDocumentKindUnionStatisticsQueries :=
-        Result.FetchingDocumentKindUnionStatisticsQueries +
-        
-        'select distinct ' + #13#10 +
-        'type_id,' + #13#10 +
-        'count(case when stage_number in (' +
+    end;
 
-        EmployeeDocumentKindWorkStatisticsFetchingQueryData.
-          OwnActionDocumentStageNumbersStringList +
+    FetchingDocumentKindsInfoLocalViewDefs :=
+      FetchingDocumentKindsInfoLocalViewDefs +
+      FetchingDocumentKindInfoLocalViewName + ' as (' +
+      EmployeeApproveableDocumentsInfoFetchingQuery + ')';
 
-        ') then 1 else null end) over () as own_action_count,' + #13#10 +
-        'count(case when stage_number in (' +
+    if FetchingDocumentKindStatisticsQueries <> '' then begin
 
-        EmployeeDocumentKindWorkStatisticsFetchingQueryData.
-          InWorkingDocumentStageNumbersStringList +
+      FetchingDocumentKindStatisticsQueries :=
+        FetchingDocumentKindStatisticsQueries + ' union ';
 
-        ') then 1 else null end) over () as in_working_count' + #13#10 +
-        'from' + #13#10 +
-        FetchingDocumentKindInfoLocalViewName + #13#10;
+    end;
 
-      FreeAndNil(EmployeeDocumentKindWorkStatisticsFetching);
-      FreeAndNil(EmployeeDocumentKindWorkStatisticsFetchingQueryData);
+    FetchingDocumentKindStatisticsQueries :=
+      FetchingDocumentKindStatisticsQueries +
+      'select distinct' + #13#10 + 
+      'type_id,' + #13#10 + 
+      'count (case when service_stage_name = ''IsApproving'' and is_employee_approver ' + #13#10 +
+      'then 1 else null end) over () own_action_count,' + #13#10 +
+      '0 as in_working_count' + #13#10 + 
+      'from ' + FetchingDocumentKindInfoLocalViewName;
 
   end;
+
+  Result.FetchingDocumentKindsInfoLocalViewDefs :=
+    FetchingDocumentKindsInfoLocalViewDefs;
+
+  Result.FetchingDocumentKindUnionStatisticsQueries :=
+    FetchingDocumentKindStatisticsQueries;
 
 end;
 

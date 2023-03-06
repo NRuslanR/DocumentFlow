@@ -45,7 +45,6 @@ uses
   ApplicationServiceRegistries in 'Service Registries\ApplicationServiceRegistries.pas',
   StatisticsServiceRegistry in 'Statistics\StatisticsServiceRegistry.pas',
   AbstractEmployeeDocumentWorkStatisticsZeosService in 'Statistics\Docs\Zeos-Based\AbstractEmployeeDocumentWorkStatisticsZeosService.pas',
-  EmployeeDocumentWorkStatisticsPostgresService in 'Statistics\Docs\Zeos-Based\Postgres\EmployeeDocumentWorkStatisticsPostgresService.pas',
   EmployeeDocumentWorkStatistics in 'Statistics\Docs\Interfaces\EmployeeDocumentWorkStatistics.pas',
   EmployeeDocumentWorkStatisticsService in 'Statistics\Docs\Interfaces\EmployeeDocumentWorkStatisticsService.pas',
   DocumentViewingAccountingService in 'Accounting\Docs\Interfaces\DocumentViewingAccountingService.pas',
@@ -162,7 +161,6 @@ uses
   BasedOnDatabaseEmployeeOutcomingDocumentSetReadService in 'Presentation\Docs\References\Document List\Based-On DB\BasedOnDatabaseEmployeeOutcomingDocumentSetReadService.pas',
   AdminDocumentSetReadService in 'System\Administration\References\Documents\List\Interfaces\AdminDocumentSetReadService.pas',
   StandardAdminDocumentSetReadService in 'System\Administration\References\Documents\List\StandardAdminDocumentSetReadService.pas',
-  StandardDocumentStorageService in 'Business Processes\Docs\Common\Storage\StandardDocumentStorageService.pas',
   StandardAdminDocumentStorageService in 'System\Administration\Storage\Documents\StandardAdminDocumentStorageService.pas',
   AdminDocumentStorageService in 'System\Administration\Storage\Documents\Interfaces\AdminDocumentStorageService.pas',
   SendingDocumentToPerformingAppService in 'Business Processes\Docs\Common\Work Cycle\Interfaces\SendingDocumentToPerformingAppService.pas',
@@ -386,9 +384,17 @@ uses
   VersionInfoDTOs in 'Notifications\VersionInfo\Dto\VersionInfoDTOs.pas',
   ApplicationVersionInfoService in 'Notifications\VersionInfo\Interfaces\ApplicationVersionInfoService.pas',
   NotificationRegistry in 'Notifications\NotificationRegistry.pas',
+  ResourceRequestsItemService in 'External\ResourceRequests\ResourceRequestsItemService.pas',
+  ResourceRequestsAccessService in 'External\ResourceRequests\ResourceRequestsAccessService.pas',
+  BasedOnDBDocumentFlowItemStatisticsService in 'Statistics\Integration\Based-On DB\BasedOnDBDocumentFlowItemStatisticsService.pas',
   AbstractDocumentFlowItemStatistics in 'Statistics\Integration\Interfaces\AbstractDocumentFlowItemStatistics.pas',
   AbstractDocumentFlowItemStatisticsService in 'Statistics\Integration\Interfaces\AbstractDocumentFlowItemStatisticsService.pas',
-  BasedOnDBDocumentFlowItemStatisticsService in 'Statistics\Integration\Based-On DB\BasedOnDBDocumentFlowItemStatisticsService.pas';
+  BasedOnZeosResourceRequestsAccessService in 'External\ResourceRequests\External Implementations\DocumentFlow\BasedOnZeosResourceRequestsAccessService.pas',
+  BasedOnZeosResourceRequestsItemStatisticsService in 'External\ResourceRequests\External Implementations\DocumentFlow\BasedOnZeosResourceRequestsItemStatisticsService.pas',
+  BasedOnZeosVclResourceRequestsItemService in 'External\ResourceRequests\External Implementations\DocumentFlow\BasedOnZeosVclResourceRequestsItemService.pas',
+  ResourceRequestsItemStatistics in 'External\ResourceRequests\External Implementations\DocumentFlow\ResourceRequestsItemStatistics.pas',
+  EmployeeDocumentWorkStatisticsPostgresService in 'Statistics\Docs\Zeos-Based\Postgres\EmployeeDocumentWorkStatisticsPostgresService.pas',
+  StandardDocumentStorageService in 'Business Processes\Docs\Common\Storage\StandardDocumentStorageService.pas';
 
 {$R *.res}
 

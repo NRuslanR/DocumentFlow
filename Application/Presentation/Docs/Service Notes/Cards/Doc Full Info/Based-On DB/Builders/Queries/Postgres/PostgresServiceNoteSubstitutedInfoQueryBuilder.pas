@@ -108,7 +108,7 @@ begin
     'left join doc.departments subst_signer_dep on subst_signer_dep.code = ' + #13#10 +
     'left(doc.document_number, length(doc.document_number) - position(''/'' in reverse(doc.document_number))) and subst_signer_dep.prizn_old is null  ' + #13#10 +
     'left join doc.employees subst_signer on subst_signer.id =  ' + #13#10 +
-    '(select e1.id  from doc.employees e1 join doc.employees_roles er1 on er1.employee_id=e1.id where er1.role_id=2 and department_id=subst_signer_dep.id)';
+    '(select e1.id  from doc.employees e1 join doc.employees_roles er1 on er1.employee_id=e1.id where er1.role_id=2 and not e1.was_dismissed and department_id=subst_signer_dep.id)';
 
 end;
 

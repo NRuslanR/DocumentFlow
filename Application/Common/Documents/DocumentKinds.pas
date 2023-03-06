@@ -89,6 +89,12 @@ type
 
 type
 
+  TResourceRequestsKind = class(TDocumentKind)
+
+  end;
+
+type
+
   TDocumentKindClass = class of TDocumentKind;
 
   TNativeDocumentKindClass = class of TNativeDocumentKind;

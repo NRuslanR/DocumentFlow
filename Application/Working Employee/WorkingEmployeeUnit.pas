@@ -14,6 +14,7 @@ type
 
     protected
 
+      // ID из таблиц документооборота
       FId: Variant;
       FName: String;
       FSurname: String;
@@ -21,6 +22,8 @@ type
       FPersonnelNumber: String;
       FShortName: String;
       FLeaderId: Variant;
+      // ID из spr_person
+      FGlobalUserId: Variant;
 
       function GetId: Variant;
       function GetName: String;
@@ -30,6 +33,7 @@ type
       function GetLeaderId: Variant;
       function GetShortName: String;
       function GetFullName: String;
+      function GetGlobalUserId: Variant;
       
       class var FInstance: IWorkingEmployee;
 
@@ -66,6 +70,11 @@ begin
   Result :=
     FSurname + ' ' + FName + ' ' + FPatronymic;
   
+end;
+
+function TWorkingEmployee.GetGlobalUserId: Variant;
+begin
+  Result := FGlobalUserId;
 end;
 
 function TWorkingEmployee.GetId: Variant;
