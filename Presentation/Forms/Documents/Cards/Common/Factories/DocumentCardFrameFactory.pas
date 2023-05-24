@@ -152,14 +152,17 @@ type
       );
 
       function CreateAndCustomizeDocumentOperationToolBarFrameBy(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ): TDocumentOperationToolBarFrame;
 
       function CreateDocumentOperationToolBarFrameInstanceBy(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ): TDocumentOperationToolBarFrame; virtual;
 
       procedure CustomizeDocumentOperationToolBarFrameBy(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
@@ -177,46 +180,61 @@ type
     protected
 
       procedure CreateDocumentSavingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
 
       procedure CreateDocumentApprovingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
 
       procedure CreateDocumentNotApprovingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
 
       procedure CreateDocumentSigningToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
 
       procedure CreateDocumentSigningMarkingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
       
       procedure CreateDocumentSigningRejectingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
 
       procedure CreateDocumentPerformingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
 
       procedure CreateApprovingDocumentSendingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
 
       procedure CreateSigningDocumentSendingToolFor(
+        DocumentCardFrame: TDocumentCardFrame;
+        DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
+        DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
+      ); virtual;
+
+      procedure CreateDocumentsUploadingIntegrationTools(
+        DocumentCardFrame: TDocumentCardFrame;
         DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
       ); virtual;
@@ -289,6 +307,7 @@ begin
 
     Result.DocumentOperationToolBarFrame :=
       CreateAndCustomizeDocumentOperationToolBarFrameBy(
+        Result,
         DocumentUsageEmployeeAccessRightsInfoDTO
       );
       
@@ -326,17 +345,19 @@ end;
 
 function TDocumentCardFrameFactory.
   CreateAndCustomizeDocumentOperationToolBarFrameBy(
-    DocumentUsageEmployeeAccessRightsInfoDTO:
-      TDocumentUsageEmployeeAccessRightsInfoDTO
+    DocumentCardFrame: TDocumentCardFrame;
+    DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
   ): TDocumentOperationToolBarFrame;
 begin
 
   Result :=
     CreateDocumentOperationToolBarFrameInstanceBy(
+      DocumentCardFrame,
       DocumentUsageEmployeeAccessRightsInfoDTO
     );
 
   CustomizeDocumentOperationToolBarFrameBy(
+    DocumentCardFrame,
     Result, DocumentUsageEmployeeAccessRightsInfoDTO
   );
   
@@ -344,8 +365,8 @@ end;
 
 function TDocumentCardFrameFactory.
   CreateDocumentOperationToolBarFrameInstanceBy(
-    DocumentUsageEmployeeAccessRightsInfoDTO:
-      TDocumentUsageEmployeeAccessRightsInfoDTO
+    DocumentCardFrame: TDocumentCardFrame;
+    DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
   ): TDocumentOperationToolBarFrame;
 begin
 
@@ -354,53 +375,68 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CustomizeDocumentOperationToolBarFrameBy(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
-  DocumentUsageEmployeeAccessRightsInfoDTO:
-    TDocumentUsageEmployeeAccessRightsInfoDTO
+  DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
 );
 begin
 
   CreateDocumentSavingToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
   CreateDocumentApprovingToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
   CreateDocumentNotApprovingToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
   CreateDocumentSigningToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
   CreateDocumentSigningMarkingToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
   
   CreateDocumentSigningRejectingToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
   CreateDocumentPerformingToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
   CreateApprovingDocumentSendingToolFor(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
   CreateSigningDocumentSendingToolFor(
+    DocumentCardFrame,
+    DocumentOperationToolBarFrame,
+    DocumentUsageEmployeeAccessRightsInfoDTO
+  );
+
+  CreateDocumentsUploadingIntegrationTools(
+    DocumentCardFrame,
     DocumentOperationToolBarFrame,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
@@ -436,6 +472,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateApprovingDocumentSendingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
@@ -463,6 +500,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateDocumentPerformingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 var ChargeSheetsAccessRightsInfoDTO: TDocumentChargeSheetsAccessRightsInfoDTO;
@@ -664,6 +702,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateDocumentApprovingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
@@ -851,6 +890,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateSigningDocumentSendingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
@@ -945,6 +985,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateDocumentNotApprovingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
@@ -991,6 +1032,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateDocumentSavingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
@@ -1010,6 +1052,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateDocumentSigningMarkingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
 );
@@ -1027,6 +1070,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateDocumentSigningRejectingToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
@@ -1042,6 +1086,7 @@ begin
 end;
 
 procedure TDocumentCardFrameFactory.CreateDocumentSigningToolFor(
+  DocumentCardFrame: TDocumentCardFrame;
   DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO);
 begin
@@ -1056,6 +1101,20 @@ begin
 
   end;
   
+end;
+
+procedure TDocumentCardFrameFactory.CreateDocumentsUploadingIntegrationTools(
+  DocumentCardFrame: TDocumentCardFrame;
+  DocumentOperationToolBarFrame: TDocumentOperationToolBarFrame;
+  DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
+);
+begin
+
+  DocumentOperationToolBarFrame.CreateDocumentOperationTool(
+    'Запустить выгрузку в Лоцман',
+    DocumentCardFrame.onDocumentsUploadingToLoodsman
+  );
+
 end;
 
 function TDocumentCardFrameFactory.CreateDocumentChargesFrameInstance: TDocumentChargesFrame;

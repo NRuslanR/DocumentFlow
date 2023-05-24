@@ -665,6 +665,8 @@ type
 
     destructor Destroy; override;
 
+    procedure onDocumentsUploadingToLoodsman(Sender: TObject);
+
     procedure AdjustFooterButtonLayout; virtual;
     procedure HideFooterButtonPanel;
     procedure SetFooterButtonPanelVisible(const Visible: Boolean);
@@ -2600,13 +2602,6 @@ begin
   DocumentChargesPage.TabVisible := IsNewUISwitched;
 
   DocumentMainInfoAndReceiversPage.TabVisible := not IsNewUISwitched;
-//  DocumentPreviewPage.TabVisible := not IsNewUISwitched;
-
-//  RelatedDocumentsAndFilesVerticalSplitter.Visible := IsNewUISwitched;
-//  DocumentFilesViewArea.Visible := IsNewUISwitched;
-
-{  if Assigned(DocumentFilesViewFrame) then
-    DocumentFilesViewFrame.DocumentFileListVisible := not IsNewUISwitched;     }
 
   if Assigned(DocumentFilesViewFrame) then begin
 
@@ -2615,8 +2610,6 @@ begin
 
   end;
 
-  { refactor: UIKind-based customization logic extract to separete UICustomizers }
-
   case Value of
 
     uiOld:
@@ -2624,33 +2617,13 @@ begin
 
       DocumentChargesFormArea.Parent := DocumentChargesInfoArea;
       DocumentMainInfoFormArea.Parent := DocumentMainInfoArea;
-      
-{      DocumentFilesViewFormPanel.Parent := DocumentPreviewPage;
-      DocumentFilesViewFormPanel.Align := alClient;     }
-      
+
       DocumentMainInfoAndReceiversPage.PageIndex := 0;
 
       DocumentChargesPage.PageIndex := DocumentCardPageControl.PageCount - 1;
       DocumentMainInfoPage.PageIndex := DocumentCardPageControl.PageCount - 1;
 
-{      DocumentRelationsInfoArea.Align := alNone;
-      SplitterBetweenRelationsAndFilesAreas.Align := alNone;
-      DocumentFilesInfoArea.Align := alNone;
-
-      RelatedDocumentsAndFilesPanel.Align := alNone;
-      RelatedDocumentsAndFilesVerticalSplitter.Align := alNone;
-      DocumentFilesViewArea.Align := alNone;
-
-      RelatedDocumentsAndFilesPanel.Align := alClient;
-
-      DocumentRelationsInfoArea.Align := alLeft;
-      SplitterBetweenRelationsAndFilesAreas.Align := alLeft;
-      DocumentFilesInfoArea.Align := alClient;     }
-
       ActiveDocumentInfoPageNumber := LastSelectedOldUIDocumentCardSheetIndex;
-
-{      if Assigned(DocumentFilesViewFrame) then
-        DocumentFilesFrame.OnDocumentFileSelectedEventHandler := nil;     }
 
     end;
 
@@ -2660,49 +2633,13 @@ begin
       DocumentChargesFormArea.Parent := DocumentChargesPage;
       DocumentMainInfoFormArea.Parent := DocumentMainInfoPage;
 
-{      DocumentFilesViewFormPanel.Parent := DocumentFilesViewArea;
-      DocumentFilesViewFormPanel.Align := alClient;
-      DocumentFilesViewFormPanel.BevelKind := bkNone;
-
-      RelatedDocumentsAndFilesPanel.Align := alNone;
-      RelatedDocumentsAndFilesVerticalSplitter.Align := alNone;
-      DocumentFilesViewArea.Align := alNone;
-
-      RelatedDocumentsAndFilesPanel.Align := alLeft;
-      RelatedDocumentsAndFilesVerticalSplitter.Align := alLeft;
-      DocumentFilesViewArea.Align := alClient;    }
-
       DocumentChargesPage.PageIndex := 0;
       DocumentMainInfoPage.PageIndex := 1;
 
       DocumentMainInfoAndReceiversPage.PageIndex :=
         DocumentCardPageControl.PageCount - 1;
 
-{      DocumentRelationsInfoArea.Align := alNone;
-      SplitterBetweenRelationsAndFilesAreas.Align := alNone;
-      DocumentFilesInfoArea.Align := alNone;
-
-      RelatedDocumentsAndFilesVerticalSplitter.Width :=
-        TDocumentFlowCommonControlStyles.GetSplitterThickness;
-
-      DocumentFilesViewFormPanel.BevelKind := bkFlat;
-
-      SplitterBetweenRelationsAndFilesAreas.Top := 10;
-      SplitterBetweenRelationsAndFilesAreas.Height :=
-        TDocumentFlowCommonControlStyles.GetSplitterThickness;
-
-      DocumentRelationsInfoArea.Align := alTop;
-      SplitterBetweenRelationsAndFilesAreas.Align := alTop;
-      DocumentFilesInfoArea.Align := alClient;     }
-
       ActiveDocumentInfoPageNumber := LastSelectedNewUIDocumentCardSheetIndex;
-
-{      if Assigned(DocumentFilesViewFrame) then begin
-
-        DocumentFilesFrame.OnDocumentFileSelectedEventHandler :=
-          OnDocumentFileSelectedEventHandler;
-
-      end;   }
 
     end;
 
@@ -3368,7 +3305,6 @@ procedure TDocumentCardFrame.OnDocumentFileSelectedEventHandler(
 begin
 
   if
-//    (UserInterfaceKind <> uiNew) or
     (ActiveDocumentInfoPageNumber <> DocumentRelationsAndFilesPage.PageIndex)
   then Exit;
 
@@ -3412,6 +3348,16 @@ end;
 procedure TDocumentCardFrame.OnDocumentRelationsChangedEventHandler(
   Sender: TObject);
 begin
+
+end;
+
+procedure TDocumentCardFrame.onDocumentsUploadingToLoodsman(Sender: TObject);
+var
+    Tool: TButton;
+begin
+
+  Tool := Sender as TButton;
+
 
 end;
 

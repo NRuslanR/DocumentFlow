@@ -7,11 +7,15 @@ uses
   Dialogs, ExtCtrls, StdCtrls, cxButtons;
 
 type
+
+  TDocumentOperationToolActivateEventHandler =
+    procedure (Sender: TObject) of object;
+
   TDocumentOperationToolBarFrame = class(TFrame)
     ScrollBox: TScrollBox;
     DocumentOperationToolBar: TFlowPanel;
+
   private
-    { Private declarations }
 
     type
 
@@ -53,8 +57,11 @@ type
 
     constructor Create(AOwner: TComponent); override;
     
-    function CreateDocumentOperationTool(const Caption: String): TButton;
-    
+    function CreateDocumentOperationTool(
+      const Caption: String;
+      const EventHandler: TDocumentOperationToolActivateEventHandler = nil
+    ): TButton;
+
     function CreateDocumentSavingTool(const Caption: String): TButton;
     function CreateSigningDocumentSendingTool(const Caption: String): TButton;
     function CreateDocumentPrintFormCreatingTool(const Caption: String): TButton;
@@ -158,7 +165,9 @@ begin
 end;
 
 function TDocumentOperationToolBarFrame.CreateDocumentOperationTool(
-  const Caption: String): TButton;
+  const Caption: String;
+  const EventHandler: TDocumentOperationToolActivateEventHandler
+): TButton;
 begin
 
   Result := TcxButton.Create(DocumentOperationToolBar);
@@ -176,6 +185,8 @@ begin
 
   TDocumentFlowCommonControlStyles.ApplyStylesToButton(Result);
 
+  Result.OnClick := EventHandler;
+  
 end;
 
 function TDocumentOperationToolBarFrame.CreateDocumentPerformingTool(
