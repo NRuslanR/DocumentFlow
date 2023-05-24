@@ -4,13 +4,14 @@ interface
 
 uses
 
+  IGetSelfUnit,
   DocumentInfoHolder,
   DocumentTableDef,
   SysUtils;
 
 type
 
-  IDocumentInfoQueryBuilder = interface
+  IDocumentInfoQueryBuilder = interface (IGetSelf)
 
     function BuildDocumentInfoQuery(
       FieldNames: TDocumentInfoFieldNames;
@@ -26,7 +27,7 @@ type
       FDocumentTableDef: TDocumentTableDef;
 
     public
-    
+
       function GetMainDocumentTableExpression: String; virtual; abstract;
       function GetDocumentFieldNameListExpression(FieldNames: TDocumentInfoFieldNames): String; virtual; abstract;
       function GetDocumentSignerFieldNameListExpression(FieldNames: TDocumentInfoFieldNames): String; virtual; abstract;
@@ -39,6 +40,8 @@ type
 
       constructor Create(DocumentTableDef: TDocumentTableDef);
 
+      function GetSelf: TObject;
+      
       function BuildDocumentInfoQuery(
         FieldNames: TDocumentInfoFieldNames;
         const DocumentIdParamName: String
@@ -88,6 +91,13 @@ begin
       GetCurrentEmployeeJoinExpression + #13#10 +
       GetRestDocumentTableJoinExpression;
 
+end;
+
+function TDocumentInfoQueryBuilder.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
 end;
 
 end.

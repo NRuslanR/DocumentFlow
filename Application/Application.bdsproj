@@ -173,7 +173,10 @@
 		</VersionInfoKeys>
 		<DebugEnvironmentVariables>
 			<DebugEnvironmentVariables Name="Borland">'C:\Users\59968\Documents\Borland Studio Projects'</DebugEnvironmentVariables>
-		</DebugEnvironmentVariables>  <Excluded_Packages>
+		</DebugEnvironmentVariables>  
+    
+    
+    <Excluded_Packages>
       <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibADODataDrivers100.bpl">EhLib 6.2 DataDrivers for ADO</Excluded_Packages>
       <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibBDEDataDrivers100.bpl">EhLib 6.2 DataDrivers for BDE</Excluded_Packages>
       <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\DclEhLibDBXDataDrivers100.bpl">EhLib 6.2 DataDrivers for DBX</Excluded_Packages>

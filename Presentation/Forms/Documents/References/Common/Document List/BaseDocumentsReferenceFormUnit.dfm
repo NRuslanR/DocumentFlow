@@ -53,7 +53,6 @@ inherited BaseDocumentsReferenceForm: TBaseDocumentsReferenceForm
       Left = 432
       Top = 43
       DropdownMenu = DocumentWorkCycleStageNamesPopupMenu
-      Enabled = False
       Style = tbsDropDown
       ExplicitLeft = 432
       ExplicitTop = 43

@@ -95,13 +95,16 @@ begin
 
     on e: Exception do begin
 
-      if e is TCurrentNumberNotFoundException then
-        raise TDocumentNumeratorException.Create(
+      if e is TCurrentNumberNotFoundException then begin
+
+        Raise TDocumentNumeratorException.Create(
           'Не удалось найти нумератор для документа. ' +
           'Обратитесь к администратору для создания ' +
           'нумератора'
         );
-      
+
+      end;
+
       raise;
       
     end;

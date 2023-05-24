@@ -600,7 +600,7 @@ begin
 
   FIsDocumentRecordsRefreshRequested := True;
 
-  inherited;
+  inherited actRefreshDataExecute(Sender);
 
 end;
 
@@ -849,7 +849,6 @@ begin
     FOnDocumentRecordsRefreshRequestedEventHandler(Self, ViewModel, UpdatedViewModel);
 
     if Assigned(UpdatedViewModel) then
-
       ViewModel := UpdatedViewModel;
 
     FIsFilterFormLastStateApplyingRequested := True;

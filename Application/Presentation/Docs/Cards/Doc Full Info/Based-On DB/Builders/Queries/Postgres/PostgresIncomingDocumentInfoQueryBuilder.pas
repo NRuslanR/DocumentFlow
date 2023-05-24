@@ -57,6 +57,7 @@ destructor TPostgresIncomingDocumentInfoQueryBuilder.Destroy;
 begin
 
   inherited;
+
 end;
 
 function TPostgresIncomingDocumentInfoQueryBuilder.GetDocumentTableFilterExpression(

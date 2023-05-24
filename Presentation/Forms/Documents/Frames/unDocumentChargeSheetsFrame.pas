@@ -278,7 +278,8 @@ end;
 
 
 function TDocumentChargeSheetsFrame.FetchSelectedChargeIds: TVariantList;
-var DocumentReceiverTreeNode: TcxDBTreeListNode;
+var
+    DocumentReceiverTreeNode: TcxDBTreeListNode;
     I: Integer;
     RecordId: Variant;
     ReplaceableChargeRecordIds: TVariantList;

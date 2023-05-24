@@ -106,7 +106,7 @@ var
 begin
 
   Query := FDocumentInfoQueryBuilder.BuildDocumentInfoQuery(FieldNames, 'pdocument_id');
-
+  
   QueryParams := TQueryParams.Create;
 
   try

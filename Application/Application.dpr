@@ -221,7 +221,6 @@ uses
   PostgresEmployeeInternalServiceNoteSetFetchingQueryBuilder in 'Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresEmployeeInternalServiceNoteSetFetchingQueryBuilder.pas',
   PostgresEmployeeOutcomingServiceNoteSetFetchingQueryBuilder in 'Presentation\Docs\Service Notes\References\Document List\Based-On DB\Postgres\PostgresEmployeeOutcomingServiceNoteSetFetchingQueryBuilder.pas',
   PostgresEmployeePersonnelOrderSetFetchingQueryBuilder in 'Presentation\Docs\Personnel Orders\References\Document List\Based-On DB\Postgres\PostgresEmployeePersonnelOrderSetFetchingQueryBuilder.pas',
-  PostgresIncomingServiceNoteFullInfoFetchingQueryBuilder in 'Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Postgres\PostgresIncomingServiceNoteFullInfoFetchingQueryBuilder.pas',
   BasedOnDatabasePersonnelOrderInfoReadService in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\BasedOnDatabasePersonnelOrderInfoReadService.pas',
   BasedOnDatabaseDepartmentPersonnelOrderSetReadService in 'Presentation\Docs\Personnel Orders\References\Document List\Based-On DB\BasedOnDatabaseDepartmentPersonnelOrderSetReadService.pas',
   PostgresDepartmentPersonnelOrderSetFetchingQueryBuilder in 'Presentation\Docs\Personnel Orders\References\Document List\Based-On DB\Postgres\PostgresDepartmentPersonnelOrderSetFetchingQueryBuilder.pas',
@@ -284,7 +283,6 @@ uses
   PostgresDocumentRelationsInfoQueryBuilder in 'Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresDocumentRelationsInfoQueryBuilder.pas',
   PostgresFullDocumentApprovingsInfoQueryBuilder in 'Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresFullDocumentApprovingsInfoQueryBuilder.pas',
   PostgresIncomingDocumentInfoQueryBuilder in 'Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresIncomingDocumentInfoQueryBuilder.pas',
-  PostgresServiceNoteSubstitutedInfoQueryBuilder in 'Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresServiceNoteSubstitutedInfoQueryBuilder.pas',
   IncomingDocumentInfoHolderBuilder in 'Presentation\Docs\Cards\Doc Full Info\Based-On DB\Builders\DataSets\IncomingDocumentInfoHolderBuilder.pas',
   IncomingDocumentDTOFromDataSetMapper in 'Presentation\Docs\Cards\Doc Full Info\Based-On DB\Mappers\IncomingDocumentDTOFromDataSetMapper.pas',
   BasedOnDatabaseIncomingDocumentInfoPartlyReadService in 'Presentation\Docs\Cards\Doc Full Info\Based-On DB\BasedOnDatabaseIncomingDocumentInfoPartlyReadService.pas',
@@ -394,7 +392,13 @@ uses
   BasedOnZeosVclResourceRequestsItemService in 'External\ResourceRequests\External Implementations\DocumentFlow\BasedOnZeosVclResourceRequestsItemService.pas',
   ResourceRequestsItemStatistics in 'External\ResourceRequests\External Implementations\DocumentFlow\ResourceRequestsItemStatistics.pas',
   EmployeeDocumentWorkStatisticsPostgresService in 'Statistics\Docs\Zeos-Based\Postgres\EmployeeDocumentWorkStatisticsPostgresService.pas',
-  StandardDocumentStorageService in 'Business Processes\Docs\Common\Storage\StandardDocumentStorageService.pas';
+  StandardDocumentStorageService in 'Business Processes\Docs\Common\Storage\StandardDocumentStorageService.pas',
+  PostgresServiceNoteSubstitutedInfoQueryBuilder in 'Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresServiceNoteSubstitutedInfoQueryBuilder.pas',
+  PostgresIncomingServiceNoteFullInfoFetchingQueryBuilder in 'Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Postgres\PostgresIncomingServiceNoteFullInfoFetchingQueryBuilder.pas',
+  LoodsmanDocumentsUploadingAccessRightsService in 'External\Integration\Loodsman\Uploading\Interfaces\LoodsmanDocumentsUploadingAccessRightsService.pas',
+  LoodsmanDocumentsUploadingAccessRights in 'External\Integration\Loodsman\Uploading\Dtos\LoodsmanDocumentsUploadingAccessRights.pas',
+  BasedOnDatabaseLoodsmanDocumentsUploadingAccessRightsService in 'External\Integration\Loodsman\Uploading\Based-On DB\BasedOnDatabaseLoodsmanDocumentsUploadingAccessRightsService.pas',
+  LoodsmanDocumentsUploadingAccessRightsTableDef in 'External\Integration\Loodsman\Uploading\Based-On DB\LoodsmanDocumentsUploadingAccessRightsTableDef.pas';
 
 {$R *.res}
 
