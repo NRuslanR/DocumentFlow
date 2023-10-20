@@ -5,23 +5,33 @@ interface
 uses
 
   DepartmentInfoDTO,
+  IGetSelfUnit,
   SysUtils,
   Classes;
   
 type
 
-  TDocumentResponsibleInfoDTO = class
+  TDocumentResponsibleInfoDTO = class (TInterfacedObject, IGetSelf)
 
+    private
+
+      FDepartmentInfoDTO: TDepartmentInfoDTO;
+      FFreeDepartmentInfoDTO: IGetSelf;
+      
+      procedure SetDepartmentInfoDTO(const Value: TDepartmentInfoDTO);
+      
     public
 
       Id: Variant;
       Name: String;
       TelephoneNumber: String;
 
-      DepartmentInfoDTO: TDepartmentInfoDTO;
-
       constructor Create;
-      destructor Destroy; override;
+
+      function GetSelf: TObject;
+
+      property DepartmentInfoDTO: TDepartmentInfoDTO
+      read FDepartmentInfoDTO write SetDepartmentInfoDTO;
 
   end;
   
@@ -42,13 +52,21 @@ begin
   
 end;
 
-destructor TDocumentResponsibleInfoDTO.Destroy;
+function TDocumentResponsibleInfoDTO.GetSelf: TObject;
 begin
 
-  FreeAndNil(DepartmentInfoDTO);
+  Result := Self;
+  
+end;
 
-  inherited;
+procedure TDocumentResponsibleInfoDTO.SetDepartmentInfoDTO(
+  const Value: TDepartmentInfoDTO);
+begin
 
+  FDepartmentInfoDTO := Value;
+  FFreeDepartmentInfoDTO := Value;
+  
 end;
 
 end.
+

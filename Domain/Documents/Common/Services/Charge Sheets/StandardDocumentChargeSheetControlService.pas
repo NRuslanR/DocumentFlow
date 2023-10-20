@@ -25,6 +25,10 @@ uses
   DocumentChargeSheetCreatingService,
   DocumentChargeSheetDirectory,
   DocumentChargeSheetRemovingService,
+  DocumentChargeKind,
+  DocumentKind,
+  DocumentKindFinder,
+  DocumentChargeKindsControlService,
   DomainObjectValueUnit,
   Employee,
   VariantListUnit,
@@ -38,52 +42,54 @@ type
 
       protected
 
+        FDocumentKindFinder: IDocumentKindFinder;
+        FDocumentChargeKindsControlService: IDocumentChargeKindsControlService;
         FDocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
-
-        FDocumentChargeSheetCreatingService: IDocumentChargeSheetCreatingService;
         FDocumentChargeSheetRemovingService: IDocumentChargeSheetRemovingService;
-
         FDocumentPerformingService: IDocumentPerformingService;
         FDocumentChargeSheetControlPerformingService: IDocumentChargeSheetControlPerformingService;
-
-        FDocumentChargeSheetAccessRightsService: IDocumentChargeSheetAccessRightsService;
 
       protected
 
         procedure EnsureEmployeeMayViewChargeSheet(
           Employee: TEmployee;
-          ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          ChargeSheet: IDocumentChargeSheet
         );
-        
+
+        function GetChargeSheetCreatingServiceForOrRaise(
+          Document: IDocument;
+          const ChargeKindId: Variant;
+          const ErrorMsg: String = ''
+        ): IDocumentChargeSheetCreatingService; overload;
+
+        function GetChargeSheetCreatingServiceForOrRaise(
+          Document: IDocument;
+          Performer: TEmployee;
+          const ErrorMsg: String = ''
+        ): IDocumentChargeSheetCreatingService; overload;
+
       public
 
         constructor Create(
+          DocumentKindFinder: IDocumentKindFinder;
+          DocumentChargeKindsControlService: IDocumentChargeKindsControlService;
           DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
-
-          DocumentChargeSheetCreatingService: IDocumentChargeSheetCreatingService;
           DocumentChargeSheetRemovingService: IDocumentChargeSheetRemovingService;
-
           DocumentPerformingService: IDocumentPerformingService;
-          DocumentChargeSheetControlPerformingService: IDocumentChargeSheetControlPerformingService;
-
-          DocumentChargeSheetAccessRightsService: IDocumentChargeSheetAccessRightsService
+          DocumentChargeSheetControlPerformingService: IDocumentChargeSheetControlPerformingService
         );
 
         function GetChargeSheets(
-          Document: IDocument;
           Employee: TEmployee;
           const ChargeSheetIds: TVariantList
         ): TDocumentChargeSheets;
 
         function GetChargeSheet(
-          Document: IDocument;
           Employee: TEmployee;
           const ChargeSheetId: Variant
         ): IDocumentChargeSheet; overload;
 
         procedure GetChargeSheet(
-          Document: IDocument;
           Employee: TEmployee;
           const ChargeSheetId: Variant;
           var ChargeSheet: IDocumentChargeSheet;
@@ -128,26 +134,22 @@ type
 
         procedure SaveChargeSheets(
           Employee: TEmployee;
-          ChargeSheets: TDocumentChargeSheets;
-          Document: IDocument
+          ChargeSheets: TDocumentChargeSheets
         ); virtual;
 
         function PerformChargeSheet(
           Employee: TEmployee;
-          ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          ChargeSheet: IDocumentChargeSheet
         ): TDocumentChargeSheetPerformingResult; virtual;
 
         function PerformChargeSheets(
           Employee: TEmployee;
-          ChargeSheets: TDocumentChargeSheets;
-          Document: IDocument
+          ChargeSheets: TDocumentChargeSheets
         ): TDocumentChargeSheetPerformingResult; virtual;
 
         procedure RemoveChargeSheets(
           Employee: TEmployee;
-          ChargeSheets: TDocumentChargeSheets;
-          Document: IDocument
+          ChargeSheets: TDocumentChargeSheets
         ); virtual;
 
     end;
@@ -162,42 +164,35 @@ uses
   IDomainObjectBaseListUnit,
   Variants,
   DocumentCharges,
+  StrUtils,
   DocumentsDomainRegistries,
+  DocumentChargeSheetsServiceRegistry,
   DocumentRuleRegistry,
   IDomainObjectBaseUnit,
-  DocumentChargeSheetChangingEnsurer,
-  DocumentChargeSheetPerformingEnsurer,
   DocumentChargeSheetRuleRegistry;
 
 { TStandardDocumentChargeSheetControlService }
 
 constructor TStandardDocumentChargeSheetControlService.Create(
-
+  DocumentKindFinder: IDocumentKindFinder;
+  DocumentChargeKindsControlService: IDocumentChargeKindsControlService;
   DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
-
-  DocumentChargeSheetCreatingService: IDocumentChargeSheetCreatingService;
   DocumentChargeSheetRemovingService: IDocumentChargeSheetRemovingService;
-
   DocumentPerformingService: IDocumentPerformingService;
-  DocumentChargeSheetControlPerformingService: IDocumentChargeSheetControlPerformingService;
-
-  DocumentChargeSheetAccessRightsService: IDocumentChargeSheetAccessRightsService
+  DocumentChargeSheetControlPerformingService: IDocumentChargeSheetControlPerformingService
     
 );
 begin
 
   inherited Create;
 
+  FDocumentKindFinder := DocumentKindFinder;
+  FDocumentChargeKindsControlService := DocumentChargeKindsControlService;
   FDocumentChargeSheetDirectory := DocumentChargeSheetDirectory;
-
-  FDocumentChargeSheetCreatingService := DocumentChargeSheetCreatingService;
   FDocumentChargeSheetRemovingService := DocumentChargeSheetRemovingService;
-  
   FDocumentPerformingService := DocumentPerformingService;
   FDocumentChargeSheetControlPerformingService := DocumentChargeSheetControlPerformingService;
 
-  FDocumentChargeSheetAccessRightsService := DocumentChargeSheetAccessRightsService;
-  
 end;
 
 procedure TStandardDocumentChargeSheetControlService.CreateHeadChargeSheet(
@@ -209,7 +204,7 @@ procedure TStandardDocumentChargeSheetControlService.CreateHeadChargeSheet(
 );
 begin
 
-  FDocumentChargeSheetCreatingService
+  GetChargeSheetCreatingServiceForOrRaise(Document, ChargeKindId)
     .CreateHeadDocumentChargeSheet(
       ChargeKindId, Document, IssuingEmployee,
       Performer, ChargeSheet, AccessRights
@@ -225,9 +220,10 @@ procedure TStandardDocumentChargeSheetControlService.CreateHeadChargeSheet(
 );
 begin
 
-  FDocumentChargeSheetCreatingService.CreateHeadDocumentChargeSheet(
-    Document, IssuingEmployee, Performer, ChargeSheet, AccessRights
-  );
+  GetChargeSheetCreatingServiceForOrRaise(Document, Performer)
+    .CreateHeadDocumentChargeSheet(
+      Document, IssuingEmployee, Performer, ChargeSheet, AccessRights
+    );
 
 end;
 
@@ -240,14 +236,15 @@ procedure TStandardDocumentChargeSheetControlService.CreateSubordinateChargeShee
 );
 begin
 
-  FDocumentChargeSheetCreatingService.CreateSubordinateDocumentChargeSheet(
-    TopLevelChargeSheet,
-    Document,
-    IssuingEmployee,
-    Performer,
-    ChargeSheet,
-    AccessRights
-  );
+  GetChargeSheetCreatingServiceForOrRaise(Document, Performer)
+    .CreateSubordinateDocumentChargeSheet(
+      TopLevelChargeSheet,
+      Document,
+      IssuingEmployee,
+      Performer,
+      ChargeSheet,
+      AccessRights
+    );
 
 end;
 
@@ -261,22 +258,22 @@ procedure TStandardDocumentChargeSheetControlService.CreateSubordinateChargeShee
 );
 begin
 
-  FDocumentChargeSheetCreatingService.CreateSubordinateDocumentChargeSheet(
-    ChargeKindId,
-    TopLevelChargeSheet,
-    Document,
-    IssuingEmployee,
-    Performer,
-    ChargeSheet,
-    AccessRights
-  );
+  GetChargeSheetCreatingServiceForOrRaise(Document, ChargeKindId)
+    .CreateSubordinateDocumentChargeSheet(
+      ChargeKindId,
+      TopLevelChargeSheet,
+      Document,
+      IssuingEmployee,
+      Performer,
+      ChargeSheet,
+      AccessRights
+    );
 
 end;
 
 procedure TStandardDocumentChargeSheetControlService.EnsureEmployeeMayViewChargeSheet(
   Employee: TEmployee;
-  ChargeSheet: IDocumentChargeSheet;
-  Document: IDocument
+  ChargeSheet: IDocumentChargeSheet
 );
 var
     ChargeSheetObj: TDocumentChargeSheet;
@@ -284,7 +281,7 @@ begin
 
   {
     refactor (TStandardDocumentChargeSheetControlService, 1):
-    extract the assigning WorkingRules and Ensurers to separate object and
+    extract the assigning WorkingRules to separate object and
     inject it to DocumentChargeSheetCreatingService and this service
   }
 
@@ -293,18 +290,11 @@ begin
   ChargeSheetObj
     .WorkingRules
       .DocumentChargeSheetViewingRule
-        .EnsureThatIsSatisfiedFor(Employee, ChargeSheet, Document);
-
-  ChargeSheetObj.ChangingEnsurer :=
-    TDocumentChargeSheetChangingEnsurer.Create(Document);
-
-  ChargeSheetObj.PerformingEnsurer :=
-    TDocumentChargeSheetPerformingEnsurer.Create(Document);
+        .EnsureThatIsSatisfiedFor(Employee, ChargeSheet);
     
 end;
 
 function TStandardDocumentChargeSheetControlService.GetChargeSheet(
-  Document: IDocument;
   Employee: TEmployee;
   const ChargeSheetId: Variant
 ): IDocumentChargeSheet;
@@ -315,33 +305,124 @@ begin
 
   if not Assigned(Result) then Exit;
 
-  EnsureEmployeeMayViewChargeSheet(Employee, Result, Document);
+  EnsureEmployeeMayViewChargeSheet(Employee, Result);
   
 end;
 
 procedure TStandardDocumentChargeSheetControlService.
   GetChargeSheet(
-    Document: IDocument;
     Employee: TEmployee;
     const ChargeSheetId: Variant;
     var ChargeSheet: IDocumentChargeSheet;
     var AccessRights: TDocumentChargeSheetAccessRights
   );
+var
+    ChargeSheetAccessRightsService: IDocumentChargeSheetAccessRightsService;
 begin
 
   ChargeSheet :=
-    GetChargeSheet(Document, Employee, ChargeSheetId);
-    
+    GetChargeSheet(Employee, ChargeSheetId);
+
+  ChargeSheetAccessRightsService :=
+    TDocumentChargeSheetsServiceRegistry
+      .Instance
+        .GetDocumentChargeSheetAccessRightsService(
+          TDocumentChargeSheet(ChargeSheet.Self).ClassType
+        );
+        
   AccessRights :=
-    FDocumentChargeSheetAccessRightsService
+    ChargeSheetAccessRightsService
       .EnsureEmployeeHasDocumentChargeSheetAccessRights(
-        Employee, ChargeSheet, Document
+        Employee, ChargeSheet
       );
   
 end;
 
-function TStandardDocumentChargeSheetControlService.GetChargeSheets(
+function TStandardDocumentChargeSheetControlService.GetChargeSheetCreatingServiceForOrRaise(
   Document: IDocument;
+  const ChargeKindId: Variant;
+  const ErrorMsg: String
+): IDocumentChargeSheetCreatingService;
+var
+    ChargeKind: TDocumentChargeKind;
+    Free: IDomainObjectBase;
+begin
+
+  ChargeKind := FDocumentChargeKindsControlService.FindDocumentChargeKindById(ChargeKindId);
+
+  if Assigned(ChargeKind) then begin
+
+    Free := ChargeKind;
+
+    Result :=
+       TDocumentChargeSheetsServiceRegistry
+        .Instance
+          .GetDocumentChargeSheetCreatingService(
+            TDocumentChargeSheetClass(ChargeKind.ChargeClass.ChargeSheetType),
+            TDocument(Document.Self).ClassType
+          );
+
+  end
+
+  else Result := nil;
+
+  if not Assigned(Result) then begin
+
+    raise TDocumentChargeSheetControlServiceException.Create(
+      IfThen(
+        ErrorMsg <> '',
+        ErrorMsg,
+        'Ќе найден служба создани€ листов поручений ' +
+        'дл€ требуемого типа'
+      )
+    );
+
+  end;
+
+end;
+
+function TStandardDocumentChargeSheetControlService.GetChargeSheetCreatingServiceForOrRaise(
+  Document: IDocument;
+  Performer: TEmployee;
+  const ErrorMsg: String
+): IDocumentChargeSheetCreatingService;
+var
+    Charge: IDocumentCharge;
+begin
+
+  Charge := Document.FindChargeByPerformerOrActuallyPerformedEmployee(Performer);
+
+  if Assigned(Charge) then begin
+
+    Result :=
+      TDocumentChargeSheetsServiceRegistry
+        .Instance
+          .GetDocumentChargeSheetCreatingService(
+            TDocumentChargeSheetClass(TDocumentCharge(Charge.Self).ChargeSheetType),
+            TDocument(Document.Self).ClassType
+          );
+
+  end
+
+  else Result := nil;
+
+  if not Assigned(Result) then begin
+
+    raise TDocumentChargeSheetControlServiceException.Create(
+      IfThen(
+        ErrorMsg <> '',
+        ErrorMsg,
+        'Ќе найдена служба создани€ листов поручений ' +
+        'дл€ требуемого исполнител€'
+      )
+    );
+    
+  end;
+
+
+end;
+
+function TStandardDocumentChargeSheetControlService.GetChargeSheets(
   Employee: TEmployee;
   const ChargeSheetIds: TVariantList
 ): TDocumentChargeSheets;
@@ -356,64 +437,62 @@ begin
   if not Assigned(Result) then Exit;
 
   for ChargeSheet in Result do
-    EnsureEmployeeMayViewChargeSheet(Employee, ChargeSheet, Document);
+    EnsureEmployeeMayViewChargeSheet(Employee, ChargeSheet);
 
 end;
 
 function TStandardDocumentChargeSheetControlService.
   PerformChargeSheet(
     Employee: TEmployee;
-    ChargeSheet: IDocumentChargeSheet;
-    Document: IDocument
+    ChargeSheet: IDocumentChargeSheet
   ): TDocumentChargeSheetPerformingResult;
 begin
 
   Result :=
     FDocumentChargeSheetControlPerformingService
-      .PerformChargeSheet(ChargeSheet, Document, Employee);
+      .PerformChargeSheet(ChargeSheet, Employee);
 
 end;
 
 function TStandardDocumentChargeSheetControlService.PerformChargeSheets(
   Employee: TEmployee;
-  ChargeSheets: TDocumentChargeSheets;
-  Document: IDocument
+  ChargeSheets: TDocumentChargeSheets
 ): TDocumentChargeSheetPerformingResult;
 begin
 
   Result :=
     FDocumentChargeSheetControlPerformingService
-      .PerformChargeSheets(ChargeSheets, Document, Employee);
+      .PerformChargeSheets(ChargeSheets, Employee);
       
 end;
 
 procedure TStandardDocumentChargeSheetControlService.RemoveChargeSheets(
   Employee: TEmployee;
-  ChargeSheets: TDocumentChargeSheets;
-  Document: IDocument
+  ChargeSheets: TDocumentChargeSheets
 );
 begin
 
   FDocumentChargeSheetRemovingService.RemoveChargeSheets(
-    Employee, ChargeSheets, Document
+    Employee, ChargeSheets
   );
   
 end;
 
 procedure TStandardDocumentChargeSheetControlService.SaveChargeSheets(
   Employee: TEmployee;
-  ChargeSheets: TDocumentChargeSheets;
-  Document: IDocument
+  ChargeSheets: TDocumentChargeSheets
 );
 
   procedure RaiseExceptionIfChargeSheetsAreNotBelongsToDocument(
     Employee: TEmployee;
-    ChargeSheets: TDocumentChargeSheets;
-    Document: IDocument
+    ChargeSheets: TDocumentChargeSheets
   );
   begin
 
-    if not ChargeSheets.AreBelongsToDocument(Document.Identity) then begin
+    if ChargeSheets.IsEmpty then Exit;
+
+    if not ChargeSheets.AreBelongsToDocument(ChargeSheets.First.DocumentId)
+    then begin
     
       Raise TDocumentChargeSheetControlServiceException.Create(
         'Ќевозможно сохранить изменени€ по поручени€м, не относ€щимс€ ' +
@@ -423,7 +502,7 @@ procedure TStandardDocumentChargeSheetControlService.SaveChargeSheets(
     end;
 
   end;
-
+  
   procedure ExtractNewAndChangedChargeSheets(
     ChargeSheets: TDocumentChargeSheets;
     var NewDocumentChargeSheets: TDocumentChargeSheets;
@@ -431,7 +510,7 @@ procedure TStandardDocumentChargeSheetControlService.SaveChargeSheets(
   );
   var
       ChargeSheet: IDocumentChargeSheet;
-      ChargeSheetObj: TDocumentChargeSheet ;
+      ChargeSheetObj: TDocumentChargeSheet;
   begin
 
     NewDocumentChargeSheets := TDocumentChargeSheets.Create;
@@ -442,7 +521,7 @@ procedure TStandardDocumentChargeSheetControlService.SaveChargeSheets(
       for ChargeSheet in ChargeSheets do begin
 
         ChargeSheetObj := TDocumentChargeSheet(ChargeSheet.Self);
-        
+
         if not ChargeSheetObj.IsIdentityAssigned then
           NewDocumentChargeSheets.AddDocumentChargeSheet(ChargeSheet)
 
@@ -461,40 +540,57 @@ procedure TStandardDocumentChargeSheetControlService.SaveChargeSheets(
 
   procedure SaveNewDocumentChargesIfNecessary(
     Employee: TEmployee;
-    Document: IDocument;
     NewChargeSheets: TDocumentChargeSheets
   );
   var
-      DocumentDirectory: IDocumentDirectory;
-      NewHeadChargeSheetsFound: Boolean;
+      NewHeadChargeSheets: TDocumentChargeSheets;
+      FreeNewHeadChargeSheets: TDocumentChargeSheets;
       ChargeSheet: IDocumentChargeSheet;
+
+      DocumentKind: TDocumentKind;
+      FreeDocumentKind: IDomainObjectBase;
+      
+      DocumentDirectory: IDocumentDirectory;
+
+      Document: IDocument;
+      DocumentObj: TDocument;
+
+      NewDocumentChargesAdded: Boolean;
   begin
 
-    NewHeadChargeSheetsFound := False;
+    NewHeadChargeSheets := TDocumentChargeSheets.Create;
+
+    FreeNewHeadChargeSheets := NewHeadChargeSheets;
 
     for ChargeSheet in ChargeSheets do begin
 
-      if not ChargeSheet.IsHead then Continue;
-
-      if
-        not
-        Document.Charges.IsEmployeeAssignedAsPerformer(ChargeSheet.Performer)
-      then begin
-
-        if Document.EditingEmployee <> Employee then
-          Document.EditingEmployee := Employee;
-
-        Document.AddCharge(ChargeSheet.Charge);
-
-        NewHeadChargeSheetsFound := True;
-
-      end;
-      
+      if ChargeSheet.IsHead then
+        NewHeadChargeSheets.AddDocumentChargeSheet(ChargeSheet);
+        
     end;
-      
+
+    if NewHeadChargeSheets.IsEmpty then Exit;
+
+    DocumentKind :=
+      FDocumentKindFinder.FindDocumentKindByIdentity(
+        NewHeadChargeSheets.First.DocumentKindId
+      );
+
+    if not Assigned(DocumentKind) then begin
+
+      Raise TDocumentChargeSheetControlServiceException.Create(
+        'Ќе найден тип документа при сохранении новых поручений'
+      );
+
+    end;
+    
+    FreeDocumentKind := DocumentKind;
+
+    { refactor: inject IDocumentDirectoryRegsitry }
+
     DocumentDirectory :=
       TDocumentStorageServiceRegistry.Instance.GetOriginalDocumentDirectory(
-        TDocument(Document.Self).ClassType
+        DocumentKind.DocumentClass
       );
 
     if not Assigned(DocumentDirectory) then begin
@@ -506,7 +602,32 @@ procedure TStandardDocumentChargeSheetControlService.SaveChargeSheets(
 
     end;
 
-    DocumentDirectory.ModifyDocument(TDocument(Document.Self));
+    Document :=
+      DocumentDirectory.FindDocumentById(NewHeadChargeSheets.First.DocumentId);
+
+    DocumentObj := TDocument(Document.Self);
+
+    NewDocumentChargesAdded := False;
+
+    DocumentObj.InvariantsComplianceRequested := False;
+
+    DocumentObj.EditingEmployee := Employee;
+
+    DocumentObj.InvariantsComplianceRequested := True;
+
+    for ChargeSheet in NewHeadChargeSheets do begin
+
+      if Document.Charges.IsEmployeeAssignedAsPerformer(Employee)
+      then Continue;
+
+      Document.AddCharge(ChargeSheet.Charge);
+
+      NewDocumentChargesAdded := True;
+
+    end;
+
+    if NewDocumentChargesAdded then
+      DocumentDirectory.ModifyDocument(TDocument(Document.Self));
 
   end;
   
@@ -516,14 +637,14 @@ var
 begin
 
   RaiseExceptionIfChargeSheetsAreNotBelongsToDocument(
-    Employee, ChargeSheets, Document
+    Employee, ChargeSheets
   );
 
   ExtractNewAndChangedChargeSheets(
     ChargeSheets, NewDocumentChargeSheets, ChangedDocumentChargeSheets
   );
 
-  SaveNewDocumentChargesIfNecessary(Employee, Document, NewDocumentChargeSheets);
+  SaveNewDocumentChargesIfNecessary(Employee, NewDocumentChargeSheets);
   
   FDocumentChargeSheetDirectory.PutDocumentChargeSheets(NewDocumentChargeSheets);
   FDocumentChargeSheetDirectory.ModifyDocumentChargeSheets(ChangedDocumentChargeSheets);

@@ -14,6 +14,7 @@ uses
   Session,
   SysUtils,
   IDomainObjectUnit,
+  VariantListUnit,
   Classes;
 
 type
@@ -113,7 +114,12 @@ type
       function GetEmployeeOrRaise(
         const EmployeeId: Variant;
         const ErrorMessage: String = ''
-      ): TEmployee; 
+      ): TEmployee; virtual;
+      
+      function GetEmployeesOrRaise(
+        const EmployeeIds: TVariantList;
+        const ErrorMessage: String = ''
+      ): TEmployees; virtual;
 
       procedure MakeEmployeeDocumentOperationAsBusinessTransaction(
         const DocumentId: Variant;
@@ -176,10 +182,9 @@ type
 implementation
 
 uses
-
-  StrUtils,
   BusinessProcessService,
-  AbstractApplicationService;
+  AbstractApplicationService,
+  StrUtils;
 
 { TEmployeeDocumentOperationService }
 
@@ -227,7 +232,9 @@ begin
 end;
 
 function TEmployeeDocumentOperationService.GetEmployeeOrRaise(
-  const EmployeeId: Variant; const ErrorMessage: String): TEmployee;
+  const EmployeeId: Variant;
+  const ErrorMessage: String
+): TEmployee;
 begin
 
   Result := GetEmployee(EmployeeId);
@@ -235,9 +242,38 @@ begin
   if not Assigned(Result) then begin
 
     RaiseFailedBusinessProcessServiceException(
-      IfThen(Trim(ErrorMessage) = '', 'Сотрудник не найден', ErrorMessage)
+      IfThen(
+        ErrorMessage = '',
+        'Информация о запрашиваемом сотруднике не найдена',
+        ErrorMessage
+      )
     );
+    
+  end;
 
+
+end;
+
+function TEmployeeDocumentOperationService.GetEmployeesOrRaise(
+  const EmployeeIds: TVariantList;
+  const ErrorMessage: String
+): TEmployees;
+begin
+
+  Result := FEmployeeRepository.FindEmployeesByIdentities(EmployeeIds);
+
+  if not Assigned(Result) or Result.IsEmpty then begin
+
+    FreeAndNil(Result);
+
+    RaiseFailedBusinessProcessServiceException(
+      IfThen(
+        ErrorMessage = '',
+        'Информация о запрашиваемых сотрудниках не найдена',
+        ErrorMessage
+      )
+    );
+    
   end;
 
 end;

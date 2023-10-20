@@ -92,6 +92,12 @@ begin
 
     );
 
+  PersonnelOrderRepositoryRegistry.RegisterPersonnelOrderSubKindRepository(
+    FPersonnelOrderRepositoriesFactory.CreatePersonnelOrderSubKindRepository(
+      FQueryExecutor
+    )
+  );
+
 end;
 
 end.

@@ -108,12 +108,12 @@ begin
     );
     
   end;
-
-  Document.ToPerformingBy(SendingEmployee);
   
   SentNecessaryDataForDocumentPerforming :=
     SendNecessaryDataForDocumentPerforming(Document, SendingEmployee);
 
+  Document.ToPerformingBy(SendingEmployee);
+  
   Free := SentNecessaryDataForDocumentPerforming;
 
   Result :=

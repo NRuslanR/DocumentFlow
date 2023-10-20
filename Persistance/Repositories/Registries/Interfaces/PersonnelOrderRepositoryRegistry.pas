@@ -8,6 +8,7 @@ uses
   PersonnelOrderSubKindEmployeeListRepository,
   PersonnelOrderSubKindEmployeeGroupRepository,
   PersonnelOrderEmployeeList,
+  PersonnelOrderSubKindRepository,
   PersonnelOrderSubKindEmployeeList,
   PersonnelOrderSubKindEmployeeGroup;
 
@@ -41,7 +42,13 @@ type
     );
 
     function GetPersonnelOrderCreatingAccessEmployeeRepository: IPersonnelOrderSingleEmployeeListRepository;
-    
+
+    procedure RegisterPersonnelOrderSubKindRepository(
+      PersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository
+    );
+
+    function GetPersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository;
+
   end;
   
 implementation

@@ -323,7 +323,7 @@ begin
 
       SelectedOwnNotificationsReceivingUserIds :=
         FOwnNotificationsReceivingEmployeesReferenceForm
-          .CurrentSelectedEmployeesRecords
+          .ChoosenEmployeeRecords
             .FetchEmployeeIdValues;
 
     end;

@@ -19,6 +19,7 @@ uses
   PersonnelOrderApproverListFinder,
   PersonnelOrderSignerListFinder,
   PersonnelOrderCreatingAccessEmployeeListFinder,
+  PersonnelOrderSubKindFinder,
   SysUtils;
 
 type
@@ -27,6 +28,7 @@ type
 
     private
 
+      FPersonnelOrderSubKindFinder: IPersonnelOrderSubKindFinder;
       FSingleEmployeeListFinderRegistry: TTypeObjectRegistry;
       FSubKindEmployeeListFinderRegistry: TTypeObjectRegistry;
       FSubKindEmployeeGroupFinderRegistry: TTypeObjectRegistry;
@@ -76,6 +78,14 @@ type
 
       function GetPersonnelOrderControlGroupFinder: IPersonnelOrderControlGroupFinder;
 
+    public
+
+      procedure RegisterPersonnelOrderSubKindFinder(
+        PersonnelOrderSubKindFinder: IPersonnelOrderSubKindFinder
+      );
+
+      function GetPersonnelOrderSubKindFinder: IPersonnelOrderSubKindFinder;
+      
     public
 
       class property Instance: TPersonnelOrderSearchServiceRegistry
@@ -167,6 +177,13 @@ begin
     
 end;
 
+function TPersonnelOrderSearchServiceRegistry.GetPersonnelOrderSubKindFinder: IPersonnelOrderSubKindFinder;
+begin
+
+  Result := FPersonnelOrderSubKindFinder;
+  
+end;
+
 procedure TPersonnelOrderSearchServiceRegistry.RegisterPersonnelOrderApproverListFinder(
   PersonnelOrderApproverListFinder: IPersonnelOrderApproverListFinder
 );
@@ -209,6 +226,14 @@ begin
     PersonnelOrderSignerListFinder
   );
 
+end;
+
+procedure TPersonnelOrderSearchServiceRegistry.RegisterPersonnelOrderSubKindFinder(
+  PersonnelOrderSubKindFinder: IPersonnelOrderSubKindFinder);
+begin
+
+  FPersonnelOrderSubKindFinder := PersonnelOrderSubKindFinder;
+  
 end;
 
 class procedure TPersonnelOrderSearchServiceRegistry.SetInstance(

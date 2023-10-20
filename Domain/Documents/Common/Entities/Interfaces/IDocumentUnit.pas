@@ -26,6 +26,7 @@ type
       function GetCreationDate: TDateTime;
       function GetDocumentDate: Variant;
       function GetName: String;
+      function GetFullName: String;
       function GetNote: String;
       function GetProductCode: String;
       function GetNumber: String;
@@ -57,6 +58,7 @@ type
       procedure SetCreationDate(const Value: TDateTime);
       procedure SetDocumentDate(const Value: Variant);
       procedure SetName(const Value: String);
+      procedure SetFullName(const Value: String);
       procedure SetNote(const Value: String);
       procedure SetProductCode(const Value: String);
       procedure SetNumber(const Value: String);
@@ -140,6 +142,7 @@ type
       function IsSignedBy(Employee: TEmployee): Boolean;
 
       procedure AddCharge(Charge: IDocumentCharge);
+      procedure AddChargeBehalfOf(Charge: IDocumentCharge; Employee: TEmployee);
       procedure AddCharges(Charges: IDocumentCharges);
       procedure ChangeCharge(Charge: IDocumentCharge);
       procedure ChangeCharges(Charges: IDocumentCharges);
@@ -168,6 +171,7 @@ type
       
       property Number: String read GetNumber write SetNumber;
       property Name: String read GetName write SetName;
+      property FullName: String read GetFullName write SetFullName;
 
       property CreationDate: TDateTime
       read GetCreationDate write SetCreationDate;

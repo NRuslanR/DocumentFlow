@@ -10,7 +10,6 @@ uses
   DocumentChargeSheet,
   DocumentChargeSheetWorkingRule,
   DocumentChargeSheetPerformingRule,
-  IDocumentUnit,
   SysUtils,
   Classes;
 
@@ -24,9 +23,16 @@ type
 
       protected
 
-        procedure RaiseExceptionIfDocumentChargeSheetAlreadyPerformed(
-          DocumentChargeSheet: TDocumentChargeSheet
+        procedure RaiseExceptionIfChargeSheetIsNotValid(
+          DocumentChargeSheet: TDocumentChargeSheet;
+          Employee: TEmployee
         );
+
+        function IsChargeSheetValid(
+          ChargeSheet: TDocumentChargeSheet;
+          Employee: TEmployee;
+          var ErrorMessage: String
+        ): Boolean; virtual;
 
         procedure RaiseExceptionIfDocumentChargeSheetTimeFrameIsExpired(
           Employee: TEmployee;
@@ -38,18 +44,11 @@ type
           DocumentChargeSheet: TDocumentChargeSheet
         );
 
-        procedure RaiseExceptionIfDocumentStateIsNotValid(
-          Employee: TEmployee;
-          DocumentChargeSheet: TDocumentChargeSheet;
-          Document: IDocument
-        );
-
       protected
 
         procedure InternalEnsureThatIsSatisfiedFor(
           Employee: TEmployee;
-          DocumentChargeSheet: TDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: TDocumentChargeSheet
         ); override;
 
     end;
@@ -65,17 +64,12 @@ uses
 procedure TStandardDocumentChargeSheetPerformingRule.
   InternalEnsureThatIsSatisfiedFor(
     Employee: TEmployee;
-    DocumentChargeSheet: TDocumentChargeSheet;
-    Document: IDocument
+    DocumentChargeSheet: TDocumentChargeSheet
   );
 begin
 
-  RaiseExceptionIfDocumentStateIsNotValid(
-    Employee, DocumentChargeSheet, Document
-  );
-
-  RaiseExceptionIfDocumentChargeSheetAlreadyPerformed(
-    DocumentChargeSheet
+  RaiseExceptionIfChargeSheetIsNotValid(
+    DocumentChargeSheet, Employee
   );
                                         
   RaiseExceptionIfDocumentChargeSheetTimeFrameIsExpired(
@@ -89,20 +83,41 @@ begin
 end;
 
 procedure TStandardDocumentChargeSheetPerformingRule.
-  RaiseExceptionIfDocumentChargeSheetAlreadyPerformed(
-    DocumentChargeSheet: TDocumentChargeSheet
+  RaiseExceptionIfChargeSheetIsNotValid(
+    DocumentChargeSheet: TDocumentChargeSheet;
+    Employee: TEmployee
   );
+var
+    ErrorMessage: String;
 begin
 
-  if DocumentChargeSheet.IsPerformed then begin
-  
-    raise TDocumentChargeSheetWorkingRuleException.CreateFmt(
-            'ѕоручение, выданное сотруднику "%s"' +
-            ', уже исполнено',
-            [
-              DocumentChargeSheet.Performer.FullName
-            ]
-          );
+  if not IsChargeSheetValid(DocumentChargeSheet, Employee, ErrorMessage)
+  then begin
+
+    raise TDocumentChargeSheetWorkingRuleException.Create(ErrorMessage);
+
+  end;
+
+end;
+
+function TStandardDocumentChargeSheetPerformingRule.IsChargeSheetValid(
+  ChargeSheet: TDocumentChargeSheet;
+  Employee: TEmployee;
+  var ErrorMessage: String
+): Boolean;
+begin
+
+  Result := not ChargeSheet.IsPerformed;
+
+  if not Result then begin
+
+    ErrorMessage :=
+      Format(
+        'ѕоручение, выданное сотруднику "%s", уже исполнено',
+        [
+          ChargeSheet.Performer.FullName
+        ]
+      );
 
   end;
 
@@ -122,43 +137,6 @@ begin
     на данный момент
   }
   
-end;
-
-procedure TStandardDocumentChargeSheetPerformingRule
-  .RaiseExceptionIfDocumentStateIsNotValid(
-    Employee: TEmployee;
-    DocumentChargeSheet: TDocumentChargeSheet;
-    Document: IDocument
-  );
-begin
-
-  if DocumentChargeSheet.DocumentId <> Document.Identity then begin
-
-    Raise TDocumentChargeSheetWorkingRuleException.CreateFmt(
-      'ѕоручение дл€ сотрудника "%s" не может быть выполнено, ' +
-      'поскольку не относитс€ к документу',
-      [
-        DocumentChargeSheet.Performer.FullName
-      ]
-    );
-
-  end;
-
-  if
-    not (DocumentChargeSheet is TDocumentAcquaitanceSheet)
-    and Document.IsPerformed
-  then begin
-
-    Raise TDocumentChargeSheetWorkingRuleException.CreateFmt(
-      'ѕоручение дл€ сотрудника "%s" не может ' +
-      'быть выполнено, поскольку документ уже выполнен',
-      [
-        DocumentChargeSheet.Performer.FullName
-      ]
-    );
-
-  end;
-
 end;
 
 procedure TStandardDocumentChargeSheetPerformingRule.

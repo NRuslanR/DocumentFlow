@@ -39,18 +39,18 @@ type
         ): String;
         
         function CreateReceiverInfoListString(
-          DocumentChargeSetInfoHolder:
+          DocumentChargeSetHolder:
             TDocumentChargeSetHolder;
           const ReceiversKind: TReceiversKind
         ): String;
 
         function CreatePerformerInfoListString(
-          DocumentChargeSetInfoHolder:
+          DocumentChargeSetHolder:
             TDocumentChargeSetHolder
         ): String;
 
         function CreateAcquainterInfoListString(
-          DocumentChargeSetInfoHolder:
+          DocumentChargeSetHolder:
             TDocumentChargeSetHolder
         ): String;
 
@@ -105,24 +105,24 @@ begin
 end;
 
 function TServiceNotePrintFormFastReportPresenter.CreateAcquainterInfoListString(
-  DocumentChargeSetInfoHolder: TDocumentChargeSetHolder): String;
+  DocumentChargeSetHolder: TDocumentChargeSetHolder): String;
 begin
 
   Result :=
     CreateReceiverInfoListString(
-      DocumentChargeSetInfoHolder,
+      DocumentChargeSetHolder,
       rkAcquainters
     );
 
 end;
 
 function TServiceNotePrintFormFastReportPresenter.CreatePerformerInfoListString(
-  DocumentChargeSetInfoHolder: TDocumentChargeSetHolder): String;
+  DocumentChargeSetHolder: TDocumentChargeSetHolder): String;
 begin
 
   Result :=
     CreateReceiverInfoListString(
-      DocumentChargeSetInfoHolder,
+      DocumentChargeSetHolder,
       rkPerformers
     );
 
@@ -130,11 +130,10 @@ end;
 
 function TServiceNotePrintFormFastReportPresenter.
   CreateReceiverInfoListString(
-    DocumentChargeSetInfoHolder:
-      TDocumentChargeSetHolder;
+    DocumentChargeSetHolder:TDocumentChargeSetHolder;
     const ReceiversKind: TReceiversKind
   ): String;
-var DocumentChargeSet: TDataSet;
+var
     ReceiverInfo: String;
     PadegSpecialityLength: Integer;
     PadegSpeciality: PChar;
@@ -142,91 +141,82 @@ var DocumentChargeSet: TDataSet;
     IsReceiversKindSatisfied: Boolean;
 begin
 
-  DocumentChargeSet :=
-    DocumentChargeSetInfoHolder.DataSet;
-    
-  try
+  with DocumentChargeSetHolder do begin
 
-    DocumentChargeSet.DisableControls;
+    try
 
-    DocumentChargeSet.First;
+      DisableControls;
 
-    while not DocumentChargeSet.Eof do begin
+      First;
 
-      if not VarIsNull(DocumentChargeSetInfoHolder.TopLevelChargeIdFieldValue)
-      then begin
+      while not Eof do begin
 
-        DocumentChargeSet.Next;
-        Continue;
+        IsReceiversKindSatisfied :=
+          DocumentChargeSetHolder.IsForAcquaitanceFieldValue;
 
-      end;
+        if ReceiversKind = rkPerformers then
+          IsReceiversKindSatisfied := not IsReceiversKindSatisfied;
 
-      IsReceiversKindSatisfied :=
-        DocumentChargeSetInfoHolder.IsChargeForAcquaitanceFieldValue;
+        if not IsReceiversKindSatisfied then begin
 
-      if ReceiversKind = rkPerformers then
-        IsReceiversKindSatisfied := not IsReceiversKindSatisfied;
-
-      if not IsReceiversKindSatisfied then begin
-
-        DocumentChargeSet.Next;
-        Continue;
+          Next;
+          Continue;
         
+        end;
+      
+        PadegSpecialityLength :=
+          Length(DocumentChargeSetHolder.PerformerSpecialityFieldValue) + 10;
+
+        PadegSpeciality := StrAlloc(PadegSpecialityLength);
+      
+        if GetAppointmentPadeg(
+            PChar(DocumentChargeSetHolder.PerformerSpecialityFieldValue),
+            3,
+            PadegSpeciality,
+            PadegSpecialityLength
+          ) = 0
+        then ReceiverSpeciality := String(PadegSpeciality)
+        else ReceiverSpeciality := DocumentChargeSetHolder.PerformerSpecialityFieldValue;
+
+        ReceiverInfo :=
+          ReceiverSpeciality +
+          sLineBreak +
+          MakeFormalEmployeeNameFrom(
+            DocumentChargeSetHolder.PerformerFullNameFieldValue,
+            True
+          );
+
+        StrDispose(PadegSpeciality);
+
+        if Result = '' then
+          Result := ReceiverInfo
+
+        else Result := Result + sLineBreak + sLineBreak + ReceiverInfo;
+      
+        Next;
+
       end;
-      
-      PadegSpecialityLength :=
-        Length(DocumentChargeSetInfoHolder.ReceiverSpecialityFieldValue) + 10;
 
-      PadegSpeciality := StrAlloc(PadegSpecialityLength);
-      
-      if GetAppointmentPadeg(
-          PChar(DocumentChargeSetInfoHolder.ReceiverSpecialityFieldValue),
-          3,
-          PadegSpeciality,
-          PadegSpecialityLength
-        ) = 0
-      then ReceiverSpeciality := String(PadegSpeciality)
-      else ReceiverSpeciality := DocumentChargeSetInfoHolder.ReceiverSpecialityFieldValue;
+      First;
 
-      ReceiverInfo :=
-        ReceiverSpeciality +
-        sLineBreak +
-        MakeFormalEmployeeNameFrom(
-          DocumentChargeSetInfoHolder.ReceiverFullNameFieldValue,
-          True
-        );
+    finally
 
-      StrDispose(PadegSpeciality);
-      
-      if Result = '' then
-        Result := ReceiverInfo
-
-      else Result := Result + sLineBreak + sLineBreak + ReceiverInfo;
-      
-      DocumentChargeSet.Next;
-
+      EnableControls;
 
     end;
 
-    DocumentChargeSet.First;
-
-  finally
-
-    DocumentChargeSet.EnableControls;
-
   end;
-  
+
 end;
 
 destructor TServiceNotePrintFormFastReportPresenter.Destroy;
 begin
 
-  FreeAndNil(FDocumentPrintFormReportsModule);
+  //FreeAndNil(FDocumentPrintFormReportsModule);
   
   inherited;
 
 end;
-
 
 procedure TServiceNotePrintFormFastReportPresenter.
   FillReportByDocumentApprovingListSetHolder(

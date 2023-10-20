@@ -8,7 +8,6 @@ uses
   DocumentChargeSheetWorkingRule,
   EmployeeIsSameAsOrDeputySpecification,
   DocumentChargeSheet,
-  IDocumentUnit,
   Employee,
   SysUtils,
   Classes;
@@ -16,7 +15,10 @@ uses
 type
 
   TStandardDocumentChargeSheetWorkingRule =
-    class (TInterfacedObject, IDocumentChargeSheetWorkingRule)
+    class (
+      TInterfacedObject,
+      IDocumentChargeSheetWorkingRule
+    )
 
       protected
 
@@ -25,14 +27,12 @@ type
 
         procedure InternalEnsureThatIsSatisfiedFor(
           Employee: TEmployee;
-          DocumentChargeSheet: TDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: TDocumentChargeSheet
         ); virtual; abstract;
 
         function InternalIsSatisfiedBy(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: IDocumentChargeSheet
         ): Boolean; virtual;
         
       public
@@ -44,14 +44,12 @@ type
 
         procedure EnsureThatIsSatisfiedFor(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: IDocumentChargeSheet
         );
 
         function IsSatisfiedBy(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: IDocumentChargeSheet
         ): Boolean;
 
     end;
@@ -75,29 +73,26 @@ end;
 procedure TStandardDocumentChargeSheetWorkingRule.
   EnsureThatIsSatisfiedFor(
     Employee: TEmployee;
-    DocumentChargeSheet: IDocumentChargeSheet;
-    Document: IDocument
+    DocumentChargeSheet: IDocumentChargeSheet
   );
 begin
 
   InternalEnsureThatIsSatisfiedFor(
     Employee,
-    DocumentChargeSheet.Self as TDocumentChargeSheet,
-    Document
+    DocumentChargeSheet.Self as TDocumentChargeSheet
   );
   
 end;
 
 function TStandardDocumentChargeSheetWorkingRule.InternalIsSatisfiedBy(
   Employee: TEmployee;
-  DocumentChargeSheet: IDocumentChargeSheet;
-  Document: IDocument
+  DocumentChargeSheet: IDocumentChargeSheet
 ): Boolean;
 begin
 
   try
 
-    EnsureThatIsSatisfiedFor(Employee, DocumentChargeSheet, Document);
+    EnsureThatIsSatisfiedFor(Employee, DocumentChargeSheet);
 
     Result := True;
 
@@ -115,12 +110,11 @@ end;
 
 function TStandardDocumentChargeSheetWorkingRule.IsSatisfiedBy(
   Employee: TEmployee;
-  DocumentChargeSheet: IDocumentChargeSheet;
-  Document: IDocument
+  DocumentChargeSheet: IDocumentChargeSheet
 ): Boolean;
 begin
 
-  Result := InternalIsSatisfiedBy(Employee, DocumentChargeSheet, Document);
+  Result := InternalIsSatisfiedBy(Employee, DocumentChargeSheet);
   
 end;
 

@@ -9,6 +9,9 @@ uses
   IObjectPropertiesStorageRegistryUnit,
   DocumentApprovingSheetViewModelMapperFactories,
   UIControlsTrackingStylist,
+  DocumentKinds,
+  UIDocumentKinds,
+  UIDocumentKindMapper,
   SysUtils,
   Classes;
 
@@ -20,41 +23,34 @@ type
 
       FApplicationConfigurator: TApplicationConfigurator;
       FUIControlsTrackingStylist: TUIControlsTrackingStylist;
-      
-    private
-      
-      procedure ConfigureDocumentReportPresenterRegistry;
+      FUIDocumentKindMapper: IUIDocumentKindMapper;
 
-      procedure ConfigureApplicationPropertiesStorageRegistry;
+    private
 
       procedure ConfigureApplicationPropertiesIniFileRegistry(
         const AppPropertiesDirPath: String;
         const DefaultAppPropertiesDirPath: String
       );
 
-      procedure ConfigureDocumentDataSetHoldersFactories;
-
-      procedure ConfigureDocumentCardFormViewModelFactories;
-      
-      procedure CustomizeDocumentsReferenceFormsPropertiesIniFiles(
-        const AppPropertiesDirPath: String;
-        const DefaultAppPropertiesDirPath: String;
-        ApplicationPropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
-      );
-
-      procedure CustomizeDocumentChargesFramePropertiesIniFiles(
+      procedure CustomizeDocumentPrimaryScreensPropertiesIniFile(
         const AppPropertiesDirPath: String;
         const DefaultAppPropertiesDirPath: String;
         PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
       );
 
-      procedure CustomizeDocumentChargeSheetPerformersReferenceFormPropertiesIniFiles(
+      procedure CustomizeMainApplicationFramePropertiesIniFiles(
         const AppPropertiesDirPath: String;
         const DefaultAppPropertiesDirPath: String;
-        ApplicationPropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+        PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
       );
 
-      procedure CustomizeDocumentCardFramePropertiesIniFiles(
+      procedure CustomizeSecondaryDocumentScreensPropertiesIniFile(
+        const AppPropertiesDirPath: String;
+        const DefaultAppPropertiesDirPath: String;
+        PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+      );
+
+      procedure CustomizeDocumentReportFormsPropertiesIniFiles(
         const AppPropertiesDirPath: String;
         const DefaultAppPropertiesDirPath: String;
         PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
@@ -72,11 +68,49 @@ type
         PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
       );
 
+      procedure CustomizePropertiesIniFilesForAllDocumentFlowItems(
+        const AppPropertiesDirPath: String;
+        const DefaultAppPropertiesDirPath: String;
+        PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+      );
+
+      procedure ConfigureDocumentKindPropertiesIniFiles(
+        const DocumentKind: TUIDocumentKindClass;
+        const AppPropertiesDirPath: String;
+        const DefaultAppPropertiesDirPath: String;
+        PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+      );
+
+      procedure CustomizeDocumentsReferenceFormsPropertiesIniFiles(
+        const DocumentKind: TUIDocumentKindClass;
+        const AppPropertiesDirPath: String;
+        const DefaultAppPropertiesDirPath: String;
+        ApplicationPropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+      );
+
+      procedure CustomizeDocumentChargesFramePropertiesIniFiles(
+        const DocumentKind: TUIDocumentKindClass;
+        const AppPropertiesDirPath: String;
+        const DefaultAppPropertiesDirPath: String;
+        PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+      );
+
+      procedure CustomizeDocumentChargePerformersReferenceFormPropertiesIniFiles(
+        const AppPropertiesDirPath: String;
+        const DefaultAppPropertiesDirPath: String;
+        ApplicationPropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+      );
+
+      procedure CustomizeDocumentCardFramePropertiesIniFiles(
+        const DocumentKind: TUIDocumentKindClass;
+        const AppPropertiesDirPath: String;
+        const DefaultAppPropertiesDirPath: String;
+        PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+      );
+
       procedure CreateApplicationMainForm(
         ConfigurationData: TConfigurationData
       );
-
-
 
       procedure OnMainFrameLayoutReadyHandler(ASender: TObject);
 
@@ -88,7 +122,17 @@ type
 
     private
 
+      procedure ConfigureRegistries;
+      procedure ConfigureDocumentReportPresenterRegistry;
+      procedure ConfigureApplicationPropertiesStorageRegistry;
+
+    private
+
+      procedure ConfigureFactories;
+      procedure ConfigureDocumentDataSetHoldersFactories;
+      procedure ConfigureDocumentCardFormViewModelFactories;
       procedure ConfigureDocumentApprovingSheetViewModelMapperFactories;
+      procedure ConfigureDocumentCardFrameFactories;
       
     public
 
@@ -140,7 +184,6 @@ uses
   DocumentRecordsPanelSettingsFormPropertiesIniFile,
   DocumentRecordsPanelSettingsFormUnit,
   UIDocumentKindResolver,
-  UIDocumentKinds,
   unDocumentChargeSheetsFrame,
   DocumentsReferenceViewModelFactory,
   NumericDocumentKindResolver,
@@ -177,13 +220,22 @@ uses
   DocumentCardFormViewModelMapperFactories,
   DocumentApprovingSheetFastReportPresenter,
   DocumentDataSetHoldersFactory,
-  DocumentDataSetHolderFactories,
-  DocumentKinds,
+  DocumentDataSetHoldersFactories,
   DocumentCardFrameFactories,
   StandardUIDocumentKindMapper,
   unVersionInfosForm,
+  MemTableEhBuilderFactory,
   ApplicationVersionInfoService,
-  VersionInfoDTOs;
+  VersionInfoDTOs,
+  GlobalDocumentKindsReadService,
+  unServiceNoteChargesFrame,
+  unServiceNoteChargeSheetsFrame,
+  unPersonnelOrderChargesFrame,  
+  unPersonnelOrderChargeSheetsFrame,
+  unServiceNoteCardFrame,
+  NativeDocumentKindsReadService,
+  unPersonnelOrderCardFrame,
+  DocumentKindDto;
 
 { TUIApplicationConfigurator }
 
@@ -193,10 +245,8 @@ begin
 
   FApplicationConfigurator.Configure(ConfigurationData);
 
-  ConfigureDocumentDataSetHoldersFactories;
-  ConfigureDocumentCardFormViewModelFactories;
-  ConfigureDocumentReportPresenterRegistry;
-  ConfigureApplicationPropertiesStorageRegistry;
+  ConfigureFactories;
+  ConfigureRegistries;
   CreateApplicationMainForm(ConfigurationData);
   ConfigureGlobalStylization;
   
@@ -224,7 +274,459 @@ begin
   ApplicationPropertiesIniFilesRegistry :=
     TApplicationPropertiesStorageRegistry.Current;
 
-  ApplicationPropertiesIniFilesRegistry.
+  CustomizeDocumentPrimaryScreensPropertiesIniFile(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    ApplicationPropertiesIniFilesRegistry
+  );
+
+  CustomizeSecondaryDocumentScreensPropertiesIniFile(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    ApplicationPropertiesIniFilesRegistry
+  );
+
+  CustomizePropertiesIniFilesForAllDocumentFlowItems(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    ApplicationPropertiesIniFilesRegistry
+  );
+
+end;
+
+procedure TUIApplicationConfigurator.CustomizeDocumentPrimaryScreensPropertiesIniFile(
+  const AppPropertiesDirPath, DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+);
+begin
+
+  CustomizeMainApplicationFramePropertiesIniFiles(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+  CustomizeDocumentKindsFramePropertiesIniFiles(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+  CustomizeDocumentCardListFramePropertiesIniFiles(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+end;
+
+procedure TUIApplicationConfigurator.CustomizeSecondaryDocumentScreensPropertiesIniFile(
+  const AppPropertiesDirPath, DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry);
+begin
+
+  CustomizeDocumentReportFormsPropertiesIniFiles(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+  CustomizeDocumentChargePerformersReferenceFormPropertiesIniFiles(
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+end;
+
+procedure TUIApplicationConfigurator.CustomizeDocumentReportFormsPropertiesIniFiles(
+  const AppPropertiesDirPath, DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+);
+begin
+
+  PropertiesIniFilesRegistry
+    .RegisterObjectPropertiesStorageForObjectClass(
+      TDocumentRecordsPanelSettingsForm,
+      TDocumentRecordsPanelSettingsFormPropertiesIniFile.Create(
+        AppPropertiesDirPath + PathDelim + 'document_records_panel_settings_form.ini',
+        DefaultAppPropertiesDirPath + PathDelim + 'document_records_panel_settings_form.ini'
+      )
+    );
+
+end;
+
+procedure TUIApplicationConfigurator.CustomizePropertiesIniFilesForAllDocumentFlowItems(
+  const AppPropertiesDirPath: String;
+  const DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+);
+var
+    DocumentKindsReadService: INativeDocumentKindsReadService;
+    DocumentKindDtos: TDocumentKindDtos;
+    DocumentKindDto: TDocumentKindDto;
+    UIDocumentKindMapper: IUIDocumentKindMapper;
+    UIDocumentKind: TUIDocumentKindClass;
+begin
+
+  DocumentKindsReadService :=
+    TApplicationServiceRegistries
+      .Current
+        .GetPresentationServiceRegistry
+          .GetNativeDocumentKindsReadService;
+
+  DocumentKindDtos :=
+    DocumentKindsReadService
+      .GetServicedDocumentKindDtos;
+
+  UIDocumentKindMapper := TStandardUIDocumentKindMapper.Create;
+  
+  try
+
+    for DocumentKindDto in DocumentKindDtos do begin
+    
+      UIDocumentKind := 
+        UIDocumentKindMapper.MapUIDocumentKindFrom(DocumentKindDto.ServiceType);
+      
+      if 
+        UIDocumentKind.InheritsFrom(TUIIncomingDocumentKind) 
+        or UIDocumentKind.InheritsFrom(TUIApproveableDocumentKind)
+      then Continue;
+
+      ConfigureDocumentKindPropertiesIniFiles(
+        UIDocumentKind,
+        AppPropertiesDirPath,
+        DefaultAppPropertiesDirPath,
+        PropertiesIniFilesRegistry
+      );
+      
+    end;
+
+  finally
+
+    FreeAndNil(DocumentKindDtos);
+    
+  end;
+  
+end;
+
+procedure TUIApplicationConfigurator.ConfigureDocumentKindPropertiesIniFiles(
+  const DocumentKind: TUIDocumentKindClass;
+  const AppPropertiesDirPath,
+  DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+);
+begin
+
+  CustomizeDocumentsReferenceFormsPropertiesIniFiles(
+    DocumentKind,
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+  CustomizeDocumentChargesFramePropertiesIniFiles(
+    DocumentKind,
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+  CustomizeDocumentCardFramePropertiesIniFiles(
+    DocumentKind,
+    AppPropertiesDirPath,
+    DefaultAppPropertiesDirPath,
+    PropertiesIniFilesRegistry
+  );
+
+end;
+
+procedure TUIApplicationConfigurator.CustomizeDocumentsReferenceFormsPropertiesIniFiles(
+  const DocumentKind: TUIDocumentKindClass;
+  const AppPropertiesDirPath: String;
+  const DefaultAppPropertiesDirPath: String;
+  ApplicationPropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+);
+var
+    DocumentsReferenceFormKind,
+    IncomingDocumentsReferenceFormKind,
+    ApproveableDocumentsReferenceFormKind: TClass;
+
+    DocumentsReferenceFormIniFile, DocumentsReferenceFilterFormIniFile,
+    IncomingDocumentsReferenceFormIniFile, IncomingDocumentsReferenceFilterFormIniFile,
+    ApproveableDocumentsReferenceFormIniFile, ApproveableDocumentsReferenceFilterFormIniFile: String;
+
+    DefaultDocumentsReferenceFormIniFile, DefaultDocumentsReferenceFilterFormIniFile,
+    DefaultIncomingDocumentsReferenceFormIniFile, DefaultIncomingDocumentsReferenceFilterFormIniFile,
+    DefaultApproveableDocumentsReferenceFormIniFile, DefaultApproveableDocumentsReferenceFilterFormIniFile: String;
+begin
+
+  DocumentsReferenceFormKind := nil;
+  IncomingDocumentsReferenceFormKind := nil;
+  ApproveableDocumentsReferenceFormKind := nil;
+
+  if DocumentKind.InheritsFrom(TUIOutcomingServiceNoteKind) then begin
+
+    DocumentsReferenceFormKind := TOutcomingServiceNotesReferenceForm;
+    IncomingDocumentsReferenceFormKind := TIncomingServiceNotesReferenceForm;
+    ApproveableDocumentsReferenceFormKind := TApproveableServiceNotesReferenceForm;
+
+    DocumentsReferenceFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_documents_form.ini';
+
+    DocumentsReferenceFilterFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_documents_form_filter_state.ini';
+
+
+    IncomingDocumentsReferenceFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form.ini';
+
+    IncomingDocumentsReferenceFilterFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form_filter_state.ini';
+
+
+    ApproveableDocumentsReferenceFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_approveable_service_notes_form.ini';
+
+    ApproveableDocumentsReferenceFilterFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form_filter_state.ini';
+
+
+    DefaultDocumentsReferenceFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_documents_form.ini';
+
+    DefaultDocumentsReferenceFilterFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_documents_form_filter_state.ini';
+
+
+    DefaultIncomingDocumentsReferenceFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form.ini';
+
+    DefaultIncomingDocumentsReferenceFilterFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form_filter_state.ini';
+
+    DefaultApproveableDocumentsReferenceFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_approveable_service_notes_form.ini';
+
+    DefaultApproveableDocumentsReferenceFilterFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_approveable_service_notes_filter_form_state.ini';
+
+  end
+
+  else if DocumentKind.InheritsFrom(TUIPersonnelOrderKind) then begin
+
+    DocumentsReferenceFormKind := TUIPersonnelOrderKind;
+
+    DocumentsReferenceFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_personnel_orders_form.ini';
+
+    DocumentsReferenceFilterFormIniFile :=
+      AppPropertiesDirPath + PathDelim + 'employee_personnel_orders_filter_form.ini';
+
+    DefaultDocumentsReferenceFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_personnel_orders_form.ini';
+
+    DefaultDocumentsReferenceFilterFormIniFile :=
+      DefaultAppPropertiesDirPath + PathDelim + 'employee_personnel_orders_filter_form.ini';
+
+  end
+
+  else Raise Exception.Create('DocumentKind is not accounted for document type ' + DocumentKind.ClassName);
+
+  ApplicationPropertiesIniFilesRegistry
+    .RegisterObjectPropertiesStorageForObjectClass(
+
+      DocumentsReferenceFormKind,
+
+      TDocumentsReferenceFormPropertiesIniFile.Create(
+
+        TDocumentsReferenceFilterFormStatePropertiesIniFile.
+          Create(
+            DocumentsReferenceFilterFormIniFile,
+            DefaultDocumentsReferenceFilterFormIniFile
+          ),
+
+        DocumentsReferenceFormIniFile,
+        DefaultDocumentsReferenceFormIniFile
+      ),
+
+      RegisterWithoutInheritanceCheckingOption
+    );
+
+  if Assigned(IncomingDocumentsReferenceFormKind) then begin
+
+    ApplicationPropertiesIniFilesRegistry.
+      RegisterObjectPropertiesStorageForObjectClass(
+
+        IncomingDocumentsReferenceFormKind,
+
+        TDocumentsReferenceFormPropertiesIniFile.Create(
+
+          TDocumentsReferenceFilterFormStatePropertiesIniFile.Create(
+            IncomingDocumentsReferenceFilterFormIniFile,
+            DefaultIncomingDocumentsReferenceFilterFormIniFile
+          ),
+
+          IncomingDocumentsReferenceFormIniFile,
+          DefaultIncomingDocumentsReferenceFormIniFile
+        )
+      );
+
+  end;
+
+  if Assigned(ApproveableDocumentsReferenceFormKind) then begin
+
+    ApplicationPropertiesIniFilesRegistry
+      .RegisterObjectPropertiesStorageForObjectClass(
+
+        ApproveableDocumentsReferenceFormKind,
+
+        TDocumentsReferenceFormPropertiesIniFile.Create(
+
+          TDocumentsReferenceFilterFormStatePropertiesIniFile.Create(
+            ApproveableDocumentsReferenceFilterFormIniFile,
+            DefaultApproveableDocumentsReferenceFilterFormIniFile
+          ),
+
+          ApproveableDocumentsReferenceFormIniFile,
+          DefaultApproveableDocumentsReferenceFormIniFile
+        )
+      );
+
+  end;
+
+end;
+
+procedure TUIApplicationConfigurator.
+  CustomizeDocumentCardFramePropertiesIniFiles(
+    const DocumentKind: TUIDocumentKindClass;
+    const AppPropertiesDirPath: String;
+    const DefaultAppPropertiesDirPath: String;
+    PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+  );
+var
+    DocumentCardFrameKind: TClass;
+    CardFramePropertiesIniFilePath, DefaultCardFramePropertiesIniFilePath: String;
+begin
+
+  if DocumentKind.InheritsFrom(TUIOutcomingServiceNoteKind)
+  then begin
+
+    DocumentCardFrameKind := TServiceNoteCardFrame;
+
+    CardFramePropertiesIniFilePath :=
+      AppPropertiesDirPath + PathDelim + 'DocumentCardFrame.ini';
+
+    DefaultCardFramePropertiesIniFilePath :=
+      DefaultAppPropertiesDirPath + PathDelim + 'DocumentCardFrame.ini';
+
+  end
+
+  else if DocumentKind.InheritsFrom(TUIPersonnelOrderKind)
+  then begin
+
+    DocumentCardFrameKind := TPersonnelOrderCardFrame;
+
+    CardFramePropertiesIniFilePath :=
+      AppPropertiesDirPath + PathDelim + 'PersonnelOrderCardFrame.ini';
+
+    DefaultCardFramePropertiesIniFilePath :=
+      DefaultAppPropertiesDirPath + PathDelim + 'PersonnelOrderCardFrame.ini';
+
+  end
+
+  else Raise Exception.Create('DocumentCardFrameKind is not accounted for document type %s' + DocumentKind.ClassName);
+
+  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
+    DocumentCardFrameKind,
+    TDocumentCardFramePropertiesIniFile.Create(
+      CardFramePropertiesIniFilePath,
+      DefaultCardFramePropertiesIniFilePath
+    )
+  );
+
+end;
+
+procedure TUIApplicationConfigurator.
+  CustomizeDocumentChargesFramePropertiesIniFiles(
+    const DocumentKind: TUIDocumentKindClass;
+    const AppPropertiesDirPath: String;
+    const DefaultAppPropertiesDirPath: String;
+    PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+  );
+var
+    DocumentChargesFrameKind, DocumentChargeSheetsFrameKind: TClass;
+
+    ChargeSheetsFramePropertiesIniFilePath, DefaultChargeSheetsFramePropertiesIniFilePath,
+    ChargesFramePropertiesIniFilePath, DefaultChargesFramePropertiesIniFilePath: String;
+begin
+
+  { refactor: map for ui document kind to charge kind, automatically calc name of inis based on ui doc kind's name }
+  
+  if DocumentKind.InheritsFrom(TUIOutcomingServiceNoteKind) then begin
+
+    DocumentChargesFrameKind := TServiceNoteChargesFrame;
+    DocumentChargeSheetsFrameKind := TServiceNoteChargeSheetsFrame;
+
+    ChargesFramePropertiesIniFilePath :=
+      AppPropertiesDirPath + PathDelim + 'DocumentChargesFrame.ini';
+
+    DefaultChargesFramePropertiesIniFilePath :=
+      DefaultAppPropertiesDirPath + PathDelim + 'DocumentChargesFrame.ini';
+
+    ChargeSheetsFramePropertiesIniFilePath :=
+      AppPropertiesDirPath + PathDelim + 'IncomingDocumentChargesFrame.ini';
+
+    DefaultChargeSheetsFramePropertiesIniFilePath :=
+      DefaultAppPropertiesDirPath + PathDelim + 'IncomingDocumentChargesFrame.ini';
+
+  end
+
+  else if DocumentKind.InheritsFrom(TUIPersonnelOrderKind) then begin
+
+    DocumentChargesFrameKind := TPersonnelOrderChargesFrame;
+    DocumentChargeSheetsFrameKind := TPersonnelOrderChargeSheetsFrame;
+
+    ChargesFramePropertiesIniFilePath :=
+      AppPropertiesDirPath + PathDelim + 'PersonnelOrderChargesFrame.ini';
+
+    DefaultChargesFramePropertiesIniFilePath :=
+      DefaultAppPropertiesDirPath + PathDelim + 'PersonnelOrderChargesFrame.ini';
+
+    ChargeSheetsFramePropertiesIniFilePath :=
+      AppPropertiesDirPath + PathDelim + 'PersonnelOrderChargeSheetsFrame.ini';
+
+    DefaultChargeSheetsFramePropertiesIniFilePath :=
+      DefaultAppPropertiesDirPath + PathDelim + 'PersonnelOrderChargeSheetsFrame.ini';
+
+  end
+
+  else Raise Exception.Create('DocumentChargeKind is not accounted for document type %s' + DocumentKind.ClassName);
+
+  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
+    DocumentChargesFrameKind,
+    TDocumentChargesFramePropertiesIniFile.Create(
+      ChargesFramePropertiesIniFilePath,
+      DefaultChargesFramePropertiesIniFilePath
+    )
+  );
+
+  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
+    DocumentChargeSheetsFrameKind,
+    TDocumentChargesFramePropertiesIniFile.Create(
+      ChargeSheetsFramePropertiesIniFilePath,
+      DefaultChargeSheetsFramePropertiesIniFilePath
+    )
+  );
+
+end;
+
+procedure TUIApplicationConfigurator.CustomizeMainApplicationFramePropertiesIniFiles(
+  const AppPropertiesDirPath, DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry);
+begin
+
+  PropertiesIniFilesRegistry.
     RegisterObjectPropertiesStorageForObjectClass(
 
       TApplicationMainFrame,
@@ -234,57 +736,27 @@ begin
         DefaultAppPropertiesDirPath + PathDelim + 'MainForm.ini'
       )
     );
-    
-  CustomizeDocumentsReferenceFormsPropertiesIniFiles(
-    AppPropertiesDirPath,
-    DefaultAppPropertiesDirPath,
-    ApplicationPropertiesIniFilesRegistry
-  );
 
-  CustomizeDocumentChargesFramePropertiesIniFiles(
-    AppPropertiesDirPath,
-    DefaultAppPropertiesDirPath,
-    ApplicationPropertiesIniFilesRegistry
-  );
-
-  CustomizeDocumentChargeSheetPerformersReferenceFormPropertiesIniFiles(
-    AppPropertiesDirPath,
-    DefaultAppPropertiesDirPath,
-    ApplicationPropertiesIniFilesRegistry
-  );
-
-  CustomizeDocumentCardFramePropertiesIniFiles(
-    AppPropertiesDirPath,
-    DefaultAppPropertiesDirPath,
-    ApplicationPropertiesIniFilesRegistry
-  );
-
-  CustomizeDocumentKindsFramePropertiesIniFiles(
-    AppPropertiesDirPath,
-    DefaultAppPropertiesDirPath,
-    ApplicationPropertiesIniFilesRegistry
-  );
-
-  CustomizeDocumentCardListFramePropertiesIniFiles(
-    AppPropertiesDirPath,
-    DefaultAppPropertiesDirPath,
-    ApplicationPropertiesIniFilesRegistry
-  );
-
-  ConfigureDocumentApprovingSheetViewModelMapperFactories;
-
-  ApplicationPropertiesIniFilesRegistry.
-    RegisterObjectPropertiesStorageForObjectClass(
-      TDocumentRecordsPanelSettingsForm,
-      TDocumentRecordsPanelSettingsFormPropertiesIniFile.Create(
-        AppPropertiesDirPath + PathDelim + 'document_records_panel_settings_form.ini',
-        DefaultAppPropertiesDirPath + PathDelim + 'document_records_panel_settings_form.ini'
-      )
-        
-    );
 end;
 
-procedure TUIApplicationConfigurator.CustomizeDocumentsReferenceFormsPropertiesIniFiles(
+procedure TUIApplicationConfigurator.CustomizeDocumentCardListFramePropertiesIniFiles(
+  const AppPropertiesDirPath: String;
+  const DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+);
+begin
+
+  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
+    TDocumentCardListFrame,
+    TDocumentCardListFramePropertiesIniFile.Create(
+      AppPropertiesDirPath + PathDelim + 'MainForm.ini',
+      DefaultAppPropertiesDirPath + PathDelim + 'MainForm.ini'
+    )
+  );
+
+end;
+
+procedure TUIApplicationConfigurator.CustomizeDocumentChargePerformersReferenceFormPropertiesIniFiles(
   const AppPropertiesDirPath: String;
   const DefaultAppPropertiesDirPath: String;
   ApplicationPropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
@@ -294,57 +766,38 @@ begin
   ApplicationPropertiesIniFilesRegistry.
     RegisterObjectPropertiesStorageForObjectClass(
 
-      TOutcomingServiceNotesReferenceForm,
+      TDocumentChargeSheetPerformersReferenceForm,
 
       TDocumentsReferenceFormPropertiesIniFile.Create(
 
         TDocumentsReferenceFilterFormStatePropertiesIniFile.
           Create(
-            AppPropertiesDirPath + PathDelim + 'employee_documents_form_filter_state.ini',
-            DefaultAppPropertiesDirPath + PathDelim + 'employee_documents_form_filter_state.ini'
+            AppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_filter_form.ini',
+            DefaultAppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_filter_form.ini'
           ),
 
-        AppPropertiesDirPath + PathDelim + 'employee_documents_form.ini',
-        DefaultAppPropertiesDirPath + PathDelim + 'employee_documents_form.ini'
-      ),
-
-      RegisterWithoutInheritanceCheckingOption
-    );
-
-  ApplicationPropertiesIniFilesRegistry.
-    RegisterObjectPropertiesStorageForObjectClass(
-
-      TIncomingServiceNotesReferenceForm,
-
-      TDocumentsReferenceFormPropertiesIniFile.Create(
-
-        TDocumentsReferenceFilterFormStatePropertiesIniFile.Create(
-          AppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form_filter_state.ini',
-          DefaultAppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form_filter_state.ini'
-        ),
-        
-        AppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form.ini',
-        DefaultAppPropertiesDirPath + PathDelim + 'employee_in_service_notes_form.ini'
+        AppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_form.ini',
+        DefaultAppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_form.ini'
       )
     );
 
-  ApplicationPropertiesIniFilesRegistry
-    .RegisterObjectPropertiesStorageForObjectClass(
-    
-      TApproveableServiceNotesReferenceForm,
+end;
 
-      TDocumentsReferenceFormPropertiesIniFile.Create(
+procedure TUIApplicationConfigurator.CustomizeDocumentKindsFramePropertiesIniFiles(
+  const AppPropertiesDirPath: String;
+  const DefaultAppPropertiesDirPath: String;
+  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
+);
+begin
 
-        TDocumentsReferenceFilterFormStatePropertiesIniFile.Create(
-          AppPropertiesDirPath + PathDelim + 'employee_approveable_service_notes_filter_form_state.ini',
-          DefaultAppPropertiesDirPath + PathDelim + 'employee_approveable_service_notes_filter_form_state.ini'
-        ),
-        
-        AppPropertiesDirPath + PathDelim + 'employee_approveable_service_notes_form.ini',
-        DefaultAppPropertiesDirPath + PathDelim + 'employee_approveable_service_notes_form.ini'
-      )
-    );
-    
+  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
+    TDocumentKindsFrame,
+    TDocumentKindsFramePropertiesIniFile.Create(
+      AppPropertiesDirPath + PathDelim + 'MainForm.ini',
+      DefaultAppPropertiesDirPath + PathDelim + 'MainForm.ini'
+    )
+  );
+
 end;
 
 procedure TUIApplicationConfigurator.
@@ -366,9 +819,15 @@ begin
 
   TDocumentCardFormViewModelMapperFactories.Current :=
     TDocumentCardFormViewModelMapperFactories.Create(
-      TDocumentDataSetHolderFactories.Instance
+      TDocumentDataSetHoldersFactories.Instance
     );
-    
+
+end;
+
+procedure TUIApplicationConfigurator.ConfigureDocumentCardFrameFactories;
+begin
+
+
 end;
 
 procedure TUIApplicationConfigurator.ConfigureDocumentReportPresenterRegistry;
@@ -425,6 +884,16 @@ begin
 
 end;
 
+procedure TUIApplicationConfigurator.ConfigureFactories;
+begin
+
+  ConfigureDocumentDataSetHoldersFactories;
+  ConfigureDocumentCardFormViewModelFactories;
+  ConfigureDocumentApprovingSheetViewModelMapperFactories;
+  ConfigureDocumentCardFrameFactories;
+ 
+end;
+
 procedure TUIApplicationConfigurator.ConfigureGlobalStylization;
 var
    DBDataTableFormStyle: TDBDataTableFormStyle;
@@ -434,6 +903,14 @@ begin
   ConfigureAdministrationFormStyle;
   
   FUIControlsTrackingStylist.RunTracking;
+
+end;
+
+procedure TUIApplicationConfigurator.ConfigureRegistries;
+begin
+
+  ConfigureDocumentReportPresenterRegistry;
+  ConfigureApplicationPropertiesStorageRegistry;
 
 end;
 
@@ -508,9 +985,9 @@ begin
   inherited;
 
   FApplicationConfigurator := TApplicationConfigurator.Create;
-
   FUIControlsTrackingStylist := TUIControlsTrackingStylist.Create;
-  
+  FUIDocumentKindMapper := TStandardUIDocumentKindMapper.Create;
+
 end;
 
 procedure TUIApplicationConfigurator.CreateApplicationMainForm(
@@ -577,10 +1054,11 @@ end;
 procedure TUIApplicationConfigurator.ConfigureDocumentDataSetHoldersFactories;
 begin
 
-  TDocumentDataSetHolderFactories.Instance.SetDocumentDataSetHolderFactory(
+  TDocumentDataSetHoldersFactories.Instance.SetDocumentDataSetHoldersFactory(
     TUIDocumentKind,
     TDocumentDataSetHoldersFactory.Create(
-      TMemTableEhBuilder.Create
+      TMemTableEhBuilderFactory.Create
+      //TClientDataSetBuilderFactory.Create
     )
   );
   
@@ -623,112 +1101,8 @@ begin
     VersionInfoForm.ShowModal;
 
     VersionInfoService.WriteLastVersionToFile;
+    
   end;
-
-end;
-
-procedure TUIApplicationConfigurator.
-  CustomizeDocumentCardFramePropertiesIniFiles(
-    const AppPropertiesDirPath: String;
-    const DefaultAppPropertiesDirPath: String;
-    PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
-  );
-begin
-
-  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
-    TDocumentCardFrame,
-    TDocumentCardFramePropertiesIniFile.Create(
-      AppPropertiesDirPath + PathDelim + 'DocumentCardFrame.ini',
-      DefaultAppPropertiesDirPath + PathDelim + 'DocumentCardFrame.ini'
-    )
-  );
-
-end;
-
-procedure TUIApplicationConfigurator.CustomizeDocumentCardListFramePropertiesIniFiles(
-  const AppPropertiesDirPath: String;
-  const DefaultAppPropertiesDirPath: String;
-  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
-);
-begin
-
-  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
-    TDocumentCardListFrame,
-    TDocumentCardListFramePropertiesIniFile.Create(
-      AppPropertiesDirPath + PathDelim + 'MainForm.ini',
-      DefaultAppPropertiesDirPath + PathDelim + 'MainForm.ini'
-    )
-  );
-
-end;
-
-procedure TUIApplicationConfigurator.
-  CustomizeDocumentChargesFramePropertiesIniFiles(
-    const AppPropertiesDirPath: String;
-    const DefaultAppPropertiesDirPath: String;
-    PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
-  );
-begin
-
-  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
-    TDocumentChargeSheetsFrame,
-    TDocumentChargesFramePropertiesIniFile.Create(
-      AppPropertiesDirPath + PathDelim + 'IncomingDocumentChargesFrame.ini',
-      DefaultAppPropertiesDirPath + PathDelim + 'IncomingDocumentChargesFrame.ini'
-    )
-  );
-  
-  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
-    TDocumentChargesFrame,
-    TDocumentChargesFramePropertiesIniFile.Create(
-      AppPropertiesDirPath + PathDelim + 'DocumentChargesFrame.ini',
-      DefaultAppPropertiesDirPath + PathDelim + 'DocumentChargesFrame.ini'
-    )
-  );
-  
-end;
-
-procedure TUIApplicationConfigurator.CustomizeDocumentChargeSheetPerformersReferenceFormPropertiesIniFiles(
-  const AppPropertiesDirPath: String;
-  const DefaultAppPropertiesDirPath: String;
-  ApplicationPropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
-);
-begin
-
-  ApplicationPropertiesIniFilesRegistry.
-    RegisterObjectPropertiesStorageForObjectClass(
-
-      TDocumentChargeSheetPerformersReferenceForm,
-
-      TDocumentsReferenceFormPropertiesIniFile.Create(
-
-        TDocumentsReferenceFilterFormStatePropertiesIniFile.
-          Create(
-            AppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_filter_form.ini',
-            DefaultAppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_filter_form.ini'
-          ),
-
-        AppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_form.ini',
-        DefaultAppPropertiesDirPath + PathDelim + 'incomming_service_note_receivers_reference_form.ini'
-      )
-    );
-
-end;
-
-procedure TUIApplicationConfigurator.CustomizeDocumentKindsFramePropertiesIniFiles(
-  const AppPropertiesDirPath: String;
-  const DefaultAppPropertiesDirPath: String;
-  PropertiesIniFilesRegistry: IObjectPropertiesStorageRegistry
-);
-begin
-
-  PropertiesIniFilesRegistry.RegisterObjectPropertiesStorageForObjectClass(
-    TDocumentKindsFrame,
-    TDocumentKindsFramePropertiesIniFile.Create(
-      AppPropertiesDirPath + PathDelim + 'MainForm.ini',
-      DefaultAppPropertiesDirPath + PathDelim + 'MainForm.ini'
-    )
-  );
 
 end;
 

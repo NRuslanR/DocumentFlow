@@ -37,7 +37,6 @@ type
       public
 
         constructor Create(
-
           Session: ISession;
           DocumentDirectory: IDocumentDirectory;
           EmployeeRepository: IEmployeeRepository;
@@ -101,10 +100,10 @@ begin
 
     if not AnyChargeSheetsCanBeViewed then Exit;
 
-      AnyChargeSheetsCanBeIssued := False;
-      AnyChargeSheetsCanBeChanged := False;
-      AnyChargeSheetsCanBeRemoved := False;
-      AnyChargeSheetsCanBePerformed := False;
+    AnyChargeSheetsCanBeIssued := False;
+    AnyChargeSheetsCanBeChanged := False;
+    AnyChargeSheetsCanBeRemoved := False;
+    AnyChargeSheetsCanBePerformed := False;
 
 
   end;

@@ -7,6 +7,9 @@ uses
   DocumentUsageEmployeeAccessRightsInfo,
   EmployeeDocumentKindAccessRightsInfo,
   DocumentUsageEmployeeAccessRightsInfoDTO,
+  DocumentChargeKindDtoDomainMapper,
+  DocumentChargeKind,
+  IGetSelfUnit,
   Disposable,
   SysUtils,
   Classes;
@@ -14,10 +17,18 @@ uses
 type
 
   TDocumentUsageEmployeeAccessRightsInfoDTOMapper =
-    class (TInterfacedObject, IDisposable)
+    class (TInterfacedObject, IGetSelf)
+
+      private
+
+        FChargeKindDtoMapper: IDocumentChargeKindDtoDomainMapper;
 
       public
 
+        constructor Create(ChargeKindDtoMapper: IDocumentChargeKindDtoDomainMapper);
+
+        function GetSelf: TObject;
+        
         function MapDocumentUsageEmployeeAccessRightsInfoDTOFrom(
           DocumentUsageEmployeeAccessRightsInfo: TDocumentUsageEmployeeAccessRightsInfo
         ): TDocumentUsageEmployeeAccessRightsInfoDTO;
@@ -26,168 +37,260 @@ type
     
 implementation
 
+uses
+
+  GeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo,
+  DocumentChargeSheetIssuingAccessRights,
+  AuxDebugFunctionsUnit;
+
 { TDocumentUsageEmployeeAccessRightsInfoDTOMapper }
+constructor TDocumentUsageEmployeeAccessRightsInfoDTOMapper.Create(
+  ChargeKindDtoMapper: IDocumentChargeKindDtoDomainMapper);
+begin
+
+  inherited Create;
+
+  FChargeKindDtoMapper := ChargeKindDtoMapper;
+  
+end;
+
+function TDocumentUsageEmployeeAccessRightsInfoDTOMapper.GetSelf: TObject;
+begin
+
+  Result := Self;
+
+end;
 
 function TDocumentUsageEmployeeAccessRightsInfoDTOMapper.
 MapDocumentUsageEmployeeAccessRightsInfoDTOFrom(
   DocumentUsageEmployeeAccessRightsInfo: TDocumentUsageEmployeeAccessRightsInfo
 ): TDocumentUsageEmployeeAccessRightsInfoDTO;
+var
+    MainChargeSheetKind: TDocumentChargeKind;
 begin
 
   Result := TDocumentUsageEmployeeAccessRightsInfoDTO.Create;
 
-  Result.DocumentCanBeViewed :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeViewed;
+  with Result do begin
 
-  Result.DocumentCanBeViewedOnly :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeViewedOnly;
+    DocumentCanBeViewed :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeViewed;
+
+    DocumentCanBeViewedOnly :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeViewedOnly;
     
-  Result.DocumentCanBeRemoved :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeRemoved;
+    DocumentCanBeRemoved :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeRemoved;
 
-  Result.CanBeChangedDocumentApproverList :=
-    DocumentUsageEmployeeAccessRightsInfo.CanBeChangedDocumentApproverList;
+    CanBeChangedDocumentApproverList :=
+      DocumentUsageEmployeeAccessRightsInfo.CanBeChangedDocumentApproverList;
 
-  Result.CanBeChangedDocumentApproversInfo :=
-    DocumentUsageEmployeeAccessRightsInfo.CanBeChangedDocumentApproversInfo;
+    CanBeChangedDocumentApproversInfo :=
+      DocumentUsageEmployeeAccessRightsInfo.CanBeChangedDocumentApproversInfo;
 
-  Result.DocumentCanBeApproved :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeApproved;
+    DocumentCanBeApproved :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeApproved;
 
-  Result.DocumentCanBeRejectedFromApproving :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeRejectedFromApproving;
+    DocumentCanBeRejectedFromApproving :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeRejectedFromApproving;
 
-  Result.DocumentApprovingCanBeCompleted :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentApprovingCanBeCompleted;
+    DocumentApprovingCanBeCompleted :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentApprovingCanBeCompleted;
+
+    DocumentCanBeSigned :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSigned;
+
+    DocumentCanBeMarkedAsSigned :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeMarkedAsSigned;
+
+    DocumentCanBeRejectedFromSigning :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeRejectedFromSigning;
+
+    DocumentCanBePerformed :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBePerformed;
+
+    DocumentCanBeSentToApproving :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSentToApproving;
+
+    DocumentCanBeSentToSigning :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSentToSigning;
+
+    DocumentCanBeSentToPerforming :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSentToPerforming;
+
+    DocumentCanBeChanged :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeChanged;
+
+    DocumentCanBeMarkedAsSelfRegistered :=
+      DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeMarkedAsSelfRegistered;
+
+    AllDocumentAccessRightsAbsent :=
+      DocumentUsageEmployeeAccessRightsInfo.AllDocumentAccessRightsAbsent;
+
+    EmployeeHasRightsForSigning :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSigning;
+
+    EmployeeHasRightsForSigningMarking :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSigningMarking;
+
+    EmployeeHasRightsForApproving :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForApproving;
+
+    EmployeeHasRightsForSendingToApproving :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSendingToApproving;
+
+    EmployeeHasRightsForSendingToSigning :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSendingToSigning;
+
+    EmployeeHasRightsForSendingToPerforming :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSendingToPerforming;
+
+    EmployeeHasRightsForRejectingFromSigning :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForRejectingFromSigning;
+
+    EmployeeHasRightsForRejectingFromApproving :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForRejectingFromApproving;
+
+    EmployeeHasRightsForMarkDocumentAsSelfRegistered :=
+      DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForMarkDocumentAsSelfRegistered;
+
+    AllDocumentChargeSheetsAccessRightsAbsent :=
+      DocumentUsageEmployeeAccessRightsInfo.AllDocumentChargeSheetsAccessRightsAbsent;
+
+    AnyDocumentChargeSheetsAccessRightsAllowed :=
+      DocumentUsageEmployeeAccessRightsInfo.AnyDocumentChargeSheetsAccessRightsAllowed;
+
+    AllDocumentAndChargeSheetsAccessRightsAbsent :=
+      DocumentUsageEmployeeAccessRightsInfo.AllDocumentAndChargeSheetsAccessRightsAbsent;
+
+    NumberCanBeChanged := DocumentUsageEmployeeAccessRightsInfo.NumberCanBeChanged;
     
-  Result.DocumentCanBeSigned :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSigned;
+    if not Assigned(
+          DocumentUsageEmployeeAccessRightsInfo.
+            GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+       )
+    then Exit;
 
-  Result.DocumentCanBeMarkedAsSigned :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeMarkedAsSigned;
-    
-  Result.DocumentCanBeRejectedFromSigning :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeRejectedFromSigning;
-
-  Result.DocumentCanBePerformed :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBePerformed;
-
-  Result.DocumentCanBeSentToApproving :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSentToApproving;
-    
-  Result.DocumentCanBeSentToSigning :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSentToSigning;
-
-  Result.DocumentCanBeSentToPerforming :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeSentToPerforming;
-
-  Result.DocumentCanBeChanged :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeChanged;
-
-  Result.DocumentCanBeMarkedAsSelfRegistered :=
-    DocumentUsageEmployeeAccessRightsInfo.DocumentCanBeMarkedAsSelfRegistered;
-
-  Result.AllDocumentAccessRightsAbsent :=
-    DocumentUsageEmployeeAccessRightsInfo.AllDocumentAccessRightsAbsent;
-
-  if Assigned(
-        DocumentUsageEmployeeAccessRightsInfo.
-          GeneralChargeSheetsUsageEmployeeAccessRightsInfo
-     )
-  then begin
-
-    Result.DocumentChargeSheetsAccessRightsInfoDTO :=
+    DocumentChargeSheetsAccessRightsInfoDTO :=
       TDocumentChargeSheetsAccessRightsInfoDTO.Create;
 
-    Result.AllDocumentChargeSheetsAccessRightsAbsent :=
-      DocumentUsageEmployeeAccessRightsInfo.
-        AllDocumentChargeSheetsAccessRightsAbsent;
+    with DocumentChargeSheetsAccessRightsInfoDTO, DocumentUsageEmployeeAccessRightsInfo
+    do begin
 
-    Result.AnyDocumentChargeSheetsAccessRightsAllowed :=
-      not Result.AllDocumentChargeSheetsAccessRightsAbsent;
+      AnyChargeSheetsCanBeViewed :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeViewed;
+
+      AnyChargeSheetsCanBeViewedAsIssuer :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeViewedAsIssuer;
+
+      AnyChargeSheetsCanBeViewedAsPerformer :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeViewedAsPerformer;
+
+      AnyChargeSheetsCanBeViewedAsAuthorized :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeViewedAsAuthorized;
+
+      AnyChargeSheetsCanBeChanged :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeChanged;
+
+      AnyChargeSheetsCanBeRemoved :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeRemoved;
+
+      AnyChargeSheetsCanBePerformed :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBePerformed;
+
+      AnyChargeSheetsCanBeIssued :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeIssued;
+
+      AnyHeadChargeSheetsCanBeIssued :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyHeadChargeSheetsCanBeIssued;
+
+      AnySubordinateChargeSheetsCanBeIssued :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnySubordinateChargeSheetsCanBeIssued;
+                                  
+      AllChargeSheetsAccessRightsAbsent :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AllChargeSheetsAccessRightsAbsent;
+
+      AllChargeSheetsAccessRightsAllowed :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AllChargeSheetsAccessRightsAllowed;
+
+    end;
+
+    with
+      DocumentChargeSheetsAccessRightsInfoDTO.IssuingAccessRightsInfoDTO,
+      DocumentUsageEmployeeAccessRightsInfo
+    do begin
+
+
+      AllAccessRightsAbsent :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .IssuingAccessRights
+            .AllAccessRightsAbsent;
+
+      AnyHeadChargeSheetsCanBeIssued :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyHeadChargeSheetsCanBeIssued;
+
+      AnySubordinateChargeSheetsCanBeIssued :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnySubordinateChargeSheetsCanBeIssued;
+
+      AnyChargeSheetsCanBeIssued :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .AnyChargeSheetsCanBeIssued;
+
+      MainChargeSheetKind :=
+        GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+          .IssuingAccessRights
+            .MainChargeSheetKind;
+
+      { refactor:
+            remove validation after
+            refactor
+              TStandardDocumentUsageEmployeeAccessRightsService
+                .EnsureThatEmployeeHasRelatedDocumentUsageAccessRights
+        }
+        
+      if Assigned(MainChargeSheetKind) then
+      begin
+
+        MainChargeSheetKindDto :=
+          FChargeKindDtoMapper
+            .MapDocumentChargeKindDto(MainChargeSheetKind);
+
+      end;
       
-    Result.
-      DocumentChargeSheetsAccessRightsInfoDTO.
-        AnyChargeSheetsCanBeViewed :=
-        
-        DocumentUsageEmployeeAccessRightsInfo.
-          GeneralChargeSheetsUsageEmployeeAccessRightsInfo.
-            AnyChargeSheetsCanBeViewed;
+      IssuingAlloweableHeadChargeSheetKindDtos :=
+        FChargeKindDtoMapper
+          .MapDocumentChargeKindDtos(
+            GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+              .IssuingAccessRights
+                .IssuingAlloweableHeadChargeSheetKinds
+          );
 
-    Result
-      .DocumentChargeSheetsAccessRightsInfoDTO
-        .AnyChargeSheetsCanBeIssued :=
-        
-          DocumentUsageEmployeeAccessRightsInfo
-            .GeneralChargeSheetsUsageEmployeeAccessRightsInfo
-              .AnyChargeSheetsCanBeIssued;
-              
-    Result.
-      DocumentChargeSheetsAccessRightsInfoDTO.
-        AnyChargeSheetsCanBeChanged :=
+      IssuingAlloweableSubordinateChargeSheetKindDtos :=
+        FChargeKindDtoMapper
+          .MapDocumentChargeKindDtos(
+            GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+              .IssuingAccessRights
+                .IssuingAlloweableSubordinateChargeSheetKinds
+          );
 
-        DocumentUsageEmployeeAccessRightsInfo.
-          GeneralChargeSheetsUsageEmployeeAccessRightsInfo.
-            AnyChargeSheetsCanBeChanged;
-
-    Result
-      .DocumentChargeSheetsAccessRightsInfoDTO
-        .AnyChargeSheetsCanBeRemoved :=
-
-          DocumentUsageEmployeeAccessRightsInfo
-            .GeneralChargeSheetsUsageEmployeeAccessRightsInfo
-              .AnyChargeSheetsCanBeRemoved;
-              
-    Result.
-      DocumentChargeSheetsAccessRightsInfoDTO.
-        AnyChargeSheetsCanBePerformed :=
-
-        DocumentUsageEmployeeAccessRightsInfo.
-          GeneralChargeSheetsUsageEmployeeAccessRightsInfo.
-            AnyChargeSheetsCanBePerformed;
-
-  end;
-  
-  Result.EmployeeHasRightsForSigning :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSigning;
-
-  Result.EmployeeHasRightsForSigningMarking :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSigningMarking;
-
-  Result.EmployeeHasRightsForApproving :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForApproving;
-
-  Result.EmployeeHasRightsForSendingToApproving :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSendingToApproving;
-
-  Result.EmployeeHasRightsForSendingToSigning :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSendingToSigning;
-
-  Result.EmployeeHasRightsForSendingToPerforming :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForSendingToPerforming;
-
-  Result.EmployeeHasRightsForRejectingFromSigning :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForRejectingFromSigning;
-
-  Result.EmployeeHasRightsForRejectingFromApproving :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForRejectingFromApproving;
-
-  Result.EmployeeHasRightsForMarkDocumentAsSelfRegistered :=
-    DocumentUsageEmployeeAccessRightsInfo.EmployeeHasRightsForMarkDocumentAsSelfRegistered;
-
-  Result.AllDocumentAndChargeSheetsAccessRightsAbsent :=
-    DocumentUsageEmployeeAccessRightsInfo.AllDocumentAndChargeSheetsAccessRightsAbsent;
-
-  case DocumentUsageEmployeeAccessRightsInfo.NumberPrefixPatternType of
-
-    ppNone: Result.NumberPrefixPattern := '.*';
-    ppDigits: Result.NumberPrefixPattern := '(^\d+([\/-]?\d+)+$)';
-    ppAnyChars: Result.NumberPrefixPattern := '.+';
+    end;
     
   end;
 
-  Result.NumberCanBeChanged := DocumentUsageEmployeeAccessRightsInfo.NumberCanBeChanged;
-  
 end;
 
 end.

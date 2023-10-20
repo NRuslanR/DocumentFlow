@@ -48,7 +48,7 @@ type
     protected
 
       class function GetDataSetFieldDefsClass: TAbstractDataSetFieldDefsClass; override;
-      
+
     public
 
       property IdFieldName: String read GetIdFieldName write SetIdFieldName;

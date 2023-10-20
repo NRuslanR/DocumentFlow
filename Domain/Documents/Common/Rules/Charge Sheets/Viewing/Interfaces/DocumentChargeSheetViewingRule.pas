@@ -30,14 +30,12 @@ type
 
     function EnsureEmployeeMayViewDocumentChargeSheet(
       Employee: TEmployee;
-      DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      DocumentChargeSheet: IDocumentChargeSheet
     ): TDocumentChargeSheetViewingRuleEnsuringResult;
 
     function MayEmployeeViewDocumentChargeSheet(
       Employee: TEmployee;
-      DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      DocumentChargeSheet: IDocumentChargeSheet
     ): TDocumentChargeSheetViewingRuleEnsuringResult;
 
   end;

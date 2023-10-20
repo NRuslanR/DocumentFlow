@@ -12,6 +12,7 @@ uses
   DocumentChargesFormViewModelUnit,
   DocumentMainInformationFormViewModelMapper,
   DocumentChargesFormViewModelMapper,
+  DocumentChargeSheetsFormViewModelMapper,
   DocumentRelationsFormViewModelMapper,
   DocumentFilesFormViewModelMapper,
   DocumentChargeSetHolder,
@@ -20,74 +21,35 @@ uses
   DocumentApprovingCycleSetHolder,
   IncomingDocumentMainInformationFormViewModelMapper,
   DocumentApprovingsFormViewModelMapper,
-  DocumentDataSetHoldersFactory,
   DocumentFilesViewFormViewModelMapper,
   DocumentUsageEmployeeAccessRightsInfoDTO,
   DocumentFilesViewFrameUnit,
-  SysUtils,
   DocumentFullInfoDTO,
   ChangedDocumentInfoDTO,
   NewDocumentInfoDTO,
+  LoodsmanDocumentUploadingInfo,
+  LoodsmanDocumentUploadingInfoFormViewModelMapper,
+  LoodsmanDocumentUploadingInfoFormViewModel,
+  SysUtils,
   Classes;
 
 type
 
-  { refactor: В дальнейшем для входящих доков
-    рассмотреть возможность создания модели представления
-    не для перечня поручений, а дли перечня листов поручений.
-    На данный момент, данные как о первом, так и о другом
-    перечне будут храниться в едином наборе данных
-    в виде сильной схожести отображения, но
-    в дальнейшем могут быть расхождения по составу полей,
-    хотя и маловероятно (я думаю), поэтому модель
-    представления карточки документа должно вместо
-    DocumentChargesFormViewModelMapper содержать объект
-    типа DocumentChargeSheetsFormViewModelMapper }
-
-  {
-    refactor:
-    DataSet Holder'ы передать в конструктор
-    через единтсвенный объект, внутри
-    которого они бы находились, для
-    упрощения интерфейса и сокращения количества
-    указываемых модулей }
   TDocumentCardFormViewModelMapper = class
 
     private
-      
+
     protected
 
       FMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
       FChargesFormViewModelMapper: TDocumentChargesFormViewModelMapper;
+      FChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper;
       FRelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper;
       FFilesFormViewModelMapper: TDocumentFilesFormViewModelMapper;
       FApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper;
       FFilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper;
-
-    protected
-
-      FDocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-
-    protected
-
-      function CreateMainInformationFormViewModelMapper:
-        TDocumentMainInformationFormViewModelMapper; virtual;
-
-      function CreateChargesFormViewModelMapper:
-        TDocumentChargesFormViewModelMapper; virtual;
-
-      function CreateRelationsFormViewModelMapper:
-        TDocumentRelationsFormViewModelMapper; virtual;
-
-      function CreateFilesFormViewModelMapper:
-        TDocumentFilesFormViewModelMapper; virtual;
-
-      function CreateDocumentApprovingsFormViewModelMapper:
-        TDocumentApprovingsFormViewModelMapper; virtual;
-
-      function CreateDocumentFilesViewFormViewModelMapper:
-        TDocumentFilesViewFormViewModelMapper; virtual;
-
+      FLoodsmanDocumentUploadingInfoFormViewModelMapper: TLoodsmanDocumentUploadingInfoFormViewModelMapper;
+      
     protected
 
       function CreateDocumentCardFormViewModelInstance:
@@ -106,6 +68,8 @@ type
       function GetFilesFormViewModelMapper: TDocumentFilesFormViewModelMapper; virtual;
       function GetMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper; virtual;
       function GetRelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper; virtual;
+      function GetChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper;
+      function GetFilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper;
 
       procedure SetChargesFormViewModelMapper(
         const Value: TDocumentChargesFormViewModelMapper); virtual;
@@ -122,11 +86,27 @@ type
       procedure SetRelationsFormViewModelMapper(
         const Value: TDocumentRelationsFormViewModelMapper); virtual;
 
+      procedure SetChargeSheetsFormViewModelMapper(
+        const Value: TDocumentChargeSheetsFormViewModelMapper
+      );
+
+      procedure SetFilesViewFormViewModelMapper(
+        const Value: TDocumentFilesViewFormViewModelMapper
+      );
+
     public
 
+      constructor Create; overload;
+
       constructor Create(
-        DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory
-      );
+        MainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
+        ChargesFormViewModelMapper: TDocumentChargesFormViewModelMapper;
+        ChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper;
+        RelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper;
+        FilesFormViewModelMapper: TDocumentFilesFormViewModelMapper;
+        ApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper;
+        FilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper
+      ); overload;
       
       destructor Destroy; override;
 
@@ -135,8 +115,20 @@ type
         DocumentFullInfoDTO: TDocumentFullInfoDTO;
         DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
 
-      ): TDocumentCardFormViewModel; virtual;
+      ): TDocumentCardFormViewModel; overload; virtual;
 
+      function MapDocumentCardFormViewModelFrom(
+      
+        DocumentFullInfoDTO: TDocumentFullInfoDTO;
+        DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+        LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo
+
+      ): TDocumentCardFormViewModel; overload; virtual;
+
+      function MapLoodsmanDocumentUploadingInfoFormViewModel(
+        LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo
+      ): TLoodsmanDocumentUploadingInfoFormViewModel;
+      
       function MapNewDocumentCardFormViewModelFrom(
       
         DocumentFullInfoDTO: TDocumentFullInfoDTO;
@@ -152,16 +144,6 @@ type
         DocumentCardViewModel: TDocumentCardFormViewModel
       ): TNewDocumentInfoDTO; virtual;
 
-      function CreateEmptyDocumentCardFormViewModel(
-        DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-        DocumentCreatingDefaultInfoDTO: TDocumentCreatingDefaultInfoDTO
-      ): TDocumentCardFormViewModel; virtual;
-
-      function CreateDocumentCardFormViewModelForNewDocumentCreating(
-        DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-        DocumentCreatingDefaultInfoDTO: TDocumentCreatingDefaultInfoDTO
-      ): TDocumentCardFormViewModel; virtual;
-
     public
 
       property MainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper
@@ -169,13 +151,19 @@ type
 
       property ChargesFormViewModelMapper: TDocumentChargesFormViewModelMapper
       read GetChargesFormViewModelMapper write SetChargesFormViewModelMapper;
+
+      property ChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper
+      read GetChargeSheetsFormViewModelMapper write SetChargeSheetsFormViewModelMapper;
       
       property RelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper
       read GetRelationsFormViewModelMapper write SetRelationsFormViewModelMapper;
     
       property FilesFormViewModelMapper: TDocumentFilesFormViewModelMapper
       read GetFilesFormViewModelMapper write SetFilesFormViewModelMapper;
-      
+
+      property FilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper
+      read GetFilesViewFormViewModelMapper write SetFilesViewFormViewModelMapper;
+
       property DocumentApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper
       read GetDocumentApprovingsFormViewModelMapper write SetDocumentApprovingsFormViewModelMapper;
       
@@ -183,28 +171,37 @@ type
 
 implementation
 
-uses
-
-  { refactor: to pass the inner mappers to constructor of this mapper }
-  ApplicationServiceRegistries;
-
 { TDocumentCardFormViewModelMapper }
 
+constructor TDocumentCardFormViewModelMapper.Create;
+begin
+
+  inherited;
+
+end;
+
 constructor TDocumentCardFormViewModelMapper.Create(
-  DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory
+  MainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
+  ChargesFormViewModelMapper: TDocumentChargesFormViewModelMapper;
+  ChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper;
+  RelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper;
+  FilesFormViewModelMapper: TDocumentFilesFormViewModelMapper;
+  ApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper;
+  FilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper
 );
 begin
 
   inherited Create;
 
-  FMainInformationFormViewModelMapper := CreateMainInformationFormViewModelMapper;
-  FChargesFormViewModelMapper := CreateChargesFormViewModelMapper;
-  FRelationsFormViewModelMapper := CreateRelationsFormViewModelMapper;
-  FFilesFormViewModelMapper := CreateFilesFormViewModelMapper;
-  FApprovingsFormViewModelMapper := CreateDocumentApprovingsFormViewModelMapper;
-  FFilesViewFormViewModelMapper := CreateDocumentFilesViewFormViewModelMapper;
+  FMainInformationFormViewModelMapper := MainInformationFormViewModelMapper;
+  FChargesFormViewModelMapper := ChargesFormViewModelMapper;
+  FChargeSheetsFormViewModelMapper := ChargeSheetsFormViewModelMapper;
+  FRelationsFormViewModelMapper := RelationsFormViewModelMapper;
+  FFilesFormViewModelMapper := FilesFormViewModelMapper;
+  FApprovingsFormViewModelMapper := ApprovingsFormViewModelMapper;
+  FFilesViewFormViewModelMapper := FilesViewFormViewModelMapper;
 
-  FDocumentDataSetHoldersFactory := DocumentDataSetHoldersFactory;
+  FLoodsmanDocumentUploadingInfoFormViewModelMapper := TLoodsmanDocumentUploadingInfoFormViewModelMapper.Create;
   
 end;
 
@@ -212,69 +209,6 @@ function TDocumentCardFormViewModelMapper.CreateChangedDocumentInfoDTOInstance: 
 begin
 
   Result := TChangedDocumentInfoDTO.Create;
-  
-end;
-
-function TDocumentCardFormViewModelMapper.CreateChargesFormViewModelMapper: TDocumentChargesFormViewModelMapper;
-begin
-
-  { refactor: to pass the inner mappers to constructor of the TDocumentCardFormViewModelMapper }
-  
-  Result :=
-    TDocumentChargesFormViewModelMapper.Create(
-      TApplicationServiceRegistries
-        .Current
-          .GetDocumentBusinessProcessServiceRegistry
-            .GetDocumentChargeKindsControlAppService
-    );
-  
-end;
-
-function TDocumentCardFormViewModelMapper.CreateDocumentApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper;
-begin
-
-  Result := TDocumentApprovingsFormViewModelMapper.Create;
-  
-end;
-
-function TDocumentCardFormViewModelMapper.
-  CreateDocumentCardFormViewModelForNewDocumentCreating(
-    DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-    DocumentCreatingDefaultInfoDTO: TDocumentCreatingDefaultInfoDTO
-  ): TDocumentCardFormViewModel;
-begin
-
-  Result :=
-    CreateEmptyDocumentCardFormViewModel(
-      DocumentDataSetHoldersFactory,
-      DocumentCreatingDefaultInfoDTO
-    );
-
-  if not Assigned(DocumentCreatingDefaultInfoDTO) then Exit;
-  
-  if Assigned(DocumentCreatingDefaultInfoDTO.DocumentResponsibleInfoDTO) then
-  begin
-
-    Result.DocumentMainInformationFormViewModel.DocumentResponsibleViewModel :=
-
-      FMainInformationFormViewModelMapper.
-        DocumentResponsibleViewModelMapper.MapDocumentResponsibleViewModelFrom(
-          DocumentCreatingDefaultInfoDTO.DocumentResponsibleInfoDTO
-        );
-
-  end;
-
-  if Assigned(DocumentCreatingDefaultInfoDTO.DocumentSignerInfoDTO) then
-  begin
-
-    Result.DocumentMainInformationFormViewModel.DocumentSignerViewModel :=
-
-      FMainInformationFormViewModelMapper.
-        DocumentSignerViewModelMapper.MapDocumentSignerViewModelFrom(
-          DocumentCreatingDefaultInfoDTO.DocumentSignerInfoDTO
-        );
-
-  end;
 
 end;
 
@@ -285,126 +219,10 @@ begin
   
 end;
 
-function TDocumentCardFormViewModelMapper.CreateDocumentFilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper;
-begin
-
-  Result := TDocumentFilesViewFormViewModelMapper.Create;
-  
-end;
-
-function TDocumentCardFormViewModelMapper.
-  CreateEmptyDocumentCardFormViewModel(
-    DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-    DocumentCreatingDefaultInfoDTO: TDocumentCreatingDefaultInfoDTO { refactor: delete, view unDocumentCardListFrame.OnNewDocumentCreatingRequestedEventHandler }
-  ): TDocumentCardFormViewModel;
-var
-  DocumentChargeSetHolder: TDocumentChargeSetHolder;
-  DocumentRelationSetHolder: TDocumentRelationSetHolder;
-  DocumentFileSetHolder: TDocumentFileSetHolder;
-  DocumentApprovingCycleSetHolder: TDocumentApprovingCycleSetHolder;
-begin
-
-  DocumentChargeSetHolder := nil;
-  DocumentRelationSetHolder := nil;
-  DocumentFileSetHolder := nil;
-  DocumentApprovingCycleSetHolder := nil;
-
-  Result := CreateDocumentCardFormViewModelInstance;
-  
-  try
-
-    DocumentChargeSetHolder :=
-      DocumentDataSetHoldersFactory.CreateDocumentChargeSetHolder;
-
-    DocumentRelationSetHolder :=
-      DocumentDataSetHoldersFactory.CreateDocumentRelationSetHolder;
-
-    DocumentFileSetHolder :=
-      DocumentDataSetHoldersFactory.CreateDocumentFileSetHolder;
-
-    DocumentApprovingCycleSetHolder :=
-      DocumentDataSetHoldersFactory.CreateDocumentApprovingCycleSetHolder;
-      
-    Result.DocumentMainInformationFormViewModel :=
-      FMainInformationFormViewModelMapper.CreateEmptyDocumentMainInformationFormViewModel;
-
-    Result.DocumentFilesFormViewModel :=
-      FFilesFormViewModelMapper.CreateEmptyDocumentFilesFormViewModel(
-        DocumentFileSetHolder
-      );
-
-    Result.DocumentFilesViewFormViewModel :=
-      FFilesViewFormViewModelMapper.
-        CreateEmptyDocumentFilesViewFormViewModel;
-
-    DocumentFileSetHolder := nil;
-
-    Result.DocumentChargesFormViewModel :=
-      FChargesFormViewModelMapper.CreateEmptyDocumentChargesFormViewModel(
-        DocumentChargeSetHolder,
-        DocumentCreatingDefaultInfoDTO.DocumentKindId { refactor: delete, view above }
-
-      );
-
-    DocumentChargeSetHolder := nil;
-
-    Result.DocumentRelationsFormViewModel :=
-      FRelationsFormViewModelMapper.CreateEmptyDocumentRelationsFormViewModel(
-        DocumentRelationSetHolder
-      );
-
-    DocumentRelationSetHolder := nil;
-
-    Result.DocumentApprovingsFormViewModel :=
-      FApprovingsFormViewModelMapper.CreateEmptyDocumentApprovingsFormViewModel(
-        DocumentApprovingCycleSetHolder
-      );
-
-    DocumentApprovingCycleSetHolder := nil;
-
-  except
-
-    on e: Exception do begin
-
-      FreeAndNil(Result);
-      FreeAndNil(DocumentChargeSetHolder);
-      FreeAndNil(DocumentRelationSetHolder);
-      FreeAndNil(DocumentFileSetHolder);
-      FreeAndNil(DocumentApprovingCycleSetHolder);
-
-      raise;
-      
-    end;
-
-  end;
-  
-end;
-
-function TDocumentCardFormViewModelMapper.CreateFilesFormViewModelMapper: TDocumentFilesFormViewModelMapper;
-begin
-
-  Result := TDocumentFilesFormViewModelMapper.Create;
-  
-end;
-
-function TDocumentCardFormViewModelMapper.CreateMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
-begin
-
-  Result := TDocumentMainInformationFormViewModelMapper.Create;
-  
-end;
-
 function TDocumentCardFormViewModelMapper.CreateNewDocumentInfoDTOInstance: TNewDocumentInfoDTO;
 begin
 
   Result := TNewDocumentInfoDTO.Create;
-  
-end;
-
-function TDocumentCardFormViewModelMapper.CreateRelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper;
-begin
-
-  Result := TDocumentRelationsFormViewModelMapper.Create;
   
 end;
 
@@ -417,6 +235,7 @@ begin
   FreeAndNil(FRelationsFormViewModelMapper);
   FreeAndNil(FFilesFormViewModelMapper);
   FreeAndNil(FApprovingsFormViewModelMapper);
+  FreeAndNil(FLoodsmanDocumentUploadingInfoFormViewModelMapper);
   
   inherited;
 
@@ -427,6 +246,13 @@ begin
 
   Result := FChargesFormViewModelMapper;
   
+end;
+
+function TDocumentCardFormViewModelMapper.GetChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper;
+begin
+
+  Result := FChargeSheetsFormViewModelMapper;
+
 end;
 
 function TDocumentCardFormViewModelMapper.GetDocumentApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper;
@@ -440,6 +266,13 @@ function TDocumentCardFormViewModelMapper.GetFilesFormViewModelMapper: TDocument
 begin
 
   Result := FFilesFormViewModelMapper;
+
+end;
+
+function TDocumentCardFormViewModelMapper.GetFilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper;
+begin
+
+  Result := FFilesViewFormViewModelMapper;
 
 end;
 
@@ -458,39 +291,32 @@ begin
 end;
 
 function TDocumentCardFormViewModelMapper.MapDocumentCardFormViewModelFrom(
-
   DocumentFullInfoDTO: TDocumentFullInfoDTO;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
-
 ): TDocumentCardFormViewModel;
-var
-  DocumentChargeSetHolder: TDocumentChargeSetHolder;
-  DocumentRelationSetHolder: TDocumentRelationSetHolder;
-  DocumentFileSetHolder: TDocumentFileSetHolder;
-  DocumentApprovingCycleSetHolder: TDocumentApprovingCycleSetHolder;
-  
 begin
 
-  DocumentChargeSetHolder := nil;
-  DocumentRelationSetHolder := nil;
-  DocumentFileSetHolder := nil;
-  DocumentApprovingCycleSetHolder := nil;
+  Result :=
+    MapDocumentCardFormViewModelFrom(
+      DocumentFullInfoDTO,
+      DocumentUsageEmployeeAccessRightsInfoDTO,
+      nil
+    );
+
+end;
+
+function TDocumentCardFormViewModelMapper.MapDocumentCardFormViewModelFrom(
+
+  DocumentFullInfoDTO: TDocumentFullInfoDTO;
+  DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+  LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo
+  
+): TDocumentCardFormViewModel;
+begin
 
   Result := CreateDocumentCardFormViewModelInstance;
-
+                          
   try
-
-    DocumentChargeSetHolder :=
-      FDocumentDataSetHoldersFactory.CreateDocumentChargeSetHolder;
-
-    DocumentRelationSetHolder :=
-      FDocumentDataSetHoldersFactory.CreateDocumentRelationSetHolder;
-
-    DocumentFileSetHolder :=
-      FDocumentDataSetHoldersFactory.CreateDocumentFileSetHolder;
-
-    DocumentApprovingCycleSetHolder :=
-      FDocumentDataSetHoldersFactory.CreateDocumentApprovingCycleSetHolder;
 
     Result.DocumentMainInformationFormViewModel :=
 
@@ -502,41 +328,35 @@ begin
     Result.DocumentFilesFormViewModel :=
 
       FFilesFormViewModelMapper.MapDocumentFilesFormViewModelFrom(
-        DocumentFullInfoDTO.DocumentFilesInfoDTO,
-        DocumentFileSetHolder
+        DocumentFullInfoDTO.DocumentFilesInfoDTO
       );
-
-    DocumentFileSetHolder := nil;
 
     Result.DocumentChargesFormViewModel :=
 
       FChargesFormViewModelMapper.MapDocumentChargesFormViewModelFrom(
         DocumentFullInfoDTO.DocumentDTO,
-        DocumentFullInfoDTO.DocumentDTO.ChargesInfoDTO,
-        DocumentFullInfoDTO.DocumentChargeSheetsInfoDTO,
-        DocumentChargeSetHolder
+        DocumentFullInfoDTO.DocumentDTO.ChargesInfoDTO
       );
 
-    DocumentChargeSetHolder := nil;
+    Result.DocumentChargeSheetsFormViewModel :=
+      FChargeSheetsFormViewModelMapper.MapDocumentChargeSheetsFormViewModelFrom(
+        DocumentFullInfoDTO.DocumentDTO,
+        DocumentFullInfoDTO.DocumentChargeSheetsInfoDTO,
+        DocumentUsageEmployeeAccessRightsInfoDTO.DocumentChargeSheetsAccessRightsInfoDTO
+      );
 
     Result.DocumentRelationsFormViewModel :=
 
       FRelationsFormViewModelMapper.MapDocumentRelationsFormViewModelFrom(
-        DocumentFullInfoDTO.DocumentRelationsInfoDTO,
-        DocumentRelationSetHolder
+        DocumentFullInfoDTO.DocumentRelationsInfoDTO
       );
-
-    DocumentRelationSetHolder := nil;
 
     Result.DocumentApprovingsFormViewModel :=
       FApprovingsFormViewModelMapper.MapDocumentApprovingsFormViewModelFrom(
         DocumentFullInfoDTO.DocumentDTO.ApprovingsInfoDTO,
         DocumentFullInfoDTO.DocumentApprovingCycleResultsInfoDTO,
-        DocumentUsageEmployeeAccessRightsInfoDTO,
-        DocumentApprovingCycleSetHolder
+        DocumentUsageEmployeeAccessRightsInfoDTO
       );
-
-    DocumentApprovingCycleSetHolder := nil;
 
     Result.DocumentFilesViewFormViewModel :=
       FFilesViewFormViewModelMapper.MapDocumentFilesViewFormViewModelFrom(
@@ -545,17 +365,18 @@ begin
 
     Result.DocumentRemoveToolEnabled :=
       DocumentUsageEmployeeAccessRightsInfoDTO.DocumentCanBeRemoved;
-      
+
+    if not Assigned(LoodsmanDocumentUploadingInfo) then Exit;
+
+    Result.LoodsmanDocumentUploadingInfoFormViewModel :=
+      MapLoodsmanDocumentUploadingInfoFormViewModel(LoodsmanDocumentUploadingInfo);
+
   except
 
     FreeAndNil(Result);
-    FreeAndNil(DocumentChargeSetHolder);
-    FreeAndNil(DocumentRelationSetHolder);
-    FreeAndNil(DocumentFileSetHolder);
-    FreeAndNil(DocumentApprovingCycleSetHolder);
       
     Raise;
-      
+
   end;
 
 end;
@@ -572,7 +393,7 @@ begin
 
     while not Eof do begin
 
-      MarkCurrentChargeRecordAsAdded;
+      MarkCurrentRecordAsAdded;
       
       Next;
 
@@ -628,12 +449,9 @@ begin
       
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-
-    end;
+    Raise;
 
   end;
 
@@ -684,16 +502,24 @@ begin
       
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-      
-    end;
+    Raise;
 
   end;
 
+end;
 
+function TDocumentCardFormViewModelMapper
+  .MapLoodsmanDocumentUploadingInfoFormViewModel(
+    LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo
+  ): TLoodsmanDocumentUploadingInfoFormViewModel;
+begin
+
+  Result :=
+    FLoodsmanDocumentUploadingInfoFormViewModelMapper
+      .MapLoodsmanDocumentUploadingInfoFormViewModel(LoodsmanDocumentUploadingInfo);
+      
 end;
 
 procedure TDocumentCardFormViewModelMapper.SetChargesFormViewModelMapper(
@@ -703,6 +529,16 @@ begin
   FreeAndNil(FChargesFormViewModelMapper);
 
   FChargesFormViewModelMapper := Value;
+  
+end;
+
+procedure TDocumentCardFormViewModelMapper.SetChargeSheetsFormViewModelMapper(
+  const Value: TDocumentChargeSheetsFormViewModelMapper);
+begin
+
+  FreeAndNil(FChargeSheetsFormViewModelMapper);
+
+  FChargeSheetsFormViewModelMapper := Value;
   
 end;
 
@@ -723,6 +559,16 @@ begin
   FreeAndNil(FFilesFormViewModelMapper);
 
   FFilesFormViewModelMapper := Value;
+  
+end;
+
+procedure TDocumentCardFormViewModelMapper.SetFilesViewFormViewModelMapper(
+  const Value: TDocumentFilesViewFormViewModelMapper);
+begin
+
+  FreeAndNil(FFilesViewFormViewModelMapper);
+
+  FFilesViewFormViewModelMapper := Value;
   
 end;
 

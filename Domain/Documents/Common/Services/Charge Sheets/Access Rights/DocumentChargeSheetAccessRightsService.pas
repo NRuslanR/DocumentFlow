@@ -7,7 +7,6 @@ uses
   DocumentChargeSheetAccessRights,
   DomainException,
   DocumentChargeSheet,
-  IDocumentUnit,
   IDocumentChargeSheetUnit,
   Employee,
   SysUtils;
@@ -22,8 +21,7 @@ type
 
     function EnsureEmployeeHasDocumentChargeSheetAccessRights(
       Employee: TEmployee;
-      ChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      ChargeSheet: IDocumentChargeSheet
     ): TDocumentChargeSheetAccessRights;
     
   end;

@@ -32,11 +32,11 @@ implementation
 function TDocumentRelationsInfoDTOFromDataSetMapper.MapDocumentRelationsInfoDTOFrom(
   DocumentRelationsInfoHolder: TDocumentRelationsInfoHolder
 ): TDocumentRelationsInfoDTO;
-var HandledDocumentRelationIds: TVariantList;
+var HandledRelationIds: TVariantList;
     DocumentRelationInfoDTO: TDocumentRelationInfoDTO;
 begin
 
-  HandledDocumentRelationIds := TVariantList.Create;
+  HandledRelationIds := TVariantList.Create;
 
   try
 
@@ -51,9 +51,9 @@ begin
 
           if
 
-              not VarIsNull(DocumentRelationIdFieldValue) and
-              not HandledDocumentRelationIds.Contains(
-                    DocumentRelationIdFieldValue
+              not VarIsNull(RelationIdFieldValue) and
+              not HandledRelationIds.Contains(
+                    RelationIdFieldValue
                   )
                   
           then begin
@@ -63,7 +63,7 @@ begin
 
             Result.Add(DocumentRelationInfoDTO);
 
-            HandledDocumentRelationIds.Add(DocumentRelationIdFieldValue);
+            HandledRelationIds.Add(RelationIdFieldValue);
 
           end;
 
@@ -86,7 +86,7 @@ begin
 
   finally
 
-    FreeAndNil(HandledDocumentRelationIds);
+    FreeAndNil(HandledRelationIds);
 
   end;
 

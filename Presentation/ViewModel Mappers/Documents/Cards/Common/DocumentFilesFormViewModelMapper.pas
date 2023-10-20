@@ -7,6 +7,7 @@ uses
   DocumentFileSetHolder,
   DocumentFilesFormViewModelUnit,
   DocumentFullInfoDTO,
+  DocumentFileSetHolderFactory,
   SysUtils,
   Classes,
   DB;
@@ -17,32 +18,46 @@ type
 
     protected
 
+      FDocumentFileSetHolderFactory: IDocumentFileSetHolderFactory;
+      
       function CreateDocumentFilesFormViewModelInstance:
         TDocumentFilesFormViewModel; virtual;
         
     public
 
+      constructor Create(DocumentFileSetHolderFactory: IDocumentFileSetHolderFactory);
+
       function MapDocumentFilesFormViewModelFrom(
-        DocumentFilesInfoDTO: TDocumentFilesInfoDTO;
-        DocumentFileSetHolder: TDocumentFileSetHolder
+        DocumentFilesInfoDTO: TDocumentFilesInfoDTO
       ): TDocumentFilesFormViewModel; virtual;
 
       function MapDocumentFilesFormViewModelTo(
         DocumentFilesFormViewModel: TDocumentFilesFormViewModel
       ): TDocumentFilesInfoDTO; virtual;
 
-      function CreateEmptyDocumentFilesFormViewModel(
-        DocumentFileSetHolder: TDocumentFileSetHolder
-      ): TDocumentFilesFormViewModel; virtual;
+      function CreateEmptyDocumentFilesFormViewModel: TDocumentFilesFormViewModel; virtual;
 
 
   end;
   
 implementation
 
-uses AbstractDataSetHolder;
+uses
+
+  AuxDebugFunctionsUnit,
+  AbstractDataSetHolder;
 
 { TDocumentFilesFormViewModelMapper }
+
+constructor TDocumentFilesFormViewModelMapper.Create(
+  DocumentFileSetHolderFactory: IDocumentFileSetHolderFactory);
+begin
+
+  inherited Create;
+
+  FDocumentFileSetHolderFactory := DocumentFileSetHolderFactory;
+  
+end;
 
 function TDocumentFilesFormViewModelMapper.
   CreateDocumentFilesFormViewModelInstance: TDocumentFilesFormViewModel;
@@ -53,51 +68,54 @@ begin
 end;
 
 function TDocumentFilesFormViewModelMapper.
-  CreateEmptyDocumentFilesFormViewModel(
-    DocumentFileSetHolder: TDocumentFileSetHolder
-  ): TDocumentFilesFormViewModel;
+  CreateEmptyDocumentFilesFormViewModel: TDocumentFilesFormViewModel;
 begin
 
   Result := CreateDocumentFilesFormViewModelInstance;
 
-  Result.DocumentFileSetHolder :=
-    DocumentFileSetHolder;
+  Result.DocumentFileSetHolder := FDocumentFileSetHolderFactory.CreateDocumentFileSetHolder;
     
 end;
 
 function TDocumentFilesFormViewModelMapper.
   MapDocumentFilesFormViewModelFrom(
-    DocumentFilesInfoDTO: TDocumentFilesInfoDTO;
-    DocumentFileSetHolder: TDocumentFileSetHolder
+    DocumentFilesInfoDTO: TDocumentFilesInfoDTO
   ): TDocumentFilesFormViewModel;
-var DocumentFileInfoDTO: TDocumentFileInfoDTO;
+var
+    DocumentFileInfoDTO: TDocumentFileInfoDTO;
 begin
 
-  Result := CreateDocumentFilesFormViewModelInstance;
+  Result := CreateEmptyDocumentFilesFormViewModel;
 
-  if Assigned(DocumentFilesInfoDTO) then begin
+  if not Assigned(DocumentFilesInfoDTO) then Exit;
+
+  try
 
     for DocumentFileInfoDTO in DocumentFilesInfoDTO do begin
 
-      DocumentFileSetHolder.Append;
+      with Result.DocumentFileSetHolder do begin
 
-      with DocumentFileSetHolder do begin
+        AppendWithoutRecordIdGeneration;
 
         IdFieldValue := DocumentFileInfoDTO.Id;
         FileNameFieldValue := DocumentFileInfoDTO.FileName;
         FilePathFieldValue := DocumentFileInfoDTO.FilePath;
 
         MarkCurrentRecordAsNonChanged;
-
+		
+		    Post;
+        
       end;
-
-      DocumentFileSetHolder.Post;
 
     end;
 
-  end;
+  except
 
-  Result.DocumentFileSetHolder := DocumentFileSetHolder;
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
 
 end;
 
@@ -105,7 +123,8 @@ function TDocumentFilesFormViewModelMapper.
   MapDocumentFilesFormViewModelTo(
     DocumentFilesFormViewModel: TDocumentFilesFormViewModel
   ): TDocumentFilesInfoDTO;
-var DocumentFileInfoDTO: TDocumentFileInfoDTO;
+var
+    DocumentFileInfoDTO: TDocumentFileInfoDTO;
     DocumentFileSetHolder: TDocumentFileSetHolder;
 begin
 
@@ -137,12 +156,9 @@ begin
     
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-      
-    end;
+    Raise;
 
   end;
 

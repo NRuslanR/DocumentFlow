@@ -14,15 +14,17 @@ uses
   EmployeeDocumentCardFormViewModelMapper,
   DocumentMainInformationFormViewModelMapper,
   IncomingDocumentCardFormViewModel,
-  IncomingDocumentMainInformationFormViewModelMapper,
   IncomingDocumentMainInformationFormViewModel,
   DocumentCardFormViewModelMapper,
   DocumentChargesFormViewModelMapper,
+  DocumentChargeSheetsFormViewModelMapper,
   DocumentRelationsFormViewModelMapper,
   DocumentFilesFormViewModelMapper,
   DocumentApprovingsFormViewModelMapper,
   DocumentDataSetHoldersFactory,
+  IncomingDocumentMainInformationFormViewModelMapper,
   DocumentUsageEmployeeAccessRightsInfoDTO,
+  DocumentFilesViewFormViewModelMapper,
   SysUtils,
   Classes;
 
@@ -30,19 +32,9 @@ type
 
   TIncomingDocumentCardFormViewModelMapper = class (TEmployeeDocumentCardFormViewModelMapper)
 
+    private
+    
     protected
-
-      FDocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
-      
-    protected
-
-      function CreateMainInformationFormViewModelMapper:
-        TDocumentMainInformationFormViewModelMapper; override;
-
-    protected
-
-      function CreateDocumentCardFormViewModelInstance:
-        TDocumentCardFormViewModel; override;
 
       function CreateChangedDocumentInfoDTOInstance:
         TChangedDocumentInfoDTO; override;
@@ -52,11 +44,17 @@ type
 
     public
 
-      destructor Destroy; override;
+      constructor Create; overload;
+
       constructor Create(
-        DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-        DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper
-      );
+        IncomingDocumentMainInformationFormViewModelMapper: TIncomingDocumentMainInformationFormViewModelMapper;
+        ChargesFormViewModelMapper: TDocumentChargesFormViewModelMapper;
+        ChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper;
+        RelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper;
+        FilesFormViewModelMapper: TDocumentFilesFormViewModelMapper;
+        ApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper;
+        FilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper
+      ); overload;
 
       function MapDocumentCardFormViewModelFrom(
 
@@ -77,18 +75,35 @@ type
 
 implementation
 
-
 { TIncomingDocumentCardFormViewModelMapper }
 
+constructor TIncomingDocumentCardFormViewModelMapper.Create;
+begin
+
+  inherited;
+  
+end;
+
 constructor TIncomingDocumentCardFormViewModelMapper.Create(
-  DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-  DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper
+  IncomingDocumentMainInformationFormViewModelMapper: TIncomingDocumentMainInformationFormViewModelMapper;
+  ChargesFormViewModelMapper: TDocumentChargesFormViewModelMapper;
+  ChargeSheetsFormViewModelMapper: TDocumentChargeSheetsFormViewModelMapper;
+  RelationsFormViewModelMapper: TDocumentRelationsFormViewModelMapper;
+  FilesFormViewModelMapper: TDocumentFilesFormViewModelMapper;
+  ApprovingsFormViewModelMapper: TDocumentApprovingsFormViewModelMapper;
+  FilesViewFormViewModelMapper: TDocumentFilesViewFormViewModelMapper
 );
 begin
 
-  FDocumentCardFormViewModelMapper := DocumentCardFormViewModelMapper;
-  
-  inherited Create(DocumentDataSetHoldersFactory);
+  inherited Create(
+    IncomingDocumentMainInformationFormViewModelMapper,
+    ChargesFormViewModelMapper,
+    ChargeSheetsFormViewModelMapper,
+    RelationsFormViewModelMapper,
+    FilesFormViewModelMapper,
+    ApprovingsFormViewModelMapper,
+    FilesViewFormViewModelMapper
+  );
   
 end;
 
@@ -105,26 +120,6 @@ begin
         
 end;
 
-
-function TIncomingDocumentCardFormViewModelMapper.CreateDocumentCardFormViewModelInstance: TDocumentCardFormViewModel;
-begin
-
-  Result := TIncomingDocumentCardFormViewModel.Create;
-  
-end;
-
-function TIncomingDocumentCardFormViewModelMapper.
-  CreateMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
-begin
-
-  Result :=
-    TIncomingDocumentMainInformationFormViewModelMapper.Create(
-      FDocumentCardFormViewModelMapper.MainInformationFormViewModelMapper
-    );
-
-  
-end;
-
 function TIncomingDocumentCardFormViewModelMapper.CreateNewDocumentInfoDTOInstance: TNewDocumentInfoDTO;
 begin
 
@@ -135,27 +130,6 @@ begin
           'так как входящий документ не ' +
           'может создаваться автором'
         );
-        
-end;
-
-destructor TIncomingDocumentCardFormViewModelMapper.Destroy;
-begin
-
-  if Assigned(FMainInformationFormViewModelMapper) then begin
-
-    with FMainInformationFormViewModelMapper as
-         TIncomingDocumentMainInformationFormViewModelMapper
-    do begin
-
-      OriginalDocumentMainInformationFormViewModelMapper := nil;
-
-    end;
-
-  end;
-
-  FreeAndNil(FDocumentCardFormViewModelMapper);
-
-  inherited;
 
 end;
 

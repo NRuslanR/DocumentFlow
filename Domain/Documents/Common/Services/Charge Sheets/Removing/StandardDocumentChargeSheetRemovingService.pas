@@ -8,7 +8,6 @@ uses
   DocumentChargeSheet,
   DocumentChargeSheetDirectory,
   Employee,
-  IDocumentUnit,
   DomainException,
   IDocumentChargeSheetUnit,
   SysUtils;
@@ -30,8 +29,7 @@ type
         
         procedure RemoveChargeSheets(
           Employee: TEmployee;
-          ChargeSheets: TDocumentChargeSheets;
-          Document: IDocument
+          ChargeSheets: TDocumentChargeSheets
         );
 
     end;
@@ -40,6 +38,7 @@ implementation
 
 uses
 
+  StrUtils,
   AuxDebugFunctionsUnit,
   DocumentChargeSheetRemovingRule;
   
@@ -57,8 +56,7 @@ end;
 
 procedure TStandardDocumentChargeSheetRemovingService.RemoveChargeSheets(
   Employee: TEmployee;
-  ChargeSheets: TDocumentChargeSheets;
-  Document: IDocument
+  ChargeSheets: TDocumentChargeSheets
 );
 var
     ChargeSheet: IDocumentChargeSheet;
@@ -94,12 +92,10 @@ begin
       ChargeSheetObj
         .WorkingRules
           .DocumentChargeSheetRemovingRule
-            .EnsureThatIsSatisfiedFor(
-              Employee, ChargeSheetObj, Document
-            );
+            .EnsureThatIsSatisfiedFor(Employee, ChargeSheetObj);
 
       AllowableForRemovingChargeSheets.AddDocumentChargeSheet(ChargeSheet);
-      
+
     except
 
       on E: TDocumentChargeSheetRemovingRuleException do begin
@@ -142,14 +138,21 @@ begin
 
     end;
 
+    {
+      refactor:
+        create aggregate exception to hold list of exception
+        per fail removed charge sheet
+    }
     if IssuerSubordinateChargeSheetCount <> NotAllowableForRemovingChargeSheets.Count
     then begin
 
       raise TDocumentChargeSheetRemovingServiceException.CreateFmt(
-        'Сотрудник "%s" не может отозвать ' +
-        'затребованные поручения, ' +
-        'поскольку некоторые из них не ' +
-        'являются подчинёнными для него',
+        'Сотрудник "%s" не может отозвать' +
+        IfThen(not AllowableForRemovingChargeSheets.IsEmpty, ' некоторые ', ' ') +
+        'поручения по следующим возможным причинам:' + sLineBreak +
+        '1 - отсутствие соответствующих прав' + sLineBreak +
+        '2 - недопустимый статус поручений - выполнено' + sLineBreak +
+        '3 - недопустимый статус документа',
         [
           Employee.FullName
         ]

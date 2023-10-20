@@ -43,11 +43,15 @@ type
     public
 
       class function IncomingDocumentKind: TUIIncomingDocumentKindClass; virtual;
+      class function ApproveableDocumentKind: TUIApproveableDocumentKindClass; virtual;
 
   end;
 
   TUIApproveableDocumentKind = class (TUINativeDocumentKind)
 
+    public
+
+      class function OutcomingDocumentKind: TUIOutcomingDocumentKindClass; virtual;
 
   end;
 
@@ -81,6 +85,7 @@ type
     public
 
       class function IncomingDocumentKind: TUIIncomingDocumentKindClass; override;
+      class function ApproveableDocumentKind: TUIApproveableDocumentKindClass; override;
 
   end;
 
@@ -88,6 +93,8 @@ type
 
     public
 
+      class function OutcomingDocumentKind: TUIOutcomingDocumentKindClass; override;
+      
   end;
 
   TUIIncomingServiceNoteKind = class (TUIIncomingDocumentKind)
@@ -123,6 +130,13 @@ implementation
 
 { TUIOutcomingDocumentKind }
 
+class function TUIOutcomingDocumentKind.ApproveableDocumentKind: TUIApproveableDocumentKindClass;
+begin
+
+  Result := TUIApproveableDocumentKind;
+  
+end;
+
 class function TUIOutcomingDocumentKind.IncomingDocumentKind: TUIIncomingDocumentKindClass;
 begin
 
@@ -140,6 +154,13 @@ begin
 end;
 
 { TUIOutcomingServiceNoteKind }
+
+class function TUIOutcomingServiceNoteKind.ApproveableDocumentKind: TUIApproveableDocumentKindClass;
+begin
+
+  Result := TUIApproveableServiceNoteKind;
+  
+end;
 
 class function TUIOutcomingServiceNoteKind.IncomingDocumentKind: TUIIncomingDocumentKindClass;
 begin
@@ -172,6 +193,24 @@ class function TUIIncomingInternalServiceNoteKind.InternalDocumentKind: TUIInter
 begin
 
   Result := TUIInternalServiceNoteKind;
+  
+end;
+
+{ TUIApproveableDocumentKind }
+
+class function TUIApproveableDocumentKind.OutcomingDocumentKind: TUIOutcomingDocumentKindClass;
+begin
+
+  Result := TUIOutcomingDocumentKind;
+
+end;
+
+{ TUIApproveableServiceNoteKind }
+
+class function TUIApproveableServiceNoteKind.OutcomingDocumentKind: TUIOutcomingDocumentKindClass;
+begin
+
+  Result := TUIOutcomingServiceNoteKind;
   
 end;
 

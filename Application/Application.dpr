@@ -289,7 +289,6 @@ uses
   PersonnelOrderFullInfoDTOFromDataSetMapper in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Mappers\PersonnelOrderFullInfoDTOFromDataSetMapper.pas',
   PersonnelOrderDTOFromDataSetMapper in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Mappers\PersonnelOrderDTOFromDataSetMapper.pas',
   PersonnelOrderInfoHolder in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Dtos\PersonnelOrderInfoHolder.pas',
-  PostgresPersonnelOrderInfoQueryBuilder in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresPersonnelOrderInfoQueryBuilder.pas',
   PersonnelOrderInfoHolderBuilder in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Builders\DataSets\PersonnelOrderInfoHolderBuilder.pas',
   PersonnelOrderFullInfoDataSetHolder in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Dtos\PersonnelOrderFullInfoDataSetHolder.pas',
   DocumentChargeSheetViewingAccountingService in 'Accounting\Docs\Interfaces\DocumentChargeSheetViewingAccountingService.pas',
@@ -366,7 +365,6 @@ uses
   EmployeeSetHolder in 'Common\Employees\Dtos\EmployeeSetHolder.pas',
   EmployeeStaffDto in 'Common\Employees\Dtos\EmployeeStaffDto.pas',
   DocumentFlowEmployeeInfoDTOMapper in 'Common\Employees\Dtos\Mappers\DocumentFlowEmployeeInfoDTOMapper.pas',
-  PersonnelOrderDTODomainMapper in 'Common\Documents\Personnel Orders\Dtos\Mappers\PersonnelOrderDTODomainMapper.pas',
   DocumentAcquaitanceInfoDTODomainMapper in 'Common\Documents\Dtos\Mappers\DocumentAcquaitanceInfoDTODomainMapper.pas',
   DocumentPerformingInfoDTODomainMapper in 'Common\Documents\Dtos\Mappers\DocumentPerformingInfoDTODomainMapper.pas',
   DTODomainMapperRegistry in 'Common\Documents\Dtos\Mappers\Registries\DTODomainMapperRegistry.pas',
@@ -388,21 +386,71 @@ uses
   AbstractDocumentFlowItemStatistics in 'Statistics\Integration\Interfaces\AbstractDocumentFlowItemStatistics.pas',
   AbstractDocumentFlowItemStatisticsService in 'Statistics\Integration\Interfaces\AbstractDocumentFlowItemStatisticsService.pas',
   BasedOnZeosResourceRequestsAccessService in 'External\ResourceRequests\External Implementations\DocumentFlow\BasedOnZeosResourceRequestsAccessService.pas',
-  BasedOnZeosResourceRequestsItemStatisticsService in 'External\ResourceRequests\External Implementations\DocumentFlow\BasedOnZeosResourceRequestsItemStatisticsService.pas',
   BasedOnZeosVclResourceRequestsItemService in 'External\ResourceRequests\External Implementations\DocumentFlow\BasedOnZeosVclResourceRequestsItemService.pas',
-  ResourceRequestsItemStatistics in 'External\ResourceRequests\External Implementations\DocumentFlow\ResourceRequestsItemStatistics.pas',
   EmployeeDocumentWorkStatisticsPostgresService in 'Statistics\Docs\Zeos-Based\Postgres\EmployeeDocumentWorkStatisticsPostgresService.pas',
   StandardDocumentStorageService in 'Business Processes\Docs\Common\Storage\StandardDocumentStorageService.pas',
   PostgresServiceNoteSubstitutedInfoQueryBuilder in 'Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresServiceNoteSubstitutedInfoQueryBuilder.pas',
   PostgresIncomingServiceNoteFullInfoFetchingQueryBuilder in 'Presentation\Docs\Service Notes\Cards\Doc Full Info\Based-On DB\Postgres\PostgresIncomingServiceNoteFullInfoFetchingQueryBuilder.pas',
-  LoodsmanDocumentsUploadingAccessRightsService in 'External\Integration\Loodsman\Uploading\Interfaces\LoodsmanDocumentsUploadingAccessRightsService.pas',
-  LoodsmanDocumentsUploadingAccessRights in 'External\Integration\Loodsman\Uploading\Dtos\LoodsmanDocumentsUploadingAccessRights.pas',
-  BasedOnDatabaseLoodsmanDocumentsUploadingAccessRightsService in 'External\Integration\Loodsman\Uploading\Based-On DB\BasedOnDatabaseLoodsmanDocumentsUploadingAccessRightsService.pas',
-  LoodsmanDocumentsUploadingAccessRightsTableDef in 'External\Integration\Loodsman\Uploading\Based-On DB\LoodsmanDocumentsUploadingAccessRightsTableDef.pas';
+  LoodsmanDocumentsUploadingAccessRightsService in 'External\Integration\Loodsman\Uploading\Access Rights\Interfaces\LoodsmanDocumentsUploadingAccessRightsService.pas',
+  LoodsmanDocumentsUploadingAccessRights in 'External\Integration\Loodsman\Uploading\Access Rights\Dtos\LoodsmanDocumentsUploadingAccessRights.pas',
+  BasedOnDatabaseLoodsmanDocumentsUploadingAccessRightsService in 'External\Integration\Loodsman\Uploading\Access Rights\Based-On DB\BasedOnDatabaseLoodsmanDocumentsUploadingAccessRightsService.pas',
+  LoodsmanDocumentsUploadingAccessRightsTableDef in 'External\Integration\Loodsman\Uploading\Access Rights\Based-On DB\LoodsmanDocumentsUploadingAccessRightsTableDef.pas',
+  LoodsmanDocumentsUploadingService in 'External\Integration\Loodsman\Uploading\Controlling\Interfaces\LoodsmanDocumentsUploadingService.pas',
+  LoodsmanDocumentUploadingInfo in 'External\Integration\Loodsman\Uploading\Controlling\Dtos\LoodsmanDocumentUploadingInfo.pas',
+  BasedOnDatabaseLoodsmanDocumentsUploadingService in 'External\Integration\Loodsman\Uploading\Controlling\Based-On DB\BasedOnDatabaseLoodsmanDocumentsUploadingService.pas',
+  LoodsmanDocumentsUploadingQueueTableDef in 'External\Integration\Loodsman\Uploading\Controlling\Based-On DB\LoodsmanDocumentsUploadingQueueTableDef.pas',
+  EmployeeInfoReadService in 'Presentation\Employees\Cards\EmployeeInfoReadService.pas',
+  BasedOnDatabaseEmployeeInfoReadService in 'Presentation\Employees\Cards\Based-On DB\BasedOnDatabaseEmployeeInfoReadService.pas',
+  LoodsmanDocumentUploadingInfoMapper in 'External\Integration\Loodsman\Uploading\Controlling\Based-On DB\LoodsmanDocumentUploadingInfoMapper.pas',
+  LoodsmanDocumentUploadingStatus in 'External\Integration\Loodsman\Uploading\Controlling\Dtos\LoodsmanDocumentUploadingStatus.pas',
+  LoodsmanDocumentUploadingStatusChangingEnsurer in 'External\Integration\Loodsman\Uploading\Controlling\Interfaces\LoodsmanDocumentUploadingStatusChangingEnsurer.pas',
+  StandardLoodsmanDocumentUploadingStatusChangingEnsurer in 'External\Integration\Loodsman\Uploading\Controlling\StandardLoodsmanDocumentUploadingStatusChangingEnsurer.pas',
+  OriginalDocumentInfoReadService in 'Presentation\Docs\Cards\Doc Full Info\Interfaces\OriginalDocumentInfoReadService.pas',
+  StandardOriginalDocumentInfoReadService in 'Presentation\Docs\Cards\Doc Full Info\StandardOriginalDocumentInfoReadService.pas',
+  DocumentFlowEmployeeInfoJsonMapper in 'Common\Employees\Dtos\Mappers\DocumentFlowEmployeeInfoJsonMapper.pas',
+  uLkJSON,
+  DocumentChargeInfoJsonMapper in 'Common\Documents\Dtos\Mappers\DocumentChargeInfoJsonMapper.pas',
+  DocumentChargesInfoJsonMapper in 'Common\Documents\Dtos\Mappers\DocumentChargesInfoJsonMapper.pas',
+  DocumentApprovingsInfoJsonMapper in 'Common\Documents\Dtos\Mappers\DocumentApprovingsInfoJsonMapper.pas',
+  DocumentJsonMapper in 'Common\Documents\Dtos\Mappers\DocumentJsonMapper.pas',
+  DocumentResponsibleInfoJsonMapper in 'Common\Documents\Dtos\Mappers\DocumentResponsibleInfoJsonMapper.pas',
+  DocumentChargeSheetInfoJsonMapper in 'Common\Documents\Charge Sheets\Dtos\Mappers\DocumentChargeSheetInfoJsonMapper.pas',
+  DocumentChargeSheetsInfoJsonMapper in 'Common\Documents\Charge Sheets\Dtos\Mappers\DocumentChargeSheetsInfoJsonMapper.pas',
+  DocumentFullInfoJsonMapper in 'Common\Documents\Dtos\Mappers\DocumentFullInfoJsonMapper.pas',
+  PostgresPersonnelOrderInfoQueryBuilder in 'Presentation\Docs\Personnel Orders\Cards\Doc Full Info\Based-On DB\Builders\Queries\Postgres\PostgresPersonnelOrderInfoQueryBuilder.pas',
+  PersonnelOrderDTODomainMapper in 'Common\Documents\Personnel Orders\Dtos\Mappers\PersonnelOrderDTODomainMapper.pas',
+  PersonnelOrderDTOMapper in 'Common\Documents\Personnel Orders\Dtos\Mappers\PersonnelOrderDTOMapper.pas';
 
 {$R *.res}
-
+var
+    mapper: TDocumentFlowEmployeeInfoJsonMapper;
+    empDto: TDocumentFlowEmployeeInfoDTO;
+    empJson, a: String;
+    w: TlkJSONobject;
 begin
+
+  empDto := TDocumentFlowEmployeeInfoDTO.Create;
+
+  empDto.Id := 1;
+  empDto.RoleId := 1;
+  empDto.IsForeign := true;
+  empDto.LeaderId := 234;
+  empDto.Name := 'Dmitry';
+  empDto.Surname := 'Krainov';
+  empDto.Patronymic := 'Valerievich';
+  empDto.FullName := 'A A A';
+  empDto.Speciality := 'S';
+  empDto.DepartmentInfoDTO := TDepartmentInfoDTO.CreateFrom(4, 'asdsadsa', 'fsdfwefew');
+
+  mapper := TDocumentFlowEmployeeInfoJsonMapper.Create;
+  
+  empJson := mapper.MapDocumentFlowEmployeeInfoJson(empDto);
+
+  w := TlkJSONobject.Create;
+
+  w.Add('data', empJson);
+
+  a := TlkJSON.GenerateText(w);
 
   Forms.Application.Initialize;
   Forms.Application.Run;

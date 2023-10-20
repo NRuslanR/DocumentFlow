@@ -24,6 +24,7 @@ implementation
 uses
 
   Variants;
+  
 { TDocumentFlowEmployeeInfoDTO }
 
 constructor TDocumentFlowEmployeeInfoDTO.Create;

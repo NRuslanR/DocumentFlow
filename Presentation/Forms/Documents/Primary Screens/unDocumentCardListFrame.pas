@@ -42,7 +42,14 @@ uses
   Hashes,
   UserInterfaceSwitch,
   DBClient,
-  EmployeeDocumentSetReadService;
+  EmployeeDocumentSetReadService,
+  LoodsmanDocumentUploadingInfo,
+  DocumentCardFormViewModelMapperFactories,
+  DocumentCardFormViewModelMapperFactory,
+  DocumentCardFormViewModelMapper,
+  DocumentCardFrameFactory,
+  LoodsmanDocumentUploadingInfoFormViewModel,
+  LoodsmanDocumentUploadingStatus;
 
 const
 
@@ -366,6 +373,19 @@ type
       var NewDocumentApprovingCycleViewModel: TDocumentApprovingCycleViewModel
     );
 
+    procedure OnDocumentUploadingToLoodsmanEventHandler(Sender: TObject);
+    procedure OnCancellationDocumentUploadingToLoodsmanEventHandler(Sender: TObject);
+
+    procedure ChangeLoodsmanDocumentUploadingStatusInfo(
+      DocumentCardFrame: TDocumentCardFrame;
+      const NewStatus: TLoodsmanDocumentUploadingStatus
+    ); overload;
+
+    procedure ChangeLoodsmanDocumentUploadingStatusInfo(
+      const DocumentId: Variant;
+      const NewStatus: TLoodsmanDocumentUploadingStatus
+    ); overload;
+
     procedure OnRespondingDocumentCreatingFinishedEventHandler(
       Sender: TObject;
       RespondingDocumentCardFrame: TDocumentCardFrame
@@ -494,11 +514,9 @@ type
         DocumentCardViewModel: TDocumentCardFormViewModel
       );
 
-    procedure
-      ChangeDocumentsReferenceFormRecordBy(
-        {DocumentCardViewModel: TDocumentCardFormViewModel}
-        DocumentId, DocumentKindId: Variant
-      );
+    procedure ChangeDocumentsReferenceFormRecordBy(
+      DocumentId, DocumentKindId: Variant
+    );
 
     procedure AssignDocumentCardFrame(
       DocumentCardFrame: TDocumentCardFrame
@@ -522,10 +540,19 @@ type
       var AvailableActionList: TDocumentUsageEmployeeAccessRightsInfoDTO
     );
 
+    function CreateDocumentCardFormViewModelMapper(
+      const UIDocumentKind: TUIDocumentKindClass
+    ): TDocumentCardFormViewModelMapper;
+
+    function CreateDocumentCardFrameFactory(
+      const UIDocumentKind: TUIDocumentKindClass
+    ): TDocumentCardFrameFactory;
+
     function CreateDocumentCardFormViewModelFor(
       UIDocumentKind: TUIDocumentKindClass;
       DocumentFullInfoDTO: TDocumentFullInfoDTO;
-      DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
+      DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+      LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo = nil
     ): TDocumentCardFormViewModel;
 
     function CreateDocumentCardFrameFor(
@@ -706,7 +733,6 @@ uses
   IObjectPropertiesStorageUnit,
   AuxWindowsFunctionsUnit,
   AuxDebugFunctionsUnit,
-  DocumentCardFrameFactory,
   DocumentMainInformationFrameUnit,
   DocumentCardFormUnit,
   unDocumentChargesFrame,
@@ -734,10 +760,7 @@ uses
   DocumentBusinessProcessServiceRegistry,
   DocumentCardFrameFactories,
   SendingDocumentToSigningService,
-  DocumentCardFormViewModelMapperFactories,
-  DocumentCardFormViewModelMapperFactory,
   SendingDocumentToApprovingService,
-  DocumentCardFormViewModelMapper,
   ChangedDocumentInfoDTO,
   DocumentChargeSheetsChangesInfoDTO,
   NewDocumentInfoDTO,
@@ -765,7 +788,7 @@ uses
   DocumentApprovingListSetHolder,
   DocumentApprovingListSetHolderMapper,
   EmployeeDocumentKindAccessRightsAppService,
-  DocumentDataSetHolderFactories,
+  DocumentDataSetHoldersFactories,
   EmployeeDocumentKindAccessRightsInfoDto,
   DocumentStorageServiceCommandsAndRespones,
   RelatedDocumentStorageService,
@@ -779,7 +802,11 @@ uses
   EmployeeDocumentRecordViewModel,
   PresentationServiceRegistry,
   BaseIncomingDocumentsReferenceFormUnit,
-  DocumentSigningMarkingAppService;
+  DocumentSigningMarkingAppService,
+  LoodsmanDocumentsUploadingService,
+  DocumentApprovingListSetHolderFactory,
+  DocumentApprovingListRecordSetHolderFactory,
+  ClientDataSetBuilder;
 
 {$R *.dfm}
 
@@ -831,7 +858,23 @@ var
     DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
     DocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory;
     GettingDocumentFullInfoCommandResult: IGettingDocumentFullInfoCommandResult;
+
+    LoodsmanDocumentsUploadingService: ILoodsmanDocumentsUploadingService;
+    ServiceDocumentKind: TDocumentKindClass;
+    LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo;
 begin
+
+  ServiceDocumentKind :=
+    GetDocumentKindFromIdForApplicationServicing(DocumentKindId);
+
+  DocumentStorageService :=
+    GetDocumentStorageService(ServiceDocumentKind);
+
+  LoodsmanDocumentsUploadingService :=
+    TApplicationServiceRegistries
+      .Current
+        .GetExternalServiceRegistry
+          .GetLoodsmanDocumentsUploadingService(ServiceDocumentKind);
 
   DocumentCardViewModel := nil;
   AvailableActionList := nil;
@@ -844,11 +887,6 @@ begin
 
     try
 
-      DocumentStorageService :=
-        GetDocumentStorageService(
-          GetDocumentKindFromIdForApplicationServicing(DocumentKindId)
-        );
-
       GettingDocumentFullInfoCommandResult :=
         DocumentStorageService.GetDocumentFullInfo(
           TGettingDocumentFullInfoCommand.Create(
@@ -857,11 +895,17 @@ begin
           )
         );
 
+      LoodsmanDocumentUploadingInfo :=
+        LoodsmanDocumentsUploadingService.GetLoodsmanDocumentUploadingInfo(
+          WorkingEmployeeId, DocumentId
+        );
+      
       DocumentCardViewModel :=
         CreateDocumentCardFormViewModelFor(
           FUINativeDocumentKindResolver.ResolveUIDocumentKindFromId(DocumentKindId),
           GettingDocumentFullInfoCommandResult.DocumentFullInfoDTO,
-          GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO.AsSelf
+          GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO.AsSelf,
+          LoodsmanDocumentUploadingInfo
         );
 
       AvailableActionList :=
@@ -900,17 +944,14 @@ var
     AvailableDocumentActionList: TDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
-  Result := nil;
-  AvailableDocumentActionList := nil;
+  GetCardFormViewModelAndAvailableActionListForDocument(
+    DocumentId,
+    DocumentKindId,
+    DocumentCardFormViewModel,
+    AvailableDocumentActionList
+  );
 
   try
-
-    GetCardFormViewModelAndAvailableActionListForDocument(
-      DocumentId,
-      DocumentKindId,
-      DocumentCardFormViewModel,
-      AvailableDocumentActionList
-    );
 
     try
 
@@ -923,7 +964,7 @@ begin
 
     except
 
-      FreeAndNil(Result);
+      FreeAndNil(DocumentCardFormViewModel);
 
       Raise;
 
@@ -941,55 +982,33 @@ function TDocumentCardListFrame.GetCardFrameForDocumentForViewOnly(
   const DocumentId: Variant;
   const DocumentKindId: Variant
 ): TDocumentCardFrame;
-var DocumentCardFrameFactory: TDocumentCardFrameFactory;
-    DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
-    DocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory;
+var
     DocumentCardFormViewModel: TDocumentCardFormViewModel;
-    DocumentFullInfoDTO: TDocumentFullInfoDTO;
-    DocumentStorageService: IDocumentStorageService;
-    GettingDocumentFullInfoCommandResult: IGettingDocumentFullInfoCommandResult;
+    DocumentAccessRights: TDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
 
-  DocumentCardFrameFactory := nil;
-  DocumentCardFormViewModelMapper := nil;
-  DocumentCardFormViewModelMapperFactory := nil;
-  DocumentCardFormViewModel := nil;
-  DocumentFullInfoDTO := nil;
-  DocumentStorageService := nil;
+  Result := GetCardFrameForDocument(DocumentId, DocumentKindId);
 
   try
 
-    DocumentStorageService :=
-      GetDocumentStorageService(
-        GetDocumentKindFromIdForApplicationServicing(DocumentKindId)
-      );
+    Result.ViewOnly := True;
 
-    try
-    
-      GettingDocumentFullInfoCommandResult :=
-        DocumentStorageService.GetDocumentFullInfo(
-          TGettingDocumentFullInfoCommand.Create(
-            DocumentId,
-            WorkingEmployeeId)
-          );
+  except
 
-      DocumentCardFormViewModel :=
-        CreateDocumentCardFormViewModelFor(
-          FUINativeDocumentKindResolver.ResolveUIDocumentKindFromId(DocumentKindId),
-          GettingDocumentFullInfoCommandResult.DocumentFullInfoDTO,
-          GettingDocumentFullInfoCommandResult.DocumentUsageEmployeeAccessRightsInfoDTO.AsSelf
-        );
+    FreeAndNil(Result);
 
-    except
+    Raise;
 
-      on e: Exception do begin
+  end;
+                                                      {
+  GetCardFormViewModelAndAvailableActionListForDocument(
+    DocumentId,
+    DocumentKindId,
+    DocumentCardFormViewModel,
+    DocumentAccessRights
+  );
 
-        FreeAndNil(DocumentCardFormViewModel);
-        raise;
-        
-      end;
-
-    end;
+  try
 
     try
 
@@ -1001,21 +1020,18 @@ begin
 
     except
 
-      on e: Exception do begin
+      FreeAndNil(DocumentCardFormViewModel);
 
-        FreeAndNil(Result);
-        raise;
-        
-      end;
+      Raise;
+
 
     end;
 
   finally
 
-    FreeAndNil(DocumentCardFrameFactory);
-    FreeAndNil(DocumentFullInfoDTO);
+    FreeAndNil(DocumentAccessRights);
     
-  end;
+  end;              }
 
 end;
 
@@ -1390,7 +1406,7 @@ begin
   end;
 
 end;
-
+
 function TDocumentCardListFrame.GetDocumentSetByIds(
   const DocumentKindId: Variant;
   DocumentIds: array of Variant
@@ -1582,6 +1598,12 @@ begin
   DocumentCardFrame.OnDocumentApprovingCycleSelectedEventHandler :=
     OnDocumentApprovingCycleSelectedEventHandler;
 
+  DocumentCardFrame.OnDocumentUploadingToLoodsmanEventHandler :=
+    OnDocumentUploadingToLoodsmanEventHandler;
+
+  DocumentCardFrame.OnCancellationDocumentUploadingToLoodsmanEventHandler :=
+    OnCancellationDocumentUploadingToLoodsmanEventHandler;
+
 end;
 
 procedure TDocumentCardListFrame.
@@ -1676,7 +1698,8 @@ end;
 function TDocumentCardListFrame.CreateDocumentCardFormViewModelFor(
   UIDocumentKind: TUIDocumentKindClass;
   DocumentFullInfoDTO: TDocumentFullInfoDTO;
-  DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
+  DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
+  LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo
 ): TDocumentCardFormViewModel;
 var
     DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
@@ -1700,7 +1723,8 @@ begin
     Result :=
       DocumentCardFormViewModelMapper.MapDocumentCardFormViewModelFrom(
         DocumentFullInfoDTO,
-        DocumentUsageEmployeeAccessRightsInfoDTO
+        DocumentUsageEmployeeAccessRightsInfoDTO,
+        LoodsmanDocumentUploadingInfo
       );
 
   finally
@@ -1712,11 +1736,37 @@ begin
 
 end;
 
+function TDocumentCardListFrame.CreateDocumentCardFormViewModelMapper(
+  const UIDocumentKind: TUIDocumentKindClass): TDocumentCardFormViewModelMapper;
+var
+    DocumentCardFormViewModelFactory: TDocumentCardFormViewModelMapperFactory;
+begin
+
+  DocumentCardFormViewModelFactory :=
+      TDocumentCardFormViewModelMapperFactories
+        .Current
+          .CreateDocumentCardFormViewModelMapperFactory(UIDocumentKind);
+
+  try
+
+    Result :=
+      DocumentCardFormViewModelFactory.
+        CreateDocumentCardFormViewModelMapper;
+
+  finally
+
+    FreeAndNil(DocumentCardFormViewModelFactory);
+    
+  end;
+
+end;
+
 function TDocumentCardListFrame.CreateDocumentCardFrameFor(
   UIDocumentKind: TUIDocumentKindClass;
   DocumentFullInfoDTO: TDocumentFullInfoDTO;
   DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO): TDocumentCardFrame;
-var DocumentCardFormViewModel: TDocumentCardFormViewModel;
+var
+    DocumentCardFormViewModel: TDocumentCardFormViewModel;
 begin
 
   DocumentCardFormViewModel :=
@@ -1735,10 +1785,23 @@ begin
     
 end;
 
+function TDocumentCardListFrame.CreateDocumentCardFrameFactory(
+  const UIDocumentKind: TUIDocumentKindClass): TDocumentCardFrameFactory;
+begin
+
+  Result :=
+    TDocumentCardFrameFactories
+      .Current
+        .CreateDocumentCardFrameFactory(UIDocumentKind);
+
+end;
+
 function TDocumentCardListFrame.CreateDocumentCardFrameFor(
   UIDocumentKind: TUIDocumentKindClass;
-  DocumentCardFormViewModel: TDocumentCardFormViewModel): TDocumentCardFrame;
-var DocumentCardFrameFactory: TDocumentCardFrameFactory;
+  DocumentCardFormViewModel: TDocumentCardFormViewModel
+): TDocumentCardFrame;
+var
+    DocumentCardFrameFactory: TDocumentCardFrameFactory;
 begin
 
   DocumentCardFrameFactory :=
@@ -2182,12 +2245,6 @@ var
 
     DocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory;
     DocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
-    {
-    DocumentCreatingDefaultInfoReadService: IDocumentCreatingDefaultInfoReadService;
-    DocumentCreatingDefaultInfoDTO: TDocumentCreatingDefaultInfoDTO;
-
-    EmployeeDocumentKindAccessRightsAppService: IEmployeeDocumentKindAccessRightsAppService;
-    EmployeeDocumentKindAccessRightsInfoDto: TEmployeeDocumentKindAccessRightsInfoDto; }
 
     DocumentCreatingResult: IDocumentCreatingCommandResult;
 begin
@@ -2195,9 +2252,7 @@ begin
   DocumentCardFormViewModel := nil;
   DocumentCardFormViewModelMapper := nil;
   DocumentCardFormViewModelMapperFactory := nil;
-                                        {
-  DocumentCreatingDefaultInfoDTO := nil;
-  EmployeeDocumentKindAccessRightsInfoDto := nil;  }
+
 
   DocumentCardFrame := nil;
   DocumentCardFrameFactory := nil;
@@ -2213,39 +2268,6 @@ begin
         и, таким образом, унифицировать создание модели карточки документа,
         используя метод CreateDocumentCardFrameFrom фабрики карточек DocumentCardFactory.
         В таком случае удалить метод CreateCardFrameForNewDocumentCreating
-    }
-
-    {
-    EmployeeDocumentKindAccessRightsAppService :=
-      TApplicationServiceRegistries.
-      Current.
-      GetDocumentBusinessProcessServiceRegistry.
-      GetEmployeeDocumentKindAccessRightsAppService;
-
-    EmployeeDocumentKindAccessRightsInfoDto :=
-      EmployeeDocumentKindAccessRightsAppService.
-        EnsureThatEmployeeCanCreateDocumentsAndGetAllAccessRightsInfo(
-          FCurrentDocumentKindInfo.ServiceDocumentKind,
-          WorkingEmployeeId
-        );
-
-    DocumentCreatingDefaultInfoReadService :=
-      TApplicationServiceRegistries.
-      Current.
-      GetPresentationServiceRegistry.
-      GetDocumentCreatingDefaultInfoReadService(
-        FCurrentDocumentKindInfo.ServiceDocumentKind
-      );
-
-    DocumentCreatingDefaultInfoDTO :=
-      DocumentCreatingDefaultInfoReadService.
-        GetDocumentCreatingDefaultInfoForEmployee(
-          WorkingEmployeeId
-        );
-
-    DocumentCreatingDefaultInfoDTO.DocumentKindId :=
-      NativeDocumentKindDtos.FindByServiceTypeOrRaise(FCurrentDocumentKindInfo.ServiceDocumentKind).Id;
-
     }
     
     { refactor- }
@@ -2282,13 +2304,6 @@ begin
             DocumentCreatingResult.DocumentFullInfoDTO,
             DocumentCreatingResult.DocumentAccessRightsInfoDTO
           );
-        {DocumentCardFormViewModelMapper.
-          CreateDocumentCardFormViewModelForNewDocumentCreating(
-            TDocumentDataSetHolderFactories.Instance.GetDocumentDataSetHolderFactory(
-              FCurrentDocumentKindInfo.UIDocumentKind
-            ),
-            DocumentCreatingDefaultInfoDTO
-          ); }
 
       DocumentCardFrameFactory :=
         TDocumentCardFrameFactories.Current.CreateDocumentCardFrameFactory(
@@ -2301,11 +2316,6 @@ begin
             DocumentCardFormViewModel,
             DocumentCreatingResult.DocumentAccessRightsInfoDTO
           );
-        {
-        .CreateCardFrameForNewDocumentCreating(
-          DocumentCardFormViewModel,
-          EmployeeDocumentKindAccessRightsInfoDto
-        );                                  }
 
       DocumentCardFrame.Font := Font;
 
@@ -2320,9 +2330,7 @@ begin
     end;
 
   finally
-     {
-    FreeAndNil(EmployeeDocumentKindAccessRightsInfoDto);
-    FreeAndNil(DocumentCreatingDefaultInfoDTO);           }
+
     FreeAndNil(DocumentCardFrameFactory);
     FreeAndNil(DocumentCardFormViewModelMapperFactory);
     FreeAndNil(DocumentCardFormViewModelMapper);
@@ -2502,8 +2510,6 @@ begin
 
     end;
 
-    DebugOutput(FocusedDocumentRecordViewModel.Name);
-
     ShowCardForDocumentAndUpdateRelatedDocumentRecord(
       FocusedDocumentRecordViewModel.DocumentId,
       FocusedDocumentRecordViewModel.KindId
@@ -2565,8 +2571,7 @@ begin
 
     DocumentChargeSheetAppControlService.PerformChargeSheets(
       WorkingEmployeeId,
-      DocumentChargeIds,
-      GetCurrentDocumentId
+      DocumentChargeIds
     );
 
   finally
@@ -2703,9 +2708,7 @@ begin
 
       QueueDocumentCardShowMessage(DocumentId, DocumentKindId);
 
-      ChangeDocumentsReferenceFormRecordBy({DocumentCardFrame.ViewModel}
-        DocumentId, DocumentKindId
-      );
+      ChangeDocumentsReferenceFormRecordBy(DocumentId, DocumentKindId);
 
     except
 
@@ -3372,7 +3375,7 @@ begin
     DocumentChargeSheetsChangesInfoDTO :=
       DocumentChargeSheetsChangesInfoDTOMapper.
         MapDocumentChargeSheetsChangesInfoDTOFrom(
-          FSelectedDocumentCardFrame.ViewModel.DocumentChargesFormViewModel
+          FSelectedDocumentCardFrame.ViewModel.DocumentChargeSheetsFormViewModel
         );
 
   finally
@@ -3395,6 +3398,8 @@ begin
           DocumentChargeSheetsChangesInfoDTO
         )
       );
+
+      RefreshCurrentDocumentCardFormViewModel;
 
       FSelectedDocumentCardFrame.DocumentChargesFrame.OnChangesApplied;
 
@@ -3820,8 +3825,104 @@ begin
   
 end;
 
-{ refactor: скрыть отображетль инф-ции о новом
-  цикле согласования }
+procedure TDocumentCardListFrame.OnDocumentUploadingToLoodsmanEventHandler(
+  Sender: TObject);
+var
+    DocumentCardFrame: TDocumentCardFrame;
+begin
+
+   DocumentCardFrame := Sender as TDocumentCardFrame;
+
+   ChangeLoodsmanDocumentUploadingStatusInfo(DocumentCardFrame, usUploadingRequested);
+   
+end;
+
+procedure TDocumentCardListFrame.OnCancellationDocumentUploadingToLoodsmanEventHandler(
+  Sender: TObject);
+var
+    DocumentCardFrame: TDocumentCardFrame;
+begin
+
+  DocumentCardFrame := Sender as TDocumentCardFrame;
+
+  ChangeLoodsmanDocumentUploadingStatusInfo(DocumentCardFrame, usCancelationRequested);
+
+end;
+
+procedure TDocumentCardListFrame.ChangeLoodsmanDocumentUploadingStatusInfo(
+  DocumentCardFrame: TDocumentCardFrame;
+  const NewStatus: TLoodsmanDocumentUploadingStatus
+);
+begin
+
+  Screen.Cursor := crHourGlass;
+
+  try
+
+    SaveChangesAndRefreshCurrentDocumentCardViewModelIfNecessary;
+
+    ChangeLoodsmanDocumentUploadingStatusInfo(
+      DocumentCardFrame.DocumentId, NewStatus
+    );
+
+    ShowDocumentCardForCurrentDocumentRecordAndUpdateThisRecord;
+
+  finally
+
+    Screen.Cursor := crDefault;
+    
+  end;
+
+end;
+
+procedure TDocumentCardListFrame.ChangeLoodsmanDocumentUploadingStatusInfo(
+  const DocumentId: Variant; const NewStatus: TLoodsmanDocumentUploadingStatus);
+var
+    LoodsmanDocumentsUploadingService: ILoodsmanDocumentsUploadingService;
+    
+    LoodsmanDocumentUploadingInfo: TLoodsmanDocumentUploadingInfo;
+    FreeLoodsmanDocumentUploadingInfo: ILoodsmanDocumentUploadingInfo;
+begin
+
+  LoodsmanDocumentsUploadingService :=
+    TApplicationServiceRegistries
+      .Current
+        .GetExternalServiceRegistry
+          .GetLoodsmanDocumentsUploadingService(DocumentCardFrame.ServiceDocumentKind);
+
+  if NewStatus = usUploadingRequested then begin
+
+    LoodsmanDocumentUploadingInfo :=
+      LoodsmanDocumentsUploadingService.RunDocumentUploadingToLoodsman(
+        WorkingEmployeeId, DocumentId
+      );
+
+  end
+
+  else if NewStatus = usCancelationRequested then begin
+
+    LoodsmanDocumentUploadingInfo :=
+      LoodsmanDocumentsUploadingService
+        .RunCancellationDocumentUploadingToLoodsman(
+          WorkingEmployeeId, DocumentId
+        );
+
+  end
+
+  else begin
+
+    Raise Exception.Create(
+      'Программная ошибка. Попытка инициировать ' +
+      'смену статуса выгрузки документа в Лоцман по неизвестному статусу'
+    );
+
+  end;
+
+  FreeLoodsmanDocumentUploadingInfo := LoodsmanDocumentUploadingInfo;
+
+end;
+
+{ refactor: скрыть отображетель инф-ции о новом цикле согласования }
 procedure TDocumentCardListFrame.
   OnNewDocumentApprovingCycleCreatingRequestedEventHandler(
     Sender: TObject;
@@ -4177,7 +4278,7 @@ begin
 
   if VarIsNull(DocumentId) then begin
 
-    SelectedCycleViewModel.CanBeChanged := False;
+    SelectedCycleViewModel.CanBeChanged := True;
     SelectedCycleViewModel.CanBeRemoved := True;
 
     Exit;
@@ -4470,6 +4571,8 @@ procedure TDocumentCardListFrame.OnDocumentCardRefreshRequestedEventHandler(
 );
 begin
 
+  RequestUserConfirmDocumentCardChangesAndConfirmIfNecessary;
+
   ShowCardForDocumentAndUpdateRelatedDocumentRecord(DocumentId, DocumentKindId);
   
 end;
@@ -4532,10 +4635,12 @@ begin
 
     else begin
 
+      { refactor: separete registry for approving list set holder factories }
       DocumentApprovingListSetHolderMapper :=
         TDocumentApprovingListSetHolderMapper.Create(
-          TDocumentDataSetHolderFactories.Instance.GetDocumentDataSetHolderFactory(
-            ResolveUIDocumentKindSection(DocumentCardViewModel.DocumentKindId)
+          TDocumentApprovingListSetHolderFactory.Create(
+            TDocumentApprovingListRecordSetHolderFactory.Create(TClientDataSetBuilder.Create),
+            TClientDataSetBuilder.Create
           )
         );
 

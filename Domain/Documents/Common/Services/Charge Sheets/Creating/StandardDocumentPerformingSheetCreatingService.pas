@@ -271,15 +271,17 @@ begin
   if
     not
     TDocument(Document.Self)
-    .Specifications
-      .DocumentSigningSpecification
-        .IsEmployeeAnyOfDocumentSigners(Performer, Document)
+      .Specifications
+        .DocumentSigningSpecification
+          .IsEmployeeAnyOfDocumentSigners(Performer, Document)
 
   then Exit;
 
-  { Refactor: не нужные зависимости, обусловленные
+  {
+    Refactor: не нужные зависимости, обусловленные
     реализацией спецификации
-    StandardEmployeeIsSameAsOrReplacingSignerForOthersSpecification }
+    StandardEmployeeIsSameAsOrReplacingSignerForOthersSpecification
+  }
       
   if Issuer.IsSecretarySignerFor(Performer) or Performer.IsSecretarySigner
   then Exit;

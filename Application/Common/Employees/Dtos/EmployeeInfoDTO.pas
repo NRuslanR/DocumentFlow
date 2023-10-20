@@ -5,25 +5,38 @@ interface
 uses
 
   DepartmentInfoDTO,
+  IGetSelfUnit,
   SysUtils,
   Classes;
 
 type
 
-  TEmployeeInfoDTO = class
+  TEmployeeInfoDTO = class (TInterfacedObject, IGetSelf)
 
-    Id: Variant;
-    LeaderId: Variant;
-    Name: String;
-    Surname: String;
-    Patronymic: String;
-    FullName: String;
-    Speciality: String;
+    private
 
-    DepartmentInfoDTO: TDepartmentInfoDTO;
+      FDepartmentInfoDTO: TDepartmentInfoDTO;
+      FFreeDepartmentInfoDTO: IGetSelf;
+      
+      procedure SetDepartmentInfoDTO(const Value: TDepartmentInfoDTO);
+      
+    public
 
-    constructor Create;
-    destructor Destroy; override;
+      Id: Variant;
+      LeaderId: Variant;
+      PersonnelNumber: String;
+      Name: String;
+      Surname: String;
+      Patronymic: String;
+      FullName: String;
+      Speciality: String;
+
+      constructor Create;
+
+      function GetSelf: TObject;
+
+      property DepartmentInfoDTO: TDepartmentInfoDTO
+      read FDepartmentInfoDTO write SetDepartmentInfoDTO;
     
   end;
 
@@ -45,12 +58,21 @@ begin
   
 end;
 
-destructor TEmployeeInfoDTO.Destroy;
+function TEmployeeInfoDTO.GetSelf: TObject;
 begin
 
-  FreeAndNil(DepartmentInfoDTO);
-  inherited;
+  Result := Self;
+  
+end;
+
+procedure TEmployeeInfoDTO.SetDepartmentInfoDTO(
+  const Value: TDepartmentInfoDTO);
+begin
+
+  FDepartmentInfoDTO := Value;
+  FFreeDepartmentInfoDTO := Value;
 
 end;
 
 end.
+

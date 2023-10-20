@@ -55,8 +55,8 @@ begin
         while not Eof do begin
 
           if
-              not VarIsNull(DocumentFileIdFieldValue) and
-              not HandledDocumentFileIds.Contains(DocumentFileIdFieldValue)
+              not VarIsNull(IdFieldValue) and
+              not HandledDocumentFileIds.Contains(IdFieldValue)
               
           then begin
 
@@ -64,7 +64,7 @@ begin
 
             Result.Add(DocumentFileInfoDTO);
 
-            HandledDocumentFileIds.Add(DocumentFileIdFieldValue);
+            HandledDocumentFileIds.Add(IdFieldValue);
           
           end;
 
@@ -76,12 +76,9 @@ begin
 
     except
 
-      on e: Exception do begin
+      FreeAndNil(Result);
 
-        FreeAndNil(Result);
-        raise;
-        
-      end;
+      Raise;
 
     end;
 
@@ -103,21 +100,18 @@ begin
 
     with DocumentFilesInfoHolder do begin
 
-      Result.Id := DocumentFileIdFieldValue;
+      Result.Id := IdFieldValue;
       Result.DocumentId := DocumentIdFieldValue;
-      Result.FileName := DocumentFileNameFieldValue;
-      Result.FilePath := DocumentFilePathFieldValue;
+      Result.FileName := NameFieldValue;
+      Result.FilePath := PathFieldValue;
 
     end;
 
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-      
-    end;
+    Raise;
 
   end;
   

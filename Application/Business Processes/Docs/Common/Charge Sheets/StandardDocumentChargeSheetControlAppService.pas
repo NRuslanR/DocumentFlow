@@ -106,7 +106,6 @@ type
 
         procedure GetDocumentChargeSheetOrRaise(
           const DocumentChargeSheetId: Variant;
-          const DocumentId: Variant;
           const EmployeeId: Variant;
           var ChargeSheet: IDocumentChargeSheet;
           var AccessRights: TDocumentChargeSheetAccessRights;
@@ -115,28 +114,23 @@ type
 
         procedure GetDocumentChargeSheetOrRaise(
           const DocumentChargeSheetId: Variant;
-          const DocumentId: Variant;
           const EmployeeId: Variant;
           var ChargeSheet: IDocumentChargeSheet;
           var AccessRights: TDocumentChargeSheetAccessRights;
-          var Document: IDocument;
           var Employee: TEmployee;
           const ErrorMessage: String = ''
         ); overload;
 
         procedure GetDocumentChargeSheetOrRaise(
           const DocumentChargeSheetId: Variant;
-          const DocumentId: Variant;
           const EmployeeId: Variant;
           var ChargeSheet: IDocumentChargeSheet;
-          var Document: IDocument;
           var Employee: TEmployee;
           const ErrorMessage: String = ''
         ); overload;
 
         procedure GetDocumentChargeSheetOrRaise(
           const DocumentChargeSheetId: Variant;
-          Document: IDocument;
           Employee: TEmployee;
           var ChargeSheet: IDocumentChargeSheet;
           var AccessRights: TDocumentChargeSheetAccessRights;
@@ -175,19 +169,17 @@ type
 
         function CreateNewDocumentChargeSheetsFrom(
           AddedDocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-          Document: IDocument;
+          const DocumentId: Variant;
           AddingEmployee: TEmployee
         ): TDocumentChargeSheets;
 
         function CreateChangedDocumentChargeSheetsFrom(
           ChangedDocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-          Document: IDocument;
           ChangingEmployee: TEmployee
         ): TDOcumentChargeSheets;
 
         function CreateRemovedDocumentChargeSheetsFrom(
           RemovedDocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-          Document: IDocument;
           RemovingEmployee: TEmployee
         ): TDocumentChargeSheets;
 
@@ -248,7 +240,6 @@ type
 
         function GetChargeSheet(
           const ChargeSheetId: Variant;
-          const DocumentId: Variant;
           const EmployeeId: Variant
         ): TDocumentChargeSheetInfoDTO;
 
@@ -282,14 +273,12 @@ type
 
         procedure PerformChargeSheet(
           const EmployeeId: Variant;
-          const ChargeSheetId: Variant;
-          const DocumentId: Variant
+          const ChargeSheetId: Variant
         );
 
         procedure PerformChargeSheets(
           const EmployeeId: Variant;
-          const ChargeSheetIds: TVariantList;
-          const DocumentId: Variant
+          const ChargeSheetIds: TVariantList
         );
 
         procedure SaveDocumentChargeSheetsChanges(
@@ -506,9 +495,12 @@ begin
 
 end;
 
-function TStandardDocumentChargeSheetControlAppService.DoCreateSubordinateChargeSheet(
-  const ChargeKindId, DocumentId, PerformerId, IssuerId,
-  TopLevelChargeSheetId: Variant): TDocumentChargeSheetInfoDTO;
+function TStandardDocumentChargeSheetControlAppService.
+  DoCreateSubordinateChargeSheet(
+    const ChargeKindId, DocumentId,
+    PerformerId, IssuerId,
+    TopLevelChargeSheetId: Variant
+  ): TDocumentChargeSheetInfoDTO;
 var
     Objects: Variant;
 
@@ -548,7 +540,7 @@ begin
   FreeIssuer := Issuer;
 
   GetDocumentChargeSheetOrRaise(
-    TopLevelChargeSheetId, Document, Issuer,
+    TopLevelChargeSheetId, Issuer,
     TopLevelChargeSheet, TopLevelChargeSheetAccessRights,
     Format(
       '¬ышесто€щее поручение дл€ сотрудника "%s" не найдено',
@@ -622,7 +614,7 @@ begin
   FreeIssuer := Issuer;
 
   GetDocumentChargeSheetOrRaise(
-    TopLevelChargeSheetId, Document, Issuer,
+    TopLevelChargeSheetId, Issuer,
     TopLevelChargeSheet, TopLevelChargeSheetAccessRights
   );
 
@@ -646,7 +638,6 @@ end;
 function TStandardDocumentChargeSheetControlAppService.GetChargeSheet(
   const
     ChargeSheetId,
-    DocumentId,
     EmployeeId: Variant
   ): TDocumentChargeSheetInfoDTO;
 var
@@ -659,7 +650,7 @@ var
 begin
 
   GetDocumentChargeSheetOrRaise(
-    ChargeSheetId, DocumentId, EmployeeId, ChargeSheet, AccessRights
+    ChargeSheetId, EmployeeId, ChargeSheet, AccessRights
   );
 
   FreeAccessRights := AccessRights;
@@ -676,21 +667,22 @@ end;
 procedure TStandardDocumentChargeSheetControlAppService
   .GetDocumentChargeSheetOrRaise(
     const DocumentChargeSheetId: Variant;
-    const DocumentId: Variant;
     const EmployeeId: Variant;
     var ChargeSheet: IDocumentChargeSheet;
     var AccessRights: TDocumentChargeSheetAccessRights;
     const ErrorMessage: String
   );
 var
-    Document: IDocument;
     Employee: TEmployee;
     FreeEmployee: IDomainObjectBase;
 begin
 
   GetDocumentChargeSheetOrRaise(
-    DocumentChargeSheetId, DocumentId, EmployeeId,
-    ChargeSheet, AccessRights, Document, Employee
+    DocumentChargeSheetId,
+    EmployeeId,
+    ChargeSheet,
+    AccessRights,
+    Employee
   );
 
   FreeEmployee := Employee;
@@ -700,16 +692,12 @@ end;
 procedure TStandardDocumentChargeSheetControlAppService
   .GetDocumentChargeSheetOrRaise(
     const DocumentChargeSheetId: Variant;
-    const DocumentId: Variant;
     const EmployeeId: Variant;
     var ChargeSheet: IDocumentChargeSheet;
-    var Document: IDocument;
     var Employee: TEmployee;
     const ErrorMessage: String
   );
 begin
-
-  Document := GetDocumentOrRaise(DocumentId, 'ƒокумент не найден');
 
   Employee := GetEmployeeOrRaise(EmployeeId, '«апрашивающий сотрудник не найден');
 
@@ -717,7 +705,7 @@ begin
 
     ChargeSheet :=
       FDocumentChargeSheetControlService.GetChargeSheet(
-        Document, Employee, DocumentChargeSheetId
+        Employee, DocumentChargeSheetId
       );
 
     if not Assigned(ChargeSheet) then
@@ -736,18 +724,14 @@ end;
 procedure TStandardDocumentChargeSheetControlAppService
   .GetDocumentChargeSheetOrRaise(
     const DocumentChargeSheetId: Variant;
-    const DocumentId: Variant;
     const EmployeeId: Variant;
     var ChargeSheet: IDocumentChargeSheet;
     var AccessRights: TDocumentChargeSheetAccessRights;
-    var Document: IDocument;
     var Employee: TEmployee;
     const ErrorMessage: String
   );
 begin
 
-  Document :=
-    GetDocumentOrRaise(DocumentId, 'ƒл€ выборки поручени€ не найден документ');
 
   Employee :=
     GetEmployeeOrRaise(
@@ -758,7 +742,7 @@ begin
   try
 
     GetDocumentChargeSheetOrRaise(
-      DocumentChargeSheetId, Document, Employee, ChargeSheet, AccessRights
+      DocumentChargeSheetId, Employee, ChargeSheet, AccessRights
     );
 
   except
@@ -774,7 +758,6 @@ end;
 procedure TStandardDocumentChargeSheetControlAppService.
   GetDocumentChargeSheetOrRaise(
     const DocumentChargeSheetId: Variant;
-    Document: IDocument;
     Employee: TEmployee;
     var ChargeSheet: IDocumentChargeSheet;
     var AccessRights: TDocumentChargeSheetAccessRights;
@@ -783,7 +766,7 @@ procedure TStandardDocumentChargeSheetControlAppService.
 begin
 
   FDocumentChargeSheetControlService.GetChargeSheet(
-    Document, Employee, DocumentChargeSheetId, ChargeSheet, AccessRights
+    Employee, DocumentChargeSheetId, ChargeSheet, AccessRights
   );
 
   if not Assigned(ChargeSheet) then
@@ -963,12 +946,10 @@ end;
 
 procedure TStandardDocumentChargeSheetControlAppService
   .PerformChargeSheet(
-    const EmployeeId, ChargeSheetId, DocumentId: Variant
+    const EmployeeId, ChargeSheetId: Variant
   );
 var
     ChargeSheet: IDocumentChargeSheet;
-
-    Document: IDocument;
 
     Employee: TEmployee;
     FreeEmployee: IDomainObjectBase;
@@ -978,15 +959,15 @@ var
 begin
 
   GetDocumentChargeSheetOrRaise(
-    ChargeSheetId, DocumentId, EmployeeId,
-    ChargeSheet, Document, Employee
+    ChargeSheetId, EmployeeId,
+    ChargeSheet, Employee
   );
 
   FreeEmployee := Employee;
 
   PerformingResult :=
     FDocumentChargeSheetControlService.PerformChargeSheet(
-      Employee, ChargeSheet, Document
+      Employee, ChargeSheet
     );
 
   FreePerformingResult := PerformingResult;
@@ -997,11 +978,9 @@ end;
 
 procedure TStandardDocumentChargeSheetControlAppService.PerformChargeSheets(
   const EmployeeId: Variant;
-  const ChargeSheetIds: TVariantList;
-  const DocumentId: Variant);
+  const ChargeSheetIds: TVariantList
+);
 var
-    Document: IDocument;
-
     Employee: TEmployee;
     FreeEmployee: IDomainObjectBase;
 
@@ -1012,11 +991,13 @@ var
     FreePerformingResult: IDomainObjectBase;
 begin
 
-  Document :=
-    GetDocumentOrRaise(
-      DocumentId,
-      'ƒокумент не найден во врем€ выполнени€ поручений'
+  if ChargeSheetIds.IsEmpty then begin
+
+    Raise TDocumentChargeSheetControlAppServiceException.Create(
+      'Ќе переданы поручени€ дл€ выполнени€'
     );
+
+  end;
 
   Employee :=
     GetEmployeeOrRaise(
@@ -1028,13 +1009,21 @@ begin
 
   ChargeSheets :=
     FDocumentChargeSheetControlService
-      .GetChargeSheets(Document, Employee, ChargeSheetIds);
+      .GetChargeSheets(Employee, ChargeSheetIds);
 
   FreeChargeSheets := ChargeSheets;
 
+  if not Assigned(ChargeSheets) then begin
+
+    Raise TDocumentChargeSheetControlAppServiceException.Create(
+      'ѕоручени€ не найдены дл€ выполнени€'
+    );
+    
+  end;
+
   PerformingResult :=
     FDocumentChargeSheetControlService.PerformChargeSheets(
-      Employee, ChargeSheets, Document
+      Employee, ChargeSheets
     );
 
   FreePerformingResult := PerformingResult;
@@ -1058,8 +1047,7 @@ begin
 
       FDocumentChargeSheetControlService.SaveChargeSheets(
         Employee,
-        TDocumentChargeSheets(PerformedChargeSheets.Self),
-        PerformedDocument
+        TDocumentChargeSheets(PerformedChargeSheets.Self)
       );
 
       if Assigned(PerformedDocument) then
@@ -1211,7 +1199,6 @@ function TStandardDocumentChargeSheetControlAppService
   ): TDocumentChargeSheetsChanges;
 var
     SavingChangesEmployee: TEmployee;
-    Document: IDocument;
     NewDocumentChargeSheets: TDocumentChargeSheets;
     ChangedDocumentChargeSheets: TDocumentChargeSheets;
     DocumentChargeSheetsForSaving: TDocumentChargeSheets;
@@ -1231,19 +1218,12 @@ begin
       'сохранени€ изменений по поручени€м'
     );
 
-  Document :=
-    GetDocumentOrRaise(
-      DocumentId,
-      'Ќе найден документ во врем€ ' +
-      'сохранени€ изменений по поручени€м'
-    );
-
   FreeSavingChangesEmployee := SavingChangesEmployee;
 
   NewDocumentChargeSheets :=
     CreateNewDocumentChargeSheetsFrom(
       ChargeSheetsChangesInfoDTO.AddedDocumentChargeSheetsInfoDTO,
-      Document,
+      DocumentId,
       SavingChangesEmployee
     );
 
@@ -1252,7 +1232,6 @@ begin
   ChangedDocumentChargeSheets :=
     CreateChangedDocumentChargeSheetsFrom(
       ChargeSheetsChangesInfoDTO.ChangedDocumentChargeSheetsInfoDTO,
-      Document,
       SavingChangesEmployee
     );
 
@@ -1261,7 +1240,6 @@ begin
   RemovedDocumentChargeSheets :=
     CreateRemovedDocumentChargeSheetsFrom(
       ChargeSheetsChangesInfoDTO.RemovedDocumentChargeSheetsInfoDTO,
-      Document,
       SavingChangesEmployee
     );
 
@@ -1271,7 +1249,9 @@ begin
 
   FreeDocumentChargeSheetsForSaving := DocumentChargeSheetsForSaving;
 
-  if Assigned(NewDocumentChargeSheets) or Assigned(ChangedDocumentChargeSheets)
+  if
+    Assigned(NewDocumentChargeSheets) or
+    Assigned(ChangedDocumentChargeSheets)
   then begin
 
     if Assigned(NewDocumentChargeSheets) then
@@ -1281,7 +1261,7 @@ begin
       DocumentChargeSheetsForSaving.AddDocumentChargeSheets(ChangedDocumentChargeSheets);
 
     FDocumentChargeSheetControlService.SaveChargeSheets(
-      SavingChangesEmployee, DocumentChargeSheetsForSaving, Document
+      SavingChangesEmployee, DocumentChargeSheetsForSaving
     );
 
   end;
@@ -1289,7 +1269,7 @@ begin
   if Assigned(RemovedDocumentChargeSheets) then begin
 
     FDocumentChargeSheetControlService.RemoveChargeSheets(
-      SavingChangesEmployee, RemovedDocumentChargeSheets, Document
+      SavingChangesEmployee, RemovedDocumentChargeSheets
     );
 
   end;
@@ -1378,10 +1358,12 @@ end;
 function TStandardDocumentChargeSheetControlAppService.
   CreateNewDocumentChargeSheetsFrom(
     AddedDocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-    Document: IDocument;
+    const DocumentId: Variant;
     AddingEmployee: TEmployee
   ): TDocumentChargeSheets;
 var
+    Document: IDocument;
+    
     DocumentChargeSheetInfoDTO: TDocumentChargeSheetInfoDTO;
 
     Performer: TEmployee;
@@ -1406,6 +1388,12 @@ begin
     Exit;
 
   end;
+
+  Document :=
+    GetDocumentOrRaise(
+      DocumentId,
+      'Ќе найден документ дл€ добавлени€ новых поручений'
+    );
 
   NewDocumentChargeSheets := TDocumentChargeSheets.Create;
 
@@ -1437,7 +1425,7 @@ begin
 
           TopLevelChargeSheet :=
             FDocumentChargeSheetControlService.GetChargeSheet(
-              Document, AddingEmployee, TopLevelChargeSheetId
+              AddingEmployee, TopLevelChargeSheetId
             );
 
           FDocumentChargeSheetControlService.CreateSubordinateChargeSheet(
@@ -1482,7 +1470,6 @@ end;
 function TStandardDocumentChargeSheetControlAppService.
   CreateChangedDocumentChargeSheetsFrom(
     ChangedDocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-    Document: IDocument;
     ChangingEmployee: TEmployee
   ): TDocumentChargeSheets;
 var
@@ -1514,7 +1501,7 @@ begin
 
         ChangedDocumentChargeSheet :=
           FDocumentChargeSheetControlService.GetChargeSheet(
-            Document, ChangingEmployee, Id
+            ChangingEmployee, Id
           );
 
         ChangedDocumentChargeSheetObj := TDocumentChargeSheet(ChangedDocumentChargeSheet.Self);
@@ -1612,7 +1599,6 @@ end;
 function TStandardDocumentChargeSheetControlAppService.
   CreateRemovedDocumentChargeSheetsFrom(
     RemovedDocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-    Document: IDocument;
     RemovingEmployee: TEmployee
   ): TDocumentChargeSheets;
 var
@@ -1642,7 +1628,7 @@ begin
 
         RemovedDocumentChargeSheet :=
           FDocumentChargeSheetControlService.GetChargeSheet(
-            Document, RemovingEmployee, Id
+            RemovingEmployee, Id
           );
 
         RemovedDocumentChargeSheets.AddDocumentChargeSheet(

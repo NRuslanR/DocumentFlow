@@ -124,13 +124,13 @@ inherited DocumentFlowBaseReferenceForm: TDocumentFlowBaseReferenceForm
   end
   inherited ClientAreaPanel: TPanel
     Top = 132
-    Height = 529
+    Height = 555
     BevelOuter = bvNone
     ExplicitTop = 132
-    ExplicitHeight = 529
+    ExplicitHeight = 555
     DesignSize = (
-      753
-      529)
+      833
+      555)
     inherited DataLoadingCanceledPanel: TPanel
       Top = 62
       ExplicitTop = 62
@@ -142,8 +142,8 @@ inherited DocumentFlowBaseReferenceForm: TDocumentFlowBaseReferenceForm
     inherited DataRecordGrid: TcxGrid
       Left = 0
       Top = 0
-      Width = 753
-      Height = 529
+      Width = 833
+      Height = 555
       LookAndFeel.SkinName = 'UserSkin'
       ExplicitLeft = 0
       ExplicitTop = 0

@@ -98,9 +98,9 @@ begin
   
   with Result.FieldNames do begin
 
-    DocumentFileIdFieldName := 'document_file_id';
-    DocumentFileNameFieldName := 'document_file_name';
-    DocumentFilePathFieldName := 'document_file_path';
+    IdFieldName := 'document_file_id';
+    NameFieldName := 'document_file_name';
+    PathFieldName := 'document_file_path';
     DocumentIdFieldName := 'document_id';
 
   end;

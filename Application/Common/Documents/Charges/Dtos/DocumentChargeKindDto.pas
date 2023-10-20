@@ -5,7 +5,7 @@ interface
 uses
 
 
-  DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   Classes,
   SysUtils;
 

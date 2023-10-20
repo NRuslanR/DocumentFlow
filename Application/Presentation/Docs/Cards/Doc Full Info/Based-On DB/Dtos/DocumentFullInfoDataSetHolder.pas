@@ -23,90 +23,87 @@ type
     protected
 
       FDocumentInfoFieldNames: TDocumentInfoFieldNames;
-      FDocumentApprovingsInfoFieldNames: TDocumentApprovingsInfoFieldNames;
-      FDocumentChargesInfoFieldNames: TDocumentChargesInfoFieldNames;
-      FDocumentChargeSheetsInfoFieldNames: TDocumentChargeSheetsInfoFieldNames;
-      FDocumentRelationsInfoFieldNames: TDocumentRelationsInfoFieldNames;
-      FDocumentFilesInfoFieldNames: TDocumentFilesInfoFieldNames;
+      FApprovingsInfoFieldNames: TDocumentApprovingsInfoFieldNames;
+      FChargesInfoFieldNames: TDocumentChargesInfoFieldNames;
+      FChargeSheetsInfoFieldNames: TDocumentChargeSheetsInfoFieldNames;
+      FRelationsInfoFieldNames: TDocumentRelationsInfoFieldNames;
+      FFilesInfoFieldNames: TDocumentFilesInfoFieldNames;
 
-      function GetDocumentIdFieldName: String;
-      function GetBaseDocumentIdFieldName: String;
-      function GetDocumentNumberFieldName: String;
-      function GetDocumentNameFieldName: String;
-      function GetDocumentContentFieldName: String;
-      function GetDocumentNoteFieldName: String;
-      function GetDocumentProductCodeFieldName: String;
-      function GetDocumentIsSelfRegisteredFieldName: String;
-      function GetDocumentCreationDateFieldName: String;
-      function GetDocumentDateFieldName: String;
-      function GetDocumentKindFieldName: String;
-      function GetDocumentKindIdFieldName: String;
-      function GetDocumentCurrentWorkCycleStageNameFieldName: String;
-      function GetDocumentCurrentWorkCycleStageNumberFieldName: String;
+      function GetIdFieldName: String;
+      function GetBaseIdFieldName: String;
+      function GetNumberFieldName: String;
+      function GetNameFieldName: String;
+      function GetContentFieldName: String;
+      function GetNoteFieldName: String;
+      function GetProductCodeFieldName: String;
+      function GetIsSelfRegisteredFieldName: String;
+      function GetCreationDateFieldName: String;
+      function GetDateFieldName: String;
+      function GetKindFieldName: String;
+      function GetKindIdFieldName: String;
+      function GetCurrentWorkCycleStageNameFieldName: String;
+      function GetCurrentWorkCycleStageNumberFieldName: String;
 
-      function GetDocumentAuthorIdFieldName: String;
-      function GetDocumentAuthorLeaderIdFieldName: String;
-      function GetDocumentAuthorNameFieldName: String;
-      function GetDocumentAuthorSpecialityFieldName: String;
-      function GetDocumentAuthorDepartmentIdFieldName: String;
-      function GetDocumentAuthorDepartmentCodeFieldName: String;
-      function GetDocumentAuthorDepartmentNameFieldName: String;
+      function GetAuthorIdFieldName: String;
+      function GetAuthorLeaderIdFieldName: String;
+      function GetAuthorNameFieldName: String;
+      function GetAuthorSpecialityFieldName: String;
+      function GetAuthorDepartmentIdFieldName: String;
+      function GetAuthorDepartmentCodeFieldName: String;
+      function GetAuthorDepartmentNameFieldName: String;
 
-      function GetDocumentResponsibleIdFieldName: String;
-      function GetDocumentResponsibleNameFieldName: String;
-      function GetDocumentResponsibleTelephoneNumberFieldName: String;
-      function GetDocumentResponsibleDepartmentIdFieldName: String;
-      function GetDocumentResponsibleDepartmentCodeFieldName: String;
-      function GetDocumentResponsibleDepartmentNameFieldName: String;
+      function GetResponsibleIdFieldName: String;
+      function GetResponsibleNameFieldName: String;
+      function GetResponsibleTelephoneNumberFieldName: String;
+      function GetResponsibleDepartmentIdFieldName: String;
+      function GetResponsibleDepartmentCodeFieldName: String;
+      function GetResponsibleDepartmentNameFieldName: String;
 
-      function GetDocumentSigningIdFieldName: String;
-      function GetDocumentSigningDateFieldName: String;
-      function GetDocumentSignerIdFieldName: String;
-      function GetDocumentSignerLeaderIdFieldName: String;
-      function GetDocumentSignerNameFieldName: String;
-      function GetDocumentSignerSpecialityFieldName: String;
-      function GetDocumentSignerDepartmentIdFieldName: String;
-      function GetDocumentSignerDepartmentCodeFieldName: String;
-      function GetDocumentSignerDepartmentNameFieldName: String;
+      function GetSigningIdFieldName: String;
+      function GetSigningDateFieldName: String;
+      function GetSignerIdFieldName: String;
+      function GetSignerLeaderIdFieldName: String;
+      function GetSignerNameFieldName: String;
+      function GetSignerSpecialityFieldName: String;
+      function GetSignerDepartmentIdFieldName: String;
+      function GetSignerDepartmentCodeFieldName: String;
+      function GetSignerDepartmentNameFieldName: String;
 
-      function GetDocumentActualSignerIdFieldName: String;
-      function GetDocumentActualSignerLeaderIdFieldName: String;
-      function GetDocumentActualSignerNameFieldName: String;
-      function GetDocumentActualSignerSpecialityFieldName: String;
-      function GetDocumentActualSignerDepartmentIdFieldName: String;
-      function GetDocumentActualSignerDepartmentCodeFieldName: String;
-      function GetDocumentActualSignerDepartmentNameFieldName: String;
+      function GetActualSignerIdFieldName: String;
+      function GetActualSignerLeaderIdFieldName: String;
+      function GetActualSignerNameFieldName: String;
+      function GetActualSignerSpecialityFieldName: String;
+      function GetActualSignerDepartmentIdFieldName: String;
+      function GetActualSignerDepartmentCodeFieldName: String;
+      function GetActualSignerDepartmentNameFieldName: String;
 
-      function GetDocumentChargeIdFieldName: String;
-      function GetDocumentChargeTextFieldName: String;
-      function GetDocumentChargeIsForAcquaitanceFieldName: String;
-      function GetDocumentChargeResponseFieldName: String;
-      function GetDocumentChargePeriodStartFieldName: String;
-      function GetDocumentChargePeriodEndFieldName: String;
-      function GetDocumentChargePerformingDateTimeFieldName: String;
-      function GetDocumentChargePerformerIdFieldName: String;
-      function GetDocumentChargePerformerLeaderIdFieldName: String;
-      function GetDocumentChargePerformerIsForeignFieldName: String;
-      function GetDocumentChargePerformerNameFieldName: String;
-      function GetDocumentChargePerformerSpecialityFieldName: String;
-      function GetDocumentChargePerformerDepartmentIdFieldName: String;
-      function GetDocumentChargePerformerDepartmentCodeFieldName: String;
-      function GetDocumentChargePerformerDepartmentNameFieldName: String;
+      function GetChargeIdFieldName: String;
+      function GetChargeChargeTextFieldName: String;
+      function GetChargeIsForAcquaitanceFieldName: String;
+      function GetChargeResponseFieldName: String;
+      function GetChargeTimeFrameStartFieldName: String;
+      function GetChargeTimeFrameDeadlineFieldName: String;
+      function GetChargePerformingDateTimeFieldName: String;
+      function GetChargePerformerIdFieldName: String;
+      function GetChargePerformerIsForeignFieldName: String;
+      function GetChargePerformerNameFieldName: String;
+      function GetChargePerformerSpecialityFieldName: String;
+      function GetChargePerformerDepartmentIdFieldName: String;
+      function GetChargePerformerDepartmentCodeFieldName: String;
+      function GetChargePerformerDepartmentNameFieldName: String;
 
-      function GetDocumentChargeActualPerformerIdFieldName: String;
-      function GetDocumentChargeActualPerformerLeaderIdFieldName: String;
-      function GetDocumentChargeActualPerformerIsForeignFieldName: String;
-      function GetDocumentChargeActualPerformerNameFieldName: String;
-      function GetDocumentChargeActualPerformerSpecialityFieldName: String;
-      function GetDocumentChargeActualPerformerDepartmentIdFieldName: String;
-      function GetDocumentChargeActualPerformerDepartmentCodeFieldName: String;
-      function GetDocumentChargeActualPerformerDepartmentNameFieldName: String;
+      function GetChargeActualPerformerIdFieldName: String;
+      function GetChargeActualPerformerNameFieldName: String;
+      function GetChargeActualPerformerSpecialityFieldName: String;
+      function GetChargeActualPerformerDepartmentIdFieldName: String;
+      function GetChargeActualPerformerDepartmentCodeFieldName: String;
+      function GetChargeActualPerformerDepartmentNameFieldName: String;
 
-      function GetDocumentFileIdFieldName: String;
-      function GetDocumentFileNameFieldName: String;
-      function GetDocumentFilePathFieldName: String;
+      function GetFileIdFieldName: String;
+      function GetFileNameFieldName: String;
+      function GetFilePathFieldName: String;
 
-      function GetDocumentRelationIdFieldName: String;
+      function GetRelationIdFieldName: String;
       function GetRelatedDocumentIdFieldName: String;
       function GetRelatedDocumentKindIdFieldName: String;
       function GetRelatedDocumentKindNameFieldName: String;
@@ -114,159 +111,153 @@ type
       function GetRelatedDocumentNameFieldName: String;
       function GetRelatedDocumentDateFieldName: String;
 
-      function GetDocumentChargeSheetIdFieldName: String;
+      function GetChargeSheetIdFieldName: String;
+      function GetChargeSheetChargeIdFieldName: String;
       function GetChargeSheetDocumentIdFieldName: String;
-      function GetTopLevelDocumentChargeSheetIdFieldName: String;
-      function GetDocumentChargeSheetTextFieldName: String;
-      function GetDocumentChargeSheetIsForAcquaitanceFieldName: String;
-      function GetDocumentChargeSheetResponseFieldName: String;
-      function GetDocumentChargeSheetPeriodStartFieldName: String;
-      function GetDocumentChargeSheetPeriodEndFieldName: String;
-      function GetDocumentChargeSheetPerformingDateTimeFieldName: String;
-      function GetDocumentChargeSheetViewingDateByPerformerFieldName: String;
+      function GetChargeSheetDocumentKindIdFieldName: String;
+      function GetTopLevelChargeSheetIdFieldName: String;
+      function GetChargeSheetChargeTextFieldName: String;
+      function GetChargeSheetIsForAcquaitanceFieldName: String;
+      function GetChargeSheetResponseFieldName: String;
+      function GetChargeSheetTimeFrameStartFieldName: String;
+      function GetChargeSheetTimeFrameDeadlineFieldName: String;
+      function GetChargeSheetPerformingDateTimeFieldName: String;
+      function GetChargeSheetViewDateByPerformerFieldName: String;
 
-      function GetDocumentChargeSheetPerformerIdFieldName: String;
-      function GetDocumentChargeSheetPerformerRoleIdFieldName: String; { refactor }
-      function GetDocumentChargeSheetPerformerLeaderIdFieldName: String;
-      function GetDocumentChargeSheetPerformerIsForeignFieldName: String;
-      function GetDocumentChargeSheetPerformerNameFieldName: String;
-      function GetDocumentChargeSheetPerformerSpecialityFieldName: String;
-      function GetDocumentChargeSheetPerformerDepartmentIdFieldName: String;
-      function GetDocumentChargeSheetPerformerDepartmentCodeFieldName: String;
-      function GetDocumentChargeSheetPerformerDepartmentNameFieldName: String;
+      function GetChargeSheetPerformerIdFieldName: String;
+      function GetChargeSheetPerformerIsForeignFieldName: String;
+      function GetChargeSheetPerformerNameFieldName: String;
+      function GetChargeSheetPerformerSpecialityFieldName: String;
+      function GetChargeSheetPerformerDepartmentIdFieldName: String;
+      function GetChargeSheetPerformerDepartmentCodeFieldName: String;
+      function GetChargeSheetPerformerDepartmentNameFieldName: String;
 
-      function GetDocumentChargeSheetActualPerformerIdFieldName: String;
-      function GetDocumentChargeSheetActualPerformerLeaderIdFieldName: String;
-      function GetDocumentChargeSheetActualPerformerIsForeignFieldName: String;
-      function GetDocumentChargeSheetActualPerformerNameFieldName: String;
-      function GetDocumentChargeSheetActualPerformerSpecialityFieldName: String;
-      function GetDocumentChargeSheetActualPerformerDepartmentIdFieldName: String;
-      function GetDocumentChargeSheetActualPerformerDepartmentCodeFieldName: String;
-      function GetDocumentChargeSheetActualPerformerDepartmentNameFieldName: String;
+      function GetChargeSheetActualPerformerIdFieldName: String;
+      function GetChargeSheetActualPerformerNameFieldName: String;
+      function GetChargeSheetActualPerformerSpecialityFieldName: String;
+      function GetChargeSheetActualPerformerDepartmentIdFieldName: String;
+      function GetChargeSheetActualPerformerDepartmentCodeFieldName: String;
+      function GetChargeSheetActualPerformerDepartmentNameFieldName: String;
 
-      function GetDocumentChargeSheetSenderIdFieldName: String;
-      function GetDocumentChargeSheetSenderLeaderIdFieldName: String;
-      function GetDocumentChargeSheetSenderIsForeignFieldName: String;
-      function GetDocumentChargeSheetSenderNameFieldName: String;
-      function GetDocumentChargeSheetSenderSpecialityFieldName: String;
-      function GetDocumentChargeSheetSenderDepartmentIdFieldName: String;
-      function GetDocumentChargeSheetSenderDepartmentCodeFieldName: String;
-      function GetDocumentChargeSheetSenderDepartmentNameFieldName: String;
+      function GetChargeSheetIssuerIdFieldName: String;
+      function GetChargeSheetIssuerIsForeignFieldName: String;
+      function GetChargeSheetIssuerNameFieldName: String;
+      function GetChargeSheetIssuerSpecialityFieldName: String;
+      function GetChargeSheetIssuerDepartmentIdFieldName: String;
+      function GetChargeSheetIssuerDepartmentCodeFieldName: String;
+      function GetChargeSheetIssuerDepartmentNameFieldName: String;
 
-      function GetDocumentApprovingIdFieldName: String;
-      function GetDocumentApprovingIsAccessibleFieldName: String;
-      function GetDocumentChargeSheetIssuingDateTimeFieldName: String;
-      function GetDocumentApprovingPerformingDateTimeFieldName: String;
-      function GetDocumentApprovingPerformingResultIdFieldName: String;
-      function GetDocumentApprovingPerformingResultFieldName: String;
-      function GetDocumentApprovingNoteFieldName: String;
-      function GetDocumentApprovingCycleNumberFieldName: String;
-      function GetDocumentApprovingCycleIdFieldName: String;
-      function GetDocumentApprovingIsCompletedFieldName: String;
-      function GetDocumentApprovingIsLookedByApproverFieldName: String;
+      function GetApprovingIdFieldName: String;
+      function GetApprovingIsAccessibleFieldName: String;
+      function GetChargeSheetIssuingDateTimeFieldName: String;
+      function GetApprovingPerformingDateTimeFieldName: String;
+      function GetApprovingPerformingResultIdFieldName: String;
+      function GetApprovingPerformingResultFieldName: String;
+      function GetApprovingNoteFieldName: String;
+      function GetApprovingCycleNumberFieldName: String;
+      function GetApprovingCycleIdFieldName: String;
+      function GetApprovingIsCompletedFieldName: String;
+      function GetApprovingIsLookedByApproverFieldName: String;
 
-      function GetDocumentApproverIdFieldName: String;
-      function GetDocumentApproverLeaderIdFieldName: String;
-      function GetDocumentApproverIsForeignFieldName: String;
-      function GetDocumentApproverNameFieldName: String;
-      function GetDocumentApproverSpecialityFieldName: String;
-      function GetDocumentApproverDepartmentIdFieldName: String;
-      function GetDocumentApproverDepartmentCodeFieldName: String;
-      function GetDocumentApproverDepartmentNameFieldName: String;
+      function GetApproverIdFieldName: String;
+      function GetApproverLeaderIdFieldName: String;
+      function GetApproverIsForeignFieldName: String;
+      function GetApproverNameFieldName: String;
+      function GetApproverSpecialityFieldName: String;
+      function GetApproverDepartmentIdFieldName: String;
+      function GetApproverDepartmentCodeFieldName: String;
+      function GetApproverDepartmentNameFieldName: String;
 
-      function GetDocumentActualApproverIdFieldName: String;
-      function GetDocumentActualApproverLeaderIdFieldName: String;
-      function GetDocumentActualApproverIsForeignFieldName: String;
-      function GetDocumentActualApproverNameFieldName: String;
-      function GetDocumentActualApproverSpecialityFieldName: String;
-      function GetDocumentActualApproverDepartmentIdFieldName: String;
-      function GetDocumentActualApproverDepartmentCodeFieldName: String;
-      function GetDocumentActualApproverDepartmentNameFieldName: String;
+      function GetActualApproverIdFieldName: String;
+      function GetActualApproverLeaderIdFieldName: String;
+      function GetActualApproverIsForeignFieldName: String;
+      function GetActualApproverNameFieldName: String;
+      function GetActualApproverSpecialityFieldName: String;
+      function GetActualApproverDepartmentIdFieldName: String;
+      function GetActualApproverDepartmentCodeFieldName: String;
+      function GetActualApproverDepartmentNameFieldName: String;
 
-      procedure SetDocumentFilesInfoFieldNames(const Value: TDocumentFilesInfoFieldNames);
-      procedure SetDocumentInfoFieldNames(const Value: TDocumentInfoFieldNames);
-      procedure SetDocumentRelationsInfoFieldNames(const Value: TDocumentRelationsInfoFieldNames);
+      procedure SetFilesInfoFieldNames(const Value: TDocumentFilesInfoFieldNames);
+      procedure SetInfoFieldNames(const Value: TDocumentInfoFieldNames);
+      procedure SetRelationsInfoFieldNames(const Value: TDocumentRelationsInfoFieldNames);
 
     protected
 
-      procedure SetDocumentIdFieldName(const Value: String);
-      procedure SetBaseDocumentIdFieldName(const Value: String);
-      procedure SetDocumentNumberFieldName(const Value: String);
-      procedure SetDocumentNameFieldName(const Value: String);
-      procedure SetDocumentContentFieldName(const Value: String);
-      procedure SetDocumentNoteFieldName(const Value: String);
-      procedure SetDocumentProductCodeFieldName(const Value: String);
-      procedure SetDocumentIsSelfRegisteredFieldName(const Value: String);
-      procedure SetDocumentCreationDateFieldName(const Value: String);
-      procedure SetDocumentDateFieldName(const Value: String);
-      procedure SetDocumentKindFieldName(const Value: String);
-      procedure SetDocumentKindIdFieldName(const Value: String);
-      procedure SetDocumentCurrentWorkCycleStageNameFieldName(const Value: String);
-      procedure SetDocumentCurrentWorkCycleStageNumberFieldName(const Value: String);
+      procedure SetIdFieldName(const Value: String);
+      procedure SetBaseIdFieldName(const Value: String);
+      procedure SetNumberFieldName(const Value: String);
+      procedure SetNameFieldName(const Value: String);
+      procedure SetContentFieldName(const Value: String);
+      procedure SetNoteFieldName(const Value: String);
+      procedure SetProductCodeFieldName(const Value: String);
+      procedure SetIsSelfRegisteredFieldName(const Value: String);
+      procedure SetCreationDateFieldName(const Value: String);
+      procedure SetDateFieldName(const Value: String);
+      procedure SetKindFieldName(const Value: String);
+      procedure SetKindIdFieldName(const Value: String);
+      procedure SetCurrentWorkCycleStageNameFieldName(const Value: String);
+      procedure SetCurrentWorkCycleStageNumberFieldName(const Value: String);
 
-      procedure SetDocumentAuthorIdFieldName(const Value: String);
-      procedure SetDocumentAuthorLeaderIdFieldName(const Value: String);
-      procedure SetDocumentAuthorNameFieldName(const Value: String);
-      procedure SetDocumentAuthorSpecialityFieldName(const Value: String);
-      procedure SetDocumentAuthorDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentAuthorDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentAuthorDepartmentNameFieldName(const Value: String);
+      procedure SetAuthorIdFieldName(const Value: String);
+      procedure SetAuthorLeaderIdFieldName(const Value: String);
+      procedure SetAuthorNameFieldName(const Value: String);
+      procedure SetAuthorSpecialityFieldName(const Value: String);
+      procedure SetAuthorDepartmentIdFieldName(const Value: String);
+      procedure SetAuthorDepartmentCodeFieldName(const Value: String);
+      procedure SetAuthorDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentResponsibleIdFieldName(const Value: String);
-      procedure SetDocumentResponsibleNameFieldName(const Value: String);
-      procedure SetDocumentResponsibleTelephoneNumberFieldName(const Value: String);
-      procedure SetDocumentResponsibleDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentResponsibleDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentResponsibleDepartmentNameFieldName(const Value: String);
+      procedure SetResponsibleIdFieldName(const Value: String);
+      procedure SetResponsibleNameFieldName(const Value: String);
+      procedure SetResponsibleTelephoneNumberFieldName(const Value: String);
+      procedure SetResponsibleDepartmentIdFieldName(const Value: String);
+      procedure SetResponsibleDepartmentCodeFieldName(const Value: String);
+      procedure SetResponsibleDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentSigningIdFieldName(const Value: String);
-      procedure SetDocumentSigningDateFieldName(const Value: String);
-      procedure SetDocumentSignerIdFieldName(const Value: String);
-      procedure SetDocumentSignerLeaderIdFieldName(const Value: String);
-      procedure SetDocumentSignerNameFieldName(const Value: String);
-      procedure SetDocumentSignerSpecialityFieldName(const Value: String);
-      procedure SetDocumentSignerDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentSignerDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentSignerDepartmentNameFieldName(const Value: String);
+      procedure SetSigningIdFieldName(const Value: String);
+      procedure SetSigningDateFieldName(const Value: String);
+      procedure SetSignerIdFieldName(const Value: String);
+      procedure SetSignerLeaderIdFieldName(const Value: String);
+      procedure SetSignerNameFieldName(const Value: String);
+      procedure SetSignerSpecialityFieldName(const Value: String);
+      procedure SetSignerDepartmentIdFieldName(const Value: String);
+      procedure SetSignerDepartmentCodeFieldName(const Value: String);
+      procedure SetSignerDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentActualSignerIdFieldName(const Value: String);
-      procedure SetDocumentActualSignerLeaderIdFieldName(const Value: String);
-      procedure SetDocumentActualSignerNameFieldName(const Value: String);
-      procedure SetDocumentActualSignerSpecialityFieldName(const Value: String);
-      procedure SetDocumentActualSignerDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentActualSignerDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentActualSignerDepartmentNameFieldName(const Value: String);
+      procedure SetActualSignerIdFieldName(const Value: String);
+      procedure SetActualSignerLeaderIdFieldName(const Value: String);
+      procedure SetActualSignerNameFieldName(const Value: String);
+      procedure SetActualSignerSpecialityFieldName(const Value: String);
+      procedure SetActualSignerDepartmentIdFieldName(const Value: String);
+      procedure SetActualSignerDepartmentCodeFieldName(const Value: String);
+      procedure SetActualSignerDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentChargeIdFieldName(const Value: String);
-      procedure SetDocumentChargeTextFieldName(const Value: String);
-      procedure SetDocumentChargeIsForAcquaitanceFieldName(const Value: String);
-      procedure SetDocumentChargeResponseFieldName(const Value: String);
-      procedure SetDocumentChargePeriodStartFieldName(const Value: String);
-      procedure SetDocumentChargePeriodEndFieldName(const Value: String);
-      procedure SetDocumentChargePerformingDateTimeFieldName(const Value: String);
-      procedure SetDocumentChargePerformerIdFieldName(const Value: String);
-      procedure SetDocumentChargePerformerLeaderIdFieldName(const Value: String);
-      procedure SetDocumentChargePerformerIsForeignFieldName(const Value: String);
-      procedure SetDocumentChargePerformerNameFieldName(const Value: String);
-      procedure SetDocumentChargePerformerSpecialityFieldName(const Value: String);
-      procedure SetDocumentChargePerformerDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentChargePerformerDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentChargePerformerDepartmentNameFieldName(const Value: String);
+      procedure SetChargeIdFieldName(const Value: String);
+      procedure SetChargeChargeTextFieldName(const Value: String);
+      procedure SetChargeIsForAcquaitanceFieldName(const Value: String);
+      procedure SetChargeResponseFieldName(const Value: String);
+      procedure SetChargeTimeFrameStartFieldName(const Value: String);
+      procedure SetChargeTimeFrameDeadlineFieldName(const Value: String);
+      procedure SetChargePerformingDateTimeFieldName(const Value: String);
+      procedure SetChargePerformerIdFieldName(const Value: String);
+      procedure SetChargePerformerIsForeignFieldName(const Value: String);
+      procedure SetChargePerformerNameFieldName(const Value: String);
+      procedure SetChargePerformerSpecialityFieldName(const Value: String);
+      procedure SetChargePerformerDepartmentIdFieldName(const Value: String);
+      procedure SetChargePerformerDepartmentCodeFieldName(const Value: String);
+      procedure SetChargePerformerDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentChargeActualPerformerIdFieldName(const Value: String);
-      procedure SetDocumentChargeActualPerformerLeaderIdFieldName(const Value: String);
-      procedure SetDocumentChargeActualPerformerIsForeignFieldName(const Value: String);
-      procedure SetDocumentChargeActualPerformerNameFieldName(const Value: String);
-      procedure SetDocumentChargeActualPerformerSpecialityFieldName(const Value: String);
-      procedure SetDocumentChargeActualPerformerDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentChargeActualPerformerDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentChargeActualPerformerDepartmentNameFieldName(const Value: String);
+      procedure SetChargeActualPerformerIdFieldName(const Value: String);
+      procedure SetChargeActualPerformerNameFieldName(const Value: String);
+      procedure SetChargeActualPerformerSpecialityFieldName(const Value: String);
+      procedure SetChargeActualPerformerDepartmentIdFieldName(const Value: String);
+      procedure SetChargeActualPerformerDepartmentCodeFieldName(const Value: String);
+      procedure SetChargeActualPerformerDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentFileIdFieldName(const Value: String);
-      procedure SetDocumentFileNameFieldName(const Value: String);
-      procedure SetDocumentFilePathFieldName(const Value: String);
+      procedure SetFileIdFieldName(const Value: String);
+      procedure SetFileNameFieldName(const Value: String);
+      procedure SetFilePathFieldName(const Value: String);
 
-      procedure SetDocumentRelationIdFieldName(const Value: String);
+      procedure SetRelationIdFieldName(const Value: String);
       procedure SetRelatedDocumentIdFieldName(const Value: String);
       procedure SetRelatedDocumentKindIdFieldName(const Value: String);
       procedure SetRelatedDocumentKindNameFieldName(const Value: String);
@@ -274,312 +265,298 @@ type
       procedure SetRelatedDocumentNameFieldName(const Value: String);
       procedure SetRelatedDocumentDateFieldName(const Value: String);
 
-      procedure SetDocumentChargeSheetIdFieldName(const Value: String);
+      procedure SetChargeSheetIdFieldName(const Value: String);
       procedure SetChargeSheetDocumentIdFieldName(const Value: String);
-      procedure SetTopLevelDocumentChargeSheetIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetTextFieldName(const Value: String);
-      procedure SetDocumentChargeSheetIsForAcquaitanceFieldName(const Value: String);
-      procedure SetDocumentChargeSheetResponseFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPeriodStartFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPeriodEndFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformingDateTimeFieldName(const Value: String);
-      procedure SetDocumentChargeSheetViewingDateByPerformerFieldName(const Value: String);
+      procedure SetChargeSheetDocumentKindIdFieldName(const Value: String);
+      procedure SetChargeSheetChargeIdFieldName(const Value: String);
+      procedure SetTopLevelChargeSheetIdFieldName(const Value: String);
+      procedure SetChargeSheetChargeTextFieldName(const Value: String);
+      procedure SetChargeSheetIsForAcquaitanceFieldName(const Value: String);
+      procedure SetChargeSheetResponseFieldName(const Value: String);
+      procedure SetChargeSheetTimeFrameStartFieldName(const Value: String);
+      procedure SetChargeSheetTimeFrameDeadlineFieldName(const Value: String);
+      procedure SetChargeSheetPerformingDateTimeFieldName(const Value: String);
+      procedure SetChargeSheetViewDateByPerformerFieldName(const Value: String);
 
-      procedure SetDocumentChargeSheetPerformerIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformerRoleIdFieldName(const Value: String); { refactor }
-      procedure SetDocumentChargeSheetPerformerLeaderIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformerIsForeignFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformerNameFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformerSpecialityFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformerDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformerDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentChargeSheetPerformerDepartmentNameFieldName(const Value: String);
+      procedure SetChargeSheetPerformerIdFieldName(const Value: String);
+      procedure SetChargeSheetPerformerIsForeignFieldName(const Value: String);
+      procedure SetChargeSheetPerformerNameFieldName(const Value: String);
+      procedure SetChargeSheetPerformerSpecialityFieldName(const Value: String);
+      procedure SetChargeSheetPerformerDepartmentIdFieldName(const Value: String);
+      procedure SetChargeSheetPerformerDepartmentCodeFieldName(const Value: String);
+      procedure SetChargeSheetPerformerDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentChargeSheetActualPerformerIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetActualPerformerLeaderIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetActualPerformerIsForeignFieldName(const Value: String);
-      procedure SetDocumentChargeSheetActualPerformerNameFieldName(const Value: String);
-      procedure SetDocumentChargeSheetActualPerformerSpecialityFieldName(const Value: String);
-      procedure SetDocumentChargeSheetActualPerformerDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetActualPerformerDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentChargeSheetActualPerformerDepartmentNameFieldName(const Value: String);
+      procedure SetChargeSheetActualPerformerIdFieldName(const Value: String);
+      procedure SetChargeSheetActualPerformerNameFieldName(const Value: String);
+      procedure SetChargeSheetActualPerformerSpecialityFieldName(const Value: String);
+      procedure SetChargeSheetActualPerformerDepartmentIdFieldName(const Value: String);
+      procedure SetChargeSheetActualPerformerDepartmentCodeFieldName(const Value: String);
+      procedure SetChargeSheetActualPerformerDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentChargeSheetSenderIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetSenderLeaderIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetSenderIsForeignFieldName(const Value: String);
-      procedure SetDocumentChargeSheetSenderNameFieldName(const Value: String);
-      procedure SetDocumentChargeSheetSenderSpecialityFieldName(const Value: String);
-      procedure SetDocumentChargeSheetSenderDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentChargeSheetSenderDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentChargeSheetSenderDepartmentNameFieldName(const Value: String);
+      procedure SetChargeSheetIssuerIdFieldName(const Value: String);
+      procedure SetChargeSheetIssuerIsForeignFieldName(const Value: String);
+      procedure SetChargeSheetIssuerNameFieldName(const Value: String);
+      procedure SetChargeSheetIssuerSpecialityFieldName(const Value: String);
+      procedure SetChargeSheetIssuerDepartmentIdFieldName(const Value: String);
+      procedure SetChargeSheetIssuerDepartmentCodeFieldName(const Value: String);
+      procedure SetChargeSheetIssuerDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentApprovingIdFieldName(const Value: String);
-      procedure SetDocumentApprovingIsAccessibleFieldName(const Value: String);
-      procedure SetDocumentChargeSheetIssuingDateTimeFieldName(const Value: String);
-      procedure SetDocumentApprovingPerformingDateTimeFieldName(const Value: String);
-      procedure SetDocumentApprovingPerformingResultIdFieldName(const Value: String);
-      procedure SetDocumentApprovingPerformingResultFieldName(const Value: String);
-      procedure SetDocumentApprovingNoteFieldName(const Value: String);
-      procedure SetDocumentApprovingCycleNumberFieldName(const Value: String);
-      procedure SetDocumentApprovingCycleIdFieldName(const Value: String);
-      procedure SetDocumentApprovingIsCompletedFieldName(const Value: String);
-      procedure SetDocumentApprovingIsLookedByApproverFieldName(const Value: String);
+      procedure SetApprovingIdFieldName(const Value: String);
+      procedure SetApprovingIsAccessibleFieldName(const Value: String);
+      procedure SetChargeSheetIssuingDateTimeFieldName(const Value: String);
+      procedure SetApprovingPerformingDateTimeFieldName(const Value: String);
+      procedure SetApprovingPerformingResultIdFieldName(const Value: String);
+      procedure SetApprovingPerformingResultFieldName(const Value: String);
+      procedure SetApprovingNoteFieldName(const Value: String);
+      procedure SetApprovingCycleNumberFieldName(const Value: String);
+      procedure SetApprovingCycleIdFieldName(const Value: String);
+      procedure SetApprovingIsCompletedFieldName(const Value: String);
+      procedure SetApprovingIsLookedByApproverFieldName(const Value: String);
 
-      procedure SetDocumentApproverIdFieldName(const Value: String);
-      procedure SetDocumentApproverLeaderIdFieldName(const Value: String);
-      procedure SetDocumentApproverIsForeignFieldName(const Value: String);
-      procedure SetDocumentApproverNameFieldName(const Value: String);
-      procedure SetDocumentApproverSpecialityFieldName(const Value: String);
-      procedure SetDocumentApproverDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentApproverDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentApproverDepartmentNameFieldName(const Value: String);
+      procedure SetApproverIdFieldName(const Value: String);
+      procedure SetApproverLeaderIdFieldName(const Value: String);
+      procedure SetApproverIsForeignFieldName(const Value: String);
+      procedure SetApproverNameFieldName(const Value: String);
+      procedure SetApproverSpecialityFieldName(const Value: String);
+      procedure SetApproverDepartmentIdFieldName(const Value: String);
+      procedure SetApproverDepartmentCodeFieldName(const Value: String);
+      procedure SetApproverDepartmentNameFieldName(const Value: String);
 
-      procedure SetDocumentActualApproverIdFieldName(const Value: String);
-      procedure SetDocumentActualApproverLeaderIdFieldName(const Value: String);
-      procedure SetDocumentActualApproverIsForeignFieldName(const Value: String);
-      procedure SetDocumentActualApproverNameFieldName(const Value: String);
-      procedure SetDocumentActualApproverSpecialityFieldName(const Value: String);
-      procedure SetDocumentActualApproverDepartmentIdFieldName(const Value: String);
-      procedure SetDocumentActualApproverDepartmentCodeFieldName(const Value: String);
-      procedure SetDocumentActualApproverDepartmentNameFieldName(const Value: String);
+      procedure SetActualApproverIdFieldName(const Value: String);
+      procedure SetActualApproverLeaderIdFieldName(const Value: String);
+      procedure SetActualApproverIsForeignFieldName(const Value: String);
+      procedure SetActualApproverNameFieldName(const Value: String);
+      procedure SetActualApproverSpecialityFieldName(const Value: String);
+      procedure SetActualApproverDepartmentIdFieldName(const Value: String);
+      procedure SetActualApproverDepartmentCodeFieldName(const Value: String);
+      procedure SetActualApproverDepartmentNameFieldName(const Value: String);
 
     public
 
-      property DocumentIdFieldName: String
-      read GetDocumentIdFieldName write SetDocumentIdFieldName;
+      property IdFieldName: String
+      read GetIdFieldName write SetIdFieldName;
 
-      property BaseDocumentIdFieldName: String
-      read GetBaseDocumentIdFieldName write SetBaseDocumentIdFieldName;
+      property BaseIdFieldName: String
+      read GetBaseIdFieldName write SetBaseIdFieldName;
       
-      property DocumentNumberFieldName: String
-      read GetDocumentNumberFieldName write SetDocumentNumberFieldName;
+      property NumberFieldName: String
+      read GetNumberFieldName write SetNumberFieldName;
       
-      property DocumentNameFieldName: String
-      read GetDocumentNameFieldName write SetDocumentNameFieldName;
+      property NameFieldName: String
+      read GetNameFieldName write SetNameFieldName;
 
-      property DocumentContentFieldName: String
-      read GetDocumentContentFieldName write SetDocumentContentFieldName;
+      property ContentFieldName: String
+      read GetContentFieldName write SetContentFieldName;
 
-      property DocumentNoteFieldName: String
-      read GetDocumentNoteFieldName write SetDocumentNoteFieldName;
+      property NoteFieldName: String
+      read GetNoteFieldName write SetNoteFieldName;
       
-      property DocumentProductCodeFieldName: String
-      read GetDocumentProductCodeFieldName write SetDocumentProductCodeFieldName;
+      property ProductCodeFieldName: String
+      read GetProductCodeFieldName write SetProductCodeFieldName;
 
-      property DocumentIsSelfRegisteredFieldName: String
-      read GetDocumentIsSelfRegisteredFieldName write SetDocumentIsSelfRegisteredFieldName;
+      property IsSelfRegisteredFieldName: String
+      read GetIsSelfRegisteredFieldName write SetIsSelfRegisteredFieldName;
       
-      property DocumentCreationDateFieldName: String
-      read GetDocumentCreationDateFieldName write SetDocumentCreationDateFieldName;
+      property CreationDateFieldName: String
+      read GetCreationDateFieldName write SetCreationDateFieldName;
       
-      property DocumentDateFieldName: String
-      read GetDocumentDateFieldName write SetDocumentDateFieldName;
+      property DateFieldName: String
+      read GetDateFieldName write SetDateFieldName;
       
-      property DocumentKindFieldName: String
-      read GetDocumentKindFieldName write SetDocumentKindFieldName;
+      property KindFieldName: String
+      read GetKindFieldName write SetKindFieldName;
 
-      property DocumentKindIdFieldName: String
-      read GetDocumentKindIdFieldName write SetDocumentKindIdFieldName;
+      property KindIdFieldName: String
+      read GetKindIdFieldName write SetKindIdFieldName;
       
-      property DocumentCurrentWorkCycleStageNameFieldName: String
-      read GetDocumentCurrentWorkCycleStageNameFieldName
-      write SetDocumentCurrentWorkCycleStageNameFieldName;
+      property CurrentWorkCycleStageNameFieldName: String
+      read GetCurrentWorkCycleStageNameFieldName
+      write SetCurrentWorkCycleStageNameFieldName;
       
-      property DocumentCurrentWorkCycleStageNumberFieldName: String
-      read GetDocumentCurrentWorkCycleStageNumberFieldName
-      write SetDocumentCurrentWorkCycleStageNumberFieldName;
+      property CurrentWorkCycleStageNumberFieldName: String
+      read GetCurrentWorkCycleStageNumberFieldName
+      write SetCurrentWorkCycleStageNumberFieldName;
 
-      property DocumentAuthorIdFieldName: String
-      read GetDocumentAuthorIdFieldName write SetDocumentAuthorIdFieldName;
+      property AuthorIdFieldName: String
+      read GetAuthorIdFieldName write SetAuthorIdFieldName;
       
-      property DocumentAuthorLeaderIdFieldName: String
-      read GetDocumentAuthorLeaderIdFieldName write SetDocumentAuthorLeaderIdFieldName;
+      property AuthorLeaderIdFieldName: String
+      read GetAuthorLeaderIdFieldName write SetAuthorLeaderIdFieldName;
       
-      property DocumentAuthorNameFieldName: String
-      read GetDocumentAuthorNameFieldName write SetDocumentAuthorNameFieldName;
+      property AuthorNameFieldName: String
+      read GetAuthorNameFieldName write SetAuthorNameFieldName;
       
-      property DocumentAuthorSpecialityFieldName: String
-      read GetDocumentAuthorSpecialityFieldName
-      write SetDocumentAuthorSpecialityFieldName;
+      property AuthorSpecialityFieldName: String
+      read GetAuthorSpecialityFieldName
+      write SetAuthorSpecialityFieldName;
 
-      property DocumentAuthorDepartmentIdFieldName: String
-      read GetDocumentAuthorDepartmentIdFieldName
-      write SetDocumentAuthorDepartmentIdFieldName;
+      property AuthorDepartmentIdFieldName: String
+      read GetAuthorDepartmentIdFieldName
+      write SetAuthorDepartmentIdFieldName;
 
-      property DocumentAuthorDepartmentCodeFieldName: String
-      read GetDocumentAuthorDepartmentCodeFieldName
-      write SetDocumentAuthorDepartmentCodeFieldName;
+      property AuthorDepartmentCodeFieldName: String
+      read GetAuthorDepartmentCodeFieldName
+      write SetAuthorDepartmentCodeFieldName;
       
-      property DocumentAuthorDepartmentNameFieldName: String
-      read GetDocumentAuthorDepartmentNameFieldName
-      write SetDocumentAuthorDepartmentNameFieldName;
+      property AuthorDepartmentNameFieldName: String
+      read GetAuthorDepartmentNameFieldName
+      write SetAuthorDepartmentNameFieldName;
 
-      property DocumentResponsibleIdFieldName: String
-      read GetDocumentResponsibleIdFieldName
-      write SetDocumentResponsibleIdFieldName;
+      property ResponsibleIdFieldName: String
+      read GetResponsibleIdFieldName
+      write SetResponsibleIdFieldName;
       
-      property DocumentResponsibleNameFieldName: String
-      read GetDocumentResponsibleNameFieldName
-      write SetDocumentResponsibleNameFieldName;
+      property ResponsibleNameFieldName: String
+      read GetResponsibleNameFieldName
+      write SetResponsibleNameFieldName;
 
-      property DocumentResponsibleTelephoneNumberFieldName: String
-      read GetDocumentResponsibleTelephoneNumberFieldName
-      write SetDocumentResponsibleTelephoneNumberFieldName;
+      property ResponsibleTelephoneNumberFieldName: String
+      read GetResponsibleTelephoneNumberFieldName
+      write SetResponsibleTelephoneNumberFieldName;
       
-      property DocumentResponsibleDepartmentIdFieldName: String
-      read GetDocumentResponsibleDepartmentIdFieldName
-      write SetDocumentResponsibleDepartmentIdFieldName;
+      property ResponsibleDepartmentIdFieldName: String
+      read GetResponsibleDepartmentIdFieldName
+      write SetResponsibleDepartmentIdFieldName;
 
-      property DocumentResponsibleDepartmentCodeFieldName: String
-      read GetDocumentResponsibleDepartmentCodeFieldName
-      write SetDocumentResponsibleDepartmentCodeFieldName;
+      property ResponsibleDepartmentCodeFieldName: String
+      read GetResponsibleDepartmentCodeFieldName
+      write SetResponsibleDepartmentCodeFieldName;
       
-      property DocumentResponsibleDepartmentNameFieldName: String
-      read GetDocumentResponsibleDepartmentNameFieldName
-      write SetDocumentResponsibleDepartmentNameFieldName;
+      property ResponsibleDepartmentNameFieldName: String
+      read GetResponsibleDepartmentNameFieldName
+      write SetResponsibleDepartmentNameFieldName;
 
-      property DocumentSigningIdFieldName: String
-      read GetDocumentSigningIdFieldName
-      write SetDocumentSigningIdFieldName;
+      property SigningIdFieldName: String
+      read GetSigningIdFieldName
+      write SetSigningIdFieldName;
 
-      property DocumentSigningDateFieldName: String
-      read GetDocumentSigningDateFieldName
-      write SetDocumentSigningDateFieldName;
+      property SigningDateFieldName: String
+      read GetSigningDateFieldName
+      write SetSigningDateFieldName;
 
-      property DocumentSignerIdFieldName: String
-      read GetDocumentSignerIdFieldName write SetDocumentSignerIdFieldName;
+      property SignerIdFieldName: String
+      read GetSignerIdFieldName write SetSignerIdFieldName;
 
-      property DocumentSignerLeaderIdFieldName: String
-      read GetDocumentSignerLeaderIdFieldName write SetDocumentSignerLeaderIdFieldName;
+      property SignerLeaderIdFieldName: String
+      read GetSignerLeaderIdFieldName write SetSignerLeaderIdFieldName;
       
-      property DocumentSignerNameFieldName: String
-      read GetDocumentSignerNameFieldName write SetDocumentSignerNameFieldName;
+      property SignerNameFieldName: String
+      read GetSignerNameFieldName write SetSignerNameFieldName;
       
-      property DocumentSignerSpecialityFieldName: String
-      read GetDocumentSignerSpecialityFieldName write SetDocumentSignerSpecialityFieldName;
+      property SignerSpecialityFieldName: String
+      read GetSignerSpecialityFieldName write SetSignerSpecialityFieldName;
 
-      property DocumentSignerDepartmentIdFieldName: String
-      read GetDocumentSignerDepartmentIdFieldName write SetDocumentSignerDepartmentIdFieldName;
+      property SignerDepartmentIdFieldName: String
+      read GetSignerDepartmentIdFieldName write SetSignerDepartmentIdFieldName;
 
-      property DocumentSignerDepartmentCodeFieldName: String
-      read GetDocumentSignerDepartmentCodeFieldName write SetDocumentSignerDepartmentCodeFieldName;
+      property SignerDepartmentCodeFieldName: String
+      read GetSignerDepartmentCodeFieldName write SetSignerDepartmentCodeFieldName;
       
-      property DocumentSignerDepartmentNameFieldName: String
-      read GetDocumentSignerDepartmentNameFieldName write SetDocumentSignerDepartmentNameFieldName;
+      property SignerDepartmentNameFieldName: String
+      read GetSignerDepartmentNameFieldName write SetSignerDepartmentNameFieldName;
 
-      property DocumentActualSignerIdFieldName: String
-      read GetDocumentActualSignerIdFieldName write SetDocumentActualSignerIdFieldName;
+      property ActualSignerIdFieldName: String
+      read GetActualSignerIdFieldName write SetActualSignerIdFieldName;
 
-      property DocumentActualSignerLeaderIdFieldName: String
-      read GetDocumentActualSignerLeaderIdFieldName write SetDocumentActualSignerLeaderIdFieldName;
+      property ActualSignerLeaderIdFieldName: String
+      read GetActualSignerLeaderIdFieldName write SetActualSignerLeaderIdFieldName;
 
-      property DocumentActualSignerNameFieldName: String
-      read GetDocumentActualSignerNameFieldName write SetDocumentActualSignerNameFieldName;
+      property ActualSignerNameFieldName: String
+      read GetActualSignerNameFieldName write SetActualSignerNameFieldName;
 
-      property DocumentActualSignerSpecialityFieldName: String
-      read GetDocumentActualSignerSpecialityFieldName write SetDocumentActualSignerSpecialityFieldName;
+      property ActualSignerSpecialityFieldName: String
+      read GetActualSignerSpecialityFieldName write SetActualSignerSpecialityFieldName;
 
-      property DocumentActualSignerDepartmentIdFieldName: String
-      read GetDocumentActualSignerDepartmentIdFieldName write SetDocumentActualSignerDepartmentIdFieldName;
+      property ActualSignerDepartmentIdFieldName: String
+      read GetActualSignerDepartmentIdFieldName write SetActualSignerDepartmentIdFieldName;
       
-      property DocumentActualSignerDepartmentCodeFieldName: String
-      read GetDocumentActualSignerDepartmentCodeFieldName
-      write SetDocumentActualSignerDepartmentCodeFieldName;
+      property ActualSignerDepartmentCodeFieldName: String
+      read GetActualSignerDepartmentCodeFieldName
+      write SetActualSignerDepartmentCodeFieldName;
       
-      property DocumentActualSignerDepartmentNameFieldName: String
-      read GetDocumentActualSignerDepartmentNameFieldName
-      write SetDocumentActualSignerDepartmentNameFieldName;
+      property ActualSignerDepartmentNameFieldName: String
+      read GetActualSignerDepartmentNameFieldName
+      write SetActualSignerDepartmentNameFieldName;
 
-      property DocumentChargeIdFieldName: String
-      read GetDocumentChargeIdFieldName write SetDocumentChargeIdFieldName;
+      property ChargeIdFieldName: String
+      read GetChargeIdFieldName write SetChargeIdFieldName;
 
-      property DocumentChargeTextFieldName: String
-      read GetDocumentChargeTextFieldName write SetDocumentChargeTextFieldName;
+      property ChargeChargeTextFieldName: String
+      read GetChargeChargeTextFieldName write SetChargeChargeTextFieldName;
 
-      property DocumentChargeIsForAcquaitanceFieldName: String
-      read GetDocumentChargeIsForAcquaitanceFieldName write SetDocumentChargeIsForAcquaitanceFieldName;
+      property ChargeIsForAcquaitanceFieldName: String
+      read GetChargeIsForAcquaitanceFieldName write SetChargeIsForAcquaitanceFieldName;
       
-      property DocumentChargeResponseFieldName: String
-      read GetDocumentChargeResponseFieldName write SetDocumentChargeResponseFieldName;
+      property ChargeResponseFieldName: String
+      read GetChargeResponseFieldName write SetChargeResponseFieldName;
 
-      property DocumentChargePeriodStartFieldName: String
-      read GetDocumentChargePeriodStartFieldName write SetDocumentChargePeriodStartFieldName;
+      property ChargeTimeFrameStartFieldName: String
+      read GetChargeTimeFrameStartFieldName write SetChargeTimeFrameStartFieldName;
 
-      property DocumentChargePeriodEndFieldName: String
-      read GetDocumentChargePeriodEndFieldName write SetDocumentChargePeriodEndFieldName;
+      property ChargeTimeFrameDeadlineFieldName: String
+      read GetChargeTimeFrameDeadlineFieldName write SetChargeTimeFrameDeadlineFieldName;
 
-      property DocumentChargePerformingDateTimeFieldName: String
-      read GetDocumentChargePerformingDateTimeFieldName write SetDocumentChargePerformingDateTimeFieldName;
+      property ChargePerformingDateTimeFieldName: String
+      read GetChargePerformingDateTimeFieldName write SetChargePerformingDateTimeFieldName;
       
-      property DocumentChargePerformerIdFieldName: String
-      read GetDocumentChargePerformerIdFieldName write SetDocumentChargePerformerIdFieldName;
+      property ChargePerformerIdFieldName: String
+      read GetChargePerformerIdFieldName write SetChargePerformerIdFieldName;
 
-      property DocumentChargePerformerLeaderIdFieldName: String
-      read GetDocumentChargePerformerLeaderIdFieldName write SetDocumentChargePerformerLeaderIdFieldName;
-
-      property DocumentChargePerformerIsForeignFieldName: String
-      read GetDocumentChargePerformerIsForeignFieldName write SetDocumentChargePerformerIsForeignFieldName;
+      property ChargePerformerIsForeignFieldName: String
+      read GetChargePerformerIsForeignFieldName write SetChargePerformerIsForeignFieldName;
       
-      property DocumentChargePerformerNameFieldName: String
-      read GetDocumentChargePerformerNameFieldName write SetDocumentChargePerformerNameFieldName;
+      property ChargePerformerNameFieldName: String
+      read GetChargePerformerNameFieldName write SetChargePerformerNameFieldName;
       
-      property DocumentChargePerformerSpecialityFieldName: String
-      read GetDocumentChargePerformerSpecialityFieldName write SetDocumentChargePerformerSpecialityFieldName;
+      property ChargePerformerSpecialityFieldName: String
+      read GetChargePerformerSpecialityFieldName write SetChargePerformerSpecialityFieldName;
 
-      property DocumentChargePerformerDepartmentIdFieldName: String
-      read GetDocumentChargePerformerDepartmentIdFieldName write SetDocumentChargePerformerDepartmentIdFieldName;
+      property ChargePerformerDepartmentIdFieldName: String
+      read GetChargePerformerDepartmentIdFieldName write SetChargePerformerDepartmentIdFieldName;
 
-      property DocumentChargePerformerDepartmentCodeFieldName: String
-      read GetDocumentChargePerformerDepartmentCodeFieldName
-      write SetDocumentChargePerformerDepartmentCodeFieldName;
+      property ChargePerformerDepartmentCodeFieldName: String
+      read GetChargePerformerDepartmentCodeFieldName
+      write SetChargePerformerDepartmentCodeFieldName;
 
-      property DocumentChargePerformerDepartmentNameFieldName: String
-      read GetDocumentChargePerformerDepartmentNameFieldName
-      write SetDocumentChargePerformerDepartmentNameFieldName;
+      property ChargePerformerDepartmentNameFieldName: String
+      read GetChargePerformerDepartmentNameFieldName
+      write SetChargePerformerDepartmentNameFieldName;
 
-      property DocumentChargeActualPerformerIdFieldName: String
-      read GetDocumentChargeActualPerformerIdFieldName
-      write SetDocumentChargeActualPerformerIdFieldName;
+      property ChargeActualPerformerIdFieldName: String
+      read GetChargeActualPerformerIdFieldName
+      write SetChargeActualPerformerIdFieldName;
 
-      property DocumentChargeActualPerformerLeaderIdFieldName: String
-      read GetDocumentChargeActualPerformerLeaderIdFieldName
-      write SetDocumentChargeActualPerformerLeaderIdFieldName;
-
-      property DocumentChargeActualPerformerIsForeignFieldName: String
-      read GetDocumentChargeActualPerformerIsForeignFieldName
-      write SetDocumentChargeActualPerformerIsForeignFieldName;
-
-      property DocumentChargeActualPerformerNameFieldName: String
-      read GetDocumentChargeActualPerformerNameFieldName
-      write SetDocumentChargeActualPerformerNameFieldName;
+      property ChargeActualPerformerNameFieldName: String
+      read GetChargeActualPerformerNameFieldName
+      write SetChargeActualPerformerNameFieldName;
       
-      property DocumentChargeActualPerformerSpecialityFieldName: String
-      read GetDocumentChargeActualPerformerSpecialityFieldName
-      write SetDocumentChargeActualPerformerSpecialityFieldName;
+      property ChargeActualPerformerSpecialityFieldName: String
+      read GetChargeActualPerformerSpecialityFieldName
+      write SetChargeActualPerformerSpecialityFieldName;
 
-      property DocumentChargeActualPerformerDepartmentIdFieldName: String
-      read GetDocumentChargeActualPerformerDepartmentIdFieldName
-      write SetDocumentChargeActualPerformerDepartmentIdFieldName;
+      property ChargeActualPerformerDepartmentIdFieldName: String
+      read GetChargeActualPerformerDepartmentIdFieldName
+      write SetChargeActualPerformerDepartmentIdFieldName;
       
-      property DocumentChargeActualPerformerDepartmentCodeFieldName: String
-      read GetDocumentChargeActualPerformerDepartmentCodeFieldName
-      write SetDocumentChargeActualPerformerDepartmentCodeFieldName;
+      property ChargeActualPerformerDepartmentCodeFieldName: String
+      read GetChargeActualPerformerDepartmentCodeFieldName
+      write SetChargeActualPerformerDepartmentCodeFieldName;
 
-      property DocumentChargeActualPerformerDepartmentNameFieldName: String
-      read GetDocumentChargeActualPerformerDepartmentNameFieldName
-      write SetDocumentChargeActualPerformerDepartmentNameFieldName;
+      property ChargeActualPerformerDepartmentNameFieldName: String
+      read GetChargeActualPerformerDepartmentNameFieldName
+      write SetChargeActualPerformerDepartmentNameFieldName;
 
-      property DocumentFileIdFieldName: String
-      read GetDocumentFileIdFieldName write SetDocumentFileIdFieldName;
+      property FileIdFieldName: String
+      read GetFileIdFieldName write SetFileIdFieldName;
       
-      property DocumentFileNameFieldName: String
-      read GetDocumentFileNameFieldName write SetDocumentFileNameFieldName;
+      property FileNameFieldName: String
+      read GetFileNameFieldName write SetFileNameFieldName;
       
-      property DocumentFilePathFieldName: String
-      read GetDocumentFilePathFieldName write SetDocumentFilePathFieldName;
+      property FilePathFieldName: String
+      read GetFilePathFieldName write SetFilePathFieldName;
 
-      property DocumentRelationIdFieldName: String
-      read GetDocumentRelationIdFieldName write SetDocumentRelationIdFieldName;
+      property RelationIdFieldName: String
+      read GetRelationIdFieldName write SetRelationIdFieldName;
 
       property RelatedDocumentIdFieldName: String
       read GetRelatedDocumentIdFieldName write SetRelatedDocumentIdFieldName;
@@ -599,261 +576,247 @@ type
       property RelatedDocumentDateFieldName: String
       read GetRelatedDocumentDateFieldName write SetRelatedDocumentDateFieldName;
 
-      property DocumentChargeSheetIdFieldName: String
-      read GetDocumentChargeSheetIdFieldName write SetDocumentChargeSheetIdFieldName;
+      property ChargeSheetIdFieldName: String
+      read GetChargeSheetIdFieldName write SetChargeSheetIdFieldName;
 
       property ChargeSheetDocumentIdFieldName: String
       read GetChargeSheetDocumentIdFieldName write SetChargeSheetDocumentIdFieldName;
 
-      property TopLevelDocumentChargeSheetIdFieldName: String
-      read GetTopLevelDocumentChargeSheetIdFieldName
-      write SetTopLevelDocumentChargeSheetIdFieldName;
+      property ChargeSheetDocumentKindIdFieldName: String
+      read GetChargeSheetDocumentKindIdFieldName write SetChargeSheetDocumentKindIdFieldName;
 
-      property DocumentChargeSheetTextFieldName: String
-      read GetDocumentChargeSheetTextFieldName write SetDocumentChargeSheetTextFieldName;
+      property ChargeSheetChargeIdFieldName: String
+      read GetChargeSheetChargeIdFieldName write SetChargeSheetChargeIdFieldName;
 
-      property DocumentChargeSheetIsForAcquaitanceFieldName: String
-      read GetDocumentChargeSheetIsForAcquaitanceFieldName write SetDocumentChargeSheetIsForAcquaitanceFieldName;
+      property TopLevelChargeSheetIdFieldName: String
+      read GetTopLevelChargeSheetIdFieldName
+      write SetTopLevelChargeSheetIdFieldName;
 
-      property DocumentChargeSheetResponseFieldName: String
-      read GetDocumentChargeSheetResponseFieldName write SetDocumentChargeSheetResponseFieldName;
+      property ChargeSheetChargeTextFieldName: String
+      read GetChargeSheetChargeTextFieldName write SetChargeSheetChargeTextFieldName;
+
+      property ChargeSheetIsForAcquaitanceFieldName: String
+      read GetChargeSheetIsForAcquaitanceFieldName write SetChargeSheetIsForAcquaitanceFieldName;
+
+      property ChargeSheetResponseFieldName: String
+      read GetChargeSheetResponseFieldName write SetChargeSheetResponseFieldName;
       
-      property DocumentChargeSheetPeriodStartFieldName: String
-      read GetDocumentChargeSheetPeriodStartFieldName write SetDocumentChargeSheetPeriodStartFieldName;
+      property ChargeSheetTimeFrameStartFieldName: String
+      read GetChargeSheetTimeFrameStartFieldName write SetChargeSheetTimeFrameStartFieldName;
 
-      property DocumentChargeSheetPeriodEndFieldName: String
-      read GetDocumentChargeSheetPeriodEndFieldName write SetDocumentChargeSheetPeriodEndFieldName;
+      property ChargeSheetTimeFrameDeadlineFieldName: String
+      read GetChargeSheetTimeFrameDeadlineFieldName write SetChargeSheetTimeFrameDeadlineFieldName;
 
-      property DocumentChargeSheetPerformingDateTimeFieldName: String
-      read GetDocumentChargeSheetPerformingDateTimeFieldName
-      write SetDocumentChargeSheetPerformingDateTimeFieldName;
+      property ChargeSheetPerformingDateTimeFieldName: String
+      read GetChargeSheetPerformingDateTimeFieldName
+      write SetChargeSheetPerformingDateTimeFieldName;
       
-      property DocumentChargeSheetViewingDateByPerformerFieldName: String
-      read GetDocumentChargeSheetViewingDateByPerformerFieldName
-      write SetDocumentChargeSheetViewingDateByPerformerFieldName;
+      property ChargeSheetViewDateByPerformerFieldName: String
+      read GetChargeSheetViewDateByPerformerFieldName
+      write SetChargeSheetViewDateByPerformerFieldName;
 
-      property DocumentChargeSheetPerformerIdFieldName: String
-      read GetDocumentChargeSheetPerformerIdFieldName
-      write SetDocumentChargeSheetPerformerIdFieldName;
-
-      property DocumentChargeSheetPerformerRoleIdFieldName: String
-      read GetDocumentChargeSheetPerformerRoleIdFieldName
-      write SetDocumentChargeSheetPerformerRoleIdFieldName; { refactor }
-
-      property DocumentChargeSheetPerformerLeaderIdFieldName: String
-      read GetDocumentChargeSheetPerformerLeaderIdFieldName
-      write SetDocumentChargeSheetPerformerLeaderIdFieldName;
+      property ChargeSheetPerformerIdFieldName: String
+      read GetChargeSheetPerformerIdFieldName
+      write SetChargeSheetPerformerIdFieldName;
       
-      property DocumentChargeSheetPerformerIsForeignFieldName: String
-      read GetDocumentChargeSheetPerformerIsForeignFieldName
-      write SetDocumentChargeSheetPerformerIsForeignFieldName;
+      property ChargeSheetPerformerIsForeignFieldName: String
+      read GetChargeSheetPerformerIsForeignFieldName
+      write SetChargeSheetPerformerIsForeignFieldName;
 
-      property DocumentChargeSheetPerformerNameFieldName: String
-      read GetDocumentChargeSheetPerformerNameFieldName
-      write SetDocumentChargeSheetPerformerNameFieldName;
+      property ChargeSheetPerformerNameFieldName: String
+      read GetChargeSheetPerformerNameFieldName
+      write SetChargeSheetPerformerNameFieldName;
 
-      property DocumentChargeSheetPerformerSpecialityFieldName: String
-      read GetDocumentChargeSheetPerformerSpecialityFieldName
-      write SetDocumentChargeSheetPerformerSpecialityFieldName;
+      property ChargeSheetPerformerSpecialityFieldName: String
+      read GetChargeSheetPerformerSpecialityFieldName
+      write SetChargeSheetPerformerSpecialityFieldName;
 
-      property DocumentChargeSheetPerformerDepartmentIdFieldName: String
-      read GetDocumentChargeSheetPerformerDepartmentIdFieldName
-      write SetDocumentChargeSheetPerformerDepartmentIdFieldName;
+      property ChargeSheetPerformerDepartmentIdFieldName: String
+      read GetChargeSheetPerformerDepartmentIdFieldName
+      write SetChargeSheetPerformerDepartmentIdFieldName;
 
-      property DocumentChargeSheetPerformerDepartmentCodeFieldName: String
-      read GetDocumentChargeSheetPerformerDepartmentCodeFieldName
-      write SetDocumentChargeSheetPerformerDepartmentCodeFieldName;
+      property ChargeSheetPerformerDepartmentCodeFieldName: String
+      read GetChargeSheetPerformerDepartmentCodeFieldName
+      write SetChargeSheetPerformerDepartmentCodeFieldName;
       
-      property DocumentChargeSheetPerformerDepartmentNameFieldName: String
-      read GetDocumentChargeSheetPerformerDepartmentNameFieldName
-      write SetDocumentChargeSheetPerformerDepartmentNameFieldName;
+      property ChargeSheetPerformerDepartmentNameFieldName: String
+      read GetChargeSheetPerformerDepartmentNameFieldName
+      write SetChargeSheetPerformerDepartmentNameFieldName;
 
-      property DocumentChargeSheetActualPerformerIdFieldName: String
-      read GetDocumentChargeSheetActualPerformerIdFieldName
-      write SetDocumentChargeSheetActualPerformerIdFieldName;
+      property ChargeSheetActualPerformerIdFieldName: String
+      read GetChargeSheetActualPerformerIdFieldName
+      write SetChargeSheetActualPerformerIdFieldName;
+
+      property ChargeSheetActualPerformerNameFieldName: String
+      read GetChargeSheetActualPerformerNameFieldName
+      write SetChargeSheetActualPerformerNameFieldName;
       
-      property DocumentChargeSheetActualPerformerLeaderIdFieldName: String
-      read GetDocumentChargeSheetActualPerformerLeaderIdFieldName
-      write SetDocumentChargeSheetActualPerformerLeaderIdFieldName;
+      property ChargeSheetActualPerformerSpecialityFieldName: String
+      read GetChargeSheetActualPerformerSpecialityFieldName
+      write SetChargeSheetActualPerformerSpecialityFieldName;
       
-      property DocumentChargeSheetActualPerformerIsForeignFieldName: String
-      read GetDocumentChargeSheetActualPerformerIsForeignFieldName
-      write SetDocumentChargeSheetActualPerformerIsForeignFieldName;
-
-      property DocumentChargeSheetActualPerformerNameFieldName: String
-      read GetDocumentChargeSheetActualPerformerNameFieldName
-      write SetDocumentChargeSheetActualPerformerNameFieldName;
+      property ChargeSheetActualPerformerDepartmentIdFieldName: String
+      read GetChargeSheetActualPerformerDepartmentIdFieldName
+      write SetChargeSheetActualPerformerDepartmentIdFieldName;
       
-      property DocumentChargeSheetActualPerformerSpecialityFieldName: String
-      read GetDocumentChargeSheetActualPerformerSpecialityFieldName
-      write SetDocumentChargeSheetActualPerformerSpecialityFieldName;
+      property ChargeSheetActualPerformerDepartmentCodeFieldName: String
+      read GetChargeSheetActualPerformerDepartmentCodeFieldName
+      write SetChargeSheetActualPerformerDepartmentCodeFieldName;
       
-      property DocumentChargeSheetActualPerformerDepartmentIdFieldName: String
-      read GetDocumentChargeSheetActualPerformerDepartmentIdFieldName
-      write SetDocumentChargeSheetActualPerformerDepartmentIdFieldName;
+      property ChargeSheetActualPerformerDepartmentNameFieldName: String
+      read GetChargeSheetActualPerformerDepartmentNameFieldName
+      write SetChargeSheetActualPerformerDepartmentNameFieldName;
+
+      property ChargeSheetIssuerIdFieldName: String
+      read GetChargeSheetIssuerIdFieldName
+      write SetChargeSheetIssuerIdFieldName;
+
+      property ChargeSheetIssuerIsForeignFieldName: String
+      read GetChargeSheetIssuerIsForeignFieldName
+      write SetChargeSheetIssuerIsForeignFieldName;
       
-      property DocumentChargeSheetActualPerformerDepartmentCodeFieldName: String
-      read GetDocumentChargeSheetActualPerformerDepartmentCodeFieldName
-      write SetDocumentChargeSheetActualPerformerDepartmentCodeFieldName;
+      property ChargeSheetIssuerNameFieldName: String
+      read GetChargeSheetIssuerNameFieldName
+      write SetChargeSheetIssuerNameFieldName;
+
+      property ChargeSheetIssuerSpecialityFieldName: String
+      read GetChargeSheetIssuerSpecialityFieldName
+      write SetChargeSheetIssuerSpecialityFieldName;
       
-      property DocumentChargeSheetActualPerformerDepartmentNameFieldName: String
-      read GetDocumentChargeSheetActualPerformerDepartmentNameFieldName
-      write SetDocumentChargeSheetActualPerformerDepartmentNameFieldName;
-
-      property DocumentChargeSheetSenderIdFieldName: String
-      read GetDocumentChargeSheetSenderIdFieldName
-      write SetDocumentChargeSheetSenderIdFieldName;
-
-      property DocumentChargeSheetSenderLeaderIdFieldName: String
-      read GetDocumentChargeSheetSenderLeaderIdFieldName
-      write SetDocumentChargeSheetSenderLeaderIdFieldName;
-
-      property DocumentChargeSheetSenderIsForeignFieldName: String
-      read GetDocumentChargeSheetSenderIsForeignFieldName
-      write SetDocumentChargeSheetSenderIsForeignFieldName;
+      property ChargeSheetIssuerDepartmentIdFieldName: String
+      read GetChargeSheetIssuerDepartmentIdFieldName
+      write SetChargeSheetIssuerDepartmentIdFieldName;
       
-      property DocumentChargeSheetSenderNameFieldName: String
-      read GetDocumentChargeSheetSenderNameFieldName
-      write SetDocumentChargeSheetSenderNameFieldName;
+      property ChargeSheetIssuerDepartmentCodeFieldName: String
+      read GetChargeSheetIssuerDepartmentCodeFieldName
+      write SetChargeSheetIssuerDepartmentCodeFieldName;
 
-      property DocumentChargeSheetSenderSpecialityFieldName: String
-      read GetDocumentChargeSheetSenderSpecialityFieldName
-      write SetDocumentChargeSheetSenderSpecialityFieldName;
+      property ChargeSheetIssuerDepartmentNameFieldName: String
+      read GetChargeSheetIssuerDepartmentNameFieldName
+      write SetChargeSheetIssuerDepartmentNameFieldName;
+
+      property ApprovingIdFieldName: String
+      read GetApprovingIdFieldName write SetApprovingIdFieldName;
+
+      property ApprovingIsAccessibleFieldName: String
+      read GetApprovingIsAccessibleFieldName
+      write SetApprovingIsAccessibleFieldName;
+
+      property ChargeSheetIssuingDateTimeFieldName: String
+      read GetChargeSheetIssuingDateTimeFieldName
+      write SetChargeSheetIssuingDateTimeFieldName;
+
+      property ApprovingPerformingDateTimeFieldName: String
+      read GetApprovingPerformingDateTimeFieldName
+      write SetApprovingPerformingDateTimeFieldName;
+
+      property ApprovingPerformingResultIdFieldName: String
+      read GetApprovingPerformingResultIdFieldName
+      write SetApprovingPerformingResultIdFieldName;
+
+      property ApprovingPerformingResultFieldName: String
+      read GetApprovingPerformingResultFieldName
+      write SetApprovingPerformingResultFieldName;
       
-      property DocumentChargeSheetSenderDepartmentIdFieldName: String
-      read GetDocumentChargeSheetSenderDepartmentIdFieldName
-      write SetDocumentChargeSheetSenderDepartmentIdFieldName;
+      property ApprovingNoteFieldName: String
+      read GetApprovingNoteFieldName write SetApprovingNoteFieldName;
+
+      property ApprovingCycleNumberFieldName: String
+      read GetApprovingCycleNumberFieldName
+      write SetApprovingCycleNumberFieldName;
+
+      property ApprovingCycleIdFieldName: String
+      read GetApprovingCycleIdFieldName
+      write SetApprovingCycleIdFieldName;
+
+      property ApprovingIsCompletedFieldName: String
+      read GetApprovingIsCompletedFieldName
+      write SetApprovingIsCompletedFieldName;
       
-      property DocumentChargeSheetSenderDepartmentCodeFieldName: String
-      read GetDocumentChargeSheetSenderDepartmentCodeFieldName
-      write SetDocumentChargeSheetSenderDepartmentCodeFieldName;
+      property ApprovingIsLookedByApproverFieldName: String
+      read GetApprovingIsLookedByApproverFieldName
+      write SetApprovingIsLookedByApproverFieldName;
 
-      property DocumentChargeSheetSenderDepartmentNameFieldName: String
-      read GetDocumentChargeSheetSenderDepartmentNameFieldName
-      write SetDocumentChargeSheetSenderDepartmentNameFieldName;
-
-      property DocumentApprovingIdFieldName: String
-      read GetDocumentApprovingIdFieldName write SetDocumentApprovingIdFieldName;
-
-      property DocumentApprovingIsAccessibleFieldName: String
-      read GetDocumentApprovingIsAccessibleFieldName
-      write SetDocumentApprovingIsAccessibleFieldName;
-
-      property DocumentChargeSheetIssuingDateTimeFieldName: String
-      read GetDocumentChargeSheetIssuingDateTimeFieldName
-      write SetDocumentChargeSheetIssuingDateTimeFieldName;
-
-      property DocumentApprovingPerformingDateTimeFieldName: String
-      read GetDocumentApprovingPerformingDateTimeFieldName
-      write SetDocumentApprovingPerformingDateTimeFieldName;
-
-      property DocumentApprovingPerformingResultIdFieldName: String
-      read GetDocumentApprovingPerformingResultIdFieldName
-      write SetDocumentApprovingPerformingResultIdFieldName;
-
-      property DocumentApprovingPerformingResultFieldName: String
-      read GetDocumentApprovingPerformingResultFieldName
-      write SetDocumentApprovingPerformingResultFieldName;
+      property ApproverIdFieldName: String
+      read GetApproverIdFieldName write SetApproverIdFieldName;
       
-      property DocumentApprovingNoteFieldName: String
-      read GetDocumentApprovingNoteFieldName write SetDocumentApprovingNoteFieldName;
+      property ApproverLeaderIdFieldName: String
+      read GetApproverLeaderIdFieldName write SetApproverLeaderIdFieldName;
 
-      property DocumentApprovingCycleNumberFieldName: String
-      read GetDocumentApprovingCycleNumberFieldName
-      write SetDocumentApprovingCycleNumberFieldName;
+      property ApproverIsForeignFieldName: String
+      read GetApproverIsForeignFieldName
+      write SetApproverIsForeignFieldName;
+      
+      property ApproverNameFieldName: String
+      read GetApproverNameFieldName write SetApproverNameFieldName;
+      
+      property ApproverSpecialityFieldName: String
+      read GetApproverSpecialityFieldName
+      write SetApproverSpecialityFieldName;
+      
+      property ApproverDepartmentIdFieldName: String
+      read GetApproverDepartmentIdFieldName
+      write SetApproverDepartmentIdFieldName;
+      
+      property ApproverDepartmentCodeFieldName: String
+      read GetApproverDepartmentCodeFieldName
+      write SetApproverDepartmentCodeFieldName;
 
-      property DocumentApprovingCycleIdFieldName: String
-      read GetDocumentApprovingCycleIdFieldName
-      write SetDocumentApprovingCycleIdFieldName;
+      property ApproverDepartmentNameFieldName: String
+      read GetApproverDepartmentNameFieldName
+      write SetApproverDepartmentNameFieldName;
 
-      property DocumentApprovingIsCompletedFieldName: String
-      read GetDocumentApprovingIsCompletedFieldName
-      write SetDocumentApprovingIsCompletedFieldName;
-      
-      property DocumentApprovingIsLookedByApproverFieldName: String
-      read GetDocumentApprovingIsLookedByApproverFieldName
-      write SetDocumentApprovingIsLookedByApproverFieldName;
+      property ActualApproverIdFieldName: String
+      read GetActualApproverIdFieldName
+      write SetActualApproverIdFieldName;
 
-      property DocumentApproverIdFieldName: String
-      read GetDocumentApproverIdFieldName write SetDocumentApproverIdFieldName;
-      
-      property DocumentApproverLeaderIdFieldName: String
-      read GetDocumentApproverLeaderIdFieldName write SetDocumentApproverLeaderIdFieldName;
+      property ActualApproverLeaderIdFieldName: String
+      read GetActualApproverLeaderIdFieldName
+      write SetActualApproverLeaderIdFieldName;
 
-      property DocumentApproverIsForeignFieldName: String
-      read GetDocumentApproverIsForeignFieldName
-      write SetDocumentApproverIsForeignFieldName;
+      property ActualApproverIsForeignFieldName: String
+      read GetActualApproverIsForeignFieldName
+      write SetActualApproverIsForeignFieldName;
       
-      property DocumentApproverNameFieldName: String
-      read GetDocumentApproverNameFieldName write SetDocumentApproverNameFieldName;
+      property ActualApproverNameFieldName: String
+      read GetActualApproverNameFieldName
+      write SetActualApproverNameFieldName;
       
-      property DocumentApproverSpecialityFieldName: String
-      read GetDocumentApproverSpecialityFieldName
-      write SetDocumentApproverSpecialityFieldName;
+      property ActualApproverSpecialityFieldName: String
+      read GetActualApproverSpecialityFieldName
+      write SetActualApproverSpecialityFieldName;
       
-      property DocumentApproverDepartmentIdFieldName: String
-      read GetDocumentApproverDepartmentIdFieldName
-      write SetDocumentApproverDepartmentIdFieldName;
+      property ActualApproverDepartmentIdFieldName: String
+      read GetActualApproverDepartmentIdFieldName
+      write SetActualApproverDepartmentIdFieldName;
       
-      property DocumentApproverDepartmentCodeFieldName: String
-      read GetDocumentApproverDepartmentCodeFieldName
-      write SetDocumentApproverDepartmentCodeFieldName;
-
-      property DocumentApproverDepartmentNameFieldName: String
-      read GetDocumentApproverDepartmentNameFieldName
-      write SetDocumentApproverDepartmentNameFieldName;
-
-      property DocumentActualApproverIdFieldName: String
-      read GetDocumentActualApproverIdFieldName
-      write SetDocumentActualApproverIdFieldName;
-
-      property DocumentActualApproverLeaderIdFieldName: String
-      read GetDocumentActualApproverLeaderIdFieldName
-      write SetDocumentActualApproverLeaderIdFieldName;
-
-      property DocumentActualApproverIsForeignFieldName: String
-      read GetDocumentActualApproverIsForeignFieldName
-      write SetDocumentActualApproverIsForeignFieldName;
+      property ActualApproverDepartmentCodeFieldName: String
+      read GetActualApproverDepartmentCodeFieldName
+      write SetActualApproverDepartmentCodeFieldName;
       
-      property DocumentActualApproverNameFieldName: String
-      read GetDocumentActualApproverNameFieldName
-      write SetDocumentActualApproverNameFieldName;
-      
-      property DocumentActualApproverSpecialityFieldName: String
-      read GetDocumentActualApproverSpecialityFieldName
-      write SetDocumentActualApproverSpecialityFieldName;
-      
-      property DocumentActualApproverDepartmentIdFieldName: String
-      read GetDocumentActualApproverDepartmentIdFieldName
-      write SetDocumentActualApproverDepartmentIdFieldName;
-      
-      property DocumentActualApproverDepartmentCodeFieldName: String
-      read GetDocumentActualApproverDepartmentCodeFieldName
-      write SetDocumentActualApproverDepartmentCodeFieldName;
-      
-      property DocumentActualApproverDepartmentNameFieldName: String
-      read GetDocumentActualApproverDepartmentNameFieldName
-      write SetDocumentActualApproverDepartmentNameFieldName;
+      property ActualApproverDepartmentNameFieldName: String
+      read GetActualApproverDepartmentNameFieldName
+      write SetActualApproverDepartmentNameFieldName;
 
     public
 
       property DocumentInfoFieldNames: TDocumentInfoFieldNames
-      read FDocumentInfoFieldNames write SetDocumentInfoFieldNames;
+      read FDocumentInfoFieldNames write SetInfoFieldNames;
 
-      property DocumentApprovingsInfoFieldNames: TDocumentApprovingsInfoFieldNames
-      read FDocumentApprovingsInfoFieldNames write FDocumentApprovingsInfoFieldNames;
+      property ApprovingsInfoFieldNames: TDocumentApprovingsInfoFieldNames
+      read FApprovingsInfoFieldNames write FApprovingsInfoFieldNames;
       
-      property DocumentChargesInfoFieldNames: TDocumentChargesInfoFieldNames
-      read FDocumentChargesInfoFieldNames write FDocumentChargesInfoFieldNames;
+      property ChargesInfoFieldNames: TDocumentChargesInfoFieldNames
+      read FChargesInfoFieldNames write FChargesInfoFieldNames;
 
-      property DocumentChargeSheetsInfoFieldNames: TDocumentChargeSheetsInfoFieldNames
-      read FDocumentChargeSheetsInfoFieldNames write FDocumentChargeSheetsInfoFieldNames;
+      property ChargeSheetsInfoFieldNames: TDocumentChargeSheetsInfoFieldNames
+      read FChargeSheetsInfoFieldNames write FChargeSheetsInfoFieldNames;
 
-      property DocumentRelationsInfoFieldNames: TDocumentRelationsInfoFieldNames
-      read FDocumentRelationsInfoFieldNames write SetDocumentRelationsInfoFieldNames;
+      property RelationsInfoFieldNames: TDocumentRelationsInfoFieldNames
+      read FRelationsInfoFieldNames write SetRelationsInfoFieldNames;
       
-      property DocumentFilesInfoFieldNames: TDocumentFilesInfoFieldNames
-      read FDocumentFilesInfoFieldNames write SetDocumentFilesInfoFieldNames;
+      property FilesInfoFieldNames: TDocumentFilesInfoFieldNames
+      read FFilesInfoFieldNames write SetFilesInfoFieldNames;
       
   end;
 
@@ -865,16 +828,16 @@ type
 
     protected
 
-      procedure SetDocumentApprovingsInfoHolder(const Value: TDocumentApprovingsInfoHolder); virtual;
+      procedure SetApprovingsInfoHolder(const Value: TDocumentApprovingsInfoHolder); virtual;
 
-      procedure SetDocumentChargesInfoHolder(const Value: TDocumentChargesInfoHolder); virtual;
+      procedure SetChargesInfoHolder(const Value: TDocumentChargesInfoHolder); virtual;
 
-      procedure SetDocumentChargeSheetsInfoHolder(const Value: TDocumentChargeSheetsInfoHolder); virtual;
+      procedure SetChargeSheetsInfoHolder(const Value: TDocumentChargeSheetsInfoHolder); virtual;
 
-      procedure SetDocumentFilesInfoHolder(const Value: TDocumentFilesInfoHolder); virtual;
+      procedure SetFilesInfoHolder(const Value: TDocumentFilesInfoHolder); virtual;
       procedure SetDocumentInfoHolder(const Value: TDocumentInfoHolder); virtual;
 
-      procedure SetDocumentRelationsInfoHolder(const Value: TDocumentRelationsInfoHolder); virtual;
+      procedure SetRelationsInfoHolder(const Value: TDocumentRelationsInfoHolder); virtual;
 
       procedure SetFieldNames(const Value: TDocumentFullInfoDataSetFieldNames); virtual;
 
@@ -883,179 +846,173 @@ type
       FDocumentInfoHolder: TDocumentInfoHolder;
       FFreeDocumentInfoHolder: IDisposable;
 
-      FDocumentApprovingsInfoHolder: TDocumentApprovingsInfoHolder;
-      FFreeDocumentApprovingsInfoHolder: IDisposable;
+      FApprovingsInfoHolder: TDocumentApprovingsInfoHolder;
+      FFreeApprovingsInfoHolder: IDisposable;
       
-      FDocumentChargesInfoHolder: TDocumentChargesInfoHolder;
-      FFreeDocumentChargesInfoHolder: IDisposable;
+      FChargesInfoHolder: TDocumentChargesInfoHolder;
+      FFreeChargesInfoHolder: IDisposable;
       
-      FDocumentChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder;
-      FFreeDocumentChargeSheetsInfoHolder: IDisposable;
+      FChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder;
+      FFreeChargeSheetsInfoHolder: IDisposable;
       
-      FDocumentRelationsInfoHolder: TDocumentRelationsInfoHolder;
-      FFreeDocumentRelationsInfoHolder: IDisposable;
+      FRelationsInfoHolder: TDocumentRelationsInfoHolder;
+      FFreeRelationsInfoHolder: IDisposable;
       
-      FDocumentFilesInfoHolder: TDocumentFilesInfoHolder;
-      FFreeDocumentFilesInfoHolder: IDisposable;
+      FFilesInfoHolder: TDocumentFilesInfoHolder;
+      FFreeFilesInfoHolder: IDisposable;
 
       procedure Initialize; override;
 
       function CreateDocumentInfoHolderInstance: TDocumentInfoHolder; virtual;
-      function CreateDocumentApprovingsInfoHolderInstance: TDocumentApprovingsInfoHolder; virtual;
-      function CreateDocumentChargesInfoHolderInstance: TDocumentChargesInfoHolder; virtual;
-      function CreateDocumentChargeSheetsInfoHolderInstance: TDocumentChargeSheetsInfoHolder; virtual;
-      function CreateDocumentRelationsInfoHolderInstance: TDocumentRelationsInfoHolder; virtual;
-      function CreateDocumentFilesInfoHolderInstance: TDocumentFilesInfoHolder; virtual;
+      function CreateApprovingsInfoHolderInstance: TDocumentApprovingsInfoHolder; virtual;
+      function CreateChargesInfoHolderInstance: TDocumentChargesInfoHolder; virtual;
+      function CreateChargeSheetsInfoHolderInstance: TDocumentChargeSheetsInfoHolder; virtual;
+      function CreateRelationsInfoHolderInstance: TDocumentRelationsInfoHolder; virtual;
+      function CreateFilesInfoHolderInstance: TDocumentFilesInfoHolder; virtual;
 
       function CreateDocumentInfoHolder: TDocumentInfoHolder; virtual;
-      function CreateDocumentApprovingsInfoHolder: TDocumentApprovingsInfoHolder; virtual;
-      function CreateDocumentChargesInfoHolder: TDocumentChargesInfoHolder; virtual;
-      function CreateDocumentChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder; virtual;
-      function CreateDocumentRelationsInfoHolder: TDocumentRelationsInfoHolder; virtual;
-      function CreateDocumentFilesInfoHolder: TDocumentFilesInfoHolder; virtual;
+      function CreateApprovingsInfoHolder: TDocumentApprovingsInfoHolder; virtual;
+      function CreateChargesInfoHolder: TDocumentChargesInfoHolder; virtual;
+      function CreateChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder; virtual;
+      function CreateRelationsInfoHolder: TDocumentRelationsInfoHolder; virtual;
+      function CreateFilesInfoHolder: TDocumentFilesInfoHolder; virtual;
       
       procedure UpdateDataSet(Holder: TAbstractDataSetHolder);
 
       class function GetDataSetFieldDefsClass: TAbstractDataSetFieldDefsClass; override;
 
-      function GetDocumentAuthorDepartmentCodeFieldValue: String;
-      function GetDocumentAuthorDepartmentIdFieldValue: Variant;
-      function GetDocumentAuthorDepartmentNameFieldValue: String;
-      function GetDocumentAuthorIdFieldValue: Variant;
-      function GetDocumentChargeIsForAcquaitanceFieldValue: Boolean;
-      function GetDocumentProductCodeFieldValue: String;
-      function GetDocumentChargeSheetIsForAcquaitanceFieldValue: Boolean;
-      function GetDocumentAuthorNameFieldValue: String;
-      function GetDocumentChargeActualPerformerDepartmentCodeFieldValue: String;
-      function GetDocumentChargeActualPerformerDepartmentIdFieldValue: Variant;
-      function GetDocumentChargeActualPerformerDepartmentNameFieldValue: String;
-      function GetDocumentChargeActualPerformerIdFieldValue: Variant;
-      function GetDocumentChargeActualPerformerNameFieldValue: String;
-      function GetDocumentChargeActualPerformerSpecialityFieldValue: String;
-      function GetDocumentChargeIdFieldValue: Variant;
-      function GetDocumentChargePerformerDepartmentCodeFieldValue: String;
-      function GetDocumentChargePerformerDepartmentIdFieldValue: Variant;
-      function GetDocumentChargePerformerDepartmentNameFieldValue: String;
-      function GetDocumentChargePerformerIdFieldValue: Variant;
-      function GetDocumentChargePerformerNameFieldValue: String;
-      function GetDocumentChargePerformerSpecialityFieldValue: String;
-      function GetDocumentChargePerformingDateTimeFieldValue: Variant;
-      function GetDocumentChargePeriodEndFieldValue: Variant;
-      function GetDocumentChargePeriodStartFieldValue: Variant;
-      function GetDocumentChargeResponseFieldValue: String;
-      function GetDocumentChargeTextFieldValue: String;
-      function GetDocumentContentFieldName: String;
-      function GetDocumentNoteFieldValue: String;
-      function GetDocumentIsSelfRegisteredFieldValue: Variant;
-      function GetDocumentCreationDateFieldValue: TDateTime;
-      function GetDocumentDateFieldValue: Variant;
-      function GetDocumentCurrentWorkCycleStageNameFieldValue: String;
-      function GetDocumentCurrentWorkCycleStageNumberFieldValue: Integer;
-      function GetDocumentFileIdFieldValue: Variant;
-      function GetDocumentFileNameFieldValue: String;
-      function GetDocumentFilePathFieldValue: String;
-      function GetDocumentIdFieldValue: Variant;
-      function GetBaseDocumentIdFieldValue: Variant;
-      function GetDocumentKindFieldValue: String;
-      function GetDocumentNameFieldValue: String;
-      function GetDocumentNumberFieldValue: String;
-      function GetDocumentResponsibleDepartmentCodeFieldValue: String;
-      function GetDocumentResponsibleDepartmentIdFieldValue: Variant;
-      function GetDocumentResponsibleDepartmentNameFieldValue: String;
-      function GetDocumentResponsibleIdFieldValue: Variant;
-      function GetDocumentResponsibleNameFieldValue: String;
-      function GetDocumentResponsibleTelephoneNumberFieldValue: String;
-      function GetDocumentSignerDepartmentCodeFieldValue: String;
-      function GetDocumentSignerDepartmentIdFieldValue: Variant;
-      function GetDocumentSignerDepartmentNameFieldValue: String;
-      function GetDocumentSignerIdFieldValue: Variant;
-      function GetDocumentSignerNameFieldValue: String;
-      function GetDocumentSignerSpecialityFieldValue: String;
-      function GetDocumentSigningDateFieldValue: Variant;
-      function GetDocumentSigningIdFieldValue: Variant;
+      function GetAuthorDepartmentCodeFieldValue: String;
+      function GetAuthorDepartmentIdFieldValue: Variant;
+      function GetAuthorDepartmentNameFieldValue: String;
+      function GetAuthorIdFieldValue: Variant;
+      function GetChargeIsForAcquaitanceFieldValue: Boolean;
+      function GetProductCodeFieldValue: String;
+      function GetChargeSheetIsForAcquaitanceFieldValue: Boolean;
+      function GetAuthorNameFieldValue: String;
+      function GetChargeActualPerformerDepartmentCodeFieldValue: String;
+      function GetChargeActualPerformerDepartmentIdFieldValue: Variant;
+      function GetChargeActualPerformerDepartmentNameFieldValue: String;
+      function GetChargeActualPerformerIdFieldValue: Variant;
+      function GetChargeActualPerformerNameFieldValue: String;
+      function GetChargeActualPerformerSpecialityFieldValue: String;
+      function GetChargeIdFieldValue: Variant;
+      function GetChargePerformerDepartmentCodeFieldValue: String;
+      function GetChargePerformerDepartmentIdFieldValue: Variant;
+      function GetChargePerformerDepartmentNameFieldValue: String;
+      function GetChargePerformerIdFieldValue: Variant;
+      function GetChargePerformerNameFieldValue: String;
+      function GetChargePerformerSpecialityFieldValue: String;
+      function GetChargePerformingDateTimeFieldValue: Variant;
+      function GetChargeTimeFrameDeadlineFieldValue: Variant;
+      function GetChargeTimeFrameStartFieldValue: Variant;
+      function GetChargeResponseFieldValue: String;
+      function GetChargeTextFieldValue: String;
+      function GetContentFieldName: String;
+      function GetNoteFieldValue: String;
+      function GetIsSelfRegisteredFieldValue: Variant;
+      function GetCreationDateFieldValue: TDateTime;
+      function GetDateFieldValue: Variant;
+      function GetCurrentWorkCycleStageNameFieldValue: String;
+      function GetCurrentWorkCycleStageNumberFieldValue: Integer;
+      function GetFileIdFieldValue: Variant;
+      function GetFileNameFieldValue: String;
+      function GetFilePathFieldValue: String;
+      function GetIdFieldValue: Variant;
+      function GetBaseIdFieldValue: Variant;
+      function GetKindFieldValue: String;
+      function GetNameFieldValue: String;
+      function GetNumberFieldValue: String;
+      function GetResponsibleDepartmentCodeFieldValue: String;
+      function GetResponsibleDepartmentIdFieldValue: Variant;
+      function GetResponsibleDepartmentNameFieldValue: String;
+      function GetResponsibleIdFieldValue: Variant;
+      function GetResponsibleNameFieldValue: String;
+      function GetResponsibleTelephoneNumberFieldValue: String;
+      function GetSignerDepartmentCodeFieldValue: String;
+      function GetSignerDepartmentIdFieldValue: Variant;
+      function GetSignerDepartmentNameFieldValue: String;
+      function GetSignerIdFieldValue: Variant;
+      function GetSignerNameFieldValue: String;
+      function GetSignerSpecialityFieldValue: String;
+      function GetSigningDateFieldValue: Variant;
+      function GetSigningIdFieldValue: Variant;
       function GetRelatedDocumentDateFieldValue: TDateTime;
-      function GetDocumentRelationIdFieldValue: Variant;
+      function GetRelationIdFieldValue: Variant;
       function GetRelatedDocumentIdFieldValue: Variant;
       function GetRelatedDocumentKindIdFieldValue: Variant;
       function GetRelatedDocumentKindNameFieldValue: String;
       function GetRelatedDocumentNameFieldValue: String;
       function GetRelatedDocumentNumberFieldValue: String;
-      function GetDocumentActualSignerDepartmentCodeFieldValue: String;
-      function GetDocumentActualSignerDepartmentIdFieldValue: Variant;
-      function GetDocumentActualSignerDepartmentNameFieldValue: String;
-      function GetDocumentActualSignerIdFieldValue: Variant;
-      function GetDocumentActualSignerNameFieldValue: String;
-      function GetDocumentActualSignerSpecialityFieldValue: String;
-      function GetDocumentChargeSheetActualPerformerDepartmentCodeFieldValue: String;
-      function GetDocumentChargeSheetActualPerformerDepartmentIdFieldValue: Variant;
-      function GetDocumentChargeSheetActualPerformerDepartmentNameFieldValue: String;
-      function GetDocumentChargeSheetActualPerformerIdFieldValue: Variant;
-      function GetDocumentChargeSheetActualPerformerNameFieldValue: String;
-      function GetDocumentChargeSheetActualPerformerSpecialityFieldValue: String;
-      function GetDocumentChargeSheetIdFieldValue: Variant;
-      function GetDocumentChargeSheetPerformerDepartmentCodeFieldValue: String;
-      function GetDocumentChargeSheetPerformerDepartmentIdFieldValue: Variant;
-      function GetDocumentChargeSheetPerformerDepartmentNameFieldValue: String;
-      function GetDocumentChargeSheetPerformerIdFieldValue: Variant;
-      function GetDocumentChargeSheetPerformerNameFieldValue: String;
-      function GetDocumentChargeSheetPerformerSpecialityFieldValue: String;
-      function GetDocumentChargeSheetIssuingDateTimeFieldValue: Variant;
-      function GetDocumentChargeSheetPerformingDateTimeFieldValue: Variant;
-      function GetDocumentChargeSheetPeriodEndFieldValue: Variant;
-      function GetDocumentChargeSheetPeriodStartFieldValue: Variant;
-      function GetDocumentChargeSheetResponseFieldValue: String;
-      function GetDocumentChargeSheetSenderDepartmentCodeFieldValue: String;
-      function GetDocumentChargeSheetSenderDepartmentIdFieldValue: Variant;
-      function GetDocumentChargeSheetSenderDepartmentNameFieldValue: String;
-      function GetDocumentChargeSheetSenderIdFieldValue: Variant;
-      function GetDocumentChargeSheetSenderNameFieldValue: String;
-      function GetDocumentChargeSheetSenderSpecialityFieldValue: String;
-      function GetDocumentChargeSheetTextFieldValue: String;
+      function GetActualSignerDepartmentCodeFieldValue: String;
+      function GetActualSignerDepartmentIdFieldValue: Variant;
+      function GetActualSignerDepartmentNameFieldValue: String;
+      function GetActualSignerIdFieldValue: Variant;
+      function GetActualSignerNameFieldValue: String;
+      function GetActualSignerSpecialityFieldValue: String;
+      function GetChargeSheetActualPerformerDepartmentCodeFieldValue: String;
+      function GetChargeSheetActualPerformerDepartmentIdFieldValue: Variant;
+      function GetChargeSheetActualPerformerDepartmentNameFieldValue: String;
+      function GetChargeSheetActualPerformerIdFieldValue: Variant;
+      function GetChargeSheetActualPerformerNameFieldValue: String;
+      function GetChargeSheetActualPerformerSpecialityFieldValue: String;
+      function GetChargeSheetIdFieldValue: Variant;
+      function GetChargeSheetChargeIdFieldValue: Variant;
+      function GetChargeSheetPerformerDepartmentCodeFieldValue: String;
+      function GetChargeSheetPerformerDepartmentIdFieldValue: Variant;
+      function GetChargeSheetPerformerDepartmentNameFieldValue: String;
+      function GetChargeSheetPerformerIdFieldValue: Variant;
+      function GetChargeSheetPerformerNameFieldValue: String;
+      function GetChargeSheetPerformerSpecialityFieldValue: String;
+      function GetChargeSheetIssuingDateTimeFieldValue: Variant;
+      function GetChargeSheetPerformingDateTimeFieldValue: Variant;
+      function GetChargeSheetTimeFrameDeadlineFieldValue: Variant;
+      function GetChargeSheetTimeFrameStartFieldValue: Variant;
+      function GetChargeSheetResponseFieldValue: String;
+      function GetChargeSheetIssuerDepartmentCodeFieldValue: String;
+      function GetChargeSheetIssuerDepartmentIdFieldValue: Variant;
+      function GetChargeSheetIssuerDepartmentNameFieldValue: String;
+      function GetChargeSheetIssuerIdFieldValue: Variant;
+      function GetChargeSheetIssuerNameFieldValue: String;
+      function GetChargeSheetIssuerSpecialityFieldValue: String;
+      function GetChargeSheetChargeTextFieldValue: String;
       function GetTopLevelChargeSheetIdFieldValue: Variant;
-      function GetDocumentActualSignerLeaderIdFieldValue: Variant;
-      function GetDocumentAuthorLeaderIdFieldValue: Variant;
-      function GetDocumentChargeActualPerformerIsForeignFieldValue: Boolean;
-      function GetDocumentChargeActualPerformerLeaderIdFieldValue: Variant;
-      function GetDocumentChargePerformerIsForeignFieldValue: Boolean;
-      function GetDocumentChargePerformerLeaderIdFieldValue: Variant;
-      function GetDocumentChargeSheetActualPerformerIsForeignFieldValue: Boolean;
-      function GetDocumentChargeSheetActualPerformerLeaderIdFieldValue: Variant;
-      function GetDocumentChargeSheetPerformerIsForeignFieldValue: Boolean;
-      function GetDocumentChargeSheetPerformerLeaderIdFieldValue: Variant;
-      function GetDocumentChargeSheetSenderIsForeignFieldValue: Boolean;
-      function GetDocumentChargeSheetSenderLeaderIdFieldValue: Variant;
-      function GetDocumentSignerLeaderIdFieldValue: Variant;
-      function GetDocumentKindIdFieldValue: Variant;
-      function GetDocumentAuthorSpecialityFieldValue: String;
-      function GetDocumentActualApproverDepartmentCodeFieldValue: String;
-      function GetDocumentActualApproverDepartmentIdFieldValue: Variant;
-      function GetDocumentActualApproverDepartmentNameFieldValue: String;
-      function GetDocumentActualApproverIdFieldValue: Variant;
-      function GetDocumentActualApproverIsForeignFieldValue: Boolean;
-      function GetDocumentActualApproverLeaderIdFieldValue: Variant;
-      function GetDocumentActualApproverNameFieldValue: String;
-      function GetDocumentActualApproverSpecialityFieldValue: String;
-      function GetDocumentApproverDepartmentCodeFieldValue: String;
-      function GetDocumentApproverDepartmentIdFieldValue: Variant;
-      function GetDocumentApproverDepartmentNameFieldValue: String;
-      function GetDocumentApproverIdFieldValue: Variant;
-      function GetDocumentApproverIsForeignFieldValue: Boolean;
-      function GetDocumentApproverLeaderIdFieldValue: Variant;
-      function GetDocumentApprovingIsAccessibleFieldValue: Boolean;
-      function GetDocumentApproverNameFieldValue: String;
-      function GetDocumentApproverSpecialityFieldValue: String;
-      function GetDocumentApprovingCycleIdFieldValue: Variant;
-      function GetDocumentApprovingCycleNumberFieldValue: Variant;
-      function GetDocumentApprovingIdFieldValue: Variant;
-      function GetDocumentApprovingIsCompletedFieldValue: Boolean;
-      function GetDocumentApprovingNoteFieldValue: String;
-      function GetDocumentApprovingPerformingDateTimeFieldValue: Variant;
-      function GetDocumentApprovingPerformingResultFieldValue: String;
-      function GetDocumentApprovingPerformingResultIdFieldValue: Variant;
-      function GetDocumentApprovingIsLookedByApproverFieldValue: Boolean;
-      function GetDocumentChargeSheetViewingDateByPerformerFieldValue: Variant;
-      function GetDocumentChargeSheetPerformerRoleIdFieldValue: Variant; { временно, из-за неадаптированной предыдущей версии программы }
+      function GetActualSignerLeaderIdFieldValue: Variant;
+      function GetAuthorLeaderIdFieldValue: Variant;
+      function GetChargePerformerIsForeignFieldValue: Boolean;
+      function GetChargeSheetPerformerIsForeignFieldValue: Boolean;
+      function GetChargeSheetIssuerIsForeignFieldValue: Boolean;
+      function GetSignerLeaderIdFieldValue: Variant;
+      function GetKindIdFieldValue: Variant;
+      function GetAuthorSpecialityFieldValue: String;
+      function GetActualApproverDepartmentCodeFieldValue: String;
+      function GetActualApproverDepartmentIdFieldValue: Variant;
+      function GetActualApproverDepartmentNameFieldValue: String;
+      function GetActualApproverIdFieldValue: Variant;
+      function GetActualApproverIsForeignFieldValue: Boolean;
+      function GetActualApproverLeaderIdFieldValue: Variant;
+      function GetActualApproverNameFieldValue: String;
+      function GetActualApproverSpecialityFieldValue: String;
+      function GetApproverDepartmentCodeFieldValue: String;
+      function GetApproverDepartmentIdFieldValue: Variant;
+      function GetApproverDepartmentNameFieldValue: String;
+      function GetApproverIdFieldValue: Variant;
+      function GetApproverIsForeignFieldValue: Boolean;
+      function GetApproverLeaderIdFieldValue: Variant;
+      function GetApprovingIsAccessibleFieldValue: Boolean;
+      function GetApproverNameFieldValue: String;
+      function GetApproverSpecialityFieldValue: String;
+      function GetApprovingCycleIdFieldValue: Variant;
+      function GetApprovingCycleNumberFieldValue: Variant;
+      function GetApprovingIdFieldValue: Variant;
+      function GetApprovingIsCompletedFieldValue: Boolean;
+      function GetApprovingNoteFieldValue: String;
+      function GetApprovingPerformingDateTimeFieldValue: Variant;
+      function GetApprovingPerformingResultFieldValue: String;
+      function GetApprovingPerformingResultIdFieldValue: Variant;
+      function GetApprovingIsLookedByApproverFieldValue: Boolean;
+      function GetChargeSheetViewDateByPerformerFieldValue: Variant;
       function GetChargeSheetDocumentIdFieldValue: Variant;
+      function GetChargeSheetDocumentKindIdFieldValue: Variant;
 
     protected
 
@@ -1066,230 +1023,221 @@ type
       property DocumentInfoHolder: TDocumentInfoHolder
       read FDocumentInfoHolder write SetDocumentInfoHolder;
       
-      property DocumentApprovingsInfoHolder: TDocumentApprovingsInfoHolder
-      read FDocumentApprovingsInfoHolder write SetDocumentApprovingsInfoHolder;
+      property ApprovingsInfoHolder: TDocumentApprovingsInfoHolder
+      read FApprovingsInfoHolder write SetApprovingsInfoHolder;
 
-      property DocumentChargesInfoHolder: TDocumentChargesInfoHolder
-      read FDocumentChargesInfoHolder write SetDocumentChargesInfoHolder;
+      property ChargesInfoHolder: TDocumentChargesInfoHolder
+      read FChargesInfoHolder write SetChargesInfoHolder;
 
-      property DocumentChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder
-      read FDocumentChargeSheetsInfoHolder write SetDocumentChargeSheetsInfoHolder;
+      property ChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder
+      read FChargeSheetsInfoHolder write SetChargeSheetsInfoHolder;
 
-      property DocumentRelationsInfoHolder: TDocumentRelationsInfoHolder
-      read FDocumentRelationsInfoHolder write SetDocumentRelationsInfoHolder;
+      property RelationsInfoHolder: TDocumentRelationsInfoHolder
+      read FRelationsInfoHolder write SetRelationsInfoHolder;
 
-      property DocumentFilesInfoHolder: TDocumentFilesInfoHolder
-      read FDocumentFilesInfoHolder write SetDocumentFilesInfoHolder;
+      property FilesInfoHolder: TDocumentFilesInfoHolder
+      read FFilesInfoHolder write SetFilesInfoHolder;
 
       property FieldNames: TDocumentFullInfoDataSetFieldNames
       read GetFieldNames write SetFieldNames;
       
-      property DocumentIdFieldValue: Variant
-      read GetDocumentIdFieldValue;
+      property IdFieldValue: Variant
+      read GetIdFieldValue;
 
-      property BaseDocumentIdFieldValue: Variant
-      read GetBaseDocumentIdFieldValue;
+      property BaseIdFieldValue: Variant
+      read GetBaseIdFieldValue;
 
-      property DocumentNumberFieldValue: String
-      read GetDocumentNumberFieldValue;
+      property NumberFieldValue: String
+      read GetNumberFieldValue;
 
-      property DocumentNameFieldValue: String
-      read GetDocumentNameFieldValue;
+      property NameFieldValue: String
+      read GetNameFieldValue;
 
-      property DocumentContentFieldValue: String
-      read GetDocumentContentFieldName;
+      property ContentFieldValue: String
+      read GetContentFieldName;
 
-      property DocumentNoteFieldValue: String
-      read GetDocumentNoteFieldValue;
+      property NoteFieldValue: String
+      read GetNoteFieldValue;
 
-      property DocumentProductCodeFieldValue: String
-      read GetDocumentProductCodeFieldValue;
+      property ProductCodeFieldValue: String
+      read GetProductCodeFieldValue;
       
-      property DocumentCreationDateFieldValue: TDateTime
-      read GetDocumentCreationDateFieldValue;
+      property CreationDateFieldValue: TDateTime
+      read GetCreationDateFieldValue;
 
-      property DocumentDateFieldValue: Variant
-      read GetDocumentDateFieldValue;
+      property DateFieldValue: Variant
+      read GetDateFieldValue;
       
-      property DocumentKindFieldValue: String
-      read GetDocumentKindFieldValue;
+      property KindFieldValue: String
+      read GetKindFieldValue;
 
-      property DocumentKindIdFieldValue: Variant
-      read GetDocumentKindIdFieldValue;
+      property KindIdFieldValue: Variant
+      read GetKindIdFieldValue;
 
-      property DocumentCurrentWorkCycleStageNameFieldValue: String
-      read GetDocumentCurrentWorkCycleStageNameFieldValue;
+      property CurrentWorkCycleStageNameFieldValue: String
+      read GetCurrentWorkCycleStageNameFieldValue;
 
-      property DocumentCurrentWorkCycleStageNumberFieldValue: Integer
-      read GetDocumentCurrentWorkCycleStageNumberFieldValue;
+      property CurrentWorkCycleStageNumberFieldValue: Integer
+      read GetCurrentWorkCycleStageNumberFieldValue;
 
-      property DocumentAuthorIdFieldValue: Variant
-      read GetDocumentAuthorIdFieldValue;
+      property AuthorIdFieldValue: Variant
+      read GetAuthorIdFieldValue;
 
-      property DocumentAuthorLeaderIdFieldValue: Variant
-      read GetDocumentAuthorLeaderIdFieldValue;
+      property AuthorLeaderIdFieldValue: Variant
+      read GetAuthorLeaderIdFieldValue;
 
-      property DocumentAuthorNameFieldValue: String
-      read GetDocumentAuthorNameFieldValue;
+      property AuthorNameFieldValue: String
+      read GetAuthorNameFieldValue;
 
-      property DocumentAuthorSpecialityFieldValue: String
-      read GetDocumentAuthorSpecialityFieldValue;
+      property AuthorSpecialityFieldValue: String
+      read GetAuthorSpecialityFieldValue;
       
-      property DocumentAuthorDepartmentIdFieldValue: Variant
-      read GetDocumentAuthorDepartmentIdFieldValue;
+      property AuthorDepartmentIdFieldValue: Variant
+      read GetAuthorDepartmentIdFieldValue;
       
-      property DocumentAuthorDepartmentCodeFieldValue: String
-      read GetDocumentAuthorDepartmentCodeFieldValue;
+      property AuthorDepartmentCodeFieldValue: String
+      read GetAuthorDepartmentCodeFieldValue;
 
-      property DocumentAuthorDepartmentNameFieldValue: String
-      read GetDocumentAuthorDepartmentNameFieldValue;
+      property AuthorDepartmentNameFieldValue: String
+      read GetAuthorDepartmentNameFieldValue;
       
-      property DocumentResponsibleIdFieldValue: Variant
-      read GetDocumentResponsibleIdFieldValue;
+      property ResponsibleIdFieldValue: Variant
+      read GetResponsibleIdFieldValue;
 
-      property DocumentResponsibleNameFieldValue: String
-      read GetDocumentResponsibleNameFieldValue;
+      property ResponsibleNameFieldValue: String
+      read GetResponsibleNameFieldValue;
 
-      property DocumentResponsibleTelephoneNumberFieldValue: String
-      read GetDocumentResponsibleTelephoneNumberFieldValue;
+      property ResponsibleTelephoneNumberFieldValue: String
+      read GetResponsibleTelephoneNumberFieldValue;
       
-      property DocumentResponsibleDepartmentIdFieldValue: Variant
-      read GetDocumentResponsibleDepartmentIdFieldValue;
+      property ResponsibleDepartmentIdFieldValue: Variant
+      read GetResponsibleDepartmentIdFieldValue;
       
-      property DocumentResponsibleDepartmentCodeFieldValue: String
-      read GetDocumentResponsibleDepartmentCodeFieldValue;
+      property ResponsibleDepartmentCodeFieldValue: String
+      read GetResponsibleDepartmentCodeFieldValue;
 
-      property DocumentResponsibleDepartmentNameFieldValue: String
-      read GetDocumentResponsibleDepartmentNameFieldValue;
+      property ResponsibleDepartmentNameFieldValue: String
+      read GetResponsibleDepartmentNameFieldValue;
       
-      property DocumentSigningIdFieldValue: Variant
-      read GetDocumentSigningIdFieldValue;
+      property SigningIdFieldValue: Variant
+      read GetSigningIdFieldValue;
 
-      property DocumentSigningDateFieldValue: Variant
-      read GetDocumentSigningDateFieldValue;
+      property SigningDateFieldValue: Variant
+      read GetSigningDateFieldValue;
       
-      property DocumentSignerIdFieldValue: Variant
-      read GetDocumentSignerIdFieldValue;
+      property SignerIdFieldValue: Variant
+      read GetSignerIdFieldValue;
 
-      property DocumentSignerLeaderIdFieldValue: Variant
-      read GetDocumentSignerLeaderIdFieldValue;
+      property SignerLeaderIdFieldValue: Variant
+      read GetSignerLeaderIdFieldValue;
 
-      property DocumentSignerNameFieldValue: String
-      read GetDocumentSignerNameFieldValue;
+      property SignerNameFieldValue: String
+      read GetSignerNameFieldValue;
 
-      property DocumentSignerSpecialityFieldValue: String
-      read GetDocumentSignerSpecialityFieldValue;
+      property SignerSpecialityFieldValue: String
+      read GetSignerSpecialityFieldValue;
       
-      property DocumentSignerDepartmentIdFieldValue: Variant
-      read GetDocumentSignerDepartmentIdFieldValue;
+      property SignerDepartmentIdFieldValue: Variant
+      read GetSignerDepartmentIdFieldValue;
       
-      property DocumentSignerDepartmentCodeFieldValue: String
-      read GetDocumentSignerDepartmentCodeFieldValue;
+      property SignerDepartmentCodeFieldValue: String
+      read GetSignerDepartmentCodeFieldValue;
       
-      property DocumentSignerDepartmentNameFieldValue: String
-      read GetDocumentSignerDepartmentNameFieldValue;
+      property SignerDepartmentNameFieldValue: String
+      read GetSignerDepartmentNameFieldValue;
 
-      property DocumentActualSignerIdFieldValue: Variant
-      read GetDocumentActualSignerIdFieldValue;
+      property ActualSignerIdFieldValue: Variant
+      read GetActualSignerIdFieldValue;
 
-      property DocumentActualSignerLeaderIdFieldValue: Variant
-      read GetDocumentActualSignerLeaderIdFieldValue;
+      property ActualSignerLeaderIdFieldValue: Variant
+      read GetActualSignerLeaderIdFieldValue;
 
-      property DocumentActualSignerNameFieldValue: String
-      read GetDocumentActualSignerNameFieldValue;
+      property ActualSignerNameFieldValue: String
+      read GetActualSignerNameFieldValue;
 
-      property DocumentActualSignerSpecialityFieldValue: String
-      read GetDocumentActualSignerSpecialityFieldValue;
+      property ActualSignerSpecialityFieldValue: String
+      read GetActualSignerSpecialityFieldValue;
       
-      property DocumentActualSignerDepartmentIdFieldValue: Variant
-      read GetDocumentActualSignerDepartmentIdFieldValue;
+      property ActualSignerDepartmentIdFieldValue: Variant
+      read GetActualSignerDepartmentIdFieldValue;
       
-      property DocumentActualSignerDepartmentCodeFieldValue: String
-      read GetDocumentActualSignerDepartmentCodeFieldValue;
+      property ActualSignerDepartmentCodeFieldValue: String
+      read GetActualSignerDepartmentCodeFieldValue;
       
-      property DocumentActualSignerDepartmentNameFieldValue: String
-      read GetDocumentActualSignerDepartmentNameFieldValue;
+      property ActualSignerDepartmentNameFieldValue: String
+      read GetActualSignerDepartmentNameFieldValue;
       
-      property DocumentChargeIdFieldValue: Variant
-      read GetDocumentChargeIdFieldValue;
+      property ChargeIdFieldValue: Variant
+      read GetChargeIdFieldValue;
       
-      property DocumentChargeTextFieldValue: String
-      read GetDocumentChargeTextFieldValue;
+      property ChargeTextFieldValue: String
+      read GetChargeTextFieldValue;
 
-      property DocumentChargeIsForAcquaitanceFieldValue: Boolean
-      read GetDocumentChargeIsForAcquaitanceFieldValue;
+      property ChargeIsForAcquaitanceFieldValue: Boolean
+      read GetChargeIsForAcquaitanceFieldValue;
       
-      property DocumentChargeResponseFieldValue: String
-      read GetDocumentChargeResponseFieldValue;
+      property ChargeResponseFieldValue: String
+      read GetChargeResponseFieldValue;
       
-      property DocumentChargePeriodStartFieldValue: Variant
-      read GetDocumentChargePeriodStartFieldValue;
+      property ChargeTimeFrameStartFieldValue: Variant
+      read GetChargeTimeFrameStartFieldValue;
 
-      property DocumentChargePeriodEndFieldValue: Variant
-      read GetDocumentChargePeriodEndFieldValue;
+      property ChargeTimeFrameDeadlineFieldValue: Variant
+      read GetChargeTimeFrameDeadlineFieldValue;
 
-      property DocumentChargePerformingDateTimeFieldValue: Variant
-      read GetDocumentChargePerformingDateTimeFieldValue;
+      property ChargePerformingDateTimeFieldValue: Variant
+      read GetChargePerformingDateTimeFieldValue;
       
-      property DocumentChargePerformerIdFieldValue: Variant
-      read GetDocumentChargePerformerIdFieldValue;
+      property ChargePerformerIdFieldValue: Variant
+      read GetChargePerformerIdFieldValue;
 
-      property DocumentChargePerformerLeaderIdFieldValue: Variant
-      read GetDocumentChargePerformerLeaderIdFieldValue;
+      property ChargePerformerIsForeignFieldValue: Boolean
+      read GetChargePerformerIsForeignFieldValue;
+      
+      property ChargePerformerNameFieldValue: String
+      read GetChargePerformerNameFieldValue;
+      
+      property ChargePerformerSpecialityFieldValue: String
+      read GetChargePerformerSpecialityFieldValue;
+      
+      property ChargePerformerDepartmentIdFieldValue: Variant
+      read GetChargePerformerDepartmentIdFieldValue;
+      
+      property ChargePerformerDepartmentCodeFieldValue: String
+      read GetChargePerformerDepartmentCodeFieldValue;
+      
+      property ChargePerformerDepartmentNameFieldValue: String
+      read GetChargePerformerDepartmentNameFieldValue;
 
-      property DocumentChargePerformerIsForeignFieldValue: Boolean
-      read GetDocumentChargePerformerIsForeignFieldValue;
-      
-      property DocumentChargePerformerNameFieldValue: String
-      read GetDocumentChargePerformerNameFieldValue;
-      
-      property DocumentChargePerformerSpecialityFieldValue: String
-      read GetDocumentChargePerformerSpecialityFieldValue;
-      
-      property DocumentChargePerformerDepartmentIdFieldValue: Variant
-      read GetDocumentChargePerformerDepartmentIdFieldValue;
-      
-      property DocumentChargePerformerDepartmentCodeFieldValue: String
-      read GetDocumentChargePerformerDepartmentCodeFieldValue;
-      
-      property DocumentChargePerformerDepartmentNameFieldValue: String
-      read GetDocumentChargePerformerDepartmentNameFieldValue;
-      
-      property DocumentChargeActualPerformerIdFieldValue: Variant
-      read GetDocumentChargeActualPerformerIdFieldValue;
+      property ChargeActualPerformerIdFieldValue: Variant
+      read GetChargeActualPerformerIdFieldValue;
 
-      property DocumentChargeActualPerformerLeaderIdFieldValue: Variant
-      read GetDocumentChargeActualPerformerLeaderIdFieldValue;
-
-      property DocumentChargeActualPerformerIsForeignFieldValue: Boolean
-      read GetDocumentChargeActualPerformerIsForeignFieldValue;
-
-      property DocumentChargeActualPerformerNameFieldValue: String
-      read GetDocumentChargeActualPerformerNameFieldValue;
+      property ChargeActualPerformerNameFieldValue: String
+      read GetChargeActualPerformerNameFieldValue;
       
-      property DocumentChargeActualPerformerSpecialityFieldValue: String
-      read GetDocumentChargeActualPerformerSpecialityFieldValue;
+      property ChargeActualPerformerSpecialityFieldValue: String
+      read GetChargeActualPerformerSpecialityFieldValue;
       
-      property DocumentChargeActualPerformerDepartmentIdFieldValue: Variant
-      read GetDocumentChargeActualPerformerDepartmentIdFieldValue;
+      property ChargeActualPerformerDepartmentIdFieldValue: Variant
+      read GetChargeActualPerformerDepartmentIdFieldValue;
       
-      property DocumentChargeActualPerformerDepartmentCodeFieldValue: String
-      read GetDocumentChargeActualPerformerDepartmentCodeFieldValue;
+      property ChargeActualPerformerDepartmentCodeFieldValue: String
+      read GetChargeActualPerformerDepartmentCodeFieldValue;
       
-      property DocumentChargeActualPerformerDepartmentNameFieldValue: String
-      read GetDocumentChargeActualPerformerDepartmentNameFieldValue;
+      property ChargeActualPerformerDepartmentNameFieldValue: String
+      read GetChargeActualPerformerDepartmentNameFieldValue;
       
-      property DocumentFileIdFieldValue: Variant
-      read GetDocumentFileIdFieldValue;
+      property FileIdFieldValue: Variant
+      read GetFileIdFieldValue;
 
-      property DocumentFileNameFieldValue: String
-      read GetDocumentFileNameFieldValue;
+      property FileNameFieldValue: String
+      read GetFileNameFieldValue;
 
-      property DocumentFilePathFieldValue: String
-      read GetDocumentFilePathFieldValue;
+      property FilePathFieldValue: String
+      read GetFilePathFieldValue;
 
-      property DocumentRelationIdFieldValue: Variant
-      read GetDocumentRelationIdFieldValue;
+      property RelationIdFieldValue: Variant
+      read GetRelationIdFieldValue;
       
       property RelatedDocumentIdFieldValue: Variant
       read GetRelatedDocumentIdFieldValue;
@@ -1308,196 +1256,186 @@ type
 
       property RelatedDocumentDateFieldValue: TDateTime
       read GetRelatedDocumentDateFieldValue;
+      
+      property ChargeSheetIdFieldValue: Variant
+      read GetChargeSheetIdFieldValue;
 
       property ChargeSheetDocumentIdFieldValue: Variant
       read GetChargeSheetDocumentIdFieldValue;
-      
-      property DocumentChargeSheetIdFieldValue: Variant
-      read GetDocumentChargeSheetIdFieldValue;
 
+      property ChargeSheetDocumentKindIdFieldValue: Variant
+      read GetChargeSheetDocumentKindIdFieldValue;
+
+      property ChargeSheetChargeIdFieldValue: Variant
+      read GetChargeSheetChargeIdFieldValue;
+      
       property TopLevelChargeSheetIdFieldValue: Variant
       read GetTopLevelChargeSheetIdFieldValue;
 
-      property DocumentChargeSheetTextFieldValue: String
-      read GetDocumentChargeSheetTextFieldValue;
+      property ChargeSheetChargeTextFieldValue: String
+      read GetChargeSheetChargeTextFieldValue;
 
-      property DocumentIsSelfRegisteredFieldValue: Variant
-      read GetDocumentIsSelfRegisteredFieldValue;
+      property IsSelfRegisteredFieldValue: Variant
+      read GetIsSelfRegisteredFieldValue;
       
-      property DocumentChargeSheetResponseFieldValue: String
-      read GetDocumentChargeSheetResponseFieldValue;
+      property ChargeSheetResponseFieldValue: String
+      read GetChargeSheetResponseFieldValue;
 
-      property DocumentChargeSheetIsForAcquaitanceFieldValue: Boolean
-      read GetDocumentChargeSheetIsForAcquaitanceFieldValue;
+      property ChargeSheetIsForAcquaitanceFieldValue: Boolean
+      read GetChargeSheetIsForAcquaitanceFieldValue;
       
-      property DocumentChargeSheetPeriodStartFieldValue: Variant
-      read GetDocumentChargeSheetPeriodStartFieldValue;
+      property ChargeSheetTimeFrameStartFieldValue: Variant
+      read GetChargeSheetTimeFrameStartFieldValue;
 
-      property DocumentChargeSheetPeriodEndFieldValue: Variant
-      read GetDocumentChargeSheetPeriodEndFieldValue;
+      property ChargeSheetTimeFrameDeadlineFieldValue: Variant
+      read GetChargeSheetTimeFrameDeadlineFieldValue;
 
-      property DocumentChargeSheetPerformingDateTimeFieldValue: Variant
-      read GetDocumentChargeSheetPerformingDateTimeFieldValue;
+      property ChargeSheetPerformingDateTimeFieldValue: Variant
+      read GetChargeSheetPerformingDateTimeFieldValue;
       
-      property DocumentChargeSheetPerformerIdFieldValue: Variant
-      read GetDocumentChargeSheetPerformerIdFieldValue;
+      property ChargeSheetPerformerIdFieldValue: Variant
+      read GetChargeSheetPerformerIdFieldValue;
 
-      { временно, из-за неадаптированной предыдущей версии программы }
-      property DocumentChargeSheetPerformerRoleIdFieldValue: Variant
-      read GetDocumentChargeSheetPerformerRoleIdFieldValue;
+      property ChargeSheetPerformerIsForeignFieldValue: Boolean
+      read GetChargeSheetPerformerIsForeignFieldValue;
 
-      property DocumentChargeSheetPerformerLeaderIdFieldValue: Variant
-      read GetDocumentChargeSheetPerformerLeaderIdFieldValue;
+      property ChargeSheetPerformerNameFieldValue: String
+      read GetChargeSheetPerformerNameFieldValue;
+      
+      property ChargeSheetPerformerSpecialityFieldValue: String
+      read GetChargeSheetPerformerSpecialityFieldValue;
+      
+      property ChargeSheetPerformerDepartmentIdFieldValue: Variant
+      read GetChargeSheetPerformerDepartmentIdFieldValue;
+      
+      property ChargeSheetPerformerDepartmentCodeFieldValue: String
+      read GetChargeSheetPerformerDepartmentCodeFieldValue;
+      
+      property ChargeSheetPerformerDepartmentNameFieldValue: String
+      read GetChargeSheetPerformerDepartmentNameFieldValue;
 
-      property DocumentChargeSheetPerformerIsForeignFieldValue: Boolean
-      read GetDocumentChargeSheetPerformerIsForeignFieldValue;
+      property ChargeSheetActualPerformerIdFieldValue: Variant
+      read GetChargeSheetActualPerformerIdFieldValue;
 
-      property DocumentChargeSheetPerformerNameFieldValue: String
-      read GetDocumentChargeSheetPerformerNameFieldValue;
+      property ChargeSheetActualPerformerNameFieldValue: String
+      read GetChargeSheetActualPerformerNameFieldValue;
       
-      property DocumentChargeSheetPerformerSpecialityFieldValue: String
-      read GetDocumentChargeSheetPerformerSpecialityFieldValue;
+      property ChargeSheetActualPerformerSpecialityFieldValue: String
+      read GetChargeSheetActualPerformerSpecialityFieldValue;
       
-      property DocumentChargeSheetPerformerDepartmentIdFieldValue: Variant
-      read GetDocumentChargeSheetPerformerDepartmentIdFieldValue;
+      property ChargeSheetActualPerformerDepartmentIdFieldValue: Variant
+      read GetChargeSheetActualPerformerDepartmentIdFieldValue;
       
-      property DocumentChargeSheetPerformerDepartmentCodeFieldValue: String
-      read GetDocumentChargeSheetPerformerDepartmentCodeFieldValue;
+      property ChargeSheetActualPerformerDepartmentCodeFieldValue: String
+      read GetChargeSheetActualPerformerDepartmentCodeFieldValue;
       
-      property DocumentChargeSheetPerformerDepartmentNameFieldValue: String
-      read GetDocumentChargeSheetPerformerDepartmentNameFieldValue;
-      
-      property DocumentChargeSheetActualPerformerIdFieldValue: Variant
-      read GetDocumentChargeSheetActualPerformerIdFieldValue;
+      property ChargeSheetActualPerformerDepartmentNameFieldValue: String
+      read GetChargeSheetActualPerformerDepartmentNameFieldValue;
 
-      property DocumentChargeSheetActualPerformerLeaderIdFieldValue: Variant
-      read GetDocumentChargeSheetActualPerformerLeaderIdFieldValue;
+      property ChargeSheetIssuerIdFieldValue: Variant
+      read GetChargeSheetIssuerIdFieldValue;
+      
+      property ChargeSheetIssuerIsForeignFieldValue: Boolean
+      read GetChargeSheetIssuerIsForeignFieldValue;
 
-      property DocumentChargeSheetActualPerformerIsForeignFieldValue: Boolean
-      read GetDocumentChargeSheetActualPerformerIsForeignFieldValue;
+      property ChargeSheetIssuerNameFieldValue: String
+      read GetChargeSheetIssuerNameFieldValue;
       
-      property DocumentChargeSheetActualPerformerNameFieldValue: String
-      read GetDocumentChargeSheetActualPerformerNameFieldValue;
+      property ChargeSheetIssuerSpecialityFieldValue: String
+      read GetChargeSheetIssuerSpecialityFieldValue;
       
-      property DocumentChargeSheetActualPerformerSpecialityFieldValue: String
-      read GetDocumentChargeSheetActualPerformerSpecialityFieldValue;
+      property ChargeSheetIssuerDepartmentIdFieldValue: Variant
+      read GetChargeSheetIssuerDepartmentIdFieldValue;
       
-      property DocumentChargeSheetActualPerformerDepartmentIdFieldValue: Variant
-      read GetDocumentChargeSheetActualPerformerDepartmentIdFieldValue;
+      property ChargeSheetIssuerDepartmentCodeFieldValue: String
+      read GetChargeSheetIssuerDepartmentCodeFieldValue;
       
-      property DocumentChargeSheetActualPerformerDepartmentCodeFieldValue: String
-      read GetDocumentChargeSheetActualPerformerDepartmentCodeFieldValue;
-      
-      property DocumentChargeSheetActualPerformerDepartmentNameFieldValue: String
-      read GetDocumentChargeSheetActualPerformerDepartmentNameFieldValue;
+      property ChargeSheetIssuerDepartmentNameFieldValue: String
+      read GetChargeSheetIssuerDepartmentNameFieldValue;
 
-      property DocumentChargeSheetSenderIdFieldValue: Variant
-      read GetDocumentChargeSheetSenderIdFieldValue;
+      property ApprovingIdFieldValue: Variant
+      read GetApprovingIdFieldValue;
 
-      property DocumentChargeSheetSenderLeaderIdFieldValue: Variant
-      read GetDocumentChargeSheetSenderLeaderIdFieldValue;
+      property ApprovingPerformingDateTimeFieldValue: Variant
+      read GetApprovingPerformingDateTimeFieldValue;
+      
+      property ApprovingPerformingResultIdFieldValue: Variant
+      read GetApprovingPerformingResultIdFieldValue;
+      
+      property ApprovingPerformingResultFieldValue: String
+      read GetApprovingPerformingResultFieldValue;
+      
+      property ApprovingNoteFieldValue: String
+      read GetApprovingNoteFieldValue;
 
-      property DocumentChargeSheetSenderIsForeignFieldValue: Boolean
-      read GetDocumentChargeSheetSenderIsForeignFieldValue;
+      property ApprovingCycleIdFieldValue: Variant
+      read GetApprovingCycleIdFieldValue;
+      
+      property ApprovingCycleNumberFieldValue: Variant
+      read GetApprovingCycleNumberFieldValue;
 
-      property DocumentChargeSheetSenderNameFieldValue: String
-      read GetDocumentChargeSheetSenderNameFieldValue;
-      
-      property DocumentChargeSheetSenderSpecialityFieldValue: String
-      read GetDocumentChargeSheetSenderSpecialityFieldValue;
-      
-      property DocumentChargeSheetSenderDepartmentIdFieldValue: Variant
-      read GetDocumentChargeSheetSenderDepartmentIdFieldValue;
-      
-      property DocumentChargeSheetSenderDepartmentCodeFieldValue: String
-      read GetDocumentChargeSheetSenderDepartmentCodeFieldValue;
-      
-      property DocumentChargeSheetSenderDepartmentNameFieldValue: String
-      read GetDocumentChargeSheetSenderDepartmentNameFieldValue;
+      property ApprovingIsCompletedFieldValue: Boolean
+      read GetApprovingIsCompletedFieldValue;
 
-      property DocumentApprovingIdFieldValue: Variant
-      read GetDocumentApprovingIdFieldValue;
+      property ApproverIdFieldValue: Variant
+      read GetApproverIdFieldValue;
+      
+      property ApproverLeaderIdFieldValue: Variant
+      read GetApproverLeaderIdFieldValue;
+      
+      property ApproverIsForeignFieldValue: Boolean
+      read GetApproverIsForeignFieldValue;
 
-      property DocumentApprovingPerformingDateTimeFieldValue: Variant
-      read GetDocumentApprovingPerformingDateTimeFieldValue;
+      property ApproverNameFieldValue: String
+      read GetApproverNameFieldValue;
       
-      property DocumentApprovingPerformingResultIdFieldValue: Variant
-      read GetDocumentApprovingPerformingResultIdFieldValue;
-      
-      property DocumentApprovingPerformingResultFieldValue: String
-      read GetDocumentApprovingPerformingResultFieldValue;
-      
-      property DocumentApprovingNoteFieldValue: String
-      read GetDocumentApprovingNoteFieldValue;
+      property ApproverSpecialityFieldValue: String
+      read GetApproverSpecialityFieldValue;
 
-      property DocumentApprovingCycleIdFieldValue: Variant
-      read GetDocumentApprovingCycleIdFieldValue;
+      property ApprovingIsAccessibleFieldValue: Boolean
+      read GetApprovingIsAccessibleFieldValue;
       
-      property DocumentApprovingCycleNumberFieldValue: Variant
-      read GetDocumentApprovingCycleNumberFieldValue;
+      property ApproverDepartmentIdFieldValue: Variant
+      read GetApproverDepartmentIdFieldValue;
+      
+      property ApproverDepartmentCodeFieldValue: String
+      read GetApproverDepartmentCodeFieldValue;
+      
+      property ApproverDepartmentNameFieldValue: String
+      read GetApproverDepartmentNameFieldValue;
 
-      property DocumentApprovingIsCompletedFieldValue: Boolean
-      read GetDocumentApprovingIsCompletedFieldValue;
+      property ActualApproverIdFieldValue: Variant
+      read GetActualApproverIdFieldValue;
 
-      property DocumentApproverIdFieldValue: Variant
-      read GetDocumentApproverIdFieldValue;
+      property ActualApproverLeaderIdFieldValue: Variant
+      read GetActualApproverLeaderIdFieldValue;
       
-      property DocumentApproverLeaderIdFieldValue: Variant
-      read GetDocumentApproverLeaderIdFieldValue;
+      property ActualApproverIsForeignFieldValue: Boolean
+      read GetActualApproverIsForeignFieldValue;
       
-      property DocumentApproverIsForeignFieldValue: Boolean
-      read GetDocumentApproverIsForeignFieldValue;
+      property ActualApproverNameFieldValue: String
+      read GetActualApproverNameFieldValue;
+      
+      property ActualApproverSpecialityFieldValue: String
+      read GetActualApproverSpecialityFieldValue;
+      
+      property ActualApproverDepartmentIdFieldValue: Variant
+      read GetActualApproverDepartmentIdFieldValue;
+      
+      property ActualApproverDepartmentCodeFieldValue: String
+      read GetActualApproverDepartmentCodeFieldValue;
+      
+      property ActualApproverDepartmentNameFieldValue: String
+      read GetActualApproverDepartmentNameFieldValue;
 
-      property DocumentApproverNameFieldValue: String
-      read GetDocumentApproverNameFieldValue;
-      
-      property DocumentApproverSpecialityFieldValue: String
-      read GetDocumentApproverSpecialityFieldValue;
+      property ApprovingIsLookedByApproverFieldValue: Boolean
+      read GetApprovingIsLookedByApproverFieldValue;
 
-      property DocumentApprovingIsAccessibleFieldValue: Boolean
-      read GetDocumentApprovingIsAccessibleFieldValue;
-      
-      property DocumentApproverDepartmentIdFieldValue: Variant
-      read GetDocumentApproverDepartmentIdFieldValue;
-      
-      property DocumentApproverDepartmentCodeFieldValue: String
-      read GetDocumentApproverDepartmentCodeFieldValue;
-      
-      property DocumentApproverDepartmentNameFieldValue: String
-      read GetDocumentApproverDepartmentNameFieldValue;
+      property ChargeSheetViewDateByPerformerFieldValue: Variant
+      read GetChargeSheetViewDateByPerformerFieldValue;
 
-      property DocumentActualApproverIdFieldValue: Variant
-      read GetDocumentActualApproverIdFieldValue;
-
-      property DocumentActualApproverLeaderIdFieldValue: Variant
-      read GetDocumentActualApproverLeaderIdFieldValue;
-      
-      property DocumentActualApproverIsForeignFieldValue: Boolean
-      read GetDocumentActualApproverIsForeignFieldValue;
-      
-      property DocumentActualApproverNameFieldValue: String
-      read GetDocumentActualApproverNameFieldValue;
-      
-      property DocumentActualApproverSpecialityFieldValue: String
-      read GetDocumentActualApproverSpecialityFieldValue;
-      
-      property DocumentActualApproverDepartmentIdFieldValue: Variant
-      read GetDocumentActualApproverDepartmentIdFieldValue;
-      
-      property DocumentActualApproverDepartmentCodeFieldValue: String
-      read GetDocumentActualApproverDepartmentCodeFieldValue;
-      
-      property DocumentActualApproverDepartmentNameFieldValue: String
-      read GetDocumentActualApproverDepartmentNameFieldValue;
-
-      property DocumentApprovingIsLookedByApproverFieldValue: Boolean
-      read GetDocumentApprovingIsLookedByApproverFieldValue;
-
-      property DocumentChargeSheetViewingDateByPerformerFieldValue: Variant
-      read GetDocumentChargeSheetViewingDateByPerformerFieldValue;
-
-      property DocumentChargeSheetIssuingDateTimeFieldValue: Variant
-      read GetDocumentChargeSheetIssuingDateTimeFieldValue;
+      property ChargeSheetIssuingDateTimeFieldValue: Variant
+      read GetChargeSheetIssuingDateTimeFieldValue;
 
   end;
 
@@ -1511,64 +1449,64 @@ uses
 { TDocumentFullInfoDataSetHolder }
 
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentApprovingsInfoHolder: TDocumentApprovingsInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateApprovingsInfoHolder: TDocumentApprovingsInfoHolder;
 begin
 
-  Result := CreateDocumentApprovingsInfoHolderInstance;
+  Result := CreateApprovingsInfoHolderInstance;
 
-  FieldNames.DocumentApprovingsInfoFieldNames := Result.FieldNames;
+  FieldNames.ApprovingsInfoFieldNames := Result.FieldNames;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentApprovingsInfoHolderInstance: TDocumentApprovingsInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateApprovingsInfoHolderInstance: TDocumentApprovingsInfoHolder;
 begin
 
   Result := TDocumentApprovingsInfoHolder.Create;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder;
 begin
 
-  Result := CreateDocumentChargeSheetsInfoHolderInstance;
+  Result := CreateChargeSheetsInfoHolderInstance;
 
-  FieldNames.DocumentChargeSheetsInfoFieldNames := Result.FieldNames;
+  FieldNames.ChargeSheetsInfoFieldNames := Result.FieldNames;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentChargeSheetsInfoHolderInstance: TDocumentChargeSheetsInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateChargeSheetsInfoHolderInstance: TDocumentChargeSheetsInfoHolder;
 begin
 
   Result := TDocumentChargeSheetsInfoHolder.Create;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentChargesInfoHolder: TDocumentChargesInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateChargesInfoHolder: TDocumentChargesInfoHolder;
 begin
 
-  Result := CreateDocumentChargesInfoHolderInstance;
+  Result := CreateChargesInfoHolderInstance;
 
-  FieldNames.DocumentChargesInfoFieldNames := Result.FieldNames;
+  FieldNames.ChargesInfoFieldNames := Result.FieldNames;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentChargesInfoHolderInstance: TDocumentChargesInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateChargesInfoHolderInstance: TDocumentChargesInfoHolder;
 begin
 
   Result := TDocumentChargesInfoHolder.Create;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentFilesInfoHolder: TDocumentFilesInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateFilesInfoHolder: TDocumentFilesInfoHolder;
 begin
 
-  Result := CreateDocumentFilesInfoHolderInstance;
+  Result := CreateFilesInfoHolderInstance;
 
-  FieldNames.DocumentFilesInfoFieldNames := Result.FieldNames;
+  FieldNames.FilesInfoFieldNames := Result.FieldNames;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentFilesInfoHolderInstance: TDocumentFilesInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateFilesInfoHolderInstance: TDocumentFilesInfoHolder;
 begin
 
   Result := TDocumentFilesInfoHolder.Create;
@@ -1591,33 +1529,33 @@ begin
 
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentRelationsInfoHolder: TDocumentRelationsInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateRelationsInfoHolder: TDocumentRelationsInfoHolder;
 begin
 
-  Result := CreateDocumentRelationsInfoHolderInstance;
+  Result := CreateRelationsInfoHolderInstance;
 
-  FieldNames.DocumentRelationsInfoFieldNames := Result.FieldNames;
+  FieldNames.RelationsInfoFieldNames := Result.FieldNames;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.CreateDocumentRelationsInfoHolderInstance: TDocumentRelationsInfoHolder;
+function TDocumentFullInfoDataSetHolder.CreateRelationsInfoHolderInstance: TDocumentRelationsInfoHolder;
 begin
 
   Result := TDocumentRelationsInfoHolder.Create;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetBaseDocumentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetBaseIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.BaseIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetChargeSheetDocumentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargeSheetIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.ChargeSheetDocumentIdFieldValue;
+  Result := FChargeSheetsInfoHolder.IdFieldValue;
             
 end;
 
@@ -1628,98 +1566,98 @@ begin
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverDepartmentCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetActualApproverDepartmentCodeFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverDepartmentCodeFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverDepartmentCodeFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverDepartmentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetActualApproverDepartmentIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverDepartmentIdFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverDepartmentIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverDepartmentNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetActualApproverDepartmentNameFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverDepartmentNameFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverDepartmentNameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetActualApproverIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverIdFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverIsForeignFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetActualApproverIsForeignFieldValue: Boolean;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverIsForeignFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverIsForeignFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverLeaderIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetActualApproverLeaderIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverLeaderIdFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverLeaderIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetActualApproverNameFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverNameFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualApproverSpecialityFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetActualApproverSpecialityFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentActualApproverSpecialityFieldValue;
+  Result := FApprovingsInfoHolder.ActualApproverSpecialityFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualSignerDepartmentCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetActualSignerDepartmentCodeFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ActualSignerDepartmentCodeFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualSignerDepartmentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetActualSignerDepartmentIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.ActualSignerDepartmentIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualSignerDepartmentNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetActualSignerDepartmentNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ActualSignerDepartmentNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualSignerIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetActualSignerIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.ActualSignerIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualSignerLeaderIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetActualSignerLeaderIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.ActualSignerLeaderIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentActualSignerNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetActualSignerNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ActualSignerNameFieldValue;
@@ -1727,829 +1665,788 @@ begin
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentActualSignerSpecialityFieldValue: String;
+  GetActualSignerSpecialityFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ActualSignerSpecialityFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverDepartmentCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetApproverDepartmentCodeFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverDepartmentCodeFieldValue;
+  Result := FApprovingsInfoHolder.ApproverDepartmentCodeFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverDepartmentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApproverDepartmentIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverDepartmentIdFieldValue;
+  Result := FApprovingsInfoHolder.ApproverDepartmentIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverDepartmentNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetApproverDepartmentNameFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverDepartmentNameFieldValue;
+  Result := FApprovingsInfoHolder.ApproverDepartmentNameFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApproverIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverIdFieldValue;
+  Result := FApprovingsInfoHolder.ApproverIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverIsForeignFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetApproverIsForeignFieldValue: Boolean;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverIsForeignFieldValue;
+  Result := FApprovingsInfoHolder.ApproverIsForeignFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverLeaderIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApproverLeaderIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverLeaderIdFieldValue;
+  Result := FApprovingsInfoHolder.ApproverLeaderIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetApproverNameFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverNameFieldValue;
+  Result := FApprovingsInfoHolder.ApproverNameFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApproverSpecialityFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetApproverSpecialityFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApproverSpecialityFieldValue;
+  Result := FApprovingsInfoHolder.ApproverSpecialityFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingIsAccessibleFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetApprovingIsAccessibleFieldValue: Boolean;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingIsAccessibleFieldValue;
+  Result := FApprovingsInfoHolder.IsAccessibleFieldValue;
     
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingCycleIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApprovingCycleIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingCycleIdFieldValue;
+  Result := FApprovingsInfoHolder.CycleIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingCycleNumberFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApprovingCycleNumberFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingCycleNumberFieldValue;
+  Result := FApprovingsInfoHolder.CycleNumberFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApprovingIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingIdFieldValue;
+  Result := FApprovingsInfoHolder.IdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingIsCompletedFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetApprovingIsCompletedFieldValue: Boolean;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingIsCompletedFieldValue;
+  Result := FApprovingsInfoHolder.IsCompletedFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingIsLookedByApproverFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetApprovingIsLookedByApproverFieldValue: Boolean;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingIsLookedByApproverFieldValue;
+  Result := FApprovingsInfoHolder.IsLookedByApproverFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingNoteFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetApprovingNoteFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingNoteFieldValue;
+  Result := FApprovingsInfoHolder.NoteFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingPerformingDateTimeFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApprovingPerformingDateTimeFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingPerformingDateTimeFieldValue;
+  Result := FApprovingsInfoHolder.PerformingDateTimeFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingPerformingResultFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetApprovingPerformingResultFieldValue: String;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingPerformingResultFieldValue;
+  Result := FApprovingsInfoHolder.PerformingResultFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentApprovingPerformingResultIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetApprovingPerformingResultIdFieldValue: Variant;
 begin
 
-  Result := FDocumentApprovingsInfoHolder.DocumentApprovingPerformingResultIdFieldValue;
+  Result := FApprovingsInfoHolder.PerformingResultIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentAuthorDepartmentCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetAuthorDepartmentCodeFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.AuthorDepartmentCodeFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentAuthorDepartmentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetAuthorDepartmentIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.AuthorDepartmentIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentAuthorDepartmentNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetAuthorDepartmentNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.AuthorDepartmentNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentAuthorIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetAuthorIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.AuthorIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentAuthorLeaderIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetAuthorLeaderIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.AuthorLeaderIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentAuthorNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetAuthorNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.AuthorNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentAuthorSpecialityFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetAuthorSpecialityFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.AuthorSpecialityFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerDepartmentCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetChargeActualPerformerDepartmentCodeFieldValue: String;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerDepartmentCodeFieldValue;
+  Result := FChargesInfoHolder.ActualPerformerDepartmentCodeFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargeActualPerformerDepartmentIdFieldValue: Variant;
+begin
+
+  Result := FChargesInfoHolder.ActualPerformerDepartmentIdFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargeActualPerformerDepartmentNameFieldValue: String;
+begin
+
+  Result := FChargesInfoHolder.ActualPerformerDepartmentNameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerDepartmentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargeActualPerformerIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerDepartmentIdFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerDepartmentNameFieldValue: String;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerDepartmentNameFieldValue;
+  Result := FChargesInfoHolder.ActualPerformerIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargeActualPerformerNameFieldValue: String;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerIdFieldValue;
+  Result := FChargesInfoHolder.ActualPerformerNameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerIsForeignFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetChargeActualPerformerSpecialityFieldValue: String;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerIsForeignFieldValue;
+  Result := FChargesInfoHolder.ActualPerformerSpecialityFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargeIdFieldValue: Variant;
+begin
+
+  Result := FChargesInfoHolder.IdFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargeIsForAcquaitanceFieldValue: Boolean;
+begin
+
+  Result := FChargesInfoHolder.IsForAcquaitanceFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargePerformerDepartmentCodeFieldValue: String;
+begin
+
+  Result := FChargesInfoHolder.PerformerDepartmentCodeFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargePerformerDepartmentIdFieldValue: Variant;
+begin
+
+  Result := FChargesInfoHolder.PerformerDepartmentIdFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargePerformerDepartmentNameFieldValue: String;
+begin
+
+  Result := FChargesInfoHolder.PerformerDepartmentNameFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargePerformerIdFieldValue: Variant;
+begin
+
+  Result := FChargesInfoHolder.PerformerIdFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargePerformerIsForeignFieldValue: Boolean;
+begin
+
+  Result := FChargesInfoHolder.PerformerIsForeignFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerLeaderIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargePerformerNameFieldValue: String;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerLeaderIdFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerNameFieldValue: String;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerNameFieldValue;
+  Result := FChargesInfoHolder.PerformerNameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeActualPerformerSpecialityFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetChargePerformerSpecialityFieldValue: String;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargeActualPerformerSpecialityFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeIdFieldValue: Variant;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargeIdFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeIsForAcquaitanceFieldValue: Boolean;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargeIsForAcquaitanceFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerDepartmentCodeFieldValue: String;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerDepartmentCodeFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerDepartmentIdFieldValue: Variant;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerDepartmentIdFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerDepartmentNameFieldValue: String;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerDepartmentNameFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerIdFieldValue: Variant;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerIdFieldValue;
-
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerIsForeignFieldValue: Boolean;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerIsForeignFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerLeaderIdFieldValue: Variant;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerLeaderIdFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerNameFieldValue: String;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerNameFieldValue;
+  Result := FChargesInfoHolder.PerformerSpecialityFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformerSpecialityFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetChargePerformingDateTimeFieldValue: Variant;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformerSpecialityFieldValue;
+  Result := FChargesInfoHolder.PerformingDateTimeFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePerformingDateTimeFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargeTimeFrameDeadlineFieldValue: Variant;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargePerformingDateTimeFieldValue;
+  Result := FChargesInfoHolder.TimeFrameDeadlineFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePeriodEndFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargeTimeFrameStartFieldValue: Variant;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargePeriodEndFieldValue;
-  
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargePeriodStartFieldValue: Variant;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargePeriodStartFieldValue;
+  Result := FChargesInfoHolder.TimeFrameStartFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeResponseFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetChargeResponseFieldValue: String;
 begin
 
-  Result := FDocumentChargesInfoHolder.DocumentChargeResponseFieldValue;
+  Result := FChargesInfoHolder.ResponseFieldValue;
 
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetActualPerformerDepartmentCodeFieldValue: String;
+  GetChargeSheetActualPerformerDepartmentCodeFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerDepartmentCodeFieldValue;
+  Result := FChargeSheetsInfoHolder.ActualPerformerDepartmentCodeFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetActualPerformerDepartmentIdFieldValue: Variant;
+  GetChargeSheetActualPerformerDepartmentIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerDepartmentIdFieldValue;
+  Result := FChargeSheetsInfoHolder.ActualPerformerDepartmentIdFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetActualPerformerDepartmentNameFieldValue: String;
+  GetChargeSheetActualPerformerDepartmentNameFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerDepartmentNameFieldValue;
+  Result := FChargeSheetsInfoHolder.ActualPerformerDepartmentNameFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetActualPerformerIdFieldValue: Variant;
+  GetChargeSheetActualPerformerIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerIdFieldValue;
+  Result := FChargeSheetsInfoHolder.ActualPerformerIdFieldValue;
 
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetActualPerformerIsForeignFieldValue: Boolean;
-begin
-
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerIsForeignFieldValue;
-  
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetActualPerformerLeaderIdFieldValue: Variant;
-begin
-
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerLeaderIdFieldValue;
-  
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetActualPerformerNameFieldValue: String;
+  GetChargeSheetActualPerformerNameFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerNameFieldValue;
+  Result := FChargeSheetsInfoHolder.ActualPerformerNameFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetActualPerformerSpecialityFieldValue: String;
+  GetChargeSheetActualPerformerSpecialityFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetActualPerformerSpecialityFieldValue;
+  Result := FChargeSheetsInfoHolder.ActualPerformerSpecialityFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargeSheetChargeIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetIdFieldValue;
+  Result := FChargeSheetsInfoHolder.ChargeIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetIsForAcquaitanceFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetChargeSheetIsForAcquaitanceFieldValue: Boolean;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetIsForAcquaitanceFieldValue;
+  Result := FChargeSheetsInfoHolder.IsForAcquaitanceFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetViewingDateByPerformerFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetChargeSheetViewDateByPerformerFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetViewingDateByPerformerFieldValue;
+  Result := FChargeSheetsInfoHolder.ViewDateByPerformerFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetIssuingDateTimeFieldValue: Variant;
+  GetChargeSheetIssuingDateTimeFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetIssuingDateTimeFieldValue;
+  Result := FChargeSheetsInfoHolder.IssuingDateTimeFieldValue;
     
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPerformerDepartmentCodeFieldValue: String;
+  GetChargeSheetPerformerDepartmentCodeFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerDepartmentCodeFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformerDepartmentCodeFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPerformerDepartmentIdFieldValue: Variant;
+  GetChargeSheetPerformerDepartmentIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerDepartmentIdFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformerDepartmentIdFieldValue;
 
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPerformerDepartmentNameFieldValue: String;
+  GetChargeSheetPerformerDepartmentNameFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerDepartmentNameFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformerDepartmentNameFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPerformerIdFieldValue: Variant;
+  GetChargeSheetPerformerIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerIdFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformerIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetPerformerIsForeignFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetChargeSheetPerformerIsForeignFieldValue: Boolean;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerIsForeignFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetPerformerLeaderIdFieldValue: Variant;
-begin
-
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerLeaderIdFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformerIsForeignFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPerformerNameFieldValue: String;
+  GetChargeSheetPerformerNameFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerNameFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformerNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetPerformerRoleIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.
+  GetChargeSheetPerformerSpecialityFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerRoleIdFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformerSpecialityFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPerformerSpecialityFieldValue: String;
+  GetChargeSheetPerformingDateTimeFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformerSpecialityFieldValue;
+  Result := FChargeSheetsInfoHolder.PerformingDateTimeFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPerformingDateTimeFieldValue: Variant;
+  GetChargeSheetTimeFrameDeadlineFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPerformingDateTimeFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPeriodEndFieldValue: Variant;
-begin
-
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPeriodEndFieldValue;
+  Result := FChargeSheetsInfoHolder.TimeFrameDeadlineFieldValue;
 
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetPeriodStartFieldValue: Variant;
+  GetChargeSheetTimeFrameStartFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetPeriodStartFieldValue;
+  Result := FChargeSheetsInfoHolder.TimeFrameStartFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetResponseFieldValue: String;
+  GetChargeSheetResponseFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetResponseFieldValue;
+  Result := FChargeSheetsInfoHolder.ResponseFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetSenderDepartmentCodeFieldValue: String;
+  GetChargeSheetIssuerDepartmentCodeFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderDepartmentCodeFieldValue;
+  Result := FChargeSheetsInfoHolder.IssuerDepartmentCodeFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetSenderDepartmentIdFieldValue: Variant;
+  GetChargeSheetIssuerDepartmentIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderDepartmentIdFieldValue;
+  Result := FChargeSheetsInfoHolder.IssuerDepartmentIdFieldValue;
             
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetSenderDepartmentNameFieldValue: String;
+  GetChargeSheetIssuerDepartmentNameFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderDepartmentNameFieldValue;
+  Result := FChargeSheetsInfoHolder.IssuerDepartmentNameFieldValue;
 
 end;
 
 function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetSenderIdFieldValue: Variant;
+  GetChargeSheetIssuerIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderIdFieldValue;
+  Result := FChargeSheetsInfoHolder.IssuerIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetSenderIsForeignFieldValue: Boolean;
+function TDocumentFullInfoDataSetHolder.GetChargeSheetIssuerIsForeignFieldValue: Boolean;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderIsForeignFieldValue;
+  Result := FChargeSheetsInfoHolder.IssuerIsForeignFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeSheetSenderLeaderIdFieldValue: Variant;
+
+function TDocumentFullInfoDataSetHolder.
+  GetChargeSheetIssuerNameFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderLeaderIdFieldValue;
+  Result := FChargeSheetsInfoHolder.IssuerNameFieldValue;
+            
+end;
+
+function TDocumentFullInfoDataSetHolder.
+  GetChargeSheetIssuerSpecialityFieldValue: String;
+begin
+
+  Result := FChargeSheetsInfoHolder.IssuerSpecialityFieldValue;
+            
+end;
+
+function TDocumentFullInfoDataSetHolder.
+  GetChargeSheetChargeTextFieldValue: String;
+begin
+
+  Result := FChargeSheetsInfoHolder.ChargeTextFieldValue;
+            
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargeSheetDocumentIdFieldValue: Variant;
+begin
+
+  Result := FChargeSheetsInfoHolder.DocumentIdFieldValue;
+
+end;
+
+function TDocumentFullInfoDataSetHolder.GetChargeSheetDocumentKindIdFieldValue: Variant;
+begin
+
+  Result := FChargeSheetsInfoHolder.DocumentKindIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetSenderNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetChargeTextFieldValue: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderNameFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetSenderSpecialityFieldValue: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetSenderSpecialityFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.
-  GetDocumentChargeSheetTextFieldValue: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoHolder.DocumentChargeSheetTextFieldValue;
-            
-end;
-
-function TDocumentFullInfoDataSetHolder.GetDocumentChargeTextFieldValue: String;
-begin
-
-  Result := FDocumentChargesInfoHolder.DocumentChargeTextFieldValue;
+  Result := FChargesInfoHolder.ChargeTextFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentContentFieldName: String;
+function TDocumentFullInfoDataSetHolder.GetContentFieldName: String;
 begin
 
   Result := FDocumentInfoHolder.ContentFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentCreationDateFieldValue: TDateTime;
+function TDocumentFullInfoDataSetHolder.GetCreationDateFieldValue: TDateTime;
 begin
 
   Result := FDocumentInfoHolder.CreationDateFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentCurrentWorkCycleStageNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetCurrentWorkCycleStageNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.CurrentWorkCycleStageNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentCurrentWorkCycleStageNumberFieldValue: Integer;
+function TDocumentFullInfoDataSetHolder.GetCurrentWorkCycleStageNumberFieldValue: Integer;
 begin
 
   Result := FDocumentInfoHolder.CurrentWorkCycleStageNumberFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentDateFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetDateFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.DateFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentFileIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetFileIdFieldValue: Variant;
 begin
 
-  Result := FDocumentFilesInfoHolder.DocumentFileIdFieldValue;
+  Result := FFilesInfoHolder.IdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentFileNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetFileNameFieldValue: String;
 begin
 
-  Result := FDocumentFilesInfoHolder.DocumentFileNameFieldValue;
+  Result := FFilesInfoHolder.NameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentFilePathFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetFilePathFieldValue: String;
 begin
 
-  Result := FDocumentFilesInfoHolder.DocumentFilePathFieldValue;
+  Result := FFilesInfoHolder.PathFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.IdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentIsSelfRegisteredFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetIsSelfRegisteredFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.IsSelfRegisteredFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentKindFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetKindFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.KindFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentKindIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetKindIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.KindIdFieldValue;
             
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.NameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentNoteFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetNoteFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.NoteFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentNumberFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetNumberFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.NumberFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentProductCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetProductCodeFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ProductCodeFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentRelationIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetRelationIdFieldValue: Variant;
 begin
 
-  Result := FDocumentRelationsInfoHolder.DocumentRelationIdFieldValue;
+  Result := FRelationsInfoHolder.RelationIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentResponsibleDepartmentCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetResponsibleDepartmentCodeFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ResponsibleDepartmentCodeFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentResponsibleDepartmentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetResponsibleDepartmentIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.ResponsibleDepartmentIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentResponsibleDepartmentNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetResponsibleDepartmentNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ResponsibleDepartmentNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentResponsibleIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetResponsibleIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.ResponsibleIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentResponsibleNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetResponsibleNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ResponsibleNameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentResponsibleTelephoneNumberFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetResponsibleTelephoneNumberFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.ResponsibleTelephoneNumberFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSignerDepartmentCodeFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetSignerDepartmentCodeFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.SignerDepartmentCodeFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSignerDepartmentIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetSignerDepartmentIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.SignerDepartmentIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSignerDepartmentNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetSignerDepartmentNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.SignerDepartmentNameFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSignerIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetSignerIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.SignerIdFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSignerLeaderIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetSignerLeaderIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.SignerLeaderIdFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSignerNameFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetSignerNameFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.SignerNameFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSignerSpecialityFieldValue: String;
+function TDocumentFullInfoDataSetHolder.GetSignerSpecialityFieldValue: String;
 begin
 
   Result := FDocumentInfoHolder.SignerSpecialityFieldValue;
 
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSigningDateFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetSigningDateFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.SigningDateFieldValue;
   
 end;
 
-function TDocumentFullInfoDataSetHolder.GetDocumentSigningIdFieldValue: Variant;
+function TDocumentFullInfoDataSetHolder.GetSigningIdFieldValue: Variant;
 begin
 
   Result := FDocumentInfoHolder.SigningIdFieldValue;
@@ -2566,49 +2463,49 @@ end;
 function TDocumentFullInfoDataSetHolder.GetRelatedDocumentDateFieldValue: TDateTime;
 begin
 
-  Result := FDocumentRelationsInfoHolder.RelatedDocumentDateFieldValue;
+  Result := FRelationsInfoHolder.RelatedDocumentDateFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.GetRelatedDocumentIdFieldValue: Variant;
 begin
 
-  Result := FDocumentRelationsInfoHolder.RelatedDocumentIdFieldValue;
+  Result := FRelationsInfoHolder.RelatedDocumentIdFieldValue;
 
 end;
 
 function TDocumentFullInfoDataSetHolder.GetRelatedDocumentKindIdFieldValue: Variant;
 begin
 
-  Result := FDocumentRelationsInfoHolder.RelatedDocumentKindIdFieldValue;
+  Result := FRelationsInfoHolder.RelatedDocumentKindIdFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.GetRelatedDocumentKindNameFieldValue: String;
 begin
 
-  Result := FDocumentRelationsInfoHolder.RelatedDocumentKindNameFieldValue;
+  Result := FRelationsInfoHolder.RelatedDocumentKindNameFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.GetRelatedDocumentNameFieldValue: String;
 begin
 
-  Result := FDocumentRelationsInfoHolder.RelatedDocumentNameFieldValue;
+  Result := FRelationsInfoHolder.RelatedDocumentNameFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.GetRelatedDocumentNumberFieldValue: String;
 begin
 
-  Result := FDocumentRelationsInfoHolder.RelatedDocumentNumberFieldValue;
+  Result := FRelationsInfoHolder.RelatedDocumentNumberFieldValue;
   
 end;
 
 function TDocumentFullInfoDataSetHolder.GetTopLevelChargeSheetIdFieldValue: Variant;
 begin
 
-  Result := FDocumentChargeSheetsInfoHolder.TopLevelChargeSheetIdFieldValue;
+  Result := FChargeSheetsInfoHolder.TopLevelChargeSheetIdFieldValue;
 
 end;
 
@@ -2618,11 +2515,11 @@ begin
   inherited Initialize;
 
   FDocumentInfoHolder := CreateDocumentInfoHolder;
-  FDocumentApprovingsInfoHolder := CreateDocumentApprovingsInfoHolder;
-  FDocumentChargesInfoHolder := CreateDocumentChargesInfoHolder;
-  FDocumentChargeSheetsInfoHolder := CreateDocumentChargeSheetsInfoHolder;
-  FDocumentRelationsInfoHolder := CreateDocumentRelationsInfoHolder;
-  FDocumentFilesInfoHolder := CreateDocumentFilesInfoHolder;
+  FApprovingsInfoHolder := CreateApprovingsInfoHolder;
+  FChargesInfoHolder := CreateChargesInfoHolder;
+  FChargeSheetsInfoHolder := CreateChargeSheetsInfoHolder;
+  FRelationsInfoHolder := CreateRelationsInfoHolder;
+  FFilesInfoHolder := CreateFilesInfoHolder;
   
 end;
 
@@ -2634,62 +2531,62 @@ begin
   if Assigned(FDocumentInfoHolder) then
     FDocumentInfoHolder.DataSet := Value;
 
-  if Assigned(FDocumentApprovingsInfoHolder) then
-    FDocumentApprovingsInfoHolder.DataSet := Value;
+  if Assigned(FApprovingsInfoHolder) then
+    FApprovingsInfoHolder.DataSet := Value;
 
-  if Assigned(FDocumentChargesInfoHolder) then
-    FDocumentChargesInfoHolder.DataSet := Value;
+  if Assigned(FChargesInfoHolder) then
+    FChargesInfoHolder.DataSet := Value;
 
-  if Assigned(FDocumentChargeSheetsInfoHolder) then
-    FDocumentChargeSheetsInfoHolder.DataSet := Value;
+  if Assigned(FChargeSheetsInfoHolder) then
+    FChargeSheetsInfoHolder.DataSet := Value;
 
-  if Assigned(FDocumentRelationsInfoHolder) then
-    FDocumentRelationsInfoHolder.DataSet := Value;
+  if Assigned(FRelationsInfoHolder) then
+    FRelationsInfoHolder.DataSet := Value;
 
-  if Assigned(FDocumentFilesInfoHolder) then
-    FDocumentFilesInfoHolder.DataSet := Value;
+  if Assigned(FFilesInfoHolder) then
+    FFilesInfoHolder.DataSet := Value;
     
 end;
 
-procedure TDocumentFullInfoDataSetHolder.SetDocumentApprovingsInfoHolder(
+procedure TDocumentFullInfoDataSetHolder.SetApprovingsInfoHolder(
   const Value: TDocumentApprovingsInfoHolder);
 begin
 
-  FDocumentApprovingsInfoHolder := Value;
-  FFreeDocumentApprovingsInfoHolder := Value;
+  FApprovingsInfoHolder := Value;
+  FFreeApprovingsInfoHolder := Value;
 
   UpdateDataSet(Value);
   
 end;
 
-procedure TDocumentFullInfoDataSetHolder.SetDocumentChargeSheetsInfoHolder(
+procedure TDocumentFullInfoDataSetHolder.SetChargeSheetsInfoHolder(
   const Value: TDocumentChargeSheetsInfoHolder);
 begin
 
-  FDocumentChargeSheetsInfoHolder := Value;
-  FFreeDocumentChargeSheetsInfoHolder := Value;
+  FChargeSheetsInfoHolder := Value;
+  FFreeChargeSheetsInfoHolder := Value;
 
   UpdateDataSet(Value);
 
 end;
 
-procedure TDocumentFullInfoDataSetHolder.SetDocumentChargesInfoHolder(
+procedure TDocumentFullInfoDataSetHolder.SetChargesInfoHolder(
   const Value: TDocumentChargesInfoHolder);
 begin
 
-  FDocumentChargesInfoHolder := Value;
-  FFreeDocumentChargesInfoHolder := Value;
+  FChargesInfoHolder := Value;
+  FFreeChargesInfoHolder := Value;
 
   UpdateDataSet(Value);
   
 end;
 
-procedure TDocumentFullInfoDataSetHolder.SetDocumentFilesInfoHolder(
+procedure TDocumentFullInfoDataSetHolder.SetFilesInfoHolder(
   const Value: TDocumentFilesInfoHolder);
 begin
 
-  FDocumentFilesInfoHolder := Value;
-  FFreeDocumentFilesInfoHolder := Value;
+  FFilesInfoHolder := Value;
+  FFreeFilesInfoHolder := Value;
 
   UpdateDataSet(Value);
 
@@ -2706,12 +2603,12 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetHolder.SetDocumentRelationsInfoHolder(
+procedure TDocumentFullInfoDataSetHolder.SetRelationsInfoHolder(
   const Value: TDocumentRelationsInfoHolder);
 begin
 
-  FDocumentRelationsInfoHolder := Value;
-  FFreeDocumentRelationsInfoHolder := FDocumentRelationsInfoHolder;
+  FRelationsInfoHolder := Value;
+  FFreeRelationsInfoHolder := FRelationsInfoHolder;
 
   UpdateDataSet(Value);
 
@@ -2740,917 +2637,875 @@ end;
 
 { TDocumentFullInfoDataSetFieldNames }
 
-function TDocumentFullInfoDataSetFieldNames.GetBaseDocumentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetBaseIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.BaseIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetChargeSheetDocumentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIdFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.ChargeSheetDocumentIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.IdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverDepartmentCodeFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverDepartmentCodeFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverDepartmentCodeFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverDepartmentIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverDepartmentIdFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverDepartmentIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverDepartmentNameFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverDepartmentNameFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverDepartmentNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverIdFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverIsForeignFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverIsForeignFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverIsForeignFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverIsForeignFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverLeaderIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverLeaderIdFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverLeaderIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverNameFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverNameFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualApproverSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualApproverSpecialityFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentActualApproverSpecialityFieldName;
+  Result := FApprovingsInfoFieldNames.ActualApproverSpecialityFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualSignerDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualSignerDepartmentCodeFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ActualSignerDepartmentCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualSignerDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualSignerDepartmentIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ActualSignerDepartmentIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualSignerDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualSignerDepartmentNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ActualSignerDepartmentNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualSignerIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualSignerIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ActualSignerIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualSignerLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualSignerLeaderIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ActualSignerLeaderIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualSignerNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualSignerNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ActualSignerNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentActualSignerSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetActualSignerSpecialityFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ActualSignerSpecialityFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverDepartmentCodeFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverDepartmentCodeFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverDepartmentCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverDepartmentIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverDepartmentIdFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverDepartmentIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverDepartmentNameFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverDepartmentNameFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverDepartmentNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverIdFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverIsForeignFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverIsForeignFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverIsForeignFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverIsForeignFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverLeaderIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverLeaderIdFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverLeaderIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverNameFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverNameFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApproverSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApproverSpecialityFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApproverSpecialityFieldName;
+  Result := FApprovingsInfoFieldNames.ApproverSpecialityFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingCycleIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApprovingCycleIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingCycleIdFieldName;
+  Result := FApprovingsInfoFieldNames.CycleIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingCycleNumberFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApprovingCycleNumberFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingCycleNumberFieldName;
+  Result := FApprovingsInfoFieldNames.CycleNumberFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApprovingIdFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingIdFieldName;
+  Result := FApprovingsInfoFieldNames.IdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingIsAccessibleFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApprovingIsAccessibleFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingIsAccessibleFieldName;
+  Result := FApprovingsInfoFieldNames.IsAccessibleFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingIsCompletedFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApprovingIsCompletedFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingIsCompletedFieldName;
+  Result := FApprovingsInfoFieldNames.IsCompletedFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingIsLookedByApproverFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetApprovingIsLookedByApproverFieldName: String;
 begin
 
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingIsLookedByApproverFieldName;
+  Result := FApprovingsInfoFieldNames.IsLookedByApproverFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetApprovingNoteFieldName: String;
+begin
+
+  Result := FApprovingsInfoFieldNames.NoteFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetApprovingPerformingDateTimeFieldName: String;
+begin
+
+  Result := FApprovingsInfoFieldNames.PerformingDateTimeFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetApprovingPerformingResultFieldName: String;
+begin
+
+  Result := FApprovingsInfoFieldNames.PerformingResultFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetApprovingPerformingResultIdFieldName: String;
+begin
+
+  Result := FApprovingsInfoFieldNames.PerformingResultIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingNoteFieldName: String;
-begin
-
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingNoteFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingPerformingDateTimeFieldName: String;
-begin
-
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingPerformingDateTimeFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingPerformingResultFieldName: String;
-begin
-
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingPerformingResultFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentApprovingPerformingResultIdFieldName: String;
-begin
-
-  Result := FDocumentApprovingsInfoFieldNames.DocumentApprovingPerformingResultIdFieldName;
-  
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentAuthorDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetAuthorDepartmentCodeFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.AuthorDepartmentCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentAuthorDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetAuthorDepartmentIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.AuthorDepartmentIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentAuthorDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetAuthorDepartmentNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.AuthorDepartmentNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentAuthorIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetAuthorIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.AuthorIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentAuthorLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetAuthorLeaderIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.AuthorLeaderIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentAuthorNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetAuthorNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.AuthorNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentAuthorSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetAuthorSpecialityFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.AuthorSpecialityFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeActualPerformerDepartmentCodeFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerDepartmentCodeFieldName;
+  Result := FChargesInfoFieldNames.ActualPerformerDepartmentCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeActualPerformerDepartmentIdFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerDepartmentIdFieldName;
+  Result := FChargesInfoFieldNames.ActualPerformerDepartmentIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeActualPerformerDepartmentNameFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerDepartmentNameFieldName;
+  Result := FChargesInfoFieldNames.ActualPerformerDepartmentNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeActualPerformerIdFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerIdFieldName;
+  Result := FChargesInfoFieldNames.ActualPerformerIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerIsForeignFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeActualPerformerNameFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerIsForeignFieldName;
+  Result := FChargesInfoFieldNames.ActualPerformerNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeActualPerformerSpecialityFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerLeaderIdFieldName;
+  Result := FChargesInfoFieldNames.ActualPerformerSpecialityFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeIdFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerNameFieldName;
+  Result := FChargesInfoFieldNames.IdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeActualPerformerSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeIsForAcquaitanceFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerSpecialityFieldName;
+  Result := FChargesInfoFieldNames.IsForAcquaitanceFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformerDepartmentCodeFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeIdFieldName;
+  Result := FChargesInfoFieldNames.PerformerDepartmentCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeIsForAcquaitanceFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformerDepartmentIdFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeIsForAcquaitanceFieldName;
+  Result := FChargesInfoFieldNames.PerformerDepartmentIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformerDepartmentNameFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerDepartmentCodeFieldName;
+  Result := FChargesInfoFieldNames.PerformerDepartmentNameFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformerIdFieldName: String;
+begin
+
+  Result := FChargesInfoFieldNames.PerformerIdFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformerIsForeignFieldName: String;
+begin
+
+  Result := FChargesInfoFieldNames.PerformerIsForeignFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformerNameFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerDepartmentIdFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerDepartmentNameFieldName: String;
-begin
-
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerDepartmentNameFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerIdFieldName: String;
-begin
-
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerIdFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerIsForeignFieldName: String;
-begin
-
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerIsForeignFieldName;
+  Result := FChargesInfoFieldNames.PerformerNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformerSpecialityFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerLeaderIdFieldName;
+  Result := FChargesInfoFieldNames.PerformerSpecialityFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargePerformingDateTimeFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerNameFieldName;
+  Result := FChargesInfoFieldNames.PerformingDateTimeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformerSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeTimeFrameDeadlineFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformerSpecialityFieldName;
+  Result := FChargesInfoFieldNames.TimeFrameDeadlineFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePerformingDateTimeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeTimeFrameStartFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePerformingDateTimeFieldName;
+  Result := FChargesInfoFieldNames.TimeFrameStartFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeResponseFieldName: String;
+begin
+
+  Result := FChargesInfoFieldNames.ResponseFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetActualPerformerDepartmentCodeFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.ActualPerformerDepartmentCodeFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetActualPerformerDepartmentIdFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.ActualPerformerDepartmentIdFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetActualPerformerDepartmentNameFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.ActualPerformerDepartmentNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePeriodEndFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetActualPerformerIdFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePeriodEndFieldName;
+  Result := FChargeSheetsInfoFieldNames.ActualPerformerIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargePeriodStartFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetActualPerformerNameFieldName: String;
 begin
 
-  Result := FDocumentChargesInfoFieldNames.DocumentChargePeriodStartFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeResponseFieldName: String;
-begin
-
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeResponseFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerDepartmentCodeFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerDepartmentCodeFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerDepartmentIdFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerDepartmentIdFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerDepartmentNameFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerDepartmentNameFieldName;
+  Result := FChargeSheetsInfoFieldNames.ActualPerformerNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetActualPerformerSpecialityFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerIdFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerIsForeignFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerIsForeignFieldName;
+  Result := FChargeSheetsInfoFieldNames.ActualPerformerSpecialityFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIsForAcquaitanceFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerLeaderIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.IsForAcquaitanceFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuingDateTimeFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerNameFieldName;
+  Result := FChargeSheetsInfoFieldNames.IssuingDateTimeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetActualPerformerSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformerDepartmentCodeFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerSpecialityFieldName;
+  Result := FChargeSheetsInfoFieldNames.PerformerDepartmentCodeFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformerDepartmentIdFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.PerformerDepartmentIdFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformerDepartmentNameFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.PerformerDepartmentNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformerIdFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.PerformerIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetIsForAcquaitanceFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformerIsForeignFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetIsForAcquaitanceFieldName;
+  Result := FChargeSheetsInfoFieldNames.PerformerIsForeignFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetIssuingDateTimeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformerNameFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetIssuingDateTimeFieldName;
+  Result := FChargeSheetsInfoFieldNames.PerformerNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformerSpecialityFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerDepartmentCodeFieldName;
+  Result := FChargeSheetsInfoFieldNames.PerformerSpecialityFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetPerformingDateTimeFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerDepartmentIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.PerformingDateTimeFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetTimeFrameDeadlineFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerDepartmentNameFieldName;
+  Result := FChargeSheetsInfoFieldNames.TimeFrameDeadlineFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetTimeFrameStartFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.TimeFrameStartFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerIsForeignFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetResponseFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerIsForeignFieldName;
+  Result := FChargeSheetsInfoFieldNames.ResponseFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuerDepartmentCodeFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.IssuerDepartmentCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuerDepartmentIdFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerLeaderIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.IssuerDepartmentIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuerDepartmentNameFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerNameFieldName;
+  Result := FChargeSheetsInfoFieldNames.IssuerDepartmentNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerRoleIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuerIdFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerRoleIdFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformerSpecialityFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerSpecialityFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPerformingDateTimeFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformingDateTimeFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPeriodEndFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPeriodEndFieldName;
+  Result := FChargeSheetsInfoFieldNames.IssuerIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetPeriodStartFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuerIsForeignFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPeriodStartFieldName;
+  Result := FChargeSheetsInfoFieldNames.IssuerIsForeignFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetResponseFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuerNameFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetResponseFieldName;
+  Result := FChargeSheetsInfoFieldNames.IssuerNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetIssuerSpecialityFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderDepartmentCodeFieldName;
+  Result := FChargeSheetsInfoFieldNames.IssuerSpecialityFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetChargeTextFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.ChargeTextFieldName;
+
+end;
+
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetChargeIdFieldName: String;
+begin
+
+  Result := FChargeSheetsInfoFieldNames.ChargeIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetDocumentIdFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderDepartmentIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.DocumentIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetDocumentKindIdFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderDepartmentNameFieldName;
+  Result := FChargeSheetsInfoFieldNames.DocumentKindIdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeSheetViewDateByPerformerFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.ViewDateByPerformerFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderIsForeignFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetChargeChargeTextFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderIsForeignFieldName;
+  Result := FChargesInfoFieldNames.ChargeTextFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderLeaderIdFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderLeaderIdFieldName;
-  
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderNameFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderNameFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetSenderSpecialityFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderSpecialityFieldName;
-  
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetTextFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetTextFieldName;
-
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeSheetViewingDateByPerformerFieldName: String;
-begin
-
-  Result := FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetViewingDateByPerformerFieldName;
-  
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentChargeTextFieldName: String;
-begin
-
-  Result := FDocumentChargesInfoFieldNames.DocumentChargeTextFieldName;
-  
-end;
-
-function TDocumentFullInfoDataSetFieldNames.GetDocumentContentFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetContentFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ContentFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentCreationDateFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetCreationDateFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.CreationDateFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentCurrentWorkCycleStageNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetCurrentWorkCycleStageNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.CurrentWorkCycleStageNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentCurrentWorkCycleStageNumberFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetCurrentWorkCycleStageNumberFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.CurrentWorkCycleStageNumberFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentDateFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetDateFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.DateFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentFileIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetFileIdFieldName: String;
 begin
 
-  Result := FDocumentFilesInfoFieldNames.DocumentFileIdFieldName;
+  Result := FFilesInfoFieldNames.IdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentFileNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetFileNameFieldName: String;
 begin
 
-  Result := FDocumentFilesInfoFieldNames.DocumentFileNameFieldName;
+  Result := FFilesInfoFieldNames.NameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentFilePathFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetFilePathFieldName: String;
 begin
 
-  Result := FDocumentFilesInfoFieldNames.DocumentFilePathFieldName;
+  Result := FFilesInfoFieldNames.PathFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.IdFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentIsSelfRegisteredFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetIsSelfRegisteredFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.IsSelfRegisteredFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentKindFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetKindFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.KindFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentKindIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetKindIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.KindIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.NameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentNoteFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetNoteFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.NoteFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentNumberFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetNumberFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.NumberFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentProductCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetProductCodeFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ProductCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentRelationIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetRelationIdFieldName: String;
 begin
 
-  Result := FDocumentRelationsInfoFieldNames.DocumentRelationIdFieldName;
+  Result := FRelationsInfoFieldNames.RelationIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentResponsibleDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetResponsibleDepartmentCodeFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ResponsibleDepartmentCodeFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentResponsibleDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetResponsibleDepartmentIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ResponsibleDepartmentIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentResponsibleDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetResponsibleDepartmentNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ResponsibleDepartmentNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentResponsibleIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetResponsibleIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ResponsibleIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentResponsibleNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetResponsibleNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ResponsibleNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentResponsibleTelephoneNumberFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetResponsibleTelephoneNumberFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.ResponsibleTelephoneNumberFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSignerDepartmentCodeFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSignerDepartmentCodeFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SignerDepartmentCodeFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSignerDepartmentIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSignerDepartmentIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SignerDepartmentIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSignerDepartmentNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSignerDepartmentNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SignerDepartmentNameFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSignerIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSignerIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SignerIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSignerLeaderIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSignerLeaderIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SignerLeaderIdFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSignerNameFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSignerNameFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SignerNameFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSignerSpecialityFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSignerSpecialityFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SignerSpecialityFieldName;
   
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSigningDateFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSigningDateFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SigningDateFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetDocumentSigningIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetSigningIdFieldName: String;
 begin
 
   Result := FDocumentInfoFieldNames.SigningIdFieldName;
@@ -3660,53 +3515,53 @@ end;
 function TDocumentFullInfoDataSetFieldNames.GetRelatedDocumentDateFieldName: String;
 begin
 
-  Result := FDocumentRelationsInfoFieldNames.RelatedDocumentDateFieldName;
+  Result := FRelationsInfoFieldNames.RelatedDocumentDateFieldName;
 
 end;
 
 function TDocumentFullInfoDataSetFieldNames.GetRelatedDocumentIdFieldName: String;
 begin
 
-  Result := FDocumentRelationsInfoFieldNames.RelatedDocumentIdFieldName;
+  Result := FRelationsInfoFieldNames.RelatedDocumentIdFieldName;
 
 end;
 
 function TDocumentFullInfoDataSetFieldNames.GetRelatedDocumentKindIdFieldName: String;
 begin
 
-  Result := FDocumentRelationsInfoFieldNames.RelatedDocumentKindIdFieldName;
+  Result := FRelationsInfoFieldNames.RelatedDocumentKindIdFieldName;
 
 end;
 
 function TDocumentFullInfoDataSetFieldNames.GetRelatedDocumentKindNameFieldName: String;
 begin
 
-  Result := FDocumentRelationsInfoFieldNames.RelatedDocumentKindNameFieldName;
+  Result := FRelationsInfoFieldNames.RelatedDocumentKindNameFieldName;
 
 end;
 
 function TDocumentFullInfoDataSetFieldNames.GetRelatedDocumentNameFieldName: String;
 begin
 
-  Result := FDocumentRelationsInfoFieldNames.RelatedDocumentNameFieldName;
+  Result := FRelationsInfoFieldNames.RelatedDocumentNameFieldName;
   
 end;
 
 function TDocumentFullInfoDataSetFieldNames.GetRelatedDocumentNumberFieldName: String;
 begin
 
-  Result := FDocumentRelationsInfoFieldNames.RelatedDocumentNumberFieldName;
+  Result := FRelationsInfoFieldNames.RelatedDocumentNumberFieldName;
 
 end;
 
-function TDocumentFullInfoDataSetFieldNames.GetTopLevelDocumentChargeSheetIdFieldName: String;
+function TDocumentFullInfoDataSetFieldNames.GetTopLevelChargeSheetIdFieldName: String;
 begin
 
-  Result := FDocumentChargeSheetsInfoFieldNames.TopLevelDocumentChargeSheetIdFieldName;
+  Result := FChargeSheetsInfoFieldNames.TopLevelChargeSheetIdFieldName;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetBaseDocumentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetBaseIdFieldName(
   const Value: String);
 begin
 
@@ -3714,79 +3569,79 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetDocumentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.ChargeSheetDocumentIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.IdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverDepartmentCodeFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverDepartmentCodeFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverDepartmentCodeFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverDepartmentIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverDepartmentIdFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverDepartmentIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverDepartmentNameFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverDepartmentNameFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverDepartmentNameFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverIdFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverIsForeignFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverIsForeignFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverIsForeignFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverIsForeignFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverLeaderIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverLeaderIdFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverLeaderIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverNameFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverNameFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualApproverSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualApproverSpecialityFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentActualApproverSpecialityFieldName := Value;
+  FApprovingsInfoFieldNames.ActualApproverSpecialityFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualSignerDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualSignerDepartmentCodeFieldName(
   const Value: String);
 begin
 
@@ -3794,7 +3649,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualSignerDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualSignerDepartmentIdFieldName(
   const Value: String);
 begin
 
@@ -3802,7 +3657,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualSignerDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualSignerDepartmentNameFieldName(
   const Value: String);
 begin
 
@@ -3810,7 +3665,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualSignerIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualSignerIdFieldName(
   const Value: String);
 begin
 
@@ -3818,14 +3673,14 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualSignerLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualSignerLeaderIdFieldName(
   const Value: String);
 begin
 
   FDocumentInfoFieldNames.ActualSignerLeaderIdFieldName := Value;
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualSignerNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualSignerNameFieldName(
   const Value: String);
 begin
 
@@ -3833,7 +3688,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentActualSignerSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetActualSignerSpecialityFieldName(
   const Value: String);
 begin
 
@@ -3841,151 +3696,151 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverDepartmentCodeFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverDepartmentCodeFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverDepartmentCodeFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverDepartmentIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverDepartmentIdFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverDepartmentIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverDepartmentNameFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverDepartmentNameFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverDepartmentNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverIdFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverIsForeignFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverIsForeignFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverIsForeignFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverIsForeignFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverLeaderIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverLeaderIdFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverLeaderIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverNameFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverNameFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverNameFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApproverSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApproverSpecialityFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApproverSpecialityFieldName := Value;
+  FApprovingsInfoFieldNames.ApproverSpecialityFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingCycleIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingCycleIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingCycleIdFieldName := Value;
+  FApprovingsInfoFieldNames.CycleIdFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingCycleNumberFieldName(
+  const Value: String);
+begin
+
+  FApprovingsInfoFieldNames.CycleNumberFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingCycleNumberFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingCycleNumberFieldName := Value;
+  FApprovingsInfoFieldNames.IdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingIsAccessibleFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingIdFieldName := Value;
+  FApprovingsInfoFieldNames.IsAccessibleFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingIsAccessibleFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingIsCompletedFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingIsAccessibleFieldName := Value;
+  FApprovingsInfoFieldNames.IsCompletedFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingIsCompletedFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingIsLookedByApproverFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingIsCompletedFieldName := Value;
+  FApprovingsInfoFieldNames.IsLookedByApproverFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingIsLookedByApproverFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingNoteFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingIsLookedByApproverFieldName := Value;
+  FApprovingsInfoFieldNames.NoteFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingNoteFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingPerformingDateTimeFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingNoteFieldName := Value;
+  FApprovingsInfoFieldNames.PerformingDateTimeFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingPerformingResultFieldName(
+  const Value: String);
+begin
+
+  FApprovingsInfoFieldNames.PerformingResultFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingPerformingDateTimeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetApprovingPerformingResultIdFieldName(
   const Value: String);
 begin
 
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingPerformingDateTimeFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingPerformingResultFieldName(
-  const Value: String);
-begin
-
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingPerformingResultFieldName := Value;
+  FApprovingsInfoFieldNames.PerformingResultIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentApprovingPerformingResultIdFieldName(
-  const Value: String);
-begin
-
-  FDocumentApprovingsInfoFieldNames.DocumentApprovingPerformingResultIdFieldName := Value;
-  
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentAuthorDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetAuthorDepartmentCodeFieldName(
   const Value: String);
 begin
 
@@ -3993,7 +3848,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentAuthorDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetAuthorDepartmentIdFieldName(
   const Value: String);
 begin
 
@@ -4001,7 +3856,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentAuthorDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetAuthorDepartmentNameFieldName(
   const Value: String);
 begin
 
@@ -4009,7 +3864,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentAuthorIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetAuthorIdFieldName(
   const Value: String);
 begin
 
@@ -4017,7 +3872,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentAuthorLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetAuthorLeaderIdFieldName(
   const Value: String);
 begin
 
@@ -4025,7 +3880,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentAuthorNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetAuthorNameFieldName(
   const Value: String);
 begin
 
@@ -4033,7 +3888,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentAuthorSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetAuthorSpecialityFieldName(
   const Value: String);
 begin
 
@@ -4041,463 +3896,415 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeActualPerformerDepartmentCodeFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerDepartmentCodeFieldName := Value;
+  FChargesInfoFieldNames.ActualPerformerDepartmentCodeFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeActualPerformerDepartmentIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerDepartmentIdFieldName := Value;
+  FChargesInfoFieldNames.ActualPerformerDepartmentIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeActualPerformerDepartmentNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerDepartmentNameFieldName := Value;
+  FChargesInfoFieldNames.ActualPerformerDepartmentNameFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeActualPerformerIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerIdFieldName := Value;
+  FChargesInfoFieldNames.ActualPerformerIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerIsForeignFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeActualPerformerNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerIsForeignFieldName := Value;
+  FChargesInfoFieldNames.ActualPerformerNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeActualPerformerSpecialityFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerLeaderIdFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerNameFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerNameFieldName := Value;
+  FChargesInfoFieldNames.ActualPerformerSpecialityFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeActualPerformerSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeActualPerformerSpecialityFieldName := Value;
+  FChargesInfoFieldNames.IdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeIsForAcquaitanceFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeIdFieldName := Value;
+  FChargesInfoFieldNames.IsForAcquaitanceFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformerDepartmentCodeFieldName(
+  const Value: String);
+begin
+
+  FChargesInfoFieldNames.PerformerDepartmentCodeFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeIsForAcquaitanceFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformerDepartmentIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeIsForAcquaitanceFieldName := Value;
+  FChargesInfoFieldNames.PerformerDepartmentIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformerDepartmentNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerDepartmentCodeFieldName := Value;
+  FChargesInfoFieldNames.PerformerDepartmentNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformerIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerDepartmentIdFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerDepartmentNameFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerDepartmentNameFieldName := Value;
+  FChargesInfoFieldNames.PerformerIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformerIsForeignFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerIdFieldName := Value;
+  FChargesInfoFieldNames.PerformerIsForeignFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerIsForeignFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformerNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerIsForeignFieldName := Value;
+  FChargesInfoFieldNames.PerformerNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformerSpecialityFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerLeaderIdFieldName := Value;
+  FChargesInfoFieldNames.PerformerSpecialityFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargePerformingDateTimeFieldName(
+  const Value: String);
+begin
+
+  FChargesInfoFieldNames.PerformingDateTimeFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeTimeFrameDeadlineFieldName(
+  const Value: String);
+begin
+
+  FChargesInfoFieldNames.TimeFrameDeadlineFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeTimeFrameStartFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerNameFieldName := Value;
+  FChargesInfoFieldNames.TimeFrameStartFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeResponseFieldName(
+  const Value: String);
+begin
+
+  FChargesInfoFieldNames.ResponseFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetActualPerformerDepartmentCodeFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.ActualPerformerDepartmentCodeFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetActualPerformerDepartmentIdFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.ActualPerformerDepartmentIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformerSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetActualPerformerDepartmentNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePerformerSpecialityFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePerformingDateTimeFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargesInfoFieldNames.DocumentChargePerformingDateTimeFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePeriodEndFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargesInfoFieldNames.DocumentChargePeriodEndFieldName := Value;
+  FChargeSheetsInfoFieldNames.ActualPerformerDepartmentNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargePeriodStartFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetActualPerformerIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargePeriodStartFieldName := Value;
+  FChargeSheetsInfoFieldNames.ActualPerformerIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeResponseFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetActualPerformerNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargesInfoFieldNames.DocumentChargeResponseFieldName := Value;
+  FChargeSheetsInfoFieldNames.ActualPerformerNameFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetActualPerformerSpecialityFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerDepartmentCodeFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerDepartmentIdFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerDepartmentIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.ActualPerformerSpecialityFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIsForAcquaitanceFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerDepartmentNameFieldName := Value;
+  FChargeSheetsInfoFieldNames.IsForAcquaitanceFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuingDateTimeFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.IssuingDateTimeFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerIsForeignFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformerDepartmentCodeFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerIsForeignFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformerDepartmentCodeFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformerDepartmentIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerLeaderIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformerDepartmentIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformerDepartmentNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerNameFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformerDepartmentNameFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetActualPerformerSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformerIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetActualPerformerSpecialityFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformerIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformerIsForeignFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetIdFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetIsForAcquaitanceFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetIsForAcquaitanceFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformerIsForeignFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetIssuingDateTimeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformerNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetIssuingDateTimeFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerDepartmentCodeFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerDepartmentCodeFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerDepartmentIdFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerDepartmentIdFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerDepartmentNameFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerDepartmentNameFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerIdFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformerNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerIsForeignFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformerSpecialityFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerIsForeignFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformerSpecialityFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetPerformingDateTimeFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerLeaderIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.PerformingDateTimeFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetTimeFrameDeadlineFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.TimeFrameDeadlineFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetTimeFrameStartFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerNameFieldName := Value;
+  FChargeSheetsInfoFieldNames.TimeFrameStartFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetResponseFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.ResponseFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuerDepartmentCodeFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.IssuerDepartmentCodeFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuerDepartmentIdFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.IssuerDepartmentIdFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuerDepartmentNameFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.IssuerDepartmentNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerRoleIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuerIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerRoleIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.IssuerIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformerSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuerIsForeignFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformerSpecialityFieldName := Value;
+  FChargeSheetsInfoFieldNames.IssuerIsForeignFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPerformingDateTimeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuerNameFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPerformingDateTimeFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPeriodEndFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPeriodEndFieldName := Value;
+  FChargeSheetsInfoFieldNames.IssuerNameFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetPeriodStartFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetIssuerSpecialityFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetPeriodStartFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetResponseFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetResponseFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderDepartmentCodeFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderDepartmentCodeFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderDepartmentIdFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderDepartmentIdFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderDepartmentNameFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderDepartmentNameFieldName := Value;
+  FChargeSheetsInfoFieldNames.IssuerSpecialityFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetChargeTextFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderIdFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderIsForeignFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderIsForeignFieldName := Value;
+  FChargeSheetsInfoFieldNames.ChargeTextFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetDocumentIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderLeaderIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.DocumentIdFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetDocumentKindIdFieldName(
+  const Value: String);
+begin
+
+  FChargeSheetsInfoFieldNames.DocumentKindIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetChargeIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderNameFieldName := Value;
+  FChargeSheetsInfoFieldNames.ChargeIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetSenderSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeSheetViewDateByPerformerFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetSenderSpecialityFieldName := Value;
+  FChargeSheetsInfoFieldNames.ViewDateByPerformerFieldName := Value;
+
+end;
+
+procedure TDocumentFullInfoDataSetFieldNames.SetChargeChargeTextFieldName(
+  const Value: String);
+begin
+
+  FChargesInfoFieldNames.ChargeTextFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetTextFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetTextFieldName := Value;
-  
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeSheetViewingDateByPerformerFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargeSheetsInfoFieldNames.DocumentChargeSheetViewingDateByPerformerFieldName := Value;
-
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentChargeTextFieldName(
-  const Value: String);
-begin
-
-  FDocumentChargesInfoFieldNames.DocumentChargeTextFieldName := Value;
-  
-end;
-
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentContentFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetContentFieldName(
   const Value: String);
 begin
 
@@ -4505,7 +4312,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentCreationDateFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetCreationDateFieldName(
   const Value: String);
 begin
 
@@ -4513,7 +4320,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentCurrentWorkCycleStageNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetCurrentWorkCycleStageNameFieldName(
   const Value: String);
 begin
 
@@ -4521,7 +4328,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentCurrentWorkCycleStageNumberFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetCurrentWorkCycleStageNumberFieldName(
   const Value: String);
 begin
 
@@ -4529,7 +4336,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentDateFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetDateFieldName(
   const Value: String);
 begin
 
@@ -4537,50 +4344,50 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentFileIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetFileIdFieldName(
   const Value: String);
 begin
 
-  FDocumentFilesInfoFieldNames.DocumentFileIdFieldName := Value;
+  FFilesInfoFieldNames.IdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentFileNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetFileNameFieldName(
   const Value: String);
 begin
 
-  FDocumentFilesInfoFieldNames.DocumentFileNameFieldName := Value;
+  FFilesInfoFieldNames.NameFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentFilePathFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetFilePathFieldName(
   const Value: String);
 begin
 
-  FDocumentFilesInfoFieldNames.DocumentFilePathFieldName := Value;
+  FFilesInfoFieldNames.PathFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentFilesInfoFieldNames(
+procedure TDocumentFullInfoDataSetFieldNames.SetFilesInfoFieldNames(
   const Value: TDocumentFilesInfoFieldNames);
 begin
 
-  FDocumentFilesInfoFieldNames := Value;
-  FDocumentFilesInfoFieldNames.DocumentIdFieldName := DocumentIdFieldName;
+  FFilesInfoFieldNames := Value;
+  FFilesInfoFieldNames.IdFieldName := IdFieldName;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetIdFieldName(
   const Value: String);
 begin
 
   FDocumentInfoFieldNames.IdFieldName := Value;
-  FDocumentRelationsInfoFieldNames.TargetDocumentIdFieldName := Value;
-  FDocumentFilesInfoFieldNames.DocumentFileIdFieldName := Value;
+  FRelationsInfoFieldNames.TargetDocumentIdFieldName := Value;
+  FFilesInfoFieldNames.DocumentIdFieldName := Value;
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentInfoFieldNames(
+procedure TDocumentFullInfoDataSetFieldNames.SetInfoFieldNames(
   const Value: TDocumentInfoFieldNames);
 begin
 
@@ -4588,7 +4395,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentIsSelfRegisteredFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetIsSelfRegisteredFieldName(
   const Value: String);
 begin
 
@@ -4596,7 +4403,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentKindFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetKindFieldName(
   const Value: String);
 begin
 
@@ -4604,7 +4411,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentKindIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetKindIdFieldName(
   const Value: String);
 begin
 
@@ -4612,7 +4419,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetNameFieldName(
   const Value: String);
 begin
 
@@ -4620,7 +4427,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentNoteFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetNoteFieldName(
   const Value: String);
 begin
 
@@ -4628,7 +4435,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentNumberFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetNumberFieldName(
   const Value: String);
 begin
 
@@ -4636,7 +4443,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentProductCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetProductCodeFieldName(
   const Value: String);
 begin
 
@@ -4644,21 +4451,23 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentRelationIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetRelationIdFieldName(
   const Value: String);
 begin
 
-  FDocumentRelationsInfoFieldNames.DocumentRelationIdFieldName := Value;
+  FRelationsInfoFieldNames.RelationIdFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentRelationsInfoFieldNames(
+procedure TDocumentFullInfoDataSetFieldNames.SetRelationsInfoFieldNames(
   const Value: TDocumentRelationsInfoFieldNames);
 begin
-  FDocumentRelationsInfoFieldNames := Value;
+
+  FRelationsInfoFieldNames := Value;
+
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentResponsibleDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetResponsibleDepartmentCodeFieldName(
   const Value: String);
 begin
 
@@ -4666,7 +4475,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentResponsibleDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetResponsibleDepartmentIdFieldName(
   const Value: String);
 begin
 
@@ -4674,7 +4483,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentResponsibleDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetResponsibleDepartmentNameFieldName(
   const Value: String);
 begin
 
@@ -4682,7 +4491,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentResponsibleIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetResponsibleIdFieldName(
   const Value: String);
 begin
 
@@ -4690,7 +4499,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentResponsibleNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetResponsibleNameFieldName(
   const Value: String);
 begin
 
@@ -4698,7 +4507,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentResponsibleTelephoneNumberFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetResponsibleTelephoneNumberFieldName(
   const Value: String);
 begin
 
@@ -4706,7 +4515,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSignerDepartmentCodeFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSignerDepartmentCodeFieldName(
   const Value: String);
 begin
 
@@ -4714,7 +4523,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSignerDepartmentIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSignerDepartmentIdFieldName(
   const Value: String);
 begin
 
@@ -4722,7 +4531,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSignerDepartmentNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSignerDepartmentNameFieldName(
   const Value: String);
 begin
 
@@ -4730,7 +4539,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSignerIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSignerIdFieldName(
   const Value: String);
 begin
 
@@ -4738,7 +4547,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSignerLeaderIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSignerLeaderIdFieldName(
   const Value: String);
 begin
 
@@ -4746,7 +4555,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSignerNameFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSignerNameFieldName(
   const Value: String);
 begin
 
@@ -4754,7 +4563,7 @@ begin
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSignerSpecialityFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSignerSpecialityFieldName(
   const Value: String);
 begin
 
@@ -4762,7 +4571,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSigningDateFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSigningDateFieldName(
   const Value: String);
 begin
 
@@ -4770,7 +4579,7 @@ begin
   
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetDocumentSigningIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetSigningIdFieldName(
   const Value: String);
 begin
 
@@ -4782,7 +4591,7 @@ procedure TDocumentFullInfoDataSetFieldNames.SetRelatedDocumentDateFieldName(
   const Value: String);
 begin
 
-  FDocumentRelationsInfoFieldNames.RelatedDocumentDateFieldName := Value;
+  FRelationsInfoFieldNames.RelatedDocumentDateFieldName := Value;
   
 end;
 
@@ -4790,7 +4599,7 @@ procedure TDocumentFullInfoDataSetFieldNames.SetRelatedDocumentIdFieldName(
   const Value: String);
 begin
 
-  FDocumentRelationsInfoFieldNames.RelatedDocumentIdFieldName := Value;
+  FRelationsInfoFieldNames.RelatedDocumentIdFieldName := Value;
   
 end;
 
@@ -4798,7 +4607,7 @@ procedure TDocumentFullInfoDataSetFieldNames.SetRelatedDocumentKindIdFieldName(
   const Value: String);
 begin
 
-  FDocumentRelationsInfoFieldNames.RelatedDocumentKindIdFieldName := Value;
+  FRelationsInfoFieldNames.RelatedDocumentKindIdFieldName := Value;
   
 end;
 
@@ -4806,7 +4615,7 @@ procedure TDocumentFullInfoDataSetFieldNames.SetRelatedDocumentKindNameFieldName
   const Value: String);
 begin
 
-  FDocumentRelationsInfoFieldNames.RelatedDocumentKindNameFieldName := Value;
+  FRelationsInfoFieldNames.RelatedDocumentKindNameFieldName := Value;
 
 end;
 
@@ -4814,7 +4623,7 @@ procedure TDocumentFullInfoDataSetFieldNames.SetRelatedDocumentNameFieldName(
   const Value: String);
 begin
 
-  FDocumentRelationsInfoFieldNames.RelatedDocumentNameFieldName := Value;
+  FRelationsInfoFieldNames.RelatedDocumentNameFieldName := Value;
   
 end;
 
@@ -4822,16 +4631,17 @@ procedure TDocumentFullInfoDataSetFieldNames.SetRelatedDocumentNumberFieldName(
   const Value: String);
 begin
 
-  FDocumentRelationsInfoFieldNames.RelatedDocumentNumberFieldName := Value;
+  FRelationsInfoFieldNames.RelatedDocumentNumberFieldName := Value;
 
 end;
 
-procedure TDocumentFullInfoDataSetFieldNames.SetTopLevelDocumentChargeSheetIdFieldName(
+procedure TDocumentFullInfoDataSetFieldNames.SetTopLevelChargeSheetIdFieldName(
   const Value: String);
 begin
 
-  FDocumentChargeSheetsInfoFieldNames.TopLevelDocumentChargeSheetIdFieldName := Value;
+  FChargeSheetsInfoFieldNames.TopLevelChargeSheetIdFieldName := Value;
   
 end;
 
 end.
+

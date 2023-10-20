@@ -54,6 +54,8 @@ type
           DocumentCharge: IDocumentCharge
         ); virtual;
 
+      protected
+
         procedure RaiseChargeAssigningExceptionIfPerformerIsOneOfDocumentSigners(
           Performer: TEmployee;
           Document: IDocument
@@ -73,6 +75,14 @@ type
           Employee: TEmployee;
           Document: IDocument
         );
+
+      protected
+
+        procedure RaiseChargeRemovingExceptionIfChargeIsNotValid(
+          Employee: TEmployee;
+          Document: IDocument;
+          DocumentCharge: IDocumentCharge
+        ); virtual;
 
       protected
 
@@ -113,14 +123,10 @@ type
           DocumentCharge: IDocumentCharge
         );
 
-        procedure EnsureThatEmployeeMayChangeChargeList(
+        procedure EnsureThatEmployeeMayAssignDocumentCharges(
           Employee: TEmployee;
-          Document: IDocument
-        );
-
-        procedure EnsureDocumentChargeAssignedForEmployee(
-          Employee: TEmployee;
-          Document: IDocument
+          Document: IDocument;
+          DocumentCharges: IDocumentCharges
         );
 
         function MayEmployeeAssignDocumentCharge(
@@ -129,10 +135,40 @@ type
           DocumentCharge: IDocumentCharge
         ): Boolean;
 
+        procedure EnsureEmployeeMayRemoveDocumentCharge(
+          Employee: TEmployee;
+          Document: IDocument;
+          DocumentCharge: IDocumentCharge
+        );
+
+        procedure EnsureEmployeeMayRemoveDocumentCharges(
+          Employee: TEmployee;
+          Document: IDocument;
+          DocumentCharges: IDocumentCharges
+        );
+
+        function MayEmployeeRemoveDocumentCharge(
+          Employee: TEmployee;
+          Document: IDocument;
+          DocumentCharge: IDocumentCharge
+        ): Boolean;
+
+        procedure EnsureThatEmployeeMayChangeChargeList(
+          Employee: TEmployee;
+          Document: IDocument;
+          Charge: IDocumentCharge = nil
+        );
+
         function MayEmployeeChangeChargeList(
           Employee: TEmployee;
-          Document: IDocument
+          Document: IDocument;
+          Charge: IDocumentCharge = nil
         ): Boolean;
+
+        procedure EnsureDocumentChargeAssignedForEmployee(
+          Employee: TEmployee;
+          Document: IDocument
+        );
 
         function IsDocumentChargeAssignedForEmployee(
           Employee: TEmployee;
@@ -215,6 +251,34 @@ begin
   
 end;
 
+procedure TStandardEmployeeDocumentChargeListChangingRule
+  .EnsureEmployeeMayRemoveDocumentCharge(
+    Employee: TEmployee;
+    Document: IDocument;
+    DocumentCharge: IDocumentCharge
+  );
+begin
+
+  EnsureThatEmployeeMayChangeChargeList(Employee, Document);
+
+  RaiseChargeRemovingExceptionIfChargeIsNotValid(Employee, Document, DocumentCharge);
+
+end;
+
+procedure TStandardEmployeeDocumentChargeListChangingRule.EnsureEmployeeMayRemoveDocumentCharges(
+  Employee: TEmployee;
+  Document: IDocument;
+  DocumentCharges: IDocumentCharges
+);
+var
+    Charge: IDocumentCharge;
+begin
+
+  for Charge in DocumentCharges do
+    EnsureEmployeeMayRemoveDocumentCharge(Employee, Document, Charge);
+    
+end;
+
 procedure TStandardEmployeeDocumentChargeListChangingRule.
   EnsureThatEmployeeMayAssignDocumentCharge(
     Employee: TEmployee;
@@ -223,10 +287,24 @@ procedure TStandardEmployeeDocumentChargeListChangingRule.
   );
 begin
 
-  EnsureThatEmployeeMayChangeChargeList(Employee, Document);
+  EnsureThatEmployeeMayChangeChargeList(Employee, Document, DocumentCharge);
   
   RaiseChargeAssigningExceptionIfChargeIsNotValid(Employee, Document, DocumentCharge);
 
+end;
+
+procedure TStandardEmployeeDocumentChargeListChangingRule.EnsureThatEmployeeMayAssignDocumentCharges(
+  Employee: TEmployee;
+  Document: IDocument;
+  DocumentCharges: IDocumentCharges
+);
+var
+    Charge: IDocumentCharge;
+begin
+
+  for Charge in DocumentCharges do
+    EnsureThatEmployeeMayAssignDocumentCharge(Employee, Document, Charge);
+    
 end;
 
 function TStandardEmployeeDocumentChargeListChangingRule.
@@ -258,12 +336,15 @@ begin
 end;
 
 function TStandardEmployeeDocumentChargeListChangingRule.MayEmployeeChangeChargeList(
-  Employee: TEmployee; Document: IDocument): Boolean;
+  Employee: TEmployee;
+  Document: IDocument;
+  Charge: IDocumentCharge
+): Boolean;
 begin
 
   try
 
-    EnsureThatEmployeeMayChangeChargeList(Employee, Document);
+    EnsureThatEmployeeMayChangeChargeList(Employee, Document, Charge);
     
     Result := True;
 
@@ -275,11 +356,35 @@ begin
 
 end;
 
-procedure TStandardEmployeeDocumentChargeListChangingRule.EnsureThatEmployeeMayChangeChargeList(
-  Employee: TEmployee; Document: IDocument);
+function TStandardEmployeeDocumentChargeListChangingRule.MayEmployeeRemoveDocumentCharge(
+  Employee: TEmployee;
+  Document: IDocument;
+  DocumentCharge: IDocumentCharge
+): Boolean;
 begin
 
-  RaiseChargeAssigningExceptionIfDocumentIsAtNotAllowedWorkCycleStage(Document);
+  try
+
+    EnsureEmployeeMayRemoveDocumentCharge(Employee, Document, DocumentCharge);
+
+    Result := True;
+
+  except
+
+    on E: TDocumentChargeListChangingRuleException do Result := False;
+
+  end;
+
+end;
+
+procedure TStandardEmployeeDocumentChargeListChangingRule.EnsureThatEmployeeMayChangeChargeList(
+  Employee: TEmployee;
+  Document: IDocument;
+  Charge: IDocumentCharge
+);
+begin
+
+  RaiseChargeAssigningExceptionIfDocumentIsAtNotAllowedWorkCycleStage(Document, Charge);
   RaiseExceptionIfEmployeeHasNotRightsForChargeListChanging(Employee, Document);
   
 end;
@@ -635,6 +740,41 @@ begin
         FDocumentFullNameCompilationService.CompileFullNameForDocument(
           Document
         )
+      ]
+    );
+
+  end;
+
+end;
+
+procedure TStandardEmployeeDocumentChargeListChangingRule
+  .RaiseChargeRemovingExceptionIfChargeIsNotValid(
+    Employee: TEmployee;
+    Document: IDocument;
+    DocumentCharge: IDocumentCharge
+  );
+var
+    DocumentObj: TDocument;
+begin
+
+  DocumentObj := TDocument(Document.Self);
+
+  if
+    not
+    FEmployeeIsSameAsOrReplacingForOthersSpecification.IsEmployeeSameAsOrReplacingForOtherEmployee(
+      Employee, Document.Author
+    )
+    and not
+    DocumentObj.Specifications.DocumentSigningSpecification.IsEmployeeAnyOfDocumentSigners(
+      Employee, Document
+    )
+  then begin
+
+    raise TDocumentChargeListChangingRuleException.CreateFmt(
+      'Отсутствуют права для удаления поручения ' +
+      'сотрудника "%s"',
+      [
+        DocumentCharge.Performer.FullName
       ]
     );
 

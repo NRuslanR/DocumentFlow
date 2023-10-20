@@ -119,7 +119,7 @@ procedure TDocumentCardFramePropertiesStorage.RestoreDocumentCardFrameProperties
   PropertiesStorage: IPropertiesStorage
 );
 begin
-
+  {
   PropertiesStorage.GoToSection('UI Settings');
 
   if FDefaultPropertiesStorage <> PropertiesStorage then begin
@@ -131,7 +131,7 @@ begin
         uiOld
       );
 
-  end;
+  end;}
 
   InternalRestoreFramePropertiesForUserInterfaceKind(
     DocumentCardFrame,

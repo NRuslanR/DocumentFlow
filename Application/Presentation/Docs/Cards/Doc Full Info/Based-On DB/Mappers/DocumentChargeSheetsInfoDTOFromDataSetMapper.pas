@@ -8,6 +8,7 @@ uses
   DocumentChargeSheetsInfoHolder,
   DocumentFlowEmployeeInfoDTO,
   DepartmentInfoDTO,
+  DocumentChargesInfoDTOFromDataSetMapper,
   SysUtils,
   VariantListUnit,
   Disposable;
@@ -19,17 +20,20 @@ type
 
       protected
 
+        FChargesInfoDTOFromDataSetMapper: TDocumentChargesInfoDTOFromDataSetMapper;
+        FFreeChargesInfoDTOFromDataSetMapper: IDisposable;
+        
         function CreateDocumentChargeSheetsInfoDTOInstance: TDocumentChargeSheetsInfoDTO; virtual;
         function CreateDocumentChargeSheetInfoDTOInstance: TDocumentChargeSheetInfoDTO; virtual;
 
-      protected
+      public
+
+        constructor Create(ChargesInfoDTOFromDataSetMapper: TDocumentChargesInfoDTOFromDataSetMapper);
 
         function MapDocumentChargeSheetInfoDTOFrom(
           DocumentChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder
         ): TDocumentChargeSheetInfoDTO;
         
-      public
-
         function MapDocumentChargeSheetsInfoDTOFrom(
           DocumentChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder
         ): TDocumentChargeSheetsInfoDTO;
@@ -68,10 +72,8 @@ begin
 
         while not Eof do begin
 
-          if not VarIsNull(DocumentChargeSheetIdFieldValue) and
-             not HandledDocumentChargeSheetIds.Contains(
-                    DocumentChargeSheetIdFieldValue
-             )
+          if not VarIsNull(IdFieldValue) and
+             not HandledDocumentChargeSheetIds.Contains(IdFieldValue)
           then begin
 
             DocumentChargeSheetInfoDTO :=
@@ -79,7 +81,7 @@ begin
 
             Result.Add(DocumentChargeSheetInfoDTO);
 
-            HandledDocumentChargeSheetIds.Add(DocumentChargeSheetIdFieldValue);
+            HandledDocumentChargeSheetIds.Add(IdFieldValue);
             
           end;
 
@@ -91,12 +93,9 @@ begin
 
     except
 
-      on e: Exception do begin
-
-        FreeAndNil(Result);
-        raise;
-
-      end;
+      FreeAndNil(Result);
+      
+      raise;
 
     end;
 
@@ -118,87 +117,67 @@ begin
 
   try
 
+    Result.ChargeInfoDTO :=
+      FChargesInfoDTOFromDataSetMapper
+        .MapDocumentChargeInfoDTOFrom(
+          DocumentChargeSheetsInfoHolder.ChargesInfoHolder
+        );
+
     with DocumentChargeSheetsInfoHolder do begin
 
-      Result.Id := DocumentChargeSheetIdFieldValue;
-      Result.KindId := DocumentChargeSheetKindIdFieldValue;
-      Result.KindName := DocumentChargeSheetKindNameFieldValue;
-      Result.ServiceKindName := DocumentChargeSheetServiceKindNameFieldName;
+      Result.Id := IdFieldValue;
+      Result.ChargeId := ChargeIdFieldValue;
       Result.TopLevelChargeSheetId := TopLevelChargeSheetIdFieldValue;
-      Result.DocumentId := ChargeSheetDocumentIdFieldValue;
-      Result.ChargeText := DocumentChargeSheetTextFieldValue;
-      Result.PerformerResponse := DocumentChargeSheetResponseFieldValue;
-      Result.TimeFrameStart := DocumentChargeSheetPeriodStartFieldValue;
-      Result.TimeFrameDeadline := DocumentChargeSheetPeriodEndFieldValue;
-      Result.IssuingDateTime := DocumentChargeSheetIssuingDateTimeFieldValue;
-      Result.PerformingDateTime := DocumentChargeSheetPerformingDateTimeFieldValue;
-      Result.ViewingDateByPerformer := DocumentChargeSheetViewingDateByPerformerFieldValue;
-      Result.IsForAcquaitance := DocumentChargeSheetIsForAcquaitanceFieldValue;
+      Result.DocumentId := DocumentIdFieldValue;
+      Result.DocumentKindId := DocumentKindIdFieldValue;
+      Result.IssuingDateTime := IssuingDateTimeFieldValue;
+      Result.ViewDateByPerformer := ViewDateByPerformerFieldValue;
+
+      Result.IssuerInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
+
+      Result.IssuerInfoDTO.Id := IssuerIdFieldValue;
+      Result.IssuerInfoDTO.IsForeign := IssuerIsForeignFieldValue;
+      Result.IssuerInfoDTO.FullName := IssuerNameFieldValue;
+      Result.IssuerInfoDTO.Speciality := IssuerSpecialityFieldValue;
+
+      Result.IssuerInfoDTO.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
       
-      Result.PerformerInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
-      Result.PerformerInfoDTO.Id := DocumentChargeSheetPerformerIdFieldValue;
-      Result.PerformerInfoDTO.LeaderId := DocumentChargeSheetPerformerLeaderIdFieldValue;
-      Result.PerformerInfoDTO.RoleId := DocumentChargeSheetPerformerRoleIdFieldValue;
-      Result.PerformerInfoDTO.IsForeign := DocumentChargeSheetPerformerIsForeignFieldValue;
-      Result.PerformerInfoDTO.FullName := DocumentChargeSheetPerformerNameFieldValue;
-      Result.PerformerInfoDTO.Speciality := DocumentChargeSheetPerformerSpecialityFieldValue;
+      Result.IssuerInfoDTO.DepartmentInfoDTO.Id := IssuerDepartmentIdFieldValue;
+      Result.IssuerInfoDTO.DepartmentInfoDTO.Code := IssuerDepartmentCodeFieldValue;
+      Result.IssuerInfoDTO.DepartmentInfoDTO.Name := IssuerDepartmentNameFieldValue;
 
-      Result.PerformerInfoDTO.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
-      Result.PerformerInfoDTO.DepartmentInfoDTO.Id := DocumentChargeSheetPerformerDepartmentIdFieldValue;
-      Result.PerformerInfoDTO.DepartmentInfoDTO.Code := DocumentChargeSheetPerformerDepartmentCodeFieldValue;
-      Result.PerformerInfoDTO.DepartmentInfoDTO.Name := DocumentChargeSheetPerformerDepartmentNameFieldValue;
-
-      Result.ActuallyPerformedEmployeeInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
-      Result.ActuallyPerformedEmployeeInfoDTO.Id := DocumentChargeSheetActualPerformerIdFieldValue;
-      Result.ActuallyPerformedEmployeeInfoDTO.LeaderId := DocumentChargeSheetActualPerformerLeaderIdFieldValue;
-      Result.ActuallyPerformedEmployeeInfoDTO.IsForeign := DocumentChargeSheetActualPerformerIsForeignFieldValue;
-      Result.ActuallyPerformedEmployeeInfoDTO.FullName := DocumentChargeSheetActualPerformerNameFieldValue;
-      Result.ActuallyPerformedEmployeeInfoDTO.Speciality := DocumentChargeSheetActualPerformerSpecialityFieldValue;
-
-      Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
-      Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO.Id := DocumentChargeSheetActualPerformerDepartmentIdFieldValue;
-      Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO.Code := DocumentChargeSheetActualPerformerDepartmentCodeFieldValue;
-      Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO.Name := DocumentChargeSheetActualPerformerDepartmentNameFieldValue;
-
-      Result.SenderEmployeeInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
-      Result.SenderEmployeeInfoDTO.Id := DocumentChargeSheetSenderIdFieldValue;
-      Result.SenderEmployeeInfoDTO.FullName := DocumentChargeSheetSenderNameFieldValue;
-      Result.SenderEmployeeInfoDTO.Speciality := DocumentChargeSheetSenderSpecialityFieldValue;
-
-      Result.SenderEmployeeInfoDTO.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
-      Result.SenderEmployeeInfoDTO.DepartmentInfoDTO.Id := DocumentChargeSheetSenderDepartmentIdFieldValue;
-      Result.SenderEmployeeInfoDTO.LeaderId := DocumentChargeSheetSenderLeaderIdFieldValue;
-      Result.SenderEmployeeInfoDTO.IsForeign := DocumentChargeSheetSenderIsForeignFieldValue;
-      Result.SenderEmployeeInfoDTO.DepartmentInfoDTO.Code := DocumentChargeSheetSenderDepartmentCodeFieldValue;
-      Result.SenderEmployeeInfoDTO.DepartmentInfoDTO.Name := DocumentChargeSheetSenderDepartmentNameFieldValue;
-
-      {
-        refactor(DocumentChargeSheetsInfoDTOFromDataSetMapper, 1):
-        remove after refactor(DocumentPerformingInfoQueryBuilder, 1)
-      }
       with Result.AccessRights do begin
 
-        ViewingAllowed := GetDataSetFieldValue('can_charge_sheet_view', Null);
-        ChargeSectionAccessible := GetDataSetFieldValue('has_charge_section_access', Null);
-        ResponseSectionAccessible := GetDataSetFieldValue('has_response_section_access', Null);
-        RemovingAllowed := GetDataSetFieldValue('can_charge_sheet_remove', Null);
-        PerformingAllowed := GetDataSetFieldValue('can_charge_sheet_perform', Null);
-        
+        ViewingAllowed := ViewingAllowedFieldValue;
+        ChargeSectionAccessible := ChargeSectionAccessibleFieldValue;
+        ResponseSectionAccessible := ResponseSectionAccessibleFieldValue;
+        RemovingAllowed := RemovingAllowedFieldValue;
+        PerformingAllowed := PerformingAllowedFieldValue;
+        IsEmployeePerformer := IsEmployeePerformerFieldValue;
+        SubordinateChargeSheetsIssuingAllowed := SubordinateChargeSheetsIssuingAllowedFieldValue;
+
       end;
       
     end;
 
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-
-      Raise;
-      
-    end;
+    Raise;
 
   end;
+  
+end;
+
+constructor TDocumentChargeSheetsInfoDTOFromDataSetMapper.Create(
+  ChargesInfoDTOFromDataSetMapper: TDocumentChargesInfoDTOFromDataSetMapper);
+begin
+
+  inherited Create;
+
+  FChargesInfoDTOFromDataSetMapper := ChargesInfoDTOFromDataSetMapper;
+  FFreeChargesInfoDTOFromDataSetMapper := FChargesInfoDTOFromDataSetMapper;
   
 end;
 

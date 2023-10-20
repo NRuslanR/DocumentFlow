@@ -25,7 +25,7 @@ type
 
         FDocumentKindWorkCycleInfoService: IDocumentKindWorkCycleInfoService;
 
-        FDocumentKindsMapper: TDocumentKindsMapper;
+        FDocumentKindsMapper: IDocumentKindsMapper;
 
         function MapDocumentKindWorkCycleInfoDtoFrom(
           DocumentKindWorkCycleInfo: TDocumentKindWorkCycleInfo
@@ -43,10 +43,9 @@ type
 
       public
 
-        destructor Destroy; override;
-        
         constructor Create(
-          DocumentKindWorkCycleInfoService: IDocumentKindWorkCycleInfoService
+          DocumentKindWorkCycleInfoService: IDocumentKindWorkCycleInfoService;
+          DocumentKindsMapper: IDocumentKindsMapper
         );
 
         function GetDocumentKindWorkCycleInfo(
@@ -71,7 +70,8 @@ uses
 { TStandardDocumentKindWorkCycleInfoAppService }
 
 constructor TStandardDocumentKindWorkCycleInfoAppService.Create(
-  DocumentKindWorkCycleInfoService: IDocumentKindWorkCycleInfoService
+  DocumentKindWorkCycleInfoService: IDocumentKindWorkCycleInfoService;
+  DocumentKindsMapper: IDocumentKindsMapper
 );
 begin
 
@@ -79,16 +79,7 @@ begin
 
   FDocumentKindWorkCycleInfoService := DocumentKindWorkCycleInfoService;
 
-  FDocumentKindsMapper := TDocumentKindsMapper.Create;
-
-end;
-
-destructor TStandardDocumentKindWorkCycleInfoAppService.Destroy;
-begin
-
-  FreeAndNil(FDocumentKindsMapper);
-  
-  inherited;
+  FDocumentKindsMapper := DocumentKindsMapper;
 
 end;
 

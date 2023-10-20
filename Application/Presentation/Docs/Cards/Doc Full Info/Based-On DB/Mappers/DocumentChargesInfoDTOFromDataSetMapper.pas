@@ -4,7 +4,7 @@ interface
 
 uses
 
-  DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   DocumentChargesInfoHolder,
   DocumentFlowEmployeeInfoDTO,
   DepartmentInfoDTO,
@@ -21,12 +21,9 @@ type
       function CreateDocumentChargesInfoDTOInstance: TDocumentChargesInfoDTO; virtual;
       function CreateDocumentChargeInfoDTOInstance: TDocumentChargeInfoDTO; virtual;
 
-    protected
-
-      function MapDocumentChargeInfoDTOFrom(DocumentChargesInfoHolder: TDocumentChargesInfoHolder): TDocumentChargeInfoDTO;
-
     public
 
+    function MapDocumentChargeInfoDTOFrom(DocumentChargesInfoHolder: TDocumentChargesInfoHolder): TDocumentChargeInfoDTO;
     function MapDocumentChargesInfoDTOFrom(DocumentChargesInfoHolder: TDocumentChargesInfoHolder): TDocumentChargesInfoDTO;
 
   end;
@@ -64,8 +61,8 @@ begin
         while not Eof do begin
 
           if
-              not VarIsNull(DocumentChargeIdFieldValue) and
-              not HandledDocumentChargeIds.Contains(DocumentChargeIdFieldValue)
+              not VarIsNull(IdFieldValue) and
+              not HandledDocumentChargeIds.Contains(IdFieldValue)
           then begin
 
             DocumentChargeInfoDTO :=
@@ -73,7 +70,7 @@ begin
 
             Result.Add(DocumentChargeInfoDTO);
 
-            HandledDocumentChargeIds.Add(DocumentChargeIdFieldValue);
+            HandledDocumentChargeIds.Add(IdFieldValue);
 
           end;
 
@@ -119,75 +116,65 @@ begin
 
     with DocumentChargesInfoHolder do begin
 
-      Result.Id := DocumentChargeIdFieldValue;
-      Result.KindId := DocumentChargeKindIdFieldValue;
-      Result.KindName := DocumentChargeKindNameFieldValue;
-      Result.ServiceKindName := DocumentChargeServiceKindNameFieldValue;
-      Result.ChargeText := DocumentChargeTextFieldValue;
-      Result.PerformerResponse := DocumentChargeResponseFieldValue;
-      Result.TimeFrameStart := DocumentChargePeriodStartFieldValue;
-      Result.TimeFrameDeadline := DocumentChargePeriodEndFieldValue;
-      Result.PerformingDateTime := DocumentChargePerformingDateTimeFieldValue;
-      Result.IsForAcquaitance := DocumentChargeIsForAcquaitanceFieldValue;
+      Result.Id := IdFieldValue;
+      Result.KindId := KindIdFieldValue;
+      Result.KindName := KindNameFieldValue;
+      Result.ServiceKindName := ServiceKindNameFieldValue;
+      Result.ChargeText := ChargeTextFieldValue;
+      Result.PerformerResponse := ResponseFieldValue;
+      Result.TimeFrameStart := TimeFrameStartFieldValue;
+      Result.TimeFrameDeadline := TimeFrameDeadlineFieldValue;
+      Result.PerformingDateTime := PerformingDateTimeFieldValue;
+      Result.IsForAcquaitance := IsForAcquaitanceFieldValue;
 
       Result.PerformerInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
 
-      Result.PerformerInfoDTO.Id := DocumentChargePerformerIdFieldValue;
-      Result.PerformerInfoDTO.LeaderId := DocumentChargePerformerLeaderIdFieldValue;
-      Result.PerformerInfoDTO.IsForeign := DocumentChargePerformerIsForeignFieldValue;
-      Result.PerformerInfoDTO.FullName := DocumentChargePerformerNameFieldValue;
-      Result.PerformerInfoDTO.Speciality := DocumentChargePerformerSpecialityFieldValue;
+      Result.PerformerInfoDTO.Id := PerformerIdFieldValue;
+      Result.PerformerInfoDTO.IsForeign := PerformerIsForeignFieldValue;
+      Result.PerformerInfoDTO.FullName := PerformerNameFieldValue;
+      Result.PerformerInfoDTO.Speciality := PerformerSpecialityFieldValue;
 
       Result.PerformerInfoDTO.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
 
       Result.PerformerInfoDTO.DepartmentInfoDTO.Id :=
-        DocumentChargePerformerDepartmentIdFieldValue;
+        PerformerDepartmentIdFieldValue;
 
       Result.PerformerInfoDTO.DepartmentInfoDTO.Code :=
-        DocumentChargePerformerDepartmentCodeFieldValue;
+        PerformerDepartmentCodeFieldValue;
 
       Result.PerformerInfoDTO.DepartmentInfoDTO.Name :=
-        DocumentChargePerformerDepartmentNameFieldValue;
+        PerformerDepartmentNameFieldValue;
 
       Result.ActuallyPerformedEmployeeInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
 
       Result.ActuallyPerformedEmployeeInfoDTO.Id :=
-        DocumentChargeActualPerformerIdFieldValue;
-
-      Result.ActuallyPerformedEmployeeInfoDTO.LeaderId :=
-        DocumentChargeActualPerformerLeaderIdFieldValue;
-
-      Result.ActuallyPerformedEmployeeInfoDTO.IsForeign :=
-        DocumentChargeActualPerformerIsForeignFieldValue;
+        ActualPerformerIdFieldValue;
 
       Result.ActuallyPerformedEmployeeInfoDTO.FullName :=
-        DocumentChargeActualPerformerNameFieldValue;
+        ActualPerformerNameFieldValue;
 
-      Result.ActuallyPerformedEmployeeInfoDTO.FullName :=
-        DocumentChargeActualPerformerSpecialityFieldValue;
+      Result.ActuallyPerformedEmployeeInfoDTO.Speciality :=
+        ActualPerformerSpecialityFieldValue;
 
       Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO :=
         TDepartmentInfoDTO.Create;
 
       Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO.Id :=
-        DocumentChargeActualPerformerDepartmentIdFieldValue;
+        ActualPerformerDepartmentIdFieldValue;
 
       Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO.Code :=
-        DocumentChargeActualPerformerDepartmentCodeFieldValue;
+        ActualPerformerDepartmentCodeFieldValue;
 
       Result.ActuallyPerformedEmployeeInfoDTO.DepartmentInfoDTO.Name :=
-        DocumentChargeActualPerformerDepartmentNameFieldValue;
+        ActualPerformerDepartmentNameFieldValue;
 
     end;
 
   except
 
-    on e: Exception do begin
-
       FreeAndNil(Result);
-      raise;
 
-    end;
+      Raise;
 
   end;
 

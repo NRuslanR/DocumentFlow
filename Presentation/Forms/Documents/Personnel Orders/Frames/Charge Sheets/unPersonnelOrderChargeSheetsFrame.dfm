@@ -1,0 +1,2 @@
+inherited PersonnelOrderChargeSheetsFrame: TPersonnelOrderChargeSheetsFrame
+end

@@ -12,7 +12,9 @@ type
 
   IDocumentResponsibleSetReadService = interface (IApplicationService)
 
-    function GetDocumentResponsibleSetForEmployee(const EmployeeId: Variant): TEmployeeSetHolder;
+    function GetDocumentResponsibleSetForEmployee(
+      const EmployeeId: Variant
+    ): TEmployeeSetHolder;
 
   end;
 

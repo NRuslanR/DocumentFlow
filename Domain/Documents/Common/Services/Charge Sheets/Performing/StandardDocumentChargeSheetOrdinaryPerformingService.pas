@@ -6,7 +6,6 @@ uses
 
   DomainException,
   IDocumentChargeSheetUnit,
-  IDocumentUnit,
   DocumentChargeSheetPerformingService,
   DocumentChargeSheetOrdinaryPerformingService,
   Employee;
@@ -23,7 +22,6 @@ type
 
         function PerformChargeSheet(
           ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           Employee: TEmployee;
           const PerformingDateTime: TDateTime = 0
         ): IDocumentChargeSheets; virtual;
@@ -34,7 +32,6 @@ implementation
 
 uses
 
-  DocumentChargeSheetPerformingEnsurer,
   IDomainObjectBaseListUnit,
   DocumentChargeSheet;
 
@@ -42,7 +39,6 @@ uses
 
 function TStandardDocumentChargeSheetOrdinaryPerformingService.PerformChargeSheet(
   ChargeSheet: IDocumentChargeSheet;
-  Document: IDocument;
   Employee: TEmployee;
   const PerformingDateTime: TDateTime
 ): IDocumentChargeSheets;

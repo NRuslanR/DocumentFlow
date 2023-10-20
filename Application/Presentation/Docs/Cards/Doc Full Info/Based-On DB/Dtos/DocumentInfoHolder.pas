@@ -20,6 +20,7 @@ type
       BaseIdFieldName: String;
       NumberFieldName: String;
       NameFieldName: String;
+      FullNameFieldName: String;
       ContentFieldName: String;
       NoteFieldName: String;
       ProductCodeFieldName: String;
@@ -63,7 +64,7 @@ type
       ActualSignerDepartmentIdFieldName: String;
       ActualSignerDepartmentCodeFieldName: String;
       ActualSignerDepartmentNameFieldName: String;
-      
+
   end;
 
   TDocumentInfoHolder = class (TAbstractDataSetHolder)
@@ -79,7 +80,7 @@ type
 
       function GetProductCodeFieldValue: String;
       function GetAuthorNameFieldValue: String;
-      function GetContentFieldName: String;
+      function GetContentFieldValue: String;
       function GetNoteFieldValue: String;
       function GetIsSelfRegisteredFieldValue: Variant;
       function GetCreationDateFieldValue: TDateTime;
@@ -89,7 +90,8 @@ type
       function GetIdFieldValue: Variant;
       function GetBaseIdFieldValue: Variant;
       function GetKindFieldValue: String;
-      function GetNameFieldName: String;
+      function GetNameFieldValue: String;
+      function GetFullNameFieldValue: String;
       function GetNumberFieldValue: String;
       function GetResponsibleDepartmentCodeFieldValue: String;
       function GetResponsibleDepartmentIdFieldValue: Variant;
@@ -137,10 +139,13 @@ type
       read GetNumberFieldValue;
 
       property NameFieldValue: String
-      read GetNameFieldName;
+      read GetNameFieldValue;
 
+      property FullNameFieldValue: String
+      read GetFullNameFieldValue;
+      
       property ContentFieldValue: String
-      read GetContentFieldName;
+      read GetContentFieldValue;
 
       property NoteFieldValue: String
       read GetNoteFieldValue;
@@ -401,7 +406,7 @@ begin
             
 end;
 
-function TDocumentInfoHolder.GetContentFieldName: String;
+function TDocumentInfoHolder.GetContentFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(FieldNames.ContentFieldName, '');
@@ -443,6 +448,12 @@ begin
   
 end;
 
+function TDocumentInfoHolder.GetFullNameFieldValue: String;
+begin
+
+  Result := GetDataSetFieldValue(FieldNames.FullNameFieldName, '');
+end;
+
 function TDocumentInfoHolder.GetIdFieldValue: Variant;
 begin
 
@@ -474,7 +485,7 @@ begin
             
 end;
 
-function TDocumentInfoHolder.GetNameFieldName: String;
+function TDocumentInfoHolder.GetNameFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(FieldNames.NameFieldName, '');

@@ -25,19 +25,16 @@ type
   IDocumentChargeSheetControlService = interface
 
     function GetChargeSheets(
-      Document: IDocument;
       Employee: TEmployee;
       const ChargeSheetIds: TVariantList
     ): TDocumentChargeSheets;
     
     function GetChargeSheet(
-      Document: IDocument;
       Employee: TEmployee;
       const ChargeSheetId: Variant
     ): IDocumentChargeSheet; overload;
 
     procedure GetChargeSheet(
-      Document: IDocument;
       Employee: TEmployee;
       const ChargeSheetId: Variant;
       var ChargeSheet: IDocumentChargeSheet;
@@ -82,26 +79,22 @@ type
 
     procedure SaveChargeSheets(
       Employee: TEmployee;
-      ChargeSheets: TDocumentChargeSheets;
-      Document: IDocument
+      ChargeSheets: TDocumentChargeSheets
     );
 
     function PerformChargeSheet(
       Employee: TEmployee;
-      ChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      ChargeSheet: IDocumentChargeSheet
     ): TDocumentChargeSheetPerformingResult;
 
     function PerformChargeSheets(
       Employee: TEmployee;
-      ChargeSheets: TDocumentChargeSheets;
-      Document: IDocument
+      ChargeSheets: TDocumentChargeSheets
     ): TDocumentChargeSheetPerformingResult;
 
     procedure RemoveChargeSheets(
       Employee: TEmployee;
-      ChargeSheets: TDocumentChargeSheets;
-      Document: IDocument
+      ChargeSheets: TDocumentChargeSheets
     );
 
   end;

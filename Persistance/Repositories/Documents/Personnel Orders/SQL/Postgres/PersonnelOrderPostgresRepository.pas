@@ -12,6 +12,7 @@ uses
   DocumentApprovingPostgresRepository,
   DocumentSigningPostgresRepository,
   DocumentChargePostgresRepository,
+  DocumentChargeSheetPostgresRepository,
   DocumentWorkCycleRepository,
   QueryExecutor,
   Document,
@@ -44,6 +45,7 @@ type
         ApprovingPostgresRepository: TDocumentApprovingPostgresRepository;
         SigningPostgresRepository: TDocumentSigningPostgresRepository;
         ChargePostgresRepository: TDocumentChargePostgresRepository;
+        ChargeSheetPostgresRepository: TDocumentChargeSheetPostgresRepository;
         WorkCycleRepository: IDocumentWorkCycleRepository
       );
 
@@ -68,6 +70,7 @@ constructor TPersonnelOrderPostgresRepository.Create(
   ApprovingPostgresRepository: TDocumentApprovingPostgresRepository;
   SigningPostgresRepository: TDocumentSigningPostgresRepository;
   ChargePostgresRepository: TDocumentChargePostgresRepository;
+  ChargeSheetPostgresRepository: TDocumentChargeSheetPostgresRepository;
   WorkCycleRepository: IDocumentWorkCycleRepository
 );
 begin
@@ -80,6 +83,7 @@ begin
     ApprovingPostgresRepository,
     SigningPostgresRepository,
     ChargePostgresRepository,
+    ChargeSheetPostgresRepository,
     WorkCycleRepository
   );
   

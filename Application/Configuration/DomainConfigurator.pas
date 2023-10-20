@@ -153,6 +153,8 @@ uses
   DocumentChargeKind,
   IDomainObjectBaseListUnit,
   DocumentChargeServiceRegistry,
+  PersonnelOrderSubKindRepository,
+  PersonnelOrderSubKindFinder,
   DocumentChargeSheetsServiceRegistry, DocumentSigningServiceRegistry;
 
 
@@ -363,6 +365,9 @@ end;
 
 procedure TDomainConfigurator.ConfigurePersonnelOrderRegistries(
   ConfigurationData: TDomainConfigurationData);
+var
+    PersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository;
+    PersonnelOrderSubKindFinder: IPersonnelOrderSubKindFinder;
 begin
 
   with TPersonnelOrderDomainRegistries do begin
@@ -413,6 +418,20 @@ begin
                 .GetPersonnelOrderControlGroupRepository
         )
       );
+
+      PersonnelOrderSubKindRepository :=
+        TRepositoryRegistry
+          .Current
+            .GetPersonnelOrderRepositoryRegistry
+              .GetPersonnelOrderSubKindRepository;
+
+      Supports(
+        PersonnelOrderSubKindRepository.Self,
+        IPersonnelOrderSubKindFinder,
+        PersonnelOrderSubKindFinder
+      );
+      
+      RegisterPersonnelOrderSubKindFinder(PersonnelOrderSubKindFinder);
 
     end;
 
@@ -481,6 +500,8 @@ begin
         TRepositoryRegistry.Current.GetDocumentRepositoryRegistry.GetDocumentChargeKindRepository
       )
     );
+
+    RegisterStandardDocumentChargeControlService;
 
     ChargeKinds := GetDocumentChargeKindsControlService.GetAllDocumentChargeKinds;
 
@@ -733,7 +754,8 @@ begin
             GetDocumentApprovingCycleResultDirectory(DocumentKind),
             GetDocumentResponsibleDirectory,
             GetDocumentFileStorageService(DocumentKind),
-            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind)
+            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind),
+            ServiceRegistry.FormalizationServiceRegistry.GetDocumentFullNameCompilationService
           )
         );
 
@@ -749,7 +771,8 @@ begin
             GetDocumentApprovingCycleResultDirectory(DocumentKind),
             GetDocumentResponsibleDirectory,
             GetDocumentFileStorageService(DocumentKind),
-            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind)
+            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind),
+            ServiceRegistry.FormalizationServiceRegistry.GetDocumentFullNameCompilationService
           )
         );
         
@@ -775,7 +798,8 @@ begin
             GetDocumentApprovingCycleResultDirectory(DocumentKind),
             GetDocumentResponsibleDirectory,
             GetDocumentFileStorageService(DocumentKind),
-            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind)
+            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind),
+            ServiceRegistry.FormalizationServiceRegistry.GetDocumentFullNameCompilationService
           )
         );
 
@@ -802,7 +826,8 @@ begin
             GetDocumentApprovingCycleResultDirectory(OutcomingDocumentType),
             GetDocumentResponsibleDirectory,
             GetDocumentFileStorageService(OutcomingDocumentType),
-            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind)
+            ServiceRegistry.ChargeSheetsServiceRegistry.GetDocumentChargeSheetDirectory(DocumentKind),
+            ServiceRegistry.FormalizationServiceRegistry.GetDocumentFullNameCompilationService
           )
         );
         

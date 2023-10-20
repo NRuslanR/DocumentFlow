@@ -61,6 +61,7 @@ type
 
       protected
 
+        function CreateDocumentFullInfoDTOInstance: TDocumentFullInfoDTO; virtual;
         function CreateDocumentDTO(DocumentId: Variant): TDocumentDTO; virtual;
         function CreateDocumentRelationsInfoDTO(DocumentDTO: TDocumentDTO): TDocumentRelationsInfoDTO; virtual;
         function CreateDocumentFilesInfoDTO(DocumentDTO: TDocumentDTO): TDocumentFilesInfoDTO; virtual;
@@ -188,7 +189,7 @@ var
     DocumentApprovingCycleResultsInfoDTO: TDocumentApprovingCycleResultsInfoDTO;
 begin
 
-  Result := TDocumentFullInfoDTO.Create;
+  Result := CreateDocumentFullInfoDTOInstance;
 
   try
 
@@ -256,6 +257,13 @@ begin
 
 end;
 
+function TBasedOnDatabaseDocumentInfoPartlyReadService.CreateDocumentFullInfoDTOInstance: TDocumentFullInfoDTO;
+begin
+
+  Result := TDocumentFullInfoDTO.Create;
+  
+end;
+
 procedure TBasedOnDatabaseDocumentInfoPartlyReadService.CreateChargesAndChargeSheetsInfoDTOFrom(
   DocumentDTO: TDocumentDTO;
   var DocumentChargesInfoDTO: TDocumentChargesInfoDTO;
@@ -263,7 +271,10 @@ procedure TBasedOnDatabaseDocumentInfoPartlyReadService.CreateChargesAndChargeSh
 );
 var
     DocumentChargesInfoHolder: TDocumentChargesInfoHolder;
+    FreeDocumentChargesInfoHolder: IDisposable;
+    
     DocumentChargeSheetsInfoHolder: TDocumentChargeSheetsInfoHolder;
+    FreeDocumentChargeSheetsInfoHolder: IDisposable;
 begin
 
   CreateDocumentChargesAndChargeSheetsInfoHolder(
@@ -272,24 +283,18 @@ begin
     DocumentChargeSheetsInfoHolder
   );
 
-  try
+  FreeDocumentChargesInfoHolder := DocumentChargesInfoHolder;
+  FreeDocumentChargeSheetsInfoHolder := DocumentChargeSheetsInfoHolder;
+  
+  DocumentChargesInfoDTO :=
+    FDocumentChargesInfoDTOFromDataSetMapper.MapDocumentChargesInfoDTOFrom(
+      DocumentChargesInfoHolder
+    );
 
-    DocumentChargesInfoDTO :=
-      FDocumentChargesInfoDTOFromDataSetMapper.MapDocumentChargesInfoDTOFrom(
-        DocumentChargesInfoHolder
-      );
-
-    DocumentChargeSheetsInfoDTO :=
-      FDocumentChargeSheetsInfoDTOFromDataSetMapper.MapDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargeSheetsInfoHolder
-      );
-
-  finally
-
-    FreeAndNil(DocumentChargesInfoHolder);
-    FreeAndNil(DocumentChargeSheetsInfoHolder);
-    
-  end;
+  DocumentChargeSheetsInfoDTO :=
+    FDocumentChargeSheetsInfoDTOFromDataSetMapper.MapDocumentChargeSheetsInfoDTOFrom(
+      DocumentChargeSheetsInfoHolder
+    );
 
 end;
 

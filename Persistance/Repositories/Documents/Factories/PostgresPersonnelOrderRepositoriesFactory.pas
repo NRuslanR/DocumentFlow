@@ -11,6 +11,7 @@ uses
   DocumentApprovingCycleResultRepository,
   DocumentApprovingRepository,
   DocumentChargeSheetRepository,
+  DocumentChargeSheetPostgresRepository,
   DocumentFilesRepository,
   DocumentKindRepository,
   DocumentRelationsRepository,
@@ -34,6 +35,8 @@ uses
   DocumentSigningPostgresRepository,
   PersonnelOrderSignerListPostgresRepository,
   PersonnelOrderRepositoriesFactory,
+  PersonnelOrderSubKindRepository,
+  PersonnelOrderSubKindPostgresRepository,
   SysUtils;
 
 type
@@ -57,6 +60,7 @@ type
 
         constructor Create(TableDefsFactory: TPersonnelOrderTableDefsFactory);
 
+        function CreatePersonnelOrderSubKindRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSubKindRepository;
         function CreatePersonnelOrderCreatingAccessEmployeeRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSingleEmployeeListRepository;
         function CreatePersonnelOrderSignerListRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSingleEmployeeListRepository;
         function CreatePersonnelOrderApproverListRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSubKindEmployeeListRepository;
@@ -115,6 +119,10 @@ begin
 
       TDocumentChargePostgresRepository(
         InternalCreateDocumentChargeRepository(QueryExecutor).Self
+      ),
+
+      TDocumentChargeSheetPostgresRepository(
+        InternalCreateDocumentChargeSheetRepository(QueryExecutor).Self
       ),
 
       CreateDocumentWorkCycleRepository(QueryExecutor)
@@ -190,6 +198,18 @@ begin
       TableDefsFactory.CreatePersonnelOrderSignerListTableDef
     );
 
+end;
+
+function TPostgresPersonnelOrderRepositoriesFactory.CreatePersonnelOrderSubKindRepository(
+  QueryExecutor: IQueryExecutor): IPersonnelOrderSubKindRepository;
+begin
+
+  Result :=
+    TPersonnelOrderSubKindPostgresRepository.Create(
+      QueryExecutor,
+      TableDefsFactory.CreatePersonnelOrderSubKindTableDef
+    );
+    
 end;
 
 function TPostgresPersonnelOrderRepositoriesFactory.TableDefsFactory: TPersonnelOrderTableDefsFactory;

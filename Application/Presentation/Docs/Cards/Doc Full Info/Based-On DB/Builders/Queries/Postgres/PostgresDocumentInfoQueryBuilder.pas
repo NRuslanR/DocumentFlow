@@ -24,6 +24,10 @@ type
 
 implementation
 
+uses
+
+  StrUtils;
+
 { TPostgresDocumentInfoQueryBuilder }
 
 function TPostgresDocumentInfoQueryBuilder.GetCurrentEmployeeJoinExpression: String;
@@ -45,9 +49,14 @@ begin
       '	doc.type_id as ' + KindIdFieldName + ',' + #13#10 +
       '	doc.document_number as ' + NumberFieldName + ',' + #13#10 +
       '	doc.name as ' + NameFieldName + ',' + #13#10 +
+      '	doc.full_name as ' + FullNameFieldName + ',' + #13#10 +
       '	doc.content as ' + ContentFieldName + ',' + #13#10 +
-      '	doc.note as ' + NoteFieldName + ',' + #13#10 + 
-      '	doc.is_self_registered as ' + IsSelfRegisteredFieldName + ',' + #13#10 +
+      '	doc.note as ' + NoteFieldName + ',' + #13#10 +
+      IfThen(
+        Options.FetchSelfDocumentRegistrationData,
+        'doc.is_self_registered as ' + IsSelfRegisteredFieldName + ',',
+        ''
+       ) + #13#10 +
       '	doc.product_code as ' + ProductCodeFieldName + ',' + #13#10 +
       '	doc.creation_date as ' + CreationDateFieldName + ',' + #13#10 + 
       '	doc.document_date as ' + DateFieldName + ',' + #13#10 + 
@@ -127,7 +136,7 @@ begin
       'left join exchange.spr_person sp on sp.id = doc.performer_id' + #13#10 +
       'left join nsi.spr_podr spr_podr on spr_podr.id = sp.podr_id' + #13#10 +
       'left join exchange.spr_person_telephone_numbers sptn on sptn.person_id = sp.id' + #13#10 +
-      'left join doc.service_note_signings doc_signings on doc_signings.document_id = doc.id' + #13#10 +
+      'left join ' + FSigningTableDef.TableName + ' doc_signings on doc_signings.document_id = doc.id' + #13#10 +
       'left join doc.employees signer on signer.id = doc_signings.signer_id' + #13#10 +
       'left join doc.departments signer_dep on signer_dep.id = signer.department_id' + #13#10 +
       'left join doc.employees fact_signer on fact_signer.id = doc_signings.actual_signed_id' + #13#10 +

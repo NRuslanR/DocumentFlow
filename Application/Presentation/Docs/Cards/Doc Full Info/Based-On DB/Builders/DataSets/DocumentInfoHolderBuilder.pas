@@ -145,6 +145,7 @@ begin
     BaseIdFieldName := 'base_document_id';
     NumberFieldName := 'document_number';
     NameFieldName := 'document_name';
+    FullNameFieldName := 'full_name';
     ProductCodeFieldName := 'product_code';
     ContentFieldName := 'document_content';
     NoteFieldName := 'document_note';

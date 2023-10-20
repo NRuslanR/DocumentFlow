@@ -83,7 +83,7 @@ begin
   QueryPattern := SELECT_PERSONNEL_ORDERS_FOR_EMPLOYEE_BY_IDS_QUERY;
 
   ParamNames['EmployeeId'] := EMPLOYEE_PARAM_NAME;
-  ParamNames['DocumentIds'] := STAGE_NAMES_PARAM_NAME; 
+  ParamNames['DocumentIds'] := DOCUMENT_IDS_PARAM_NAME; 
 
 end;
 

@@ -7,6 +7,7 @@ uses
   IDomainObjectListUnit,
   DomainObjectListUnit,
   IDomainObjectUnit,
+  VariantListUnit,
   Employee,
   SysUtils;
 
@@ -129,6 +130,7 @@ type
     function Last: IDocumentCharge;
     
     function FindByIdentity(const Identity: Variant): IDocumentCharge;
+    function FindByIdentities(const Identities: TVariantList): IDocumentCharges;
 
     procedure AddCharge(Charge: IDocumentCharge);
     procedure ChangeCharge(Charge: IDocumentCharge);
@@ -149,6 +151,8 @@ type
     function FindDocumentChargeByPerformerOrActuallyPerformedEmployee(Employee: TEmployee): IDocumentCharge;
 
     procedure Clear;
+
+    function Count: Integer;
       
     property Items[Index: Integer]: IDocumentCharge
     read GetDocumentChargeByIndex

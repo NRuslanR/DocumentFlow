@@ -50,30 +50,11 @@ uses
 
 { TStandardDocumentFullNameCompilationService }
 
-function TStandardDocumentFullNameCompilationService.AreDocumentNumberAndDocumentDateCorrect(
-  const DocumentNumber: String; const DocumentDate: Variant): Boolean;
-var Year, Month, Day, Hour, Minute, Seconds, Placeholder: Word;
+constructor TStandardDocumentFullNameCompilationService.Create;
 begin
 
-  if VarIsNull(DocumentDate) then begin
+  inherited Create;
 
-    Result := False;
-    Exit;
-    
-  end;
-
-  DecodeDateTime(
-    DocumentDate, Year, Month, Day, Hour, Minute, Seconds, Placeholder
-  );
-
-  Result :=
-    (DocumentNumber <> '') and
-    IsValidDateTime(
-      Year, Month, Day,
-      Hour, Minute, Seconds,
-      Placeholder
-    );
-    
 end;
 
 function TStandardDocumentFullNameCompilationService.CompileFullNameForDocument(
@@ -126,13 +107,6 @@ begin
 
 end;
 
-constructor TStandardDocumentFullNameCompilationService.Create;
-begin
-
-  inherited Create;
-
-end;
-
 function TStandardDocumentFullNameCompilationService.GetKindNameForDocument(
   Document: IDocument): String;
 var RealDocument: TDocument;
@@ -152,6 +126,32 @@ begin
 
   else Result := '';
 
+end;
+
+function TStandardDocumentFullNameCompilationService.AreDocumentNumberAndDocumentDateCorrect(
+  const DocumentNumber: String; const DocumentDate: Variant): Boolean;
+var Year, Month, Day, Hour, Minute, Seconds, Placeholder: Word;
+begin
+
+  if VarIsNull(DocumentDate) then begin
+
+    Result := False;
+    Exit;
+    
+  end;
+
+  DecodeDateTime(
+    DocumentDate, Year, Month, Day, Hour, Minute, Seconds, Placeholder
+  );
+
+  Result :=
+    (DocumentNumber <> '') and
+    IsValidDateTime(
+      Year, Month, Day,
+      Hour, Minute, Seconds,
+      Placeholder
+    );
+    
 end;
 
 end.

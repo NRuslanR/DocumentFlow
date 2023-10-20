@@ -8,7 +8,7 @@ uses
   DocumentCardFormViewModelMapperFactory,
   IncomingDocumentCardFormViewModelMapperFactory,
   DocumentDataSetHoldersFactory,
-  DocumentDataSetHolderFactories,
+  DocumentDataSetHoldersFactories,
   PersonnelOrderCardFormViewModelMapperFactory,
   SysUtils,
   Classes;
@@ -23,7 +23,7 @@ type
 
     protected
 
-      FDocumentDataSetHoldersFactories: IDocumentDataSetHolderFactories;
+      FDocumentDataSetHoldersFactories: IDocumentDataSetHoldersFactories;
 
       function CreateOrdinaryDocumentCardFormViewModelMapperFactory(
         UIDocumentKind: TUIDocumentKindClass;
@@ -42,7 +42,7 @@ type
 
     public
 
-      constructor Create(DocumentDataSetHoldersFactories: IDocumentDataSetHolderFactories);
+      constructor Create(DocumentDataSetHoldersFactories: IDocumentDataSetHoldersFactories);
       
       function CreateDocumentCardFormViewModelMapperFactory(
         UIDocumentKind: TUIDocumentKindClass
@@ -63,7 +63,7 @@ uses
 { TDocumentCardFormViewModelMapperFactories }
 
 constructor TDocumentCardFormViewModelMapperFactories.Create(
-  DocumentDataSetHoldersFactories: IDocumentDataSetHolderFactories);
+  DocumentDataSetHoldersFactories: IDocumentDataSetHoldersFactories);
 begin
 
   inherited Create;
@@ -81,7 +81,7 @@ var
 begin
 
   DocumentDataSetHoldersFactory :=
-    FDocumentDataSetHoldersFactories.GetDocumentDataSetHolderFactory(UIDocumentKind);
+    FDocumentDataSetHoldersFactories.GetDocumentDataSetHoldersFactory(UIDocumentKind);
     
   if
     UIDocumentKind.InheritsFrom(TUIOutcomingDocumentKind) or
@@ -193,9 +193,9 @@ begin
 
     Result :=
       TIncomingServiceNoteCardFormViewModelMapperFactory.Create(
-        DocumentDataSetHoldersFactory,
         OutcomingDocumentCardFormViewModelMapperFactory as
-          TOutcomingServiceNoteCardFormViewModelMapperFactory
+          TOutcomingServiceNoteCardFormViewModelMapperFactory,
+        DocumentDataSetHoldersFactory
       );
 
   end
@@ -204,8 +204,8 @@ begin
 
     Result :=
       TIncomingDocumentCardFormViewModelMapperFactory.Create(
-        DocumentDataSetHoldersFactory,
-        OutcomingDocumentCardFormViewModelMapperFactory
+        OutcomingDocumentCardFormViewModelMapperFactory,
+        DocumentDataSetHoldersFactory
       );
       
   end;

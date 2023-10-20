@@ -6,7 +6,6 @@ uses
 
   DomainException,
   IDocumentChargeSheetUnit,
-  IDocumentUnit,
   DocumentChargeSheetPerformingService,
   Employee;
 
@@ -22,7 +21,6 @@ type
 
       function PerformChargeSheetAsOverlapping(
         ChargeSheet: IDocumentChargeSheet;
-        Document: IDocument;
         Employee: TEmployee;
         const PerformingDateTime: TDateTime = 0
       ): IDocumentChargeSheets;

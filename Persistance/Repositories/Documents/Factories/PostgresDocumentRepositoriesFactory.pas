@@ -196,6 +196,10 @@ begin
       TDocumentChargePostgresRepository(
         InternalCreateDocumentChargeRepository(QueryExecutor).Self
       ),
+
+      TDocumentChargeSheetPostgresRepository(
+        InternalCreateDocumentChargeSheetRepository(QueryExecutor).Self
+      ),
       
       CreateDocumentWorkCycleRepository(QueryExecutor)
     );

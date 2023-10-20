@@ -6,7 +6,6 @@ uses
 
   DomainException,
   IDocumentChargeSheetUnit,
-  IDocumentUnit,
   Employee;
 
 type
@@ -20,14 +19,12 @@ type
 
     procedure EnsureThatIsSatisfiedFor(
       Employee: TEmployee;
-      DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      DocumentChargeSheet: IDocumentChargeSheet
     );
 
     function IsSatisfiedBy(
       Employee: TEmployee;
-      DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      DocumentChargeSheet: IDocumentChargeSheet
     ): Boolean;
     
   end;

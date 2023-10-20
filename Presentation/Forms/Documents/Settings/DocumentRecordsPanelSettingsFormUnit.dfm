@@ -5,8 +5,8 @@ inherited DocumentRecordsPanelSettingsForm: TDocumentRecordsPanelSettingsForm
   Constraints.MinHeight = 102
   Constraints.MinWidth = 434
   FormStyle = fsStayOnTop
-  ExplicitWidth = 434
-  ExplicitHeight = 102
+  ExplicitWidth = 442
+  ExplicitHeight = 107
   PixelsPerInch = 96
   TextHeight = 13
   object RecordGroupingByColumnsOptionCheckBox: TCheckBox

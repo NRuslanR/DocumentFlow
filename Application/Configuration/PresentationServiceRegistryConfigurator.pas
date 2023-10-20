@@ -72,6 +72,8 @@ implementation
 
 uses
 
+  DocumentInfoQueryBuilder,
+  PersonnelOrderInfoHolderBuilder,
   BasedOnDatabaseDocumentInfoPartlyReadService,
   EmployeeDbSchema,
   DepartmentDbSchema,
@@ -199,10 +201,14 @@ uses
   EmployeeDocumentKindAccessRightsAppService,
   DTODomainMapperRegistry,
   ApplicationServiceRegistries,
+  PostgresPersonnelOrderInfoQueryBuilder,
+  DocumentTableDefsFactory,
+  PersonnelOrder,
   Document,
   Employee,
   BasedOnZeosResourceRequestsAccessService,
-  BasedOnZeosVclResourceRequestsItemService;
+  BasedOnZeosVclResourceRequestsItemService,
+  BasedOnDatabaseEmployeeInfoReadService;
 
 { TPresentationServiceRegistryConfigurator }
 
@@ -231,6 +237,8 @@ var
     OutcomingDocumentKindWorkCycleInfoAppService: IDocumentKindWorkCycleInfoAppService;
 
     BaseServiceDocumentKind: TNativeDocumentKindClass;
+    BaseDomainDocumentKind: TDocumentClass;
+    BaseDomainIncomingDocumentKind: TDocumentClass;
 
     DocumentKindsMapper: IDocumentKindsMapper;
 begin
@@ -299,6 +307,12 @@ begin
 
     end;
 
+    BaseDomainDocumentKind :=
+      TDTODomainMapperRegistry
+        .Instance
+          .GetDocumentKindsMapper
+            .MapDocumentKindToDomainDocumentKind(BaseServiceDocumentKind);
+            
     PresentationServiceRegistry.RegisterDocumentSignerSetReadService(
       BaseServiceDocumentKind,
       TStandardDocumentSignerSetReadService.Create(
@@ -327,6 +341,7 @@ begin
     PresentationServiceRegistry.RegisterDocumentChargeSheetPerformerSetReadService(
       BaseServiceDocumentKind,
       TStandardDocumentChargeSheetPerformerSetReadService.Create(
+        TDocumentsDomainRegistries.ServiceRegistry.StorageServiceRegistry.GetDocumentDirectory(BaseDomainDocumentKind),
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
         EmployeeChargePerformingService,
         EmployeeSetReadService
@@ -352,7 +367,8 @@ begin
                       BaseServiceDocumentKind
                     )
                   )
-        )
+        ),
+        TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper
       );
 
     PresentationServiceRegistry.RegisterDocumentKindWorkCycleInfoAppService(
@@ -444,7 +460,8 @@ begin
                       ConfigurationData.OutcomingInternalDocumentKind
                     )
                   )
-        )
+        ),
+        TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper
       )
     );
 
@@ -452,9 +469,18 @@ begin
 
   if Assigned(ConfigurationData.IncomingDocumentKind) then begin
 
+    BaseDomainIncomingDocumentKind :=
+      TDTODomainMapperRegistry
+        .Instance
+          .GetDocumentKindsMapper
+            .MapDocumentKindToDomainDocumentKind(
+              ConfigurationData.IncomingDocumentKind
+            );
+
     PresentationServiceRegistry.RegisterDocumentChargeSheetPerformerSetReadService(
       ConfigurationData.IncomingDocumentKind,
       TStandardDocumentChargeSheetPerformerSetReadService.Create(
+        TDocumentsDomainRegistries.ServiceRegistry.StorageServiceRegistry.GetDocumentDirectory(BaseDomainIncomingDocumentKind),
         ConfigurationData.RepositoryRegistry.GetEmployeeRepository,
         EmployeeChargePerformingService,
         EmployeeSetReadService
@@ -481,7 +507,8 @@ begin
                       ConfigurationData.IncomingDocumentKind
                     )
                   )
-        )
+        ),
+        TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper
       )
     );
 
@@ -518,7 +545,8 @@ begin
                       ConfigurationData.IncomingInternalDocumentKind
                     )
                   )
-        )
+        ),
+        TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper
       )
     );
 
@@ -547,6 +575,8 @@ var
 
     DocumentInfoDTOFromDataSetMappers: TDocumentInfoDTOFromDataSetMappers;
     DocumentInfoHolderBuilders: TDocumentInfoHolderBuilders;
+
+    TableDefsFactory: TDocumentTableDefsFactory;
 begin
 
   {
@@ -591,7 +621,12 @@ begin
       DocumentFilesInfoDTOFromDataSetMapper := TDocumentFilesInfoDTOFromDataSetMapper.Create;
       DocumentRelationsInfoDTOFromDataSetMapper := TDocumentRelationsInfoDTOFromDataSetMapper.Create;
       DocumentChargesInfoDTOFromDataSetMapper := TDocumentChargesInfoDTOFromDataSetMapper.Create;
-      DocumentChargeSheetsInfoDTOFromDataSetMapper := TDocumentChargeSheetsInfoDTOFromDataSetMapper.Create;
+
+      DocumentChargeSheetsInfoDTOFromDataSetMapper :=
+        TDocumentChargeSheetsInfoDTOFromDataSetMapper.Create(
+          DocumentChargesInfoDTOFromDataSetMapper
+        );
+
       DocumentApprovingsInfoDTOFromDataSetMapper := TDocumentApprovingsInfoDTOFromDataSetMapper.Create;
 
       DocumentApprovingCycleResultsInfoDTOFromDataSetMapper :=
@@ -601,26 +636,26 @@ begin
 
     end;
 
+    TableDefsFactory :=
+      TDocumentTableDefsFactoryRegistry
+        .Instance
+          .GetDocumentTableDefsFactory(BaseDomainDocumentKind);
+
     with DocumentInfoHolderBuilders do begin
 
       DocumentInfoHolderBuilder :=
         TDocumentInfoHolderBuilder.Create(
           TDataSetQueryExecutor(QueryExecutor),
           TPostgresDocumentInfoQueryBuilder.Create(
-            TDocumentTableDefsFactoryRegistry
-              .Instance
-                .GetDocumentTableDefsFactory(BaseDomainDocumentKind)
-                  .GetDocumentTableDef
+            TableDefsFactory.GetDocumentTableDef,
+            TableDefsFactory.GetDocumentSigningTableDef
           )
         );
 
       FullDocumentApprovingsInfoHolderBuilder :=
         TFullDocumentApprovingsInfoHolderBuilder.Create(
           TFullDocumentApprovingsInfoQueryBuilder.Create(
-            TDocumentTableDefsFactoryRegistry
-              .Instance
-                .GetDocumentTableDefsFactory(BaseDomainDocumentKind)
-                  .GetDocumentApprovingsTableDef
+            TableDefsFactory.GetDocumentApprovingsTableDef
           ),
           TDataSetQueryExecutor(QueryExecutor)
         );
@@ -628,10 +663,7 @@ begin
       DocumentRelationsInfoHolderBuilder :=
         TDocumentRelationsInfoHolderBuilder.Create(
           TPostgresDocumentRelationsInfoQueryBuilder.Create(
-            TDocumentTableDefsFactoryRegistry
-              .Instance
-                .GetDocumentTableDefsFactory(BaseDomainDocumentKind)
-                  .GetDocumentRelationsTableDef
+            TableDefsFactory.GetDocumentRelationsTableDef
           ),
           TDataSetQueryExecutor(QueryExecutor)
         );
@@ -639,10 +671,7 @@ begin
       DocumentFilesInfoHolderBuilder :=
         TDocumentFilesInfoHolderBuilder.Create(
           TPostgresDocumentFilesInfoQueryBuilder.Create(
-            TDocumentTableDefsFactoryRegistry
-              .Instance
-                .GetDocumentTableDefsFactory(BaseDomainDocumentKind)
-                  .GetDocumentFilesTableDef
+            TableDefsFactory.GetDocumentFilesTableDef
           ),
           TDataSetQueryExecutor(QueryExecutor)
         );
@@ -650,20 +679,9 @@ begin
       DocumentPerformingInfoHolderBuilder :=
         TDocumentPerformingInfoHolderBuilder.Create(
           TPostgresDocumentPerformingInfoQueryBuilder.Create(
-            TDocumentTableDefsFactoryRegistry
-              .Instance
-                .GetDocumentTableDefsFactory(BaseDomainDocumentKind)
-                  .GetDocumentChargeKindTableDef,
-                
-            TDocumentTableDefsFactoryRegistry
-              .Instance
-                .GetDocumentTableDefsFactory(BaseDomainDocumentKind)
-                  .GetDocumentChargeTableDef,
-
-            TDocumentTableDefsFactoryRegistry
-              .Instance
-                .GetDocumentTableDefsFactory(BaseDomainDocumentKind)
-                  .GetDocumentChargeSheetTableDef
+            TableDefsFactory.GetDocumentChargeKindTableDef,
+            TableDefsFactory.GetDocumentChargeTableDef,
+            TableDefsFactory.GetDocumentChargeSheetTableDef
           ),
           TDataSetQueryExecutor(QueryExecutor)
         );
@@ -728,19 +746,12 @@ begin
         TPostgresIncomingDocumentInfoQueryBuilder.Create(
 
           TPostgresServiceNoteSubstitutedInfoQueryBuilder.Create(
-
-            TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-              BaseDomainDocumentKind
-            ).GetDocumentTableDef
+            TableDefsFactory.GetDocumentTableDef,
+            TableDefsFactory.GetDocumentSigningTableDef
           ),
-
-          TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-            BaseDomainDocumentKind
-          ).GetDocumentTableDef,
-
-          TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-            BaseDomainDocumentKind
-          ).GetIncomingDocumentTableDef
+          TableDefsFactory.GetDocumentTableDef,
+          TableDefsFactory.GetDocumentSigningTableDef,
+          TableDefsFactory.GetIncomingDocumentTableDef
         ),
 
         TDocumentInfoHolderBuilder(DocumentInfoHolderBuilder.Self)
@@ -970,6 +981,13 @@ begin
     )
   );
 
+  PresentationServiceRegistry.RegisterEmployeeInfoReadService(
+    TBasedOnDatabaseEmployeeInfoReadService.Create(
+      TEmployeesDomainRegistries.ServiceRegistry.EmployeeSearchServiceRegistry.GetEmployeeFinder,
+      TDTODomainMapperRegistry.Instance.GetDocumentFlowEmployeeInfoDTOMapper
+    )
+  );
+  
   FIsCommonConfigurationDone := True;
 
 end;
@@ -981,6 +999,11 @@ procedure TPresentationServiceRegistryConfigurator.RegisterPersonnelOrderPresent
 );
 var
     DocumentKindsMapper: IDocumentKindsMapper;
+
+    DocumentInfoHolderBuilders: TDocumentInfoHolderBuilders;
+    DocumentInfoDTOFromDataSetMappers: TDocumentInfoDTOFromDataSetMappers;
+
+    TableDefsFactory: TDocumentTableDefsFactory;
 begin
 
   DocumentKindsMapper := TDTODomainMapperRegistry.Instance.GetDocumentKindsMapper;
@@ -1001,30 +1024,82 @@ begin
       )
     );
 
+    with DocumentInfoHolderBuilders, DocumentInfoDTOFromDataSetMappers
+    do begin
+
+      DocumentDTOFromDataSetMapper := TPersonnelOrderDTOFromDataSetMapper.Create;
+      DocumentFilesInfoDTOFromDataSetMapper := TDocumentFilesInfoDTOFromDataSetMapper.Create;
+      DocumentRelationsInfoDTOFromDataSetMapper := TDocumentRelationsInfoDTOFromDataSetMapper.Create;
+      DocumentChargesInfoDTOFromDataSetMapper := TDocumentChargesInfoDTOFromDataSetMapper.Create;
+
+      DocumentChargeSheetsInfoDTOFromDataSetMapper :=
+        TDocumentChargeSheetsInfoDTOFromDataSetMapper.Create(
+          DocumentChargesInfoDTOFromDataSetMapper
+        );
+
+      DocumentApprovingsInfoDTOFromDataSetMapper := TDocumentApprovingsInfoDTOFromDataSetMapper.Create;
+
+      DocumentApprovingCycleResultsInfoDTOFromDataSetMapper :=
+        TDocumentApprovingCycleResultsInfoDTOFromDataSetMapper.Create(
+          DocumentApprovingsInfoDTOFromDataSetMapper
+        );
+
+      TableDefsFactory :=
+        TDocumentTableDefsFactoryRegistry
+          .Instance
+            .GetDocumentTableDefsFactory(TPersonnelOrder);
+
+      DocumentInfoHolderBuilder :=
+        TPersonnelOrderInfoHolderBuilder.Create(
+          TDataSetQueryExecutor(QueryExecutor.Self),
+          TPostgresPersonnelOrderInfoQueryBuilder.Create(
+            TableDefsFactory.GetDocumentTableDef,
+            TableDefsFactory.GetDocumentSigningTableDef,
+            TDocumentInfoQueryBuilderOptions.Create.FetchSelfDocumentRegistrationData(False)
+          )
+        );
+
+      FullDocumentApprovingsInfoHolderBuilder :=
+        TFullDocumentApprovingsInfoHolderBuilder.Create(
+          TFullDocumentApprovingsInfoQueryBuilder.Create(
+            TableDefsFactory.GetDocumentApprovingsTableDef
+          ),
+          TDataSetQueryExecutor(QueryExecutor.Self)
+        );
+
+      DocumentRelationsInfoHolderBuilder :=
+        TDocumentRelationsInfoHolderBuilder.Create(
+          TPostgresDocumentRelationsInfoQueryBuilder.Create(
+            TableDefsFactory.GetDocumentRelationsTableDef
+          ),
+          TDataSetQueryExecutor(QueryExecutor.Self)
+        );
+
+      DocumentFilesInfoHolderBuilder :=
+        TDocumentFilesInfoHolderBuilder.Create(
+          TPostgresDocumentFilesInfoQueryBuilder.Create(
+            TableDefsFactory.GetDocumentFilesTableDef
+          ),
+          TDataSetQueryExecutor(QueryExecutor.Self)
+        );
+
+      DocumentPerformingInfoHolderBuilder :=
+        TDocumentPerformingInfoHolderBuilder.Create(
+          TPostgresDocumentPerformingInfoQueryBuilder.Create(
+            TableDefsFactory.GetDocumentChargeKindTableDef,
+            TableDefsFactory.GetDocumentChargeTableDef,
+            TableDefsFactory.GetDocumentChargeSheetTableDef
+          ),
+          TDataSetQueryExecutor(QueryExecutor.Self)
+        );
+
+    end;
+    
     RegisterDocumentInfoReadService(
       TPersonnelOrderKind,
-      TBasedOnDatabasePersonnelOrderInfoReadService.Create(
-        TAbstractQueryExecutor(QueryExecutor.Self),
-        TPostgresPersonnelOrderFullInfoFetchingQueryBuilder.Create(
-          TPersonnelOrderTableDefsFactory(
-            TDocumentTableDefsFactoryRegistry.Instance.GetDocumentTableDefsFactory(
-              DocumentKindsMapper.MapDocumentKindToDomainDocumentKind(
-                TPersonnelOrderKind
-              )
-            )
-          )
-        ),
-        TPersonnelOrderFullInfoDTOFromDataSetMapper.Create(
-          TPersonnelOrderDTOFromDataSetMapper.Create,
-          TDocumentApprovingsInfoDTOFromDataSetMapper.Create,
-          TDocumentApprovingCycleResultsInfoDTOFromDataSetMapper.Create(
-            TDocumentApprovingsInfoDTOFromDataSetMapper.Create
-          ),
-          TDocumentChargesInfoDTOFromDataSetMapper.Create,
-          TDocumentChargeSheetsInfoDTOFromDataSetMapper.Create,
-          TDocumentRelationsInfoDTOFromDataSetMapper.Create,
-          TDocumentFilesInfoDTOFromDataSetMapper.Create
-        )
+      TBasedOnDatabaseDocumentInfoPartlyReadService.Create(
+        DocumentInfoDTOFromDataSetMappers,
+        DocumentInfoHolderBuilders
       )
     );
 

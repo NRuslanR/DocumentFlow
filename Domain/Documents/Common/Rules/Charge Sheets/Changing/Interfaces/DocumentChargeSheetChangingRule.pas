@@ -6,7 +6,6 @@ uses
 
   IDocumentChargeSheetUnit,
   DocumentChargeSheetWorkingRule,
-  IDocumentUnit,
   Classes,
   Employee,
   DomainException,
@@ -22,27 +21,23 @@ type
 
     function GetAlloweableDocumentChargeSheetFieldNames(
       Employee: TEmployee;
-      DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      DocumentChargeSheet: IDocumentChargeSheet
     ): TStrings;
     
     function EnsureEmployeeMayChangeDocumentChargeSheet(
       Employee: TEmployee;
-      DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument
+      DocumentChargeSheet: IDocumentChargeSheet
     ): TStrings; overload;
     
     procedure EnsureEmployeeMayChangeDocumentChargeSheet(
       Employee: TEmployee;
       DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument;
       FieldNames: array of Variant
     ); overload;
 
     function MayEmployeeChangeDocumentChargeSheet(
       Employee: TEmployee;
       DocumentChargeSheet: IDocumentChargeSheet;
-      Document: IDocument;
       FieldNames: array of Variant
     ): Boolean;
 

@@ -88,6 +88,7 @@ implementation
 
 uses
 
+  PersonnelOrder,
   DocumentUsageEmployeeAccessRightsService,
   StandardRespondingDocumentCreatingService,
   DocumentFormalizationServiceRegistry,
@@ -98,6 +99,10 @@ uses
   StandardDocumentCreatingService,
   StandardIncomingDocumentCreatingService,
   EmployeeServiceRegistry,
+  PersonnelOrderDefaultSignerFinder,
+  DocumentDefaultSignerFinder,
+  PersonnelOrderSearchServiceRegistry,
+  StandardDocumentDefaultSignerFinder,
   DocumentAccessRightsServiceRegistry;
   
 { TDocumentOperationServiceRegistry }
@@ -234,7 +239,28 @@ end;
 
 procedure TDocumentOperationServiceRegistry.RegisterStandardDocumentCreatingService(
   DocumentType: TDocumentClass);
+var
+    DocumentDefaultSignerFinder: IDocumentDefaultSignerFinder;
 begin
+
+  if DocumentType.InheritsFrom(TPersonnelOrder) then begin
+
+    DocumentDefaultSignerFinder :=
+      TPersonnelOrderDefaultSignerFinder.Create(
+        TPersonnelOrderSearchServiceRegistry.Instance.GetPersonnelOrderSignerListFinder,
+        TEmployeeServiceRegistry.EmployeeSearchServiceRegistry.GetEmployeeFinder
+      );
+
+  end
+
+  else begin
+
+    DocumentDefaultSignerFinder :=
+      TStandardDocumentDefaultSignerFinder.Create(
+        TEmployeeServiceRegistry.EmployeeSubordinationServiceRegistry.GetEmployeeSubordinationService
+      );
+      
+  end;
 
   RegisterDocumentCreatingService(
     DocumentType,
@@ -243,7 +269,8 @@ begin
       TDocumentSearchServiceRegistry.Instance.GetDocumentKindFinder,
       TDocumentSearchServiceRegistry.Instance.GetDocumentWorkCycleFinder(DocumentType),
       TDocumentAccessRightsServiceRegistry.Instance.GetEmployeeDocumentKindAccessRightsService,
-      TEmployeeSubordinationServiceRegistry.Instance.GetEmployeeSubordinationService
+      DocumentDefaultSignerFinder,
+      TDocumentFormalizationServiceRegistry.Instance.GetDocumentFullNameCompilationService
     )
   );
   

@@ -13,6 +13,7 @@ uses
   DocumentFileUnit,
   SysUtils,
   DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   DocumentChargesInfoDTODomainMapper,
   NewDocumentInfoDTO,
   ChangedDocumentInfoDTO,

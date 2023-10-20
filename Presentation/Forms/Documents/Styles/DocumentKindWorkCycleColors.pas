@@ -60,7 +60,11 @@ const
   DOCUMENT_PERFORMING_STAGE_COLOR = $0081e0ff;
   DOCUMENT_SIGNING_STAGE_COLOR = $008e99ff;
   DOCUMENT_SIGNING_REJECTED_STAGE_COLOR = $008e99ff;
-  
+
+  DOCUMENT_CHARGE_SHEETS_NOT_PERFORMED_COLOR = $0081e0ff;
+  DOCUMENT_CHARGE_SHEETS_PERFORMED_COLOR = $0077ffda;
+  DOCUMENT_SUBORDINATE_CHARGE_SHEETS_PERFORMED_COLOR = $00a5f0e6;
+
 { TDocumentKindWorkCycleColors }
 
 constructor TDocumentKindWorkCycleColors.Create(
@@ -179,7 +183,7 @@ function TDocumentKindWorkCycleColors.
   ): TColor;
 begin
 
-  Result := $0081e0ff;
+  Result := DOCUMENT_CHARGE_SHEETS_NOT_PERFORMED_COLOR;
 
 end;
 
@@ -189,7 +193,7 @@ function TDocumentKindWorkCycleColors.
   ): TColor;
 begin
 
-  Result := $0077ffda;;
+  Result := DOCUMENT_CHARGE_SHEETS_PERFORMED_COLOR;
   
 end;
 
@@ -199,7 +203,7 @@ function TDocumentKindWorkCycleColors.
   ): TColor;
 begin
 
-  Result := $00a5f0e6;
+  Result := DOCUMENT_SUBORDINATE_CHARGE_SHEETS_PERFORMED_COLOR;
 
 end;
 

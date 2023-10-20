@@ -825,7 +825,7 @@ var EmployeeRole: TRole;
     LoadedEmployee: TEmployee;
 begin
 
-  inherited;
+  inherited FillDomainObjectFromDataReader(DomainObject, DataReader);
 
   LoadedEmployee := DomainObject as TEmployee;
   LoadedEmployee.Role := CreateAndFillEmployeeRoleFrom(DataReader);

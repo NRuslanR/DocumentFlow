@@ -9,7 +9,6 @@ uses
   IDocumentChargeSheetUnit,
   DocumentChargeSheetWorkingRule,
   DocumentChargeSheet,
-  IDocumentUnit,
   EmployeeIsSameAsOrDeputySpecification,
   Employee,
   SysUtils,
@@ -25,29 +24,25 @@ type
 
       protected
 
-        procedure RaiseChargeSheetAlreadyPerformedException(
-          ChargeSheet: TDocumentChargeSheet
-        );
-
         procedure RaiseEmployeeIsNotSameAsChargeSheetIssuerOrHisDeputyException(
           Employee: TEmployee;
           ChargeSheet: TDocumentChargeSheet
         );
 
-        procedure RaiseExceptionIfChargeSheetAlreadyPerformed(
-          Employee: TEmployee;
-          ChargeSheet: TDocumentChargeSheet
+        procedure RaiseExceptionIfChargeSheetStateIsNotValid(
+          ChargeSheet: TDocumentChargeSheet;
+          Employee: TEmployee
         );
+
+        function IsChargeSheetStateValid(
+          ChargeSheet: TDocumentChargeSheet;
+          Employee: TEmployee;
+          var ErrorMessage: String
+        ): Boolean; virtual;
 
         procedure RaiseExceptionIfEmployeeIsNotSameAsChargeSheetIssuerOrHisDeputy(
           Employee: TEmployee;
           ChargeSheet: TDocumentChargeSheet
-        );
-
-        procedure RaiseExceptionIfDocumentStateIsNotValid(
-          Employee: TEmployee;
-          ChargeSheetObj: TDocumentChargeSheet;
-          Document: IDocument
         );
 
       public
@@ -59,14 +54,12 @@ type
 
         procedure EnsureThatIsSatisfiedFor(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: IDocumentChargeSheet
         ); virtual;
 
         function IsSatisfiedBy(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: IDocumentChargeSheet
         ): Boolean; virtual;
         
     end;
@@ -91,15 +84,14 @@ end;
 
 function TStandardDocumentChargeSheetRemovingRule.IsSatisfiedBy(
   Employee: TEmployee;
-  DocumentChargeSheet: IDocumentChargeSheet;
-  Document: IDocument
+  DocumentChargeSheet: IDocumentChargeSheet
 ): Boolean;
 begin
 
   try
 
-    EnsureThatIsSatisfiedFor(Employee, DocumentChargeSheet, Document);
-    
+    EnsureThatIsSatisfiedFor(Employee, DocumentChargeSheet);
+
     Result := True;
 
   except
@@ -112,8 +104,7 @@ end;
 
 procedure TStandardDocumentChargeSheetRemovingRule.EnsureThatIsSatisfiedFor(
   Employee: TEmployee;
-  DocumentChargeSheet: IDocumentChargeSheet;
-  Document: IDocument
+  DocumentChargeSheet: IDocumentChargeSheet
 );
 var
     ChargeSheetObj: TDocumentChargeSheet;
@@ -121,13 +112,11 @@ begin
 
   ChargeSheetObj := TDocumentChargeSheet(DocumentChargeSheet.Self);
 
-  RaiseExceptionIfDocumentStateIsNotValid(Employee, ChargeSheetObj, Document);
+  RaiseExceptionIfChargeSheetStateIsNotValid(ChargeSheetObj, Employee);
   
   RaiseExceptionIfEmployeeIsNotSameAsChargeSheetIssuerOrHisDeputy(
     Employee, ChargeSheetObj
   );
-
-  RaiseExceptionIfChargeSheetAlreadyPerformed(Employee, ChargeSheetObj);
 
 end;
 
@@ -172,63 +161,44 @@ begin
 
 end;
 
-procedure TStandardDocumentChargeSheetRemovingRule.RaiseExceptionIfChargeSheetAlreadyPerformed(
-  Employee: TEmployee;
-  ChargeSheet: TDocumentChargeSheet
+procedure TStandardDocumentChargeSheetRemovingRule.RaiseExceptionIfChargeSheetStateIsNotValid(
+  ChargeSheet: TDocumentChargeSheet;
+  Employee: TEmployee
 );
+var
+    ErrorMessage: String;
 begin
 
-  if ChargeSheet.IsPerformed then
-    RaiseChargeSheetAlreadyPerformedException(ChargeSheet);
-
-end;
-
-procedure TStandardDocumentChargeSheetRemovingRule.RaiseExceptionIfDocumentStateIsNotValid(
-  Employee: TEmployee;
-  ChargeSheetObj: TDocumentChargeSheet;
-  Document: IDocument
-);
-begin
-
-  if ChargeSheetObj.DocumentId <> Document.Identity then begin
-
-    Raise TDocumentChargeSheetRemovingRuleException.CreateFmt(
-      'Поручение для сотрудника "%s" не относится к документу',
-      [
-        ChargeSheetObj.Performer.FullName
-      ]
-    );
-
-  end;
-
-  if                  
-    not (ChargeSheetObj is TDocumentAcquaitanceSheet)
-    and Document.IsPerformed
+  if not IsChargeSheetStateValid(ChargeSheet, Employee, ErrorMessage)
   then begin
-  
-    Raise TDocumentChargeSheetRemovingRuleException.CreateFmt(
-      'Поручение для сотрудника "%s" не может быть ' +
-      'удалено, поскольку документ уже выполнен',
-      [
-        ChargeSheetObj.Performer.FullName
-      ]
-    );
+
+    Raise TDocumentChargeSheetRemovingRuleException.Create(ErrorMessage);
 
   end;
 
 end;
 
-procedure TStandardDocumentChargeSheetRemovingRule.RaiseChargeSheetAlreadyPerformedException(
-  ChargeSheet: TDocumentChargeSheet);
+function TStandardDocumentChargeSheetRemovingRule
+  .IsChargeSheetStateValid(
+    ChargeSheet: TDocumentChargeSheet;
+    Employee: TEmployee;
+    var ErrorMessage: String
+  ): Boolean;
 begin
 
-  Raise TDocumentChargeSheetRemovingRuleException.CreateFmt(
-    'Поручение для сотрудника "%s"' +
-    'уже выполнено',
-    [
-      ChargeSheet.Performer.FullName
-    ]
-  );
+  Result := not ChargeSheet.IsPerformed;
+
+  if not Result then begin
+
+    ErrorMessage :=
+      Format(
+        'Поручение для сотрудника "%s" уже выполнено',
+        [
+          ChargeSheet.Performer.FullName
+        ]
+      );
+
+  end;
 
 end;
 

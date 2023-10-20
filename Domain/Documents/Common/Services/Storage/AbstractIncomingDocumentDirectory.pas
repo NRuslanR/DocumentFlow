@@ -4,6 +4,7 @@ interface
 
 uses
 
+  DocumentFullNameCompilationService,
   DocumentDirectory,
   AbstractDocumentDirectory,
   DocumentRelationsUnit,
@@ -62,7 +63,8 @@ type
         DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
         DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
         DocumentFileStorageService: IDocumentFileStorageService;
-        DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+        DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+        DocumentFullNameCompilationService: IDocumentFullNameCompilationService
       );
 
     public
@@ -118,7 +120,8 @@ constructor TAbstractIncomingDocumentDirectory.Create(
   DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
   DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
   DocumentFileStorageService: IDocumentFileStorageService;
-  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+  DocumentFullNameCompilationService: IDocumentFullNameCompilationService
 );
 begin
 
@@ -129,7 +132,8 @@ begin
     DocumentApprovingCycleResultDirectory,
     DocumentResponsibleDirectory,
     DocumentFileStorageService,
-    DocumentChargeSheetDirectory
+    DocumentChargeSheetDirectory,
+    DocumentFullNameCompilationService
   );
 
   FOriginalDocumentDirectory := OriginalDocumentDirectory;

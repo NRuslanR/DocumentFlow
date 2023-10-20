@@ -62,6 +62,7 @@ destructor TIncomingDocumentMainInformationFormViewModelMapper.Destroy;
 begin
 
   FreeAndNil(FOriginalDocumentMainInformationFormViewModelMapper);
+  
   inherited;
 
 end;

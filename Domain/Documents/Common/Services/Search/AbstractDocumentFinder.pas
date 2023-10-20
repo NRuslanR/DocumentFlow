@@ -8,6 +8,7 @@ uses
   VariantListUnit,
   IDocumentUnit,
   DocumentChargeInterface,
+  DocumentFullNameCompilationService,
   Document,
   SysUtils,
   Classes;
@@ -75,7 +76,6 @@ uses
   DocumentRuleRegistry,
   DocumentChargeRuleRegistry,
   DocumentSpecificationRegistry;
-
 
 { TAbstractDocumentFinder }
 

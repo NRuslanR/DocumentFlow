@@ -16,7 +16,7 @@ uses
   DepartmentInfoDTO,
   DocumentChargeSheetsChangesInfoDTO,
   DocumentChargeSetHolder,
-  DocumentChargesFormViewModelUnit,
+  DocumentChargeSheetsFormViewModel,
   SysUtils,
   Classes,
   DB;
@@ -28,36 +28,38 @@ type
     protected
 
       function MapDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
       ): TDocumentChargeSheetsInfoDTO; virtual;
       
       function MapAddedDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
       ): TDocumentChargeSheetsInfoDTO; virtual;
 
       function MapChangedDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
       ): TDocumentChargeSheetsInfoDTO; virtual;
 
       function MapRemovedDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
       ): TDocumentChargeSheetsInfoDTO; virtual;
 
     public
 
       function MapDocumentChargeSheetsChangesInfoDTOFrom(
-        DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
       ): TDocumentChargeSheetsChangesInfoDTO; virtual;
       
   end;
   
 implementation
 
+uses DocumentChargeSheetSetHolder;
+
 { TDocumentChargeSheetsChangesInfoDTOMapper }
 
 function TDocumentChargeSheetsChangesInfoDTOMapper.
   MapDocumentChargeSheetsChangesInfoDTOFrom(
-    DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+    DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
   ): TDocumentChargeSheetsChangesInfoDTO;
 begin
 
@@ -67,17 +69,17 @@ begin
 
     Result.AddedDocumentChargeSheetsInfoDTO :=
       MapAddedDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel
       );
 
     Result.ChangedDocumentChargeSheetsInfoDTO :=
       MapChangedDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel
       );
 
     Result.RemovedDocumentChargeSheetsInfoDTO :=
       MapRemovedDocumentChargeSheetsInfoDTOFrom(
-        DocumentChargesFormViewModel
+        DocumentChargeSheetsFormViewModel
       );
 
   except
@@ -92,76 +94,64 @@ end;
 
 function TDocumentChargeSheetsChangesInfoDTOMapper.
   MapAddedDocumentChargeSheetsInfoDTOFrom(
-    DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+    DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
   ): TDocumentChargeSheetsInfoDTO;
 begin
 
-  DocumentChargesFormViewModel.
-    DocumentChargeSetHolder.
-      RevealAddedChargeRecords;
+  DocumentChargeSheetsFormViewModel.DocumentChargeSetHolder.RevealAddedRecords;
 
   Result :=
-    MapDocumentChargeSheetsInfoDTOFrom(DocumentChargesFormViewModel);
+    MapDocumentChargeSheetsInfoDTOFrom(DocumentChargeSheetsFormViewModel);
     
 end;
 
 function TDocumentChargeSheetsChangesInfoDTOMapper.
   MapChangedDocumentChargeSheetsInfoDTOFrom(
-    DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+    DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
   ): TDocumentChargeSheetsInfoDTO;
 begin
 
-  DocumentChargesFormViewModel.
-    DocumentChargeSetHolder.
-      RevealChangedChargeRecords;
+  DocumentChargeSheetsFormViewModel.DocumentChargeSetHolder.RevealChangedRecords;
 
   Result :=
-    MapDocumentChargeSheetsInfoDTOFrom(DocumentChargesFormViewModel);
+    MapDocumentChargeSheetsInfoDTOFrom(DocumentChargeSheetsFormViewModel);
 
 end;
 
 function TDocumentChargeSheetsChangesInfoDTOMapper.
   MapRemovedDocumentChargeSheetsInfoDTOFrom(
-    DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+    DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
   ): TDocumentChargeSheetsInfoDTO;
 begin
 
-  DocumentChargesFormViewModel.
-    DocumentChargeSetHolder.
-      RevealRemovedChargeRecords;
+  DocumentChargeSheetsFormViewModel.DocumentChargeSetHolder.RevealRemovedRecords;
 
   Result :=
-    MapDocumentChargeSheetsInfoDTOFrom(DocumentChargesFormViewModel);
+    MapDocumentChargeSheetsInfoDTOFrom(DocumentChargeSheetsFormViewModel);
     
 end;
 
 function TDocumentChargeSheetsChangesInfoDTOMapper.
   MapDocumentChargeSheetsInfoDTOFrom(
-    DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+    DocumentChargeSheetsFormViewModel: TDocumentChargeSheetsFormViewModel
   ): TDocumentChargeSheetsInfoDTO;
-var DocumentChargesDataSetHolder: TDocumentChargeSetHolder;
+var
     DocumentChargeSheetInfoDTO: TDocumentChargeSheetInfoDTO;
 begin
-
-  DocumentChargesDataSetHolder :=
-    DocumentChargesFormViewModel.DocumentChargeSetHolder;
 
   Result := TDocumentChargeSheetsInfoDTO.Create;
 
   try
 
-    DocumentChargesDataSetHolder.First;
-
     with
-      DocumentChargesFormViewModel,
-      DocumentChargesFormViewModel.DocumentChargeSetHolder
+      DocumentChargeSheetsFormViewModel,
+      DocumentChargeSheetsFormViewModel.DocumentChargeSheetSetHolder
     do begin
-    
-      while not DocumentChargesDataSetHolder.Eof do
-      begin
 
-        { conditional refactor: см. TDocumentChargesFormViewModel }
-        
+      First;
+
+      while not Eof do begin
+
         DocumentChargeSheetInfoDTO :=
           TDocumentChargeSheetInfoDTOClass(
             DocumentChargeKindDto.ChargeInfoDTOClass.ChargeSheetInfoDTOClass
@@ -170,30 +160,31 @@ begin
         Result.Add(DocumentChargeSheetInfoDTO);
 
         DocumentChargeSheetInfoDTO.Id := IdFieldValue;
-        DocumentChargeSheetInfoDTO.KindId := ChargeKindIdFieldValue;
-        DocumentChargeSheetInfoDTO.KindName := ChargeKindNameFieldValue;
-        DocumentChargeSheetInfoDTO.TopLevelChargeSheetId := TopLevelChargeIdFieldValue;
-        DocumentChargeSheetInfoDTO.IsForAcquaitance := IsChargeForAcquaitanceFieldValue;
+        DocumentChargeSheetInfoDTO.KindId := KindIdFieldValue;
+        DocumentChargeSheetInfoDTO.KindName := KindNameFieldValue;
+        DocumentChargeSheetInfoDTO.TopLevelChargeSheetId := TopLevelChargeSheetIdFieldValue;
+        DocumentChargeSheetInfoDTO.IsForAcquaitance := IsForAcquaitanceFieldValue;
         DocumentChargeSheetInfoDTO.PerformerInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
-        DocumentChargeSheetInfoDTO.PerformerInfoDTO.FullName := ReceiverFullNameFieldValue;
-        DocumentChargeSheetInfoDTO.PerformerInfoDTO.Speciality := ReceiverSpecialityFieldValue;
-        DocumentChargeSheetInfoDTO.PerformerInfoDTO.Id := ReceiverIdFieldValue;
+        DocumentChargeSheetInfoDTO.PerformerInfoDTO.FullName := PerformerFullNameFieldValue;
+        DocumentChargeSheetInfoDTO.PerformerInfoDTO.Speciality := PerformerSpecialityFieldValue;
+        DocumentChargeSheetInfoDTO.PerformerInfoDTO.Id := PerformerIdFieldValue;
 
         DocumentChargeSheetInfoDTO.PerformerInfoDTO.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
-
-        DocumentChargeSheetInfoDTO.PerformerInfoDTO.DepartmentInfoDTO.Name := ReceiverDepartmentNameFieldValue;
-        DocumentChargeSheetInfoDTO.PerformerResponse := ReceiverCommentFieldValue;
-        DocumentChargeSheetInfoDTO.PerformingDateTime := ReceiverPerformingDateTimeFieldValue;
-        DocumentChargeSheetInfoDTO.DocumentId := ReceiverDocumentIdFieldValue;
+                                                                                    
+        DocumentChargeSheetInfoDTO.PerformerInfoDTO.DepartmentInfoDTO.Name := PerformerDepartmentNameFieldValue;
+        DocumentChargeSheetInfoDTO.PerformerResponse := PerformerCommentFieldValue;
+        DocumentChargeSheetInfoDTO.PerformingDateTime := PerformingDateTimeFieldValue;
+        DocumentChargeSheetInfoDTO.DocumentId := DocumentIdFieldValue;
         DocumentChargeSheetInfoDTO.ChargeText := ChargeTextFieldValue;
-        DocumentChargeSheetInfoDTO.PerformerInfoDTO.LeaderId := ReceiverLeaderIdFieldValue;
-        DocumentChargeSheetInfoDTO.PerformerInfoDTO.IsForeign := IsReceiverForeignFieldValue;
-        DocumentChargeSheetInfoDTO.SenderEmployeeInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
-        DocumentChargeSheetInfoDTO.SenderEmployeeInfoDTO.Id := ChargeSheetSenderEmployeeIdFieldValue;
-        DocumentChargeSheetInfoDTO.SenderEmployeeInfoDTO.FullName := ChargeSheetSenderEmployeeNameFieldValue;
-        DocumentChargeSheetInfoDTO.IssuingDateTime := ChargeSheetIssuingDateTimeFieldValue;
+        DocumentChargeSheetInfoDTO.PerformerInfoDTO.IsForeign := IsPerformerForeignFieldValue;
+
+        DocumentChargeSheetInfoDTO.IssuerInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
+
+        DocumentChargeSheetInfoDTO.IssuerInfoDTO.Id := IssuerIdFieldValue;
+        DocumentChargeSheetInfoDTO.IssuerInfoDTO.FullName := IssuerNameFieldValue;
+        DocumentChargeSheetInfoDTO.IssuingDateTime := IssuingDateTimeFieldValue;
         
-        DocumentChargesDataSetHolder.Next;
+        Next;
 
       end;
 
@@ -208,6 +199,5 @@ begin
   end;
   
 end;
-
 
 end.

@@ -19,6 +19,8 @@ uses
   IDomainObjectBaseListUnit,
   DocumentSigningSpecification,
   EmployeeIsSameAsOrReplacingForOthersSpecification,
+  GeneralDocumentChargeSheetAccessRightsService,
+  GeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo,
   EmployeeChargeIssuingRule,
   DocumentChargesSpecification,
   Classes;
@@ -30,6 +32,8 @@ type
 
       protected
 
+        FGeneralDocumentChargeSheetAccessRightsService: IGeneralDocumentChargeSheetAccessRightsService;
+        
         FDocumentChargeSheetAccessRightsService: IDocumentChargeSheetAccessRightsService;
         
         FDocumentChargeCreatingService: IDocumentChargeCreatingService;
@@ -52,6 +56,16 @@ type
           var AccessRights: TDocumentChargeSheetAccessRights;
           TopLevelChargeSheet: IDocumentChargeSheet = nil
         );
+
+        procedure InternalCreateDocumentChargeSheet(
+          Charge: IDocumentCharge;
+          Document: IDocument;
+          Issuer, Performer: TEmployee;
+          const IssuingDateTime: TDateTime;
+          var ChargeSheet: IDocumentChargeSheet;
+          var AccessRights: TDocumentChargeSheetAccessRights;
+          TopLevelChargeSheet: IDocumentChargeSheet = nil
+        ); virtual;
 
       protected
 
@@ -88,7 +102,10 @@ type
       public
 
         constructor Create(
-        
+
+          GeneralDocumentChargeSheetAccessRightsService:
+            IGeneralDocumentChargeSheetAccessRightsService;
+            
           DocumentChargeSheetAccessRightsService:
             IDocumentChargeSheetAccessRightsService;
             
@@ -144,18 +161,18 @@ implementation
 uses
 
   Variants,
+  IDomainObjectBaseUnit,
   VariantFunctions,
   DocumentPerforming,
   DocumentAcquaitance,
   DocumentPerformingSheet,
   DocumentAcquaitanceSheet,
-  DocumentChargeSheetChangingEnsurer,
-  DocumentChargeSheetPerformingEnsurer,
   DocumentChargeSheetRuleRegistry;
 
 { TStandardDocumentChargeSheetCreatingService }
 
 constructor TStandardDocumentChargeSheetCreatingService.Create(
+  GeneralDocumentChargeSheetAccessRightsService: IGeneralDocumentChargeSheetAccessRightsService;
   DocumentChargeSheetAccessRightsService: IDocumentChargeSheetAccessRightsService;
   DocumentChargeCreatingService: IDocumentChargeCreatingService;
   EmployeeChargeIssuingRule: IEmployeeChargeIssuingRule;
@@ -165,6 +182,7 @@ begin
 
   inherited Create;
 
+  FGeneralDocumentChargeSheetAccessRightsService := GeneralDocumentChargeSheetAccessRightsService;
   FDocumentChargeSheetAccessRightsService := DocumentChargeSheetAccessRightsService;
   FDocumentChargeCreatingService := DocumentChargeCreatingService;
   FEmployeeChargeIssuingRule := EmployeeChargeIssuingRule;
@@ -197,6 +215,8 @@ procedure TStandardDocumentChargeSheetCreatingService.CreateHeadDocumentChargeSh
 );
 begin
 
+  { refactor: перенести в службу прав доступа }
+
   RaiseHeadChargeSheetCreatingExceptionIfIssuerIsNotOneOfDocumentSigners(
     Document, Performer, Issuer
   );
@@ -225,9 +245,14 @@ begin
       TDocument(Document.Self)
         .Specifications
           .DocumentSigningSpecification
-            .IsEmployeeAnyOfDocumentSignersOrOnesCanMarkDocumentAsSigned(Issuer, Document)
-  then
+            .IsEmployeeAnyOfDocumentSignersOrOnesCanMarkDocumentAsSigned(
+              Issuer, Document
+            )
+  then begin
+  
     RaiseIssuerIsNotOneOfDocumentSignersException(Document, Issuer);
+
+  end;
 
 end;
 
@@ -372,10 +397,33 @@ procedure TStandardDocumentChargeSheetCreatingService.CreateDocumentChargeSheet(
 );
 var
     ChargeRef: IDocumentCharge;
-    Charge: TDocumentCharge;
-    ChargeSheetObj: TDocumentChargeSheet;
+    GeneralDocumentChargeSheetAccessRights: TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
+    FreeAccessRights: IDomainObjectBase;
 begin
 
+  {
+    refactor: провер€ть количество листов поручений дл€ Performer, чтобы не создавать
+    более одного поручени€ на исполнител€. Ќа данный момент разрешено
+    не более одного поручени€
+  }
+
+  GeneralDocumentChargeSheetAccessRights :=
+    FGeneralDocumentChargeSheetAccessRightsService
+      .EnsureEmployeeHasDocumentChargeSheetsAccessRights(
+        TDocument(Document.Self), Issuer
+      );
+
+  FreeAccessRights := GeneralDocumentChargeSheetAccessRights;
+                            
+  if not GeneralDocumentChargeSheetAccessRights.AnyChargeSheetsCanBeIssued
+  then begin
+
+    Raise TDocumentChargeSheetCreatingServiceException.Create(
+      'ќтсутствуют права дл€ выдачи поручений'
+    );
+    
+  end;
+   
   ChargeRef := Document.FindChargeByPerformerOrActuallyPerformedEmployee(Performer);
 
   if not Assigned(ChargeRef) and VarIsNull(ChargeKindId) then begin
@@ -398,22 +446,73 @@ begin
 
   end;
 
-  Charge := ChargeRef.Self as TDocumentCharge;
+  if
+    not VarIfThen(
+      not Assigned(TopLevelChargeSheet),
+
+      GeneralDocumentChargeSheetAccessRights
+        .IssuingAccessRights
+          .IssuingAlloweableHeadChargeSheetKinds
+            .ContainsByIdentity(ChargeRef.KindId),
+
+      GeneralDocumentChargeSheetAccessRights
+          .IssuingAccessRights
+            .IssuingAlloweableSubordinateChargeSheetKinds
+              .ContainsByIdentity(ChargeRef.KindId)
+    )
+  then begin
+
+    Raise TDocumentChargeSheetCreatingServiceException.Create(
+      'ќтсутствуют права на выдачу поручений требуемого типа'
+    );
+    
+  end;
+
+  InternalCreateDocumentChargeSheet(
+    ChargeRef, Document,
+    Issuer, Performer, IssuingDateTime,
+    ChargeSheet, AccessRights,
+    TopLevelChargeSheet
+  );
+
+  AccessRights :=
+    FDocumentChargeSheetAccessRightsService
+      .EnsureEmployeeHasDocumentChargeSheetAccessRights(
+        Issuer, ChargeSheet
+      );
+    
+end;
+
+procedure TStandardDocumentChargeSheetCreatingService.InternalCreateDocumentChargeSheet(
+  Charge: IDocumentCharge;
+  Document: IDocument;
+  Issuer, Performer: TEmployee;
+  const IssuingDateTime: TDateTime;
+  var ChargeSheet: IDocumentChargeSheet;
+  var AccessRights: TDocumentChargeSheetAccessRights;
+  TopLevelChargeSheet: IDocumentChargeSheet
+);
+var
+    ChargeObj: TDocumentCharge;
+    ChargeSheetObj: TDocumentChargeSheet;
+begin
+
+  ChargeObj := TDocumentCharge(Charge.Self);
 
   ChargeSheet :=
-    GetDocumentChargeSheetClass(Charge).Create(
-      Charge,
+    GetDocumentChargeSheetClass(ChargeObj).Create(
+      ChargeObj,
       Issuer,
       VarIfThen(IssuingDateTime = 0, Now, IssuingDateTime),
       TDocumentChargeSheetRuleRegistry
         .Instance
           .GetDocumentChargeSheetWorkingRules(
-            TDocumentChargeSheetClass(Charge.ChargeSheetType)
+            TDocumentChargeSheetClass(ChargeObj.ChargeSheetType)
           )
     );
 
   ChargeSheetObj := TDocumentChargeSheet(ChargeSheet.Self);
-  
+
   ChargeSheetObj.InvariantsComplianceRequested := False;
 
   ChargeSheetObj.DocumentKindId := Document.KindIdentity;
@@ -422,19 +521,7 @@ begin
     ChargeSheetObj.TopLevelChargeSheetId := TopLevelChargeSheet.Identity;
 
   ChargeSheetObj.InvariantsComplianceRequested := True;
-  
-  ChargeSheetObj.ChangingEnsurer :=
-    TDocumentChargeSheetChangingEnsurer.Create(Document);
 
-  ChargeSheetObj.PerformingEnsurer :=
-    TDocumentChargeSheetPerformingEnsurer.Create(Document);
-    
-  AccessRights :=
-    FDocumentChargeSheetAccessRightsService
-      .EnsureEmployeeHasDocumentChargeSheetAccessRights(
-        Issuer, ChargeSheetObj, Document
-      );
-    
 end;
 
 end.

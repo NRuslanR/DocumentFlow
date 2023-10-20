@@ -9,6 +9,7 @@ uses
   DocumentCharges,
   DocumentSignings,
   DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   DocumentKindRepository,
   DocumentNumeratorRegistry,
   DocumentApprovingsInfoDTOMapper,
@@ -186,6 +187,7 @@ begin
     end;
 
     Result.Name := Document.Name;
+    Result.FullName := Document.FullName;
     Result.Content := Document.Content;
     Result.CreationDate := Document.CreationDate;
     Result.DocumentDate := Document.DocumentDate;

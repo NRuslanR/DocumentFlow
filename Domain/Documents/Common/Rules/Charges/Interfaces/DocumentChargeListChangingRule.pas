@@ -24,26 +24,52 @@ type
       DocumentCharge: IDocumentCharge
     );
 
-    procedure EnsureThatEmployeeMayChangeChargeList(
+    procedure EnsureThatEmployeeMayAssignDocumentCharges(
       Employee: TEmployee;
-      Document: IDocument
+      Document: IDocument;
+      DocumentCharges: IDocumentCharges
     );
-
-    procedure EnsureDocumentChargeAssignedForEmployee(
-      Employee: TEmployee;
-      Document: IDocument
-    );
-
+    
     function MayEmployeeAssignDocumentCharge(
       Employee: TEmployee;
       Document: IDocument;
       DocumentCharge: IDocumentCharge
     ): Boolean;
 
+    procedure EnsureEmployeeMayRemoveDocumentCharge(
+      Employee: TEmployee;
+      Document: IDocument;
+      DocumentCharge: IDocumentCharge
+    );
+
+    procedure EnsureEmployeeMayRemoveDocumentCharges(
+      Employee: TEmployee;
+      Document: IDocument;
+      DocumentCharges: IDocumentCharges
+    );
+
+    function MayEmployeeRemoveDocumentCharge(
+      Employee: TEmployee;
+      Document: IDocument;
+      DocumentCharge: IDocumentCharge
+    ): Boolean;
+
+    procedure EnsureThatEmployeeMayChangeChargeList(
+      Employee: TEmployee;
+      Document: IDocument;
+      Charge: IDocumentCharge = nil
+    );
+
     function MayEmployeeChangeChargeList(
       Employee: TEmployee;
-      Document: IDocument
+      Document: IDocument;
+      Charge: IDocumentCharge = nil
     ): Boolean;
+
+    procedure EnsureDocumentChargeAssignedForEmployee(
+      Employee: TEmployee;
+      Document: IDocument
+    );
 
     function IsDocumentChargeAssignedForEmployee(
       Employee: TEmployee;

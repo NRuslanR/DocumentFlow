@@ -9,10 +9,11 @@ uses
   IGetSelfUnit,
   DocumentChargeCreatingService,
   IDocumentUnit,
-  DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   IEmployeeRepositoryUnit,
   DocumentFlowEmployeeInfoDTOMapper,
   VariantListUnit,
+  DocumentChargeAccessRights,
   DocumentChargeInterface,
   Employee,
   Classes;
@@ -27,13 +28,18 @@ type
       Performer: TEmployee
     ): IDocumentCharge;
 
+    procedure FillDocumentChargeByDTO(
+      DocumentCharge: IDocumentCharge;
+      ChargeInfoDTO: TDocumentChargeInfoDTO
+    );
+
     function MapDocumentChargeInfoDTOFrom(
-      Charge: IDocumentCharge
+      Charge: IDocumentCharge;
+      AccessRights: TDocumentChargeAccessRights = nil
     ): TDocumentChargeInfoDTO;
 
   end;
 
-  { refactor: evaluate embeding this to ChargeSheetInfoDTOMapper }
   TDocumentChargeInfoDTODomainMapper =
     class (TInterfacedObject, IDocumentChargeInfoDTODomainMapper)
 
@@ -52,6 +58,8 @@ type
           ChargeInfoDTO: TDocumentChargeInfoDTO;
           Charge: IDocumentCharge
         ); virtual;
+
+        function MapAccessRightsDto(AccessRights: TDocumentChargeAccessRights): TDocumentChargeAccessRightsDTO; virtual;
         
       public
 
@@ -69,8 +77,14 @@ type
           Performer: TEmployee
         ): IDocumentCharge;
 
+        procedure FillDocumentChargeByDTO(
+          DocumentCharge: IDocumentCharge;
+          ChargeInfoDTO: TDocumentChargeInfoDTO
+        );
+
         function MapDocumentChargeInfoDTOFrom(
-          Charge: IDocumentCharge
+          Charge: IDocumentCharge;
+          AccessRights: TDocumentChargeAccessRights = nil
         ): TDocumentChargeInfoDTO;
         
     end;
@@ -120,37 +134,14 @@ begin
       ChargeInfoDTO.KindId, Document, Performer
     );
 
-  with ChargeInfoDTO do begin
-
-    Result.Identity := Id;
-    Result.Response := PerformerResponse;
-
-    if not AnyVarIsNullOrEmpty([TimeFrameStart, TimeFrameDeadline]) then
-      Result.SetTimeFrameStartAndDeadline(TimeFrameStart, TimeFrameDeadline);
-
-    Result.ChargeText := ChargeText;
-    Result.PerformingDateTime := PerformingDateTime;
-    Result.IsForAcquaitance := IsForAcquaitance;
-
-    if
-      Assigned(ActuallyPerformedEmployeeInfoDTO)
-      and not VarIsNullOrEmpty(ActuallyPerformedEmployeeInfoDTO.Id)
-    then begin
-
-      Result.ActuallyPerformedEmployee :=
-        FEmployeeRepository.FindEmployeeById(
-          ActuallyPerformedEmployeeInfoDTO.Id
-        );
-
-    end;
-    
-  end;
+  FillDocumentChargeByDTO(Result, ChargeInfoDTO);
 
 end;
 
 function TDocumentChargeInfoDTODomainMapper
   .MapDocumentChargeInfoDTOFrom(
-    Charge: IDocumentCharge
+    Charge: IDocumentCharge;
+    AccessRights: TDocumentChargeAccessRights
   ): TDocumentChargeInfoDTO;
 begin
 
@@ -160,6 +151,9 @@ begin
 
     FillDocumentChargeInfoDTO(Result, Charge);
 
+    if Assigned(AccessRights) then
+      Result.AccessRights := MapAccessRightsDto(AccessRights);
+    
   except
 
     on E: Exception do begin
@@ -174,10 +168,69 @@ begin
 
 end;
 
+function TDocumentChargeInfoDTODomainMapper.MapAccessRightsDto(
+  AccessRights: TDocumentChargeAccessRights): TDocumentChargeAccessRightsDTO;
+begin
+
+  Result := TDocumentChargeAccessRightsDTO.Create;
+
+  try
+
+    with AccessRights do begin
+
+      Result.ChargeSectionAccessible := ChargeSectionAccessible;
+      Result.RemovingAllowed := RemovingAllowed;
+      
+    end;
+
+  except
+
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
+
+end;
+
 function TDocumentChargeInfoDTODomainMapper.CreateDocumentChargeInfoDTOInstance: TDocumentChargeInfoDTO;
 begin
 
   Result := TDocumentChargeInfoDTO.Create;
+  
+end;
+
+procedure TDocumentChargeInfoDTODomainMapper.FillDocumentChargeByDTO(
+  DocumentCharge: IDocumentCharge;
+  ChargeInfoDTO: TDocumentChargeInfoDTO
+);
+begin
+
+  with ChargeInfoDTO do begin
+
+    DocumentCharge.Identity := Id;
+    DocumentCharge.Response := PerformerResponse;
+
+    if not AnyVarIsNullOrEmpty([TimeFrameStart, TimeFrameDeadline]) then
+      DocumentCharge.SetTimeFrameStartAndDeadline(TimeFrameStart, TimeFrameDeadline);
+
+    DocumentCharge.ChargeText := ChargeText;
+    DocumentCharge.PerformingDateTime := PerformingDateTime;
+    DocumentCharge.IsForAcquaitance := IsForAcquaitance;
+
+    if
+      Assigned(ActuallyPerformedEmployeeInfoDTO)
+      and not VarIsNullOrEmpty(ActuallyPerformedEmployeeInfoDTO.Id)
+    then begin
+
+      DocumentCharge.ActuallyPerformedEmployee :=
+        FEmployeeRepository.FindEmployeeById(
+          ActuallyPerformedEmployeeInfoDTO.Id
+        );
+
+    end;
+    
+  end;
   
 end;
 
@@ -200,10 +253,14 @@ begin
     PerformingDateTime := Charge.PerformingDateTime;
     IsForAcquaitance := Charge.IsForAcquaitance;
 
-    PerformerInfoDTO :=
-      FDocumentFlowEmployeeInfoDTOMapper.MapDocumentFlowEmployeeInfoDTOFrom(
-        Charge.Performer
-      );
+    if Assigned(Charge.Performer) then begin
+
+      PerformerInfoDTO :=
+        FDocumentFlowEmployeeInfoDTOMapper.MapDocumentFlowEmployeeInfoDTOFrom(
+          Charge.Performer
+        );
+
+    end;
 
     if Assigned(Charge.ActuallyPerformedEmployee) then begin
 

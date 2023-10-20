@@ -12,7 +12,6 @@ uses
   DocumentChargeSheetWorkingRule,
   DocumentChargeSheetViewingRule,
   IDocumentChargeSheetUnit,
-  IDocumentUnit,
   Employee,
   SysUtils,
   Classes;
@@ -35,13 +34,8 @@ type
 
         procedure InternalEnsureThatIsSatisfiedFor(
           Employee: TEmployee;
-          DocumentChargeSheet: TDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: TDocumentChargeSheet
         ); override;
-
-      protected
-
-        function CanBeDocumentViewedBySignerAsChargeSheetIssuer(Document: IDocument): Boolean;
 
       public
 
@@ -59,15 +53,13 @@ type
 
         function EnsureEmployeeMayViewDocumentChargeSheet(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
-        ): TDocumentChargeSheetViewingRuleEnsuringResult; virtual;
+          DocumentChargeSheet: IDocumentChargeSheet
+        ): TDocumentChargeSheetViewingRuleEnsuringResult;
 
         function MayEmployeeViewDocumentChargeSheet(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
-        ): TDocumentChargeSheetViewingRuleEnsuringResult; virtual;
+          DocumentChargeSheet: IDocumentChargeSheet
+        ): TDocumentChargeSheetViewingRuleEnsuringResult;
 
     end;
 
@@ -77,25 +69,9 @@ uses
 
   Document,
   PersonnelOrder,
-  VariantFunctions;
+  VariantFunctions, DocumentSigningSpecification;
 
 { TStandardDocumentChargeSheetViewingRule }
-
-function TStandardDocumentChargeSheetViewingRule.CanBeDocumentViewedBySignerAsChargeSheetIssuer(
-  Document: IDocument): Boolean;
-begin
-
-  {
-    refactor: получать в виде хэша в конструкторе список типов документов,
-    которые могут быть просмотрены подписантами в качестве выдавших
-    листы поручения. Это будет влиять на то, может ли сотрудник, будучи
-    подписантом документа выдавать новые листы поручения после
-    подписания
-  }
-
-  Result := TDocument(Document.Self) is TPersonnelOrder;
-  
-end;
 
 constructor TStandardDocumentChargeSheetViewingRule.Create(
 
@@ -122,20 +98,18 @@ end;
 procedure TStandardDocumentChargeSheetViewingRule.
   InternalEnsureThatIsSatisfiedFor(
     Employee: TEmployee;
-    DocumentChargeSheet: TDocumentChargeSheet;
-    Document: IDocument
+    DocumentChargeSheet: TDocumentChargeSheet
   );
 begin
 
-  EnsureEmployeeMayViewDocumentChargeSheet(Employee, DocumentChargeSheet, Document);
-  
+  EnsureEmployeeMayViewDocumentChargeSheet(Employee, DocumentChargeSheet);
+
 end;
 
 function TStandardDocumentChargeSheetViewingRule
   .MayEmployeeViewDocumentChargeSheet(
     Employee: TEmployee;
-    DocumentChargeSheet: IDocumentChargeSheet;
-    Document: IDocument
+    DocumentChargeSheet: IDocumentChargeSheet
   ): TDocumentChargeSheetViewingRuleEnsuringResult;
 begin
 
@@ -143,7 +117,7 @@ begin
 
     Result :=
       EnsureEmployeeMayViewDocumentChargeSheet(
-        Employee, DocumentChargeSheet, Document
+        Employee, DocumentChargeSheet
       );
 
   except
@@ -152,98 +126,66 @@ begin
       Result := EmployeeMayNotViewDocumentChargeSheet;
 
   end;
-  
+
 end;
 
-function TStandardDocumentChargeSheetViewingRule.
-  EnsureEmployeeMayViewDocumentChargeSheet(
+function TStandardDocumentChargeSheetViewingRule
+  .EnsureEmployeeMayViewDocumentChargeSheet(
     Employee: TEmployee;
-    DocumentChargeSheet: IDocumentChargeSheet;
-    Document: IDocument
+    DocumentChargeSheet: IDocumentChargeSheet
   ): TDocumentChargeSheetViewingRuleEnsuringResult;
-var
-    ChargeSheetObj: TDocumentChargeSheet;
-    IsIssuerAnyOfSigners: Boolean;
 begin
 
-  Result := EmployeeMayNotViewDocumentChargeSheet;
-
-  ChargeSheetObj := DocumentChargeSheet.Self as TDocumentChargeSheet;
-  
-  IsIssuerAnyOfSigners :=
-    not CanBeDocumentViewedBySignerAsChargeSheetIssuer(Document)
-    and
-    TDocument(Document.Self)
-      .Specifications
-        .DocumentSigningSpecification
-          .IsEmployeeAnyOfDocumentSigners(ChargeSheetObj.Issuer, Document);
-      
   if
     FEmployeeIsSameAsOrDeputySpecification.IsEmployeeSameAsOrDeputyForOther(
-      Employee, ChargeSheetObj.Issuer
+      Employee, DocumentChargeSheet.Issuer
     )
   then begin
 
-    Result := 
-      VarIfThen(
-        IsIssuerAnyOfSigners,
-        EmployeeMayViewDocumentChargeSheetAsAuthorized, 
-        EmployeeMayViewDocumentChargeSheetAsIssuer
-      );
+    Result := EmployeeMayViewDocumentChargeSheetAsIssuer;
+    Exit;
 
   end;
 
   if 
-    (Result <> EmployeeMayViewDocumentChargeSheetAsIssuer) 
-    and 
     FEmployeeIsSameAsOrDeputySpecification.IsEmployeeSameAsOrDeputyForOther(
-      Employee, ChargeSheetObj.Performer
+      Employee, DocumentChargeSheet.Performer
     )
   then begin
 
     Result := EmployeeMayViewDocumentChargeSheetAsPerformer;
+    Exit;
 
   end;
 
-  if Result <> EmployeeMayNotViewDocumentChargeSheet then Exit;
-  
-  if (
-
+  if
     FEmployeeIsSecretaryForAnyOfEmployeesSpecification
-      .IsEmployeeSecretaryForOther(
-        Employee, ChargeSheetObj.Performer
-      )
+      .IsEmployeeSecretaryForOther(Employee, DocumentChargeSheet.Performer)
 
      or
 
     FWorkspaceEmployeeDistributionSpecification
-      .IsEmployeeWorkspaceIncludesOtherEmployee(
-        Employee, ChargeSheetObj.Performer
-      )
-     
-   )
+      .IsEmployeeWorkspaceIncludesOtherEmployee(Employee, DocumentChargeSheet.Performer)
+
   then begin
 
     Result := EmployeeMayViewDocumentChargeSheetAsAuthorized;
-
-  end
-
-  else begin
-
-    Raise TDocumentChargeSheetViewingRuleException.CreateFmt(
-      'Сотрудник "%s" не может ' +
-      'просматривать поручение, ' +
-      'выданное сотрудником "%s" ' +
-      'сотруднику "%s"',
-      [
-        Employee.FullName,
-        ChargeSheetObj.Issuer.FullName,
-        ChargeSheetObj.Performer.FullName
-      ]
-    );
+    Exit;
 
   end;
-  
+
+  Raise TDocumentChargeSheetViewingRuleException.CreateFmt(
+    'Сотрудник "%s" не может ' +
+    'просматривать поручение, ' +
+    'выданное сотрудником "%s" ' +
+    'сотруднику "%s"',
+    [
+      Employee.FullName,
+      DocumentChargeSheet.Issuer.FullName,
+      DocumentChargeSheet.Performer.FullName
+    ]
+  );
+
 end;
 
 end.

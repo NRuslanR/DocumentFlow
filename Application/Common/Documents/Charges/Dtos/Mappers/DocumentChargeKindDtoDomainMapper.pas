@@ -7,12 +7,13 @@ uses
   DocumentChargeKindDto,
   DocumentCharges,
   DocumentChargeKind,
-  DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
+  IGetSelfUnit,
   SysUtils;
 
 type
 
-  IDocumentChargeKindDtoDomainMapper = interface
+  IDocumentChargeKindDtoDomainMapper = interface (IGetSelf)
 
     function MapDocumentChargeKindDto(
       DocumentChargeKind: TDocumentChargeKind
@@ -33,6 +34,12 @@ type
 
       public
 
+        State: Integer;
+
+        constructor Create;
+        
+        function GetSelf: TObject;
+
         function MapDocumentChargeKindDto(
           DocumentChargeKind: TDocumentChargeKind
         ): TDocumentChargeKindDto;
@@ -49,7 +56,6 @@ uses
 
   DocumentPerforming,
   DocumentAcquaitance,
-  DocumentChargeSheetsInfoDTO,
   DomainObjectUnit;
 
 { TDocumentChargeKindDtoDomainMapper }
@@ -74,6 +80,22 @@ begin
 
   end;
     
+end;
+
+constructor TDocumentChargeKindDtoDomainMapper.Create;
+begin
+
+  inherited;
+
+  State := 5;
+  
+end;
+
+function TDocumentChargeKindDtoDomainMapper.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
 end;
 
 function TDocumentChargeKindDtoDomainMapper.MapChargeInfoDTOClass(

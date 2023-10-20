@@ -1,0 +1,2 @@
+inherited PersonnelOrderApprovingsFrame: TPersonnelOrderApprovingsFrame
+end

@@ -86,23 +86,22 @@ function TDocumentApprovingSheetViewModelMapper.MapApprovingPerformingStatusFrom
 ): TDocumentApprovingPerformingStatus;
 begin
 
-  case DocumentApprovingDto.PerformingResult of
-
-    DocumentFullInfoDTO.prApproved:
-    begin
+  if DocumentApprovingDto.PerformingResultServiceName = 'approved' then
+  begin
 
       if DocumentApprovingDto.Note <> '' then
         Result := DocumentApprovingSheetApprovingSetHolder.prApprovedWithNotes
 
       else Result := DocumentApprovingSheetApprovingSetHolder.prApproved;
-      
-    end;
-
-    DocumentFullInfoDTO.prNotApproved: Result := DocumentApprovingSheetApprovingSetHolder.prNotApproved;
-    DocumentFullInfoDTO.prNotPerformed: Result := DocumentApprovingSheetApprovingSetHolder.prOnApproving;
 
   end;
 
+  if DocumentApprovingDto.PerformingResultServiceName = 'not_approved' then
+    Result := DocumentApprovingSheetApprovingSetHolder.prNotApproved
+
+  else if DocumentApprovingDto.PerformingResultServiceName = 'not_performed' then
+    Result := DocumentApprovingSheetApprovingSetHolder.prOnApproving;
+    
 end;
 
 function TDocumentApprovingSheetViewModelMapper.MapDocumentApprovingSheetViewModelFrom(

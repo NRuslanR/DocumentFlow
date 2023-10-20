@@ -15,7 +15,7 @@ type
 
     public
 
-      DocumentRelationIdFieldName: String;
+      RelationIdFieldName: String;
       TargetDocumentIdFieldName: String;
       RelatedDocumentIdFieldName: String;
       RelatedDocumentKindIdFieldName: String;
@@ -37,7 +37,7 @@ type
     protected
 
       function GetRelatedDocumentDateFieldValue: TDateTime;
-      function GetDocumentRelationIdFieldValue: Variant;
+      function GetRelationIdFieldValue: Variant;
       function GetRelatedDocumentIdFieldValue: Variant;
       function GetRelatedDocumentKindIdFieldValue: Variant;
       function GetRelatedDocumentKindNameFieldValue: String;
@@ -51,8 +51,8 @@ type
       property FieldNames: TDocumentRelationsInfoFieldNames
       read GetFieldNames write SetFieldNames;
 
-      property DocumentRelationIdFieldValue: Variant
-      read GetDocumentRelationIdFieldValue;
+      property RelationIdFieldValue: Variant
+      read GetRelationIdFieldValue;
 
       property TargetDocumentIdFieldValue: Variant
       read GetTargetDocumentIdFieldValue;
@@ -91,10 +91,10 @@ begin
   
 end;
 
-function TDocumentRelationsInfoHolder.GetDocumentRelationIdFieldValue: Variant;
+function TDocumentRelationsInfoHolder.GetRelationIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentRelationIdFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.RelationIdFieldName, Null);
 
 end;
 

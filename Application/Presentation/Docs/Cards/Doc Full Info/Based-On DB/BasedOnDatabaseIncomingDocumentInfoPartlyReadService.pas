@@ -41,6 +41,7 @@ type
 
       protected
 
+        function CreateDocumentFullInfoDTOInstance: TDocumentFullInfoDTO; override;
         function CreateDocumentRelationsInfoDTO(DocumentDTO: TDocumentDTO): TDocumentRelationsInfoDTO; override;
         function CreateDocumentFilesInfoDTO(DocumentDTO: TDocumentDTO): TDocumentFilesInfoDTO; override;
 
@@ -100,6 +101,13 @@ begin
     DocumentApprovingCycleResultsInfoDTO
   );
 
+end;
+
+function TBasedOnDatabaseIncomingDocumentInfoPartlyReadService.CreateDocumentFullInfoDTOInstance: TDocumentFullInfoDTO;
+begin
+
+  Result := TIncomingDocumentFullInfoDTO.Create;
+  
 end;
 
 function TBasedOnDatabaseIncomingDocumentInfoPartlyReadService.CreateDocumentRelationsInfoDTO(

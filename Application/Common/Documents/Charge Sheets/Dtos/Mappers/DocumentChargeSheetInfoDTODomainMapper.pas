@@ -9,6 +9,7 @@ uses
   DocumentChargeSheetsInfoDTO,
   DocumentFlowEmployeeInfoDTOMapper,
   DocumentChargeSheetViewingAccountingService,
+  DocumentChargeInfoDTODomainMapper,
   DocumentChargeSheetAccessRights,
   Employee,
   IEmployeeRepositoryUnit,
@@ -36,7 +37,6 @@ type
 
   end;
 
-  { refactor: evaluate embeding ChargeInfoDTOMapper to this }
   TDocumentChargeSheetInfoDTODomainMapper =
     class (TInterfacedObject, IDocumentChargeSheetInfoDTODomainMapper)
 
@@ -44,6 +44,9 @@ type
 
         FEmployeeRepository: IEmployeeRepository;
         FDocumentChargeSheetViewingAccountingService: IDocumentChargeSheetViewingAccountingService;
+
+        FChargeInfoDTODomainMapper: IDocumentChargeInfoDTODomainMapper;
+        
         FDocumentFlowEmployeeInfoDTOMapper: TDocumentFlowEmployeeInfoDTOMapper;
         FFreeDocumentFlowEmployeeInfoDTOMapper: IDisposable;
 
@@ -68,6 +71,7 @@ type
         constructor Create(
           EmployeeRepository: IEmployeeRepository;
           DocumentChargeSheetViewingAccountingService: IDocumentChargeSheetViewingAccountingService;
+          ChargeInfoDTODomainMapper: TDocumentChargeInfoDTODomainMapper;
           DocumentFlowEmployeeInfoDTOMapper: TDocumentFlowEmployeeInfoDTOMapper
         );
 
@@ -100,6 +104,7 @@ uses
 constructor TDocumentChargeSheetInfoDTODomainMapper.Create(
   EmployeeRepository: IEmployeeRepository;
   DocumentChargeSheetViewingAccountingService: IDocumentChargeSheetViewingAccountingService;
+  ChargeInfoDTODomainMapper: TDocumentChargeInfoDTODomainMapper;
   DocumentFlowEmployeeInfoDTOMapper: TDocumentFlowEmployeeInfoDTOMapper
 );
 begin
@@ -109,6 +114,8 @@ begin
   FEmployeeRepository := EmployeeRepository;
   
   FDocumentChargeSheetViewingAccountingService := DocumentChargeSheetViewingAccountingService;
+
+  FChargeInfoDTODomainMapper := ChargeInfoDTODomainMapper;
   
   FDocumentFlowEmployeeInfoDTOMapper := DocumentFlowEmployeeInfoDTOMapper;
   FFreeDocumentFlowEmployeeInfoDTOMapper := FDocumentFlowEmployeeInfoDTOMapper;
@@ -172,46 +179,32 @@ procedure TDocumentChargeSheetInfoDTODomainMapper
   );
 begin
 
+  ChargeSheetInfoDTO.ChargeInfoDTO :=
+    FChargeInfoDTODomainMapper
+      .MapDocumentChargeInfoDTOFrom(DocumentChargeSheet.Charge);
+
   with DocumentChargeSheet do begin
 
     ChargeSheetInfoDTO.Id := Identity;
-    ChargeSheetInfoDTO.KindId := KindId;
-    ChargeSheetInfoDTO.KindName := KindName;
-    ChargeSheetInfoDTO.ServiceKindName := ServiceKindName;
+    ChargeSheetInfoDTO.ChargeId := Charge.Identity;
     ChargeSheetInfoDTO.TopLevelChargeSheetId := TopLevelChargeSheetId;
     ChargeSheetInfoDTO.DocumentId := DocumentId;
     ChargeSheetInfoDTO.DocumentKindId := DocumentKindId;
-    ChargeSheetInfoDTO.TimeFrameStart := TimeFrameStart;
-    ChargeSheetInfoDTO.TimeFrameDeadline := TimeFrameDeadline;
     ChargeSheetInfoDTO.IssuingDateTime := IssuingDateTime;
-    ChargeSheetInfoDTO.PerformingDateTime := PerformingDateTime;
-    ChargeSheetInfoDTO.IsForAcquaitance := IsForAcquaitance;
 
     if Assigned(Performer) then begin
 
-      ChargeSheetInfoDTO.ViewingDateByPerformer :=
+      ChargeSheetInfoDTO.ViewDateByPerformer :=
         FDocumentChargeSheetViewingAccountingService
           .GetDocumentChargeSheetViewDateByEmployee(
             Identity, Performer.Identity
           );
-
-      ChargeSheetInfoDTO.PerformerInfoDTO :=
-        FDocumentFlowEmployeeInfoDTOMapper
-          .MapDocumentFlowEmployeeInfoDTOFrom(Performer);
-
-    end;
-
-    if Assigned(ActuallyPerformedEmployee) then begin
-
-      ChargeSheetInfoDTO.ActuallyPerformedEmployeeInfoDTO :=
-        FDocumentFlowEmployeeInfoDTOMapper
-          .MapDocumentFlowEmployeeInfoDTOFrom(ActuallyPerformedEmployee);
-
+          
     end;
 
     if Assigned(Issuer) then begin
 
-      ChargeSheetInfoDTO.SenderEmployeeInfoDTO :=
+      ChargeSheetInfoDTO.IssuerInfoDTO :=
         FDocumentFlowEmployeeInfoDTOMapper
           .MapDocumentFlowEmployeeInfoDTOFrom(Issuer);
 
@@ -235,6 +228,7 @@ begin
     Result.ResponseSectionAccessible := ResponseSectionAccessible;
     Result.RemovingAllowed := RemovingAllowed;
     Result.PerformingAllowed := PerformingAllowed;
+    Result.SubordinateChargeSheetsIssuingAllowed := SubordinateChargeSheetsIssuingAllowed;
     
   end;
 
@@ -252,25 +246,39 @@ begin
   with ChargeSheetInfoDTO do begin
 
     ChargeSheet.KindId := KindId;
-    ChargeSheet.KIndName := KindName;
-    
+    ChargeSheet.KindName := KindName;
     ChargeSheet.TopLevelChargeSheetId := TopLevelChargeSheetId;
-    ChargeSheet.DocumentId := DocumentId;
+    ChargeSheet.PerformingDateTime := PerformingDateTime;
+
     // { refactor } ChargeSheet.DocumentKindId := KindId;
 
     if not AnyVarIsNullOrEmpty([TimeFrameStart, TimeFrameDeadline]) then
       ChargeSheet.SetTimeFrameStartAndDeadline(TimeFrameStart, TimeFrameDeadline);
 
     ChargeSheet.IsForAcquaitance := IsForAcquaitance;
-    ChargeSheet.ChargeText := ChargeText;
-    ChargeSheet.PerformerResponse := PerformerResponse;
+
+    if ChargeSheet.ChargeText <> ChargeText then begin
+
+      ChargeSheet.ChargeText := ChargeText;
+
+      ChargeSheetInfoDTO.IsChargeTextChanged := True;
+
+    end;
+
+    if ChargeSheet.PerformerResponse <> PerformerResponse then begin
+
+      ChargeSheet.PerformerResponse := PerformerResponse;
+
+      ChargeSheetInfoDTO.IsPerformerResponseChanged := True;
+
+    end;
 
     if ChargeSheet.Performer.Identity <> PerformerInfoDTO.Id then begin
     
       ChargeSheet.Performer :=
         GetEmployeeOrRaise(
           PerformerInfoDTO.Id,
-          '¬о врем€ изменени€ поручени€ не найден новый исполнитель'
+          'Ќе найден исполнитель поручени€'
         );
 
     end;
@@ -283,19 +291,17 @@ begin
       ChargeSheet.ActuallyPerformedEmployee :=
         GetEmployeeOrRaise(
           ActuallyPerformedEmployeeInfoDTO.Id,
-          '¬о врем€ изменени€ поручени€ не найден ' +
-          'новый фактически выполнивший сотрудник'
+          'Ќе найден сотрудник, фактически выполнивший поручение'
         );
 
     end;
 
-    if ChargeSheet.Issuer.Identity <> SenderEmployeeInfoDTO.Id then begin
+    if ChargeSheet.Issuer.Identity <> IssuerInfoDTO.Id then begin
 
       ChargeSheet.Issuer :=
         GetEmployeeOrRaise(
-          SenderEmployeeInfoDTO.Id,
-          '¬о врем€ изменени€ поручени€ не найден ' +
-          'новый выдавший сотрудник'
+          IssuerInfoDTO.Id,
+          'Ќе найден сотрудник, выдавший поручение'
         );
 
     end;

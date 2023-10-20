@@ -7,6 +7,7 @@ uses
   PersonnelOrderSignerList,
   AbstractPersonnelOrderSingleEmployeeListFinder,
   PersonnelOrderSignerListFinder,
+  Employee,
   SysUtils;
 
 type
@@ -20,13 +21,24 @@ type
       public
 
         function FindPersonnelOrderSignerList: TPersonnelOrderSignerList;
-        
+        function FindDefaultPersonnelOrderSigner: TEmployee;
+
     end;
 
   
 implementation
 
 { TAbstractPersonnelOrderSignerListFinder }
+
+function TAbstractPersonnelOrderSignerListFinder.FindDefaultPersonnelOrderSigner: TEmployee;
+var
+    SignerList: TPersonnelOrderSignerList;
+begin
+
+  SignerList := FindPersonnelOrderSignerList;
+
+
+end;
 
 function TAbstractPersonnelOrderSignerListFinder.FindPersonnelOrderSignerList: TPersonnelOrderSignerList;
 begin

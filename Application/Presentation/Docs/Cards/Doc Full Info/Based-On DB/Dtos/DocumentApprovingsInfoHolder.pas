@@ -14,35 +14,36 @@ type
 
     public
 
-      DocumentApprovingIdFieldName: String;
-      DocumentApprovingIsAccessibleFieldName: String;
-      DocumentApprovingPerformingDateTimeFieldName: String;
-      DocumentApprovingPerformingResultIdFieldName: String;
-      DocumentApprovingPerformingResultFieldName: String;
-      DocumentApprovingNoteFieldName: String;
-      DocumentApprovingIsCompletedFieldName: String;
-      DocumentApprovingIsLookedByApproverFieldName: String;
+      IdFieldName: String;
+      IsAccessibleFieldName: String;
+      PerformingDateTimeFieldName: String;
+      PerformingResultIdFieldName: String;
+      PerformingResultFieldName: String;
+      PerformingResultServiceNameFieldName: String;
+      NoteFieldName: String;
+      IsCompletedFieldName: String;
+      IsLookedByApproverFieldName: String;
 
-      DocumentApproverIdFieldName: String;
-      DocumentApproverLeaderIdFieldName: String;
-      DocumentApproverIsForeignFieldName: String;
-      DocumentApproverNameFieldName: String;
-      DocumentApproverSpecialityFieldName: String;
-      DocumentApproverDepartmentIdFieldName: String;
-      DocumentApproverDepartmentCodeFieldName: String;
-      DocumentApproverDepartmentNameFieldName: String;
+      ApproverIdFieldName: String;
+      ApproverLeaderIdFieldName: String;
+      ApproverIsForeignFieldName: String;
+      ApproverNameFieldName: String;
+      ApproverSpecialityFieldName: String;
+      ApproverDepartmentIdFieldName: String;
+      ApproverDepartmentCodeFieldName: String;
+      ApproverDepartmentNameFieldName: String;
 
-      DocumentActualApproverIdFieldName: String;
-      DocumentActualApproverLeaderIdFieldName: String;
-      DocumentActualApproverIsForeignFieldName: String;
-      DocumentActualApproverNameFieldName: String;
-      DocumentActualApproverSpecialityFieldName: String;
-      DocumentActualApproverDepartmentIdFieldName: String;
-      DocumentActualApproverDepartmentCodeFieldName: String;
-      DocumentActualApproverDepartmentNameFieldName: String;
+      ActualApproverIdFieldName: String;
+      ActualApproverLeaderIdFieldName: String;
+      ActualApproverIsForeignFieldName: String;
+      ActualApproverNameFieldName: String;
+      ActualApproverSpecialityFieldName: String;
+      ActualApproverDepartmentIdFieldName: String;
+      ActualApproverDepartmentCodeFieldName: String;
+      ActualApproverDepartmentNameFieldName: String;
 
-      DocumentApprovingCycleNumberFieldName: String;
-      DocumentApprovingCycleIdFieldName: String;
+      CycleNumberFieldName: String;
+      CycleIdFieldName: String;
 
   end;
 
@@ -55,32 +56,33 @@ type
 
     protected
 
-      function GetDocumentApprovingCycleIdFieldName: Variant;
-      function GetDocumentApprovingCycleNumberFieldValue: Variant;
-      function GetDocumentActualApproverDepartmentCodeFieldValue: String;
-      function GetDocumentActualApproverDepartmentIdFieldValue: Variant;
-      function GetDocumentActualApproverDepartmentNameFieldValue: String;
-      function GetDocumentActualApproverIdFieldValue: Variant;
-      function GetDocumentActualApproverIsForeignFieldValue: Boolean;
-      function GetDocumentActualApproverLeaderIdFieldValue: Variant;
-      function GetDocumentActualApproverNameFieldValue: String;
-      function GetDocumentActualApproverSpecialityFieldValue: String;
-      function GetDocumentApproverDepartmentCodeFieldValue: String;
-      function GetDocumentApproverDepartmentIdFieldValue: Variant;
-      function GetDocumentApproverDepartmentNameFieldValue: String;
-      function GetDocumentApproverIdFieldValue: Variant;
-      function GetDocumentApproverIsForeignFieldValue: Boolean;
-      function GetDocumentApproverLeaderIdFieldValue: Variant;
-      function GetDocumentApprovingIsAccessibleFieldValue: Boolean;
-      function GetDocumentApproverNameFieldValue: String;
-      function GetDocumentApproverSpecialityFieldValue: String;
-      function GetDocumentApprovingIdFieldValue: Variant;
-      function GetDocumentApprovingIsCompletedFieldValue: Boolean;
-      function GetDocumentApprovingNoteFieldValue: String;
-      function GetDocumentApprovingPerformingDateTimeFieldValue: Variant;
-      function GetDocumentApprovingPerformingResultFieldValue: String;
-      function GetDocumentApprovingPerformingResultIdFieldValue: Variant;
-      function GetDocumentApprovingIsLookedByApproverFieldValue: Boolean;
+      function GetCycleIdFieldName: Variant;
+      function GetCycleNumberFieldValue: Variant;
+      function GetActualApproverDepartmentCodeFieldValue: String;
+      function GetActualApproverDepartmentIdFieldValue: Variant;
+      function GetActualApproverDepartmentNameFieldValue: String;
+      function GetActualApproverIdFieldValue: Variant;
+      function GetActualApproverIsForeignFieldValue: Boolean;
+      function GetActualApproverLeaderIdFieldValue: Variant;
+      function GetActualApproverNameFieldValue: String;
+      function GetActualApproverSpecialityFieldValue: String;
+      function GetApproverDepartmentCodeFieldValue: String;
+      function GetApproverDepartmentIdFieldValue: Variant;
+      function GetApproverDepartmentNameFieldValue: String;
+      function GetApproverIdFieldValue: Variant;
+      function GetApproverIsForeignFieldValue: Boolean;
+      function GetApproverLeaderIdFieldValue: Variant;
+      function GetIsAccessibleFieldValue: Boolean;
+      function GetApproverNameFieldValue: String;
+      function GetApproverSpecialityFieldValue: String;
+      function GetIdFieldValue: Variant;
+      function GetIsCompletedFieldValue: Boolean;
+      function GetNoteFieldValue: String;
+      function GetPerformingDateTimeFieldValue: Variant;
+      function GetPerformingResultFieldValue: String;
+      function GetPerformingResultIdFieldValue: Variant;
+      function GetIsLookedByApproverFieldValue: Boolean;
+      function GetPerformingResultServiceNameFieldValue: String;
 
       class function GetDataSetFieldDefsClass: TAbstractDataSetFieldDefsClass; override;
       
@@ -89,83 +91,86 @@ type
       property FieldNames: TDocumentApprovingsInfoFieldNames
       read GetFieldNames write SetFieldNames;
 
-      property DocumentApprovingIdFieldValue: Variant
-      read GetDocumentApprovingIdFieldValue;
+      property IdFieldValue: Variant
+      read GetIdFieldValue;
 
-      property DocumentApprovingPerformingDateTimeFieldValue: Variant
-      read GetDocumentApprovingPerformingDateTimeFieldValue;
+      property PerformingDateTimeFieldValue: Variant
+      read GetPerformingDateTimeFieldValue;
       
-      property DocumentApprovingPerformingResultIdFieldValue: Variant
-      read GetDocumentApprovingPerformingResultIdFieldValue;
-      
-      property DocumentApprovingPerformingResultFieldValue: String
-      read GetDocumentApprovingPerformingResultFieldValue;
-      
-      property DocumentApprovingNoteFieldValue: String
-      read GetDocumentApprovingNoteFieldValue;
+      property PerformingResultIdFieldValue: Variant
+      read GetPerformingResultIdFieldValue;
 
-      property DocumentApprovingIsCompletedFieldValue: Boolean
-      read GetDocumentApprovingIsCompletedFieldValue;
+      property PerformingResultFieldValue: String
+      read GetPerformingResultFieldValue;
 
-      property DocumentApproverIdFieldValue: Variant
-      read GetDocumentApproverIdFieldValue;
-      
-      property DocumentApproverLeaderIdFieldValue: Variant
-      read GetDocumentApproverLeaderIdFieldValue;
-      
-      property DocumentApproverIsForeignFieldValue: Boolean
-      read GetDocumentApproverIsForeignFieldValue;
+      property PerformingResultServiceNameFieldValue: String
+      read GetPerformingResultServiceNameFieldValue;
 
-      property DocumentApproverNameFieldValue: String
-      read GetDocumentApproverNameFieldValue;
-      
-      property DocumentApproverSpecialityFieldValue: String
-      read GetDocumentApproverSpecialityFieldValue;
+      property NoteFieldValue: String
+      read GetNoteFieldValue;
 
-      property DocumentApprovingIsAccessibleFieldValue: Boolean
-      read GetDocumentApprovingIsAccessibleFieldValue;
-      
-      property DocumentApproverDepartmentIdFieldValue: Variant
-      read GetDocumentApproverDepartmentIdFieldValue;
-      
-      property DocumentApproverDepartmentCodeFieldValue: String
-      read GetDocumentApproverDepartmentCodeFieldValue;
-      
-      property DocumentApproverDepartmentNameFieldValue: String
-      read GetDocumentApproverDepartmentNameFieldValue;
+      property IsCompletedFieldValue: Boolean
+      read GetIsCompletedFieldValue;
 
-      property DocumentActualApproverIdFieldValue: Variant
-      read GetDocumentActualApproverIdFieldValue;
+      property ApproverIdFieldValue: Variant
+      read GetApproverIdFieldValue;
+      
+      property ApproverLeaderIdFieldValue: Variant
+      read GetApproverLeaderIdFieldValue;
+      
+      property ApproverIsForeignFieldValue: Boolean
+      read GetApproverIsForeignFieldValue;
 
-      property DocumentActualApproverLeaderIdFieldValue: Variant
-      read GetDocumentActualApproverLeaderIdFieldValue;
+      property ApproverNameFieldValue: String
+      read GetApproverNameFieldValue;
       
-      property DocumentActualApproverIsForeignFieldValue: Boolean
-      read GetDocumentActualApproverIsForeignFieldValue;
-      
-      property DocumentActualApproverNameFieldValue: String
-      read GetDocumentActualApproverNameFieldValue;
-      
-      property DocumentActualApproverSpecialityFieldValue: String
-      read GetDocumentActualApproverSpecialityFieldValue;
-      
-      property DocumentActualApproverDepartmentIdFieldValue: Variant
-      read GetDocumentActualApproverDepartmentIdFieldValue;
-      
-      property DocumentActualApproverDepartmentCodeFieldValue: String
-      read GetDocumentActualApproverDepartmentCodeFieldValue;
-      
-      property DocumentActualApproverDepartmentNameFieldValue: String
-      read GetDocumentActualApproverDepartmentNameFieldValue;
+      property ApproverSpecialityFieldValue: String
+      read GetApproverSpecialityFieldValue;
 
-      property DocumentApprovingIsLookedByApproverFieldValue: Boolean
-      read GetDocumentApprovingIsLookedByApproverFieldValue;
+      property IsAccessibleFieldValue: Boolean
+      read GetIsAccessibleFieldValue;
+      
+      property ApproverDepartmentIdFieldValue: Variant
+      read GetApproverDepartmentIdFieldValue;
+      
+      property ApproverDepartmentCodeFieldValue: String
+      read GetApproverDepartmentCodeFieldValue;
+      
+      property ApproverDepartmentNameFieldValue: String
+      read GetApproverDepartmentNameFieldValue;
 
-      property DocumentApprovingCycleIdFieldValue: Variant
-      read GetDocumentApprovingCycleIdFieldName;
+      property ActualApproverIdFieldValue: Variant
+      read GetActualApproverIdFieldValue;
 
-      property DocumentApprovingCycleNumberFieldValue: Variant
-      read GetDocumentApprovingCycleNumberFieldValue;
+      property ActualApproverLeaderIdFieldValue: Variant
+      read GetActualApproverLeaderIdFieldValue;
+      
+      property ActualApproverIsForeignFieldValue: Boolean
+      read GetActualApproverIsForeignFieldValue;
+      
+      property ActualApproverNameFieldValue: String
+      read GetActualApproverNameFieldValue;
+      
+      property ActualApproverSpecialityFieldValue: String
+      read GetActualApproverSpecialityFieldValue;
+      
+      property ActualApproverDepartmentIdFieldValue: Variant
+      read GetActualApproverDepartmentIdFieldValue;
+      
+      property ActualApproverDepartmentCodeFieldValue: String
+      read GetActualApproverDepartmentCodeFieldValue;
+      
+      property ActualApproverDepartmentNameFieldValue: String
+      read GetActualApproverDepartmentNameFieldValue;
+
+      property IsLookedByApproverFieldValue: Boolean
+      read GetIsLookedByApproverFieldValue;
+
+      property CycleIdFieldValue: Variant
+      read GetCycleIdFieldName;
+
+      property CycleNumberFieldValue: Variant
+      read GetCycleNumberFieldValue;
 
   end;
 
@@ -185,244 +190,251 @@ begin
   
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverDepartmentCodeFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetActualApproverDepartmentCodeFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverDepartmentCodeFieldName,
+              FieldNames.ActualApproverDepartmentCodeFieldName,
               ''
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverDepartmentIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetActualApproverDepartmentIdFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverDepartmentIdFieldName,
+              FieldNames.ActualApproverDepartmentIdFieldName,
               Null
             );
 
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverDepartmentNameFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetActualApproverDepartmentNameFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverDepartmentNameFieldName,
+              FieldNames.ActualApproverDepartmentNameFieldName,
               ''
             );
 
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetActualApproverIdFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverIdFieldName,
+              FieldNames.ActualApproverIdFieldName,
               Null
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverIsForeignFieldValue: Boolean;
+function TDocumentApprovingsInfoHolder.GetActualApproverIsForeignFieldValue: Boolean;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverIsForeignFieldName,
+              FieldNames.ActualApproverIsForeignFieldName,
               False
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverLeaderIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetActualApproverLeaderIdFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverLeaderIdFieldName,
+              FieldNames.ActualApproverLeaderIdFieldName,
               Null
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverNameFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetActualApproverNameFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverNameFieldName,
+              FieldNames.ActualApproverNameFieldName,
               ''
             );
 
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentActualApproverSpecialityFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetActualApproverSpecialityFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentActualApproverSpecialityFieldName,
-              ''
-            );
-            
-end;
-
-function TDocumentApprovingsInfoHolder.GetDocumentApproverDepartmentCodeFieldValue: String;
-begin
-
-  Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverDepartmentCodeFieldName,
+              FieldNames.ActualApproverSpecialityFieldName,
               ''
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApproverDepartmentIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetApproverDepartmentCodeFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverDepartmentIdFieldName,
+              FieldNames.ApproverDepartmentCodeFieldName,
+              ''
+            );
+            
+end;
+
+function TDocumentApprovingsInfoHolder.GetApproverDepartmentIdFieldValue: Variant;
+begin
+
+  Result := GetDataSetFieldValue(
+              FieldNames.ApproverDepartmentIdFieldName,
               Null
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApproverDepartmentNameFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetApproverDepartmentNameFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverDepartmentNameFieldName,
+              FieldNames.ApproverDepartmentNameFieldName,
               ''
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApproverIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetApproverIdFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverIdFieldName,
+              FieldNames.ApproverIdFieldName,
               Null
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApproverIsForeignFieldValue: Boolean;
+function TDocumentApprovingsInfoHolder.GetApproverIsForeignFieldValue: Boolean;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverIsForeignFieldName,
+              FieldNames.ApproverIsForeignFieldName,
               False
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApproverLeaderIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetApproverLeaderIdFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverLeaderIdFieldName,
+              FieldNames.ApproverLeaderIdFieldName,
               ''
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApproverNameFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetApproverNameFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverNameFieldName,
+              FieldNames.ApproverNameFieldName,
               ''
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApproverSpecialityFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetApproverSpecialityFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApproverSpecialityFieldName,
+              FieldNames.ApproverSpecialityFieldName,
               ''
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingIsAccessibleFieldValue: Boolean;
+function TDocumentApprovingsInfoHolder.GetIsAccessibleFieldValue: Boolean;
 begin
 
   Result :=
     GetDataSetFieldValue(
-      FieldNames.DocumentApprovingIsAccessibleFieldName,
+      FieldNames.IsAccessibleFieldName,
       False
     );
     
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetIdFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingIdFieldName,
+              FieldNames.IdFieldName,
               Null
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingIsCompletedFieldValue: Boolean;
+function TDocumentApprovingsInfoHolder.GetIsCompletedFieldValue: Boolean;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingIsCompletedFieldName,
+              FieldNames.IsCompletedFieldName,
               False
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingIsLookedByApproverFieldValue: Boolean;
+function TDocumentApprovingsInfoHolder.GetIsLookedByApproverFieldValue: Boolean;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingIsLookedByApproverFieldName,
+              FieldNames.IsLookedByApproverFieldName,
               False
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingNoteFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetNoteFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingNoteFieldName,
+              FieldNames.NoteFieldName,
               ''
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingPerformingDateTimeFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetPerformingDateTimeFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingPerformingDateTimeFieldName,
+              FieldNames.PerformingDateTimeFieldName,
               Null
             );
             
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingPerformingResultFieldValue: String;
+function TDocumentApprovingsInfoHolder.GetPerformingResultFieldValue: String;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingPerformingResultFieldName,
+              FieldNames.PerformingResultFieldName,
               ''
             );
 
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingPerformingResultIdFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetPerformingResultIdFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingPerformingResultIdFieldName,
+              FieldNames.PerformingResultIdFieldName,
               Null
             );
+
+end;
+
+function TDocumentApprovingsInfoHolder.GetPerformingResultServiceNameFieldValue: String;
+begin
+
+  Result := GetDataSetFieldValue(FieldNames.PerformingResultServiceNameFieldName, '');
 
 end;
 
@@ -441,21 +453,21 @@ begin
   
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingCycleIdFieldName: Variant;
+function TDocumentApprovingsInfoHolder.GetCycleIdFieldName: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingCycleIdFieldName,
+              FieldNames.CycleIdFieldName,
               Null
             );
 
 end;
 
-function TDocumentApprovingsInfoHolder.GetDocumentApprovingCycleNumberFieldValue: Variant;
+function TDocumentApprovingsInfoHolder.GetCycleNumberFieldValue: Variant;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentApprovingCycleNumberFieldName,
+              FieldNames.CycleNumberFieldName,
               Null
             );
             

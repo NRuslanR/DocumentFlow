@@ -10,6 +10,7 @@ uses
   DocumentInfoHolder,
   IncomingDocumentTableDef,
   DocumentTableDef,
+  DocumentSigningTableDef,
   SysUtils;
 
 type
@@ -33,6 +34,7 @@ type
       constructor Create(
         DocumentInfoQueryBuilder: TDocumentInfoQueryBuilder;
         DocumentTableDef: TDocumentTableDef;
+        SigningTableDef: TDocumentSigningTableDef;
         IncomingDocumentTableDef: TIncomingDocumentTableDef
       );
 
@@ -45,11 +47,17 @@ implementation
 constructor TPostgresIncomingDocumentInfoQueryBuilder.Create(
   DocumentInfoQueryBuilder: TDocumentInfoQueryBuilder;
   DocumentTableDef: TDocumentTableDef;
+  SigningTableDef: TDocumentSigningTableDef;
   IncomingDocumentTableDef: TIncomingDocumentTableDef
 );
 begin
 
-  inherited Create(DocumentInfoQueryBuilder, DocumentTableDef, IncomingDocumentTableDef);
+  inherited Create(
+    DocumentInfoQueryBuilder,
+    DocumentTableDef,
+    SigningTableDef,
+    IncomingDocumentTableDef
+  );
 
 end;
 

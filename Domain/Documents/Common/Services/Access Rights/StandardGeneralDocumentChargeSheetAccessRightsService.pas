@@ -10,8 +10,8 @@ uses
   DocumentChargeSheet,
   IDocumentChargeSheetUnit,
   GeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo,
-  DocumentChargeKindsControlService,
   EmployeeIsSameAsOrDeputySpecification,
+  DocumentChargeSheetIssuingAccessRightsService,
   DocumentChargeSheetFinder,
   SysUtils,
   Classes;
@@ -24,8 +24,8 @@ type
       protected
 
         FDocumentChargeSheetFinder: IDocumentChargeSheetFinder;
-        FDocumentChargeKindsControlService: IDocumentChargeKindsControlService;
-
+        FIssuingAccessRightsService: IDocumentChargeSheetIssuingAccessRightsService;
+        
         procedure SetDocumentChargeSheetsUsageAccessRights(
           AccessRights: TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
           Document: TDocument;
@@ -35,17 +35,32 @@ type
 
         function FindAllChargeSheetsForDocument(Document: TDocument): TDocumentChargeSheets; virtual;
 
+        function InternalGetDocumentChargeSheetsUsageAccessRights(
+          Document: TDocument;
+          Employee: TEmployee
+        ): TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
+        
       public
 
         constructor Create(
           DocumentChargeSheetFinder: IDocumentChargeSheetFinder;
-          DocumentChargeKindsControlService: IDocumentChargeKindsControlService
+          IssuingAccessRightsService: IDocumentChargeSheetIssuingAccessRightsService
         );
-        
+
+        function EnsureEmployeeHasDocumentChargeSheetsAccessRights(
+          Document: TDocument;
+          Employee: TEmployee
+        ): TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
+
         function GetDocumentChargeSheetsUsageAccessRights(
           Document: TDocument;
           Employee: TEmployee
         ): TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
+
+        function AnyChargeSheetsCanBeViewedFor(
+          Document: TDocument;
+          Employee: TEmployee
+        ): Boolean;
 
     end;
 
@@ -55,20 +70,74 @@ uses
 
   AuxDebugFunctionsUnit,
   VariantFunctions,
-  DocumentChargeSheetViewingRule;
+  DocumentChargeSheetViewingRule,
+  IDomainObjectBaseUnit;
   
 { TStandardGeneralDocumentChargeSheetAccessRightsService }
 
+function TStandardGeneralDocumentChargeSheetAccessRightsService
+  .AnyChargeSheetsCanBeViewedFor(
+    Document: TDocument;
+    Employee: TEmployee
+  ): Boolean;
+var
+    AccessRightsInfo: TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
+    Free: IDomainObjectBase;
+begin
+
+  AccessRightsInfo :=
+    GetDocumentChargeSheetsUsageAccessRights(Document, Employee);
+
+  Free := AccessRightsInfo;
+
+  Result := AccessRightsInfo.AnyChargeSheetsCanBeViewed;
+
+end;
+
 constructor TStandardGeneralDocumentChargeSheetAccessRightsService.Create(
   DocumentChargeSheetFinder: IDocumentChargeSheetFinder;
-  DocumentChargeKindsControlService: IDocumentChargeKindsControlService
+  IssuingAccessRightsService: IDocumentChargeSheetIssuingAccessRightsService
 );
 begin
 
   inherited Create;
 
   FDocumentChargeSheetFinder := DocumentChargeSheetFinder;
-  FDocumentChargeKindsControlService := DocumentChargeKindsControlService;
+  FIssuingAccessRightsService := IssuingAccessRightsService;
+
+end;
+
+function TStandardGeneralDocumentChargeSheetAccessRightsService
+  .EnsureEmployeeHasDocumentChargeSheetsAccessRights(
+    Document: TDocument;
+    Employee: TEmployee
+  ): TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
+begin
+
+  Result := InternalGetDocumentChargeSheetsUsageAccessRights(Document, Employee);
+
+  try
+  
+    Result.IssuingAccessRights :=
+      FIssuingAccessRightsService.EnsureEmployeeHasDocumentChargeSheetIssuingAccessRights(
+        Document, Employee, Result
+      );
+
+    if Result.AllChargeSheetsAccessRightsAbsent then begin
+
+      raise TGeneralDocumentChargeSheetAccessRightsServiceException.Create(
+        'Отсутствуют права для работы с поручениями документа'
+      );
+
+    end;
+
+  except
+
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
 
 end;
 
@@ -82,6 +151,34 @@ end;
 
 function TStandardGeneralDocumentChargeSheetAccessRightsService
   .GetDocumentChargeSheetsUsageAccessRights(
+    Document: TDocument;
+    Employee: TEmployee
+  ): TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
+var
+    DocumentChargeSheets: IDocumentChargeSheets;
+begin
+
+  Result := InternalGetDocumentChargeSheetsUsageAccessRights(Document, Employee);
+
+  try
+
+    Result.IssuingAccessRights :=
+      FIssuingAccessRightsService.GetDocumentChargeSheetIssuingAccessRights(
+        Document, Employee, Result
+      );
+
+  except
+
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
+
+end;
+
+function TStandardGeneralDocumentChargeSheetAccessRightsService
+  .InternalGetDocumentChargeSheetsUsageAccessRights(
     Document: TDocument;
     Employee: TEmployee
   ): TGeneralDocumentChargeSheetsUsageEmployeeAccessRightsInfo;
@@ -133,31 +230,38 @@ begin
     ChargeSheetObj := TDocumentChargeSheet(ChargeSheet.Self);
 
     if
-      not AccessRights.AnyChargeSheetsCanBeViewed
-      or not AccessRights.AnyChargeSheetsCanBeIssued
+      not AccessRights.AnyChargeSheetsCanBeViewedAsPerformer
+      or not AccessRights.AnyChargeSheetsCanBeViewedAsIssuer
+      or not AccessRights.AnyChargeSheetsCanBeViewedAsAuthorized
     then begin
 
       ChargeSheetViewingRuleEnsuringResult :=
         ChargeSheetObj
           .WorkingRules
             .DocumentChargeSheetViewingRule.MayEmployeeViewDocumentChargeSheet(
-              Employee, ChargeSheetObj, Document
+              Employee, ChargeSheetObj
             );
 
-      if not AccessRights.AnyChargeSheetsCanBeViewed then begin
+      if not AccessRights.AnyChargeSheetsCanBeViewedAsAuthorized then begin
 
-        AccessRights.AnyChargeSheetsCanBeViewed :=
-          ChargeSheetViewingRuleEnsuringResult <> EmployeeMayNotViewDocumentChargeSheet;
+        AccessRights.AnyChargeSheetsCanBeViewedAsAuthorized :=
+          ChargeSheetViewingRuleEnsuringResult = EmployeeMayViewDocumentChargeSheetAsAuthorized;
 
       end;
 
+      if not AccessRights.AnyChargeSheetsCanBeViewedAsIssuer then begin
 
-      AccessRights.AnyChargeSheetsCanBeIssued :=
-        ChargeSheetViewingRuleEnsuringResult
-        in [
-          EmployeeMayViewDocumentChargeSheetAsIssuer,
-          EmployeeMayViewDocumentChargeSheetAsPerformer
-        ];
+        AccessRights.AnyChargeSheetsCanBeViewedAsIssuer :=
+          ChargeSheetViewingRuleEnsuringResult = EmployeeMayViewDocumentChargeSheetAsIssuer;
+          
+      end;
+
+      if not AccessRights.AnyChargeSheetsCanBeViewedAsPerformer then begin
+
+        AccessRights.AnyChargeSheetsCanBeViewedAsPerformer :=
+          ChargeSheetViewingRuleEnsuringResult = EmployeeMayViewDocumentChargeSheetAsPerformer;
+          
+      end;
 
     end;
 
@@ -169,7 +273,7 @@ begin
             .WorkingRules
               .DocumentChargeSheetChangingRule
                 .MayEmployeeChangeDocumentChargeSheet(
-                  Employee, ChargeSheetObj, Document, []
+                  Employee, ChargeSheetObj, []
                 )
     then begin
 
@@ -182,7 +286,7 @@ begin
       and ChargeSheetObj
             .WorkingRules
               .DocumentChargeSheetRemovingRule.IsSatisfiedBy(
-                Employee, ChargeSheetObj, Document
+                Employee, ChargeSheetObj
               )
     then begin
 
@@ -195,7 +299,7 @@ begin
       and ChargeSheetObj
             .WorkingRules
               .DocumentChargeSheetPerformingRule.IsSatisfiedBy(
-                Employee, ChargeSheetObj, Document
+                Employee, ChargeSheetObj
               )
     then begin
 
@@ -206,14 +310,6 @@ begin
     if AccessRights.AllChargeSheetsAccessRightsAllowed then Break;
 
   end;
-  
-  AccessRights.AnyChargeSheetsCanBeIssued :=
-    AccessRights.AnyChargeSheetsCanBeIssued
-    and (
-      AccessRights.AnyChargeSheetsCanBeChanged
-      or AccessRights.AnyChargeSheetsCanBePerformed
-      or AccessRights.AnyChargeSheetsCanBeRemoved
-    );
 
 end;
 

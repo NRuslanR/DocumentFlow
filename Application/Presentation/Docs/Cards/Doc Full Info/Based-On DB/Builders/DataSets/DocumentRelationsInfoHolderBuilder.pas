@@ -132,7 +132,7 @@ begin
 
   with FieldNames do begin
 
-    DocumentRelationIdFieldName := 'document_relation_id';
+    RelationIdFieldName := 'document_relation_id';
     TargetDocumentIdFieldName := 'document_id';
     RelatedDocumentIdFieldName := 'related_document_id';
     RelatedDocumentKindIdFieldName := 'related_document_kind_id';

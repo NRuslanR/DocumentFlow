@@ -13,6 +13,7 @@ uses
   DocumentApprovingCycleDTO,
   DocumentApprovingsFormViewModel,
   DocumentUsageEmployeeAccessRightsInfoDTO,
+  DocumentApprovingCycleSetHolderFactory,
   SysUtils,
   Classes;
 
@@ -23,6 +24,8 @@ type
     private
 
     protected
+
+      FApprovingCycleSetHolderFactory: IDocumentApprovingCycleSetHolderFactory;
 
       function CreateDocumentApprovingsFormViewModelInstance: TDocumentApprovingsFormViewModel; virtual;
       
@@ -48,6 +51,10 @@ type
       
     public
 
+      constructor Create(
+        ApprovingCycleSetHolderFactory: IDocumentApprovingCycleSetHolderFactory
+      );
+
       function MapDocumentApprovingCycleViewModelFrom(
         DocumentApprovingCycleDTO: TDocumentApprovingCycleDTO
       ): TDocumentApprovingCycleViewModel; virtual;
@@ -56,9 +63,7 @@ type
 
         DocumentApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
         DocumentApprovingCycleResultsInfoDTO: TDocumentApprovingCycleResultsInfoDTO;
-        DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
-      
-        DocumentApprovingCycleSetHolder: TDocumentApprovingCycleSetHolder
+        DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
 
       ): TDocumentApprovingsFormViewModel; virtual;
 
@@ -115,11 +120,9 @@ begin
       Result.Id := IdFieldValue;
       Result.TopLevelApprovingId := TopLevelApprovingIdFieldValue;
       Result.PerformingDateTime := PerformingDateTimeFieldValue;
-
-      if not VarIsNull(PerformingResultIdFieldValue) then
-        Result.PerformingResult := PerformingResultIdFieldValue;
-        
+      Result.PerformingResultId := PerformingResultIdFieldValue;
       Result.PerformingResultName := PerformingResultFieldValue;
+      Result.PerformingResultServiceName := PerformingResultServiceNameFieldValue;
       Result.Note := NoteFieldValue;
       Result.IsViewedByApprover := IsViewedByPerformerFieldValue;
 
@@ -168,26 +171,23 @@ function TDocumentApprovingsFormViewModelMapper.
 
     DocumentApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
     DocumentApprovingCycleResultsInfoDTO: TDocumentApprovingCycleResultsInfoDTO;
-    DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO;
-
-    DocumentApprovingCycleSetHolder: TDocumentApprovingCycleSetHolder
+    DocumentUsageEmployeeAccessRightsInfoDTO: TDocumentUsageEmployeeAccessRightsInfoDTO
 
   ): TDocumentApprovingsFormViewModel;
 begin
 
-  FillDocumentApprovingCycleSetHolderBy(
-    DocumentApprovingCycleSetHolder,
+  Result := CreateDocumentApprovingsFormViewModelInstance;
+  
+  Result.DocumentApprovingCycleSetHolder :=
+    FApprovingCycleSetHolderFactory.CreateDocumentApprovingCycleSetHolder;
 
+  FillDocumentApprovingCycleSetHolderBy(
+    Result.DocumentApprovingCycleSetHolder,
     DocumentApprovingsInfoDTO,
     DocumentApprovingCycleResultsInfoDTO,
     DocumentUsageEmployeeAccessRightsInfoDTO
   );
 
-  Result := CreateDocumentApprovingsFormViewModelInstance;
-
-  Result.DocumentApprovingCycleSetHolder :=
-    DocumentApprovingCycleSetHolder;
-            
 end;
 
 procedure TDocumentApprovingsFormViewModelMapper.
@@ -199,62 +199,61 @@ procedure TDocumentApprovingsFormViewModelMapper.
   );
 begin
 
-  DocumentApprovingSetHolder.Append;
-  
-  DocumentApprovingSetHolder.IdFieldValue :=
-    DocumentApprovingInfoDTO.Id;
+  with DocumentApprovingSetHolder, DocumentApprovingInfoDTO do begin
 
-  DocumentApprovingSetHolder.IsNewFieldValue := IsApprovingNew;
-  
-  DocumentApprovingSetHolder.TopLevelApprovingIdFieldValue :=
-    DocumentApprovingInfoDTO.TopLevelApprovingId;
-  
-  DocumentApprovingSetHolder.PerformerIdFieldValue :=
-    DocumentApprovingInfoDTO.ApproverInfoDTO.Id;
+    Append;
 
-  DocumentApprovingSetHolder.IsApprovingAccessibleFieldValue :=
-    DocumentApprovingInfoDTO.IsAccessible;
+    IdFieldValue := Id;
+    IsNewFieldValue := IsApprovingNew;
+    TopLevelApprovingIdFieldValue := TopLevelApprovingId;
+    PerformerIdFieldValue := ApproverInfoDTO.Id;
+    IsApprovingAccessibleFieldValue := IsAccessible;
+    PerformerNameFieldValue := ApproverInfoDTO.FullName;
+    PerformerSpecialityFieldValue := ApproverInfoDTO.Speciality;
+    PerformerDepartmentNameFieldValue := ApproverInfoDTO.DepartmentInfoDTO.Name;
 
-  DocumentApprovingSetHolder.PerformerNameFieldValue :=
-    DocumentApprovingInfoDTO.ApproverInfoDTO.FullName;
+    if Assigned(ActuallyPerformedEmployeeInfoDTO) then
+    begin
 
-  DocumentApprovingSetHolder.PerformerSpecialityFieldValue :=
-    DocumentApprovingInfoDTO.ApproverInfoDTO.Speciality;
+      ActuallyPerformedEmployeeIdFieldValue :=
+        ActuallyPerformedEmployeeInfoDTO.Id;
 
-  DocumentApprovingSetHolder.PerformerDepartmentNameFieldValue :=
-    DocumentApprovingInfoDTO.ApproverInfoDTO.DepartmentInfoDTO.Name;
+      ActuallyPerformedEmployeeNameFieldValue :=
+        ActuallyPerformedEmployeeInfoDTO.FullName;
 
-  if Assigned(DocumentApprovingInfoDTO.ActuallyPerformedEmployeeInfoDTO) then
-  begin
+    end;
 
-    DocumentApprovingSetHolder.ActuallyPerformedEmployeeIdFieldValue :=
-      DocumentApprovingInfoDTO.ActuallyPerformedEmployeeInfoDTO.Id;
+    PerformingResultIdFieldValue := PerformingResultId;
+    PerformingResultFieldValue := PerformingResultName;
+    PerformingResultServiceNameFieldValue := PerformingResultServiceName;
+    PerformingDateTimeFieldValue := PerformingDateTime;
+    NoteFieldValue := Note;
+    IsViewedByPerformerFieldValue :=IsViewedByApprover;
+    ApprovingCycleIdFieldValue := ApprovingCycleId;
 
-    DocumentApprovingSetHolder.ActuallyPerformedEmployeeNameFieldValue :=
-      DocumentApprovingInfoDTO.ActuallyPerformedEmployeeInfoDTO.FullName;
+    if PerformingResultServiceName = 'approved' then
+      PerformingResultIsApprovedValue := 1
+
+    else if PerformingResultServiceName = 'not_approved' then
+      PerformingResultIsNotApprovedValue := 2
+
+    else if PerformingResultServiceName = 'not_performed' then
+      PerformingResultIsNotPerformedValue := 3;
+      
+    Post;
 
   end;
+
+end;
+
+constructor TDocumentApprovingsFormViewModelMapper.Create(
+  ApprovingCycleSetHolderFactory: IDocumentApprovingCycleSetHolderFactory);
+begin
+
+  inherited Create;
+
+  FApprovingCycleSetHolderFactory := ApprovingCycleSetHolderFactory;
   
-  DocumentApprovingSetHolder.PerformingResultIdFieldValue :=
-    DocumentApprovingInfoDTO.PerformingResult;
-
-  DocumentApprovingSetHolder.PerformingResultFieldValue :=
-    DocumentApprovingInfoDTO.PerformingResultName;
-
-  DocumentApprovingSetHolder.PerformingDateTimeFieldValue :=
-    DocumentApprovingInfoDTO.PerformingDateTime;
-
-  DocumentApprovingSetHolder.NoteFieldValue :=
-    DocumentApprovingInfoDTO.Note;
-
-  DocumentApprovingSetHolder.IsViewedByPerformerFieldValue :=
-    DocumentApprovingInfoDTO.IsViewedByApprover;
-
-  DocumentApprovingSetHolder.ApprovingCycleIdFieldValue :=
-    ApprovingCycleId;
-
-  DocumentApprovingSetHolder.Post;
-
 end;
 
 function TDocumentApprovingsFormViewModelMapper.

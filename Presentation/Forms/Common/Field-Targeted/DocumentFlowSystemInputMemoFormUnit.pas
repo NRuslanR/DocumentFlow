@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, InputMemoFormUnit, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
-  Menus, StdCtrls, cxButtons;
+  Menus, StdCtrls, cxButtons, dxSkinsCore, dxSkinsDefaultPainters;
 
 const
 
@@ -14,14 +14,12 @@ const
 type
   TDocumentFlowSystemInputMemoForm = class(TInputMemoForm)
   private
-    { Private declarations }
 
   protected
 
     procedure Initialize; override;
     
   public
-    { Public declarations }
 
     constructor Create(AOwner: TComponent); override;
     

@@ -101,9 +101,9 @@ begin
 
       while not Eof do begin
 
-        if VarIsNull(DocumentApprovingIdFieldValue) or
-           VarIsNull(DocumentApprovingCycleNumberFieldValue) or
-           HandledDocumentApprovingIds.Contains(DocumentApprovingIdFieldValue)
+        if VarIsNull(IdFieldValue) or
+           VarIsNull(CycleNumberFieldValue) or
+           HandledDocumentApprovingIds.Contains(IdFieldValue)
         then begin
 
           Next;
@@ -114,7 +114,7 @@ begin
         begin
 
           DocumentApprovingCycleResultInfoDTO :=
-            Result.FindByCycleNumber(DocumentApprovingCycleNumberFieldValue);
+            Result.FindByCycleNumber(CycleNumberFieldValue);
 
           if not Assigned(DocumentApprovingCycleResultInfoDTO) then begin
 
@@ -130,10 +130,10 @@ begin
               DocumentApprovingsInfoDTO;
 
             DocumentApprovingCycleResultInfoDTO.Id :=
-              DocumentApprovingCycleIdFieldValue;
-              
+              CycleIdFieldValue;
+
             DocumentApprovingCycleResultInfoDTO.CycleNumber :=
-              DocumentApprovingCycleNumberFieldValue;
+              CycleNumberFieldValue;
 
           end
 
@@ -150,7 +150,7 @@ begin
             )
         );
 
-        HandledDocumentApprovingIds.Add(DocumentApprovingIdFieldValue);
+        HandledDocumentApprovingIds.Add(IdFieldValue);
         
         Next;
         

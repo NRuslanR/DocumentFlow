@@ -8,6 +8,7 @@ uses
   DocumentFullInfoDTO,
   DocumentRelationSetHolder,
   DocumentRelationsFormViewModelUnit,
+  DocumentRelationSetHolderFactory,
   SysUtils,
   Classes;
 
@@ -17,23 +18,24 @@ type
 
     protected
 
+      FDocumentRelationSetHolderFactory: IDocumentRelationSetHolderFactory;
+
       function CreateDocumentRelationsFormViewModelInstance:
         TDocumentRelationsFormViewModel; virtual;
         
     public
 
+      constructor Create(DocumentRelationSetHolderFactory: IDocumentRelationSetHolderFactory);
+      
       function MapDocumentRelationsFormViewModelFrom(
-        DocumentRelationsInfoDTO: TDocumentRelationsInfoDTO;
-        DocumentRelationsSetHolder: TDocumentRelationSetHolder
+        DocumentRelationsInfoDTO: TDocumentRelationsInfoDTO
       ): TDocumentRelationsFormViewModel; virtual;
 
       function MapDocumentRelationsFormViewModelTo(
         DocumentRelationsFormViewModel: TDocumentRelationsFormViewModel
       ): TDocumentRelationsInfoDTO; virtual;
 
-      function CreateEmptyDocumentRelationsFormViewModel(
-        DocumentRelationsSetHolder: TDocumentRelationSetHolder
-      ): TDocumentRelationsFormViewModel; virtual;
+      function CreateEmptyDocumentRelationsFormViewModel: TDocumentRelationsFormViewModel; virtual;
 
 
   end;
@@ -41,6 +43,16 @@ type
 implementation
 
 { TDocumentRelationsFormViewModelMapper }
+
+constructor TDocumentRelationsFormViewModelMapper.Create(
+  DocumentRelationSetHolderFactory: IDocumentRelationSetHolderFactory);
+begin
+
+  inherited Create;
+
+  FDocumentRelationSetHolderFactory := DocumentRelationSetHolderFactory;
+  
+end;
 
 function TDocumentRelationsFormViewModelMapper.
   CreateDocumentRelationsFormViewModelInstance: TDocumentRelationsFormViewModel;
@@ -51,54 +63,46 @@ begin
 end;
 
 function TDocumentRelationsFormViewModelMapper.
-  CreateEmptyDocumentRelationsFormViewModel(
-    DocumentRelationsSetHolder: TDocumentRelationSetHolder
-  ): TDocumentRelationsFormViewModel;
+  CreateEmptyDocumentRelationsFormViewModel: TDocumentRelationsFormViewModel;
 begin
 
   Result := CreateDocumentRelationsFormViewModelInstance;
-
+  
   Result.DocumentRelationSetHolder :=
-    DocumentRelationsSetHolder;
-    
+    FDocumentRelationSetHolderFactory.CreateDocumentRelationSetHolder;
+
 end;
 
 function TDocumentRelationsFormViewModelMapper.
   MapDocumentRelationsFormViewModelFrom(
-    DocumentRelationsInfoDTO: TDocumentRelationsInfoDTO;
-    DocumentRelationsSetHolder: TDocumentRelationSetHolder
+    DocumentRelationsInfoDTO: TDocumentRelationsInfoDTO
   ): TDocumentRelationsFormViewModel;
 var
   DocumentRelationInfoDTO: TDocumentRelationInfoDTO;
 begin
 
-  Result := CreateDocumentRelationsFormViewModelInstance;
+  Result := CreateEmptyDocumentRelationsFormViewModel;
 
-  if Assigned(DocumentRelationsInfoDTO) then begin
+  if not Assigned(DocumentRelationsInfoDTO) then Exit;
 
+  for DocumentRelationInfoDTO in DocumentRelationsInfoDTO do begin
 
-    for DocumentRelationInfoDTO in DocumentRelationsInfoDTO do begin
+    with Result.DocumentRelationSetHolder do begin
 
-      with DocumentRelationsSetHolder do begin
+      Append;
 
-        Append;
+      DocumentIdFieldValue := DocumentRelationInfoDTO.RelatedDocumentId;
+      DocumentNumberFieldValue := DocumentRelationInfoDTO.RelatedDocumentNumber;
+      DocumentDateFieldValue := DocumentRelationInfoDTO.RelatedDocumentDate;
+      DocumentNameFieldValue := DocumentRelationInfoDTO.RelatedDocumentName;
+      DocumentKindIdFieldValue := DocumentRelationInfoDTO.RelatedDocumentKindId;
+      DocumentKindNameFieldValue := DocumentRelationInfoDTO.RelatedDocumentKindName;
 
-        DocumentIdFieldValue := DocumentRelationInfoDTO.RelatedDocumentId;
-        DocumentNumberFieldValue := DocumentRelationInfoDTO.RelatedDocumentNumber;
-        DocumentDateFieldValue := DocumentRelationInfoDTO.RelatedDocumentDate;
-        DocumentNameFieldValue := DocumentRelationInfoDTO.RelatedDocumentName;
-        DocumentKindIdFieldValue := DocumentRelationInfoDTO.RelatedDocumentKindId;
-        DocumentKindNameFieldValue := DocumentRelationInfoDTO.RelatedDocumentKindName;
-
-        Post;
-
-      end;
+      Post;
 
     end;
 
   end;
-
-  Result.DocumentRelationSetHolder := DocumentRelationsSetHolder;
 
 end;
 
@@ -147,12 +151,9 @@ begin
 
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-      
-    end;
+    Raise;
 
   end;
 

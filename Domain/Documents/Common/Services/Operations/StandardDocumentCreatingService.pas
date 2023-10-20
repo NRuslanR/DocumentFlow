@@ -9,8 +9,10 @@ uses
   EmployeeSubordinationService,
   DocumentKindFinder,
   EmployeeDocumentKindAccessRightsService,
+  DocumentDefaultSignerFinder,
   DocumentKind,
   Document,
+  DocumentFullNameCompilationService,
   IDocumentUnit,
   Employee,
   SysUtils;
@@ -26,8 +28,9 @@ type
         FDocumentKindFinder: IDocumentKindFinder;
         FDocumentWorkCycleFinder: IDocumentWorkCycleFinder;
         FDocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
-        FEmployeeSubordinationService: IEmployeeSubordinationService;
-
+        FDocumentDefaultSignerFinder: IDocumentDefaultSignerFinder;
+        FDocumentFullNameCompilationService: IDocumentFullNameCompilationService;
+        
       public
 
         constructor Create(
@@ -35,7 +38,8 @@ type
           DocumentKindFinder: IDocumentKindFinder;
           DocumentWorkCycleFinder: IDocumentWorkCycleFinder;
           DocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
-          EmployeeSubordinationService: IEmployeeSubordinationService
+          DocumentDefaultSignerFinder: IDocumentDefaultSignerFinder;
+          DocumentFullNameCompilationService: IDocumentFullNameCompilationService
         );
         
         function CreateDocumentInstanceForEmployee(const Employee: TEmployee): IDocument;
@@ -58,7 +62,8 @@ constructor TStandardDocumentCreatingService.Create(
   DocumentKindFinder: IDocumentKindFinder;
   DocumentWorkCycleFinder: IDocumentWorkCycleFinder;
   DocumentKindAccessRightsService: IEmployeeDocumentKindAccessRightsService;
-  EmployeeSubordinationService: IEmployeeSubordinationService
+  DocumentDefaultSignerFinder: IDocumentDefaultSignerFinder;
+  DocumentFullNameCompilationService: IDocumentFullNameCompilationService
 );
 begin
 
@@ -68,7 +73,8 @@ begin
   FDocumentKindFinder := DocumentKindFinder;
   FDocumentWorkCycleFinder := DocumentWorkCycleFinder;
   FDocumentKindAccessRightsService := DocumentKindAccessRightsService;
-  FEmployeeSubordinationService := EmployeeSubordinationService;
+  FDocumentDefaultSignerFinder := DocumentDefaultSignerFinder;
+  FDocumentFullNameCompilationService := DocumentFullNameCompilationService;
   
 end;
 
@@ -83,8 +89,9 @@ begin
   Result := CreateDocumentInstanceForEmployee(Employee);
 
   DefaultSigner :=
-    FEmployeeSubordinationService
-      .FindHighestSameHeadKindredDepartmentBusinessLeaderForEmployee(Employee);
+    FDocumentDefaultSignerFinder.FindDefaultDocumentSignerFor(
+      TDocument(Result.Self), Employee
+    );
 
   if Assigned(DefaultSigner) then begin
 
@@ -120,7 +127,7 @@ begin
     with TDocument(Result.Self) do begin
 
       InvariantsComplianceRequested := False;
-      
+
       WorkingRules :=
         TDomainRegistries
           .DocumentsDomainRegistries
@@ -144,7 +151,10 @@ begin
       EditingEmployee := Employee;
 
       CreationDate := Now;
-      
+
+      FullName :=
+        FDocumentFullNameCompilationService.CompileFullNameForDocument(Result);
+
       InvariantsComplianceRequested := True;
 
     end;

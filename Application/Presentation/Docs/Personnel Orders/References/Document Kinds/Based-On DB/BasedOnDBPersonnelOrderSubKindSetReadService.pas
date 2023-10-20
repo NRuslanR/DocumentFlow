@@ -13,6 +13,7 @@ uses
   PersonnelOrderSubKindTableDef,
   DataReader,
   Disposable,
+  VariantListUnit,
   DB,
   SysUtils;
 
@@ -24,6 +25,7 @@ type
       private
 
         FPersonnelOrderSubKindSetFetchingQueryPattern: String;
+        FPersonnelOrderSubKindSetByIdsFetchingQueryPattern: String;
         
       private
 
@@ -36,8 +38,15 @@ type
           PersonnelOrderSubKindTableDef: TPersonnelOrderSubKindTableDef
         ): String;
 
-        function ExecutePersonnelOrderSubKindSetFetchingQuery(const QueryPattern: String): TDataSet;
+        function PreparePersonnelOrderSubKindSetByIdsFetchingQueryPattern(
+          PersonnelOrderSubKindTableDef: TPersonnelOrderSubKindTableDef
+        ): String;
 
+      private
+
+        function ExecutePersonnelOrderSubKindSetFetchingQuery(const QueryPattern: String): TDataSet;
+        function ExecutePersonnelOrderSubKindSetByIdsFetchingQuery(const QueryPattern: String; const SubKindIds: array of Variant): TDataSet;
+        
         function CreatePersonnelOrderSubKindSetFieldDefs: TPersonnelOrderSubKindSetFieldDefs;
         
       public
@@ -48,11 +57,17 @@ type
         );
         
         function GetPersonnelOrderSubKindSet: TPersonnelOrderSubKindSetHolder;
+        function GetPersonnelOrderSubKindSetByIds(const SubKindIds: array of Variant): TPersonnelOrderSubKindSetHolder;
 
     end;
 
 implementation
 
+uses
+
+  StrUtils,
+  SQLCastingFunctions;
+  
 { TBasedOnDBPersonnelOrderSubKindSetReadService }
 
 constructor TBasedOnDBPersonnelOrderSubKindSetReadService.Create(
@@ -69,6 +84,9 @@ begin
   FPersonnelOrderSubKindSetFetchingQueryPattern :=
     PreparePersonnelOrderSubKindSetFetchingQueryPattern(PersonnelOrderSubKindTableDef);
 
+  FPersonnelOrderSubKindSetByIdsFetchingQueryPattern :=
+    PreparePersonnelOrderSubKindSetByIdsFetchingQueryPattern(PersonnelOrderSubKindTableDef);
+
 end;
 
 function TBasedOnDBPersonnelOrderSubKindSetReadService.
@@ -80,6 +98,25 @@ begin
   Result.IdFieldName := FPersonnelOrderSubKindTableDef.IdColumnName;
   Result.NameFieldName := FPersonnelOrderSubKindTableDef.NameColumnName;
   
+end;
+
+function TBasedOnDBPersonnelOrderSubKindSetReadService.ExecutePersonnelOrderSubKindSetByIdsFetchingQuery(
+  const QueryPattern: String; const SubKindIds: array of Variant): TDataSet;
+var
+    DataReader: IDataReader;
+begin
+
+  DataReader :=
+    FQueryExecutor.ExecuteSelectionQuery(
+      ReplaceStr(
+        QueryPattern,
+        'p' + FPersonnelOrderSubKindTableDef.IdColumnName,
+        CreateSQLValueListString(SubKindIds)
+      )
+    );
+
+  Result := TDataSetDataReader(DataReader.Self).ToDataSet;
+
 end;
 
 function TBasedOnDBPersonnelOrderSubKindSetReadService.
@@ -119,22 +156,77 @@ begin
 
 end;
 
+function TBasedOnDBPersonnelOrderSubKindSetReadService.GetPersonnelOrderSubKindSetByIds(
+  const SubKindIds: array of Variant): TPersonnelOrderSubKindSetHolder;
+begin
+
+  Result := TPersonnelOrderSubKindSetHolder.Create;
+
+  try
+
+    Result.DataSet :=
+      ExecutePersonnelOrderSubKindSetByIdsFetchingQuery(
+        FPersonnelOrderSubKindSetByIdsFetchingQueryPattern,
+        SubKindIds
+      );
+
+    Result.FieldDefs := CreatePersonnelOrderSubKindSetFieldDefs;
+
+  except
+
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
+
+end;
+
+function TBasedOnDBPersonnelOrderSubKindSetReadService
+  .PreparePersonnelOrderSubKindSetByIdsFetchingQueryPattern(
+    PersonnelOrderSubKindTableDef: TPersonnelOrderSubKindTableDef
+  ): String;
+begin
+
+  with PersonnelOrderSubKindTableDef do begin
+  
+    Result :=
+      Format(
+        '%s WHERE %s=ANY(:p%s)',
+        [
+          PreparePersonnelOrderSubKindSetFetchingQueryPattern(
+            PersonnelOrderSubKindTableDef
+          ),
+
+          IdColumnName,
+          IdColumnName
+        ]
+      );
+
+  end;
+
+end;
+
 function TBasedOnDBPersonnelOrderSubKindSetReadService.
   PreparePersonnelOrderSubKindSetFetchingQueryPattern(
     PersonnelOrderSubKindTableDef: TPersonnelOrderSubKindTableDef
   ): String;
 begin
 
-  Result :=
-    Format(
-      'SELECT %s, %s FROM %s',
-      [
-        PersonnelOrderSubKindTableDef.IdColumnName,
-        PersonnelOrderSubKindTableDef.NameColumnName,
+  with PersonnelOrderSubKindTableDef do begin
 
-        PersonnelOrderSubKindTableDef.TableName
-      ]
-    );
+    Result :=
+      Format(
+        'SELECT %s, %s FROM %s',
+        [
+          IdColumnName,
+          NameColumnName,
+
+          TableName
+        ]
+      );
+
+  end;
 
 end;
 

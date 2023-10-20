@@ -42,6 +42,11 @@ type
           const PerformerId: Variant
         ): TDocumentChargeSheets;
 
+        function AreDocumentChargeSheetsExistsForPerformer(
+          const DocumentId: Variant;
+          const PerformerId: Variant
+        ): Boolean;
+
         function FindOwnAndSubordinateDocumentChargeSheetsForPerformer(
           const DocumentId: Variant;
           const PerformerId: Variant
@@ -94,6 +99,20 @@ type
     end;
 
 implementation
+
+function TAbstractDocumentChargeSheetDirectory
+  .AreDocumentChargeSheetsExistsForPerformer(
+    const DocumentId, PerformerId: Variant
+  ): Boolean;
+var
+    ChargeSheets: IDocumentChargeSheets;
+begin
+
+  ChargeSheets := FindDocumentChargeSheetsForPerformer(DocumentId, PerformerId);
+
+  Result := Assigned(ChargeSheets) and not TDocumentChargeSheets(ChargeSheets.Self).IsEmpty;
+
+end;
 
 constructor TAbstractDocumentChargeSheetDirectory.Create(
   DocumentChargeSheetFinder: IDocumentChargeSheetFinder

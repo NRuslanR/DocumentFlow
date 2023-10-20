@@ -7,35 +7,34 @@ uses
   IncomingDocumentCardFormViewModelMapper,
   DocumentCardFormViewModelMapperFactory,
   DocumentCardFormViewModelMapper,
+  DocumentMainInformationFormViewModelMapper,
   DocumentDataSetHoldersFactory,
+  IncomingDocumentMainInformationFormViewModelMapper,
   SysUtils,
   Classes;
 
 type
 
-  { refactor: remove DocumentDataSetHoldersFactory after refactor it }
-  
   TIncomingDocumentCardFormViewModelMapperFactory =
     class (TDocumentCardFormViewModelMapperFactory)
 
       protected
 
-        FOutcomingDocumentCardFormViewModelMapperFactory:
-          TDocumentCardFormViewModelMapperFactory;
-          
+        FOutcomingDocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory;
+        
+        function CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper; virtual;
+
+      public
+      
+        function CreateDocumentMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper; virtual;
+
       public
 
-        destructor Destroy; override;
-        
         constructor Create(
-          DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;  
-          OutcomingDocumentCardFormViewModelMapperFactory:
-            TDocumentCardFormViewModelMapperFactory
+          OutcomingDocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory;
+          DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory
         );
 
-        function CreateDocumentCardFormViewModelMapper:
-          TDocumentCardFormViewModelMapper; override;
-          
     end;
 
 implementation
@@ -43,39 +42,35 @@ implementation
 { TIncomingDocumentCardFormViewModelMapperFactory }
 
 constructor TIncomingDocumentCardFormViewModelMapperFactory.Create(
-  DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-  OutcomingDocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory
+  OutcomingDocumentCardFormViewModelMapperFactory: TDocumentCardFormViewModelMapperFactory;
+  DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory
 );
 begin
 
   inherited Create(DocumentDataSetHoldersFactory);
 
-  DocumentDataSetHoldersFactory := DocumentDataSetHoldersFactory;
-  
   FOutcomingDocumentCardFormViewModelMapperFactory :=
     OutcomingDocumentCardFormViewModelMapperFactory;
     
 end;
 
-function TIncomingDocumentCardFormViewModelMapperFactory.
-  CreateDocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
+function TIncomingDocumentCardFormViewModelMapperFactory
+  .CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper;
 begin
 
-  Result :=
-    TIncomingDocumentCardFormViewModelMapper.Create(
-      FDocumentDataSetHoldersFactory,
-      FOutcomingDocumentCardFormViewModelMapperFactory.
-        CreateDocumentCardFormViewModelMapper
-    );
+  Result := TIncomingDocumentCardFormViewModelMapper.Create;
   
 end;
 
-destructor TIncomingDocumentCardFormViewModelMapperFactory.Destroy;
+function TIncomingDocumentCardFormViewModelMapperFactory
+  .CreateDocumentMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
 begin
 
-  FreeAndNil(FOutcomingDocumentCardFormViewModelMapperFactory);
-
-  inherited;
+  Result :=
+    TIncomingDocumentMainInformationFormViewModelMapper.Create(
+      FOutcomingDocumentCardFormViewModelMapperFactory
+        .CreateDocumentMainInformationFormViewModelMapper
+    );
 
 end;
 

@@ -11,7 +11,6 @@ uses
   DocumentChargeSheetWorkingRule,
   EmployeeIsSameAsOrDeputySpecification,
   DomainException,
-  IDocumentUnit,
   Employee,
   SysUtils,
   Classes;
@@ -45,12 +44,6 @@ type
           const ErrorMessage: String
         );
 
-        procedure RaiseExceptionIfDocumentStateIsNotValid(
-          Employee: TEmployee;
-          ChargeSheet: TDocumentChargeSheet;
-          Document: IDocument
-        );
-
       protected
 
         function IsDocumentChargeSheetStateValid(
@@ -73,27 +66,23 @@ type
 
         function GetAlloweableDocumentChargeSheetFieldNames(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: IDocumentChargeSheet
         ): TStrings;
 
         function EnsureEmployeeMayChangeDocumentChargeSheet(
           Employee: TEmployee;
-          DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          DocumentChargeSheet: IDocumentChargeSheet
         ): TStrings; overload;
         
         procedure EnsureEmployeeMayChangeDocumentChargeSheet(
           Employee: TEmployee;
           DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           FieldNames: array of Variant
         ); overload;
 
         function MayEmployeeChangeDocumentChargeSheet(
           Employee: TEmployee;
           DocumentChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           FieldNames: array of Variant
         ): Boolean;
         
@@ -124,7 +113,6 @@ procedure TStandardDocumentChargeSheetChangingRule.
   EnsureEmployeeMayChangeDocumentChargeSheet(
     Employee: TEmployee;
     DocumentChargeSheet: IDocumentChargeSheet;
-    Document: IDocument;
     FieldNames: array of Variant
   );
 var
@@ -133,9 +121,7 @@ var
 begin
 
   AllowedFieldNames :=
-    EnsureEmployeeMayChangeDocumentChargeSheet(
-      Employee, DocumentChargeSheet, Document
-    );
+    EnsureEmployeeMayChangeDocumentChargeSheet(Employee, DocumentChargeSheet);
 
   RaiseExceptionIfDocumentChargeSheetFieldNamesNotInAllowed(
     FieldNames,
@@ -154,8 +140,7 @@ end;
 function TStandardDocumentChargeSheetChangingRule.
   GetAlloweableDocumentChargeSheetFieldNames(
     Employee: TEmployee;
-    DocumentChargeSheet: IDocumentChargeSheet;
-    Document: IDocument
+    DocumentChargeSheet: IDocumentChargeSheet
   ): TStrings;
 begin
 
@@ -164,8 +149,7 @@ begin
     Result :=
       EnsureEmployeeMayChangeDocumentChargeSheet(
         Employee,
-        DocumentChargeSheet,
-        Document
+        DocumentChargeSheet
       );
 
   except
@@ -178,8 +162,7 @@ end;
 
 function TStandardDocumentChargeSheetChangingRule.EnsureEmployeeMayChangeDocumentChargeSheet(
   Employee: TEmployee;
-  DocumentChargeSheet: IDocumentChargeSheet;
-  Document: IDocument
+  DocumentChargeSheet: IDocumentChargeSheet
 ): TStrings;
 var
     ChargeSheet: TDocumentChargeSheet;
@@ -187,8 +170,6 @@ var
 begin
 
   ChargeSheet := DocumentChargeSheet.Self as TDocumentChargeSheet;
-
-  RaiseExceptionIfDocumentStateIsNotValid(Employee, ChargeSheet, Document);
 
   RaiseExceptionIfDocumentChargeSheetStateNotValid(Employee, ChargeSheet);
 
@@ -204,7 +185,6 @@ function TStandardDocumentChargeSheetChangingRule.
   MayEmployeeChangeDocumentChargeSheet(
     Employee: TEmployee;
     DocumentChargeSheet: IDocumentChargeSheet;
-    Document: IDocument;
     FieldNames: array of Variant
   ): Boolean;
 begin
@@ -214,7 +194,6 @@ begin
     EnsureEmployeeMayChangeDocumentChargeSheet(
       Employee,
       DocumentChargeSheet,
-      Document,
       FieldNames
     );
 
@@ -280,7 +259,7 @@ begin
         Employee,
         DocumentChargeSheet.Issuer
       )
-    and not DocumentChargeSheet.IsHead
+    //  and not DocumentChargeSheet.IsHead
   then begin
 
     FieldNames := TStringList.Create;
@@ -289,16 +268,17 @@ begin
 
     Result := True;
     
-  end
+  end;
 
-  else if
+  if
     FEmployeeIsSameAsOrDeputySpecification.
       IsEmployeeSameAsOrDeputyForOtherOrViceVersa(
         Employee, DocumentChargeSheet.Performer
       )
   then begin
 
-    FieldNames := TStringList.Create;
+    if not Assigned(FieldNames) then
+      FieldNames := TStringList.Create;
 
     FieldNames.Add(DocumentChargeSheet.PerformerResponsePropName);
 
@@ -337,40 +317,6 @@ begin
   then begin
 
     Raise TDocumentChargeSheetChangingRuleException.Create(ErrorMessage);
-
-  end;
-
-end;
-
-procedure TStandardDocumentChargeSheetChangingRule.RaiseExceptionIfDocumentStateIsNotValid(
-  Employee: TEmployee;
-  ChargeSheet: TDocumentChargeSheet;
-  Document: IDocument);
-var
-    Condition: Boolean;
-begin
-
-  if ChargeSheet.DocumentId <> Document.Identity then begin
-
-    Raise TDocumentChargeSheetChangingRuleException.CreateFmt(
-      'Поручение для сотрудника "%s" не относится к документу',
-      [
-        ChargeSheet.Performer.FullName
-      ]
-    );
-
-  end;
-
-  if not (ChargeSheet is TDocumentAcquaitanceSheet) and Document.IsPerformed
-  then begin
-  
-    Raise TDocumentChargeSheetChangingRuleException.CreateFmt(
-      'Поручение для сотрудника "%s" не может быть ' +
-      'изменено, поскольку документ уже выполнен',
-      [
-        ChargeSheet.Performer.FullName
-      ]
-    );
 
   end;
 

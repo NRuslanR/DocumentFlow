@@ -174,6 +174,8 @@ begin
 
   Result := TDocumentApprovingsInfoDTO.Create;
 
+  if not Assigned(DocumentApprovings) then Exit;
+  
   try
 
     for DocumentApproving in DocumentApprovings do begin
@@ -207,7 +209,6 @@ begin
 
   DocumentApprovingInfoDTO.Id := DocumentApproving.Identity;
   DocumentApprovingInfoDTO.PerformingDateTime := DocumentApproving.PerformingDateTime;
-  DocumentApprovingInfoDTO.SetPerformingResultFromDomain(DocumentApproving.PerformingResult);
   DocumentApprovingInfoDTO.PerformingResultName := DocumentApproving.PerformingResultName;
 
   DocumentApprovingInfoDTO.IsViewedByApprover :=

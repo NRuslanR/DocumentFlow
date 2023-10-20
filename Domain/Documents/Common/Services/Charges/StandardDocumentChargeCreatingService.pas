@@ -34,6 +34,12 @@ type
           Document: IDocument;
           Performer: TEmployee
         ): IDocumentCharge; virtual;
+
+        function CreateDocumentCharges(
+          const ChargeKindId: Variant;
+          Document: IDocument;
+          Performers: TEmployees
+        ): IDocumentCharges;
     
     end;
 
@@ -54,6 +60,32 @@ begin
 
   FDocumentChargeKindsControlService := DocumentChargeKindsControlService;
   
+end;
+
+function TStandardDocumentChargeCreatingService.CreateDocumentCharges(
+  const ChargeKindId: Variant;
+  Document: IDocument;
+  Performers: TEmployees
+): IDocumentCharges;
+var
+    Performer: TEmployee;
+begin
+
+  Result := TDocumentCharges.Create;
+
+  try
+
+    for Performer in Performers do
+      Result.AddCharge(CreateDocumentCharge(ChargeKindId, Document, Performer));
+      
+  except
+
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
+
 end;
 
 function TStandardDocumentChargeCreatingService.CreateDocumentCharge(

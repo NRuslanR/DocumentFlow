@@ -14,8 +14,6 @@ uses
   DocumentChargeSheetOverlappingPerformingService,
   DocumentChargeSheetWorkingRules,
   DocumentChargeSheetPerformingService,
-  DocumentChargeSheetPerformingEnsurer,
-  DocumentChargeSheetChangingEnsurer,
   ArrayFunctions,
   ArrayTypes,
   TimeFrame,
@@ -82,17 +80,12 @@ type
 
       FTopLevelChargeSheetId: Variant;
 
-      FChangingEnsurer: IDocumentChargeSheetChangingEnsurer;
-      FPerformingEnsurer: IDocumentChargeSheetPerformingEnsurer;
-      
       FWorkingRules: TDocumentChargeSheetWorkingRules;
       FFreeWorkingRules: IDocumentChargeSheetWorkingRules;
 
       procedure RaiseExceptionIfEditingEmployeeNotAssigned;
       procedure RaiseExceptionIfWorkingRulesNotAssigned;
       procedure RaiseExceptionIfEditingEmployeeAndWorkingRulesNotAssigned;
-      procedure RaiseExceptionIfChangingEnsurerNotAssigned;
-      procedure RaiseExceptionIfPerformingEnsurerNotAssigned;
 
       procedure EnsureThatEmployeeMayMakeChangesForThisChargeSheet(
         Employee: TEmployee;
@@ -172,9 +165,6 @@ type
       
       procedure SetWorkingRules(Value: TDocumentChargeSheetWorkingRules);
 
-      procedure SetChangingEnsurer(const Value: IDocumentChargeSheetChangingEnsurer);
-      procedure SetPerformingEnsurer(const Value: IDocumentChargeSheetPerformingEnsurer);
-
     public
 
       constructor Create; overload; override;
@@ -224,12 +214,6 @@ type
       property EditingEmployee: TEmployee
       read GetEditingEmployee write SetEditingEmployee;
 
-      property ChangingEnsurer: IDocumentChargeSheetChangingEnsurer
-      read FChangingEnsurer write SetChangingEnsurer;
-
-      property PerformingEnsurer: IDocumentChargeSheetPerformingEnsurer
-      read FPerformingEnsurer write SetPerformingEnsurer;
-      
       property WorkingRules: TDocumentChargeSheetWorkingRules
       read FWorkingRules write SetWorkingRules;
 
@@ -352,6 +336,8 @@ type
       public
 
         destructor Destroy; override;
+
+        function First: TDocumentChargeSheet;
         
         procedure AssignDocument(const DocumentId: Variant);
         
@@ -370,6 +356,8 @@ type
         procedure SyncIdentitiesByChargeIdentities;
 
         function AreBelongsToDocument(const DocumentId: Variant): Boolean;
+
+        procedure EnsureBelongsToDocument(const DocumentId: Variant);
         
         function FindChargeSheetByIdentity(
           const Identity: Variant
@@ -526,7 +514,9 @@ begin
 
   if Self.DocumentId <> DocumentId then begin
 
-    Raise TDocumentChargeSheetException.Create('ѕоручение не относитс€ к данному документу');
+    Raise TDocumentChargeSheetException.Create(
+      'ѕоручение не относитс€ к данному документу'
+    );
 
   end;
 
@@ -540,10 +530,10 @@ begin
   if not InvariantsComplianceRequested then Exit;
 
   RaiseExceptionIfWorkingRulesNotAssigned;
-  RaiseExceptionIfPerformingEnsurerNotAssigned;
-  
-  FPerformingEnsurer.EnsureEmployeeMayPerformChargeSheet(Employee, Self);
-  
+
+  FWorkingRules.DocumentChargeSheetPerformingRule
+    .EnsureThatIsSatisfiedFor(Employee, Self);
+
 end;
 
 procedure TDocumentChargeSheet.EnsureThatEmployeeMayMakeChangesForThisChargeSheet(
@@ -555,11 +545,11 @@ begin
   if not InvariantsComplianceRequested then Exit;
 
   RaiseExceptionIfEditingEmployeeAndWorkingRulesNotAssigned;
-  RaiseExceptionIfChangingEnsurerNotAssigned;
-  
-  FChangingEnsurer.EnsureEmployeeMayChangeChargeSheet(
-    Employee, Self, FieldNames
-  );
+
+  FWorkingRules.DocumentChargeSheetChangingRule
+    .EnsureEmployeeMayChangeDocumentChargeSheet(
+      Employee, Self, FieldNames
+    );
 
 end;
 
@@ -836,7 +826,7 @@ begin
       Self.Performer.FullName
     ]
   );
-  
+
   EnsureEmployeeMayDoPerforming(Performer);
 
   FCharge.InvariantsComplianceRequested := False;
@@ -897,30 +887,6 @@ begin
 
 end;
 
-procedure TDocumentChargeSheet.RaiseExceptionIfChangingEnsurerNotAssigned;
-begin
-
-  if not Assigned(FChangingEnsurer) then begin
-
-    Raise TDocumentChargeSheetException.Create('DocumentChargeSheet ChangingEnsurer not assigned');
-
-  end;
-
-end;
-
-procedure TDocumentChargeSheet.RaiseExceptionIfPerformingEnsurerNotAssigned;
-begin
-
-  if not Assigned(FPerformingEnsurer) then begin
-
-    Raise TDocumentChargeSheetException.Create(
-      'DocumentChargeSheet PerformingEnsurer not assigned'
-    );
-    
-  end;
-
-end;
-
 procedure TDocumentChargeSheet.RaiseExceptionIfWorkingRulesNotAssigned;
 begin
 
@@ -939,7 +905,6 @@ procedure TDocumentChargeSheet.SetEditingEmployee(EditingEmployee: TEmployee);
 begin
 
   RaiseExceptionIfWorkingRulesNotAssigned;
-  RaiseExceptionIfChangingEnsurerNotAssigned;
 
   FEditingEmployee := EditingEmployee;
   
@@ -1011,14 +976,6 @@ begin
   
 end;
 
-procedure TDocumentChargeSheet.SetChangingEnsurer(
-  const Value: IDocumentChargeSheetChangingEnsurer);
-begin
-
-  FChangingEnsurer := Value;
-
-end;
-
 procedure TDocumentChargeSheet.SetChargeText(const ChargeText: String);
 begin
 
@@ -1079,13 +1036,6 @@ procedure TDocumentChargeSheet.SetPerformingDateTime(const Value: Variant);
 begin
 
   FCharge.PerformingDateTime := Value;
-  
-end;
-
-procedure TDocumentChargeSheet.SetPerformingEnsurer(const Value: IDocumentChargeSheetPerformingEnsurer);
-begin
-
-  FPerformingEnsurer := Value;
   
 end;
 
@@ -1225,19 +1175,34 @@ var
     ChargeSheet: IDocumentChargeSheet;
 begin
 
-  for ChargeSheet in Self do begin
+  try
 
-    if ChargeSheet.DocumentId <> DocumentId then begin
+    EnsureBelongsToDocument(DocumentId);
+
+    Result := True;
+    
+  except
+
+    on E: TDocumentChargeSheetException do begin
 
       Result := False;
-      Exit;
 
     end;
 
   end;
 
-  Result := True;
+end;
 
+procedure TDocumentChargeSheets.EnsureBelongsToDocument(
+  const DocumentId: Variant
+);
+var
+    ChargeSheet: IDocumentChargeSheet;
+begin
+
+  for ChargeSheet in Self do
+    ChargeSheet.EnsureBelongsToDocument(DocumentId);
+    
 end;
 
 procedure TDocumentChargeSheets.AssignDocument(const DocumentId: Variant);
@@ -1266,7 +1231,7 @@ begin
   
   for ChargeSheet in Self do 
     Result.AddCharge(ChargeSheet.Charge);  
-    
+
 end;
 
 function TDocumentChargeSheets.FetchPerformers: TEmployees;
@@ -1474,6 +1439,13 @@ begin
 
   end;
     
+end;
+
+function TDocumentChargeSheets.First: TDocumentChargeSheet;
+begin
+
+  Result := TDocumentChargeSheet(inherited First);
+  
 end;
 
 function TDocumentChargeSheets.GetChargeSheetCount: Integer;

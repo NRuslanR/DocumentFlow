@@ -108,7 +108,8 @@ uses
   StandardSendingCrossDepartmentDocumentToPerformingService,
   DocumentOperationServiceRegistry,
   DocumentStorageServiceRegistry,
-  IncomingDocumentDirectory;
+  IncomingDocumentDirectory,
+  DocumentSearchServiceRegistry;
 
 
 { TDocumentPerformingServiceRegistry }
@@ -295,12 +296,14 @@ end;
 procedure TDocumentPerformingServiceRegistry.RegisterStandardDocumentPerformingService(
   DocumentKind: TDocumentClass);
 begin
-                        
+
   RegisterDocumentPerformingService(
     DocumentKind,
-    TStandardDocumentPerformingService.Create
+    TStandardDocumentPerformingService.Create(
+      TDocumentSearchServiceRegistry.Instance.GetDocumentFinder(DocumentKind)
+    )
   );
-  
+                     
 end;
 
 procedure TDocumentPerformingServiceRegistry.

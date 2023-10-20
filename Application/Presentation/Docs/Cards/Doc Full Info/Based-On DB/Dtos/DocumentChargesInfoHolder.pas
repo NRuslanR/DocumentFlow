@@ -14,35 +14,39 @@ type
 
   TDocumentChargesInfoFieldNames = class (TAbstractDataSetFieldDefs)
 
+    protected
+
+      function GetIdFieldName: String;
+      procedure SetIdFieldName(const Value: String);
+    
     public
 
-      DocumentChargeIdFieldName: String;
-      DocumentChargeKindIdFieldName: String;
-      DocumentChargeKindNameFieldName: String;
-      DocumentChargeServiceKindNameFieldName: String;
-      DocumentChargeTextFieldName: String;
-      DocumentChargeIsForAcquaitanceFieldName: String;
-      DocumentChargeResponseFieldName: String;
-      DocumentChargePeriodStartFieldName: String;
-      DocumentChargePeriodEndFieldName: String;
-      DocumentChargePerformingDateTimeFieldName: String;
-      DocumentChargePerformerIdFieldName: String;
-      DocumentChargePerformerLeaderIdFieldName: String;
-      DocumentChargePerformerIsForeignFieldName: String;
-      DocumentChargePerformerNameFieldName: String;
-      DocumentChargePerformerSpecialityFieldName: String;
-      DocumentChargePerformerDepartmentIdFieldName: String;
-      DocumentChargePerformerDepartmentCodeFieldName: String;
-      DocumentChargePerformerDepartmentNameFieldName: String;
+      KindIdFieldName: String;
+      KindNameFieldName: String;
+      ServiceKindNameFieldName: String;
+      ChargeTextFieldName: String;
+      IsForAcquaitanceFieldName: String;
+      ResponseFieldName: String;
+      TimeFrameStartFieldName: String;
+      TimeFrameDeadlineFieldName: String;
+      PerformingDateTimeFieldName: String;
+      PerformerIdFieldName: String;
+      PerformerIsForeignFieldName: String;
+      PerformerNameFieldName: String;
+      PerformerSpecialityFieldName: String;
+      PerformerDepartmentIdFieldName: String;
+      PerformerDepartmentCodeFieldName: String;
+      PerformerDepartmentNameFieldName: String;
 
-      DocumentChargeActualPerformerIdFieldName: String;
-      DocumentChargeActualPerformerLeaderIdFieldName: String;
-      DocumentChargeActualPerformerIsForeignFieldName: String;
-      DocumentChargeActualPerformerNameFieldName: String;
-      DocumentChargeActualPerformerSpecialityFieldName: String;
-      DocumentChargeActualPerformerDepartmentIdFieldName: String;
-      DocumentChargeActualPerformerDepartmentCodeFieldName: String;
-      DocumentChargeActualPerformerDepartmentNameFieldName: String;
+      ActualPerformerIdFieldName: String;
+      ActualPerformerIsForeignFieldName: String;
+      ActualPerformerNameFieldName: String;
+      ActualPerformerSpecialityFieldName: String;
+      ActualPerformerDepartmentIdFieldName: String;
+      ActualPerformerDepartmentCodeFieldName: String;
+      ActualPerformerDepartmentNameFieldName: String;
+
+      property IdFieldName: String read GetIdFieldName write SetIdFieldName;
 
   end;
 
@@ -55,32 +59,30 @@ type
 
     protected
 
-      function GetDocumentChargeIsForAcquaitanceFieldValue: Boolean;
-      function GetDocumentChargeActualPerformerDepartmentCodeFieldValue: String;
-      function GetDocumentChargeActualPerformerDepartmentIdFieldValue: Variant;
-      function GetDocumentChargeActualPerformerDepartmentNameFieldValue: String;
-      function GetDocumentChargeActualPerformerIdFieldValue: Variant;
-      function GetDocumentChargeActualPerformerNameFieldValue: String;
-      function GetDocumentChargeActualPerformerSpecialityFieldValue: String;
-      function GetDocumentChargeIdFieldValue: Variant;
-      function GetDocumentChargePerformerDepartmentCodeFieldValue: String;
-      function GetDocumentChargePerformerDepartmentIdFieldValue: Variant;
-      function GetDocumentChargePerformerDepartmentNameFieldValue: String;
-      function GetDocumentChargePerformerIdFieldValue: Variant;
-      function GetDocumentChargePerformerNameFieldValue: String;
-      function GetDocumentChargePerformerSpecialityFieldValue: String;
-      function GetDocumentChargePerformingDateTimeFieldValue: Variant;
-      function GetDocumentChargePeriodEndFieldValue: Variant;
-      function GetDocumentChargePeriodStartFieldValue: Variant;
-      function GetDocumentChargeResponseFieldValue: String;
-      function GetDocumentChargeTextFieldValue: String;
-      function GetDocumentChargeActualPerformerIsForeignFieldValue: Boolean;
-      function GetDocumentChargeActualPerformerLeaderIdFieldValue: Variant;
-      function GetDocumentChargePerformerIsForeignFieldValue: Boolean;
-      function GetDocumentChargePerformerLeaderIdFieldValue: Variant;
-      function GetDocumentChargeKindIdFieldValue: Variant;
-      function GetDocumentChargeKindNameFieldValue: String;
-      function GetDocumentChargeServiceKindNameFieldValue: String;
+      function GetIsForAcquaitanceFieldValue: Boolean;
+      function GetActualPerformerDepartmentCodeFieldValue: String;
+      function GetActualPerformerDepartmentIdFieldValue: Variant;
+      function GetActualPerformerDepartmentNameFieldValue: String;
+      function GetActualPerformerIdFieldValue: Variant;
+      function GetActualPerformerNameFieldValue: String;
+      function GetActualPerformerSpecialityFieldValue: String;
+      function GetIdFieldValue: Variant;
+      function GetPerformerDepartmentCodeFieldValue: String;
+      function GetPerformerDepartmentIdFieldValue: Variant;
+      function GetPerformerDepartmentNameFieldValue: String;
+      function GetPerformerIdFieldValue: Variant;
+      function GetPerformerNameFieldValue: String;
+      function GetPerformerSpecialityFieldValue: String;
+      function GetPerformingDateTimeFieldValue: Variant;
+      function GetTimeFrameDeadlineFieldValue: Variant;
+      function GetTimeFrameStartFieldValue: Variant;
+      function GetResponseFieldValue: String;
+      function GetChargeTextFieldValue: String;
+      function GetActualPerformerIsForeignFieldValue: Boolean;
+      function GetPerformerIsForeignFieldValue: Boolean;
+      function GetKindIdFieldValue: Variant;
+      function GetKindNameFieldValue: String;
+      function GetServiceKindNameFieldValue: String;
 
       class function GetDataSetFieldDefsClass: TAbstractDataSetFieldDefsClass; override;
       
@@ -89,83 +91,77 @@ type
       property FieldNames: TDocumentChargesInfoFieldNames
       read GetFieldNames write SetFieldNames;
 
-      property DocumentChargeIdFieldValue: Variant
-      read GetDocumentChargeIdFieldValue;
+      property IdFieldValue: Variant
+      read GetIdFieldValue;
 
-      property DocumentChargeKindIdFieldValue: Variant
-      read GetDocumentChargeKindIdFieldValue;
+      property KindIdFieldValue: Variant
+      read GetKindIdFieldValue;
       
-      property DocumentChargeKindNameFieldValue: String
-      read GetDocumentChargeKindNameFieldValue;
+      property KindNameFieldValue: String
+      read GetKindNameFieldValue;
 
-      property DocumentChargeServiceKindNameFieldValue: String
-      read GetDocumentChargeServiceKindNameFieldValue;
+      property ServiceKindNameFieldValue: String
+      read GetServiceKindNameFieldValue;
       
-      property DocumentChargeTextFieldValue: String
-      read GetDocumentChargeTextFieldValue;
+      property ChargeTextFieldValue: String
+      read GetChargeTextFieldValue;
 
-      property DocumentChargeIsForAcquaitanceFieldValue: Boolean
-      read GetDocumentChargeIsForAcquaitanceFieldValue;
+      property IsForAcquaitanceFieldValue: Boolean
+      read GetIsForAcquaitanceFieldValue;
       
-      property DocumentChargeResponseFieldValue: String
-      read GetDocumentChargeResponseFieldValue;
+      property ResponseFieldValue: String
+      read GetResponseFieldValue;
       
-      property DocumentChargePeriodStartFieldValue: Variant
-      read GetDocumentChargePeriodStartFieldValue;
+      property TimeFrameStartFieldValue: Variant
+      read GetTimeFrameStartFieldValue;
 
-      property DocumentChargePeriodEndFieldValue: Variant
-      read GetDocumentChargePeriodEndFieldValue;
+      property TimeFrameDeadlineFieldValue: Variant
+      read GetTimeFrameDeadlineFieldValue;
 
-      property DocumentChargePerformingDateTimeFieldValue: Variant
-      read GetDocumentChargePerformingDateTimeFieldValue;
+      property PerformingDateTimeFieldValue: Variant
+      read GetPerformingDateTimeFieldValue;
       
-      property DocumentChargePerformerIdFieldValue: Variant
-      read GetDocumentChargePerformerIdFieldValue;
+      property PerformerIdFieldValue: Variant
+      read GetPerformerIdFieldValue;
 
-      property DocumentChargePerformerLeaderIdFieldValue: Variant
-      read GetDocumentChargePerformerLeaderIdFieldValue;
+      property PerformerIsForeignFieldValue: Boolean
+      read GetPerformerIsForeignFieldValue;
+      
+      property PerformerNameFieldValue: String
+      read GetPerformerNameFieldValue;
+      
+      property PerformerSpecialityFieldValue: String
+      read GetPerformerSpecialityFieldValue;
+      
+      property PerformerDepartmentIdFieldValue: Variant
+      read GetPerformerDepartmentIdFieldValue;
+      
+      property PerformerDepartmentCodeFieldValue: String
+      read GetPerformerDepartmentCodeFieldValue;
+      
+      property PerformerDepartmentNameFieldValue: String
+      read GetPerformerDepartmentNameFieldValue;
+      
+      property ActualPerformerIdFieldValue: Variant
+      read GetActualPerformerIdFieldValue;
+      
+      property ActualPerformerIsForeignFieldValue: Boolean
+      read GetActualPerformerIsForeignFieldValue;
 
-      property DocumentChargePerformerIsForeignFieldValue: Boolean
-      read GetDocumentChargePerformerIsForeignFieldValue;
+      property ActualPerformerNameFieldValue: String
+      read GetActualPerformerNameFieldValue;
       
-      property DocumentChargePerformerNameFieldValue: String
-      read GetDocumentChargePerformerNameFieldValue;
+      property ActualPerformerSpecialityFieldValue: String
+      read GetActualPerformerSpecialityFieldValue;
       
-      property DocumentChargePerformerSpecialityFieldValue: String
-      read GetDocumentChargePerformerSpecialityFieldValue;
+      property ActualPerformerDepartmentIdFieldValue: Variant
+      read GetActualPerformerDepartmentIdFieldValue;
       
-      property DocumentChargePerformerDepartmentIdFieldValue: Variant
-      read GetDocumentChargePerformerDepartmentIdFieldValue;
+      property ActualPerformerDepartmentCodeFieldValue: String
+      read GetActualPerformerDepartmentCodeFieldValue;
       
-      property DocumentChargePerformerDepartmentCodeFieldValue: String
-      read GetDocumentChargePerformerDepartmentCodeFieldValue;
-      
-      property DocumentChargePerformerDepartmentNameFieldValue: String
-      read GetDocumentChargePerformerDepartmentNameFieldValue;
-      
-      property DocumentChargeActualPerformerIdFieldValue: Variant
-      read GetDocumentChargeActualPerformerIdFieldValue;
-
-      property DocumentChargeActualPerformerLeaderIdFieldValue: Variant
-      read GetDocumentChargeActualPerformerLeaderIdFieldValue;
-
-      property DocumentChargeActualPerformerIsForeignFieldValue: Boolean
-      read GetDocumentChargeActualPerformerIsForeignFieldValue;
-
-      property DocumentChargeActualPerformerNameFieldValue: String
-      read GetDocumentChargeActualPerformerNameFieldValue;
-      
-      property DocumentChargeActualPerformerSpecialityFieldValue: String
-      read GetDocumentChargeActualPerformerSpecialityFieldValue;
-      
-      property DocumentChargeActualPerformerDepartmentIdFieldValue: Variant
-      read GetDocumentChargeActualPerformerDepartmentIdFieldValue;
-      
-      property DocumentChargeActualPerformerDepartmentCodeFieldValue: String
-      read GetDocumentChargeActualPerformerDepartmentCodeFieldValue;
-      
-      property DocumentChargeActualPerformerDepartmentNameFieldValue: String
-      read GetDocumentChargeActualPerformerDepartmentNameFieldValue;
+      property ActualPerformerDepartmentNameFieldValue: String
+      read GetActualPerformerDepartmentNameFieldValue;
       
   end;
 
@@ -184,201 +180,181 @@ begin
   
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerDepartmentCodeFieldValue: String;
+function TDocumentChargesInfoHolder.GetActualPerformerDepartmentCodeFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeActualPerformerDepartmentCodeFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.ActualPerformerDepartmentCodeFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerDepartmentIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetActualPerformerDepartmentIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeActualPerformerDepartmentIdFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.ActualPerformerDepartmentIdFieldName, Null);
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerDepartmentNameFieldValue: String;
+function TDocumentChargesInfoHolder.GetActualPerformerDepartmentNameFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeActualPerformerDepartmentNameFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.ActualPerformerDepartmentNameFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetActualPerformerIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeActualPerformerIdFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.ActualPerformerIdFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerIsForeignFieldValue: Boolean;
+function TDocumentChargesInfoHolder.GetActualPerformerIsForeignFieldValue: Boolean;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentChargeActualPerformerIsForeignFieldName,
+              FieldNames.ActualPerformerIsForeignFieldName,
               False
             );
             
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerLeaderIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetActualPerformerNameFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(
-              FieldNames.DocumentChargeActualPerformerLeaderIdFieldName,
-              Null
-            );
-            
-end;
-
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerNameFieldValue: String;
-begin
-
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeActualPerformerNameFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.ActualPerformerNameFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeActualPerformerSpecialityFieldValue: String;
+function TDocumentChargesInfoHolder.GetActualPerformerSpecialityFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeActualPerformerSpecialityFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.ActualPerformerSpecialityFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeIdFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.IdFieldName, Null);
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeIsForAcquaitanceFieldValue: Boolean;
+function TDocumentChargesInfoHolder.GetIsForAcquaitanceFieldValue: Boolean;
 begin
 
   Result :=
     GetDataSetFieldValue(
-      FieldNames.DocumentChargeIsForAcquaitanceFieldName, False
+      FieldNames.IsForAcquaitanceFieldName, False
     );
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeKindIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetKindIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeKindIdFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.KindIdFieldName, Null);
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeKindNameFieldValue: String;
+function TDocumentChargesInfoHolder.GetKindNameFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeKindNameFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.KindNameFieldName, '');
   
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerDepartmentCodeFieldValue: String;
+function TDocumentChargesInfoHolder.GetPerformerDepartmentCodeFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePerformerDepartmentCodeFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.PerformerDepartmentCodeFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerDepartmentIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetPerformerDepartmentIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePerformerDepartmentIdFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.PerformerDepartmentIdFieldName, Null);
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerDepartmentNameFieldValue: String;
+function TDocumentChargesInfoHolder.GetPerformerDepartmentNameFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePerformerDepartmentNameFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.PerformerDepartmentNameFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetPerformerIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePerformerIdFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.PerformerIdFieldName, Null);
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerIsForeignFieldValue: Boolean;
+function TDocumentChargesInfoHolder.GetPerformerIsForeignFieldValue: Boolean;
 begin
 
   Result := GetDataSetFieldValue(
-              FieldNames.DocumentChargePerformerIsForeignFieldName,
+              FieldNames.PerformerIsForeignFieldName,
               False
             );
             
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerLeaderIdFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetPerformerNameFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(
-              FieldNames.DocumentChargePerformerLeaderIdFieldName,
-              Null
-            );
-            
-end;
-
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerNameFieldValue: String;
-begin
-
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePerformerNameFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.PerformerNameFieldName, '');
   
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformerSpecialityFieldValue: String;
+function TDocumentChargesInfoHolder.GetPerformerSpecialityFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePerformerSpecialityFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.PerformerSpecialityFieldName, '');
   
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePerformingDateTimeFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetPerformingDateTimeFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePerformingDateTimeFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.PerformingDateTimeFieldName, Null);
   
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePeriodEndFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetTimeFrameDeadlineFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePeriodEndFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.TimeFrameDeadlineFieldName, Null);
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargePeriodStartFieldValue: Variant;
+function TDocumentChargesInfoHolder.GetTimeFrameStartFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargePeriodStartFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.TimeFrameStartFieldName, Null);
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeResponseFieldValue: String;
+function TDocumentChargesInfoHolder.GetResponseFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeResponseFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.ResponseFieldName, '');
 
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeServiceKindNameFieldValue: String;
+function TDocumentChargesInfoHolder.GetServiceKindNameFieldValue: String;
 begin
 
   Result :=
-    GetDataSetFieldValue(FieldNames.DocumentChargeServiceKindNameFieldName, '');
+    GetDataSetFieldValue(FieldNames.ServiceKindNameFieldName, '');
     
 end;
 
-function TDocumentChargesInfoHolder.GetDocumentChargeTextFieldValue: String;
+function TDocumentChargesInfoHolder.GetChargeTextFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentChargeTextFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.ChargeTextFieldName, '');
   
 end;
 
@@ -394,6 +370,22 @@ procedure TDocumentChargesInfoHolder.SetFieldNames(
 begin
 
   inherited FieldDefs := Value;
+  
+end;
+
+{ TDocumentChargesInfoFieldNames }
+
+function TDocumentChargesInfoFieldNames.GetIdFieldName: String;
+begin
+
+  Result := RecordIdFieldName;
+
+end;
+
+procedure TDocumentChargesInfoFieldNames.SetIdFieldName(const Value: String);
+begin
+
+  RecordIdFieldName := Value;
   
 end;
 

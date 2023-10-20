@@ -197,21 +197,38 @@ procedure TApplicationConfigurator.Configure(ConfigurationData: TConfigurationDa
 var
     PresentationServiceRegistryConfigData: TPresentationServiceRegistryConfigurationData;
     BusinessProcessServiceRegistryConfigData: TDocumentBusinessProcessServiceRegistryConfigurationData;
+
+    DTODomainMapperRegistry: IDTODomainMapperRegistry;
+    MapperRegistryConfigData: TDTODomainMapperRegistryConfigurationData;
 begin
 
   LoadWorkingEmployeeData(ConfigurationData);
-  
-  PresentationServiceRegistryConfigData.DatabaseConnection :=
-    ConfigurationData.DatabaseConnection;
 
   ConfigureRepositoryRegistry(ConfigurationData);
   ConfigureDomain(ConfigurationData);
   ConfigureAccountingServiceRegistry(ConfigurationData);
 
-  FPresentationServiceRegistryConfigurator.DoCommonPresentationServiceRegistryConfiguration(
-    TApplicationServiceRegistries.Current.GetPresentationServiceRegistry,
-    PresentationServiceRegistryConfigData
+  TDTODomainMapperRegistry.Instance :=
+    TDTODomainMapperRegistry.Create(
+      TDocumentsDomainRegistries.ServiceRegistry.ChargeServiceRegistry.GetDocumentChargeKindsControlService
+    );
+
+  MapperRegistryConfigData.RepositoryRegistry := TRepositoryRegistry.Current;
+  MapperRegistryConfigData.ApplicationServices := TApplicationServiceRegistries.Current;
+
+  FDTODomainMapperRegistryConfigurator.DoCommonConfiguration(
+    TDTODomainMapperRegistry.Instance,
+    MapperRegistryConfigData
   );
+
+  PresentationServiceRegistryConfigData.DatabaseConnection :=
+    ConfigurationData.DatabaseConnection;
+    
+  FPresentationServiceRegistryConfigurator
+    .DoCommonPresentationServiceRegistryConfiguration(
+      TApplicationServiceRegistries.Current.GetPresentationServiceRegistry,
+      PresentationServiceRegistryConfigData
+    );
 
   ConfigureDtoMapperRegistry(ConfigurationData);
 
@@ -388,29 +405,13 @@ end;
 procedure TApplicationConfigurator
   .ConfigureDtoMapperRegistry(ConfigurationData: TConfigurationData);
 var
-    DTODomainMapperRegistry: IDTODomainMapperRegistry;
     MapperRegistryConfigData: TDTODomainMapperRegistryConfigurationData;
 begin
-
-  DTODomainMapperRegistry :=
-    TDTODomainMapperRegistry.Create(
-      TDocumentsDomainRegistries.ServiceRegistry.ChargeServiceRegistry.GetDocumentChargeKindsControlService
-    );
-
-  FDTODomainMapperRegistryConfigurator :=
-    TDTODomainMapperRegistryConfigurator.Create(
-      TApplicationServiceRegistries
-        .Current
-          .GetPresentationServiceRegistry
-            .GetNativeDocumentKindsReadService
-    );
 
   MapperRegistryConfigData.RepositoryRegistry := TRepositoryRegistry.Current;
   MapperRegistryConfigData.ApplicationServices := TApplicationServiceRegistries.Current;
 
-  FDTODomainMapperRegistryConfigurator.Configure(DTODomainMapperRegistry, MapperRegistryConfigData);
-
-  TDTODomainMapperRegistry.Instance := DTODomainMapperRegistry;
+  FDTODomainMapperRegistryConfigurator.Configure(TDTODomainMapperRegistry.Instance, MapperRegistryConfigData);
 
 end;
 
@@ -435,7 +436,8 @@ begin
     RepositoryRegistry := TRepositoryRegistry.Current;
 
     ManagementServiceRegistry := TApplicationServiceRegistries.Current.GetManagementServiceRegistry;
-
+    PresentationServiceRegistry := TApplicationServiceRegistries.Current.GetPresentationServiceRegistry;
+    
   end;
 
   FExternalServiceRegistryConfigurator.ConfigureExternalServiceRegistry(
@@ -763,6 +765,9 @@ begin
 
   FSystemServiceRegistryConfigurator :=
     TSystemServiceRegistryConfigurator.Create;
+
+  FDTODomainMapperRegistryConfigurator :=
+    TDTODomainMapperRegistryConfigurator.Create;
     
 end;
 

@@ -37,7 +37,13 @@ type
 
       procedure RaiseExceptionIfOriginalDocumentNotAssigned;
 
+    protected
+
       function InternalClone: TObject; override;
+
+    protected
+
+      procedure SetInvariantsComplianceRequested(const Value: Boolean); override;
 
     public
 
@@ -49,6 +55,7 @@ type
       function GetContent: String; override;
       function GetCreationDate: TDateTime; override;
       function GetName: String; override;
+      function GetFullName: String; override;
       function GetNote: String; override;
       function GetNumber: String; override;
       function GetCurrentWorkCycleStageName: String; override;
@@ -72,6 +79,7 @@ type
       procedure SetContent(const Value: String); override;
       procedure SetCreationDate(const Value: TDateTime); override;
       procedure SetName(const Value: String); override;
+      procedure SetFullName(const Value: String); override;
       procedure SetNote(const Value: String); override;
       procedure SetNumber(const Value: String); override;
       procedure SetCurrentWorkCycleStageNumber(const StageNumber: Integer); override;
@@ -372,6 +380,15 @@ begin
   
 end;
 
+function TAbstractDocumentDecorator.GetFullName: String;
+begin
+
+  RaiseExceptionIfOriginalDocumentNotAssigned;
+
+  Result := FOriginalDocument.FullName;
+  
+end;
+
 function TAbstractDocumentDecorator.GetIdentity: Variant;
 begin
 
@@ -631,12 +648,32 @@ begin
   
 end;
 
+procedure TAbstractDocumentDecorator.SetFullName(const Value: String);
+begin
+
+  RaiseExceptionIfOriginalDocumentNotAssigned;
+
+  FOriginalDocument.FullName := Value;
+
+end;
+
 procedure TAbstractDocumentDecorator.SetIdentity(Identity: Variant);
 begin
 
   RaiseExceptionIfOriginalDocumentNotAssigned;
 
   FOriginalDocument.Identity := Identity;
+  
+end;
+
+procedure TAbstractDocumentDecorator.SetInvariantsComplianceRequested(
+  const Value: Boolean);
+begin
+
+  inherited SetInvariantsComplianceRequested(Value);
+
+  if Assigned(OriginalDocument) then
+    OriginalDocument.InvariantsComplianceRequested := Value;
   
 end;
 

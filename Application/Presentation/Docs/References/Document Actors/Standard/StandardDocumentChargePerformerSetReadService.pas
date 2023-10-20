@@ -34,6 +34,11 @@ type
 
       protected
 
+        function FindEmployeeByIdOrRaise(const EmployeeId: Variant): TEmployee;
+        function FindChargePerformingUnitForEmployeeOrRaise(Employee: TEmployee): TEmployeeChargePerformingUnit;
+
+        function GetEmployeeSetFromChargePerformingUnit(PerformingUnit: TEmployeeChargePerformingUnit): TEmployeeSetHolder;
+        
         function GetChargePerformingUnitForEmployee(
           Employee: TEmployee
         ): TEmployeeChargePerformingUnit; virtual;
@@ -69,6 +74,10 @@ type
 
 implementation
 
+uses
+
+  IDomainObjectBaseUnit;
+
 { TStandardDocumentChargePerformerSetReadService }
 
 constructor TStandardDocumentChargePerformerSetReadService.Create(
@@ -89,31 +98,60 @@ function TStandardDocumentChargePerformerSetReadService.
     const EmployeeId: Variant
   ): TEmployeeSetHolder;
 
-var PerformingUnit: TEmployeeChargePerformingUnit;
-    PerformingUnitDto: TEmployeeChargePerformingUnitDto;
+var
     Employee: TEmployee;
+    FreeEmployee: IDomainObjectBase;
+
+    PerformingUnit: TEmployeeChargePerformingUnit;
+    FreePerformingUnit: IDomainObjectBase;
 begin
 
-  Employee := nil;
-  PerformingUnit := nil;
+  Employee := FindEmployeeByIdOrRaise(EmployeeId);
+
+  FreeEmployee := Employee;
+
+  PerformingUnit := FindChargePerformingUnitForEmployeeOrRaise(Employee);
+
+  FreePerformingUnit := PerformingUnit;
+  
+  Result := GetEmployeeSetFromChargePerformingUnit(PerformingUnit);
+
+end;
+
+function TStandardDocumentChargePerformerSetReadService.FindChargePerformingUnitForEmployeeOrRaise(
+  Employee: TEmployee): TEmployeeChargePerformingUnit;
+begin
+
+  Result := GetChargePerformingUnitForEmployee(Employee);
+
+  if not Assigned(Result) then
+    RaiseChargePerformingUnitNotFoundException(Employee);
+
+end;
+
+function TStandardDocumentChargePerformerSetReadService.FindEmployeeByIdOrRaise(
+  const EmployeeId: Variant): TEmployee;
+begin
+
+  Result :=FEmployeeRepository.FindEmployeeById(EmployeeId);
+
+  if not Assigned(Result) then RaiseEmployeeNotFoundException;
+
+end;
+
+function TStandardDocumentChargePerformerSetReadService.GetEmployeeSetFromChargePerformingUnit(
+  PerformingUnit: TEmployeeChargePerformingUnit): TEmployeeSetHolder;
+var
+    PerformingUnitDto: TEmployeeChargePerformingUnitDto;
+begin
+
+  PerformingUnitDto :=
+    MapEmployeeChargePerformingUnitDtoFrom(
+      PerformingUnit
+    );
 
   try
 
-    Employee :=
-      FEmployeeRepository.FindEmployeeById(EmployeeId);
-
-    if not Assigned(Employee) then RaiseEmployeeNotFoundException;
-
-    PerformingUnit := GetChargePerformingUnitForEmployee(Employee);
-
-    if not Assigned(PerformingUnit) then
-      RaiseChargePerformingUnitNotFoundException(Employee);
-
-    PerformingUnitDto :=
-      MapEmployeeChargePerformingUnitDtoFrom(
-        PerformingUnit
-      );
-        
     Result :=
       FEmployeeSetReadService.GetEmployeeSetFromChargePerformingUnit(
         PerformingUnitDto
@@ -121,10 +159,8 @@ begin
 
   finally
 
-    FreeAndNil(Employee);
-    FreeAndNil(PerformingUnit);
     FreeAndNil(PerformingUnitDto);
-
+    
   end;
 
 end;

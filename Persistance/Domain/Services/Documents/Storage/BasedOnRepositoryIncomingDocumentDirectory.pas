@@ -4,6 +4,7 @@ interface
 
 uses
 
+  DocumentFullNameCompilationService,
   DocumentDirectory,
   DocumentFinder,
   DocumentRelationDirectory,
@@ -49,7 +50,8 @@ type
           DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
           DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
           DocumentFileStorageService: IDocumentFileStorageService;
-          DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+          DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+          DocumentFullNameCompilationService: IDocumentFullNameCompilationService
         );
         
     end;
@@ -68,7 +70,8 @@ constructor TBasedOnRepositoryIncomingDocumentDirectory.Create(
   DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
   DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
   DocumentFileStorageService: IDocumentFileStorageService;
-  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+  DocumentFullNameCompilationService: IDocumentFullNameCompilationService
 );
 begin
 
@@ -80,7 +83,8 @@ begin
     DocumentApprovingCycleResultDirectory,
     DocumentResponsibleDirectory,
     DocumentFileStorageService,
-    DocumentChargeSheetDirectory
+    DocumentChargeSheetDirectory,
+    DocumentFullNameCompilationService
   );
 
   FIncomingDocumentRepository := IncomingDocumentRepository;

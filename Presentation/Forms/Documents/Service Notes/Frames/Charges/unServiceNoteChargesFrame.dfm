@@ -1,0 +1,2 @@
+inherited ServiceNoteChargesFrame: TServiceNoteChargesFrame
+end

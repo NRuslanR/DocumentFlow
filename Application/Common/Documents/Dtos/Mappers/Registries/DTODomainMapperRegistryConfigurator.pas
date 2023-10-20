@@ -34,6 +34,16 @@ uses
   PersonnelOrder,
   IRepositoryRegistryUnit,
   IncomingDocument,
+  DocumentChargeKindDtoDomainMapper,
+  DocumentFullInfoJsonMapper,
+  DocumentJsonMapper,
+  DocumentApprovingsInfoJsonMapper,
+  DocumentChargeInfoJsonMapper,
+  DocumentChargesInfoJsonMapper,
+  DocumentChargeSheetInfoJsonMapper,
+  DocumentChargeSheetsInfoJsonMapper,
+  DocumentFlowEmployeeInfoJsonMapper,
+  DocumentResponsibleInfoJsonMapper,
   IncomingServiceNote,
   SysUtils,
   Classes;
@@ -49,6 +59,11 @@ type
   
   IDTODomainMapperRegistryConfigurator = interface
 
+    procedure DoCommonConfiguration(
+      Registry: IDTODomainMapperRegistry;
+      ConfigurationData: TDTODomainMapperRegistryConfigurationData
+    );
+
     procedure Configure(
       Registry: IDTODomainMapperRegistry;
       ConfigurationData: TDTODomainMapperRegistryConfigurationData
@@ -61,15 +76,10 @@ type
 
       private
 
-        FDocumentKindsReadService: INativeDocumentKindsReadService;
-
+        FIsCommonConfigurationDone: Boolean;
+        
         procedure ConfigureForDocumentKind(
           DocumentKind: TDocumentKindClass;
-          Registry: IDTODomainMapperRegistry;
-          ConfigurationData: TDTODomainMapperRegistryConfigurationData
-        );
-
-        procedure DoCommonConfiguration(
           Registry: IDTODomainMapperRegistry;
           ConfigurationData: TDTODomainMapperRegistryConfigurationData
         );
@@ -92,8 +102,9 @@ type
 
       public
 
-        constructor Create(
-          DocumentKindsReadService: INativeDocumentKindsReadService
+        procedure DoCommonConfiguration(
+          Registry: IDTODomainMapperRegistry;
+          ConfigurationData: TDTODomainMapperRegistryConfigurationData
         );
         
         procedure Configure(
@@ -110,6 +121,7 @@ uses
   IDomainObjectBaseListUnit,
   DocumentChargeKind,
   DocumentAcquaitance,
+  PersonnelOrderDTOMapper,
   DocumentPerforming,
   DocumentViewingAccountingService,
   DocumentAcquaitanceInfoDTODomainMapper,
@@ -191,7 +203,7 @@ begin
       TDocumentPerformingSheetInfoDTODomainMapper.Create(
         RepositoryRegistry.GetEmployeeRepository,
         ConfigurationData.ApplicationServices.GetAccountingServiceRegistry.GetDocumentChargeSheetViewingAccountingService,
-        //TDocumentChargeInfoDTODomainMapper(ChargeInfoDTODomainMapper.Self),
+        TDocumentChargeInfoDTODomainMapper(ChargeInfoDTODomainMapper.Self),
         Registry.GetDocumentFlowEmployeeInfoDTOMapper
       );
 
@@ -210,7 +222,7 @@ begin
       TDocumentAcquaitanceSheetInfoDTODomainMapper.Create(
         RepositoryRegistry.GetEmployeeRepository,
         ConfigurationData.ApplicationServices.GetAccountingServiceRegistry.GetDocumentChargeSheetViewingAccountingService,
-        //TDocumentChargeInfoDTODomainMapper(ChargeInfoDTODomainMapper.Self),
+        TDocumentChargeInfoDTODomainMapper(ChargeInfoDTODomainMapper.Self),
         Registry.GetDocumentFlowEmployeeInfoDTOMapper
       );
 
@@ -284,7 +296,7 @@ var
     DocumentDTOMapper: TDocumentDTOMapper;
     DocumentApprovingsInfoDTOMapper: TDocumentApprovingsInfoDTOMapper;
     DocumentViewingAccountingService: IDocumentViewingAccountingService;
-    DocumentNumeratorRegistry: IDocumentNumeratorRegistry;
+    DocumentFullInfoJsonMapper: IDocumentFullInfoJsonMapper;
 begin
 
   EmployeeDTOMapper := Registry.GetDocumentFlowEmployeeInfoDTOMapper;
@@ -301,33 +313,69 @@ begin
       EmployeeDTOMapper
     );
 
+  DocumentFullInfoJsonMapper :=
+    TDocumentFullInfoJsonMapper.Create(
+      TDocumentJsonMapper.Create(
+        TDocumentApprovingsInfoJsonMapper.Create(
+          TDocumentFlowEmployeeInfoJsonMapper.Create
+        ),
+        TDocumentChargesInfoJsonMapper.Create(
+          TDocumentChargeInfoJsonMapper.Create(
+            TDocumentFlowEmployeeInfoJsonMapper.Create
+          )
+        ),
+        TDocumentResponsibleInfoJsonMapper.Create,
+        TDocumentFlowEmployeeInfoJsonMapper.Create
+      ),
+      TDocumentApprovingsInfoJsonMapper.Create(
+        TDocumentFlowEmployeeInfoJsonMapper.Create
+      ),
+      TDocumentChargeSheetsInfoJsonMapper.Create(
+        TDocumentChargeSheetInfoJsonMapper.Create(
+          TDocumentFlowEmployeeInfoJsonMapper.Create
+        )
+      )
+    );
+    
   { <refactor: remove this block after refactor DocumentNumeratorRegistry unit }
   if not DocumentKind.InheritsFrom(TPersonnelOrderKind) then begin
 
-    DocumentNumeratorRegistry :=
-      TDocumentsDomainRegistries
-        .ServiceRegistry
-          .NumerationServiceRegistry
-            .GetDocumentNumeratorRegistry;
+    DocumentDTOMapper :=
+      TDocumentDTOMapper.Create(
+        RepositoryRegistry.GetEmployeeRepository,
+        RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentKindRepository,
+        Registry.GetDocumentResponsibleInfoDTOMapper,
+        TDocumentsDomainRegistries.ServiceRegistry.NumerationServiceRegistry.GetDocumentNumeratorRegistry,
+        TDocumentChargesInfoDTODomainMapper.Create(
+          RepositoryRegistry.GetEmployeeRepository,
+          Registry.ChargeInfoDTODomainMapperRegistry
+        ),
+        DocumentApprovingsInfoDTOMapper,
+        EmployeeDTOMapper
+      );
 
   end
 
-  else DocumentNumeratorRegistry := nil;
-  { refactor> }
+  else begin
 
-  DocumentDTOMapper :=
-    TDocumentDTOMapper.Create(
-      RepositoryRegistry.GetEmployeeRepository,
-      RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentKindRepository,
-      Registry.GetDocumentResponsibleInfoDTOMapper,
-      DocumentNumeratorRegistry,
-      TDocumentChargesInfoDTODomainMapper.Create(
+    DocumentDTOMapper :=
+      TPersonnelOrderDTOMapper.Create(
+        TDocumentsDomainRegistries.PersonnelOrderDomainRegistries.ServiceRegistries.PersonnelOrderSearchServiceRegistry.GetPersonnelOrderSubKindFinder,
         RepositoryRegistry.GetEmployeeRepository,
-        Registry.ChargeInfoDTODomainMapperRegistry
-      ),
-      DocumentApprovingsInfoDTOMapper,
-      EmployeeDTOMapper
-    );
+        RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentKindRepository,
+        Registry.GetDocumentResponsibleInfoDTOMapper,
+        nil,
+        TDocumentChargesInfoDTODomainMapper.Create(
+          RepositoryRegistry.GetEmployeeRepository,
+          Registry.ChargeInfoDTODomainMapperRegistry
+        ),
+        DocumentApprovingsInfoDTOMapper,
+        EmployeeDTOMapper
+      );
+
+  end;
+
+  { refactor> }
     
   if not DocumentKind.InheritsFrom(TIncomingDocumentKind) then begin
 
@@ -377,6 +425,11 @@ begin
                                           
   end;
 
+  Registry.RegisterDocumentFullInfoJsonMapper(
+    DocumentKind,
+    DocumentFullInfoJsonMapper
+  );
+  
   if DocumentKind.InheritsFrom(TPersonnelOrderKind) then begin
 
     Registry.RegisterDocumentObjectsDTODomainMapper(
@@ -416,7 +469,9 @@ begin
   end;
 
   Registry.RegisterDocumentUsageEmployeeAccessRightsInfoDTOMapper(
-    TDocumentUsageEmployeeAccessRightsInfoDTOMapper.Create
+    TDocumentUsageEmployeeAccessRightsInfoDTOMapper.Create(
+      Registry.GetDocumentChargeKindDtoDomainMapper
+    )
   );
 
   Registry.RegisterDocumentApprovingSheetDataDtoMapper(
@@ -429,17 +484,6 @@ begin
 
 end;
 
-constructor TDTODomainMapperRegistryConfigurator.Create(
-  DocumentKindsReadService: INativeDocumentKindsReadService
-);
-begin
-
-  inherited Create;
-
-  FDocumentKindsReadService := DocumentKindsReadService;
-  
-end;
-
 procedure TDTODomainMapperRegistryConfigurator.DoCommonConfiguration(
   Registry: IDTODomainMapperRegistry;
   ConfigurationData: TDTODomainMapperRegistryConfigurationData
@@ -448,6 +492,8 @@ var
     RepositoryRegistry: IRepositoryRegistry;
 begin
 
+  if FIsCommonConfigurationDone then Exit;
+  
   RepositoryRegistry := ConfigurationData.RepositoryRegistry;
 
   Registry.RegisterDocumentKindsMapper(
@@ -465,6 +511,12 @@ begin
       ConfigurationData.RepositoryRegistry.GetDocumentRepositoryRegistry.GetDocumentResponsibleRepository
     )
   );
+
+  Registry.RegisterDocumentChargeKindDtoDomainMapper(
+    TDocumentChargeKindDtoDomainMapper.Create
+  );
+
+  FIsCommonConfigurationDone := True;
 
 end;
 

@@ -11,31 +11,50 @@ uses
 type
 
   TDocumentChargeSheetIssuingAccessRightsInfoDTO = class
-    AllAccessRightsAbsent: Boolean;
-    AnyHeadChargeSheetsCanBeIssued: Boolean;
-    AnySubordinateChargeSheetsCanBeIssued: Boolean;
-    AnyChargeSheetsCanBeIssued: Boolean;
-    IssuingAlloweableHeadChargeSheetKindDtos: TDocumentChargeKindDtos;
-    IssuingAlloweableSubordinateChargeSheetKindDtos: TDocumentChargeKindDtos;
-    MainChargeSheetKindDto: TDocumentChargeKindDto;
-    destructor Destroy; override;
+
+    public
+
+      AllAccessRightsAbsent: Boolean;
+      AnyHeadChargeSheetsCanBeIssued: Boolean;
+      AnySubordinateChargeSheetsCanBeIssued: Boolean;
+      AnyChargeSheetsCanBeIssued: Boolean;
+      IssuingAlloweableHeadChargeSheetKindDtos: TDocumentChargeKindDtos;
+      IssuingAlloweableSubordinateChargeSheetKindDtos: TDocumentChargeKindDtos;
+      MainChargeSheetKindDto: TDocumentChargeKindDto;
+
+      destructor Destroy; override;
+
   end;
+
   TDocumentChargeSheetsAccessRightsInfoDTO = class
 
-    AnyChargeSheetsCanBeViewed: Boolean;
-    AnyChargeSheetsCanBeViewedAsIssuer: Boolean;
-    AnyChargeSheetsCanBeViewedAsPerformer: Boolean;
-    AnyChargeSheetsCanBeViewedAsAuthorized: Boolean;
-    AnyChargeSheetsCanBeChanged: Boolean;
-    AnyChargeSheetsCanBeRemoved: Boolean;
-    AnyChargeSheetsCanBePerformed: Boolean;
-    AnyHeadChargeSheetsCanBeIssued: Boolean;
-    AnySubordinateChargeSheetsCanBeIssued: Boolean;
-    AnyChargeSheetsCanBeIssued: Boolean;
-    AllChargeSheetsAccessRightsAbsent: Boolean;
-    AllChargeSheetsAccessRightsAllowed: Boolean;
-    IssuingAccessRightsInfoDTO: TDocumentChargeSheetIssuingAccessRightsInfoDTO;
-    destructor Destroy; override;
+    private
+
+      FIssuingAccessRightsInfoDTO: TDocumentChargeSheetIssuingAccessRightsInfoDTO;
+
+      procedure SetIssuingAccessRightsInfoDTO(
+        const Value: TDocumentChargeSheetIssuingAccessRightsInfoDTO);
+
+    public
+
+      AnyChargeSheetsCanBeViewed: Boolean;
+      AnyChargeSheetsCanBeViewedAsIssuer: Boolean;
+      AnyChargeSheetsCanBeViewedAsPerformer: Boolean;
+      AnyChargeSheetsCanBeViewedAsAuthorized: Boolean;
+      AnyChargeSheetsCanBeChanged: Boolean;
+      AnyChargeSheetsCanBeRemoved: Boolean;
+      AnyChargeSheetsCanBePerformed: Boolean;
+      AnyHeadChargeSheetsCanBeIssued: Boolean;
+      AnySubordinateChargeSheetsCanBeIssued: Boolean;
+      AnyChargeSheetsCanBeIssued: Boolean;
+      AllChargeSheetsAccessRightsAbsent: Boolean;
+      AllChargeSheetsAccessRightsAllowed: Boolean;
+
+      constructor Create;
+      destructor Destroy; override;
+
+      property IssuingAccessRightsInfoDTO: TDocumentChargeSheetIssuingAccessRightsInfoDTO
+      read FIssuingAccessRightsInfoDTO write SetIssuingAccessRightsInfoDTO;
 
   end;
 
@@ -56,9 +75,13 @@ type
   end;
 
   TDocumentUsageEmployeeAccessRightsInfoDTO = class;
+
   IDocumentUsageEmployeeAccessRightsInfoDTO = interface
+
     function AsSelf: TDocumentUsageEmployeeAccessRightsInfoDTO;
+
   end;
+
   TDocumentUsageEmployeeAccessRightsInfoDTO =
     class (TInterfacedObject, IDocumentUsageEmployeeAccessRightsInfoDTO)
 
@@ -343,8 +366,11 @@ end;
 
 function TDocumentUsageEmployeeAccessRightsInfoDTO.AsSelf: TDocumentUsageEmployeeAccessRightsInfoDTO;
 begin
+
   Result := Self;
+
 end;
+
 procedure TDocumentUsageEmployeeAccessRightsInfoDTO.SetEmployeeHasRightsForApproving(
   const Value: Boolean);
 begin
@@ -417,16 +443,44 @@ begin
 
 end;
 
+constructor TDocumentChargeSheetsAccessRightsInfoDTO.Create;
+begin
+
+  inherited;
+
+  IssuingAccessRightsInfoDTO := TDocumentChargeSheetIssuingAccessRightsInfoDTO.Create;
+  
+end;
+
 destructor TDocumentChargeSheetsAccessRightsInfoDTO.Destroy;
 begin
-  FreeAndNil(IssuingAccessRightsInfoDTO);
+
+  FreeAndNil(FIssuingAccessRightsInfoDTO);
+  
   inherited;
+
 end;
+
+procedure TDocumentChargeSheetsAccessRightsInfoDTO.SetIssuingAccessRightsInfoDTO(
+  const Value: TDocumentChargeSheetIssuingAccessRightsInfoDTO);
+begin
+
+  if FIssuingAccessRightsInfoDTO = Value then Exit;
+
+  FreeAndNil(FIssuingAccessRightsInfoDTO);
+  
+  FIssuingAccessRightsInfoDTO := Value;
+
+end;
+
 destructor TDocumentChargeSheetIssuingAccessRightsInfoDTO.Destroy;
 begin
+
   FreeAndNil(IssuingAlloweableHeadChargeSheetKindDtos);
   FreeAndNil(IssuingAlloweableSubordinateChargeSheetKindDtos);
   FreeAndNil(MainChargeSheetKindDto);
   inherited;
+
 end;
+
 end.

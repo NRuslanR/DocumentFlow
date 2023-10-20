@@ -7,6 +7,7 @@ uses
   DocumentKinds,
   DocumentChargeSheetCasesNotifier,
   IDocumentFileServiceClientUnit,
+  LoodsmanDocumentsUploadingService,
   _ApplicationServiceRegistry,
   SysUtils,
   Classes;
@@ -18,6 +19,7 @@ type
     private
 
       FDocumentChargeSheetCasesNotifierRegistry: TApplicationServiceRegistry;
+      FLoodsmanDocumentsUploadingServiceRegistry: TApplicationServiceRegistry;
       
     public
 
@@ -25,7 +27,9 @@ type
 
       destructor Destroy; override;
       constructor Create; override;
-      
+
+    public
+
       procedure RegisterDocumentFileServiceClient(
         DocumentKind: TDocumentKindClass;
         DocumentFileServiceClient: IDocumentFileServiceClient
@@ -36,6 +40,8 @@ type
       ): IDocumentFileServiceClient;
 
 
+    public
+
       procedure RegisterDocumentChargeSheetCasesNotifier(
         DocumentKind: TDocumentKindClass;
         DocumentChargeSheetCasesNotifier: IDocumentChargeSheetCasesNotifier
@@ -44,6 +50,17 @@ type
       function GetDocumentChargeSheetCasesNotifier(
         DocumentKind: TDocumentKindClass
       ): IDocumentChargeSheetCasesNotifier;
+
+    public
+
+      procedure RegisterLoodsmanDocumentsUploadingService(
+        DocumentKind: TDocumentKindClass;
+        LoodsmanDocumentsUploadingService: ILoodsmanDocumentsUploadingService
+      );
+
+      function GetLoodsmanDocumentsUploadingService(
+        DocumentKind: TDocumentKindClass
+      ): ILoodsmanDocumentsUploadingService;
 
   end;
 
@@ -57,7 +74,7 @@ begin
   inherited;
 
   FDocumentChargeSheetCasesNotifierRegistry.AddServiceNames(ServiceNames);
-  
+
 end;
 
 constructor TExternalServiceRegistry.Create;
@@ -68,7 +85,15 @@ begin
 
   FDocumentChargeSheetCasesNotifierRegistry
     .UseSearchByNearestAncestorTypeIfTargetServiceNotFound := False;
-  
+
+
+  FLoodsmanDocumentsUploadingServiceRegistry :=
+    TApplicationServiceRegistry.Create;
+
+
+  FLoodsmanDocumentsUploadingServiceRegistry
+    .UseSearchByNearestAncestorTypeIfTargetServiceNotFound := False;
+
   inherited;
 
 end;
@@ -77,6 +102,7 @@ destructor TExternalServiceRegistry.Destroy;
 begin
 
   FreeAndNil(FDocumentChargeSheetCasesNotifierRegistry);
+  FreeAndNil(FLoodsmanDocumentsUploadingServiceRegistry);
   
   inherited;
 
@@ -127,6 +153,31 @@ begin
     DocumentKind,
     DocumentFileServiceClient
   );
+
+end;
+
+procedure TExternalServiceRegistry.RegisterLoodsmanDocumentsUploadingService(
+  DocumentKind: TDocumentKindClass;
+  LoodsmanDocumentsUploadingService: ILoodsmanDocumentsUploadingService);
+begin
+
+  FLoodsmanDocumentsUploadingServiceRegistry.RegisterApplicationService(
+    DocumentKind,
+    LoodsmanDocumentsUploadingService
+  );
+
+end;
+
+function TExternalServiceRegistry.GetLoodsmanDocumentsUploadingService(
+  DocumentKind: TDocumentKindClass): ILoodsmanDocumentsUploadingService;
+begin
+
+  Result :=
+    ILoodsmanDocumentsUploadingService(
+      FLoodsmanDocumentsUploadingServiceRegistry.GetApplicationService(
+        DocumentKind
+      )
+    );
 
 end;
 

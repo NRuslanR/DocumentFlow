@@ -15,9 +15,9 @@ type
 
     public
 
-      DocumentFileIdFieldName: String;
-      DocumentFileNameFieldName: String;
-      DocumentFilePathFieldName: String;
+      IdFieldName: String;
+      NameFieldName: String;
+      PathFieldName: String;
       DocumentIdFieldName: String;
       
   end;
@@ -27,9 +27,9 @@ type
     private
 
       function GetDocumentIdFieldValue: Variant;
-      function GetDocumentFileIdFieldValue: Variant;
-      function GetDocumentFileNameFieldValue: String;
-      function GetDocumentFilePathFieldValue: String;
+      function GetIdFieldValue: Variant;
+      function GetNameFieldValue: String;
+      function GetPathFieldValue: String;
       function GetFieldNames: TDocumentFilesInfoFieldNames;
       procedure SetFieldNames(const Value: TDocumentFilesInfoFieldNames);
 
@@ -45,14 +45,14 @@ type
       property DocumentIdFieldValue: Variant
       read GetDocumentIdFieldValue;
       
-      property DocumentFileIdFieldValue: Variant
-      read GetDocumentFileIdFieldValue;
+      property IdFieldValue: Variant
+      read GetIdFieldValue;
 
-      property DocumentFileNameFieldValue: String
-      read GetDocumentFileNameFieldValue;
+      property NameFieldValue: String
+      read GetNameFieldValue;
 
-      property DocumentFilePathFieldValue: String
-      read GetDocumentFilePathFieldValue;
+      property PathFieldValue: String
+      read GetPathFieldValue;
 
   end;
 
@@ -71,24 +71,24 @@ begin
   
 end;
 
-function TDocumentFilesInfoHolder.GetDocumentFileIdFieldValue: Variant;
+function TDocumentFilesInfoHolder.GetIdFieldValue: Variant;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentFileIdFieldName, Null);
+  Result := GetDataSetFieldValue(FieldNames.IdFieldName, Null);
   
 end;
 
-function TDocumentFilesInfoHolder.GetDocumentFileNameFieldValue: String;
+function TDocumentFilesInfoHolder.GetNameFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentFileNameFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.NameFieldName, '');
   
 end;
 
-function TDocumentFilesInfoHolder.GetDocumentFilePathFieldValue: String;
+function TDocumentFilesInfoHolder.GetPathFieldValue: String;
 begin
 
-  Result := GetDataSetFieldValue(FieldNames.DocumentFilePathFieldName, '');
+  Result := GetDataSetFieldValue(FieldNames.PathFieldName, '');
   
 end;
 

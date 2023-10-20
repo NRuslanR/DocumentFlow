@@ -26,8 +26,7 @@ type
     private
 
       FInternalRegistry: TTypeObjectRegistry;
-      FGeneralDocumentChargeSheetAccessRightsServiceRegistry: TTypeObjectRegistry;
-      
+
     public
 
       procedure RegisterDocumentUsageEmployeeAccessRightsService(
@@ -53,21 +52,6 @@ type
       
       function GetEmployeeDocumentKindAccessRightsService:
         IEmployeeDocumentKindAccessRightsService;
-
-    public
-
-      procedure RegisterGeneralDocumentChargeSheetAccessRightsService(
-        DocumentKind: TDocumentClass;
-        GeneralDocumentChargeSheetAccessRightsService: IGeneralDocumentChargeSheetAccessRightsService
-      );
-
-      function GetGeneralDocumentChargeSheetAccessRightsService(
-        DocumentKind: TDocumentClass
-      ): IGeneralDocumentChargeSheetAccessRightsService;
-
-      procedure RegisterStandardGeneralDocumentChargeSheetAccessRightsService(
-        DocumentKind: TDocumentClass
-      );
 
     public
 
@@ -117,20 +101,13 @@ begin
 
   FInternalRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
 
-  FGeneralDocumentChargeSheetAccessRightsServiceRegistry :=
-    TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
-
-  FGeneralDocumentChargeSheetAccessRightsServiceRegistry
-    .UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
-
 end;
 
 destructor TDocumentAccessRightsServiceRegistry.Destroy;
 begin
 
   FreeAndNil(FInternalRegistry);
-  FreeAndNil(FGeneralDocumentChargeSheetAccessRightsServiceRegistry);
-  
+
   inherited;
 
 end;
@@ -162,19 +139,6 @@ begin
     
 end;
 
-function TDocumentAccessRightsServiceRegistry.GetGeneralDocumentChargeSheetAccessRightsService(
-  DocumentKind: TDocumentClass): IGeneralDocumentChargeSheetAccessRightsService;
-begin
-
-  Result :=
-    IGeneralDocumentChargeSheetAccessRightsService(
-      FGeneralDocumentChargeSheetAccessRightsServiceRegistry.GetInterface(
-        DocumentKind
-      )
-    );
-    
-end;
-
 class function TDocumentAccessRightsServiceRegistry.
   GetInstance: TDocumentAccessRightsServiceRegistry;
 begin
@@ -192,7 +156,6 @@ procedure TDocumentAccessRightsServiceRegistry.
   );
 begin
 
-  RegisterStandardGeneralDocumentChargeSheetAccessRightsService(DocumentKind);
   RegisterStandardDocumentUsageEmployeeAccessRightsService(DocumentKind);
   RegisterStandardEmployeeDocumentKindAccessRightsService;
   
@@ -225,40 +188,48 @@ begin
 
 end;
 
-procedure TDocumentAccessRightsServiceRegistry.RegisterGeneralDocumentChargeSheetAccessRightsService(
-  DocumentKind: TDocumentClass;
-  GeneralDocumentChargeSheetAccessRightsService: IGeneralDocumentChargeSheetAccessRightsService);
-begin
-
-  FGeneralDocumentChargeSheetAccessRightsServiceRegistry.RegisterInterface(
-    DocumentKind,
-    GeneralDocumentChargeSheetAccessRightsService
-  );
-  
-end;
-
 procedure TDocumentAccessRightsServiceRegistry.
   RegisterStandardDocumentUsageEmployeeAccessRightsService(
     DocumentKind: TDocumentClass
   );
-var DocumentUsageEmployeeAccessRightsService:
+var
+    DocumentUsageEmployeeAccessRightsService:
       IDocumentUsageEmployeeAccessRightsService;
+
+    GeneralDocumentChargeSheetAccessRightsService:
+      IGeneralDocumentChargeSheetAccessRightsService;
 begin
 
-  if GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind) = nil then
-    RegisterStandardGeneralDocumentChargeSheetAccessRightsService(DocumentKind);
+  GeneralDocumentChargeSheetAccessRightsService :=
+    TDocumentChargeSheetsServiceRegistry
+      .Instance
+        .GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind);
 
+  if not Assigned(GeneralDocumentChargeSheetAccessRightsService)
+  then begin
+
+    TDocumentChargeSheetsServiceRegistry
+      .Instance
+        .RegisterStandardGeneralDocumentChargeSheetAccessRightsService(DocumentKind);
+
+    GeneralDocumentChargeSheetAccessRightsService :=
+      TDocumentChargeSheetsServiceRegistry
+        .Instance
+          .GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind);
+          
+  end;
+  
   if GetEmployeeDocumentKindAccessRightsService = nil then
-    RegisterStandardEmployeeDocumentKindAccessRightsService;
-
+  	RegisterStandardEmployeeDocumentKindAccessRightsService;
+  
   if DocumentKind.InheritsFrom(TIncomingDocument) then begin
 
     DocumentUsageEmployeeAccessRightsService :=
       TStandardIncomingDocumentUsageEmployeeAccessRightsService.Create(
         TDocumentFormalizationServiceRegistry.Instance.GetDocumentFullNameCompilationService,
         TDocumentRelationsServiceRegistry.Instance.GetDocumentRelationsFinder(DocumentKind),
-        GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind),
-        GetEmployeeDocumentKindAccessRightsService
+        GeneralDocumentChargeSheetAccessRightsService,
+		GetEmployeeDocumentKindAccessRightsService
       );
 
   end
@@ -269,8 +240,8 @@ begin
       TStandardDocumentUsageEmployeeAccessRightsService.Create(
         TDocumentFormalizationServiceRegistry.Instance.GetDocumentFullNameCompilationService,
         TDocumentRelationsServiceRegistry.Instance.GetDocumentRelationsFinder(DocumentKind),
-        GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind),
-        GetEmployeeDocumentKindAccessRightsService
+        GeneralDocumentChargeSheetAccessRightsService,
+		GetEmployeeDocumentKindAccessRightsService
       );
       
   end;
@@ -296,36 +267,6 @@ begin
 
     )
   );
-  
-end;
-
-procedure TDocumentAccessRightsServiceRegistry.RegisterStandardGeneralDocumentChargeSheetAccessRightsService(
-  DocumentKind: TDocumentClass);
-var
-    Service: IGeneralDocumentChargeSheetAccessRightsService;
-begin
-
-  if DocumentKind.InheritsFrom(TIncomingDocument) then begin
-  
-    Service :=
-      TStandardGeneralIncomingDocumentChargeSheetAccessRightsService.Create(
-        TDocumentChargeSheetsServiceRegistry.Instance.GetDocumentChargeSheetFinder(DocumentKind),
-        TDocumentChargeServiceRegistry.Instance.GetDocumentChargeKindsControlService
-      );
-
-  end
-
-  else begin
-
-    Service :=
-      TStandardGeneralDocumentChargeSheetAccessRightsService.Create(
-        TDocumentChargeSheetsServiceRegistry.Instance.GetDocumentChargeSheetFinder(DocumentKind),
-        TDocumentChargeServiceRegistry.Instance.GetDocumentChargeKindsControlService
-      );
-
-  end;
-
-  RegisterGeneralDocumentChargeSheetAccessRightsService(DocumentKind, Service);
 
 end;
 

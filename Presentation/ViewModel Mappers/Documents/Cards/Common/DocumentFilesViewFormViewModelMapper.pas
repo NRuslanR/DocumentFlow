@@ -35,14 +35,16 @@ implementation
 
 { TDocumentFilesViewFormViewModelMapper }
 
-function TDocumentFilesViewFormViewModelMapper.CreateDocumentFilesViewFormViewModelInstance: TDocumentFilesViewFormViewModel;
+function TDocumentFilesViewFormViewModelMapper
+  .CreateDocumentFilesViewFormViewModelInstance: TDocumentFilesViewFormViewModel;
 begin
 
   Result := TDocumentFilesViewFormViewModel.Create;
   
 end;
 
-function TDocumentFilesViewFormViewModelMapper.CreateEmptyDocumentFilesViewFormViewModel: TDocumentFilesViewFormViewModel;
+function TDocumentFilesViewFormViewModelMapper
+  .CreateEmptyDocumentFilesViewFormViewModel: TDocumentFilesViewFormViewModel;
 begin
 
   Result := CreateDocumentFilesViewFormViewModelInstance;
@@ -55,7 +57,8 @@ function TDocumentFilesViewFormViewModelMapper.
   MapDocumentFilesViewFormViewModelFrom(
     DocumentFilesInfoDTO: TDocumentFilesInfoDTO
   ): TDocumentFilesViewFormViewModel;
-var DocumentFileInfoList: TDocumentFileInfoList;
+var
+    DocumentFileInfoList: TDocumentFileInfoList;
     DocumentFileInfoDTO: TDocumentFileInfoDTO;
     DocumentFileInfo: TDocumentFileInfo;
 begin
@@ -87,12 +90,9 @@ begin
     
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-      
-    end;
+    Raise;
 
   end;
 

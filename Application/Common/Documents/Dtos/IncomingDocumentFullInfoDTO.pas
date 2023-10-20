@@ -7,17 +7,22 @@ uses
   DocumentResponsibleInfoDTO,
   DocumentFlowEmployeeInfoDTO,
   DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
+  IGetSelfUnit,
   SysUtils,
   Classes;
 
 type
-  
-  TIncomingDocumentFullInfoDTO = class (TDocumentFullInfoDTO)
-
-  end;
 
   TIncomingDocumentDTO = class (TDocumentDTO)
 
+    private
+
+      FOriginalDocumentDTO: TDocumentDTO;
+      FFreeOriginalDocumentDTO: IGetSelf;
+
+      procedure SetOriginalDocumentDTO(const Value: TDocumentDTO);
+      
     protected
 
       function GetApprovingsInfoDTO: TDocumentApprovingsInfoDTO; override;
@@ -33,6 +38,7 @@ type
       function GetKind: String; override;
       function GetKindId: Variant; override;
       function GetName: String; override;
+      function GetFullName: String; override;
       function GetNote: String; override;
       function GetNumber: String; override;
       function GetResponsibleInfoDTO: TDocumentResponsibleInfoDTO; override;
@@ -53,6 +59,7 @@ type
       procedure SetKindId(const Value: Variant); override;
       procedure SetProductCode(const Value: String); override;
       procedure SetName(const Value: String); override;
+      procedure SetFullName(const Value: String); override;
       procedure SetNote(const Value: String); override;
       procedure SetNumber(const Value: String); override;
       procedure SetResponsibleInfoDTO(const Value: TDocumentResponsibleInfoDTO); override;
@@ -62,28 +69,32 @@ type
       
     public
 
-      OriginalDocumentDTO: TDocumentDTO;
-
       IncomingNumber: String;
       IncomingNumberPartsSeparator: String;
       ReceiptDate: TDateTime;
 
-      destructor Destroy; override;
+      property OriginalDocumentDTO: TDocumentDTO
+      read FOriginalDocumentDTO write SetOriginalDocumentDTO;
 
   end;
 
-  
+  TIncomingDocumentFullInfoDTO = class (TDocumentFullInfoDTO)
+
+    private
+
+      function GetIncomingDocumentDTO: TIncomingDocumentDTO;
+      procedure SetIncomingDocumentDTO(const Value: TIncomingDocumentDTO);
+
+    public
+
+      property DocumentDTO: TIncomingDocumentDTO
+      read GetIncomingDocumentDTO write SetIncomingDocumentDTO;
+
+  end;
+
 implementation
 
 { TIncomingDocumentDTO }
-
-destructor TIncomingDocumentDTO.Destroy;
-begin
-
-  FreeAndNil(OriginalDocumentDTO);
-  inherited;
-
-end;
 
 function TIncomingDocumentDTO.GetApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
 begin
@@ -139,6 +150,13 @@ begin
 
   Result := OriginalDocumentDTO.DocumentDate;
 
+end;
+
+function TIncomingDocumentDTO.GetFullName: String;
+begin
+
+  Result := OriginalDocumentDTO.FullName;
+  
 end;
 
 function TIncomingDocumentDTO.GetId: Variant;
@@ -279,6 +297,13 @@ begin
   
 end;
 
+procedure TIncomingDocumentDTO.SetFullName(const Value: String);
+begin
+
+  OriginalDocumentDTO.FullName := Value;
+
+end;
+
 procedure TIncomingDocumentDTO.SetId(const Value: Variant);
 begin
 
@@ -328,6 +353,15 @@ begin
   
 end;
 
+procedure TIncomingDocumentDTO.SetOriginalDocumentDTO(
+  const Value: TDocumentDTO);
+begin
+
+  FOriginalDocumentDTO := Value;
+  FFreeOriginalDocumentDTO := Value;
+  
+end;
+
 procedure TIncomingDocumentDTO.SetProductCode(const Value: String);
 begin
 
@@ -358,4 +392,22 @@ begin
   
 end;
 
+{ TIncomingDocumentFullInfoDTO }
+
+function TIncomingDocumentFullInfoDTO.GetIncomingDocumentDTO: TIncomingDocumentDTO;
+begin
+
+  Result := TIncomingDocumentDTO(inherited DocumentDTO);
+
+end;
+
+procedure TIncomingDocumentFullInfoDTO.SetIncomingDocumentDTO(
+  const Value: TIncomingDocumentDTO);
+begin
+
+  inherited DocumentDTO := Value;
+
+end;
+
 end.
+

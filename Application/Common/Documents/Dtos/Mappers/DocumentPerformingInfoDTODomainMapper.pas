@@ -9,7 +9,7 @@ uses
   SysUtils,
   IGetSelfUnit,
   DocumentChargeCreatingService,
-  DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   IEmployeeRepositoryUnit,
   DocumentFlowEmployeeInfoDTOMapper,
   VariantListUnit,

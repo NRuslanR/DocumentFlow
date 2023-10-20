@@ -214,7 +214,8 @@ uses
   IDomainObjectListUnit,
   EmployeeDocumentWorkingRules,
   DocumentApprovingPerformingRule,
-  DocumentSigningMarkingRule;
+  DocumentSigningMarkingRule,
+  DocumentChargeSheetsServiceRegistry;
 
 { TStandardDocumentUsageEmployeeAccessRightsService }
 
@@ -288,11 +289,14 @@ function TStandardDocumentUsageEmployeeAccessRightsService.
     RelatedDocumentKind: TDocumentKind;
     Employee: TEmployee
   ): TDocumentUsageEmployeeAccessRightsInfo;
-var SourceDocumentRelations: TDocumentRelations;
+var
+    SourceDocumentRelations: TDocumentRelations;
     FreeSourceDocumentRelations: IDomainObjectBase;
 
     SourceDocumentUsageEmployeeAccessRightsInfo: TDocumentUsageEmployeeAccessRightsInfo;
     FreeSourceDocumentUsageEmployeeAccessRightsInfo: IDomainObjectBase;
+
+    GeneralRelatedDocumentChargeSheetAccessRightsService: IGeneralDocumentChargeSheetAccessRightsService;
 begin
 
   SourceDocumentRelations :=
@@ -325,10 +329,26 @@ begin
 
   end;
 
+  { refactor: inject IDocumentChargeSheetAccessRightsServiceRegistry instance to ctor }
+
+  GeneralRelatedDocumentChargeSheetAccessRightsService :=
+    TDocumentChargeSheetsServiceRegistry
+      .Instance
+        .GetGeneralDocumentChargeSheetAccessRightsService(
+          RelatedDocumentKind.DocumentClass
+        );
+
   Result := TDocumentUsageEmployeeAccessRightsInfo.Create;
 
   Result.DocumentCanBeViewed := True;
-  
+
+  Result
+    .GeneralChargeSheetsUsageEmployeeAccessRightsInfo
+      .AnyChargeSheetsCanBeViewedAsAuthorized :=
+
+    GeneralRelatedDocumentChargeSheetAccessRightsService
+      .AnyChargeSheetsCanBeViewedFor(TDocument(RelatedDocument.Self), Employee);
+
 end;
 
 function TStandardDocumentUsageEmployeeAccessRightsService.

@@ -86,14 +86,12 @@ type
 
     procedure PerformChargeSheet(
       const EmployeeId: Variant;
-      const ChargeSheetId: Variant;
-      const DocumentId: Variant
+      const ChargeSheetId: Variant
     );
 
     procedure PerformChargeSheets(
       const EmployeeId: Variant;
-      const ChargeSheetIds: TVariantList;
-      const DocumentId: Variant
+      const ChargeSheetIds: TVariantList
     );
 
     procedure SaveDocumentChargeSheetsChanges(

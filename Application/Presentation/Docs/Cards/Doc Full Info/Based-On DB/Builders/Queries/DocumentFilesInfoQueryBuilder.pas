@@ -49,9 +49,9 @@ begin
   with DocumentFilesInfoFieldNames do begin
 
     Result :=
-      'SELECT doc_fm.id as ' + DocumentFileIdFieldName + ',' + #13#10 +
-      'doc_fm.file_name as ' + DocumentFileNameFieldName + ',' + #13#10 +
-      'doc_fm.file_path as ' + DocumentFilePathFieldName + ',' + #13#10 +
+      'SELECT doc_fm.id as ' + IdFieldName + ',' + #13#10 +
+      'doc_fm.file_name as ' + NameFieldName + ',' + #13#10 +
+      'doc_fm.file_path as ' + PathFieldName + ',' + #13#10 +
       'doc_fm.document_id as ' + DocumentIdFieldName + #13#10 +
       'FROM ' + FDocumentFilesTableDef.TableName + ' doc_fm' + #13#10 +
       'WHERE doc_fm.document_id = :' + DocumentIdParamName;

@@ -11,6 +11,7 @@ uses
   PersonnelOrderSubKindEmployeeList,
   PersonnelOrderSubKindEmployeeGroup,
   RepositoryList,
+  PersonnelOrderSubKindRepository,
   PersonnelOrderRepositoryRegistry,
   SysUtils;
 
@@ -25,6 +26,8 @@ type
         FSubKindEmployeeListRepositories: TRepositories;
         FSubKindEmployeeGroupRepositories: TRepositories;
         
+        FPersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository;
+
       public
 
         destructor Destroy; override;
@@ -60,6 +63,14 @@ type
 
         function GetPersonnelOrderCreatingAccessEmployeeRepository: IPersonnelOrderSingleEmployeeListRepository;
 
+      public
+
+        procedure RegisterPersonnelOrderSubKindRepository(
+          PersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository
+        );
+
+        function GetPersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository;
+        
     end;
 
 implementation
@@ -106,6 +117,13 @@ begin
     
 end;
 
+function TStandardPersonnelOrderRepositoryRegistry.GetPersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository;
+begin
+
+  Result := FPersonnelOrderSubKindRepository;
+  
+end;
+
 function TStandardPersonnelOrderRepositoryRegistry.
   GetPersonnelOrderControlGroupRepository: IPersonnelOrderSubKindEmployeeGroupRepository;
 begin
@@ -147,6 +165,14 @@ begin
     TPersonnelOrderSignerList, PersonnelOrderSingleEmployeeListRepository
   );
   
+end;
+
+procedure TStandardPersonnelOrderRepositoryRegistry.RegisterPersonnelOrderSubKindRepository(
+  PersonnelOrderSubKindRepository: IPersonnelOrderSubKindRepository);
+begin
+
+  FPersonnelOrderSubKindRepository := PersonnelOrderSubKindRepository;
+
 end;
 
 procedure TStandardPersonnelOrderRepositoryRegistry.RegisterPersonnelOrderControlGroupRepository(

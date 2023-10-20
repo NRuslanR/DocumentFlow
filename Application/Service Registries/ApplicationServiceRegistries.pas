@@ -70,7 +70,6 @@ uses
   AuxDebugFunctionsUnit,
   DocumentsDomainRegistries;
 
-
 { TApplicationServiceRegistries }
 
 destructor TApplicationServiceRegistries.Destroy;

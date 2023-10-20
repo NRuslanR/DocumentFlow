@@ -8,21 +8,21 @@ inherited UserNotificationsSettingsForm: TUserNotificationsSettingsForm
   ExplicitHeight = 565
   PixelsPerInch = 96
   TextHeight = 13
-  inherited btnCancel: TcxButton [0]
-    Left = 916
-    Top = 493
-    TabOrder = 0
-    LookAndFeel.SkinName = ''
-    ExplicitLeft = 567
-    ExplicitTop = 358
-  end
-  inherited btnOK: TcxButton [1]
-    Left = 816
-    Top = 493
-    TabOrder = 1
-    LookAndFeel.SkinName = ''
-    ExplicitLeft = 467
-    ExplicitTop = 358
+  inherited ButtonsFooterPanel: TPanel
+    Top = 479
+    Width = 1005
+    ExplicitTop = 479
+    ExplicitWidth = 1005
+    inherited btnCancel: TcxButton
+      Left = 916
+      LookAndFeel.SkinName = ''
+      ExplicitLeft = 916
+    end
+    inherited btnOK: TcxButton
+      Left = 816
+      LookAndFeel.SkinName = ''
+      ExplicitLeft = 816
+    end
   end
   object UserNotificationsSettingsFramePanel: TPanel
     Left = 0
@@ -32,8 +32,6 @@ inherited UserNotificationsSettingsForm: TUserNotificationsSettingsForm
     Align = alTop
     Anchors = [akLeft, akTop, akRight, akBottom]
     BevelOuter = bvNone
-    TabOrder = 2
-    ExplicitWidth = 656
-    ExplicitHeight = 325
+    TabOrder = 1
   end
 end

@@ -7,6 +7,7 @@ uses
   DocumentApprovingListDTO,
   DocumentApprovingListSetHolder,
   DocumentApprovingListRecordSetHolder,
+  DocumentApprovingListSetHolderFactory,
   DocumentDataSetHoldersFactory,
   UIDocumentKinds,
   SysUtils,
@@ -18,7 +19,7 @@ type
 
     protected
 
-      FDocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
+      FDocumentApprovingListSetHolderFactory: IDocumentApprovingListSetHolderFactory;
 
     protected
 
@@ -36,7 +37,7 @@ type
     public
 
       constructor Create(
-        DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory
+        DocumentApprovingListSetHolderFactory: IDocumentApprovingListSetHolderFactory
       );
 
       function MapDocumentApprovingListSetHolderFrom(
@@ -55,12 +56,13 @@ uses
 { TDocumentApprovingListSetHolderMapper }
 
 constructor TDocumentApprovingListSetHolderMapper.Create(
-  DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory);
+  DocumentApprovingListSetHolderFactory: IDocumentApprovingListSetHolderFactory
+);
 begin
 
   inherited Create;
 
-  FDocumentDataSetHoldersFactory := DocumentDataSetHoldersFactory;
+  FDocumentApprovingListSetHolderFactory := DocumentApprovingListSetHolderFactory;
   
 end;
 
@@ -69,8 +71,8 @@ function TDocumentApprovingListSetHolderMapper.MapDocumentApprovingListSetHolder
 ): TDocumentApprovingListSetHolder;
 begin
 
-  Result := FDocumentDataSetHoldersFactory.CreateDocumentApprovingListSetHolder;
-
+  Result := FDocumentApprovingListSetHolderFactory.CreateDocumentApprovingListSetHolder;
+  
   FillDocumentApprovingListSetHolderFrom(Result, DocumentApprovingListDTOs);
   
 end;

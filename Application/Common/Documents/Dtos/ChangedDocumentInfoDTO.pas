@@ -6,6 +6,7 @@ uses
 
   DocumentResponsibleInfoDTO,
   DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   SysUtils,
   Classes;
 

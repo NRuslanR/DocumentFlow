@@ -19,6 +19,8 @@ type
   IDocumentFlowEmployeeInfoDTOMapper = interface (IGetSelf)
     ['{D3E9F830-4B51-42DE-848B-8EBE49029DA6}']
 
+    function EmptyDocumentFlowEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
+
     function MapDocumentFlowEmployeeInfoDTOFrom(
       Employee: TEmployee
     ): TDocumentFlowEmployeeInfoDTO;
@@ -43,6 +45,8 @@ type
         constructor Create(DepartmentRepository: IDepartmentRepository);
 
         function GetSelf: TObject;
+
+        function EmptyDocumentFlowEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
         
         function MapDocumentFlowEmployeeInfoDTOFrom(
           Employee: TEmployee
@@ -75,7 +79,7 @@ function TDocumentFlowEmployeeInfoDTOMapper.
   ): TDocumentFlowEmployeeInfoDTO;
 begin
 
-  Result := TDocumentFlowEmployeeInfoDTO.Create;
+  Result := EmptyDocumentFlowEmployeeInfoDTO;
 
   try
 
@@ -86,6 +90,7 @@ begin
     if Assigned(Employee.TopLevelEmployee) then
       Result.LeaderId := Employee.TopLevelEmployee.Identity;
 
+    Result.PersonnelNumber := Employee.PersonnelNumber;
     Result.Name := Employee.Name;
     Result.Surname := Employee.Surname;
     Result.Patronymic := Employee.Patronymic;
@@ -105,6 +110,13 @@ begin
 
   end;
 
+end;
+
+function TDocumentFlowEmployeeInfoDTOMapper.EmptyDocumentFlowEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
+begin
+
+  Result := TDocumentFlowEmployeeInfoDTO.Create;
+  
 end;
 
 function TDocumentFlowEmployeeInfoDTOMapper.GetDepartmentInfoDTOBy(

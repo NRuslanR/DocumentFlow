@@ -6,6 +6,8 @@ uses
 
   IncomingDocumentCardFormViewModelMapperFactory,
   IncomingServiceNoteCardFormViewModelMapper,
+  DocumentMainInformationFormViewModelMapper,
+  IncomingServiceNoteMainInformationFormViewModelMapper,
   OutcomingServiceNoteCardFormViewModelMapperFactory,
   OutcomingServiceNoteCardFormViewModelMapper,
   DocumentCardFormViewModelMapper,
@@ -18,17 +20,19 @@ type
   TIncomingServiceNoteCardFormViewModelMapperFactory =
     class (TIncomingDocumentCardFormViewModelMapperFactory)
 
+      protected
+
+        function CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper; override;
+
       public
 
         constructor Create(
-          DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-          OutcomingServiceNoteCardFormViewModelMapperFactory:
-            TOutcomingServiceNoteCardFormViewModelMapperFactory
+          OutcomingDocumentCardFormViewModelMapperFactory: TOutcomingServiceNoteCardFormViewModelMapperFactory;
+          DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory
         );
 
-        function CreateDocumentCardFormViewModelMapper:
-          TDocumentCardFormViewModelMapper; override;
-      
+        function CreateDocumentMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper; override;
+
     end;
 
 
@@ -37,29 +41,33 @@ implementation
 { TIncomingServiceNoteCardFormViewModelMapperFactory }
 
 constructor TIncomingServiceNoteCardFormViewModelMapperFactory.Create(
-  DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory;
-  OutcomingServiceNoteCardFormViewModelMapperFactory:
-    TOutcomingServiceNoteCardFormViewModelMapperFactory
-);
+  OutcomingDocumentCardFormViewModelMapperFactory: TOutcomingServiceNoteCardFormViewModelMapperFactory;
+  DocumentDataSetHoldersFactory: IDocumentDataSetHoldersFactory);
 begin
 
   inherited Create(
-    DocumentDataSetHoldersFactory,
-    OutcomingServiceNoteCardFormViewModelMapperFactory
+    OutcomingDocumentCardFormViewModelMapperFactory,
+    DocumentDataSetHoldersFactory
   );
+                                
+end;
+
+function TIncomingServiceNoteCardFormViewModelMapperFactory
+  .CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper;
+begin
+
+  Result := TIncomingServiceNoteCardFormViewModelMapper.Create;
 
 end;
 
-function TIncomingServiceNoteCardFormViewModelMapperFactory.
-  CreateDocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
+function TIncomingServiceNoteCardFormViewModelMapperFactory
+  .CreateDocumentMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
 begin
 
   Result :=
-    TIncomingServiceNoteCardFormViewModelMapper.Create(
-      FDocumentDataSetHoldersFactory,
-      FOutcomingDocumentCardFormViewModelMapperFactory.
-        CreateDocumentCardFormViewModelMapper as
-        TOutcomingServiceNoteCardFormViewModelMapper
+    TIncomingServiceNoteMainInformationFormViewModelMapper.Create(
+      FOutcomingDocumentCardFormViewModelMapperFactory
+        .CreateDocumentMainInformationFormViewModelMapper
     );
     
 end;

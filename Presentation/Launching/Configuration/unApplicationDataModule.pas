@@ -78,18 +78,16 @@ begin
     else begin
 
       Result := nil;
+
       ConnectionResult := ConnectionCanceledByUser;
 
     end;
 
   except
 
-    on e: Exception do begin
+    ConnectionResult := FailedConnection;
 
-      ConnectionResult := FailedConnection;
-      raise;
-      
-    end;
+    Raise;
 
   end;
 

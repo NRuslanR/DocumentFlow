@@ -9,6 +9,7 @@ uses
   DocumentInfoHolder,
   IncomingDocumentTableDef,
   DocumentTableDef,
+  DocumentSigningTableDef,
   SysUtils;
 
 type
@@ -46,6 +47,7 @@ type
       constructor Create(
         DocumentInfoQueryBuilder: TDocumentInfoQueryBuilder;
         DocumentTableDef: TDocumentTableDef;
+        SigningTableDef: TDocumentSigningTableDef;
         IncomingDocumentTableDef: TIncomingDocumentTableDef
       );
 
@@ -62,11 +64,12 @@ uses
 constructor TIncomingDocumentInfoQueryBuilder.Create(
   DocumentInfoQueryBuilder: TDocumentInfoQueryBuilder;
   DocumentTableDef: TDocumentTableDef;
+  SigningTableDef: TDocumentSigningTableDef;
   IncomingDocumentTableDef: TIncomingDocumentTableDef
 );
 begin
 
-  inherited Create(DocumentTableDef);
+  inherited Create(DocumentTableDef, SigningTableDef);
 
   FIncomingDocumentTableDef := IncomingDocumentTableDef;
   FDocumentInfoQueryBuilder := DocumentInfoQueryBuilder;

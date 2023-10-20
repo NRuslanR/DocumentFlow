@@ -17,6 +17,7 @@ uses
   DocumentFileUnit,
   Employee,
   DocumentPersistingValidator,
+  DocumentFullNameCompilationService,
   VariantListUnit,
   SysUtils,
   Classes;
@@ -34,7 +35,8 @@ type
       FDocumentResponsibleDirectory: IDocumentResponsibleDirectory;
       FDocumentFileStorageService: IDocumentFileStorageService;
       FDocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
-
+      FDocumentFullNameCompilationService: IDocumentFullNameCompilationService;
+      
       function InternalFindDocumentsByNumber(const Number: String): TDocuments; virtual;
 
       function InternalFindDocumentById(const DocumentId: Variant): IDocument; virtual;
@@ -88,6 +90,11 @@ type
         Responsible: TEmployee
       );
 
+    private
+
+      procedure PrepareDocumentBeforeSaving(Document: TDocument);
+      procedure PrepareDocumentsBeforeSaving(Documents: TDocuments);
+      
     public
 
       destructor Destroy; override;
@@ -99,7 +106,8 @@ type
         DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
         DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
         DocumentFileStorageService: IDocumentFileStorageService;
-        DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+        DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+        DocumentFullNameCompilationService: IDocumentFullNameCompilationService
       );
 
       function GetSelf: TObject;
@@ -157,7 +165,8 @@ constructor TAbstractDocumentDirectory.Create(
   DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
   DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
   DocumentFileStorageService: IDocumentFileStorageService;
-  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+  DocumentFullNameCompilationService: IDocumentFullNameCompilationService
 );
 begin
 
@@ -170,6 +179,7 @@ begin
   FDocumentResponsibleDirectory := DocumentResponsibleDirectory;
   FDocumentFileStorageService := DocumentFileStorageService;
   FDocumentChargeSheetDirectory := DocumentChargeSheetDirectory;
+  FDocumentFullNameCompilationService := DocumentFullNameCompilationService;
   
 end;
 
@@ -262,6 +272,8 @@ begin
 
   FDocumentPersistingValidator.EnsureDocumentMayBePuttedInDirectory(Document);
 
+  PrepareDocumentBeforeSaving(Document);
+
   InternalPutDocument(Document);
 
 end;
@@ -271,6 +283,8 @@ begin
 
   FDocumentPersistingValidator.EnsureDocumentsMayBePuttedInDirectory(Documents);
 
+  PrepareDocumentsBeforeSaving(Documents);
+
   InternalPutDocuments(Documents);
 
 end;
@@ -279,6 +293,8 @@ procedure TAbstractDocumentDirectory.ModifyDocument(Document: TDocument);
 begin
 
   FDocumentPersistingValidator.EnsureDocumentMayBeModifiedInDirectory(Document);
+
+  PrepareDocumentBeforeSaving(Document);
 
   InternalModifyDocument(Document);
   
@@ -305,8 +321,34 @@ begin
 
   FDocumentPersistingValidator.EnsureDocumentsMayBeModifiedInDirectory(Documents);
 
+  PrepareDocumentsBeforeSaving(Documents);
+
   InternalModifyDocuments(Documents);
 
+end;
+
+procedure TAbstractDocumentDirectory.PrepareDocumentsBeforeSaving(
+  Documents: TDocuments);
+var
+    Document: TDocument;
+begin
+
+  for Document in Documents do
+    PrepareDocumentBeforeSaving(Document);
+
+end;
+
+procedure TAbstractDocumentDirectory.PrepareDocumentBeforeSaving(
+  Document: TDocument);
+begin
+
+  Document.InvariantsComplianceRequested := False;
+
+  Document.FullName :=
+    FDocumentFullNameCompilationService.CompileFullNameForDocument(Document);
+
+  Document.InvariantsComplianceRequested := True;
+  
 end;
 
 procedure TAbstractDocumentDirectory.PutDocumentFiles(

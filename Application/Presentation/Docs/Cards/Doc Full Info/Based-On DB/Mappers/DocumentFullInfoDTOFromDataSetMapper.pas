@@ -28,18 +28,19 @@ type
   TDocumentFullInfoDTOFromDataSetMapper = class
 
     private
-    function CreateDocumentApprovingCycleResultInfoDTOInstance: TDocumentApprovingCycleResultInfoDTO;
-    function CreateDocumentApprovingCycleResultsInfoDTOInstance: TDocumentApprovingCycleResultsInfoDTO;
-    function CreateDocumentApprovingInfoDTOInstance: TDocumentApprovingInfoDTO;
-    function CreateDocumentApprovingsInfoDTOInstance: TDocumentApprovingsInfoDTO;
-    function CreateDocumentChargeInfoDTOInstance: TDocumentChargeInfoDTO;
-    function CreateDocumentChargeSheetInfoDTOInstance: TDocumentChargeSheetInfoDTO;
-    function CreateDocumentChargesInfoDTOInstance: TDocumentChargesInfoDTO;
-    function CreateDocumentDTOInstance: TDocumentDTO;
-    function CreateDocumentFilesInfoDTOInstance: TDocumentFilesInfoDTO;
-    function CreateDocumentRelationsInfoDTOInstance: TDocumentRelationsInfoDTO;
-    function CreateDocumentSigningInfoDTOInstance: TDocumentSigningInfoDTO;
-    function CreateDocumentSigningsInfoDTOInstance: TDocumentSigningsInfoDTO;
+
+      function CreateDocumentApprovingCycleResultInfoDTOInstance: TDocumentApprovingCycleResultInfoDTO;
+      function CreateDocumentApprovingCycleResultsInfoDTOInstance: TDocumentApprovingCycleResultsInfoDTO;
+      function CreateDocumentApprovingInfoDTOInstance: TDocumentApprovingInfoDTO;
+      function CreateDocumentApprovingsInfoDTOInstance: TDocumentApprovingsInfoDTO;
+      function CreateDocumentChargeInfoDTOInstance: TDocumentChargeInfoDTO;
+      function CreateDocumentChargeSheetInfoDTOInstance: TDocumentChargeSheetInfoDTO;
+      function CreateDocumentChargesInfoDTOInstance: TDocumentChargesInfoDTO;
+      function CreateDocumentDTOInstance: TDocumentDTO;
+      function CreateDocumentFilesInfoDTOInstance: TDocumentFilesInfoDTO;
+      function CreateDocumentRelationsInfoDTOInstance: TDocumentRelationsInfoDTO;
+      function CreateDocumentSigningInfoDTOInstance: TDocumentSigningInfoDTO;
+      function CreateDocumentSigningsInfoDTOInstance: TDocumentSigningsInfoDTO;
 
     protected
 
@@ -169,7 +170,7 @@ begin
   Result :=
     FDocumentApprovingCycleResultsInfoDTOFromDataSetMapper
       .MapDocumentApprovingCycleResultsInfoDTOFrom(
-        DocumentFullInfoDataSetHolder.DocumentApprovingsInfoHolder
+        DocumentFullInfoDataSetHolder.ApprovingsInfoHolder
       );
 
 end;
@@ -181,7 +182,7 @@ begin
   Result :=
     FDocumentApprovingsInfoDTOFromDataSetMapper
       .MapDocumentApprovingsInfoDTOFrom(
-        DocumentFullInfoDataSetHolder.DocumentApprovingsInfoHolder
+        DocumentFullInfoDataSetHolder.ApprovingsInfoHolder
       );
   
 end;
@@ -195,7 +196,7 @@ begin
   Result :=
     FDocumentChargeSheetsInfoDTOFromDataSetMapper
       .MapDocumentChargeSheetsInfoDTOFrom(
-        DocumentFullInfoDataSetHolder.DocumentChargeSheetsInfoHolder
+        DocumentFullInfoDataSetHolder.ChargeSheetsInfoHolder
       );
 
 end;
@@ -208,7 +209,7 @@ begin
   Result :=
     FDocumentChargesInfoDTOFromDataSetMapper
       .MapDocumentChargesInfoDTOFrom(
-        DocumentFullInfoDataSetHolder.DocumentChargesInfoHolder
+        DocumentFullInfoDataSetHolder.ChargesInfoHolder
       );
 
 end;
@@ -239,7 +240,7 @@ begin
   Result :=
     FDocumentFilesInfoDTOFromDataSetMapper
       .MapDocumentFilesInfoDTOFrom(
-        DocumentFullInfoDataSetHolder.DocumentFilesInfoHolder
+        DocumentFullInfoDataSetHolder.FilesInfoHolder
       );
 
 end;
@@ -252,7 +253,7 @@ begin
   Result :=
     FDocumentRelationsInfoDTOFromDataSetMapper
       .MapDocumentRelationsInfoDTOFrom(
-        DocumentFullInfoDataSetHolder.DocumentRelationsInfoHolder
+        DocumentFullInfoDataSetHolder.RelationsInfoHolder
       );
 
 end;

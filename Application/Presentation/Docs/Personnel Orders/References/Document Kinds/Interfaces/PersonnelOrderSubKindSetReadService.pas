@@ -6,6 +6,7 @@ uses
 
   PersonnelOrderSubKindSetHolder,
   ApplicationService,
+  VariantListUnit,
   SysUtils;
 
 type
@@ -13,7 +14,8 @@ type
   IPersonnelOrderSubKindSetReadService = interface (IApplicationService)
 
     function GetPersonnelOrderSubKindSet: TPersonnelOrderSubKindSetHolder;
-        
+    function GetPersonnelOrderSubKindSetByIds(const SubKindIds: array of Variant): TPersonnelOrderSubKindSetHolder;
+
   end;
 
 implementation

@@ -12,7 +12,7 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, ComCtrls, ExtCtrls, StdCtrls,
   cxButtons, ToolWin, PersonnelOrderSubKindSetHolder,
   PersonnelOrderSubKindSetReadService, PersonnelOrderSubKindViewModel,
-  DBDataTableFormUnit;
+  DBDataTableFormUnit, cxCheckBox;
 
 type
 

@@ -7,6 +7,8 @@ uses
   EmployeeDocumentCardFormViewModelMapperFactory,
   DocumentCardFormViewModelMapper,
   OutcomingServiceNoteCardFormViewModelMapper,
+  DocumentMainInformationFormViewModelMapper,
+  OutcomingServiceNoteMainInformationFormViewModelMapper,
   SysUtils,
   Classes;
 
@@ -15,24 +17,34 @@ type
   TOutcomingServiceNoteCardFormViewModelMapperFactory =
     class (TEmployeeDocumentCardFormViewModelMapperFactory)
 
-      public
+      protected
 
-        function CreateDocumentCardFormViewModelMapper:
-          TDocumentCardFormViewModelMapper; override;
+        function CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper; override;
+
+      public
       
+        function CreateDocumentMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper; override;
+
     end;
     
 implementation
 
 { TOutcomingServiceNoteCardFormViewModelMapperFactory }
 
-function TOutcomingServiceNoteCardFormViewModelMapperFactory.
-  CreateDocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
+function TOutcomingServiceNoteCardFormViewModelMapperFactory
+  .CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper;
 begin
 
-  Result :=
-    TOutcomingServiceNoteCardFormViewModelMapper.Create(FDocumentDataSetHoldersFactory);
-    
+  Result := TOutcomingServiceNoteCardFormViewModelMapper.Create;
+
+end;
+
+function TOutcomingServiceNoteCardFormViewModelMapperFactory
+  .CreateDocumentMainInformationFormViewModelMapper: TDocumentMainInformationFormViewModelMapper;
+begin
+
+  Result := TOutcomingServiceNoteMainInformationFormViewModelMapper.Create;
+  
 end;
 
 end.

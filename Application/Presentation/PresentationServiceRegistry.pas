@@ -7,6 +7,7 @@ uses
   _ApplicationServiceRegistry,
   DocumentKinds,
   DocumentCreatingDefaultInfoReadService,
+  EmployeeInfoReadService,
   EmployeeSetReadService,
   EmployeeSetHolder,
   DocumentSignerSetReadService,
@@ -223,6 +224,14 @@ type
 
     public
 
+      procedure RegisterEmployeeInfoReadService(
+        EmployeeInfoReadService: IEmployeeInfoReadService
+      );
+
+      function GetEmployeeInfoReadService: IEmployeeInfoReadService;
+      
+    public
+
       function GetPersonnelOrderPresentationServiceRegistry: TPersonnelOrderPresentationServiceRegistry;
       
     public
@@ -242,6 +251,10 @@ uses
   
 type
 
+  TEmployeeInfoReadServiceType = class
+
+  end;
+  
   TEmployeeSetReadServiceType = class
 
   end;
@@ -314,7 +327,7 @@ begin
     IDocumentChargeSheetPerformerSetReadService(
       FDocumentChargeSheetPerformerSetReadServiceRegistry.GetApplicationService(DocumentKind)
     );
-    
+       
 end;
 
 function TPresentationServiceRegistry.
@@ -382,6 +395,14 @@ begin
       )
     );
 
+end;
+
+function TPresentationServiceRegistry.GetEmployeeInfoReadService: IEmployeeInfoReadService;
+begin
+
+  Result :=
+    IEmployeeInfoReadService(GetApplicationService(TEmployeeInfoReadServiceType));
+    
 end;
 
 function TPresentationServiceRegistry.GetDocumentSignerSetReadService(
@@ -555,6 +576,14 @@ begin
     DocumentKind,
     EmployeeDocumentSetReadService
   );
+  
+end;
+
+procedure TPresentationServiceRegistry.RegisterEmployeeInfoReadService(
+  EmployeeInfoReadService: IEmployeeInfoReadService);
+begin
+
+  RegisterApplicationService(TEmployeeInfoReadServiceType, EmployeeInfoReadService);
   
 end;
 

@@ -83,7 +83,7 @@ begin
 
       if not RaiseExceptionIfIniFileNotExists and not FileExists(IniFilePath) then Exit;
 
-      DocumentChargesFrame.DocumentReceiversTreeList.RestoreFromIniFile(IniFilePath);
+      DocumentChargesFrame.ChargeTreeList.RestoreFromIniFile(IniFilePath);
 
     end;
 
@@ -118,7 +118,7 @@ begin
 
   with TPropertiesIniFile(PropertiesStorage.Self) do begin
 
-    DocumentChargesFrame.DocumentReceiversTreeList.StoreToIniFile(IniFilePath);
+    DocumentChargesFrame.ChargeTreeList.StoreToIniFile(IniFilePath);
 
   end;
 

@@ -17,8 +17,10 @@ uses
   DocumentKindsMapper,
   DocumentResponsibleInfoDTOMapper,
   DocumentCharges,
+  DocumentChargeKindDtoDomainMapper,
   DocumentChargeSheet,
   TypeObjectRegistry,
+  DocumentFullInfoJsonMapper,
   DocumentUsageEmployeeAccessRightsInfoDTOMapper,
   SysUtils,
   Classes;
@@ -42,6 +44,15 @@ type
       DocumentKind: TDocumentKindClass
     ): TDocumentFullInfoDTOMapper;
 
+    procedure RegisterDocumentFullInfoJsonMapper(
+      DocumentKind: TDocumentKindClass;
+      DocumentFullInfoJsonMapper: IDocumentFullInfoJsonMapper
+    );
+
+    function GetDocumentFullInfoJsonMapper(
+      DocumentKind: TDocumentKindClass
+    ): IDocumentFullInfoJsonMapper;
+    
     function RegisterDocumentChargeSheetInfoDTODomainMapper(
       DocumentChargeSheetType: TDocumentChargeSheetClass;
       Mapper: IDocumentChargeSheetInfoDTODomainMapper
@@ -101,6 +112,12 @@ type
     
     function GetDocumentFlowEmployeeInfoDTOMapper: TDocumentFlowEmployeeInfoDTOMapper;
 
+    procedure RegisterDocumentChargeKindDtoDomainMapper(
+      DocumentChargeKindDtoDomainMapper: IDocumentChargeKindDtoDomainMapper
+    );
+
+    function GetDocumentChargeKindDtoDomainMapper: IDocumentChargeKindDtoDomainMapper;
+
     function ChargeInfoDTODomainMapperRegistry: IDocumentChargeInfoDTODomainMapperRegistry;
     function ChargeSheetInfoDTODomainMapperRegistry: IDocumentChargeSheetInfoDTODomainMapperRegistry;
 
@@ -119,6 +136,8 @@ type
       private
 
         FDocumentFullInfoDTOMapperRegistry: TTypeObjectRegistry;
+        FChargeKindDtoDomainMapperRegistry: TTypeObjectRegistry;
+        FDocumentFullInfoJsonMapperRegistry: TTypeObjectRegistry;
         FChargeInfoDTODomainMapperRegistry: IDocumentChargeInfoDTODomainMapperRegistry;
         FChargeSheetInfoDTODomainMapperRegistry: IDocumentChargeSheetInfoDTODomainMapperRegistry;
         FDocumentKindsMapperRegistry: TTypeObjectRegistry;
@@ -148,6 +167,15 @@ type
         function GetDocumentFullInfoDTOMapper(
           DocumentKind: TDocumentKindClass
         ): TDocumentFullInfoDTOMapper;
+
+        procedure RegisterDocumentFullInfoJsonMapper(
+          DocumentKind: TDocumentKindClass;
+          DocumentFullInfoJsonMapper: IDocumentFullInfoJsonMapper
+        );
+
+        function GetDocumentFullInfoJsonMapper(
+          DocumentKind: TDocumentKindClass
+        ): IDocumentFullInfoJsonMapper;
 
         function RegisterDocumentChargeSheetInfoDTODomainMapper(
           DocumentChargeSheetType: TDocumentChargeSheetClass;
@@ -208,6 +236,10 @@ type
 
         function GetDocumentFlowEmployeeInfoDTOMapper: TDocumentFlowEmployeeInfoDTOMapper;
 
+        procedure RegisterDocumentChargeKindDtoDomainMapper(
+          DocumentChargeKindDtoDomainMapper: IDocumentChargeKindDtoDomainMapper
+        );
+        function GetDocumentChargeKindDtoDomainMapper: IDocumentChargeKindDtoDomainMapper;
         function ChargeInfoDTODomainMapperRegistry: IDocumentChargeInfoDTODomainMapperRegistry;
         function ChargeSheetInfoDTODomainMapperRegistry: IDocumentChargeSheetInfoDTODomainMapperRegistry;
 
@@ -272,6 +304,9 @@ begin
   FDocumentObjectsDTODomainMapperRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FDocumentApprovingSheetDataDtoMapperRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FDocumentUsageEmployeeAccessRightsInfoDTOMapperRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
+
+  FChargeKindDtoDomainMapperRegistry :=
+    TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   
   FChargeInfoDTODomainMapperRegistry :=
     TDocumentChargeInfoDTODomainMapperRegistry.Create(
@@ -283,6 +318,9 @@ begin
       DocumentChargeKindsControlService
     );
 
+  FDocumentFullInfoJsonMapperRegistry :=
+    TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
+    
 end;
 
 destructor TDTODomainMapperRegistry.Destroy;
@@ -294,7 +332,10 @@ begin
   FreeAndNil(FDocumentApprovingSheetDataDtoMapperRegistry);
   FreeAndNil(FEmployeeInfoDTOMapperRegistry);
   FreeAndNil(FDocumentUsageEmployeeAccessRightsInfoDTOMapperRegistry);
+  FreeAndNil(FChargeKindDtoDomainMapperRegistry);
 
+  FreeAndNil(FDocumentFullInfoJsonMapperRegistry);
+  
   inherited;
 
 end;
@@ -319,6 +360,27 @@ begin
       FChargeInfoDTODomainMapperRegistry.GetDocumentChargeInfoDTODomainMapper(
         ChargeKindId
       )
+    );
+    
+end;
+
+procedure TDTODomainMapperRegistry.RegisterDocumentChargeKindDtoDomainMapper(
+  DocumentChargeKindDtoDomainMapper: IDocumentChargeKindDtoDomainMapper);
+begin
+
+  FChargeKindDtoDomainMapperRegistry.RegisterInterface(
+    TDocumentChargeKindDtoDomainMapper,
+    DocumentChargeKindDtoDomainMapper
+  );
+
+end;
+
+function TDTODomainMapperRegistry.GetDocumentChargeKindDtoDomainMapper: IDocumentChargeKindDtoDomainMapper;
+begin
+
+  Result :=
+    IDocumentChargeKindDtoDomainMapper(
+      FChargeKindDtoDomainMapperRegistry.GetInterface(TDocumentChargeKindDtoDomainMapper)
     );
     
 end;
@@ -377,6 +439,17 @@ begin
       FDocumentFullInfoDTOMapperRegistry.GetObject(DocumentKind)
     );
 
+end;
+
+function TDTODomainMapperRegistry.GetDocumentFullInfoJsonMapper(
+  DocumentKind: TDocumentKindClass): IDocumentFullInfoJsonMapper;
+begin
+
+  Result :=
+    IDocumentFullInfoJsonMapper(
+      FDocumentFullInfoJsonMapperRegistry.GetInterface(DocumentKind)
+    );
+    
 end;
 
 function TDTODomainMapperRegistry.GetDocumentKindsMapper: IDocumentKindsMapper;
@@ -483,6 +556,18 @@ begin
     DocumentFullInfoDTOMapper
   );
   
+end;
+
+procedure TDTODomainMapperRegistry.RegisterDocumentFullInfoJsonMapper(
+  DocumentKind: TDocumentKindClass;
+  DocumentFullInfoJsonMapper: IDocumentFullInfoJsonMapper);
+begin
+
+  FDocumentFullInfoJsonMapperRegistry.RegisterInterface(
+    DocumentKind,
+    DocumentFullInfoJsonMapper
+  );
+
 end;
 
 procedure TDTODomainMapperRegistry.RegisterDocumentKindsMapper(

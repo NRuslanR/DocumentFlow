@@ -11,6 +11,9 @@ uses
   DocumentDirectory,
   DocumentPerformingService,
   DocumentChargeSheetPerformingService,
+  DocumentKindFinder,
+  DocumentKind,
+  Document,
   IDocumentUnit,
   DomainException,
   Employee,
@@ -23,16 +26,15 @@ type
 
       protected
 
+        FDocumentKindFinder: IDocumentKindFinder;
         FDocumentPerformingService: IDocumentPerformingService;
 
-        procedure PerformDocumentIfNeccessary(
-          Document: IDocument;
-          ChargeSheet: IDocumentChargeSheet
-        );
+        function PerformDocumentIfNeccessary(
+          HeadChargeSheets: TDocumentChargeSheets
+        ): IDocument;
 
         function DoPerformingChargeSheet(
           ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           Employee: TEmployee;
           const PerformingDateTime: TDateTime
         ): IDocumentChargeSheets;
@@ -40,19 +42,18 @@ type
       public
 
         constructor Create(
+          DocumentKindFinder: IDocumentKindFinder;
           DocumentPerformingService: IDocumentPerformingService
         );
 
         function PerformChargeSheet(
           ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           Employee: TEmployee;
           const PerformingDateTime: TDateTime = 0
         ): TDocumentChargeSheetPerformingResult;
 
         function PerformChargeSheets(
           ChargeSheets: IDocumentChargeSheets;
-          Document: IDocument;
           Employee: TEmployee;
           const PerformingDateTime: TDateTime = 0
         ): TDocumentChargeSheetPerformingResult;
@@ -63,8 +64,8 @@ implementation
 
 uses
 
-  Document,
   IDomainObjectBaseUnit,
+  IDomainObjectBaseListUnit,
   StandardDocumentChargeSheetOrdinaryPerformingService,
   DocumentChargeSheetsServiceRegistry,
   StandardDocumentChargeSheetOverlappingPerformingService;
@@ -72,19 +73,21 @@ uses
 { TStandardDocumentChargeSheetControlPerformingService }
 
 constructor TStandardDocumentChargeSheetControlPerformingService.Create(
+  DocumentKindFinder: IDocumentKindFinder;
   DocumentPerformingService: IDocumentPerformingService
 );
 begin
 
   inherited Create;
 
+  FDocumentKindFinder := DocumentKindFinder;
+  
   FDocumentPerformingService := DocumentPerformingService;
 
 end;
 
 function TStandardDocumentChargeSheetControlPerformingService.PerformChargeSheets(
   ChargeSheets: IDocumentChargeSheets;
-  Document: IDocument;
   Employee: TEmployee;
   const PerformingDateTime: TDateTime
 ): TDocumentChargeSheetPerformingResult;
@@ -93,10 +96,16 @@ var
     ChargeSheet: IDocumentChargeSheet;
     PerformingResult: TDocumentChargeSheetPerformingResult;
     FreePerformingResult: IDomainObjectBase;
+    HeadChargeSheets: TDocumentChargeSheets;
+    FreeHeadChargeSheets: IDomainObjectBaseList;
 begin
   
   ChargeSheetsObj := TDocumentChargeSheets(ChargeSheets.Self);
 
+  HeadChargeSheets := TDocumentChargeSheets.Create;
+
+  FreeHeadChargeSheets := HeadChargeSheets;
+  
   Result := nil;
 
   try
@@ -104,7 +113,7 @@ begin
     for ChargeSheet in ChargeSheetsObj do begin
 
       PerformingResult :=
-        PerformChargeSheet(ChargeSheet, Document, Employee, PerformingDateTime);
+        PerformChargeSheet(ChargeSheet, Employee, PerformingDateTime);
 
       if not Assigned(Result) then
         Result := PerformingResult
@@ -113,8 +122,6 @@ begin
 
         FreePerformingResult := PerformingResult;
 
-        Result.PerformedDocument := PerformingResult.PerformedDocument;
-        
         with TDocumentChargeSheets(Result.PerformedChargeSheets.Self) do begin
 
           AddDocumentChargeSheets(
@@ -124,6 +131,16 @@ begin
         end;
 
       end;
+
+      if ChargeSheet.IsHead then
+        HeadChargeSheets.AddDocumentChargeSheet(ChargeSheet);
+
+    end;
+
+    if Assigned(Result) then begin
+
+      Result.PerformedDocument :=
+        PerformDocumentIfNeccessary(HeadChargeSheets);
 
     end;
 
@@ -139,7 +156,6 @@ end;
 
 function TStandardDocumentChargeSheetControlPerformingService.PerformChargeSheet(
   ChargeSheet: IDocumentChargeSheet;
-  Document: IDocument;
   Employee: TEmployee;
   const PerformingDateTime: TDateTime
 ): TDocumentChargeSheetPerformingResult;
@@ -147,43 +163,51 @@ var
     PerformedChargeSheets: IDocumentChargeSheets;
 begin
 
-  if not Assigned(Document) then begin
-
-    Raise TDocumentChargeSheetControlPerformingServiceException.Create(
-      '¬о врем€ выполнени€ поручени€ не был найден ' +
-      'соответствующий документ'
-    );
-
-  end;
-
   PerformedChargeSheets :=
-    DoPerformingChargeSheet(ChargeSheet, Document, Employee, PerformingDateTime);
+    DoPerformingChargeSheet(ChargeSheet, Employee, PerformingDateTime);
 
-  PerformDocumentIfNeccessary(Document, ChargeSheet);
-
-  Result := TDocumentChargeSheetPerformingResult.Create(Document, PerformedChargeSheets);
+  Result := TDocumentChargeSheetPerformingResult.Create(PerformedChargeSheets);
         
 end;
 
 function TStandardDocumentChargeSheetControlPerformingService
   .DoPerformingChargeSheet(
     ChargeSheet: IDocumentChargeSheet;
-    Document: IDocument;
     Employee: TEmployee;
     const PerformingDateTime: TDateTime
   ): IDocumentChargeSheets;
 var
+    DocumentKind: TDocumentKind;
+    FreeDocumentKind: IDomainObjectBase;
+
     ChargeSheetObj: TDocumentChargeSheet;
     ChargeSheetPerformingService: IDocumentChargeSheetPerformingService;
 begin
 
   ChargeSheetObj := TDocumentChargeSheet(ChargeSheet.Self);
 
+  DocumentKind :=
+    FDocumentKindFinder
+      .FindDocumentKindByIdentity(ChargeSheet.DocumentKindId);
+
+  if not Assigned(DocumentKind) then begin
+
+    Raise TDocumentChargeSheetControlPerformingServiceException.Create(
+      'Ќе найдена информаци€ о типе документа ' +
+      'при выполнении поручени€'
+    );
+
+  end;
+
+  FreeDocumentKind := DocumentKind;
+
+  { refactor: inject register interface instance }
+  
   ChargeSheetPerformingService :=
     TDocumentChargeSheetsServiceRegistry
       .Instance
         .GetDocumentChargeSheetPerformingService(
-          TDocument(Document.Self).ClassType,
+          DocumentKind.DocumentClass,
           ChargeSheetObj.ClassType
         );
 
@@ -197,20 +221,33 @@ begin
 
   Result :=
     ChargeSheetPerformingService
-      .PerformChargeSheet(ChargeSheet, Document, Employee, PerformingDateTime);
+      .PerformChargeSheet(ChargeSheet, Employee, PerformingDateTime);
 
 end;
 
-procedure TStandardDocumentChargeSheetControlPerformingService
+function TStandardDocumentChargeSheetControlPerformingService
   .PerformDocumentIfNeccessary(
-    Document: IDocument;
-    ChargeSheet: IDocumentChargeSheet
-  );
+    HeadChargeSheets: TDocumentChargeSheets
+  ): IDocument;
+var
+    DocumentId: Variant;
 begin
 
-  if ChargeSheet.IsHead then
-    FDocumentPerformingService.PerformDocument(TDocument(Document.Self), ChargeSheet);
-  
+  if not HeadChargeSheets.IsEmpty then begin
+
+    DocumentId := HeadChargeSheets.First.DocumentId;
+
+    HeadChargeSheets.EnsureBelongsToDocument(DocumentId);
+    
+    Result :=
+      FDocumentPerformingService.PerformDocument(
+        DocumentId, HeadChargeSheets
+      );
+
+  end
+
+  else Result := nil;
+
 end;
 
 end.

@@ -152,34 +152,35 @@ begin
 
   with FieldNames do begin
 
-    DocumentApprovingIdFieldName := 'approving_id';
-    DocumentApprovingPerformingDateTimeFieldName := 'approving_performing_date';
-    DocumentApprovingPerformingResultIdFieldName := 'approving_performing_result_id';
-    DocumentApprovingIsAccessibleFieldName := 'document_approving_accessible';
-    DocumentApprovingPerformingResultFieldName := 'approving_performing_result';
-    DocumentApprovingNoteFieldName := 'approving_note';
-    DocumentApprovingCycleIdFieldName := 'approving_cycle_id';
-    DocumentApprovingCycleNumberFieldName := 'approving_cycle_number';
-    DocumentApprovingIsCompletedFieldName := 'approving_is_completed';
-    DocumentApprovingIsLookedByApproverFieldName := 'approving_is_looked_by_approver';
+    IdFieldName := 'approving_id';
+    PerformingDateTimeFieldName := 'approving_performing_date';
+    PerformingResultIdFieldName := 'approving_performing_result_id';
+    IsAccessibleFieldName := 'document_approving_accessible';
+    PerformingResultFieldName := 'approving_performing_result';
+    PerformingResultServiceNameFieldName := 'approving_performing_result_service_name';
+    NoteFieldName := 'approving_note';
+    CycleIdFieldName := 'approving_cycle_id';
+    CycleNumberFieldName := 'approving_cycle_number';
+    IsCompletedFieldName := 'approving_is_completed';
+    IsLookedByApproverFieldName := 'approving_is_looked_by_approver';
 
-    DocumentApproverIdFieldName := 'approver_id';
-    DocumentApproverLeaderIdFieldName := 'approver_leader_id';
-    DocumentApproverIsForeignFieldName := 'approver_is_foreign';
-    DocumentApproverNameFieldName := 'approver_name';
-    DocumentApproverSpecialityFieldName := 'approver_speciality';
-    DocumentApproverDepartmentIdFieldName := 'approver_dep_id';
-    DocumentApproverDepartmentCodeFieldName := 'approver_dep_code';
-    DocumentApproverDepartmentNameFieldName := 'approver_dep_name';
+    ApproverIdFieldName := 'approver_id';
+    ApproverLeaderIdFieldName := 'approver_leader_id';
+    ApproverIsForeignFieldName := 'approver_is_foreign';
+    ApproverNameFieldName := 'approver_name';
+    ApproverSpecialityFieldName := 'approver_speciality';
+    ApproverDepartmentIdFieldName := 'approver_dep_id';
+    ApproverDepartmentCodeFieldName := 'approver_dep_code';
+    ApproverDepartmentNameFieldName := 'approver_dep_name';
 
-    DocumentActualApproverIdFieldName := 'fact_approver_id';
-    DocumentActualApproverLeaderIdFieldName := 'fact_approver_leader_id';
-    DocumentActualApproverIsForeignFieldName := 'fact_approver_is_foreign';
-    DocumentActualApproverNameFieldName := 'fact_approver_name';
-    DocumentActualApproverSpecialityFieldName := 'fact_approver_speciality';
-    DocumentActualApproverDepartmentIdFieldName := 'fact_approver_dep_id';
-    DocumentActualApproverDepartmentCodeFieldName := 'fact_approver_dep_code';
-    DocumentActualApproverDepartmentNameFieldName := 'fact_approver_dep_name';
+    ActualApproverIdFieldName := 'fact_approver_id';
+    ActualApproverLeaderIdFieldName := 'fact_approver_leader_id';
+    ActualApproverIsForeignFieldName := 'fact_approver_is_foreign';
+    ActualApproverNameFieldName := 'fact_approver_name';
+    ActualApproverSpecialityFieldName := 'fact_approver_speciality';
+    ActualApproverDepartmentIdFieldName := 'fact_approver_dep_id';
+    ActualApproverDepartmentCodeFieldName := 'fact_approver_dep_code';
+    ActualApproverDepartmentNameFieldName := 'fact_approver_dep_name';
 
   end;
 

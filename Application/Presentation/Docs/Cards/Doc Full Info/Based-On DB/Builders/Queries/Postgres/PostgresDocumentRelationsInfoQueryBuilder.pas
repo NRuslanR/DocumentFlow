@@ -36,7 +36,7 @@ begin
 
     Result :=
       'select distinct' + #13#10 +
-        'doc_links.id as ' + DocumentRelationIdFieldName + ',' + #13#10 +
+        'doc_links.id as ' + RelationIdFieldName + ',' + #13#10 +
         'doc_links.document_id as ' + TargetDocumentIdFieldName + ',' + #13#10 + 
         'coalesce(rel_docs.id, rel_servs.id, rel_po.id) as ' + RelatedDocumentIdFieldName + ',' + #13#10 +
         'coalesce(rel_docs.type_id, rel_servs.type_id, rel_po.type_id) as ' + RelatedDocumentKindIdFieldName + ',' + #13#10 +

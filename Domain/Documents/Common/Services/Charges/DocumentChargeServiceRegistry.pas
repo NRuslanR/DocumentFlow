@@ -5,8 +5,10 @@ interface
 uses
 
   DocumentChargeCreatingService,
+  DocumentChargeAccessRightsService,
   DocumentChargeKindsControlService,
   DocumentCharges,
+  DocumentChargeControlService,
   DomainException,
   TypeObjectRegistry,
   SysUtils;
@@ -17,8 +19,10 @@ type
 
     private
 
+      FChargeAccessRightsServices: TTypeObjectRegistry;
       FChargeCreatingServices: TTypeObjectRegistry;
       FChargeKindsControlServices: TTypeObjectRegistry;
+      FChargeControlServices: TTypeObjectRegistry;
 
       class var FInstance: TDocumentChargeServiceRegistry;
       class function GetInstance: TDocumentChargeServiceRegistry; static;
@@ -45,6 +49,31 @@ type
 
     public
 
+      procedure RegisterDocumentChargeAccessRightsService(
+        DocumentChargeType: TDocumentChargeClass;
+        DocumentChargeAccessRightsService: IDocumentChargeAccessRightsService
+      );
+
+      function GetDocumentChargeAccessRightsService(
+        DocumentChargeType: TDocumentChargeClass
+      ): IDocumentChargeAccessRightsService;
+
+      procedure RegisterStandardDocumentChargeAccessRightsService(
+        DocumentChargeType: TDocumentChargeClass
+      );
+
+    public
+
+      procedure RegisterDocumentChargeControlService(
+        DocumentChargeControlService: IDocumentChargeControlService
+      );
+
+      function GetDocumentChargeControlService: IDocumentChargeControlService;
+
+      procedure RegisterStandardDocumentChargeControlService;
+      
+    public
+
       procedure RegisterDocumentChargeKindsControlService(
         ChargeKindsControlService: IDocumentChargeKindsControlService
       );
@@ -60,6 +89,8 @@ implementation
 
 uses
 
+  StandardDocumentChargeControlService,
+  StandardDocumentChargeAccessRightsService,
   StandardDocumentChargeCreatingService;
   
 { TDocumentChargeServiceRegistry }
@@ -69,22 +100,49 @@ begin
 
   inherited;
 
+  FChargeAccessRightsServices := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   FChargeCreatingServices := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   FChargeKindsControlServices := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
+  FChargeControlServices := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   
+  FChargeAccessRightsServices.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FChargeCreatingServices.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FChargeKindsControlServices.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
+  FChargeControlServices.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   
 end;
 
 destructor TDocumentChargeServiceRegistry.Destroy;
 begin
 
+  FreeAndNil(FChargeAccessRightsServices);
   FreeAndNil(FChargeCreatingServices);
   FreeAndNil(FChargeKindsControlServices);
+  FreeAndNil(FChargeControlServices);
   
   inherited;
 
+end;
+
+function TDocumentChargeServiceRegistry.GetDocumentChargeAccessRightsService(
+  DocumentChargeType: TDocumentChargeClass): IDocumentChargeAccessRightsService;
+begin
+
+  Result :=
+    IDocumentChargeAccessRightsService(
+      FChargeAccessRightsServices.GetInterface(DocumentChargeType)
+    );
+
+end;
+
+function TDocumentChargeServiceRegistry.GetDocumentChargeControlService: IDocumentChargeControlService;
+begin
+
+  Result :=
+    IDocumentChargeControlService(
+      FChargeControlServices.GetInterface(TDocumentCharge)
+    );
+    
 end;
 
 function TDocumentChargeServiceRegistry.GetDocumentChargeCreatingService(
@@ -119,6 +177,30 @@ begin
 
 end;
 
+procedure TDocumentChargeServiceRegistry.RegisterDocumentChargeAccessRightsService(
+  DocumentChargeType: TDocumentChargeClass;
+  DocumentChargeAccessRightsService: IDocumentChargeAccessRightsService
+);
+begin
+
+  FChargeAccessRightsServices.RegisterInterface(
+    DocumentChargeType,
+    DocumentChargeAccessRightsService
+  );
+  
+end;
+
+procedure TDocumentChargeServiceRegistry.RegisterDocumentChargeControlService(
+  DocumentChargeControlService: IDocumentChargeControlService);
+begin
+
+  FChargeControlServices.RegisterInterface(
+    TDocumentCharge,
+    DocumentChargeControlService
+  );
+  
+end;
+
 procedure TDocumentChargeServiceRegistry.RegisterDocumentChargeCreatingService(
   DocumentChargeType: TDocumentChargeClass;
   DocumentChargeCreatingService: IDocumentChargeCreatingService);
@@ -138,6 +220,38 @@ begin
   FChargeKindsControlServices.RegisterInterface(
     TDocumentCharge,
     ChargeKindsControlService
+  );
+  
+end;
+
+procedure TDocumentChargeServiceRegistry.RegisterStandardDocumentChargeAccessRightsService(
+  DocumentChargeType: TDocumentChargeClass);
+begin
+
+  RegisterDocumentChargeAccessRightsService(
+    DocumentChargeType,
+    TStandardDocumentChargeAccessRightsService.Create
+  );
+  
+end;
+
+procedure TDocumentChargeServiceRegistry.RegisterStandardDocumentChargeControlService;
+begin
+
+  if GetDocumentChargeKindsControlService = nil then begin
+
+    raise TDomainException.Create(
+      'Программная ошибка. Во время регистрации службы ' +
+      'управления поручениями не найдена служба управления ' +
+      'типами поручений'
+    );
+    
+  end;
+
+  RegisterDocumentChargeControlService(
+    TStandardDocumentChargeControlService.Create(
+      GetDocumentChargeKindsControlService
+    )
   );
   
 end;

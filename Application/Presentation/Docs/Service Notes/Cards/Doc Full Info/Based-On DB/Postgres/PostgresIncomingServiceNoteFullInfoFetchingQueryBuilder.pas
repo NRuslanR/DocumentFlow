@@ -49,7 +49,7 @@ begin
                   'else signer.id  ' + #13#10 +
               'end  ' + #13#10 +
           'else signer.id  ' + #13#10 +
-      'end as ' + DocumentSignerIdFieldName + ',  ' + #13#10 +
+      'end as ' + SignerIdFieldName + ',  ' + #13#10 +
         '' + #13#10 +
       'case  ' + #13#10 +
           'when doc.is_self_registered  ' + #13#10 +
@@ -60,7 +60,7 @@ begin
                   'else signer.surname || '' '' || signer.name || '' '' || signer.patronymic  ' + #13#10 +
               'end ' + #13#10 +
           'else signer.surname || '' '' || signer.name || '' '' || signer.patronymic  ' + #13#10 +
-      'end as ' + DocumentSignerNameFieldName + ', ' + #13#10 +
+      'end as ' + SignerNameFieldName + ', ' + #13#10 +
       'case  ' + #13#10 +
           'when doc.is_self_registered  ' + #13#10 +
           'then' + #13#10 +
@@ -70,7 +70,7 @@ begin
                   'else signer.speciality  ' + #13#10 +
               'end ' + #13#10 +
           'else signer.speciality  ' + #13#10 +
-      'end as ' + DocumentSignerSpecialityFieldName + ', ' + #13#10 +
+      'end as ' + SignerSpecialityFieldName + ', ' + #13#10 +
         '' + #13#10 + 
       'case' + #13#10 +
           'when doc.is_self_registered  ' + #13#10 +
@@ -81,7 +81,7 @@ begin
                   'else signer_dep.id  ' + #13#10 +
               'end  ' + #13#10 +
           'else signer_dep.id  ' + #13#10 +
-      'end as ' + DocumentSignerDepartmentIdFieldName + ',' + #13#10 +
+      'end as ' + SignerDepartmentIdFieldName + ',' + #13#10 +
         '' + #13#10 +
       'case  ' + #13#10 +
           'when doc.is_self_registered   ' + #13#10 +
@@ -92,7 +92,7 @@ begin
                   'else signer_dep.code  ' + #13#10 +
               'end' + #13#10 +
           'else signer_dep.code  ' + #13#10 +
-      'end as ' + DocumentSignerDepartmentCodeFieldName + ',  ' + #13#10 +
+      'end as ' + SignerDepartmentCodeFieldName + ',  ' + #13#10 +
         '' + #13#10 +
       'case  ' + #13#10 +
           'when doc.is_self_registered   ' + #13#10 +
@@ -103,7 +103,7 @@ begin
                   'else signer_dep.short_name  ' + #13#10 +
               'end  ' + #13#10 +
           'else signer_dep.short_name  ' + #13#10 +
-      'end as ' + DocumentSignerDepartmentNameFieldName;
+      'end as ' + SignerDepartmentNameFieldName;
 
   end;
 

@@ -14,10 +14,9 @@ type
   TEmployeeDocumentCardFormViewModelMapperFactory =
     class (TDocumentCardFormViewModelMapperFactory)
 
-      public
+      protected
 
-        function CreateDocumentCardFormViewModelMapper:
-          TDocumentCardFormViewModelMapper; override;
+        function CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper; override;
 
     end;
 
@@ -25,11 +24,11 @@ implementation
 
 { TEmployeeDocumentCardFormViewModelMapperFactory }
 
-function TEmployeeDocumentCardFormViewModelMapperFactory.
-  CreateDocumentCardFormViewModelMapper: TDocumentCardFormViewModelMapper;
+function TEmployeeDocumentCardFormViewModelMapperFactory
+  .CreateDocumentCardFormViewModelMapperInstance: TDocumentCardFormViewModelMapper;
 begin
 
-  Result := TEmployeeDocumentCardFormViewModelMapper.Create(FDocumentDataSetHoldersFactory);
+  Result := TEmployeeDocumentCardFormViewModelMapper.Create;
   
 end;
 

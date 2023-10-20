@@ -419,13 +419,13 @@ begin
   Result := TDocumentApprovingCycleResultInfoDTO.Create;
 
   try
-
+                                   
     Result.Id := DocumentApprovingCycleResult.CycleNumber;
     Result.CycleNumber := DocumentApprovingCycleResult.CycleNumber;
 
     Result.DocumentApprovingsInfoDTO :=
-      MapDocumentApprovingsInfoDTOFrom(
-        Document, AccessingEmployee
+      FDocumentApprovingsInfoDTOMapper.MapDocumentApprovingsInfoDTOFrom(
+        DocumentApprovingCycleResult.DocumentApprovings
       );
 
   except

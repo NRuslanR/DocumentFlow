@@ -40,14 +40,17 @@ type
     private
 
       FreeAuthor: IDomainObjectBase;
-      
-      procedure CustomizeInitialState;
 
+    protected
+
+      procedure CustomizeInitialState; virtual;
+      
     protected
 
       FKindIdentity: Variant;
       FNumber: String;
       FName: String;
+      FFullName: String;
       FCreationDate: TDateTime;
       FDocumentDate: Variant;
       FContent: String;
@@ -83,6 +86,7 @@ type
       function GetCreationDate: TDateTime; virtual;
       function GetDocumentDate: Variant; virtual;
       function GetName: String; virtual;
+      function GetFullName: String; virtual;
       function GetNote: String; virtual;
       function GetProductCode: String; virtual;
       function GetNumber: String; virtual;
@@ -116,6 +120,7 @@ type
       procedure SetCreationDate(const Value: TDateTime); virtual;
       procedure SetDocumentDate(const Value: Variant); virtual;
       procedure SetName(const Value: String); virtual;
+      procedure SetFullName(const Value: String); virtual;
       procedure SetNote(const Value: String); virtual;
       procedure SetProductCode(const Value: String); virtual;
       procedure SetNumber(const Value: String); virtual;
@@ -140,7 +145,7 @@ type
       procedure RaiseExceptionIfEditingEmployeeOrWorkingRulesNotAssigned;
 
       procedure EnsureThatEmployeeMayMakeChanges(Employee: TEmployee);
-      procedure EnsureThatEditingEmployeeMayAddChargeFor(Charge: IDocumentCharge);
+      procedure EnsureThatEmployeeMayAddChargeFor(Charge: IDocumentCharge; Employee: TEmployee);
       procedure EnsureThatEditingEmployeeMayChangeCharge(Charge: IDocumentCharge);
       procedure EnsureThatEditingEmployeeMayChangeChargeList;
       procedure EnsureThatEditingEmployeeMayRemoveChargeFor(Charge: IDocumentCharge);
@@ -311,6 +316,7 @@ type
     public
 
       procedure AddCharge(Charge: IDocumentCharge);
+      procedure AddChargeBehalfOf(Charge: IDocumentCharge; Employee: TEmployee);
       procedure AddCharges(Charges: IDocumentCharges);
       procedure ChangeCharge(Charge: IDocumentCharge);
       procedure ChangeCharges(Charges: IDocumentCharges);
@@ -402,9 +408,12 @@ type
 
       property Specifications: IDocumentSpecifications
       read FSpecifications write FSpecifications;
-      
+
     public
 
+      property FullName: String
+      read GetFullName write SetFullName;
+      
       property WorkCycle: TDocumentWorkCycle
       read GetWorkCycle write SetWorkCycle;
 
@@ -507,7 +516,18 @@ end;
 procedure TDocument.AddCharge(Charge: IDocumentCharge);
 begin
 
-  EnsureThatEditingEmployeeMayAddChargeFor(Charge);
+  RaiseExceptionIfWorkingRulesNotAssigned;
+  //RaiseExceptionIfEditingEmployeeOrWorkingRulesNotAssigned;
+
+  AddChargeBehalfOf(Charge, EditingEmployee);
+
+end;
+
+procedure TDocument.AddChargeBehalfOf(Charge: IDocumentCharge;
+  Employee: TEmployee);
+begin
+
+  EnsureThatEmployeeMayAddChargeFor(Charge, Employee);
 
   FCharges.AddCharge(Charge);
 
@@ -713,17 +733,18 @@ begin
   
 end;
 
-procedure TDocument.EnsureThatEditingEmployeeMayAddChargeFor(
-  Charge: IDocumentCharge
+procedure TDocument.EnsureThatEmployeeMayAddChargeFor(
+  Charge: IDocumentCharge;
+  Employee: TEmployee
 );
 begin
 
   if not InvariantsComplianceRequested then Exit;
 
-  RaiseExceptionIfEditingEmployeeOrWorkingRulesNotAssigned;
-
+  RaiseExceptionIfWorkingRulesNotAssigned;
+  
   FWorkingRules.ChargeListChangingRule.EnsureThatEmployeeMayAssignDocumentCharge(
-    EditingEmployee, Self, Charge
+    Employee, Self, Charge
   );
 
 end;
@@ -1225,6 +1246,13 @@ begin
   
 end;
 
+function TDocument.GetFullName: String;
+begin
+
+  Result := FFullName;
+  
+end;
+
 function TDocument.GetIsApproved: Boolean;
 begin
 
@@ -1263,12 +1291,8 @@ end;
 function TDocument.GetIsPerforming: Boolean;
 begin
 
-  Result :=
-    FWorkCycle.IsStageOfDocumentPerformingCurrent
-    or
-    Specifications
-      .DocumentPerformingSpecification.IsDocumentSentToPerforming(Self)
-
+  Result := FWorkCycle.IsStageOfDocumentPerformingCurrent;
+  
 end;
 
 function TDocument.GetIsRejectedFromSigning: Boolean;
@@ -1369,7 +1393,7 @@ end;
 constructor TDocument.Create(Identity: Variant);
 begin
 
-  inherited;
+  inherited Create(Identity);
 
   CustomizeInitialState;
   
@@ -1479,12 +1503,15 @@ end;
 procedure TDocument.RaiseExceptionIfEditingEmployeeNotAssigned;
 begin
 
-  if not Assigned(FCurrentEditingEmployee) then
-    raise TDocumentException.Create(
+  if not Assigned(FCurrentEditingEmployee) then begin
+
+    Raise TDocumentException.Create(
             'Для текущего документа ' +
             'не найден редактирующий сотрудник'
           );
-  
+
+  end;
+
 end;
 
 procedure TDocument.RaiseExceptionIfEditingEmployeeOrWorkingRulesNotAssigned;
@@ -1498,12 +1525,15 @@ end;
 procedure TDocument.RaiseExceptionIfWorkingRulesNotAssigned;
 begin
 
-  if not Assigned(FWorkingRules) then
-    raise TDocumentException.Create(
+  if not Assigned(FWorkingRules) then begin
+
+    Raise TDocumentException.Create(
             'Для текущего документа ' +
             'не были назначены рабочие правила'
           );
-          
+
+  end;
+
 end;
 
 procedure TDocument.RejectApprovingBy(
@@ -1822,6 +1852,18 @@ begin
 
   FWorkingRules := Value;
   FFreeWorkingRules := FWorkingRules;
+  
+end;
+
+procedure TDocument.SetFullName(const Value: String);
+begin
+
+  RaiseExceptionIfInvariantsComplianceRequested(
+    'Программная ошибка. Полное наименование документа не может ' +
+    'изменяться непосредственно'
+  );
+
+  FFullName := Value;
   
 end;
 

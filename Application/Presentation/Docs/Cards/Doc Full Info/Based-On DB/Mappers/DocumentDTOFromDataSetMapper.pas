@@ -71,6 +71,7 @@ begin
       Number := NumberFieldValue;
       SeparatorOfNumberParts := '/';
       Name := NameFieldValue;
+      FullName := FullNameFieldValue;
       ProductCode := ProductCodeFieldValue;
       Content := ContentFieldValue;
       CreationDate := CreationDateFieldValue;

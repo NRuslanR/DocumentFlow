@@ -201,7 +201,8 @@ function TStandardDocumentChargeChangingRule.IsDocumentAtAllowedWorkCycleStage(
   Document: IDocument): Boolean;
 begin
 
-  Result := not (Document.IsApproving or Document.IsPerforming or Document.IsPerformed);
+  Result :=
+    not (Document.IsApproving or Document.IsPerforming or Document.IsPerformed);
 
 end;
 

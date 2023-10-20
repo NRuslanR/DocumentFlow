@@ -9,6 +9,7 @@ uses
   PersonnelOrderSingleEmployeeListRepository,
   PersonnelOrderSubKindEmployeeListRepository,
   PersonnelOrderSubKindEmployeeGroupRepository,
+  PersonnelOrderSubKindRepository,
   SysUtils;
 
 type
@@ -19,6 +20,7 @@ type
     function CreatePersonnelOrderSignerListRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSingleEmployeeListRepository;
     function CreatePersonnelOrderApproverListRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSubKindEmployeeListRepository;
     function CreatePersonnelOrderControlGroupRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSubKindEmployeeGroupRepository;
+    function CreatePersonnelOrderSubKindRepository(QueryExecutor: IQueryExecutor): IPersonnelOrderSubKindRepository;
 
   end;
   

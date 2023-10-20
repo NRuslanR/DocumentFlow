@@ -8,8 +8,9 @@ uses
   DocumentChargeSheetAccessRights,
   DomainException,
   DocumentChargeSheet,
-  IDocumentUnit,
+  Document,
   IDocumentChargeSheetUnit,
+  DocumentChargeSheetIssuingAccessRightsService,
   Employee,
   SysUtils,
   Classes;
@@ -23,8 +24,7 @@ type
 
         function EnsureEmployeeHasDocumentChargeSheetAccessRights(
           Employee: TEmployee;
-          ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument
+          ChargeSheet: IDocumentChargeSheet
         ): TDocumentChargeSheetAccessRights;
 
     end;
@@ -38,8 +38,7 @@ uses DocumentChargeSheetWorkingRules;
 function TStandardDocumentChargeSheetAccessRightsService.
   EnsureEmployeeHasDocumentChargeSheetAccessRights(
     Employee: TEmployee;
-    ChargeSheet: IDocumentChargeSheet;
-    Document: IDocument
+    ChargeSheet: IDocumentChargeSheet
   ): TDocumentChargeSheetAccessRights;
 var
     ChargeSheetObj: TDocumentChargeSheet;
@@ -48,8 +47,6 @@ begin
 
   ChargeSheetObj := TDocumentChargeSheet(ChargeSheet.Self);
 
-  ChargeSheetObj.EnsureBelongsToDocument(Document.Identity);
-
   Result := TDocumentChargeSheetAccessRights.Create;
 
   try
@@ -57,18 +54,24 @@ begin
     with Result, ChargeSheetObj.WorkingRules do begin
 
       ViewingAllowed :=
-        DocumentChargeSheetViewingRule.IsSatisfiedBy(Employee, ChargeSheetObj, Document);
+        DocumentChargeSheetViewingRule.IsSatisfiedBy(Employee, ChargeSheetObj);
 
       RemovingAllowed :=
-        DocumentChargeSheetRemovingRule.IsSatisfiedBy(Employee, ChargeSheetObj, Document);
+        DocumentChargeSheetRemovingRule.IsSatisfiedBy(Employee, ChargeSheetObj);
 
       PerformingAllowed :=
-        DocumentChargeSheetPerformingRule.IsSatisfiedBy(Employee, ChargeSheetObj, Document);
+        DocumentChargeSheetPerformingRule.IsSatisfiedBy(Employee, ChargeSheetObj);
 
+      SubordinateChargeSheetsIssuingAllowed :=
+        DocumentChargeSheetIssuingRule
+          .CanEmployeeCanIssueSubordinateChargeSheet(
+            Employee, ChargeSheetObj
+          );
+      
       AllowedChargeSheetFieldNames :=
         DocumentChargeSheetChangingRule
           .GetAlloweableDocumentChargeSheetFieldNames(
-            Employee, ChargeSheetObj, Document
+            Employee, ChargeSheetObj
           );
 
       if not Assigned(AllowedChargeSheetFieldNames) then Exit;
@@ -89,14 +92,15 @@ begin
 
       if AllAccessRightsAbsent then begin
 
-        TDocumentChargeSheetAccessRightsServiceException.CreateFmt(
-          'У сотрудника "%s" отсутствуют права доступа к ' +
-          'поручению для сотрудника "%s"',
-          [
-            Employee.FullName,
-            ChargeSheetObj.Performer.FullName
-          ]
-        );
+        Raise
+          TDocumentChargeSheetAccessRightsServiceException.CreateFmt(
+            'У сотрудника "%s" отсутствуют права доступа к ' +
+            'поручению сотрудника "%s"',
+            [
+              Employee.FullName,
+              ChargeSheetObj.Performer.FullName
+            ]
+          );
 
       end;
 

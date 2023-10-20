@@ -9,6 +9,8 @@ uses
   DocumentChargeSheetChangingRule,
   DocumentChargeSheetRemovingRule,
   DocumentChargeSheetViewingRule,
+  DocumentChargeSheetPerformingRule,
+  DocumentChargeSheetIssuingRule,
   DocumentChargeSheetOverlappedPerformingRule,
   SysUtils,
   Classes;
@@ -26,11 +28,14 @@ type
     function GetDocumentChargeSheetRemovingRule: IDocumentChargeSheetRemovingRule;
     procedure SetDocumentChargeSheetRemovingRule(Value: IDocumentChargeSheetRemovingRule);
     
-    function GetDocumentChargeSheetPerformingRule: IDocumentChargeSheetWorkingRule;
-    procedure SetDocumentChargeSheetPerformingRule(Value: IDocumentChargeSheetWorkingRule);
+    function GetDocumentChargeSheetPerformingRule: IDocumentChargeSheetPerformingRule;
+    procedure SetDocumentChargeSheetPerformingRule(Value: IDocumentChargeSheetPerformingRule);
 
     function GetDocumentChargeSheetOverlappedPerformingRule: IDocumentChargeSheetOverlappedPerformingRule;
     procedure SetDocumentChargeSheetOverlappedPerformingRule(Value: IDocumentChargeSheetOverlappedPerformingRule);
+
+    function GetDocumentChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule;
+    procedure SetDocumentChargeSheetIssuingRule(Value: IDocumentChargeSheetIssuingRule);
     
     property DocumentChargeSheetViewingRule: IDocumentChargeSheetViewingRule
     read GetDocumentChargeSheetViewingRule write SetDocumentChargeSheetViewingRule;
@@ -41,12 +46,15 @@ type
     property DocumentChargeSheetRemovingRule: IDocumentChargeSheetRemovingRule
     read GetDocumentChargeSheetRemovingRule write SetDocumentChargeSheetRemovingRule;
     
-    property DocumentChargeSheetPerformingRule: IDocumentChargeSheetWorkingRule
+    property DocumentChargeSheetPerformingRule: IDocumentChargeSheetPerformingRule
     read GetDocumentChargeSheetPerformingRule write SetDocumentChargeSheetPerformingRule;
 
     property DocumentChargeSheetOverlappedPerformingRule: IDocumentChargeSheetOverlappedPerformingRule
     read GetDocumentChargeSheetOverlappedPerformingRule write SetDocumentChargeSheetOverlappedPerformingRule;
 
+    property DocumentChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule
+    read GetDocumentChargeSheetIssuingRule write SetDocumentChargeSheetIssuingRule;
+    
   end;
 
   TDocumentChargeSheetWorkingRules =
@@ -64,10 +72,13 @@ type
           IDocumentChargeSheetRemovingRule;
 
         FDocumentChargeSheetPerformingRule:
-          IDocumentChargeSheetWorkingRule;
+          IDocumentChargeSheetPerformingRule;
 
         FDocumentChargeSheetOverlappedPerformingRule:
           IDocumentChargeSheetOverlappedPerformingRule;
+
+        FDocumentChargeSheetIssuingRule:
+          IDocumentChargeSheetIssuingRule;
 
       public
 
@@ -80,11 +91,14 @@ type
         function GetDocumentChargeSheetRemovingRule: IDocumentChargeSheetRemovingRule;
         procedure SetDocumentChargeSheetRemovingRule(Value: IDocumentChargeSheetRemovingRule);
     
-        function GetDocumentChargeSheetPerformingRule: IDocumentChargeSheetWorkingRule;
-        procedure SetDocumentChargeSheetPerformingRule(Value: IDocumentChargeSheetWorkingRule);
+        function GetDocumentChargeSheetPerformingRule: IDocumentChargeSheetPerformingRule;
+        procedure SetDocumentChargeSheetPerformingRule(Value: IDocumentChargeSheetPerformingRule);
 
         function GetDocumentChargeSheetOverlappedPerformingRule: IDocumentChargeSheetOverlappedPerformingRule;
         procedure SetDocumentChargeSheetOverlappedPerformingRule(Value: IDocumentChargeSheetOverlappedPerformingRule);
+
+        function GetDocumentChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule;
+        procedure SetDocumentChargeSheetIssuingRule(Value: IDocumentChargeSheetIssuingRule);
 
       public
 
@@ -101,10 +115,13 @@ type
             IDocumentChargeSheetRemovingRule;
 
           DocumentChargeSheetPerformingRule:
-            IDocumentChargeSheetWorkingRule;
+            IDocumentChargeSheetPerformingRule;
 
           DocumentChargeSheetOverlappedPerformingRule:
-            IDocumentChargeSheetOverlappedPerformingRule
+            IDocumentChargeSheetOverlappedPerformingRule;
+
+          DocumentChargeSheetIssuingRule:
+            IDocumentChargeSheetIssuingRule
 
         ); overload;
 
@@ -122,13 +139,17 @@ type
         read GetDocumentChargeSheetRemovingRule
         write SetDocumentChargeSheetRemovingRule;
         
-        property DocumentChargeSheetPerformingRule: IDocumentChargeSheetWorkingRule
+        property DocumentChargeSheetPerformingRule: IDocumentChargeSheetPerformingRule
         read GetDocumentChargeSheetPerformingRule
         write SetDocumentChargeSheetPerformingRule;
 
         property DocumentChargeSheetOverlappedPerformingRule: IDocumentChargeSheetOverlappedPerformingRule
         read GetDocumentChargeSheetOverlappedPerformingRule
         write SetDocumentChargeSheetOverlappedPerformingRule;
+
+        property DocumentChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule
+        read GetDocumentChargeSheetIssuingRule
+        write SetDocumentChargeSheetIssuingRule;
 
     end;
 
@@ -148,11 +169,14 @@ constructor TDocumentChargeSheetWorkingRules.Create(
     IDocumentChargeSheetRemovingRule;
 
   DocumentChargeSheetPerformingRule:
-    IDocumentChargeSheetWorkingRule;
+    IDocumentChargeSheetPerformingRule;
 
   DocumentChargeSheetOverlappedPerformingRule:
-    IDocumentChargeSheetOverlappedPerformingRule
-    
+    IDocumentChargeSheetOverlappedPerformingRule;
+
+  DocumentChargeSheetIssuingRule:
+    IDocumentChargeSheetIssuingRule
+
 );
 begin
 
@@ -165,6 +189,8 @@ begin
 
   FDocumentChargeSheetOverlappedPerformingRule :=
     DocumentChargeSheetOverlappedPerformingRule;
+
+  FDocumentChargeSheetIssuingRule := DocumentChargeSheetIssuingRule;
     
 end;
 
@@ -173,6 +199,13 @@ function TDocumentChargeSheetWorkingRules.
 begin
 
   Result := FDocumentChargeSheetChangingRule;
+
+end;
+
+function TDocumentChargeSheetWorkingRules.GetDocumentChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule;
+begin
+
+  Result := FDocumentChargeSheetIssuingRule;
 
 end;
 
@@ -185,7 +218,7 @@ begin
 end;
 
 function TDocumentChargeSheetWorkingRules.
-  GetDocumentChargeSheetPerformingRule: IDocumentChargeSheetWorkingRule;
+  GetDocumentChargeSheetPerformingRule: IDocumentChargeSheetPerformingRule;
 begin
 
   Result := FDocumentChargeSheetPerformingRule;
@@ -222,6 +255,14 @@ begin
   
 end;
 
+procedure TDocumentChargeSheetWorkingRules.SetDocumentChargeSheetIssuingRule(
+  Value: IDocumentChargeSheetIssuingRule);
+begin
+
+  FDocumentChargeSheetIssuingRule := Value;
+  
+end;
+
 procedure TDocumentChargeSheetWorkingRules.SetDocumentChargeSheetOverlappedPerformingRule(
   Value: IDocumentChargeSheetOverlappedPerformingRule);
 begin
@@ -231,7 +272,7 @@ begin
 end;
 
 procedure TDocumentChargeSheetWorkingRules.SetDocumentChargeSheetPerformingRule(
-  Value: IDocumentChargeSheetWorkingRule);
+  Value: IDocumentChargeSheetPerformingRule);
 begin
 
   FDocumentChargeSheetPerformingRule := Value;

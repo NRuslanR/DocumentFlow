@@ -12,6 +12,7 @@ const
 
   DOCUMENT_TABLE_ID_FIELD = 'id';
   DOCUMENT_TABLE_NAME_FIELD = 'name';
+  DOCUMENT_TABLE_FULL_NAME_FIELD = 'full_name';
   DOCUMENT_TABLE_TYPE_ID_FIELD = 'type_id';
   DOCUMENT_TABLE_DOCUMENT_NUMBER_FIELD = 'document_number';
   DOCUMENT_TABLE_CREATION_DATE_FIELD = 'creation_date';
@@ -32,6 +33,7 @@ type
     public
 
       NameColumnName: String;
+      FullNameColumnName: String;
       TypeIdColumnName: String;
       NumberColumnName: String;
       CreationDateColumnName: String;

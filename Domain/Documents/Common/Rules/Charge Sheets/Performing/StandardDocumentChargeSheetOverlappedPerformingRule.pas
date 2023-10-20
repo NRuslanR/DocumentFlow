@@ -44,7 +44,7 @@ implementation
 uses
 
   DocumentChargeSheet,
-  DocumentAcquaitanceSheet;
+  DocumentPerformingSheet;
 
 { TStandardDocumentChargeSheetOverlappedPerformingRule }
 
@@ -61,88 +61,6 @@ begin
   FEmployeeIsSameAsOrDeputySpecification :=
     EmployeeIsSameAsOrDeputySpecification;
     
-end;
-
-procedure TStandardDocumentChargeSheetOverlappedPerformingRule.
-  EnsureThatChargeSheetPerformingMayBeOverlappedByOtherChargeSheet(
-    TargetChargeSheet, OverlappingChargeSheet: IDocumentChargeSheet
-  );
-var
-    TargetChargeSheetObj,
-    OverlappingChargeSheetObj: TDocumentChargeSheet;
-begin
-
-  TargetChargeSheetObj := TargetChargeSheet.Self as TDocumentChargeSheet;
-  OverlappingChargeSheetObj := OverlappingChargeSheet.Self as TDocumentChargeSheet;
-
-  if
-    (TargetChargeSheetObj is TDocumentAcquaitanceSheet) or
-    (OverlappingChargeSheetObj is TDocumentAcquaitanceSheet)
-  then begin
-  
-    Raise TNotValidChargeSheetTypeForOverlappedPerformingException.Create(
-      '¬ыполнение поручений типа "ќзнакомление" не может перекрыватьс€'
-    );
-
-  end;
-
-  if
-    TargetChargeSheet.TopLevelChargeSheetId <> OverlappingChargeSheet.Identity
-  then begin
-
-    Raise TDocumentChargeSheetOverlappedPerformingRuleException.CreateFmt(
-      'ѕоручение сотрудника "%s" не €вл€етс€ вышесто€щим дл€ ' +
-      'поручени€ сотрудника "%s"',
-      [
-        OverlappingChargeSheet.Performer.FullName,
-        TargetChargeSheet.Performer.FullName
-      ]
-    );
-
-  end;
-
-  {
-  if
-    not
-    FEmployeeIsSameAsOrDeputySpecification
-      .IsEmployeeSameAsOrDeputyForOtherOrViceVersa(
-        OverlappingChargeSheetObj.Performer,
-        TargetChargeSheetObj.Issuer
-       )
-  then begin
-
-    Raise TDocumentChargeSheetOverlappedPerformingRuleException.CreateFmt(
-      '—отрудник "%s" или его ' +
-      'исполн€ющий об€занности ' +
-      'не €вл€етс€ отправителем ' +
-      'поручени€ дл€ сотрудника "%s", ' +
-      'поэтому исполнение данного  ' +
-      'поручени€ не может быть перекрыто',
-      [
-        OverlappingChargeSheetObj.Performer.FullName,
-        TargetChargeSheetObj.Performer.FullName
-      ]
-    );
-
-  end;      }
-
-  if not OverlappingChargeSheetObj.IsPerformed then begin
-
-    Raise TDocumentChargeSheetOverlappedPerformingRuleException.CreateFmt(
-      'ѕоручение, назначенное ' +
-      'сотруднику "%s" не может быть ' +
-      'исполнено, как перекрытое ' +
-      'поручением, выданным сотруднику ' +
-      '"%s", поскольку последнее ещЄ не ' +
-      'исполнено.',
-      [
-        TargetChargeSheetObj.Performer.FullName,
-        OverlappingChargeSheetObj.Performer.FullName
-      ]
-    );
-
-  end;
-
 end;
 
 function TStandardDocumentChargeSheetOverlappedPerformingRule.
@@ -164,8 +82,67 @@ begin
     on e: TDocumentChargeSheetOverlappedPerformingRuleException do begin
 
       Result := False;
-      
+
     end;
+
+  end;
+
+end;
+
+procedure TStandardDocumentChargeSheetOverlappedPerformingRule.
+  EnsureThatChargeSheetPerformingMayBeOverlappedByOtherChargeSheet(
+    TargetChargeSheet, OverlappingChargeSheet: IDocumentChargeSheet
+  );
+var
+    TargetChargeSheetObj,
+    OverlappingChargeSheetObj: TDocumentChargeSheet;
+begin
+
+  TargetChargeSheetObj := TargetChargeSheet.Self as TDocumentChargeSheet;
+  OverlappingChargeSheetObj := OverlappingChargeSheet.Self as TDocumentChargeSheet;
+
+  if
+    not (
+      (TargetChargeSheetObj is TDocumentPerformingSheet) and
+      (OverlappingChargeSheetObj is TDocumentPerformingSheet)
+    )
+  then begin
+  
+    Raise TNotValidChargeSheetTypeForOverlappedPerformingException.Create(
+      'ѕоручение, не имеющее тип "»сполнение", не может перекрыватьс€'
+    );
+
+  end;
+
+  if
+    TargetChargeSheet.TopLevelChargeSheetId <> OverlappingChargeSheet.Identity
+  then begin
+
+    Raise TDocumentChargeSheetOverlappedPerformingRuleException.CreateFmt(
+      'ѕоручение сотрудника "%s" не €вл€етс€ вышесто€щим дл€ ' +
+      'поручени€ сотрудника "%s"',
+      [
+        OverlappingChargeSheet.Performer.FullName,
+        TargetChargeSheet.Performer.FullName
+      ]
+    );
+
+  end;
+
+  if not OverlappingChargeSheetObj.IsPerformed then begin
+
+    Raise TDocumentChargeSheetOverlappedPerformingRuleException.CreateFmt(
+      'ѕоручение, назначенное ' +
+      'сотруднику "%s" не может быть ' +
+      'исполнено, как перекрытое ' +
+      'поручением, выданным сотруднику ' +
+      '"%s", поскольку последнее ещЄ не ' +
+      'исполнено.',
+      [
+        TargetChargeSheetObj.Performer.FullName,
+        OverlappingChargeSheetObj.Performer.FullName
+      ]
+    );
 
   end;
 

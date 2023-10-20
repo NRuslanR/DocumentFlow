@@ -1,11 +1,6 @@
 program Persistance;
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   Forms,
   BasedOnRepositoryApprovingCycleResultFinder in 'Domain\Services\Documents\Approving\BasedOnRepositoryApprovingCycleResultFinder.pas',
   BasedOnRepositoryDocumentChargeSheetFinder in 'Domain\Services\Documents\Charge Sheets\BasedOnRepositoryDocumentChargeSheetFinder.pas',
@@ -160,7 +155,9 @@ uses
   BasedOnRepositoryDocumentChargeKindsControlService in 'Domain\Services\Documents\Charges\BasedOnRepositoryDocumentChargeKindsControlService.pas',
   DocumentChargeRepository in 'Repositories\Documents\Common\Interfaces\DocumentChargeRepository.pas',
   BasedOnRepositoryDocumentKindFinder in 'Domain\Services\Documents\Search\BasedOnRepositoryDocumentKindFinder.pas',
-  DocumentTypeDBResolver in 'Repositories\Documents\Common\Resolvers\DocumentTypeDBResolver.pas';
+  DocumentTypeDBResolver in 'Repositories\Documents\Common\Resolvers\DocumentTypeDBResolver.pas',
+  PersonnelOrderSubKindPostgresRepository in 'Repositories\Documents\Personnel Orders\SQL\Postgres\PersonnelOrderSubKindPostgresRepository.pas',
+  PersonnelOrderSubKindRepository in 'Repositories\Documents\Personnel Orders\Interfaces\PersonnelOrderSubKindRepository.pas';
 
 {$R *.res}
 

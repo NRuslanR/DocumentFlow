@@ -123,7 +123,7 @@
 			<Directories Name="UnitOutputDir"></Directories>
 			<Directories Name="PackageDLLOutputDir"></Directories>
 			<Directories Name="PackageDCPOutputDir"></Directories>
-			<Directories Name="SearchPath">D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain;D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces</Directories>
+			<Directories Name="SearchPath"></Directories>
 			<Directories Name="Packages"></Directories>
 			<Directories Name="Conditionals"></Directories>
 			<Directories Name="DebugSourceDirs"></Directories>
@@ -180,5 +180,5 @@
       <Excluded_Packages Name="C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Bpl\dclfsIBX10.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
     </Excluded_Packages>
   </Delphi.Personality>
-	<ModelSupport>True</ModelSupport>
+	<ModelSupport>False</ModelSupport>
 </BorlandProject>

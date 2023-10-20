@@ -30,6 +30,11 @@ type
       const PerformerId: Variant
     ): TDocumentChargeSheets;
 
+    function AreDocumentChargeSheetsExistsForPerformer(
+      const DocumentId: Variant;
+      const PerformerId: Variant
+    ): Boolean;
+
     function FindOwnAndSubordinateDocumentChargeSheetsForPerformer(
       const DocumentId: Variant;
       const PerformerId: Variant

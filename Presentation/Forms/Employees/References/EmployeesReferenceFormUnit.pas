@@ -34,8 +34,9 @@ type
       function GetPersonnelNumberFieldValue: String;
       function GetSpecialityFieldValue: String;
       function GetSurnameFieldValue: String;
-      function GetTelephoneNumber: String;
-
+      function GetTelephoneNumberFieldValue: String;
+      function GetIsForeignFieldValue: Boolean;
+      
     public
 
       constructor Create(FieldDefs: TEmployeeSetFieldDefs);
@@ -48,7 +49,8 @@ type
       property Speciality: String read GetSpecialityFieldValue;
       property DepartmentCode: String read GetDepartmentCodeFieldValue;
       property DepartmentShortName: String read GetDepartmentShortNameFieldValue;
-      property TelephoneNumber: String read GetTelephoneNumber;
+      property TelephoneNumber: String read GetTelephoneNumberFieldValue;
+      property IsForeign: Boolean read GetIsForeignFieldValue;
       
   end;
 
@@ -123,6 +125,8 @@ type
     FOnEmployeeRecordsRefreshRequestedEventHandler:
       TOnEmployeeRecordsRefreshRequestedEventHandler;
 
+    function GetChoosenEmployeeRecords: TEmployeesReferenceFormRecords;
+
   protected
 
     FDataSetHolder: TEmployeeSetHolder;
@@ -159,6 +163,9 @@ type
 
     property SelectedEmployeesRecords: TEmployeesReferenceFormRecords
     read GetSelectedEmployeesRecords;
+
+    property ChoosenEmployeeRecords: TEmployeesReferenceFormRecords
+    read GetChoosenEmployeeRecords;
 
     function CurrentSelectedEmployeesRecords: TEmployeesReferenceFormRecords;
 
@@ -207,6 +214,13 @@ begin
     Result := TEmployeesReferenceFormRecords.Create(DataSetHolder.FieldDefs)
 
   else Result := nil;
+  
+end;
+
+function TEmployeesReferenceForm.GetChoosenEmployeeRecords: TEmployeesReferenceFormRecords;
+begin
+
+  Result := TEmployeesReferenceFormRecords(CurrentChoosenRecords);
   
 end;
 
@@ -333,6 +347,13 @@ begin
   
 end;
 
+function TEmployeesReferenceFormRecord.GetIsForeignFieldValue: Boolean;
+begin
+
+  Result := Self[FFieldDefs.IsForeignFieldName];
+  
+end;
+
 function TEmployeesReferenceFormRecord.GetNameFieldValue: String;
 begin
 
@@ -368,7 +389,7 @@ begin
 
 end;
 
-function TEmployeesReferenceFormRecord.GetTelephoneNumber: String;
+function TEmployeesReferenceFormRecord.GetTelephoneNumberFieldValue: String;
 begin
 
   Result := Self[FFieldDefs.TelephoneNumberFieldName];
@@ -418,7 +439,7 @@ function TEmployeesReferenceFormRecords.
   ): TEmployeesReferenceFormRecord;
 begin
 
-  Result := GetDBDataTableRecordByIndex(Index) as TEmployeesReferenceFormRecord;
+  Result := TEmployeesReferenceFormRecord(GetDBDataTableRecordByIndex(Index));
 
 end;
 

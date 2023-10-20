@@ -14,6 +14,7 @@ uses
   Employee,
   TimeFrame,
   Disposable,
+  VariantListUnit,
   SysUtils,
   Classes,
   DateUtils;
@@ -249,6 +250,12 @@ type
       );
       
       function FindByIdentity(const Identity: Variant): IDocumentCharge;
+      function FindByIdentities(const Identities: TVariantList): IDocumentCharges;
+
+      function FindByIdentitiesOrRaise(
+        const Identities: TVariantList;
+        const NotFoundMessage: String = ''
+      ): IDocumentCharges;
 
       procedure RemoveChargeFor(Employee: TEmployee);
       procedure RemoveAllCharges;
@@ -262,6 +269,8 @@ type
       function GetEnumerator: TDocumentChargesEnumerator;
 
       function FindDocumentChargeByPerformerOrActuallyPerformedEmployee(Employee: TEmployee): IDocumentCharge;
+
+      function Count: Integer;
       
       property Items[Index: Integer]: IDocumentCharge
       read GetDocumentChargeByIndex
@@ -276,6 +285,7 @@ implementation
 uses
 
   Variants,
+  StrUtils,
   VariantFunctions,
   DomainObjectBaseUnit,
   DocumentChargeSheet,
@@ -598,11 +608,6 @@ procedure TDocumentCharge.MarkAsPerformedBy(
 );
 begin
 
-  RaiseExceptionIfInvariantsComplianceRequested(
-    'Программная ошибка. Нельзя вызывать ' +
-    'метод помечения поручения в качестве исполненного'
-  );
-  
   RaiseExceptionIfAlreadyPerformed;
 
   AssignActuallyPerformedEmployee(ActuallyPerformedEmployee);
@@ -657,7 +662,8 @@ begin
 
   if DocumentId = Value then Exit;
 
-  RaiseExceptionIfInvariantsComplianceRequested(
+  RaiseConditionalExceptionIfInvariantsComplianceRequested(
+    not VarIsNull(DocumentId),
     TDocumentChargeException,
     'Изменять документ поручения недопустимо'
   );
@@ -670,6 +676,8 @@ procedure TDocumentCharge.SetInvariantsComplianceRequested(
   const Value: Boolean);
 begin
 
+  inherited SetInvariantsComplianceRequested(Value);
+  
   if Assigned(FTimeFrame) then
     FTimeFrame.InvariantsComplianceRequested := Value;
     
@@ -949,6 +957,59 @@ begin
 
   Result := Assigned(FindDocumentChargeByPerformerOrActuallyPerformedEmployee(Performer));
 
+end;
+
+function TDocumentCharges.Count: Integer;
+begin
+
+  Result := inherited Count;
+  
+end;
+
+function TDocumentCharges.FindByIdentities(
+  const Identities: TVariantList): IDocumentCharges;
+var
+    Charge: IDocumentCharge;
+begin
+
+  Result := TDocumentCharges.Create;
+  
+  for Charge in Self do
+    if Identities.Contains(Charge.Identity) then
+      Result.AddCharge(Charge);
+
+end;
+
+function TDocumentCharges.FindByIdentitiesOrRaise(
+  const Identities: TVariantList;
+  const NotFoundMessage: String): IDocumentCharges;
+begin
+
+  Result := FindByIdentities(Identities);
+
+  try
+
+    if Identities.Count <> Result.Count then begin
+
+      raise TDomainException.Create(
+        IfThen(
+          NotFoundMessage <> '',
+          NotFoundMessage,
+          'Некоторые из запрошенных поручений ' +
+          'не были найдены'
+        )
+      );
+
+    end;
+
+  except
+
+    FreeAndNil(Result);
+
+    Raise;
+
+  end;
+  
 end;
 
 function TDocumentCharges.FindByIdentity(

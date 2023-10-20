@@ -22,6 +22,8 @@ uses
   DocumentTableDef,
   DocumentApprovingPostgresRepository,
   DocumentChargePostgresRepository,
+  DocumentChargeSheetRepository,
+  DocumentChargeSheetPostgresRepository,
   DocumentTypeStageTableDef,
   DocumentApprovingRepository,
   Disposable,
@@ -37,9 +39,11 @@ type
 
     protected
 
-      FDocumentChargeRepository: TDocumentChargePostgresRepository;
+      FChargeRepository: TDocumentChargePostgresRepository;
       FFreeDocumentChargeRepository: IDocumentChargeRepository;
 
+      FChargeSheetRepository: IDocumentChargeSheetRepository;
+      
       FDocumentSigningPostgresRepository: TDocumentSigningPostgresRepository;
 
       FDocumentApprovingRepository: TDocumentApprovingPostgresRepository;
@@ -186,6 +190,7 @@ type
         ApprovingPostgresRepository: TDocumentApprovingPostgresRepository;
         SigningPostgresRepository: TDocumentSigningPostgresRepository;
         ChargePostgresRepository: TDocumentChargePostgresRepository;
+        ChargeSheetRepository: TDocumentChargeSheetPostgresRepository;
         WorkCycleRepository: IDocumentWorkCycleRepository
       );
 
@@ -306,6 +311,7 @@ constructor TDocumentPostgresRepository.Create(
   ApprovingPostgresRepository: TDocumentApprovingPostgresRepository;
   SigningPostgresRepository: TDocumentSigningPostgresRepository;
   ChargePostgresRepository: TDocumentChargePostgresRepository;
+  ChargeSheetRepository: TDocumentChargeSheetPostgresRepository;
   WorkCycleRepository: IDocumentWorkCycleRepository
 );
 begin
@@ -329,9 +335,11 @@ begin
   
   FDocumentSigningPostgresRepository := SigningPostgresRepository;
 
-  FDocumentChargeRepository := ChargePostgresRepository;
-  FFreeDocumentChargeRepository := FDocumentChargeRepository;
+  FChargeRepository := ChargePostgresRepository;
+  FFreeDocumentChargeRepository := FChargeRepository;
 
+  FChargeSheetRepository := ChargeSheetRepository;
+  
   FDocumentWorkCycleRepository := WorkCycleRepository;
   
 end;
@@ -366,6 +374,12 @@ begin
     DocumentMappings.AddColumnMappingForModification(
       NameColumnName,
       'Name',
+      PostgresTypeNameConstants.VARCHAR_TYPE_NAME
+    );
+
+    DocumentMappings.AddColumnMappingForModification(
+      FullNameColumnName,
+      'FullName',
       PostgresTypeNameConstants.VARCHAR_TYPE_NAME
     );
 
@@ -445,6 +459,10 @@ begin
     
     DocumentMappings.AddColumnMappingForSelect(
       NameColumnName, 'Name'
+    );
+
+    DocumentMappings.AddColumnMappingForSelect(
+      FullNameColumnName, 'FullName'
     );
 
     DocumentMappings.AddColumnMappingForSelect(
@@ -737,11 +755,11 @@ function TDocumentPostgresRepository.LoadAllChargesForDocument(
 begin
 
   Result :=
-    FDocumentChargeRepository.FindAllChargesForDocument(
+    FChargeRepository.FindAllChargesForDocument(
       DocumentId
     );
 
-  FDocumentChargeRepository.
+  FChargeRepository.
     ThrowExceptionIfErrorIsNotUnknown;
 
 end;
@@ -887,27 +905,12 @@ procedure TDocumentPostgresRepository.PrepareAndExecuteUpdateDomainObjectQuery(
 var Document: TDocument;
 begin
 
-  inherited;
+  inherited PrepareAndExecuteUpdateDomainObjectQuery(DomainObject);
 
   Document := DomainObject as TDocument;
 
-  { refactor: убрать зависимость
-    изменения таких связанных с документом
-    объектов, как поручения, подписания,
-    согласования, от стадии этого документа.
-    Дело в том, что, например, после исполнения
-    соответствующего документа, после
-    обновления записей поручений, удаляется
-    информация о дате исполнения и т.д.
-    соответствующих листов поручений, так как
-    поручения и листы поручений хранятся
-    в одной таблице в одной строке. Обновление
-    поручений реализуется через
-    удаление всех имеющихся поручений
-    в таблице + добавление тех поручений,
-    которые есть у документа на текущий момент }
-
-  if Document.IsPerformed or Document.IsPerforming then begin
+  if FChargeSheetRepository.AreChargeSheetsExistsForDocument(Document.Identity)
+  then begin
 
     UpdateSigningsOfDocument(Document);
     UpdateApprovingsOfDocument(Document);
@@ -940,11 +943,11 @@ begin
 
   if Document.Charges.IsEmpty then Exit;
     
-  FDocumentChargeRepository.AddDocumentCharges(
+  FChargeRepository.AddDocumentCharges(
     TDocumentCharges(Document.Charges.Self)
   );
 
-  FDocumentChargeRepository.
+  FChargeRepository.
     ThrowExceptionIfErrorIsNotUnknown;
 
 end;
@@ -1026,11 +1029,11 @@ procedure TDocumentPostgresRepository.RemoveAllChargesOfDocument(
   Document: TDocument);
 begin
 
-  FDocumentChargeRepository.RemoveAllDocumentCharges(
+  FChargeRepository.RemoveAllDocumentCharges(
     Document.Identity
   );
 
-  FDocumentChargeRepository.
+  FChargeRepository.
     ThrowExceptionIfErrorIsNotUnknown;
     
 end;

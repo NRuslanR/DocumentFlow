@@ -5,11 +5,12 @@ interface
 uses
 
   DocumentChargeSheet,
+  IGetSelfUnit,
   VariantListUnit;
 
 type
 
-  IDocumentChargeSheetRepository = interface
+  IDocumentChargeSheetRepository = interface (IGetSelf)
 
     function LoadAllDocumentChargeSheets: TDocumentChargeSheets;
 

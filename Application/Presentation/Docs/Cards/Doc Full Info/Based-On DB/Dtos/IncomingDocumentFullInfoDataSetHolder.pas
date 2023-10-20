@@ -124,16 +124,16 @@ type
         
       protected
 
-        procedure SetDocumentApprovingsInfoHolder(const Value: TDocumentApprovingsInfoHolder); override;
+        procedure SetApprovingsInfoHolder(const Value: TDocumentApprovingsInfoHolder); override;
 
-        procedure SetDocumentChargesInfoHolder(const Value: TDocumentChargesInfoHolder); override;
+        procedure SetChargesInfoHolder(const Value: TDocumentChargesInfoHolder); override;
 
-        procedure SetDocumentChargeSheetsInfoHolder(const Value: TDocumentChargeSheetsInfoHolder); override;
+        procedure SetChargeSheetsInfoHolder(const Value: TDocumentChargeSheetsInfoHolder); override;
 
-        procedure SetDocumentFilesInfoHolder(const Value: TDocumentFilesInfoHolder); override;
+        procedure SetFilesInfoHolder(const Value: TDocumentFilesInfoHolder); override;
         procedure SetDocumentInfoHolder(const Value: TDocumentInfoHolder); override;
 
-        procedure SetDocumentRelationsInfoHolder(const Value: TDocumentRelationsInfoHolder); override;
+        procedure SetRelationsInfoHolder(const Value: TDocumentRelationsInfoHolder); override;
 
         procedure SetFieldNames(const Value: TDocumentFullInfoDataSetFieldNames); override;
 
@@ -329,12 +329,12 @@ begin
   FieldNames.OriginalDocumentFullInfoDataSetFieldNames := Value.FieldNames;
 
   DocumentInfoHolder.OriginalDocumentInfoHolder := FDocumentFullInfoDataSetHolder.DocumentInfoHolder;
-  DocumentApprovingsInfoHolder := FDocumentFullInfoDataSetHolder.DocumentApprovingsInfoHolder;
-  DocumentChargesInfoHolder := FDocumentFullInfoDataSetHolder.DocumentChargesInfoHolder;
-  DocumentChargeSheetsInfoHolder := FDocumentFullInfoDataSetHolder.DocumentChargeSheetsInfoHolder;
-  DocumentRelationsInfoHolder := FDocumentFullInfoDataSetHolder.DocumentRelationsInfoHolder;
-  DocumentFilesInfoHolder := FDocumentFullInfoDataSetHolder.DocumentFilesInfoHolder;
-  
+  ApprovingsInfoHolder := FDocumentFullInfoDataSetHolder.ApprovingsInfoHolder;
+  ChargesInfoHolder := FDocumentFullInfoDataSetHolder.ChargesInfoHolder;
+  ChargeSheetsInfoHolder := FDocumentFullInfoDataSetHolder.ChargeSheetsInfoHolder;
+  RelationsInfoHolder := FDocumentFullInfoDataSetHolder.RelationsInfoHolder;
+  FilesInfoHolder := FDocumentFullInfoDataSetHolder.FilesInfoHolder;
+
 end;
 
 procedure TIncomingDocumentFullInfoDataSetHolder.SetDocumentInfoHolder(
@@ -346,13 +346,13 @@ begin
 
 end;
 
-procedure TIncomingDocumentFullInfoDataSetHolder.SetDocumentRelationsInfoHolder(
+procedure TIncomingDocumentFullInfoDataSetHolder.SetRelationsInfoHolder(
   const Value: TDocumentRelationsInfoHolder);
 begin
 
-  inherited SetDocumentRelationsInfoHolder(Value);
+  inherited SetRelationsInfoHolder(Value);
 
-  DocumentFullInfoDataSetHolder.DocumentRelationsInfoHolder := Value;
+  DocumentFullInfoDataSetHolder.RelationsInfoHolder := Value;
 
 end;
 
@@ -378,43 +378,43 @@ begin
   
 end;
 
-procedure TIncomingDocumentFullInfoDataSetHolder.SetDocumentApprovingsInfoHolder(
+procedure TIncomingDocumentFullInfoDataSetHolder.SetApprovingsInfoHolder(
   const Value: TDocumentApprovingsInfoHolder);
 begin
 
-  inherited SetDocumentApprovingsInfoHolder(Value);
+  inherited SetApprovingsInfoHolder(Value);
 
-  DocumentFullInfoDataSetHolder.DocumentApprovingsInfoHolder := Value;
+  DocumentFullInfoDataSetHolder.ApprovingsInfoHolder := Value;
 
 end;
 
-procedure TIncomingDocumentFullInfoDataSetHolder.SetDocumentChargeSheetsInfoHolder(
+procedure TIncomingDocumentFullInfoDataSetHolder.SetChargeSheetsInfoHolder(
   const Value: TDocumentChargeSheetsInfoHolder);
 begin
 
-  inherited SetDocumentChargeSheetsInfoHolder(Value);
+  inherited SetChargeSheetsInfoHolder(Value);
 
-  DocumentFullInfoDataSetHolder.DocumentChargeSheetsInfoHolder := Value;
+  DocumentFullInfoDataSetHolder.ChargeSheetsInfoHolder := Value;
 
 end;
 
-procedure TIncomingDocumentFullInfoDataSetHolder.SetDocumentChargesInfoHolder(
+procedure TIncomingDocumentFullInfoDataSetHolder.SetChargesInfoHolder(
   const Value: TDocumentChargesInfoHolder);
 begin
 
-  inherited SetDocumentChargesInfoHolder(Value);
+  inherited SetChargesInfoHolder(Value);
 
-  DocumentFullInfoDataSetHolder.DocumentChargesInfoHolder := Value;
+  DocumentFullInfoDataSetHolder.ChargesInfoHolder := Value;
 
 end;
 
-procedure TIncomingDocumentFullInfoDataSetHolder.SetDocumentFilesInfoHolder(
+procedure TIncomingDocumentFullInfoDataSetHolder.SetFilesInfoHolder(
   const Value: TDocumentFilesInfoHolder);
 begin
 
-  inherited SetDocumentFilesInfoHolder(Value);
+  inherited SetFilesInfoHolder(Value);
 
-  DocumentFullInfoDataSetHolder.DocumentFilesInfoHolder := Value;
+  DocumentFullInfoDataSetHolder.FilesInfoHolder := Value;
 
 end;
 
@@ -544,20 +544,20 @@ begin
     .OriginalDocumentInfoFieldNames := 
       FOriginalDocumentFullInfoDataSetFieldNames.DocumentInfoFieldNames;
       
-  DocumentApprovingsInfoFieldNames := 
-    FOriginalDocumentFullInfoDataSetFieldNames.DocumentApprovingsInfoFieldNames;
+  ApprovingsInfoFieldNames :=
+    FOriginalDocumentFullInfoDataSetFieldNames.ApprovingsInfoFieldNames;
     
-  DocumentChargesInfoFieldNames := 
-    FOriginalDocumentFullInfoDataSetFieldNames.DocumentChargesInfoFieldNames;
+  ChargesInfoFieldNames :=
+    FOriginalDocumentFullInfoDataSetFieldNames.ChargesInfoFieldNames;
     
-  DocumentChargeSheetsInfoFieldNames := 
-    FOriginalDocumentFullInfoDataSetFieldNames.DocumentChargeSheetsInfoFieldNames;
+  ChargeSheetsInfoFieldNames :=
+    FOriginalDocumentFullInfoDataSetFieldNames.ChargeSheetsInfoFieldNames;
     
-  DocumentRelationsInfoFieldNames := 
-    FOriginalDocumentFullInfoDataSetFieldNames.DocumentRelationsInfoFieldNames;
+  RelationsInfoFieldNames :=
+    FOriginalDocumentFullInfoDataSetFieldNames.RelationsInfoFieldNames;
     
-  DocumentFilesInfoFieldNames := 
-    FOriginalDocumentFullInfoDataSetFieldNames.DocumentFilesInfoFieldNames;
+  FilesInfoFieldNames := 
+    FOriginalDocumentFullInfoDataSetFieldNames.FilesInfoFieldNames;
 
 end;
 

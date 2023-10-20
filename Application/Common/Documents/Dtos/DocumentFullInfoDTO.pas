@@ -9,6 +9,7 @@ uses
   DocumentChargeSheetsInfoDTO,
   DepartmentInfoDTO,
   DocumentApprovings,
+  IGetSelfUnit,
   Disposable,
   SysUtils,
   VariantListUnit,
@@ -16,7 +17,7 @@ uses
 
 type
 
-  TDocumentRelationInfoDTO = class
+  TDocumentRelationInfoDTO = class (TInterfacedObject, IGetSelf)
 
     public
 
@@ -30,11 +31,13 @@ type
 
       constructor Create;
 
+      function GetSelf: TObject;
+
   end;
 
   TDocumentRelationsInfoDTO = class;
 
-  TDocumentRelationsInfoDTOEnumerator = class (TListEnumerator)
+  TDocumentRelationsInfoDTOEnumerator = class (TInterfaceListEnumerator)
 
     private
 
@@ -49,7 +52,7 @@ type
 
   end;
 
-  TDocumentRelationsInfoDTO = class (TList)
+  TDocumentRelationsInfoDTO = class (TInterfaceList, IGetSelf)
 
     private
 
@@ -64,11 +67,11 @@ type
 
     public
 
+      function GetSelf: TObject;
+      
       function GetEnumerator: TDocumentRelationsInfoDTOEnumerator;
 
       function Add(DocumentRelationInfoDTO: TDocumentRelationInfoDTO): Integer;
-
-      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
 
       property Items[Index: Integer]: TDocumentRelationInfoDTO
       read GetDocumentRelationInfoDTOByIndex
@@ -76,7 +79,7 @@ type
 
   end;
 
-  TDocumentFileInfoDTO = class
+  TDocumentFileInfoDTO = class (TInterfacedObject, IGetSelf)
 
     public
 
@@ -87,11 +90,13 @@ type
 
       constructor Create;
 
+      function GetSelf: TObject;
+
   end;
 
   TDocumentFilesInfoDTO = class;
 
-  TDocumentFilesInfoDTOEnumerator = class (TListEnumerator)
+  TDocumentFilesInfoDTOEnumerator = class (TInterfaceListEnumerator)
 
     strict private
 
@@ -106,7 +111,7 @@ type
 
   end;
 
-  TDocumentFilesInfoDTO = class (TList)
+  TDocumentFilesInfoDTO = class (TInterfaceList, IGetSelf)
 
     strict private
 
@@ -119,12 +124,10 @@ type
         DocumentFileInfoDTO: TDocumentFileInfoDTO
       );
 
-    strict protected
-
-      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
-
     public
 
+      function GetSelf: TObject;
+      
       function GetEnumerator: TDocumentFilesInfoDTOEnumerator;
 
       function Add(DocumentFileInfoDTO: TDocumentFileInfoDTO): Integer;
@@ -136,42 +139,54 @@ type
 
   end;
 
-  TDocumentApprovingPerformingResult = (prApproved, prNotApproved, prNotPerformed);
-
   {
     refactor: заменить IsAccessible на AccessRights
     с перечным прав доступа, подобно тому, как это реализовано в
     TDocumentChargeSheetInfoDTO
   }
-  TDocumentApprovingInfoDTO = class
+  TDocumentApprovingInfoDTO = class (TInterfacedObject, IGetSelf)
+
+    private
+
+      FApproverInfoDTO: TDocumentFlowEmployeeInfoDTO;
+      FFreeApproverInfoDTO: IGetSelf;
+      
+      FActuallyPerformedEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
+      FFreeActuallyPerformedEmployeeInfoDTO: IGetSelf;
+
+      procedure SetActuallyPerformedEmployeeInfoDTO(
+        const Value: TDocumentFlowEmployeeInfoDTO);
+
+      procedure SetApproverInfoDTO(const Value: TDocumentFlowEmployeeInfoDTO);
 
     public
 
       Id: Variant;
       TopLevelApprovingId: Variant;
       PerformingDateTime: Variant;
-      PerformingResult: TDocumentApprovingPerformingResult;
+      PerformingResultId: Variant;
       PerformingResultName: String;
+      PerformingResultServiceName: String;
       IsAccessible: Boolean;
       Note: String;
 
       IsViewedByApprover: Boolean;
-      
-      ApproverInfoDTO: TDocumentFlowEmployeeInfoDTO;
-      ActuallyPerformedEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
 
-      destructor Destroy; override;
       constructor Create;
 
-      procedure SetPerformingResultFromDomain(
-        const DomainApprovingPerformingResult: DocumentApprovings.TDocumentApprovingPerformingResult
-      );
+      function GetSelf: TObject;
+
+      property ApproverInfoDTO: TDocumentFlowEmployeeInfoDTO
+      read FApproverInfoDTO write SetApproverInfoDTO;
+
+      property ActuallyPerformedEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO
+      read FActuallyPerformedEmployeeInfoDTO write SetActuallyPerformedEmployeeInfoDTO;
           
   end;
 
   TDocumentApprovingsInfoDTO = class;
 
-  TDocumentApprovingsInfoDTOEnumerator = class (TListEnumerator)
+  TDocumentApprovingsInfoDTOEnumerator = class (TInterfaceListEnumerator)
 
     protected
 
@@ -186,7 +201,7 @@ type
       
   end;
 
-  TDocumentApprovingsInfoDTO = class (TList)
+  TDocumentApprovingsInfoDTO = class (TInterfaceList, IGetSelf)
 
     protected
 
@@ -199,10 +214,10 @@ type
         Value: TDocumentApprovingInfoDTO
       );
 
-      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
-      
     public
 
+      function GetSelf: TObject;
+      
       function Add(DocumentApprovingInfoDTO: TDocumentApprovingInfoDTO): Integer;
 
       function FindByApprovingId(const ApprovingId: Variant): TDocumentApprovingInfoDTO;
@@ -215,22 +230,31 @@ type
       
   end;
 
-  TDocumentApprovingCycleResultInfoDTO = class
+  TDocumentApprovingCycleResultInfoDTO = class (TInterfacedObject, IGetSelf)
+
+    private
+
+      FDocumentApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
+      FFreeDocumentApprovingsInfoDTO: IGetSelf;
+
+      procedure SetDocumentApprovingsInfoDTO(
+        const Value: TDocumentApprovingsInfoDTO);
 
     public
 
       Id: Variant;
       CycleNumber: Integer;
 
-      DocumentApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
+      function GetSelf: TObject;
 
-      destructor Destroy; override;
-      
+      property DocumentApprovingsInfoDTO: TDocumentApprovingsInfoDTO
+      read FDocumentApprovingsInfoDTO write SetDocumentApprovingsInfoDTO;
+
   end;
 
   TDocumentApprovingCycleResultsInfoDTO = class;
 
-  TDocumentApprovingCycleResultsInfoDTOEnumerator = class (TListEnumerator)
+  TDocumentApprovingCycleResultsInfoDTOEnumerator = class (TInterfaceListEnumerator)
 
     protected
 
@@ -248,7 +272,7 @@ type
 
   end;
 
-  TDocumentApprovingCycleResultsInfoDTO = class (TList)
+  TDocumentApprovingCycleResultsInfoDTO = class (TInterfaceList, IGetSelf)
 
     protected
 
@@ -261,10 +285,10 @@ type
         Value: TDocumentApprovingCycleResultInfoDTO
       );
 
-      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
-      
     public
 
+      function GetSelf: TObject;
+      
       function Add(
         DocumentApprovingCycleResultInfoDTO: TDocumentApprovingCycleResultInfoDTO
       ): Integer;
@@ -281,23 +305,41 @@ type
 
   end;
   
-  TDocumentSigningInfoDTO = class
+  TDocumentSigningInfoDTO = class (TInterfacedObject, IGetSelf)
+
+    private
+
+      FSignerInfoDTO: TDocumentFlowEmployeeInfoDTO;
+      FFreeSignerInfoDTO: IGetSelf;
+
+      FActuallySignedEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
+      FFreeActuallySignedEmployeeInfoDTO: IGetSelf;
+
+      procedure SetActuallySignedEmployeeInfoDTO(
+        const Value: TDocumentFlowEmployeeInfoDTO);
+
+      procedure SetSignerInfoDTO(const Value: TDocumentFlowEmployeeInfoDTO);
 
     public
 
       Id: Variant;
-      SignerInfoDTO: TDocumentFlowEmployeeInfoDTO;
-      ActuallySignedEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
       SigningDate: Variant;
 
       constructor Create;
-      destructor Destroy; override;
+
+      function GetSelf: TObject;
+
+      property SignerInfoDTO: TDocumentFlowEmployeeInfoDTO
+      read FSignerInfoDTO write SetSignerInfoDTO;
+
+      property ActuallySignedEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO
+      read FActuallySignedEmployeeInfoDTO write SetActuallySignedEmployeeInfoDTO;
       
   end;
 
   TDocumentSigningsInfoDTO = class;
 
-  TDocumentSigningsInfoDTOEnumerator = class (TListEnumerator)
+  TDocumentSigningsInfoDTOEnumerator = class (TInterfaceListEnumerator)
 
     private
 
@@ -313,7 +355,7 @@ type
       
   end;
   
-  TDocumentSigningsInfoDTO = class (TList)
+  TDocumentSigningsInfoDTO = class (TInterfaceList, IGetSelf)
 
     private
 
@@ -326,12 +368,10 @@ type
         DocumentSigningInfoDTO: TDocumentSigningInfoDTO
       );
 
-    protected
-
-      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
-
     public
 
+      function GetSelf: TObject;
+      
       function FindSigningInfoDTOById(const SigningId: Variant): TDocumentSigningInfoDTO;
       function FindSigningInfoDTOBySignerId(const SignerId: Variant): TDocumentSigningInfoDTO;
     
@@ -345,128 +385,24 @@ type
     
   end;
 
-  TDocumentChargeAccessRightsDTO = class
-
-    public
-
-      ChargeSectionAccessible: Variant;
-      RemovingAllowed: Variant;
-
-      constructor Create;
-      
-  end;
-
-  TDocumentChargeInfoDTO = class
+  TDocumentDTO = class (TInterfacedObject, IGetSelf)
 
     private
 
-      FAccessRights: TDocumentChargeAccessRightsDTO;
+      FAuthorDTO: TDocumentFlowEmployeeInfoDTO;
+      FFreeAuthorDTO: IGetSelf;
       
-      procedure SetAccessRights(const Value: TDocumentChargeAccessRightsDTO);
-
-    protected
-
-      function CreateAccessRightsDTOInstance: TDocumentChargeAccessRightsDTO; virtual;
+      FChargesInfoDTO: TDocumentChargesInfoDTO;
+      FFreeChargesInfoDTO: IGetSelf;
       
-    public
-
-      Id: Variant;
-      KindId: Variant;
-      KindName: String;
-      ServiceKindName: String;
+      FApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
+      FFreeApprovingsInfoDTO: IGetSelf;
       
-      ChargeText: String;
-      PerformerResponse: String;
+      FSigningsInfoDTO: TDocumentSigningsInfoDTO;
+      FFreeSigningsInfoDTO: IGetSelf;
       
-      TimeFrameStart: Variant;
-      TimeFrameDeadline: Variant;
-      PerformingDateTime: Variant;
-
-      IsForAcquaitance: Boolean;
-      
-      PerformerInfoDTO: TDocumentFlowEmployeeInfoDTO;
-      ActuallyPerformedEmployeeInfoDTO: TDocumentFlowEmployeeInfoDTO;
-      
-      constructor Create;
-      destructor Destroy; override;
-
-      property AccessRights: TDocumentChargeAccessRightsDTO
-      read FAccessRights write SetAccessRights;
-      
-      class function ChargeSheetInfoDTOClass: TClass; virtual;
-
-  end;
-
-  TDocumentChargeInfoDTOClass = class of TDocumentChargeInfoDTO;
-
-  TDocumentAcquaitanceInfoDTO = class (TDocumentChargeInfoDTO)
-
-    public
-
-      class function ChargeSheetInfoDTOClass: TClass; override;
-      
-  end;
-
-  TDocumentPerformingInfoDTO = class (TDocumentChargeInfoDTO)
-
-    public
-
-      class function ChargeSheetInfoDTOClass: TClass; override;
-      
-  end;
-
-  TDocumentChargesInfoDTO = class;
-
-  TDocumentChargesInfoDTOEnumerator = class (TListEnumerator)
-
-    strict private
-
-      function GetCurrentDocumentChargeInfoDTO: TDocumentChargeInfoDTO;
-
-    public
-
-      constructor Create(DocumentChargesInfoDTO: TDocumentChargesInfoDTO);
-
-      property Current: TDocumentChargeInfoDTO
-      read GetCurrentDocumentChargeInfoDTO;
-
-  end;
-
-  TDocumentChargesInfoDTO = class (TList)
-
-    strict private
-
-      function GetDocumentChargeInfoDTOByIndex(
-        Index: Integer
-      ): TDocumentChargeInfoDTO;
-
-      procedure SetDocumentChargeInfoDTOByIndex(
-        Index: Integer;
-        DocumentChargeInfoDTO: TDocumentChargeInfoDTO
-      );
-
-    strict protected
-
-      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
-
-    public
-
-      function ExtractPerformerIds: TVariantList;
-
-      function FindChargeByPerformerId(const PerformerId: Variant): TDocumentChargeInfoDTO;
-      
-      function Add(DocumentChargeInfoDTO: TDocumentChargeInfoDTO): Integer;
-      procedure Remove(const Index: Integer);
-
-      function GetEnumerator: TDocumentChargesInfoDTOEnumerator;
-
-      property Items[Index: Integer]: TDocumentChargeInfoDTO
-      read GetDocumentChargeInfoDTOByIndex
-      write SetDocumentChargeInfoDTOByIndex; default;
-
-  end;
-
-  TDocumentDTO = class
+      FResponsibleInfoDTO: TDocumentResponsibleInfoDTO;
+      FFreeResponsibleInfoDTO: IGetSelf;
 
     protected
 
@@ -475,6 +411,7 @@ type
       FNumber: String;
       FSeparatorOfNumberParts: String;
       FName: String;
+      FFullName: String;
       FContent: String;
       FCreationDate: TDateTime;
       FDocumentDate: Variant;
@@ -483,13 +420,6 @@ type
       FIsSelfRegistered: Variant;
       FKind: String;
       FKindId: Variant;
-
-      FAuthorDTO: TDocumentFlowEmployeeInfoDTO;
-
-      FChargesInfoDTO: TDocumentChargesInfoDTO;
-      FApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
-      FSigningsInfoDTO: TDocumentSigningsInfoDTO;
-      FResponsibleInfoDTO: TDocumentResponsibleInfoDTO;
 
       FCurrentWorkCycleStageNumber: Integer;
       FCurrentWorkCycleStageName: String;
@@ -507,6 +437,7 @@ type
       function GetKind: String; virtual;
       function GetKindId: Variant; virtual;
       function GetName: String; virtual;
+      function GetFullName: String; virtual;
       function GetNote: String; virtual;
       function GetProductCode: String; virtual;
       function GetNumber: String; virtual;
@@ -529,6 +460,7 @@ type
       procedure SetKind(const Value: String); virtual;
       procedure SetKindId(const Value: Variant); virtual;
       procedure SetName(const Value: String); virtual;
+      procedure SetFullName(const Value: String); virtual;
       procedure SetNote(const Value: String); virtual;
       procedure SetNumber(const Value: String); virtual;
       procedure SetResponsibleInfoDTO(const Value: TDocumentResponsibleInfoDTO); virtual;
@@ -538,6 +470,8 @@ type
       
     public
 
+      function GetSelf: TObject;
+      
       property Id: Variant
       read GetId write SetId;
 
@@ -552,6 +486,9 @@ type
       
       property Name: String
       read GetName write SetName;
+
+      property FullName: String
+      read GetFullName write SetFullName;
 
       property ProductCode: String
       read GetProductCode write SetProductCode;
@@ -597,24 +534,57 @@ type
 
       property IsSelfRegistered: Variant
       read GetIsSelfRegistered write SetIsSelfRegistered;
-      
+
       constructor Create; virtual;
-      destructor Destroy; override;
 
   end;
 
   TDocumentFullInfoDTO = class (TInterfacedObject, IDisposable)
 
+    private
+
+      FDocumentDTO: TDocumentDTO;
+      FFreeDocumentDTO: IGetSelf;
+      
+      FDocumentRelationsInfoDTO: TDocumentRelationsInfoDTO;
+      FFreeDocumentRelationsInfoDTO: IGetSelf;
+      
+      FDocumentFilesInfoDTO: TDocumentFilesInfoDTO;
+      FFreeDocumentFilesInfoDTO: IGetSelf;
+
+      FDocumentApprovingCycleResultsInfoDTO: TDocumentApprovingCycleResultsInfoDTO;
+      FFreeDocumentApprovingCycleResultsInfoDTO: IGetSelf;
+      
+      FDocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
+      FFreeDocumentChargeSheetsInfoDTO: IGetSelf;
+
+      procedure SetDocumentApprovingCycleResultsInfoDTO(
+        const Value: TDocumentApprovingCycleResultsInfoDTO);
+
+      procedure SetDocumentChargeSheetsInfoDTO(
+        const Value: TDocumentChargeSheetsInfoDTO);
+
+      procedure SetDocumentDTO(const Value: TDocumentDTO);
+      procedure SetDocumentFilesInfoDTO(const Value: TDocumentFilesInfoDTO);
+      procedure SetDocumentRelationsInfoDTO(
+        const Value: TDocumentRelationsInfoDTO);  public
+
     public
+    
+      property DocumentDTO: TDocumentDTO
+      read FDocumentDTO write SetDocumentDTO;
+      
+      property DocumentRelationsInfoDTO: TDocumentRelationsInfoDTO
+      read FDocumentRelationsInfoDTO write SetDocumentRelationsInfoDTO;
 
-      DocumentDTO: TDocumentDTO;
-      DocumentRelationsInfoDTO: TDocumentRelationsInfoDTO;
-      DocumentFilesInfoDTO: TDocumentFilesInfoDTO;
+      property DocumentFilesInfoDTO: TDocumentFilesInfoDTO
+      read FDocumentFilesInfoDTO write SetDocumentFilesInfoDTO;
 
-      DocumentApprovingCycleResultsInfoDTO: TDocumentApprovingCycleResultsInfoDTO;
-      DocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-
-      destructor Destroy; override;
+      property DocumentApprovingCycleResultsInfoDTO: TDocumentApprovingCycleResultsInfoDTO
+      read FDocumentApprovingCycleResultsInfoDTO write SetDocumentApprovingCycleResultsInfoDTO;
+      
+      property DocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO
+      read FDocumentChargeSheetsInfoDTO write SetDocumentChargeSheetsInfoDTO;
 
   end;
 
@@ -635,9 +605,16 @@ begin
 end;
 
 function TDocumentRelationsInfoDTOEnumerator.GetCurrentDocumentRelationInfoDTO: TDocumentRelationInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentRelationInfoDTO(GetCurrent);
+  Intf := GetCurrent;
+  
+  Supports(Intf, IGetSelf, Target);
+                     
+  Result := TDocumentRelationInfoDTO(Target.Self);
   
 end;
 
@@ -653,9 +630,16 @@ end;
 
 function TDocumentRelationsInfoDTO.GetDocumentRelationInfoDTOByIndex(
   Index: Integer): TDocumentRelationInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf; 
 begin
 
-  Result := TDocumentRelationInfoDTO(Get(Index));
+  Intf := Get(Index);
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentRelationInfoDTO(Target.Self);
   
 end;
 
@@ -666,14 +650,11 @@ begin
   
 end;
 
-procedure TDocumentRelationsInfoDTO.Notify(Ptr: Pointer;
-  Action: TListNotification);
+function TDocumentRelationsInfoDTO.GetSelf: TObject;
 begin
 
-  if Action = lnDeleted then
-    if Assigned(Ptr) then
-      TDocumentRelationInfoDTO(Ptr).Destroy;
-
+  Result := Self;
+  
 end;
 
 procedure TDocumentRelationsInfoDTO.SetDocumentRelationInfoDTOByIndex(
@@ -695,9 +676,16 @@ begin
 end;
 
 function TDocumentFilesInfoDTOEnumerator.GetCurrentDocumentFileInfoDTO: TDocumentFileInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentFileInfoDTO(GetCurrent);
+  Intf := GetCurrent;
+
+  Supports(Intf, IGetSelf, Target);
+  
+  Result := TDocumentFileInfoDTO(Target.Self);
   
 end;
 
@@ -713,9 +701,16 @@ end;
 
 function TDocumentFilesInfoDTO.GetDocumentFileInfoDTOByIndex(
   Index: Integer): TDocumentFileInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentFileInfoDTO(Get(Index));
+  Intf := Get(Index);
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentFileInfoDTO(Target.Self);
 
 end;
 
@@ -726,13 +721,11 @@ begin
   
 end;
 
-procedure TDocumentFilesInfoDTO.Notify(Ptr: Pointer; Action: TListNotification);
+function TDocumentFilesInfoDTO.GetSelf: TObject;
 begin
 
-  if Action = lnDeleted then
-    if Assigned(Ptr) then
-      TDocumentFileInfoDTO(Ptr).Destroy;
-
+  Result := Self;
+  
 end;
 
 procedure TDocumentFilesInfoDTO.Remove(const Index: Integer);
@@ -750,111 +743,6 @@ begin
   
 end;
 
-{ TDocumentChargesInfoDTOEnumerator }
-
-constructor TDocumentChargesInfoDTOEnumerator.Create(
-  DocumentChargesInfoDTO: TDocumentChargesInfoDTO);
-begin
-
-  inherited Create(DocumentChargesInfoDTO);
-  
-end;
-
-function TDocumentChargesInfoDTOEnumerator.GetCurrentDocumentChargeInfoDTO: TDocumentChargeInfoDTO;
-begin
-
-  Result := TDocumentChargeInfoDTO(GetCurrent);
-  
-end;
-
-{ TDocumentChargesInfoDTO }
-
-function TDocumentChargesInfoDTO.Add(
-  DocumentChargeInfoDTO: TDocumentChargeInfoDTO): Integer;
-begin
-
-  Result := inherited Add(DocumentChargeInfoDTO);
-  
-end;
-
-function TDocumentChargesInfoDTO.ExtractPerformerIds: TVariantList;
-var
-    ChargeInfoDTO: TDocumentChargeInfoDTO;
-begin
-
-  Result := TVariantList.Create;
-
-  try
-
-    for ChargeInfoDTO in Self do begin
-
-      if not Result.Contains(ChargeInfoDTO.PerformerInfoDTO.Id) then
-        Result.Add(ChargeInfoDTO.PerformerInfoDTO.Id);
-        
-    end;
-
-  except
-
-    FreeAndNil(Result);
-
-    Raise;
-
-  end;
-
-end;
-
-function TDocumentChargesInfoDTO.FindChargeByPerformerId(
-  const PerformerId: Variant): TDocumentChargeInfoDTO;
-begin
-
-  for Result in Self do
-    if Result.PerformerInfoDTO.Id = PerformerId then
-      Exit;
-
-  Result := nil;
-  
-end;
-
-function TDocumentChargesInfoDTO.GetDocumentChargeInfoDTOByIndex(
-  Index: Integer): TDocumentChargeInfoDTO;
-begin
-
-  Result := TDocumentChargeInfoDTO(Get(Index));
-  
-end;
-
-function TDocumentChargesInfoDTO.GetEnumerator: TDocumentChargesInfoDTOEnumerator;
-begin
-
-  Result := TDocumentChargesInfoDTOEnumerator.Create(Self);
-  
-end;
-
-procedure TDocumentChargesInfoDTO.Notify(Ptr: Pointer;
-  Action: TListNotification);
-begin
-
-  if lnDeleted = Action then
-    if Assigned(Ptr) then
-      TDocumentChargeInfoDTO(Ptr).Destroy;
-
-end;
-
-procedure TDocumentChargesInfoDTO.Remove(const Index: Integer);
-begin
-
-  Delete(Index);
-  
-end;
-
-procedure TDocumentChargesInfoDTO.SetDocumentChargeInfoDTOByIndex(
-  Index: Integer; DocumentChargeInfoDTO: TDocumentChargeInfoDTO);
-begin
-
-  Put(Index, DocumentChargeInfoDTO);
-
-end;
-
 { TDocumentDTO }
 
 constructor TDocumentDTO.Create;
@@ -867,19 +755,6 @@ begin
   FIsSelfRegistered := Null;
   FDocumentDate := Null;
   
-end;
-
-destructor TDocumentDTO.Destroy;
-begin
-
-  FreeAndNil(FAuthorDTO);
-  FreeAndNil(FResponsibleInfoDTO);
-  FreeAndNil(FChargesInfoDTO);
-  FreeAndNil(FApprovingsInfoDTO);
-  FreeAndNil(FSigningsInfoDTO);
-  
-  inherited;
-
 end;
 
 function TDocumentDTO.GetApprovingsInfoDTO: TDocumentApprovingsInfoDTO;
@@ -942,6 +817,13 @@ function TDocumentDTO.GetDocumentDate: Variant;
 begin
 
   Result := FDocumentDate;
+  
+end;
+
+function TDocumentDTO.GetFullName: String;
+begin
+
+  Result := FFullName;
   
 end;
 
@@ -1008,6 +890,13 @@ begin
   
 end;
 
+function TDocumentDTO.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
 function TDocumentDTO.GetSeparatorOfNumberParts: String;
 begin
 
@@ -1027,6 +916,7 @@ procedure TDocumentDTO.SetApprovingsInfoDTO(
 begin
 
   FApprovingsInfoDTO := Value;
+  FFreeApprovingsInfoDTO := Value;
 
 end;
 
@@ -1034,6 +924,7 @@ procedure TDocumentDTO.SetAuthorDTO(const Value: TDocumentFlowEmployeeInfoDTO);
 begin
 
   FAuthorDTO := Value;
+  FFreeAuthorDTO := Value;
   
 end;
 
@@ -1048,6 +939,7 @@ procedure TDocumentDTO.SetChargesInfoDTO(const Value: TDocumentChargesInfoDTO);
 begin
 
   FChargesInfoDTO := Value;
+  FFreeChargesInfoDTO := Value;
 
 end;
 
@@ -1083,6 +975,13 @@ procedure TDocumentDTO.SetDocumentDate(const Value: Variant);
 begin
 
   FDocumentDate := Value;
+  
+end;
+
+procedure TDocumentDTO.SetFullName(const Value: String);
+begin
+
+  FFullName := Value;
   
 end;
 
@@ -1147,6 +1046,7 @@ procedure TDocumentDTO.SetResponsibleInfoDTO(
 begin
 
   FResponsibleInfoDTO := Value;
+  FFreeResponsibleInfoDTO := Value;
   
 end;
 
@@ -1162,21 +1062,53 @@ procedure TDocumentDTO.SetSigningsInfoDTO(
 begin
 
   FSigningsInfoDTO := Value;
+  FFreeSigningsInfoDTO := Value;
   
 end;
 
 { TDocumentFullInfoDTO }
 
-destructor TDocumentFullInfoDTO.Destroy;
+procedure TDocumentFullInfoDTO.SetDocumentApprovingCycleResultsInfoDTO(
+  const Value: TDocumentApprovingCycleResultsInfoDTO);
 begin
 
-  FreeAndNil(DocumentDTO);
-  FreeAndNil(DocumentApprovingCycleResultsInfoDTO);
-  FreeAndNil(DocumentChargeSheetsInfoDTO);
-  FreeAndNil(DocumentRelationsInfoDTO);
-  FreeAndNil(DocumentFilesInfoDTO);
+  FDocumentApprovingCycleResultsInfoDTO := Value;
+  FFreeDocumentApprovingCycleResultsInfoDTO := Value;
+
+end;
+
+procedure TDocumentFullInfoDTO.SetDocumentChargeSheetsInfoDTO(
+  const Value: TDocumentChargeSheetsInfoDTO);
+begin
+
+  FDocumentChargeSheetsInfoDTO := Value;
+  FFreeDocumentChargeSheetsInfoDTO := Value;
   
-  inherited;
+end;
+
+procedure TDocumentFullInfoDTO.SetDocumentDTO(const Value: TDocumentDTO);
+begin
+
+  FDocumentDTO := Value;
+  FFreeDocumentDTO := Value;
+
+end;
+
+procedure TDocumentFullInfoDTO.SetDocumentFilesInfoDTO(
+  const Value: TDocumentFilesInfoDTO);
+begin
+
+  FDocumentFilesInfoDTO := Value;
+  FFreeDocumentFilesInfoDTO := Value;
+
+end;
+
+procedure TDocumentFullInfoDTO.SetDocumentRelationsInfoDTO(
+  const Value: TDocumentRelationsInfoDTO);
+begin
+
+  FDocumentRelationsInfoDTO := Value;
+  FFreeDocumentRelationsInfoDTO := Value;
 
 end;
 
@@ -1191,10 +1123,17 @@ begin
 end;
 
 function TDocumentSigningsInfoDTOEnumerator.GetCurrentDocumentSigningInfoDTO: TDocumentSigningInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentSigningInfoDTO(GetCurrent);
-  
+  Intf := GetCurrent;
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentSigningInfoDTO(Target.Self);
+
 end;
 
 { TDocumentSigningsInfoDTO }
@@ -1234,9 +1173,16 @@ end;
 
 function TDocumentSigningsInfoDTO.GetDocumentSigningInfoDTOByIndex(
   Index: Integer): TDocumentSigningInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentSigningInfoDTO(Get(Index));
+  Intf := Get(Index);
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentSigningInfoDTO(Target.Self);
   
 end;
 
@@ -1247,14 +1193,11 @@ begin
   
 end;
 
-procedure TDocumentSigningsInfoDTO.Notify(Ptr: Pointer;
-  Action: TListNotification);
+function TDocumentSigningsInfoDTO.GetSelf: TObject;
 begin
 
-  if Action = lnDeleted then
-    if Assigned(Ptr) then
-      TDocumentSigningInfoDTO(Ptr).Destroy;
-
+  Result := Self;
+  
 end;
 
 procedure TDocumentSigningsInfoDTO.SetDocumentSigningInfoDTOByIndex(
@@ -1277,64 +1220,27 @@ begin
   
 end;
 
-destructor TDocumentSigningInfoDTO.Destroy;
+function TDocumentSigningInfoDTO.GetSelf: TObject;
 begin
 
-  FreeAndNil(SignerInfoDTO);
-  FreeAndNil(ActuallySignedEmployeeInfoDTO);
-  inherited;
-
-end;
-
-{ TDocumentChargeInfoDTO }
-
-class function TDocumentChargeInfoDTO.ChargeSheetInfoDTOClass: TClass;
-begin
-
-  Result := TDocumentChargeSheetInfoDTO;
+  Result := Self;
   
 end;
 
-constructor TDocumentChargeInfoDTO.Create;
+ procedure TDocumentSigningInfoDTO.SetActuallySignedEmployeeInfoDTO(
+  const Value: TDocumentFlowEmployeeInfoDTO);
 begin
 
-  inherited;
-
-  KindId := Null;
-  TimeFrameStart := Null;
-  TimeFrameDeadline := Null;
-  PerformingDateTime := Null;
-
-  FAccessRights := CreateAccessRightsDTOInstance;
-
-end;
-
-function TDocumentChargeInfoDTO.CreateAccessRightsDTOInstance: TDocumentChargeAccessRightsDTO;
-begin
-
-  Result := TDocumentChargeAccessRightsDTO.Create;
+  FActuallySignedEmployeeInfoDTO := Value;
+  FFreeActuallySignedEmployeeInfoDTO := Value;
   
 end;
 
-destructor TDocumentChargeInfoDTO.Destroy;
+procedure TDocumentSigningInfoDTO.SetSignerInfoDTO(
+  const Value: TDocumentFlowEmployeeInfoDTO);
 begin
 
-  FreeAndNil(PerformerInfoDTO);
-  FreeAndNil(ActuallyPerformedEmployeeInfoDTO);
-  
-  inherited;
-
-end;
-
-procedure TDocumentChargeInfoDTO.SetAccessRights(
-  const Value: TDocumentChargeAccessRightsDTO);
-begin
-
-  if FAccessRights = Value then Exit;
-
-  FreeAndNil(FAccessRights);
-  
-  FAccessRights := Value;
+  FSignerInfoDTO := Value;
 
 end;
 
@@ -1347,6 +1253,13 @@ begin
 
   Id := Null;
   DocumentId := Null;
+  
+end;
+
+function TDocumentFileInfoDTO.GetSelf: TObject;
+begin
+
+  Result := Self;
   
 end;
 
@@ -1363,6 +1276,13 @@ begin
   
 end;
 
+function TDocumentRelationInfoDTO.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
 { TDocumentApprovingInfoDTO }
 
 constructor TDocumentApprovingInfoDTO.Create;
@@ -1376,38 +1296,29 @@ begin
 
 end;
 
-destructor TDocumentApprovingInfoDTO.Destroy;
+function TDocumentApprovingInfoDTO.GetSelf: TObject;
 begin
 
-  FreeAndNil(ApproverInfoDTO);
-  FreeAndNil(ActuallyPerformedEmployeeInfoDTO);
+  Result := Self;
   
-  inherited;
-
 end;
 
-procedure TDocumentApprovingInfoDTO.SetPerformingResultFromDomain(
-  const DomainApprovingPerformingResult: DocumentApprovings.TDocumentApprovingPerformingResult);
+procedure TDocumentApprovingInfoDTO.SetActuallyPerformedEmployeeInfoDTO(
+  const Value: TDocumentFlowEmployeeInfoDTO);
 begin
 
-  case DomainApprovingPerformingResult of
+  FActuallyPerformedEmployeeInfoDTO := Value;
+  FFreeActuallyPerformedEmployeeInfoDTO := Value;
+  
+end;
 
-    DocumentApprovings.prApproved: PerformingResult := DocumentFullInfoDTO.prApproved;
-    DocumentApprovings.prRejected: PerformingResult := DocumentFullInfoDTO.prNotApproved;
-    DocumentApprovings.prNotPerformed: PerformingResult := DocumentFullInfoDTO.prNotPerformed;
+procedure TDocumentApprovingInfoDTO.SetApproverInfoDTO(
+  const Value: TDocumentFlowEmployeeInfoDTO);
+begin
 
-    else begin
-
-      raise Exception.Create(
-        'Программная ошибка. Обнаружен ' +
-        'неизвестный результат согласования ' +
-        'во время его преобразования в DTO'
-      );
-          
-    end;
-
-  end;
-
+  FApproverInfoDTO := Value;
+  FFreeApproverInfoDTO := Value;
+  
 end;
 
 { TDocumentApprovingsInfoDTO }
@@ -1435,9 +1346,16 @@ end;
 
 function TDocumentApprovingsInfoDTO.GetDocumentApprovingInfoDTOByIndex(
   Index: Integer): TDocumentApprovingInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentApprovingInfoDTO(Get(Index));
+  Intf := Get(Index);
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentApprovingInfoDTO(Target.Self);
   
 end;
 
@@ -1448,14 +1366,11 @@ begin
   
 end;
 
-procedure TDocumentApprovingsInfoDTO.Notify(Ptr: Pointer;
-  Action: TListNotification);
+function TDocumentApprovingsInfoDTO.GetSelf: TObject;
 begin
 
-  if Action = lnDeleted then
-    if Assigned(Ptr) then
-      TDocumentApprovingInfoDTO(Ptr).Destroy;
-
+  Result := Self;
+  
 end;
 
 procedure TDocumentApprovingsInfoDTO.SetDocumentApprovingInfoDTOByIndex(
@@ -1477,21 +1392,35 @@ begin
 end;
 
 function TDocumentApprovingsInfoDTOEnumerator.GetCurrentDocumentApprovingInfoDTO: TDocumentApprovingInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentApprovingInfoDTO(GetCurrent);
+  Intf := GetCurrent;
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentApprovingInfoDTO(Target.Self);
   
 end;
 
 { TDocumentApprovingCycleResultInfoDTO }
 
-destructor TDocumentApprovingCycleResultInfoDTO.Destroy;
+function TDocumentApprovingCycleResultInfoDTO.GetSelf: TObject;
 begin
 
-  FreeAndNil(DocumentApprovingsInfoDTO);
+  Result := Self;
   
-  inherited;
+end;
 
+procedure TDocumentApprovingCycleResultInfoDTO.SetDocumentApprovingsInfoDTO(
+  const Value: TDocumentApprovingsInfoDTO);
+begin
+
+  FDocumentApprovingsInfoDTO := Value;
+  FFreeDocumentApprovingsInfoDTO := Value;
+  
 end;
 
 { TDocumentApprovingCycleResultsInfoDTOEnumerator }
@@ -1505,9 +1434,17 @@ begin
 end;
 
 function TDocumentApprovingCycleResultsInfoDTOEnumerator.GetCurrentDocumentApprovingCycleResultInfoDTO: TDocumentApprovingCycleResultInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentApprovingCycleResultInfoDTO(GetCurrent);
+  Intf := GetCurrent;
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentApprovingCycleResultInfoDTO(Target.Self);
+
   
 end;
 
@@ -1536,9 +1473,16 @@ end;
 
 function TDocumentApprovingCycleResultsInfoDTO.GetDocumentApprovingCycleResultInfoDTOByIndex(
   Index: Integer): TDocumentApprovingCycleResultInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDocumentApprovingCycleResultInfoDTO(Get(Index));
+  Intf := Get(Index);
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDocumentApprovingCycleResultInfoDTO(Target.Self);
   
 end;
 
@@ -1549,14 +1493,11 @@ begin
   
 end;
 
-procedure TDocumentApprovingCycleResultsInfoDTO.Notify(Ptr: Pointer;
-  Action: TListNotification);
+function TDocumentApprovingCycleResultsInfoDTO.GetSelf: TObject;
 begin
 
-  if Action = lnDeleted then
-    if Assigned(Ptr) then
-      TDocumentApprovingCycleResultInfoDTO(Ptr).Destroy;
-
+  Result := Self;
+  
 end;
 
 procedure TDocumentApprovingCycleResultsInfoDTO.SetDocumentApprovingCycleResultInfoDTOByIndex(
@@ -1567,31 +1508,5 @@ begin
   
 end;
 
-{ TDocumentAcquaitanceInfoDTO }
-
-class function TDocumentAcquaitanceInfoDTO.ChargeSheetInfoDTOClass: TClass;
-begin
-
-  Result := TDocumentAcquaitanceSheetInfoDTO;
-  
-end;
-
-{ TDocumentPerformingInfoDTO }
-
-class function TDocumentPerformingInfoDTO.ChargeSheetInfoDTOClass: TClass;
-begin
-
-  Result := TDocumentPerformingSheetInfoDTO;
-  
-end;
-
-constructor TDocumentChargeAccessRightsDTO.Create;
-begin
-
-  inherited;
-
-  ChargeSectionAccessible := Null;
-  RemovingAllowed := Null;
-
-end;
 end.
+

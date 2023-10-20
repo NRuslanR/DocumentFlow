@@ -86,6 +86,7 @@ begin
 
   FRespondingDocumentCreatingService := RespondingDocumentCreatingService;
   FDocumentFullInfoDTOMapper := DocumentFullInfoDTOMapper;
+  FDocumentUsageEmployeeAccessRightsInfoDTOMapper := DocumentUsageEmployeeAccessRightsInfoDTOMapper;
   
 end;
 

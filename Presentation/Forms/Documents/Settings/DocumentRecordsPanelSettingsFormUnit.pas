@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DialogFormUnit, StdCtrls, DeletableOnCloseFormUnit, cxGraphics,
-  cxLookAndFeels, cxLookAndFeelPainters, Menus, cxButtons;
+  cxLookAndFeels, cxLookAndFeelPainters, Menus, cxButtons, dxSkinsCore,
+  dxSkinsDefaultPainters;
 
 type
 

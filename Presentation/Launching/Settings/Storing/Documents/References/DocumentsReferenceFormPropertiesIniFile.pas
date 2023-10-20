@@ -86,7 +86,7 @@ var
     BaseReferenceForm: TBaseDocumentsReferenceForm;
 begin
 
-  inherited;
+  inherited RestoreDBDataTableFormProperties(DBDataTableForm, PropertiesStorage);
 
   CreationDateYearColumn :=
 
@@ -153,7 +153,7 @@ var
   BaseReferenceForm: TBaseDocumentsReferenceForm;
 begin
 
-  inherited;
+  inherited SaveDBDataTableFormProperties(DBDataTableForm, PropertiesStorage);
 
   if DBDataTableForm is TBaseDocumentsReferenceForm then
   begin

@@ -9,7 +9,10 @@ uses
   DocumentChargeSheetWorkingRules,
   DocumentChargeSheetViewingRule,
   DocumentChargeSheetChangingRule,
+  DocumentChargeSheetPerformingRule,
   DocumentChargeSheetRemovingRule,
+  DocumentChargeSheetIssuingRule,
+  DomainException,
   Document,
   DocumentChargeSheet,
   TypeObjectRegistry,
@@ -31,6 +34,7 @@ type
       FChargeSheetRemovingRuleRegistry: TTypeObjectRegistry;
       FChargeSheetOverlappedPerformingRuleRegistry: TTypeObjectRegistry;
       FChargeSheetPerformingRuleRegistry: TTypeObjectRegistry;
+      FChargeSheetIssuingRuleRegistry: TTypeObjectRegistry;
       FChargeSheetViewingRuleRegistry: TTypeObjectRegistry;
 
     public
@@ -82,7 +86,7 @@ type
 
       procedure RegisterDocumentChargeSheetPerformingRule(
         DocumentChargeSheetKind: TDocumentChargeSheetClass;
-        DocumentChargeSheetPerformingRule: IDocumentChargeSheetWorkingRule
+        DocumentChargeSheetPerformingRule: IDocumentChargeSheetPerformingRule
       );
 
       procedure RegisterStandardDocumentChargeSheetPerformingRule(
@@ -91,7 +95,7 @@ type
 
       function GetDocumentChargeSheetPerformingRule(
         DocumentChargeSheetKind: TDocumentChargeSheetClass
-      ): IDocumentChargeSheetWorkingRule;
+      ): IDocumentChargeSheetPerformingRule;
 
     public
 
@@ -107,6 +111,21 @@ type
       function GetDocumentChargeSheetViewingRule(
         DocumentChargeSheetKind: TDocumentChargeSheetClass
       ): IDocumentChargeSheetViewingRule;
+
+    public
+
+      procedure RegisterDocumentChargeSheetIssuingRule(
+        DocumentChargeSheetKind: TDocumentChargeSheetClass;
+        DocumentChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule
+      );
+
+      procedure RegisterStandardDocumentChargeSheetIssuingRule(
+        DocumentChargeSheetKind: TDocumentChargeSheetClass
+      );
+
+      function GetDocumentChargeSheetIssuingRule(
+        DocumentChargeSheetKind: TDocumentChargeSheetClass
+      ): IDocumentChargeSheetIssuingRule;
 
     public
 
@@ -135,12 +154,13 @@ uses
 
   DocumentAcquaitanceSheet,
   DocumentPerformingSheet,
-  DocumentChargeSheetPerformingRule,
   StandardDocumentChargeSheetChangingRule,
   StandardDocumentChargeSheetRemovingRule,
   StandardDocumentChargeSheetPerformingRule,
   StandardDocumentChargeSheetOverlappedPerformingRule,
   StandardDocumentChargeSheetViewingRule,
+  StandardDocumentPerformingSheetIssuingRule,
+  StandardDocumentAcquaitanceSheetIssuingRule,
   EmployeeSubordinationSpecificationRegistry,
   EmployeeDistributionSpecificationRegistry;
 
@@ -156,7 +176,8 @@ begin
   FChargeSheetOverlappedPerformingRuleRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   FChargeSheetPerformingRuleRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   FChargeSheetViewingRuleRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
-
+  FChargeSheetIssuingRuleRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
+  
   FChargeSheetChangingRuleRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FChargeSheetOverlappedPerformingRuleRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FChargeSheetPerformingRuleRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
@@ -190,6 +211,17 @@ begin
     
 end;
 
+function TDocumentChargeSheetRuleRegistry.GetDocumentChargeSheetIssuingRule(
+  DocumentChargeSheetKind: TDocumentChargeSheetClass): IDocumentChargeSheetIssuingRule;
+begin
+
+  Result :=
+    IDocumentChargeSheetIssuingRule(
+      FChargeSheetIssuingRuleRegistry.GetInterface(DocumentChargeSheetKind)
+    );
+
+end;
+
 function TDocumentChargeSheetRuleRegistry.GetDocumentChargeSheetOverlappedPerformingRule(
   DocumentChargeSheetKind: TDocumentChargeSheetClass): IDocumentChargeSheetOverlappedPerformingRule;
 begin
@@ -204,11 +236,11 @@ begin
 end;
 
 function TDocumentChargeSheetRuleRegistry.GetDocumentChargeSheetPerformingRule(
-  DocumentChargeSheetKind: TDocumentChargeSheetClass): IDocumentChargeSheetWorkingRule;
+  DocumentChargeSheetKind: TDocumentChargeSheetClass): IDocumentChargeSheetPerformingRule;
 begin
 
   Result :=
-    IDocumentChargeSheetWorkingRule(
+    IDocumentChargeSheetPerformingRule(
       FChargeSheetPerformingRuleRegistry.GetInterface(
         DocumentChargeSheetKind
       )
@@ -252,7 +284,8 @@ begin
       GetDocumentChargeSheetChangingRule(DocumentChargeSheetKind),
       GetDocumentChargeSheetRemovingRule(DocumentChargeSheetKind),
       GetDocumentChargeSheetPerformingRule(DocumentChargeSheetKind),
-      GetDocumentChargeSheetOverlappedPerformingRule(DocumentChargeSheetKind)
+      GetDocumentChargeSheetOverlappedPerformingRule(DocumentChargeSheetKind),
+      GetDocumentChargeSheetIssuingRule(DocumentChargeSheetKind)
     );
   
 end;
@@ -280,6 +313,19 @@ begin
 
 end;
 
+procedure TDocumentChargeSheetRuleRegistry.RegisterDocumentChargeSheetIssuingRule(
+  DocumentChargeSheetKind: TDocumentChargeSheetClass;
+  DocumentChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule
+);
+begin
+
+  FChargeSheetIssuingRuleRegistry.RegisterInterface(
+    DocumentChargeSheetKind,
+    DocumentChargeSheetIssuingRule
+  );
+  
+end;
+
 procedure TDocumentChargeSheetRuleRegistry.RegisterDocumentChargeSheetOverlappedPerformingRule(
   DocumentChargeSheetKind: TDocumentChargeSheetClass;
   DocumentChargeSheetOverlappedPerformingRule: IDocumentChargeSheetOverlappedPerformingRule);
@@ -294,7 +340,7 @@ end;
 
 procedure TDocumentChargeSheetRuleRegistry.RegisterDocumentChargeSheetPerformingRule(
   DocumentChargeSheetKind: TDocumentChargeSheetClass;
-  DocumentChargeSheetPerformingRule: IDocumentChargeSheetWorkingRule);
+  DocumentChargeSheetPerformingRule: IDocumentChargeSheetPerformingRule);
 begin
 
   FChargeSheetPerformingRuleRegistry.RegisterInterface(
@@ -339,6 +385,49 @@ begin
     )
   );
 
+end;
+
+procedure TDocumentChargeSheetRuleRegistry
+  .RegisterStandardDocumentChargeSheetIssuingRule(
+    DocumentChargeSheetKind: TDocumentChargeSheetClass
+  );
+var
+    ChargeSheetIssuingRule: IDocumentChargeSheetIssuingRule;
+begin
+
+  if DocumentChargeSheetKind.InheritsFrom(TDocumentPerformingSheet) then begin
+
+    ChargeSheetIssuingRule :=
+      TStandardDocumentPerformingSheetIssuingRule.Create(
+        TEmployeeSubordinationSpecificationRegistry.Instance.GetEmployeeIsSameAsOrDeputySpecification,
+        GetDocumentChargeSheetPerformingRule(DocumentChargeSheetKind)
+      );
+
+  end
+
+  else if DocumentChargeSheetKind.InheritsFrom(TDocumentAcquaitanceSheet) then
+  begin
+
+    ChargeSheetIssuingRule :=
+      TStandardDocumentAcquaitanceSheetIssuingRule.Create(
+        TEmployeeSubordinationSpecificationRegistry.Instance.GetEmployeeIsSameAsOrDeputySpecification
+      );
+
+  end
+
+  else begin
+
+    Raise TDomainException.Create(
+      'Program error. Unknown charge sheet type to issuing rule registration'
+    );
+    
+  end;
+  
+  RegisterDocumentChargeSheetIssuingRule(
+    DocumentChargeSheetKind,
+    ChargeSheetIssuingRule
+  );
+  
 end;
 
 procedure TDocumentChargeSheetRuleRegistry.RegisterStandardDocumentChargeSheetOverlappedPerformingRule(
@@ -409,6 +498,7 @@ begin
   RegisterStandardDocumentChargeSheetViewingRule(DocumentChargeSheetKind);
   RegisterStandardDocumentChargeSheetPerformingRule(DocumentChargeSheetKind);
   RegisterStandardDocumentChargeSheetOverlappedPerformingRule(DocumentChargeSheetKind);
+  RegisterStandardDocumentChargeSheetIssuingRule(DocumentChargeSheetKind);
 
 end;
 

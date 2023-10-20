@@ -28,10 +28,10 @@ type
     DocumentApprovingListRecordSetapprover_speciality: TStringField;
     DocumentApprovingListRecordSetapproving_result_name: TStringField;
   private
-    { Private declarations }
-  public
-    { Public declarations }
 
+  public
+
+    destructor Destroy; override;
     constructor Create(AOwner: TComponent); override;
     
   end;
@@ -56,6 +56,13 @@ begin
   ContentDataSet.Append;
   ContentDataSet.Post;
 
+end;
+
+destructor TfrxDocumentPrintFormReports.Destroy;
+begin
+
+  inherited;
+  
 end;
 
 end.

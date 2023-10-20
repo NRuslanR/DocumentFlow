@@ -22,6 +22,10 @@ type
 
       procedure SetSubKindId(const Value: Variant);
 
+    protected
+
+      procedure CustomizeInitialState; override;
+
     public
 
       class function ListType: TDocumentsClass; override;
@@ -40,7 +44,20 @@ type
 
 implementation
 
+uses
+
+  Variants;
+
 { TPersonnelOrder }
+
+procedure TPersonnelOrder.CustomizeInitialState;
+begin
+
+  inherited CustomizeInitialState;
+
+  FSubKindId := Null;
+  
+end;
 
 class function TPersonnelOrder.ListType: TDocumentsClass;
 begin

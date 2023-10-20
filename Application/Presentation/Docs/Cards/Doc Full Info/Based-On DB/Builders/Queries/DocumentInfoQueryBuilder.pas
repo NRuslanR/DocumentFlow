@@ -7,25 +7,60 @@ uses
   IGetSelfUnit,
   DocumentInfoHolder,
   DocumentTableDef,
+  DocumentSigningTableDef,
   SysUtils;
 
 type
 
-  IDocumentInfoQueryBuilder = interface (IGetSelf)
+  IDocumentInfoQueryBuilderOptions = interface (IGetSelf)
 
+    function FetchSelfDocumentRegistrationData: Boolean; overload;
+    function FetchSelfDocumentRegistrationData(const Value: Boolean): IDocumentInfoQueryBuilderOptions; overload;
+
+  end;
+
+  TDocumentInfoQueryBuilderOptions = class (TInterfacedObject, IDocumentInfoQueryBuilderOptions)
+
+    strict private
+
+      FFetchSelfDocumentRegistrationData: Boolean;
+
+      class var FDefault: IDocumentInfoQueryBuilderOptions;
+
+    public
+
+      function GetSelf: TObject;
+
+      function FetchSelfDocumentRegistrationData: Boolean; overload;
+      function FetchSelfDocumentRegistrationData(const Value: Boolean): IDocumentInfoQueryBuilderOptions; overload;
+
+      class function Default: IDocumentInfoQueryBuilderOptions;
+
+  end;
+
+  IDocumentInfoQueryBuilder = interface
+
+    function GetOptions: IDocumentInfoQueryBuilderOptions;
+    procedure SetOptions(const Value: IDocumentInfoQueryBuilderOptions);
+    
     function BuildDocumentInfoQuery(
       FieldNames: TDocumentInfoFieldNames;
       const DocumentIdParamName: String
     ): String;
-    
+
+    property Options: IDocumentInfoQueryBuilderOptions
+    read GetOptions write SetOptions;
+
   end;
   
-  TDocumentInfoQueryBuilder = class (TInterfacedObject, IDocumentInfoQueryBuilder)
+  TDocumentInfoQueryBuilder = class abstract (TInterfacedObject, IDocumentInfoQueryBuilder)
 
     protected
 
       FDocumentTableDef: TDocumentTableDef;
-
+      FSigningTableDef: TDocumentSigningTableDef;
+      FOptions: IDocumentInfoQueryBuilderOptions;
+      
     public
 
       function GetMainDocumentTableExpression: String; virtual; abstract;
@@ -38,15 +73,25 @@ type
 
     public
 
-      constructor Create(DocumentTableDef: TDocumentTableDef);
+      constructor Create(
+        DocumentTableDef: TDocumentTableDef;
+        SigningTableDef: TDocumentSigningTableDef;
+        Options: IDocumentInfoQueryBuilderOptions = nil
+      );
 
       function GetSelf: TObject;
       
+      function GetOptions: IDocumentInfoQueryBuilderOptions;
+      procedure SetOptions(const Value: IDocumentInfoQueryBuilderOptions);
+
       function BuildDocumentInfoQuery(
         FieldNames: TDocumentInfoFieldNames;
         const DocumentIdParamName: String
       ): String; virtual;
 
+      property Options: IDocumentInfoQueryBuilderOptions
+      read GetOptions write SetOptions;
+      
   end;
 
 implementation
@@ -72,12 +117,21 @@ begin
 end;
 
 constructor TDocumentInfoQueryBuilder.Create(
-  DocumentTableDef: TDocumentTableDef);
+  DocumentTableDef: TDocumentTableDef;
+  SigningTableDef: TDocumentSigningTableDef;
+  Options: IDocumentInfoQueryBuilderOptions
+);
 begin
 
   inherited Create;
 
   FDocumentTableDef := DocumentTableDef;
+  FSigningTableDef := SigningTableDef;
+  
+  if Assigned(Options) then
+    Self.Options := Options
+
+  else Self.Options := TDocumentInfoQueryBuilderOptions.Default;
   
 end;
 
@@ -98,6 +152,64 @@ begin
 
   Result := Self;
   
+end;
+
+function TDocumentInfoQueryBuilder.GetOptions: IDocumentInfoQueryBuilderOptions;
+begin
+
+  Result := FOptions;
+  
+end;
+
+procedure TDocumentInfoQueryBuilder.SetOptions(
+  const Value: IDocumentInfoQueryBuilderOptions);
+begin
+
+  FOptions := Value;
+  
+end;
+
+
+{ TDocumentInfoQueryBuilderOptions }
+
+function TDocumentInfoQueryBuilderOptions.FetchSelfDocumentRegistrationData: Boolean;
+begin
+
+  Result := FFetchSelfDocumentRegistrationData;
+
+end;
+
+class function TDocumentInfoQueryBuilderOptions.Default: IDocumentInfoQueryBuilderOptions;
+begin
+
+  if not Assigned(FDefault) then begin
+
+    FDefault :=
+      TDocumentInfoQueryBuilderOptions
+        .Create
+          .FetchSelfDocumentRegistrationData(True);
+
+  end;
+
+  Result := FDefault;
+
+end;
+
+function TDocumentInfoQueryBuilderOptions.FetchSelfDocumentRegistrationData(
+  const Value: Boolean): IDocumentInfoQueryBuilderOptions;
+begin
+
+  FFetchSelfDocumentRegistrationData := Value;
+
+  Result := Self;
+
+end;
+
+function TDocumentInfoQueryBuilderOptions.GetSelf: TObject;
+begin
+
+  Result := Self;
+
 end;
 
 end.

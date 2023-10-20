@@ -20,7 +20,13 @@ type
       Document: IDocument;
       Performer: TEmployee
     ): IDocumentCharge;
-     
+
+    function CreateDocumentCharges(
+      const ChargeKindId: Variant;
+      Document: IDocument;
+      Performers: TEmployees
+    ): IDocumentCharges;
+
   end;
 
 implementation

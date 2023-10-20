@@ -8,11 +8,12 @@ uses
   SysUtils,
   IGetSelfUnit,
   DocumentChargeCreatingService,
-  DocumentFullInfoDTO,
+  DocumentChargeSheetsInfoDTO,
   DocumentChargeInfoDTODomainMapperRegistry,
   DocumentChargeInfoDTODomainMapper,
   IEmployeeRepositoryUnit,
   DocumentChargeInterface,
+  DocumentChargeAccessRights,
   IDocumentUnit,
   VariantListUnit,
   Employee,
@@ -27,7 +28,15 @@ type
       Document: IDocument
     ): IDocumentCharges;
 
-    function MapDocumentChargesInfoDTOFrom(Charges: IDocumentCharges): TDocumentChargesInfoDTO;
+    function MapDocumentChargesInfoDTOFrom(
+      Charges: IDocumentCharges;
+      AccessRightsList: TDocumentChargeAccessRightsList = nil 
+    ): TDocumentChargesInfoDTO;
+
+    function MapDocumentChargeInfoDTOFrom(
+      Charge: IDocumentCharge;
+      AccessRights: TDocumentChargeAccessRights = nil
+    ): TDocumentChargeInfoDTO;
 
   end;
 
@@ -55,7 +64,15 @@ type
           Document: IDocument
         ): IDocumentCharges;
         
-        function MapDocumentChargesInfoDTOFrom(Charges: IDocumentCharges): TDocumentChargesInfoDTO;
+        function MapDocumentChargesInfoDTOFrom(
+          Charges: IDocumentCharges;
+          AccessRightsList: TDocumentChargeAccessRightsList = nil
+        ): TDocumentChargesInfoDTO;
+
+        function MapDocumentChargeInfoDTOFrom(
+          Charge: IDocumentCharge;
+          AccessRights: TDocumentChargeAccessRights = nil
+        ): TDocumentChargeInfoDTO;
         
     end;
 
@@ -141,29 +158,36 @@ begin
 end;
 
 function TDocumentChargesInfoDTODomainMapper.MapDocumentChargesInfoDTOFrom(
-  Charges: IDocumentCharges): TDocumentChargesInfoDTO;
+  Charges: IDocumentCharges;
+  AccessRightsList: TDocumentChargeAccessRightsList
+): TDocumentChargesInfoDTO;
 var
-    Charge: IDocumentCharge;
-    ChargeInfoDTOMapper: IDocumentChargeInfoDTODomainMapper;
+    AccessRights: TDocumentChargeAccessRights;
+    I: Integer;
 begin
+
+  if Assigned(AccessRightsList) and (Charges.Count <> AccessRightsList.Count)
+  then begin
+
+    raise Exception.Create(
+      'Программная ошибка. Количество поручений не совпадает ' +
+      'с количеством наборов прав доступа'
+    );
+    
+  end;
 
   Result := TDocumentChargesInfoDTO.Create;
 
   try
 
-    for Charge in Charges do begin
+    for I := 0 to Charges.Count - 1 do begin
 
-      ChargeInfoDTOMapper :=
-        FChargeInfoDTODomainMapperRegistry
-          .GetDocumentChargeInfoDTODomainMapper(
-            TDocumentChargeClass(Charge.Self.ClassType)
-          );
+      if Assigned(AccessRightsList) then
+        AccessRights := AccessRightsList[I]
 
-      Result.Add(
-        ChargeInfoDTOMapper.MapDocumentChargeInfoDTOFrom(
-          TDocumentCharge(Charge.Self)
-        )
-      );
+      else AccessRights := nil;
+      
+      Result.Add(MapDocumentChargeInfoDTOFrom(Charges[I], AccessRights));
 
     end;
 
@@ -174,6 +198,27 @@ begin
     Raise;
     
   end;
+
+end;
+
+function TDocumentChargesInfoDTODomainMapper.MapDocumentChargeInfoDTOFrom(
+  Charge: IDocumentCharge;
+  AccessRights: TDocumentChargeAccessRights
+): TDocumentChargeInfoDTO;
+var
+    ChargeInfoDTOMapper: IDocumentChargeInfoDTODomainMapper;
+begin
+
+  ChargeInfoDTOMapper :=
+    FChargeInfoDTODomainMapperRegistry
+      .GetDocumentChargeInfoDTODomainMapper(
+        TDocumentChargeClass(Charge.Self.ClassType)
+      );
+
+  Result :=
+    ChargeInfoDTOMapper.MapDocumentChargeInfoDTOFrom(
+      TDocumentCharge(Charge.Self), AccessRights
+    );
 
 end;
 

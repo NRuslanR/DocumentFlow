@@ -11,7 +11,6 @@ uses
   EmployeeIsSameAsOrDeputySpecification,
   DocumentChargeSheetPerformingService,
   DocumentChargeSheet,
-  IDocumentUnit,
   SysUtils,
   Classes;
 
@@ -43,14 +42,12 @@ type
 
         function PerformChargeSheet(
           ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           Employee: TEmployee;
           const PerformingDateTime: TDateTime = 0
         ): IDocumentChargeSheets; virtual;
 
         function PerformChargeSheetAsOverlapping(
           ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           Performer: TEmployee;
           const PerformingDate: TDateTime = 0
         ): IDocumentChargeSheets; virtual;
@@ -61,7 +58,6 @@ implementation
 
 uses
 
-  DocumentChargeSheetPerformingEnsurer,
   AuxCollectionFunctionsUnit,
   AuxDebugFunctionsUnit,
   IDomainObjectListUnit;
@@ -119,19 +115,17 @@ end;
 function TStandardDocumentChargeSheetOverlappingPerformingService.
   PerformChargeSheetAsOverlapping(
     ChargeSheet: IDocumentChargeSheet;
-    Document: IDocument;
     Performer: TEmployee;
     const PerformingDate: TDateTime
   ): IDocumentChargeSheets;
 begin
 
-  Result := PerformChargeSheet(ChargeSheet, Document, Performer, PerformingDate);
+  Result := PerformChargeSheet(ChargeSheet, Performer, PerformingDate);
 
 end;
 
 function TStandardDocumentChargeSheetOverlappingPerformingService.PerformChargeSheet(
   ChargeSheet: IDocumentChargeSheet;
-  Document: IDocument;
   Employee: TEmployee;
   const PerformingDateTime: TDateTime
 ): IDocumentChargeSheets;

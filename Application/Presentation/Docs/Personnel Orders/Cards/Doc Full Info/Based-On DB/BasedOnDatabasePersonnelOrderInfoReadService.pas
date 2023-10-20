@@ -73,7 +73,7 @@ begin
 
   with TPersonnelOrderFullInfoDataSetFieldNames(FieldNames) do begin
 
-    DocumentIsSelfRegisteredFieldName := '';
+    IsSelfRegisteredFieldName := '';
     SubKindIdFieldName := 'sub_type_id';
     SubKindNameFieldName := 'sub_type_name';
     

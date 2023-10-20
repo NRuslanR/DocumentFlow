@@ -11,11 +11,13 @@ uses
   DocumentChargeSheetDirectory,
   DocumentChargeSheetOverlappingPerformingService,
   DocumentChargeSheetOrdinaryPerformingService,
+  DocumentChargeSheetIssuingAccessRightsService,
   DocumentChargeSheetPerformingService,
   DocumentChargeSheetControlPerformingService,
   DocumentChargeSheetRemovingService,
   DocumentChargeSheetCreatingService,
   DocumentChargeSheetAccessRightsService,
+  GeneralDocumentChargeSheetAccessRightsService,
   DomainException,
   TypeObjectRegistry,
   DocumentChargeSheet,
@@ -41,6 +43,7 @@ type
       FDocumentChargeSheetRemovingServiceRegistry: TTypeObjectRegistry;
       FDocumentChargeSheetDirectoryRegistry: TTypeObjectRegistry;
       FDocumentChargeSheetAccessRightsServiceRegistry: TTypeObjectRegistry;
+      FGeneralDocumentChargeSheetAccessRightsServiceRegistry: TTypeObjectRegistry;
       
     public
 
@@ -62,17 +65,35 @@ type
 
     public
 
+      procedure RegisterGeneralDocumentChargeSheetAccessRightsService(
+        DocumentKind: TDocumentClass;
+        GeneralDocumentChargeSheetAccessRightsService: IGeneralDocumentChargeSheetAccessRightsService
+      );
+
+      function GetGeneralDocumentChargeSheetAccessRightsService(
+        DocumentKind: TDocumentClass
+      ): IGeneralDocumentChargeSheetAccessRightsService;
+
+      procedure RegisterStandardGeneralDocumentChargeSheetAccessRightsService(
+        DocumentKind: TDocumentClass
+      );
+
+    public
+
       procedure RegisterDocumentChargeSheetCreatingService(
         ChargeSheetCreatingService: IDocumentChargeSheetCreatingService;
-        DocumentChargeSheetKind: TDocumentChargeSheetClass
+        DocumentChargeSheetKind: TDocumentChargeSheetClass;
+        DocumentKind: TDocumentClass
       );
 
       procedure RegisterStandardDocumentChargeSheetCreatingService(
-        DocumentChargeSheetKind: TDocumentChargeSheetClass
+        DocumentChargeSheetKind: TDocumentChargeSheetClass;
+        DocumentKind: TDocumentClass
       );
 
       function GetDocumentChargeSheetCreatingService(
-        DocumentChargeSheetKind: TDocumentChargeSheetClass
+        DocumentChargeSheetKind: TDocumentChargeSheetClass;
+        DocumentKind: TDocumentClass
       ): IDocumentChargeSheetCreatingService;
       
     public
@@ -222,12 +243,16 @@ uses
   StandardDocumentChargeSheetOverlappingPerformingService,
   StandardDocumentChargeSheetOrdinaryPerformingService,
   StandardDocumentChargeSheetControlPerformingService,
+  StandardGeneralDocumentChargeSheetAccessRightsService,
+  StandardGeneralIncomingDocumentChargeSheetAccessRightsService,
+  StandardDocumentChargeSheetIssuingAccessRightsService,
   InterfaceObjectList,
   EmployeeRelationshipRuleRegistry,
   DocumentChargeSheetRuleRegistry,
   DocumentChargeServiceRegistry,
   DocumentFormalizationServiceRegistry,
   EmployeeDistributionSpecificationRegistry,
+  DocumentSearchServiceRegistry,
   DocumentStorageServiceRegistry,
   DocumentPerformingServiceRegistry,
   StandardDocumentChargeSheetAccessRightsService,
@@ -250,11 +275,13 @@ begin
   FDocumentChargeSheetControlPerformingServiceRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   FDocumentChargeSheetRemovingServiceRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
   FDocumentChargeSheetAccessRightsServiceRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
-  
+  FGeneralDocumentChargeSheetAccessRightsServiceRegistry := TTypeObjectRegistry.CreateInMemoryTypeObjectRegistry;
+
   FDocumentChargeSheetFinderRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FDocumentChargeSheetDirectoryRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FDocumentChargeSheetControlServiceRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   FDocumentChargeSheetPerformingServiceRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
+  FGeneralDocumentChargeSheetAccessRightsServiceRegistry.UseSearchByNearestAncestorTypeIfTargetObjectNotFound := True;
   
 end;
 
@@ -269,7 +296,8 @@ begin
   FreeAndNil(FDocumentChargeSheetControlPerformingServiceRegistry);
   FreeAndNil(FDocumentChargeSheetRemovingServiceRegistry);
   FreeAndNil(FDocumentChargeSheetAccessRightsServiceRegistry);
-
+  FreeAndNil(FGeneralDocumentChargeSheetAccessRightsServiceRegistry);
+  
   inherited;
 
 end;
@@ -314,13 +342,15 @@ begin
 end;
 
 function TDocumentChargeSheetsServiceRegistry.GetDocumentChargeSheetCreatingService(
-  DocumentChargeSheetKind: TDocumentChargeSheetClass): IDocumentChargeSheetCreatingService;
+  DocumentChargeSheetKind: TDocumentChargeSheetClass;
+  DocumentKind: TDocumentClass
+): IDocumentChargeSheetCreatingService;
 begin
 
   Result :=
     IDocumentChargeSheetCreatingService(
       FDocumentChargeSheetCreatingServiceRegistry.GetInterface(
-        DocumentChargeSheetKind
+        [DocumentChargeSheetKind, DocumentKind]
       )
     );
     
@@ -453,11 +483,13 @@ end;
 
 procedure TDocumentChargeSheetsServiceRegistry.RegisterDocumentChargeSheetCreatingService(
   ChargeSheetCreatingService: IDocumentChargeSheetCreatingService;
-  DocumentChargeSheetKind: TDocumentChargeSheetClass);
+  DocumentChargeSheetKind: TDocumentChargeSheetClass;
+  DocumentKind: TDocumentClass
+);
 begin
 
   FDocumentChargeSheetCreatingServiceRegistry.RegisterInterface(
-    DocumentChargeSheetKind,
+    [DocumentChargeSheetKind, DocumentKind],
     ChargeSheetCreatingService
   );
 
@@ -552,13 +584,16 @@ begin
   
 end;
 
-procedure TDocumentChargeSheetsServiceRegistry.RegisterStandardDocumentChargeSheetControlPerformingService(
-  DocumentKind: TDocumentClass);
+procedure TDocumentChargeSheetsServiceRegistry
+  .RegisterStandardDocumentChargeSheetControlPerformingService(
+    DocumentKind: TDocumentClass
+  );
 begin
 
   RegisterDocumentChargeSheetControlPerformingService(
     DocumentKind,
     TStandardDocumentChargeSheetControlPerformingService.Create(
+      TDocumentSearchServiceRegistry.Instance.GetDocumentKindFinder,
       TDocumentPerformingServiceRegistry.Instance.GetDocumentPerformingService(
         DocumentKind
       )
@@ -580,11 +615,11 @@ begin
     и регистрировать соответствующие службы создания листов поручений
   }
 
-  if GetDocumentChargeSheetCreatingService(TDocumentAcquaitanceSheet) = nil then
-    RegisterStandardDocumentChargeSheetCreatingService(TDocumentAcquaitanceSheet);
+  if GetDocumentChargeSheetCreatingService(TDocumentAcquaitanceSheet, DocumentKind) = nil then
+    RegisterStandardDocumentChargeSheetCreatingService(TDocumentAcquaitanceSheet, DocumentKind);
 
-  if GetDocumentChargeSheetCreatingService(TDocumentPerformingSheet) = nil then
-    RegisterStandardDocumentChargeSheetCreatingService(TDocumentPerformingSheet);
+  if GetDocumentChargeSheetCreatingService(TDocumentPerformingSheet, DocumentKind) = nil then
+    RegisterStandardDocumentChargeSheetCreatingService(TDocumentPerformingSheet, DocumentKind);
 
   if GetDocumentChargeSheetRemovingService(DocumentKind) = nil then
     RegisterStandardDocumentChargeSheetRemovingService(DocumentKind);
@@ -600,35 +635,42 @@ begin
   RegisterDocumentChargeSheetControlService(
     DocumentKind,
     TStandardDocumentChargeSheetControlService.Create(
+      TDocumentSearchServiceRegistry.Instance.GetDocumentKindFinder,
+      TDocumentChargeServiceRegistry.Instance.GetDocumentChargeKindsControlService,
       TDocumentChargeSheetsServiceRegistry.Instance.GetDocumentChargeSheetDirectory(DocumentKind),
-      GetDocumentChargeSheetCreatingService(DocumentChargeSheetKind),
       GetDocumentChargeSheetRemovingService(DocumentKind),
       TDocumentPerformingServiceRegistry.Instance.GetDocumentPerformingService(DocumentKind),
-      GetDocumentChargeSheetControlPerformingService(DocumentKind),
-      GetDocumentChargeSheetAccessRightsService(DocumentChargeSheetKind)
+      GetDocumentChargeSheetControlPerformingService(DocumentKind)
     )
   );
 
 end;
 
 procedure TDocumentChargeSheetsServiceRegistry.RegisterStandardDocumentChargeSheetCreatingService(
-  DocumentChargeSheetKind: TDocumentChargeSheetClass);
+  DocumentChargeSheetKind: TDocumentChargeSheetClass;
+  DocumentKind: TDocumentClass
+);
 begin
 
   if GetDocumentChargeSheetAccessRightsService(DocumentChargeSheetKind) = nil then
     RegisterStandardDocumentChargeSheetAccessRightsService(DocumentChargeSheetKind);
-    
+
+  if GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind) = nil then
+    RegisterStandardGeneralDocumentChargeSheetAccessRightsService(DocumentKind);
+  
   if DocumentChargeSheetKind.InheritsFrom(TDocumentAcquaitanceSheet)
   then begin
 
     RegisterDocumentChargeSheetCreatingService(
       TStandardDocumentChargeSheetCreatingService.Create(
+        GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind),
         GetDocumentChargeSheetAccessRightsService(DocumentChargeSheetKind),
         TDocumentChargeServiceRegistry.Instance.GetDocumentChargeCreatingService(DocumentChargeSheetKind.ChargeType),
         TEmployeeRelationshipRuleRegistry.Instance.GetEmployeeChargeIssuingRule,
         TEmployeeSubordinationSpecificationRegistry.Instance.GetEmployeeIsSameAsOrDeputyOfEmployeesSpecification
       ),
-      DocumentChargeSheetKind
+      DocumentChargeSheetKind,
+      DocumentKind
     );
 
   end
@@ -637,12 +679,14 @@ begin
 
     RegisterDocumentChargeSheetCreatingService(
       TStandardDocumentPerformingSheetCreatingService.Create(
+        GetGeneralDocumentChargeSheetAccessRightsService(DocumentKind),
         GetDocumentChargeSheetAccessRightsService(DocumentChargeSheetKind),
         TDocumentChargeServiceRegistry.Instance.GetDocumentChargeCreatingService(DocumentChargeSheetKind.ChargeType),
         TEmployeeRelationshipRuleRegistry.Instance.GetEmployeeChargeIssuingRule,
         TEmployeeSubordinationSpecificationRegistry.Instance.GetEmployeeIsSameAsOrDeputyOfEmployeesSpecification
       ),
-      DocumentChargeSheetKind
+      DocumentChargeSheetKind,
+      DocumentKind
     );
 
   end
@@ -709,6 +753,7 @@ begin
 
   RegisterAllStandardDocumentChargeSheetPerformingServices(DocumentKind);
   RegisterStandardDocumentChargeSheetControlService(DocumentKind);
+  RegisterStandardGeneralDocumentChargeSheetAccessRightsService(DocumentKind);
 
 end;
 
@@ -719,6 +764,73 @@ begin
   RegisterStandardDocumentChargeSheetOverlappingPerformingService(DocumentKind, TDocumentPerformingSheet);
   RegisterStandardDocumentChargeSheetOrdinaryPerformingService(DocumentKind, TDocumentAcquaitanceSheet);
 
+end;
+
+procedure TDocumentChargeSheetsServiceRegistry
+  .RegisterGeneralDocumentChargeSheetAccessRightsService(
+    DocumentKind: TDocumentClass;
+    GeneralDocumentChargeSheetAccessRightsService: IGeneralDocumentChargeSheetAccessRightsService
+  );
+begin
+
+  FGeneralDocumentChargeSheetAccessRightsServiceRegistry.RegisterInterface(
+    DocumentKind,
+    GeneralDocumentChargeSheetAccessRightsService
+  );
+
+end;
+
+function TDocumentChargeSheetsServiceRegistry
+  .GetGeneralDocumentChargeSheetAccessRightsService(
+    DocumentKind: TDocumentClass
+  ): IGeneralDocumentChargeSheetAccessRightsService;
+begin
+
+  Result :=
+    IGeneralDocumentChargeSheetAccessRightsService(
+      FGeneralDocumentChargeSheetAccessRightsServiceRegistry.GetInterface(
+        DocumentKind
+      )
+    );
+
+end;
+
+procedure TDocumentChargeSheetsServiceRegistry.
+  RegisterStandardGeneralDocumentChargeSheetAccessRightsService(
+    DocumentKind: TDocumentClass
+  );
+var
+    Service: IGeneralDocumentChargeSheetAccessRightsService;
+    IssuingAccessRightsService: IDocumentChargeSheetIssuingAccessRightsService;
+begin
+
+  IssuingAccessRightsService :=
+    TStandardDocumentChargeSheetIssuingAccessRightsService.Create(
+      TDocumentChargeServiceRegistry.Instance.GetDocumentChargeKindsControlService
+    );
+
+  if DocumentKind.InheritsFrom(TIncomingDocument) then begin
+
+    Service :=
+      TStandardGeneralIncomingDocumentChargeSheetAccessRightsService.Create(
+        TDocumentChargeSheetsServiceRegistry.Instance.GetDocumentChargeSheetFinder(DocumentKind),
+        IssuingAccessRightsService
+      );
+
+  end
+
+  else begin
+
+    Service :=
+      TStandardGeneralDocumentChargeSheetAccessRightsService.Create(
+        TDocumentChargeSheetsServiceRegistry.Instance.GetDocumentChargeSheetFinder(DocumentKind),
+        IssuingAccessRightsService
+      );
+
+  end;
+
+  RegisterGeneralDocumentChargeSheetAccessRightsService(DocumentKind, Service);
+  
 end;
 
 end.

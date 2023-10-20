@@ -1,7 +1,5 @@
 program Domain;
 
-{%TogetherDiagram 'ModelSupport_Domain\default.txaPackage'}
-
 uses
   Forms,
   IDocumentChargeSheetUnit in 'Documents\Common\Entities\Interfaces\IDocumentChargeSheetUnit.pas',
@@ -242,9 +240,7 @@ uses
   StandardDocumentChargeSheetRemovingRule in 'Documents\Common\Rules\Charge Sheets\Removing\StandardDocumentChargeSheetRemovingRule.pas',
   StandardDocumentChargeSheetViewingRule in 'Documents\Common\Rules\Charge Sheets\Viewing\StandardDocumentChargeSheetViewingRule.pas',
   DocumentChargeSheetViewingRule in 'Documents\Common\Rules\Charge Sheets\Viewing\Interfaces\DocumentChargeSheetViewingRule.pas',
-  DocumentChargeSheetPerformingEnsurer in 'Documents\Common\Rules\Charge Sheets\Performing\DocumentChargeSheetPerformingEnsurer.pas',
   StandardDocumentChargeSheetRemovingService in 'Documents\Common\Services\Charge Sheets\Removing\StandardDocumentChargeSheetRemovingService.pas',
-  DocumentChargeSheetChangingEnsurer in 'Documents\Common\Rules\Charge Sheets\Changing\DocumentChargeSheetChangingEnsurer.pas',
   DocumentChargeSheetAccessRightsService in 'Documents\Common\Services\Charge Sheets\Access Rights\DocumentChargeSheetAccessRightsService.pas',
   DocumentChargeSheetAccessRights in 'Documents\Common\Services\Charge Sheets\Access Rights\DocumentChargeSheetAccessRights.pas',
   StandardDocumentChargeSheetAccessRightsService in 'Documents\Common\Services\Charge Sheets\Access Rights\StandardDocumentChargeSheetAccessRightsService.pas',
@@ -277,7 +273,23 @@ uses
   DocumentPersistingValidator in 'Documents\Common\Services\Storage\Interfaces\DocumentPersistingValidator.pas',
   StandardDocumentPersistingValidator in 'Documents\Common\Services\Storage\StandardDocumentPersistingValidator.pas',
   SuccessedDocumentPersistingValidator in 'Documents\Common\Services\Storage\SuccessedDocumentPersistingValidator.pas',
-  EmployeeDocumentKindAccessRightsInfo in 'Documents\Common\Services\Access Rights\Interfaces\EmployeeDocumentKindAccessRightsInfo.pas';
+  EmployeeDocumentKindAccessRightsInfo in 'Documents\Common\Services\Access Rights\Interfaces\EmployeeDocumentKindAccessRightsInfo.pas',
+  DocumentChargeSheetIssuingAccessRights in 'Documents\Common\Services\Access Rights\Interfaces\DocumentChargeSheetIssuingAccessRights.pas',
+  DocumentChargeSheetIssuingAccessRightsService in 'Documents\Common\Services\Access Rights\Interfaces\DocumentChargeSheetIssuingAccessRightsService.pas',
+  StandardDocumentChargeSheetIssuingAccessRightsService in 'Documents\Common\Services\Access Rights\StandardDocumentChargeSheetIssuingAccessRightsService.pas',
+  StandardDocumentChargeControlService in 'Documents\Common\Services\Charges\StandardDocumentChargeControlService.pas',
+  DocumentChargeAccessRights in 'Documents\Common\Services\Charges\Access Rights\DocumentChargeAccessRights.pas',
+  DocumentChargeAccessRightsService in 'Documents\Common\Services\Charges\Access Rights\DocumentChargeAccessRightsService.pas',
+  StandardDocumentChargeAccessRightsService in 'Documents\Common\Services\Charges\Access Rights\StandardDocumentChargeAccessRightsService.pas',
+  DocumentChargeControlService in 'Documents\Common\Services\Charges\Interfaces\DocumentChargeControlService.pas',
+  DocumentDefaultSignerFinder in 'Documents\Common\Services\Signing\Interfaces\DocumentDefaultSignerFinder.pas',
+  AbstractDocumentDefaultSignerFinder in 'Documents\Common\Services\Signing\AbstractDocumentDefaultSignerFinder.pas',
+  StandardDocumentDefaultSignerFinder in 'Documents\Common\Services\Signing\StandardDocumentDefaultSignerFinder.pas',
+  PersonnelOrderDefaultSignerFinder in 'Documents\Personnel Orders\Services\Signing\PersonnelOrderDefaultSignerFinder.pas',
+  PersonnelOrderSubKindFinder in 'Documents\Personnel Orders\Services\Search\Interfaces\PersonnelOrderSubKindFinder.pas',
+  DocumentChargeSheetIssuingRule in 'Documents\Common\Rules\Charge Sheets\Issuing\Interfaces\DocumentChargeSheetIssuingRule.pas',
+  StandardDocumentPerformingSheetIssuingRule in 'Documents\Common\Rules\Charge Sheets\Issuing\StandardDocumentPerformingSheetIssuingRule.pas',
+  StandardDocumentAcquaitanceSheetIssuingRule in 'Documents\Common\Rules\Charge Sheets\Issuing\StandardDocumentAcquaitanceSheetIssuingRule.pas';
 
 {$R *.res}
 

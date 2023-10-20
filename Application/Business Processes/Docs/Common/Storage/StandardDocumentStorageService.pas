@@ -1,4 +1,4 @@
-{ refactor: удалить информацию о документе ещё и через службу просмотра 
+{ refactor: удалить информацию о документе ещё и через службу просмотра
 }
 unit StandardDocumentStorageService;
 
@@ -58,12 +58,11 @@ type
         FDocumentCreatingService: IDocumentCreatingService;
         FDocumentInfoReadService: IDocumentInfoReadService;
         FDocumentUsageEmployeeAccessRightsService: IDocumentUsageEmployeeAccessRightsService;
-
         FDocumentObjectsDTODomainMapper: TDocumentObjectsDTODomainMapper;
         FDocumentFullInfoDTOMapper: TDocumentFullInfoDTOMapper;
         FDocumentResponsibleInfoDTOMapper: TDocumentResponsibleInfoDTOMapper;
         FDocumentUsageEmployeeAccessRightsInfoDTOMapper: TDocumentUsageEmployeeAccessRightsInfoDTOMapper;
-        
+
       protected
 
         procedure RegisterDocumentForEmployeeIfNecessary(Document: TDocument);
@@ -209,7 +208,7 @@ begin
   FDocumentCreatingService := DocumentCreatingService;
   FDocumentInfoReadService := DocumentInfoReadService;
   FDocumentUsageEmployeeAccessRightsService := DocumentUsageEmployeeAccessRightsService;
- 
+
   FDocumentObjectsDTODomainMapper :=
     DocumentObjectsDTODomainMapper;
 
@@ -217,7 +216,9 @@ begin
   
   FDocumentUsageEmployeeAccessRightsInfoDTOMapper :=
     DocumentUsageEmployeeAccessRightsInfoDTOMapper;
+
   FDocumentResponsibleInfoDTOMapper := DocumentResponsibleInfoDTOMapper;
+
 end;
 
 function TStandardDocumentStorageService.

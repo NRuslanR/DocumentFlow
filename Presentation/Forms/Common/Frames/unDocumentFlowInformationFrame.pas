@@ -400,7 +400,7 @@ procedure TDocumentFlowInformationFrame.SetUserInterfaceKind(
 begin
 
   if
-    not (FPreviousUserInterfaceKind <> uiUnknown)
+    (FPreviousUserInterfaceKind = uiUnknown)
     and (FUserInterfaceKind = Value)
   then Exit;
 

@@ -7,7 +7,6 @@ uses
   DocumentChargeSheetPerformingResult,
   IDocumentChargeSheetUnit,
   DomainException,
-  IDocumentUnit,
   Employee,
   SysUtils;
 
@@ -21,7 +20,6 @@ type
 
     function PerformChargeSheet(
       ChargeSheet: IDocumentChargeSheet;
-      Document: IDocument;
       Employee: TEmployee;
       const PerformingDateTime: TDateTime = 0
     ): IDocumentChargeSheets;
@@ -35,7 +33,6 @@ type
       
         function PerformChargeSheet(
           ChargeSheet: IDocumentChargeSheet;
-          Document: IDocument;
           Employee: TEmployee;
           const PerformingDateTime: TDateTime = 0
         ): IDocumentChargeSheets; virtual; abstract;

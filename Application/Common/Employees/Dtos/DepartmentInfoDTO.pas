@@ -4,12 +4,13 @@ interface
 
 uses
 
+  IGetSelfUnit,
   SysUtils,
   Classes;
   
 type
 
-  TDepartmentInfoDTO = class
+  TDepartmentInfoDTO = class (TInterfacedObject, IGetSelf)
 
     public
 
@@ -22,10 +23,12 @@ type
         const Id: Variant;
         const Code, Name: String
       );
+
+      function GetSelf: TObject;
       
   end;
 
-  TDepartmentsInfoDTOEnumerator = class (TListEnumerator)
+  TDepartmentsInfoDTOEnumerator = class (TInterfaceListEnumerator)
 
     private
 
@@ -38,7 +41,7 @@ type
 
   end;
   
-  TDepartmentsInfoDTO = class (TList)
+  TDepartmentsInfoDTO = class (TInterfaceList, IGetSelf)
 
     private
 
@@ -48,12 +51,10 @@ type
         Value: TDepartmentInfoDTO
       );
 
-    protected
-
-      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
-      
     public
 
+      function GetSelf: TObject;
+      
       function Add(DepartmentInfoDTO: TDepartmentInfoDTO): Integer;
       procedure Remove(DepartmentInfoDTO: TDepartmentInfoDTO);
       
@@ -93,12 +94,26 @@ begin
   
 end;
 
+function TDepartmentInfoDTO.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
 { TDepartmentsInfoDTOEnumerator }
 
 function TDepartmentsInfoDTOEnumerator.GetCurrentDepartmentInfoDTO: TDepartmentInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDepartmentInfoDTO(GetCurrent);
+  Intf := GetCurrent;
+
+  Supports(Intf, IGetSelf, Target);
+  
+  Result := TDepartmentInfoDTO(Target.Self);
   
 end;
 
@@ -113,9 +128,16 @@ end;
 
 function TDepartmentsInfoDTO.GetDepartmentInfoDTOByIndex(
   Index: Integer): TDepartmentInfoDTO;
+var
+    Intf: IInterface;
+    Target: IGetSelf;
 begin
 
-  Result := TDepartmentInfoDTO(Get(Index));
+  Intf := Get(Index);
+
+  Supports(Intf, IGetSelf, Target);
+
+  Result := TDepartmentInfoDTO(Target.Self);
 
 end;
 
@@ -126,19 +148,17 @@ begin
   
 end;
 
-procedure TDepartmentsInfoDTO.Notify(Ptr: Pointer; Action: TListNotification);
+function TDepartmentsInfoDTO.GetSelf: TObject;
 begin
 
-  if Action = lnDeleted then
-    if Assigned(Ptr) then
-      TDepartmentInfoDTO(Ptr).Destroy;
-
+  Result := Self;
+  
 end;
 
 procedure TDepartmentsInfoDTO.Remove(DepartmentInfoDTO: TDepartmentInfoDTO);
 begin
 
-  Extract(DepartmentInfoDTO);
+  inherited Remove(DepartmentInfoDTO);
   
 end;
 
@@ -151,3 +171,4 @@ begin
 end;
 
 end.
+

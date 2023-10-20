@@ -76,9 +76,9 @@ begin
 
         while not Eof do begin
 
-          if not VarIsNull(DocumentApprovingIdFieldValue) and
-             VarIsNull(DocumentApprovingCycleNumberFieldValue) and
-             not HandledDocumentApprovingIds.Contains(DocumentApprovingIdFieldValue)
+          if not VarIsNull(IdFieldValue) and
+             VarIsNull(CycleNumberFieldValue) and
+             not HandledDocumentApprovingIds.Contains(IdFieldValue)
 
           then begin
 
@@ -99,12 +99,9 @@ begin
       
     except
 
-      on e: Exception do begin
+      FreeAndNil(Result);
 
-        FreeAndNil(Result);
-        raise;
-        
-      end;
+      raise;
 
     end;
 
@@ -126,13 +123,14 @@ begin
 
     with DocumentApprovingsInfoHolder do begin
 
-      Result.Id := DocumentApprovingIdFieldValue;
-      Result.PerformingDateTime := DocumentApprovingPerformingDateTimeFieldValue;
-      Result.SetPerformingResultFromDomain(DocumentApprovingPerformingResultIdFieldValue);
-      Result.PerformingResultName := DocumentApprovingPerformingResultFieldValue;
-      Result.Note := DocumentApprovingNoteFieldValue;
-      Result.IsViewedByApprover := DocumentApprovingIsLookedByApproverFieldValue;
-      Result.IsAccessible := DocumentApprovingIsAccessibleFieldValue;
+      Result.Id := IdFieldValue;
+      Result.PerformingDateTime := PerformingDateTimeFieldValue;
+      Result.PerformingResultId := PerformingResultIdFieldValue;
+      Result.PerformingResultName := PerformingResultFieldValue;
+      Result.PerformingResultServiceName := PerformingResultServiceNameFieldValue;
+      Result.Note := NoteFieldValue;
+      Result.IsViewedByApprover := IsLookedByApproverFieldValue;
+      Result.IsAccessible := IsAccessibleFieldValue;
 
       Result.ApproverInfoDTO :=
         MapDocumentFormalApproverInfoDTOFrom(DocumentApprovingsInfoHolder);
@@ -166,17 +164,17 @@ begin
 
     with DocumentApprovingsInfoHolder do begin
 
-      Result.Id := DocumentActualApproverIdFieldValue;
-      Result.LeaderId := DocumentActualApproverLeaderIdFieldValue;
-      Result.IsForeign := DocumentActualApproverIsForeignFieldValue;
-      Result.FullName := DocumentActualApproverNameFieldValue;
-      Result.Speciality := DocumentActualApproverSpecialityFieldValue;
+      Result.Id := ApproverIdFieldValue;
+      Result.LeaderId := ApproverLeaderIdFieldValue;
+      Result.IsForeign := ApproverIsForeignFieldValue;
+      Result.FullName := ApproverNameFieldValue;
+      Result.Speciality := ApproverSpecialityFieldValue;
 
       Result.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
 
-      Result.DepartmentInfoDTO.Id := DocumentActualApproverDepartmentIdFieldValue;
-      Result.DepartmentInfoDTO.Code := DocumentActualApproverDepartmentCodeFieldValue;
-      Result.DepartmentInfoDTO.Name := DocumentActualApproverDepartmentNameFieldValue;
+      Result.DepartmentInfoDTO.Id := ApproverDepartmentIdFieldValue;
+      Result.DepartmentInfoDTO.Code := ApproverDepartmentCodeFieldValue;
+      Result.DepartmentInfoDTO.Name := ApproverDepartmentNameFieldValue;
   
     end;
 
@@ -203,17 +201,17 @@ begin
 
     with DocumentApprovingsInfoHolder do begin
 
-      Result.Id := DocumentApproverIdFieldValue;
-      Result.LeaderId := DocumentApproverLeaderIdFieldValue;
-      Result.IsForeign := DocumentApproverIsForeignFieldValue;
-      Result.FullName := DocumentApproverNameFieldValue;
-      Result.Speciality := DocumentApproverSpecialityFieldValue;
+      Result.Id := ApproverIdFieldValue;
+      Result.LeaderId := ApproverLeaderIdFieldValue;
+      Result.IsForeign := ApproverIsForeignFieldValue;
+      Result.FullName := ApproverNameFieldValue;
+      Result.Speciality := ApproverSpecialityFieldValue;
 
       Result.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
 
-      Result.DepartmentInfoDTO.Id := DocumentApproverDepartmentIdFieldValue;
-      Result.DepartmentInfoDTO.Code := DocumentApproverDepartmentCodeFieldValue;
-      Result.DepartmentInfoDTO.Name := DocumentApproverDepartmentNameFieldValue;
+      Result.DepartmentInfoDTO.Id := ApproverDepartmentIdFieldValue;
+      Result.DepartmentInfoDTO.Code := ApproverDepartmentCodeFieldValue;
+      Result.DepartmentInfoDTO.Name := ApproverDepartmentNameFieldValue;
   
     end;
 

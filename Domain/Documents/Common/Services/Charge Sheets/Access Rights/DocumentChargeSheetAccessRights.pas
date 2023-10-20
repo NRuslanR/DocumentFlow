@@ -18,6 +18,7 @@ type
       ResponseSectionAccessible: Boolean;
       RemovingAllowed: Boolean;
       PerformingAllowed: Boolean;
+      SubordinateChargeSheetsIssuingAllowed: Boolean;
 
       function AllAccessRightsAbsent: Boolean;
 

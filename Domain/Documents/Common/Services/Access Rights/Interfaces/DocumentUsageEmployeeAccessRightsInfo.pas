@@ -219,6 +219,8 @@ type
       property AllDocumentAccessRightsAbsent: Boolean
       read GetAllDocumentAccessRightsAbsent;
 
+      function AnyDocumentChargeSheetsAccessRightsAllowed: Boolean;
+      
       property AllDocumentAndChargeSheetsAccessRightsAbsent: Boolean
       read GetAllDocumentAndChargeSheetsAccessRightsAbsent;
       
@@ -271,6 +273,15 @@ type
 implementation
 
 { TDocumentUsageEmployeeAccessRightsInfo }
+
+function TDocumentUsageEmployeeAccessRightsInfo.AnyDocumentChargeSheetsAccessRightsAllowed: Boolean;
+begin
+
+  Result :=
+    Assigned(GeneralChargeSheetsUsageEmployeeAccessRightsInfo)
+    and GeneralChargeSheetsUsageEmployeeAccessRightsInfo.AnyChargeSheetsAccessRightsAllowed;
+    
+end;
 
 constructor TDocumentUsageEmployeeAccessRightsInfo.Create;
 begin

@@ -5,6 +5,9 @@ inherited PersonnelOrderSubKindsReferenceForm: TPersonnelOrderSubKindsReferenceF
   PixelsPerInch = 96
   TextHeight = 13
   inherited DataOperationToolBar: TToolBar
+    inherited SelectFilteredRecordsSeparator: TToolButton
+      ExplicitHeight = 36
+    end
     inherited ExportDataToolButton: TToolButton
       ExplicitWidth = 83
     end

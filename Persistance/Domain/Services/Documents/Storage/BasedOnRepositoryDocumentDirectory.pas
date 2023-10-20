@@ -15,6 +15,7 @@ uses
   DocumentPersistingValidator,
   DocumentFileStorageService,
   DocumentChargeSheetDirectory,
+  DocumentFullNameCompilationService,
   SysUtils,
   Classes;
 
@@ -48,7 +49,8 @@ type
           DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
           DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
           DocumentFileStorageService: IDocumentFileStorageService;
-          DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+          DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+          DocumentFullNameCompilationService: IDocumentFullNameCompilationService
         );
 
     end;
@@ -65,7 +67,8 @@ constructor TBasedOnRepositoryDocumentDirectory.Create(
   DocumentApprovingCycleResultDirectory: IDocumentApprovingCycleResultDirectory;
   DocumentResponsibleDirectory: IDocumentResponsibleDirectory;
   DocumentFileStorageService: IDocumentFileStorageService;
-  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory
+  DocumentChargeSheetDirectory: IDocumentChargeSheetDirectory;
+  DocumentFullNameCompilationService: IDocumentFullNameCompilationService
 );
 begin
 
@@ -76,7 +79,8 @@ begin
     DocumentApprovingCycleResultDirectory,
     DocumentResponsibleDirectory,
     DocumentFileStorageService,
-    DocumentChargeSheetDirectory
+    DocumentChargeSheetDirectory,
+    DocumentFullNameCompilationService
   );
 
   FDocumentRepository := DocumentRepository;

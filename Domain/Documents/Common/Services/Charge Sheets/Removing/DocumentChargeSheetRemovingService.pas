@@ -5,7 +5,6 @@ interface
 uses
 
   DocumentChargeSheet,
-  IDocumentUnit,
   Employee,
   DomainException,
   SysUtils;
@@ -20,8 +19,7 @@ type
 
     procedure RemoveChargeSheets(
       Employee: TEmployee;
-      ChargeSheets: TDocumentChargeSheets;
-      Document: IDocument
+      ChargeSheets: TDocumentChargeSheets
     );
     
   end;

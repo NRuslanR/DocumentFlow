@@ -701,6 +701,7 @@ begin
     TableName := DOCUMENT_TABLE_NAME;
     IdColumnName := DOCUMENT_TABLE_ID_FIELD;
     NameColumnName := DOCUMENT_TABLE_NAME_FIELD;
+    FullNameColumnName := DOCUMENT_TABLE_FULL_NAME_FIELD;
     TypeIdColumnName := DOCUMENT_TABLE_TYPE_ID_FIELD;
     NumberColumnName := DOCUMENT_TABLE_DOCUMENT_NUMBER_FIELD;
     CreationDateColumnName := DOCUMENT_TABLE_CREATION_DATE_FIELD;

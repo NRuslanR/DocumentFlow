@@ -8,7 +8,13 @@
 			<Option Name="GUID">{2F0028B4-ECC5-45D7-B294-253CADC0D3FB}</Option>
 		</Option>
 	</PersonalityInfo>
-	<Default.Personality>  <Projects>
+	<Default.Personality>  
+    
+    
+    
+    
+    
+    <Projects>
       <Projects Name="Domain.exe">Domain\Domain.bdsproj</Projects>
       <Projects Name="Application.exe">Application\Application.bdsproj</Projects>
       <Projects Name="Persistance.exe">Persistance\Persistance.bdsproj</Projects>

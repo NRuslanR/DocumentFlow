@@ -234,88 +234,59 @@ procedure TBasedOnDatabaseDocumentInfoReadService.FillDocumentFullInfoDataSetFie
   FieldNames: TDocumentFullInfoDataSetFieldNames);
 begin
 
-  FieldNames.DocumentIdFieldName := 'document_id';
-  FieldNames.BaseDocumentIdFieldName := 'base_document_id';
-  FieldNames.DocumentNumberFieldName := 'document_number';
-  FieldNames.DocumentNameFieldName := 'document_name';
-  FieldNames.DocumentProductCodeFieldName := 'product_code';
-  FieldNames.DocumentContentFieldName := 'document_content';
-  FieldNames.DocumentNoteFieldName := 'document_note';
-  FieldNames.DocumentIsSelfRegisteredFieldName := 'is_self_registered'; { refactor: набор полей передавать конструктор, поле is_self_registered актуально на данный момент только для служебок }
-  FieldNames.DocumentCreationDateFieldName := 'document_creation_date';
-  FieldNames.DocumentDateFieldName := 'document_date';
-  FieldNames.DocumentKindFieldName := 'document_kind';
-  FieldNames.DocumentKindIdFieldName := 'document_kind_id';
-  FieldNames.DocumentCurrentWorkCycleStageNameFieldName := 'document_current_work_cycle_stage_name';
-  FieldNames.DocumentCurrentWorkCycleStageNumberFieldName := 'document_current_work_cycle_stage_number';
+  FieldNames.IdFieldName := 'document_id';
+  FieldNames.BaseIdFieldName := 'base_document_id';
+  FieldNames.NumberFieldName := 'document_number';
+  FieldNames.NameFieldName := 'document_name';
+  FieldNames.ProductCodeFieldName := 'product_code';
+  FieldNames.ContentFieldName := 'document_content';
+  FieldNames.NoteFieldName := 'document_note';
+  FieldNames.IsSelfRegisteredFieldName := 'is_self_registered';
+  FieldNames.CreationDateFieldName := 'document_creation_date';
+  FieldNames.DateFieldName := 'document_date';
+  FieldNames.KindFieldName := 'document_kind';
+  FieldNames.KindIdFieldName := 'document_kind_id';
+  FieldNames.CurrentWorkCycleStageNameFieldName := 'document_current_work_cycle_stage_name';
+  FieldNames.CurrentWorkCycleStageNumberFieldName := 'document_current_work_cycle_stage_number';
 
-  FieldNames.DocumentAuthorIdFieldName := 'document_author_id';
-  FieldNames.DocumentAuthorLeaderIdFieldName := 'doc_author_leader_id';
-  FieldNames.DocumentAuthorNameFieldName := 'document_author_name';
-  FieldNames.DocumentAuthorSpecialityFieldName := 'document_author_speciality';
-  FieldNames.DocumentAuthorDepartmentIdFieldName := 'document_author_department_id';
-  FieldNames.DocumentAuthorDepartmentCodeFieldName := 'document_author_department_code';
-  FieldNames.DocumentAuthorDepartmentNameFieldName := 'document_author_department_name';
+  FieldNames.AuthorIdFieldName := 'document_author_id';
+  FieldNames.AuthorLeaderIdFieldName := 'doc_author_leader_id';
+  FieldNames.AuthorNameFieldName := 'document_author_name';
+  FieldNames.AuthorSpecialityFieldName := 'document_author_speciality';
+  FieldNames.AuthorDepartmentIdFieldName := 'document_author_department_id';
+  FieldNames.AuthorDepartmentCodeFieldName := 'document_author_department_code';
+  FieldNames.AuthorDepartmentNameFieldName := 'document_author_department_name';
 
-  FieldNames.DocumentResponsibleIdFieldName := 'document_responsible_id';
-  FieldNames.DocumentResponsibleNameFieldName := 'document_responsible_name';
-  FieldNames.DocumentResponsibleTelephoneNumberFieldName := 'document_responsible_telephone_number';
-  FieldNames.DocumentResponsibleDepartmentIdFieldName := 'document_responsible_department_id';
-  FieldNames.DocumentResponsibleDepartmentCodeFieldName := 'document_responsible_department_code';
-  FieldNames.DocumentResponsibleDepartmentNameFieldName := 'document_responsible_department_name';
+  FieldNames.ResponsibleIdFieldName := 'document_responsible_id';
+  FieldNames.ResponsibleNameFieldName := 'document_responsible_name';
+  FieldNames.ResponsibleTelephoneNumberFieldName := 'document_responsible_telephone_number';
+  FieldNames.ResponsibleDepartmentIdFieldName := 'document_responsible_department_id';
+  FieldNames.ResponsibleDepartmentCodeFieldName := 'document_responsible_department_code';
+  FieldNames.ResponsibleDepartmentNameFieldName := 'document_responsible_department_name';
 
-  FieldNames.DocumentChargeIdFieldName := 'document_charge_id';
-  FieldNames.DocumentChargesInfoFieldNames.DocumentChargeKindIdFieldName := 'document_charge_kind_id';
-  FieldNames.DocumentChargesInfoFieldNames.DocumentChargeKindNameFieldName := 'document_charge_kind_name';
-  FieldNames.DocumentChargesInfoFieldNames.DocumentChargeServiceKindNameFieldName := 'document_charge_service_kind_name';
-  FieldNames.DocumentChargeTextFieldName := 'document_charge_text';
-  FieldNames.DocumentChargeIsForAcquaitanceFieldName := 'document_charge_is_for_acquaitance';
-  FieldNames.DocumentChargeResponseFieldName := 'document_charge_response';
-  FieldNames.DocumentChargePeriodStartFieldName := 'document_charge_period_start';
-  FieldNames.DocumentChargePeriodEndFieldName := 'document_charge_period_end';
-  FieldNames.DocumentChargePerformingDateTimeFieldName := 'document_charge_performing_date';
+  FieldNames.SigningIdFieldName := 'document_signing_id';
+  FieldNames.SigningDateFieldName := 'document_signing_performing_date';
+  FieldNames.SignerIdFieldName := 'document_signer_id';
+  FieldNames.SignerLeaderIdFieldName := 'document_signer_leader_id';
+  FieldNames.SignerNameFieldName := 'document_signer_name';
+  FieldNames.SignerSpecialityFieldName := 'signer_speciality';
+  FieldNames.SignerDepartmentIdFieldName := 'document_signer_dep_id';
+  FieldNames.SignerDepartmentCodeFieldName := 'document_signer_dep_code';
+  FieldNames.SignerDepartmentNameFieldName := 'document_signer_dep_name';
 
-  FieldNames.DocumentChargePerformerIdFieldName := 'document_charge_performer_id';
-  FieldNames.DocumentChargePerformerIsForeignFieldName := 'document_charge_perf_is_foreign';
-  FieldNames.DocumentChargePerformerLeaderIdFieldName := 'document_charge_perf_leader_id';
-  FieldNames.DocumentChargePerformerNameFieldName := 'document_charge_performer_name';
-  FieldNames.DocumentChargePerformerSpecialityFieldName := 'document_charge_performer_speciality';
-  FieldNames.DocumentChargePerformerDepartmentIdFieldName := 'document_charge_perf_dep_id';
-  FieldNames.DocumentChargePerformerDepartmentCodeFieldName := 'document_charge_perf_dep_code';
-  FieldNames.DocumentChargePerformerDepartmentNameFieldName := 'document_charge_perf_dep_name';
+  FieldNames.ActualSignerIdFieldName := 'document_fact_signer_id';
+  FieldNames.ActualSignerLeaderIdFieldName := 'document_fact_signer_leader_id';
+  FieldNames.ActualSignerNameFieldName := 'document_fact_signer_name';
+  FieldNames.ActualSignerSpecialityFieldName := 'fact_signer_speciality';
+  FieldNames.ActualSignerDepartmentIdFieldName := 'document_fact_signer_dep_id';
+  FieldNames.ActualSignerDepartmentCodeFieldName := 'document_fact_signer_dep_code';
+  FieldNames.ActualSignerDepartmentNameFieldName := 'document_charge_fact_perf_dep_name';
 
-  FieldNames.DocumentChargeActualPerformerIdFieldName := 'document_charge_fact_perf_id';
-  FieldNames.DocumentChargeActualPerformerLeaderIdFieldName := 'document_charge_fact_perf_leader_id';
-  FieldNames.DocumentChargeActualPerformerIsForeignFieldName := 'document_charge_fact_perf_is_foreign';
-  FieldNames.DocumentChargeActualPerformerNameFieldName := 'document_charge_fact_perf_name';
-  FieldNames.DocumentChargeActualPerformerSpecialityFieldName := 'document_charge_fact_perf_speciality';
-  FieldNames.DocumentChargeActualPerformerDepartmentIdFieldName := 'document_charge_fact_perf_dep_id';
-  FieldNames.DocumentChargeActualPerformerDepartmentCodeFieldName := 'document_charge_fact_perf_dep_code';
-  FieldNames.DocumentChargeActualPerformerDepartmentNameFieldName := 'document_charge_fact_perf_dep_name';
+  FieldNames.FileIdFieldName := 'document_file_id';
+  FieldNames.FileNameFieldName := 'document_file_name';
+  FieldNames.FilePathFieldName := 'document_file_path';
 
-  FieldNames.DocumentSigningIdFieldName := 'document_signing_id';
-  FieldNames.DocumentSigningDateFieldName := 'document_signing_performing_date';
-  FieldNames.DocumentSignerIdFieldName := 'document_signer_id';
-  FieldNames.DocumentSignerLeaderIdFieldName := 'document_signer_leader_id';
-  FieldNames.DocumentSignerNameFieldName := 'document_signer_name';
-  FieldNames.DocumentSignerSpecialityFieldName := 'signer_speciality';
-  FieldNames.DocumentSignerDepartmentIdFieldName := 'document_signer_dep_id';
-  FieldNames.DocumentSignerDepartmentCodeFieldName := 'document_signer_dep_code';
-  FieldNames.DocumentSignerDepartmentNameFieldName := 'document_signer_dep_name';
-
-  FieldNames.DocumentActualSignerIdFieldName := 'document_fact_signer_id';
-  FieldNames.DocumentActualSignerLeaderIdFieldName := 'document_fact_signer_leader_id';
-  FieldNames.DocumentActualSignerNameFieldName := 'document_fact_signer_name';
-  FieldNames.DocumentActualSignerSpecialityFieldName := 'fact_signer_speciality';
-  FieldNames.DocumentActualSignerDepartmentIdFieldName := 'document_fact_signer_dep_id';
-  FieldNames.DocumentActualSignerDepartmentCodeFieldName := 'document_fact_signer_dep_code';
-  FieldNames.DocumentActualSignerDepartmentNameFieldName := 'document_charge_fact_perf_dep_name';
-
-  FieldNames.DocumentFileIdFieldName := 'document_file_id';
-  FieldNames.DocumentFileNameFieldName := 'document_file_name';
-  FieldNames.DocumentFilePathFieldName := 'document_file_path';
-
-  FieldNames.DocumentRelationIdFieldName := 'document_relation_id';
+  FieldNames.RelationIdFieldName := 'document_relation_id';
   FieldNames.RelatedDocumentIdFieldName := 'related_document_id';
   FieldNames.RelatedDocumentKindIdFieldName := 'related_document_kind_id';
   FieldNames.RelatedDocumentKindNameFieldName := 'related_document_kind_name';
@@ -323,77 +294,110 @@ begin
   FieldNames.RelatedDocumentNameFieldName := 'related_document_name';
   FieldNames.RelatedDocumentDateFieldName := 'related_document_date';
 
-  FieldNames.DocumentChargeSheetIdFieldName := 'document_charge_sheet_id';
-  FieldNames.DocumentChargeSheetsInfoFieldNames.DocumentChargeSheetKindIdFieldName := 'document_charge_sheet_kind_id';
-  FieldNames.DocumentChargeSheetsInfoFieldNames.DocumentChargeSheetKindNameFieldName := 'document_charge_sheet_kind_name';
-  FieldNames.DocumentChargeSheetsInfoFieldNames.DocumentChargeSheetServiceKindNameFieldName := 'document_charge_sheet_service_kind_name';
-  FieldNames.ChargeSheetDocumentIdFieldName := 'charge_sheet_document_id';
-  FieldNames.TopLevelDocumentChargeSheetIdFieldName := 'top_level_document_charge_sheet_id';
-  FieldNames.DocumentChargeSheetTextFieldName := 'document_charge_sheet_text';
-  FieldNames.DocumentChargeSheetResponseFieldName := 'document_charge_sheet_response';
-  FieldNames.DocumentChargeSheetIsForAcquaitanceFieldName := 'document_charge_sheet_is_for_acquaitance';
-  FieldNames.DocumentChargeSheetPeriodStartFieldName := 'document_charge_sheet_period_start';
-  FieldNames.DocumentChargeSheetPeriodEndFieldName := 'document_charge_sheet_period_end';
-  FieldNames.DocumentChargeSheetIssuingDateTimeFieldName := 'document_charge_sheet_issuing_datetime';
-  FieldNames.DocumentChargeSheetPerformingDateTimeFieldName := 'document_charge_sheet_performing_date';
-  FieldNames.DocumentChargeSheetViewingDateByPerformerFieldName := 'document_charge_sheet_viewing_date';
+  with FieldNames.ChargesInfoFieldNames do begin
+
+    IdFieldName := 'document_charge_id';
+    KindIdFieldName := 'document_charge_kind_id';
+    KindNameFieldName := 'document_charge_kind_name';
+    ServiceKindNameFieldName := 'document_charge_service_kind_name';
+    ChargeTextFieldName := 'document_charge_text';
+    IsForAcquaitanceFieldName := 'document_charge_is_for_acquaitance';
+    ResponseFieldName := 'document_charge_response';
+    TimeFrameStartFieldName := 'document_charge_period_start';
+    TimeFrameDeadlineFieldName := 'document_charge_period_end';
+    PerformingDateTimeFieldName := 'document_charge_performing_date';
+
+    PerformerIdFieldName := 'document_charge_performer_id';
+    PerformerIsForeignFieldName := 'document_charge_perf_is_foreign';
+    PerformerNameFieldName := 'document_charge_performer_name';
+    PerformerSpecialityFieldName := 'document_charge_performer_speciality';
+    PerformerDepartmentIdFieldName := 'document_charge_perf_dep_id';
+    PerformerDepartmentCodeFieldName := 'document_charge_perf_dep_code';
+    PerformerDepartmentNameFieldName := 'document_charge_perf_dep_name';
+
+    ActualPerformerIdFieldName := 'document_charge_fact_perf_id';
+    ActualPerformerIsForeignFieldName := 'document_charge_fact_perf_is_foreign';
+    ActualPerformerNameFieldName := 'document_charge_fact_perf_name';
+    ActualPerformerSpecialityFieldName := 'document_charge_fact_perf_speciality';
+    ActualPerformerDepartmentIdFieldName := 'document_charge_fact_perf_dep_id';
+    ActualPerformerDepartmentCodeFieldName := 'document_charge_fact_perf_dep_code';
+    ActualPerformerDepartmentNameFieldName := 'document_charge_fact_perf_dep_name';
+
+  end;
+
+  with FieldNames.ChargeSheetsInfoFieldNames do begin
+
+    IdFieldName := 'document_charge_sheet_id';
+    ChargeIdFieldName := 'document_charge_sheet_charge_id';
+    KindIdFieldName := 'document_charge_sheet_kind_id';
+    KindNameFieldName := 'document_charge_sheet_kind_name';
+    ServiceKindNameFieldName := 'document_charge_sheet_service_kind_name';
+    DocumentIdFieldName := 'charge_sheet_document_id';
+    DocumentKindIdFieldName := 'charge_sheet_document_kind_id';
+    TopLevelChargeSheetIdFieldName := 'top_level_document_charge_sheet_id';
+    ChargeTextFieldName := 'document_charge_sheet_text';
+    ResponseFieldName := 'document_charge_sheet_response';
+    IsForAcquaitanceFieldName := 'document_charge_sheet_is_for_acquaitance';
+    TimeFrameStartFieldName := 'document_charge_sheet_period_start';
+    TimeFrameDeadlineFieldName := 'document_charge_sheet_period_end';
+    IssuingDateTimeFieldName := 'document_charge_sheet_issuing_datetime';
+    PerformingDateTimeFieldName := 'document_charge_sheet_performing_date';
+    ViewDateByPerformerFieldName := 'document_charge_sheet_viewing_date';
+
+    PerformerIdFieldName := 'document_charge_sheet_performer_id';
+    PerformerIsForeignFieldName := 'document_charge_sheet_perf_is_foreign';
+    PerformerNameFieldName := 'document_charge_sheet_performer_name';
+    PerformerSpecialityFieldName := 'document_charge_sheet_performer_speciality';
+    PerformerDepartmentIdFieldName := 'document_charge_sheet_perf_dep_id';
+    PerformerDepartmentCodeFieldName := 'document_charge_sheet_perf_dep_code';
+    PerformerDepartmentNameFieldName := 'document_charge_sheet_perf_dep_name';
+
+    ActualPerformerIdFieldName := 'document_charge_sheet_fact_perf_id';
+    ActualPerformerIsForeignFieldName := 'document_charge_sheet_fact_perf_is_foreign';
+    ActualPerformerNameFieldName := 'document_charge_sheet_fact_perf_name';
+    ActualPerformerSpecialityFieldName := 'document_charge_sheet_fact_perf_speciality';
+    ActualPerformerDepartmentIdFieldName := 'document_charge_sheet_fact_perf_dep_id';
+    ActualPerformerDepartmentCodeFieldName := 'document_charge_sheet_fact_perf_dep_code';
+    ActualPerformerDepartmentNameFieldName := 'document_charge_sheet_fact_perf_dep_name';
+
+    IssuerIdFieldName := 'charge_sheet_sender_id';
+    IssuerIsForeignFieldName := 'charge_sheet_sender_is_foreign';
+    IssuerNameFieldName := 'charge_sheet_sender_name';
+    IssuerSpecialityFieldName := 'charge_sheet_sender_speciality';
+    IssuerDepartmentIdFieldName := 'charge_sheet_sender_dep_id';
+    IssuerDepartmentCodeFieldName := 'charge_sheet_sender_dep_code';
+    IssuerDepartmentNameFieldName := 'charge_sheet_sender_dep_name';
+
+  end;
+
+  FieldNames.ApprovingIdFieldName := 'approving_id';
+  FieldNames.ApprovingPerformingDateTimeFieldName := 'approving_performing_date';
+  FieldNames.ApprovingPerformingResultIdFieldName := 'approving_performing_result_id';
+  FieldNames.ApprovingIsAccessibleFieldName := 'document_approving_accessible';
+  FieldNames.ApprovingPerformingResultFieldName := 'approving_performing_result';
+  FieldNames.ApprovingNoteFieldName := 'approving_note';
+  FieldNames.ApprovingCycleIdFieldName := 'approving_cycle_id';
+  FieldNames.ApprovingCycleNumberFieldName := 'approving_cycle_number';
+  FieldNames.ApprovingIsCompletedFieldName := 'approving_is_completed';
+  FieldNames.ApprovingIsLookedByApproverFieldName := 'approving_is_looked_by_approver';
   
-  FieldNames.DocumentChargeSheetPerformerIdFieldName := 'document_charge_sheet_performer_id';
-  FieldNames.DocumentChargeSheetPerformerLeaderIdFieldName := 'document_charge_sheet_perf_leader_id';
-  FieldNames.DocumentChargeSheetPerformerIsForeignFieldName := 'document_charge_sheet_perf_is_foreign';
-  FieldNames.DocumentChargeSheetPerformerNameFieldName := 'document_charge_sheet_performer_name';
-  FieldNames.DocumentChargeSheetPerformerSpecialityFieldName := 'document_charge_sheet_performer_speciality';
-  FieldNames.DocumentChargeSheetPerformerDepartmentIdFieldName := 'document_charge_sheet_perf_dep_id';
-  FieldNames.DocumentChargeSheetPerformerDepartmentCodeFieldName := 'document_charge_sheet_perf_dep_code';
-  FieldNames.DocumentChargeSheetPerformerDepartmentNameFieldName := 'document_charge_sheet_perf_dep_name';
-  FieldNames.DocumentChargeSheetPerformerRoleIdFieldName := 'document_charge_sheet_performer_role_id';
+  FieldNames.ApproverIdFieldName := 'approver_id';
+  FieldNames.ApproverLeaderIdFieldName := 'approver_leader_id';
+  FieldNames.ApproverIsForeignFieldName := 'approver_is_foreign';
+  FieldNames.ApproverNameFieldName := 'approver_name';
+  FieldNames.ApproverSpecialityFieldName := 'approver_speciality';
+  FieldNames.ApproverDepartmentIdFieldName := 'approver_dep_id';
+  FieldNames.ApproverDepartmentCodeFieldName := 'approver_dep_code';
+  FieldNames.ApproverDepartmentNameFieldName := 'approver_dep_name';
 
-  FieldNames.DocumentChargeSheetActualPerformerIdFieldName := 'document_charge_sheet_fact_perf_id';
-  FieldNames.DocumentChargeSheetActualPerformerLeaderIdFieldName := 'document_charge_sheet_fact_perf_leader_id';
-  FieldNames.DocumentChargeSheetActualPerformerIsForeignFieldName := 'document_charge_sheet_fact_perf_is_foreign';
-  FieldNames.DocumentChargeSheetActualPerformerNameFieldName := 'document_charge_sheet_fact_perf_name';
-  FieldNames.DocumentChargeSheetActualPerformerSpecialityFieldName := 'document_charge_sheet_fact_perf_speciality';
-  FieldNames.DocumentChargeSheetActualPerformerDepartmentIdFieldName := 'document_charge_sheet_fact_perf_dep_id';
-  FieldNames.DocumentChargeSheetActualPerformerDepartmentCodeFieldName := 'document_charge_sheet_fact_perf_dep_code';
-  FieldNames.DocumentChargeSheetActualPerformerDepartmentNameFieldName := 'document_charge_sheet_fact_perf_dep_name';
-
-  FieldNames.DocumentChargeSheetSenderIdFieldName := 'charge_sheet_sender_id';
-  FieldNames.DocumentChargeSheetSenderLeaderIdFieldName := 'charge_sheet_sender_leader_id';
-  FieldNames.DocumentChargeSheetSenderIsForeignFieldName := 'charge_sheet_sender_is_foreign';
-  FieldNames.DocumentChargeSheetSenderNameFieldName := 'charge_sheet_sender_name';
-  FieldNames.DocumentChargeSheetSenderSpecialityFieldName := 'charge_sheet_sender_speciality';
-  FieldNames.DocumentChargeSheetSenderDepartmentIdFieldName := 'charge_sheet_sender_dep_id';
-  FieldNames.DocumentChargeSheetSenderDepartmentCodeFieldName := 'charge_sheet_sender_dep_code';
-  FieldNames.DocumentChargeSheetSenderDepartmentNameFieldName := 'charge_sheet_sender_dep_name';
-
-  FieldNames.DocumentApprovingIdFieldName := 'approving_id';
-  FieldNames.DocumentApprovingPerformingDateTimeFieldName := 'approving_performing_date';
-  FieldNames.DocumentApprovingPerformingResultIdFieldName := 'approving_performing_result_id';
-  FieldNames.DocumentApprovingIsAccessibleFieldName := 'document_approving_accessible';
-  FieldNames.DocumentApprovingPerformingResultFieldName := 'approving_performing_result';
-  FieldNames.DocumentApprovingNoteFieldName := 'approving_note';
-  FieldNames.DocumentApprovingCycleIdFieldName := 'approving_cycle_id';
-  FieldNames.DocumentApprovingCycleNumberFieldName := 'approving_cycle_number';
-  FieldNames.DocumentApprovingIsCompletedFieldName := 'approving_is_completed';
-  FieldNames.DocumentApprovingIsLookedByApproverFieldName := 'approving_is_looked_by_approver';
-  
-  FieldNames.DocumentApproverIdFieldName := 'approver_id';
-  FieldNames.DocumentApproverLeaderIdFieldName := 'approver_leader_id';
-  FieldNames.DocumentApproverIsForeignFieldName := 'approver_is_foreign';
-  FieldNames.DocumentApproverNameFieldName := 'approver_name';
-  FieldNames.DocumentApproverSpecialityFieldName := 'approver_speciality';
-  FieldNames.DocumentApproverDepartmentIdFieldName := 'approver_dep_id';
-  FieldNames.DocumentApproverDepartmentCodeFieldName := 'approver_dep_code';
-  FieldNames.DocumentApproverDepartmentNameFieldName := 'approver_dep_name';
-
-  FieldNames.DocumentActualApproverIdFieldName := 'fact_approver_id';
-  FieldNames.DocumentActualApproverLeaderIdFieldName := 'fact_approver_leader_id';
-  FieldNames.DocumentActualApproverIsForeignFieldName := 'fact_approver_is_foreign';
-  FieldNames.DocumentActualApproverNameFieldName := 'fact_approver_name';
-  FieldNames.DocumentActualApproverSpecialityFieldName := 'fact_approver_speciality';
-  FieldNames.DocumentActualApproverDepartmentIdFieldName := 'fact_approver_dep_id';
-  FieldNames.DocumentActualApproverDepartmentCodeFieldName := 'fact_approver_dep_code';
-  FieldNames.DocumentActualApproverDepartmentNameFieldName := 'fact_approver_dep_name';
+  FieldNames.ActualApproverIdFieldName := 'fact_approver_id';
+  FieldNames.ActualApproverLeaderIdFieldName := 'fact_approver_leader_id';
+  FieldNames.ActualApproverIsForeignFieldName := 'fact_approver_is_foreign';
+  FieldNames.ActualApproverNameFieldName := 'fact_approver_name';
+  FieldNames.ActualApproverSpecialityFieldName := 'fact_approver_speciality';
+  FieldNames.ActualApproverDepartmentIdFieldName := 'fact_approver_dep_id';
+  FieldNames.ActualApproverDepartmentCodeFieldName := 'fact_approver_dep_code';
+  FieldNames.ActualApproverDepartmentNameFieldName := 'fact_approver_dep_name';
   
 end;
 

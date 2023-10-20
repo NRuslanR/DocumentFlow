@@ -8,48 +8,23 @@ uses
   DepartmentInfoDTO,
   DocumentFlowEmployeeInfoDTO,
   ChangedDocumentInfoDTO,
-  DocumentChargeSheetsInfoDTO,
   DocumentChargesFormViewModelUnit,
+  DocumentChargeSheetsInfoDTO,
   DocumentChargeSetHolder,
   DocumentChargeKindsControlAppService,
-  DocumentDataSetHoldersFactory,
+  DocumentChargeSetHolderFactory,
   SysUtils,
   Classes,
   DB;
 
 type
 
-  { refactor(DocumentChargesFormViewModelMapper, 1):
-    в зависимости от того, является
-    документ входящим или исходящим
-    метод MapDocumentChargesFormViewModelTo может
-    возвращать либо объект TDocumentChargesChangesInfoDTO,
-    либо объект TDocumentChargeSheetsChangesInfoDTO (для
-    входящего док-а). Обратное отображение ViewModel'и
-    в DTO применяется для фиксации изменений в
-    хранилище данных (БД) через DTO. Поскольку входящий документ
-    не может редактироваться, поэтому на данный момент возвращается
-    TDocumentChargesChangesInfoDTO. Рекомендуется
-    сделать отдельные мапперы для
-    TDocumentChargesChangesInfoDTO и
-    TDocumentChargeSheetChangesInfoDTO для обычного док-а (исходящего)
-    и входящего соответственно. И затем составлять
-    DocumentCardFormViewModelMapper'ы отдельно для исходящего и
-    входящего док-ов из одинаковых мапперов, кроме
-    Mapper'ов, отображающих поручения и листы поручений.
-  }
-  {
-    refactor(DocumentChargesFormViewModelMapper, 2):
-    в соответствии с изменённым функционалом поручений
-    изменить данный маппер. Сделать отдельный маппер
-    на каждый тип поручения
-  }
-
   TDocumentChargesFormViewModelMapper = class
 
     protected
 
       FDocumentChargeKindsControlAppService: IDocumentChargeKindsControlAppService;
+      FDocumentChargeSetHolderFactory: IDocumentChargeSetHolderFactory;
       
     protected
 
@@ -60,20 +35,10 @@ type
 
       procedure FillDocumentChargeSetHolderFrom(
         DocumentChargeSetHolder: TDocumentChargeSetHolder;
-        DocumentDTO: TDocumentDTO;
         DocumentChargesInfoDTO: TDocumentChargesInfoDTO
-      ); overload;
-
-      procedure FillDocumentChargeSetHolderFrom(
-        DocumentChargeSetHolder: TDocumentChargeSetHolder;
-        DocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO
-      ); overload;
+      );
 
     protected
-
-      function MapDocumentChargeSetHolderToChargesInfoDTO(
-        DocumentChargesFormViewModel: TDocumentChargesFormViewModel
-      ): TDocumentChargesInfoDTO;
 
       function MapDocumentChargesFormViewModelToAddedChargesInfoDTO(
         DocumentChargesFormViewModel: TDocumentChargesFormViewModel
@@ -89,25 +54,34 @@ type
 
     public
 
-      constructor Create(DocumentChargeKindsControlAppService: iDocumentChargeKindsControlAppService);
+      constructor Create(
+        DocumentChargeKindsControlAppService: IDocumentChargeKindsControlAppService;
+        DocumentChargeSetHolderFactory: IDocumentChargeSetHolderFactory
+      );
       
       function MapDocumentChargesFormViewModelFrom(
-        DocumentDTO: TDocumentDTO;
-        DocumentChargesInfoDTO: TDocumentChargesInfoDTO;
-        DocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-        DocumentChargeSetHolder: TDocumentChargeSetHolder
+	  	  DocumentDTO: TDocumentDTO;
+        DocumentChargesInfoDTO: TDocumentChargesInfoDTO
       ): TDocumentChargesFormViewModel; virtual;
+
+      procedure FillDocumentChargeSetHolderByChargeInfoDto(
+	  	  DocumentChargeSetHolder: TDocumentChargeSetHolder;
+        DocumentChargeInfoDTO: TDocumentChargeInfoDTO
+      ); virtual;
 
       function MapDocumentChargesFormViewModelToChargeChangesInfoDTO(
         DocumentChargesFormViewModel: TDocumentChargesFormViewModel
       ): TDocumentChargesChangesInfoDTO; virtual;
+
+      function MapDocumentChargesFormViewModelToChargesInfoDTO(
+        DocumentChargesFormViewModel: TDocumentChargesFormViewModel
+      ): TDocumentChargesInfoDTO;
 
       function MapDocumentChargesFormViewModelToNewChargesInfoDTO(
         DocumentChargesFormViewModel: TDocumentChargesFormViewModel
       ): TDocumentChargesInfoDTO; virtual;
 
       function CreateEmptyDocumentChargesFormViewModel(
-        DocumentChargeSetHolder: TDocumentChargeSetHolder;
         const DocumentKindId: Variant { refactor: delete, view unDocumentCardListFrame.OnNewDocumentCreatingRequestedEventHandler }
       ): TDocumentChargesFormViewModel; virtual;
 
@@ -117,55 +91,44 @@ implementation
 
 uses
 
-  Variants;
+  Variants, AbstractDataSetHolder;
   
 { TDocumentChargesFormViewModelMapper }
 
-function TDocumentChargesFormViewModelMapper.
-  MapDocumentChargesFormViewModelFrom(
-    DocumentDTO: TDocumentDTO;
-    DocumentChargesInfoDTO: TDocumentChargesInfoDTO;
-    DocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO;
-    DocumentChargeSetHolder: TDocumentChargeSetHolder
-  ): TDocumentChargesFormViewModel;
-  
-var
-    DocumentChargeInfoDTO: TDocumentChargeInfoDTO;
-    DocumentChargeSheetInfoDTO: TDocumentChargeSheetInfoDTO;
+constructor TDocumentChargesFormViewModelMapper.Create(
+  DocumentChargeKindsControlAppService: IDocumentChargeKindsControlAppService;
+  DocumentChargeSetHolderFactory: IDocumentChargeSetHolderFactory
+);
 begin
 
-  Result := CreateDocumentChargesFormViewModelInstance;
+  inherited Create;
+
+  FDocumentChargeKindsControlAppService := DocumentChargeKindsControlAppService;
+  FDocumentChargeSetHolderFactory := DocumentChargeSetHolderFactory;
+  
+end;
+
+function TDocumentChargesFormViewModelMapper.
+  MapDocumentChargesFormViewModelFrom(
+  	DocumentDTO: TDocumentDTO;
+    DocumentChargesInfoDTO: TDocumentChargesInfoDTO
+  ): TDocumentChargesFormViewModel;
+  
+
+begin
+
+  Result := CreateEmptyDocumentChargesFormViewModel(DocumentDTO.KindId);
 
   if
-    Assigned(DocumentChargeSheetsInfoDTO) and
-    (DocumentChargeSheetsInfoDTO.Count > 0)
-  then begin
+    not Assigned(DocumentChargesInfoDTO)
+    or (DocumentChargesInfoDTO.Count = 0)
+  then Exit;
 
-    FillDocumentChargeSetHolderFrom(
-      DocumentChargeSetHolder,
-      DocumentChargeSheetsInfoDTO
-    )
+  FillDocumentChargeSetHolderFrom(
+    Result.DocumentChargeSetHolder,
+    DocumentChargesInfoDTO
+  );
 
-  end
-
-  else if
-    Assigned(DocumentChargesInfoDTO) and (DocumentChargesInfoDTO.Count > 0)
-  then begin
-
-    FillDocumentChargeSetHolderFrom(
-      DocumentChargeSetHolder,
-      DocumentDTO,
-      DocumentChargesInfoDTO
-    );
-
-  end;
-
-  Result.DocumentChargeSetHolder := DocumentChargeSetHolder;
-
-  Result.DocumentChargeKindDto :=
-    FDocumentChargeKindsControlAppService
-      .FindMainDocumentChargeKindForDocumentKind(DocumentDTO.KindId);
-    
 end;
 
 function TDocumentChargesFormViewModelMapper.
@@ -195,16 +158,13 @@ begin
 
     DocumentChargesFormViewModel.
       DocumentChargeSetHolder.
-        RevealNonRemovedChargeRecords
+        RevealNonRemovedRecords;
 
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-      raise;
-
-    end;
+    raise;
 
   end;
 
@@ -223,184 +183,101 @@ begin
 
 end;
 
+procedure TDocumentChargesFormViewModelMapper.FillDocumentChargeSetHolderByChargeInfoDto(
+  DocumentChargeSetHolder: TDocumentChargeSetHolder;
+  DocumentChargeInfoDTO: TDocumentChargeInfoDTO
+);
+begin
+
+  with DocumentChargeSetHolder do begin
+
+    AppendWithoutRecordIdGeneration;
+
+    IdFieldValue := DocumentChargeInfoDTO.Id;
+
+    IsForAcquaitanceFieldValue := DocumentChargeInfoDTO.IsForAcquaitance;
+
+    KindIdFieldValue := DocumentChargeInfoDTO.KindId;
+
+    KindNameFieldValue := DocumentChargeInfoDTO.KindName;
+
+    KindServiceNameFieldValue := DocumentChargeInfoDTO.ServiceKindName;
+
+    PerformerFullNameFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.FullName;
+
+    PerformerSpecialityFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.Speciality;
+
+    PerformerIdFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.Id;
+
+    PerformerDepartmentNameFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.DepartmentInfoDTO.Name;
+
+    PerformerCommentFieldValue := DocumentChargeInfoDTO.PerformerResponse;
+
+    PerformingDateTimeFieldValue := DocumentChargeInfoDTO.PerformingDateTime;
+
+    ChargeTextFieldValue := DocumentChargeInfoDTO.ChargeText;
+
+    IsPerformerForeignFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.IsForeign;
+
+    CanBeChangedFieldValue := DocumentChargeInfoDTO.AccessRights.ChargeSectionAccessible;
+    CanBeRemovedFieldValue := DocumentChargeInfoDTO.AccessRights.RemovingAllowed;
+
+    if Assigned(DocumentChargeInfoDTO.ActuallyPerformedEmployeeInfoDTO)
+    then begin
+
+      DocumentChargeSetHolder.ActualPerformerFullNameFieldValue :=
+        DocumentChargeInfoDTO.ActuallyPerformedEmployeeInfoDTO.FullName;
+
+    end;
+
+    MarkCurrentRecordAsNonChanged;
+
+    Post;
+
+  end;
+
+end;
+
 procedure TDocumentChargesFormViewModelMapper.
   FillDocumentChargeSetHolderFrom(
     DocumentChargeSetHolder: TDocumentChargeSetHolder;
-    DocumentDTO: TDocumentDTO;
     DocumentChargesInfoDTO: TDocumentChargesInfoDTO
   );
-var DocumentChargeInfoDTO: TDocumentChargeInfoDTO;
+var
+    DocumentChargeInfoDTO: TDocumentChargeInfoDTO;
 begin
 
   with DocumentChargeSetHolder do begin
 
     for DocumentChargeInfoDTO in DocumentChargesInfoDTO do begin
 
-      Append;
-
-      IsChargeForAcquaitanceFieldValue := DocumentChargeInfoDTO.IsForAcquaitance;
-
-      if not VarIsNull(DocumentChargeInfoDTO.Id) then
-        IdFieldValue := DocumentChargeInfoDTO.Id;
-
-      ChargeKindIdFieldValue := DocumentChargeInfoDTO.KindId;
-
-      ChargeKindNameFieldValue := DocumentChargeInfoDTO.KindName;
-
-      ChargeKindServiceNameFieldValue := DocumentChargeInfoDTO.ServiceKindName;
-
-      TopLevelChargeIdFieldValue := Null;
-
-      ReceiverFullNameFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.FullName;
-
-      ReceiverSpecialityFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.Speciality;
-
-      ReceiverIdFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.Id;
-
-      ReceiverDepartmentNameFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.DepartmentInfoDTO.Name;
-
-      ReceiverCommentFieldValue := DocumentChargeInfoDTO.PerformerResponse;
-
-      ReceiverPerformingDateTimeFieldValue := DocumentChargeInfoDTO.PerformingDateTime;
-
-      ReceiverDocumentIdFieldValue := DocumentDTO.Id;
-
-      IsPerformedByReceiverFieldValue := not VarIsNull(DocumentChargeInfoDTO.PerformingDateTime);
-
-      ChargeTextFieldValue := DocumentChargeInfoDTO.ChargeText;
-
-      ReceiverLeaderIdFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.LeaderId;
-
-      IsReceiverForeignFieldValue := DocumentChargeInfoDTO.PerformerInfoDTO.IsForeign;
-
-      IsAccessibleChargeFieldValue := False;
-
-      if Assigned(DocumentChargeInfoDTO.ActuallyPerformedEmployeeInfoDTO)
-      then begin
-
-        DocumentChargeSetHolder.PerformedChargeEmployeeNameFieldValue :=
-          DocumentChargeInfoDTO.ActuallyPerformedEmployeeInfoDTO.FullName;
-
-      end;
-
-      MarkCurrentChargeRecordAsNonChanged;
-      
-      Post;
+      FillDocumentChargeSetHolderByChargeInfoDto(
+        DocumentChargeSetHolder, DocumentChargeInfoDTO
+      );
 
     end;
 
+    First;
+    
   end;
 
 end;
 
 function TDocumentChargesFormViewModelMapper.
   CreateEmptyDocumentChargesFormViewModel(
-    DocumentChargeSetHolder: TDocumentChargeSetHolder;
     const DocumentKindId: Variant
   ): TDocumentChargesFormViewModel;
 begin
 
   Result := CreateDocumentChargesFormViewModelInstance;
 
-  Result.DocumentChargeSetHolder := DocumentChargeSetHolder;
+  Result.DocumentChargeSetHolder :=
+    FDocumentChargeSetHolderFactory.CreateDocumentChargeSetHolder;
 
   Result.DocumentChargeKindDto :=
     FDocumentChargeKindsControlAppService
       .FindMainDocumentChargeKindForDocumentKind(DocumentKindId);
     
-end;
-
-procedure TDocumentChargesFormViewModelMapper.
-  FillDocumentChargeSetHolderFrom(
-    DocumentChargeSetHolder: TDocumentChargeSetHolder;
-    DocumentChargeSheetsInfoDTO: TDocumentChargeSheetsInfoDTO
-  );
-var DocumentChargeSheetInfoDTO: TDocumentChargeSheetInfoDTO;
-begin
-
-  with DocumentChargeSetHolder do begin
-
-    for DocumentChargeSheetInfoDTO in DocumentChargeSheetsInfoDTO do begin
-
-      Append;
-
-      IdFieldValue := DocumentChargeSheetInfoDTO.Id;
-
-      ChargeKindIdFieldValue := DocumentChargeSheetInfoDTO.KindId;
-
-      ChargeKindNameFieldValue := DocumentChargeSheetInfoDTO.KindName;
-
-      ChargeKindServiceNameFieldValue := DocumentChargeSheetInfoDTO.ServiceKindName;
-
-      IsChargeForAcquaitanceFieldValue := DocumentChargeSheetInfoDTO.IsForAcquaitance;
-
-      TopLevelChargeIdFieldValue := DocumentChargeSheetInfoDTO.TopLevelChargeSheetId;
-
-      ReceiverFullNameFieldValue := DocumentChargeSheetInfoDTO.PerformerInfoDTO.FullName;
-
-      ReceiverSpecialityFieldValue := DocumentChargeSheetInfoDTO.PerformerInfoDTO.Speciality;
-
-      ReceiverIdFieldValue := DocumentChargeSheetInfoDTO.PerformerInfoDTO.Id;
-
-      ReceiverDepartmentNameFieldValue := DocumentChargeSheetInfoDTO.PerformerInfoDTO.DepartmentInfoDTO.Name;
-
-      ReceiverCommentFieldValue := DocumentChargeSheetInfoDTO.PerformerResponse;
-
-      ReceiverPerformingDateTimeFieldValue := DocumentChargeSheetInfoDTO.PerformingDateTime;
-
-      ReceiverDocumentIdFieldValue := DocumentChargeSheetInfoDTO.DocumentId;
-
-      DocumentChargeSetHolder.IsPerformedByReceiverFieldValue :=
-        not VarIsNull(DocumentChargeSheetInfoDTO.PerformingDateTime);
-
-      ChargeTextFieldValue := DocumentChargeSheetInfoDTO.ChargeText;
-
-      ReceiverLeaderIdFieldValue := DocumentChargeSheetInfoDTO.PerformerInfoDTO.LeaderId;
-
-      IsReceiverForeignFieldValue := DocumentChargeSheetInfoDTO.PerformerInfoDTO.IsForeign;
-
-      ViewingDateByPerformerFieldValue := DocumentChargeSheetInfoDTO.ViewingDateByPerformer;
-
-      { refactor: to turn viewmodel's property to a few properties
-        each of which will correspond to the acess right }
-        
-      IsAccessibleChargeFieldValue :=
-        DocumentChargeSheetInfoDTO.AccessRights.PerformingAllowed;
-
-      ReceiverRoleIdFieldValue := DocumentChargeSheetInfoDTO.PerformerInfoDTO.RoleId;
-
-      ChargeSheetSenderEmployeeNameFieldValue := DocumentChargeSheetInfoDTO.SenderEmployeeInfoDTO.FullName;
-
-      ChargeSheetSenderEmployeeIdFieldValue := DocumentChargeSheetInfoDTO.SenderEmployeeInfoDTO.Id;
-
-      ChargeSheetIssuingDateTimeFieldValue := DocumentChargeSheetInfoDTO.IssuingDateTime;
-      
-      if Assigned(DocumentChargeSheetInfoDTO.ActuallyPerformedEmployeeInfoDTO)
-      then begin
-
-        PerformedChargeEmployeeNameFieldValue :=
-          DocumentChargeSheetInfoDTO.ActuallyPerformedEmployeeInfoDTO.FullName;
-
-      end;
-
-      Post;
-
-      MarkCurrentChargeRecordAsNonChanged;
-
-    end;
-
-  end;
-
-end;
-
-constructor TDocumentChargesFormViewModelMapper.Create(
-  DocumentChargeKindsControlAppService: IDocumentChargeKindsControlAppService);
-begin
-
-  inherited Create;
-
-  FDocumentChargeKindsControlAppService := DocumentChargeKindsControlAppService;
-  
 end;
 
 function TDocumentChargesFormViewModelMapper.
@@ -419,10 +296,10 @@ begin
 
   DocumentChargesFormViewModel.
     DocumentChargeSetHolder.
-      RevealAddedChargeRecords;
+      RevealAddedRecords;
 
   Result :=
-    MapDocumentChargeSetHolderToChargesInfoDTO(DocumentChargesFormViewModel);
+    MapDocumentChargesFormViewModelToChargesInfoDTO(DocumentChargesFormViewModel);
   
 end;
 
@@ -434,10 +311,10 @@ begin
 
   DocumentChargesFormViewModel.
     DocumentChargeSetHolder.
-      RevealChangedChargeRecords;
+      RevealChangedRecords;
 
   Result :=
-    MapDocumentChargeSetHolderToChargesInfoDTO(DocumentChargesFormViewModel);
+    MapDocumentChargesFormViewModelToChargesInfoDTO(DocumentChargesFormViewModel);
     
 end;
 
@@ -449,15 +326,15 @@ begin
 
   DocumentChargesFormViewModel.
     DocumentChargeSetHolder.
-      RevealRemovedChargeRecords;
+      RevealRemovedRecords;
 
   Result :=
-    MapDocumentChargeSetHolderToChargesInfoDTO(DocumentChargesFormViewModel);
+    MapDocumentChargesFormViewModelToChargesInfoDTO(DocumentChargesFormViewModel);
     
 end;
 
 function TDocumentChargesFormViewModelMapper.
-  MapDocumentChargeSetHolderToChargesInfoDTO(
+  MapDocumentChargesFormViewModelToChargesInfoDTO(
     DocumentChargesFormViewModel: TDocumentChargesFormViewModel
   ): TDocumentChargesInfoDTO;
 var DocumentChargeInfoDTO: TDocumentChargeInfoDTO;
@@ -478,38 +355,36 @@ begin
 
         { conditional refactor: см. TDocumentChargesFormViewModel }
         DocumentChargeInfoDTO := DocumentChargeKindDto.ChargeInfoDTOClass.Create;
-
+                                                                 
         Result.Add(DocumentChargeInfoDTO);
 
         DocumentChargeInfoDTO.Id := IdFieldValue;
 
-        DocumentChargeInfoDTO.KindId := ChargeKindIdFieldValue;
+        DocumentChargeInfoDTO.KindId := KindIdFieldValue;
         
         DocumentChargeInfoDTO.PerformerInfoDTO := TDocumentFlowEmployeeInfoDTO.Create;
 
-        DocumentChargeInfoDTO.PerformerInfoDTO.FullName := ReceiverFullNameFieldValue;
+        DocumentChargeInfoDTO.PerformerInfoDTO.FullName := PerformerFullNameFieldValue;
 
-        DocumentChargeInfoDTO.PerformerInfoDTO.Speciality := ReceiverSpecialityFieldValue;
+        DocumentChargeInfoDTO.PerformerInfoDTO.Speciality := PerformerSpecialityFieldValue;
 
-        DocumentChargeInfoDTO.PerformerInfoDTO.Id := ReceiverIdFieldValue;
+        DocumentChargeInfoDTO.PerformerInfoDTO.Id := PerformerIdFieldValue;
 
-        DocumentChargeInfoDTO.IsForAcquaitance := IsChargeForAcquaitanceFieldValue;
+        DocumentChargeInfoDTO.IsForAcquaitance := IsForAcquaitanceFieldValue;
 
         DocumentChargeInfoDTO.PerformerInfoDTO.DepartmentInfoDTO := TDepartmentInfoDTO.Create;
 
         DocumentChargeInfoDTO.PerformerInfoDTO.DepartmentInfoDTO.Name :=
-          ReceiverDepartmentNameFieldValue;
+          PerformerDepartmentNameFieldValue;
 
         DocumentChargeInfoDTO.PerformerResponse :=
-          DocumentChargeSetHolder.ReceiverCommentFieldValue;
+          DocumentChargeSetHolder.PerformerCommentFieldValue;
         
-        DocumentChargeInfoDTO.PerformingDateTime := ReceiverPerformingDateTimeFieldValue;
+        DocumentChargeInfoDTO.PerformingDateTime := PerformingDateTimeFieldValue;
 
-        DocumentChargeInfoDTO.PerformerInfoDTO.IsForeign := IsReceiverForeignFieldValue;
+        DocumentChargeInfoDTO.PerformerInfoDTO.IsForeign := IsPerformerForeignFieldValue;
 
         DocumentChargeInfoDTO.ChargeText := ChargeTextFieldValue;
-        
-        DocumentChargeInfoDTO.PerformerInfoDTO.LeaderId := ReceiverLeaderIdFieldValue;
 
         Next;
       
@@ -519,13 +394,9 @@ begin
 
   except
 
-    on e: Exception do begin
+    FreeAndNil(Result);
 
-      FreeAndNil(Result);
-
-      Raise;
-
-    end;
+    Raise;
 
   end;
 
