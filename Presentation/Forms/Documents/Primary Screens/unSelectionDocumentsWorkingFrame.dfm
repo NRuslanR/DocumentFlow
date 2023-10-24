@@ -1,2 +1,0 @@
-inherited SelectionDocumentsWorkingFrame: TSelectionDocumentsWorkingFrame
-end

@@ -1,0 +1,222 @@
+.
+./Documents
+./Documents/Common
+./Documents/Common/Actors
+./Documents/Common/Actors/Interfaces
+./Documents/Common/Actors/Interfaces/__history
+./Documents/Common/Decision Support
+./Documents/Common/Decision Support/Approvings
+./Documents/Common/Decision Support/Approvings/Approving Collectors
+./Documents/Common/Decision Support/Approvings/Approving Collectors/Interfaces
+./Documents/Common/Decision Support/Approvings/Approving Collectors/Interfaces/__history
+./Documents/Common/Decision Support/Approvings/Approving Collectors/__history
+./Documents/Common/Decision Support/Approvings/Approvings Pickers
+./Documents/Common/Decision Support/Approvings/Approvings Pickers/Interfaces
+./Documents/Common/Decision Support/Approvings/Approvings Pickers/Interfaces/__history
+./Documents/Common/Decision Support/Approvings/Approvings Pickers/__history
+./Documents/Common/Decision Support/Approvings/Search
+./Documents/Common/Decision Support/Approvings/Search/Interfaces
+./Documents/Common/Decision Support/Approvings/Storage
+./Documents/Common/Decision Support/Approvings/Storage/Interfaces
+./Documents/Common/Decision Support/Charge Sheets
+./Documents/Common/Decision Support/Charge Sheets/Search
+./Documents/Common/Decision Support/Charge Sheets/Search/__history
+./Documents/Common/Decision Support/Charge Sheets/Storage
+./Documents/Common/Decision Support/Charge Sheets/Storage/Interfaces
+./Documents/Common/Decision Support/Formalization
+./Documents/Common/Decision Support/Formalization/Interfaces
+./Documents/Common/Decision Support/Formalization/Interfaces/__history
+./Documents/Common/Decision Support/Formalization/Storage
+./Documents/Common/Decision Support/Formalization/Storage/Interfaces
+./Documents/Common/Decision Support/Formalization/__history
+./Documents/Common/Decision Support/Numerators
+./Documents/Common/Decision Support/Numerators/Interfaces
+./Documents/Common/Decision Support/Numerators/Interfaces/__history
+./Documents/Common/Decision Support/Numerators/__history
+./Documents/Common/Decision Support/Performing
+./Documents/Common/Decision Support/Performing/Interfaces
+./Documents/Common/Decision Support/Performing/Interfaces/__history
+./Documents/Common/Decision Support/Performing/__history
+./Documents/Common/Decision Support/References
+./Documents/Common/Decision Support/References/Interfaces
+./Documents/Common/Decision Support/References/Interfaces/__history
+./Documents/Common/Decision Support/References/Standard
+./Documents/Common/Decision Support/References/Standard/__history
+./Documents/Common/Decision Support/References/__history
+./Documents/Common/Decision Support/Relations
+./Documents/Common/Decision Support/Relations/Search
+./Documents/Common/Decision Support/Relations/Search/Interfaces
+./Documents/Common/Decision Support/Relations/Storage
+./Documents/Common/Decision Support/Relations/Storage/Interfaces
+./Documents/Common/Decision Support/Relations/__history
+./Documents/Common/Decision Support/Search
+./Documents/Common/Decision Support/Search/Interfaces
+./Documents/Common/Decision Support/Search/Interfaces/__history
+./Documents/Common/Decision Support/Search/__history
+./Documents/Common/Decision Support/Signing
+./Documents/Common/Decision Support/Signing/Interfaces
+./Documents/Common/Decision Support/Signing/Interfaces/__history
+./Documents/Common/Decision Support/Signing/__history
+./Documents/Common/Decision Support/Storage
+./Documents/Common/Decision Support/Storage/Interfaces
+./Documents/Common/Operations
+./Documents/Common/Operations/Access Rights
+./Documents/Common/Operations/Access Rights/Interfaces
+./Documents/Common/Operations/Access Rights/Interfaces/__history
+./Documents/Common/Operations/Access Rights/__history
+./Documents/Common/Operations/Approvings
+./Documents/Common/Operations/Approvings/Interfaces
+./Documents/Common/Operations/Charge Sheets
+./Documents/Common/Operations/Charge Sheets/Access Rights
+./Documents/Common/Operations/Charge Sheets/Access Rights/__history
+./Documents/Common/Operations/Charge Sheets/Creating
+./Documents/Common/Operations/Charge Sheets/Creating/__history
+./Documents/Common/Operations/Charge Sheets/Performing
+./Documents/Common/Operations/Charge Sheets/Performing/__history
+./Documents/Common/Operations/Charge Sheets/Removing
+./Documents/Common/Operations/Charge Sheets/Removing/__history
+./Documents/Common/Operations/Charges
+./Documents/Common/Operations/Charges/Access Rights
+./Documents/Common/Operations/Charges/Access Rights/__history
+./Documents/Common/Operations/Charges/Interfaces
+./Documents/Common/Operations/Charges/Interfaces/__history
+./Documents/Common/Operations/Charges/__history
+./Documents/Common/Operations/Forming
+./Documents/Common/Operations/Forming/Interfaces
+./Documents/Common/Operations/Forming/Interfaces/__history
+./Documents/Common/Operations/Performing
+./Documents/Common/Operations/Performing/Events
+./Documents/Common/Operations/Performing/Events/__history
+./Documents/Common/Operations/Performing/Interfaces
+./Documents/Common/Operations/Registration
+./Documents/Common/Operations/Registration/Interfaces
+./Documents/Common/Operations/Registration/Interfaces/__history
+./Documents/Common/Operations/Registration/__history
+./Documents/Common/Operations/Signing
+./Documents/Common/Operations/Signing/Interfaces
+./Documents/Common/Regulations
+./Documents/Common/Regulations/Rules
+./Documents/Common/Regulations/Rules/Access
+./Documents/Common/Regulations/Rules/Access/Editing
+./Documents/Common/Regulations/Rules/Access/Editing/Interfaces
+./Documents/Common/Regulations/Rules/Access/Editing/__history
+./Documents/Common/Regulations/Rules/Access/Removing
+./Documents/Common/Regulations/Rules/Access/Removing/Interfaces
+./Documents/Common/Regulations/Rules/Access/Removing/__history
+./Documents/Common/Regulations/Rules/Access/Viewing
+./Documents/Common/Regulations/Rules/Access/Viewing/Interfaces
+./Documents/Common/Regulations/Rules/Access/Viewing/__history
+./Documents/Common/Regulations/Rules/Access/__history
+./Documents/Common/Regulations/Rules/Approving
+./Documents/Common/Regulations/Rules/Approving/Interfaces
+./Documents/Common/Regulations/Rules/Approving/Interfaces/__history
+./Documents/Common/Regulations/Rules/Approving/__history
+./Documents/Common/Regulations/Rules/Charge Sheets
+./Documents/Common/Regulations/Rules/Charge Sheets/Changing
+./Documents/Common/Regulations/Rules/Charge Sheets/Changing/Interfaces
+./Documents/Common/Regulations/Rules/Charge Sheets/Changing/Interfaces/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Changing/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Interfaces
+./Documents/Common/Regulations/Rules/Charge Sheets/Interfaces/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Issuing
+./Documents/Common/Regulations/Rules/Charge Sheets/Issuing/Interfaces
+./Documents/Common/Regulations/Rules/Charge Sheets/Issuing/Interfaces/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Issuing/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Performing
+./Documents/Common/Regulations/Rules/Charge Sheets/Performing/Interfaces
+./Documents/Common/Regulations/Rules/Charge Sheets/Performing/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Removing
+./Documents/Common/Regulations/Rules/Charge Sheets/Removing/Interfaces
+./Documents/Common/Regulations/Rules/Charge Sheets/Removing/Interfaces/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Removing/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Viewing
+./Documents/Common/Regulations/Rules/Charge Sheets/Viewing/Interfaces
+./Documents/Common/Regulations/Rules/Charge Sheets/Viewing/Interfaces/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/Viewing/__history
+./Documents/Common/Regulations/Rules/Charge Sheets/__history
+./Documents/Common/Regulations/Rules/Charges
+./Documents/Common/Regulations/Rules/Charges/Interfaces
+./Documents/Common/Regulations/Rules/Charges/Interfaces/__history
+./Documents/Common/Regulations/Rules/Charges/__history
+./Documents/Common/Regulations/Rules/Common
+./Documents/Common/Regulations/Rules/Common/Interfaces
+./Documents/Common/Regulations/Rules/Common/Interfaces/__history
+./Documents/Common/Regulations/Rules/Common/__history
+./Documents/Common/Regulations/Rules/Drafting
+./Documents/Common/Regulations/Rules/Drafting/Interfaces
+./Documents/Common/Regulations/Rules/Drafting/Interfaces/__history
+./Documents/Common/Regulations/Rules/Drafting/__history
+./Documents/Common/Regulations/Rules/Editing
+./Documents/Common/Regulations/Rules/Performing
+./Documents/Common/Regulations/Rules/Performing/Interfaces
+./Documents/Common/Regulations/Rules/Performing/Interfaces/__history
+./Documents/Common/Regulations/Rules/Performing/__history
+./Documents/Common/Regulations/Rules/Removing
+./Documents/Common/Regulations/Rules/Removing/Interfaces
+./Documents/Common/Regulations/Rules/Signing
+./Documents/Common/Regulations/Rules/Signing/Interfaces
+./Documents/Common/Regulations/Rules/Signing/Interfaces/__history
+./Documents/Common/Regulations/Rules/Signing/__history
+./Documents/Common/Regulations/Rules/__history
+./Documents/Common/Regulations/Specifications
+./Documents/Common/Regulations/Specifications/Charges
+./Documents/Common/Regulations/Specifications/Charges/Interfaces
+./Documents/Common/Regulations/Specifications/Charges/Interfaces/__history
+./Documents/Common/Regulations/Specifications/Charges/__history
+./Documents/Common/Regulations/Specifications/Performing
+./Documents/Common/Regulations/Specifications/Performing/Interfaces
+./Documents/Common/Regulations/Specifications/Performing/Interfaces/__history
+./Documents/Common/Regulations/Specifications/Performing/__history
+./Documents/Common/Regulations/Specifications/Signing
+./Documents/Common/Regulations/Specifications/Signing/Interfaces
+./Documents/Common/Regulations/Specifications/Signing/Interfaces/__history
+./Documents/Common/Regulations/Specifications/Signing/__history
+./Documents/Common/Regulations/Specifications/__history
+./Documents/Common/Resources
+./Documents/Personnel Orders
+./Documents/Personnel Orders/Actors
+./Documents/Personnel Orders/Decision Support
+./Documents/Personnel Orders/Decision Support/Access
+./Documents/Personnel Orders/Decision Support/Access/Interfaces
+./Documents/Personnel Orders/Decision Support/Access/Interfaces/__history
+./Documents/Personnel Orders/Decision Support/Access/Registries
+./Documents/Personnel Orders/Decision Support/Access/Registries/__history
+./Documents/Personnel Orders/Decision Support/Access/Search
+./Documents/Personnel Orders/Decision Support/Access/Search/Interfaces
+./Documents/Personnel Orders/Decision Support/Access/__history
+./Documents/Personnel Orders/Decision Support/Approving
+./Documents/Personnel Orders/Decision Support/Approving/Search
+./Documents/Personnel Orders/Decision Support/Approving/Search/Interfaces
+./Documents/Personnel Orders/Decision Support/Control
+./Documents/Personnel Orders/Decision Support/Control/Search
+./Documents/Personnel Orders/Decision Support/Control/Search/Interfaces
+./Documents/Personnel Orders/Decision Support/Search
+./Documents/Personnel Orders/Decision Support/Search/Interfaces
+./Documents/Personnel Orders/Decision Support/Signing
+./Documents/Personnel Orders/Decision Support/Signing/Search
+./Documents/Personnel Orders/Decision Support/Signing/Search/Interfaces
+./Documents/Personnel Orders/Operations
+./Documents/Personnel Orders/Operations/Control
+./Documents/Personnel Orders/Operations/Control/Interfaces
+./Documents/Personnel Orders/Operations/Control/Interfaces/__history
+./Documents/Personnel Orders/Operations/Control/Registries
+./Documents/Personnel Orders/Operations/Control/Registries/__history
+./Documents/Personnel Orders/Operations/Control/__history
+./Documents/Personnel Orders/Registries
+./Documents/Personnel Orders/Registries/__history
+./Documents/Personnel Orders/Regulations
+./Documents/Personnel Orders/Regulations/Rules
+./Documents/Personnel Orders/Regulations/Rules/Access
+./Documents/Personnel Orders/Regulations/Rules/Access/__history
+./Documents/Personnel Orders/Regulations/Rules/Signing
+./Documents/Personnel Orders/Regulations/Rules/Signing/__history
+./Documents/Personnel Orders/Regulations/Specifications
+./Documents/Personnel Orders/Regulations/Specifications/__history
+./Documents/Personnel Orders/Resources
+./Documents/Personnel Orders/__history
+./Documents/Registries
+./Documents/Service Notes
+./Documents/Service Notes/Actors
+./Documents/__history
+./__history
+./Обоснования некоторые решений

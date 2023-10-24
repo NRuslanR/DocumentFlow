@@ -1,2 +1,0 @@
-inherited SelectionDocumentCardListFrame: TSelectionDocumentCardListFrame
-end

@@ -1,6 +1,0 @@
-Application\Business Processes\Docs\Common\Tests\DocumentStorageServiceTestFormUnit.dfm
-Application\Presentation\Docs\Tests\DocumentInfoReadServiceFormUnit.dfm
-Application\Presentation\Employees\References\Based-On DB\BasedOnDatabaseEmployeeSetReadServiceTestFormUnit.dfm
-Domain\Tests\Documents\CommonDocumentTestFormUnit.dfm
-Persistance\RefactorRepositoriesTestForm.dfm
-Presentation\Data Interfaces\ApplicationDataModuleUnit.dfm
